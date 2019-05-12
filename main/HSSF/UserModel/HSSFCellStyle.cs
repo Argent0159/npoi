@@ -139,8 +139,8 @@ namespace NPOI.HSSF.UserModel
         {
             HSSFDataFormat format = new HSSFDataFormat(((HSSFWorkbook)workbook).Workbook);
 
-            int idx = DataFormat;
-            return idx == -1 ? "General" : format.GetFormat(DataFormat);
+            int index = DataFormat;
+            return index == -1 ? "General" : format.GetFormat(DataFormat);
         }
         /// <summary>
         /// Get the contents of the format string, by looking up
@@ -389,8 +389,8 @@ namespace NPOI.HSSF.UserModel
         /// <value>The index of the color definition</value>
         public short LeftBorderColor
         {
-            get { return _format.LeftBorderPaletteIdx; }
-            set { _format.LeftBorderPaletteIdx = (value); }
+            get { return _format.LeftBorderPaletteIndex; }
+            set { _format.LeftBorderPaletteIndex = (value); }
         }
 
 
@@ -400,8 +400,8 @@ namespace NPOI.HSSF.UserModel
         /// <value>The index of the color definition</value>
         public short RightBorderColor
         {
-            get { return _format.RightBorderPaletteIdx; }
-            set { _format.RightBorderPaletteIdx = (value); }
+            get { return _format.RightBorderPaletteIndex; }
+            set { _format.RightBorderPaletteIndex = (value); }
         }
 
 
@@ -411,8 +411,8 @@ namespace NPOI.HSSF.UserModel
         /// <value>The index of the color definition.</value>
         public short TopBorderColor
         {
-            get { return _format.TopBorderPaletteIdx; }
-            set { _format.TopBorderPaletteIdx = (value); }
+            get { return _format.TopBorderPaletteIndex; }
+            set { _format.TopBorderPaletteIndex = (value); }
         }
 
 
@@ -422,8 +422,8 @@ namespace NPOI.HSSF.UserModel
         /// <value>The index of the color definition.</value>
         public short BottomBorderColor
         {
-            get { return _format.BottomBorderPaletteIdx; }
-            set { _format.BottomBorderPaletteIdx = (value); }
+            get { return _format.BottomBorderPaletteIndex; }
+            set { _format.BottomBorderPaletteIndex = (value); }
         }
 
         /// <summary>
@@ -432,8 +432,8 @@ namespace NPOI.HSSF.UserModel
         /// <value>The index of the color definition.</value>
         public short BorderDiagonalColor
         {
-            get { return _format.AdtlDiagBorderPaletteIdx; }
-            set { _format.AdtlDiagBorderPaletteIdx = value; }
+            get { return _format.AdtlDiagBorderPaletteIndex; }
+            set { _format.AdtlDiagBorderPaletteIndex = value; }
         }
 
         /// <summary>

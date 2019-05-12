@@ -134,9 +134,9 @@ namespace NPOI.HSSF.Record
         {
             short[] retval = new short[(in1.Remaining - 2) / 2];
 
-            for (int idx = 0; idx < retval.Length; idx++)
+            for (int index = 0; index < retval.Length; index++)
             {
-                retval[idx] = in1.ReadShort();
+                retval[index] = in1.ReadShort();
             }
             return retval;
         }

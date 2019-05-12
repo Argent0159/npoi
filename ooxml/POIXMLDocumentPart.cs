@@ -420,9 +420,9 @@ using System.Xml;
             return CreateRelationship(descriptor, factory, -1, false);
         }
 
-        public POIXMLDocumentPart CreateRelationship(POIXMLRelation descriptor, POIXMLFactory factory, int idx)
+        public POIXMLDocumentPart CreateRelationship(POIXMLRelation descriptor, POIXMLFactory factory, int index)
         {
-            return CreateRelationship(descriptor, factory, idx, false);
+            return CreateRelationship(descriptor, factory, index, false);
         }
 
         /**
@@ -430,15 +430,15 @@ using System.Xml;
          *
          * @param descriptor the part descriptor
          * @param factory the factory that will create an instance of the requested relation
-         * @param idx part number
+         * @param index part number
          * @param noRelation if true, then no relationship is Added.
          * @return the Created child POIXMLDocumentPart
          */
-        protected POIXMLDocumentPart CreateRelationship(POIXMLRelation descriptor, POIXMLFactory factory, int idx, bool noRelation)
+        protected POIXMLDocumentPart CreateRelationship(POIXMLRelation descriptor, POIXMLFactory factory, int index, bool noRelation)
         {
             try
             {
-                PackagePartName ppName = PackagingUriHelper.CreatePartName(descriptor.GetFileName(idx));
+                PackagePartName ppName = PackagingUriHelper.CreatePartName(descriptor.GetFileName(index));
                 PackageRelationship rel = null;
                 PackagePart part = packagePart.Package.CreatePart(ppName, descriptor.ContentType);
                 if (!noRelation)

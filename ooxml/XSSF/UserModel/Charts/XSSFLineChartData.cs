@@ -73,7 +73,7 @@ namespace NPOI.XSSF.UserModel.Charts
                 CT_LineSer ctLineSer = ctLineChart.AddNewSer();
                 CT_Grouping ctGrouping = ctLineChart.AddNewGrouping();
                 ctGrouping.val = ST_Grouping.standard;
-                ctLineSer.AddNewIdx().val= (uint)id;
+                ctLineSer.AddNewIndex().val= (uint)id;
                 ctLineSer.AddNewOrder().val = (uint)order;
 
                 // No marker symbol on the chart line.

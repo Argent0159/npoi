@@ -70,17 +70,17 @@ namespace NPOI.XSSF.UserModel
         }
 
         /**
-         * Replaces an existing Conditional Formatting rule at position idx.
+         * Replaces an existing Conditional Formatting rule at position index.
          * Excel allows to create up to 3 Conditional Formatting rules.
          * This method can be useful to modify existing  Conditional Formatting rules.
          *
-         * @param idx position of the rule. Should be between 0 and 2.
+         * @param index position of the rule. Should be between 0 and 2.
          * @param cfRule - Conditional Formatting rule
          */
-        public void SetRule(int idx, IConditionalFormattingRule cfRule)
+        public void SetRule(int index, IConditionalFormattingRule cfRule)
         {
             XSSFConditionalFormattingRule xRule = (XSSFConditionalFormattingRule)cfRule;
-            _cf.GetCfRuleArray(idx).Set(xRule.GetCTCfRule());
+            _cf.GetCfRuleArray(index).Set(xRule.GetCTCfRule());
         }
 
         /**
@@ -96,11 +96,11 @@ namespace NPOI.XSSF.UserModel
         }
 
         /**
-         * @return the Conditional Formatting rule at position idx.
+         * @return the Conditional Formatting rule at position index.
          */
-        public IConditionalFormattingRule GetRule(int idx)
+        public IConditionalFormattingRule GetRule(int index)
         {
-            return new XSSFConditionalFormattingRule(_sh, _cf.GetCfRuleArray(idx));
+            return new XSSFConditionalFormattingRule(_sh, _cf.GetCfRuleArray(index));
         }
 
         /**

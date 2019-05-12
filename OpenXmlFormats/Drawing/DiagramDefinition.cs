@@ -1985,20 +1985,20 @@ namespace NPOI.OpenXmlFormats.Dml.Diagram
     public partial class CT_Adj
     {
 
-        private uint idxField;
+        private uint indexField;
 
         private double valField;
 
         [XmlAttribute]
-        public uint idx
+        public uint index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 

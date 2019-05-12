@@ -110,7 +110,7 @@ namespace NPOI.XSSF.UserModel.Charts
             internal void AddToChart(CT_ScatterChart ctScatterChart)
             {
                 CT_ScatterSer scatterSer = ctScatterChart.AddNewSer();
-                scatterSer.AddNewIdx().val = (uint)this.id;
+                scatterSer.AddNewIndex().val = (uint)this.id;
                 scatterSer.AddNewOrder().val = (uint)this.order;
 
                 CT_AxDataSource xVal = scatterSer.AddNewXVal();

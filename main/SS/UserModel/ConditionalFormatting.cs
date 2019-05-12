@@ -84,14 +84,14 @@ namespace NPOI.SS.UserModel
         CellRangeAddress[] GetFormattingRanges();
 
         /**
-         * Replaces an existing Conditional Formatting rule at position idx.
+         * Replaces an existing Conditional Formatting rule at position index.
          * Excel allows to create up to 3 Conditional Formatting rules.
          * This method can be useful to modify existing  Conditional Formatting rules.
          *
-         * @param idx position of the rule. Should be between 0 and 2.
+         * @param index position of the rule. Should be between 0 and 2.
          * @param cfRule - Conditional Formatting rule
          */
-        void SetRule(int idx, IConditionalFormattingRule cfRule);
+        void SetRule(int index, IConditionalFormattingRule cfRule);
 
         /**
          * Add a Conditional Formatting rule.
@@ -102,9 +102,9 @@ namespace NPOI.SS.UserModel
         void AddRule(IConditionalFormattingRule cfRule);
 
         /**
-         * @return the Conditional Formatting rule at position idx.
+         * @return the Conditional Formatting rule at position index.
          */
-        IConditionalFormattingRule GetRule(int idx);
+        IConditionalFormattingRule GetRule(int index);
 
         /**
          * @return number of Conditional Formatting rules.

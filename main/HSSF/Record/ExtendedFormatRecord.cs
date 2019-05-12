@@ -154,21 +154,21 @@ namespace NPOI.HSSF.Record
 
         // all three of the following attributes are palette options
         // field_7_palette_options bit map
-        static private BitField _left_border_palette_idx =
+        static private BitField _left_border_palette_index =
             BitFieldFactory.GetInstance(0x007F);
-        static private BitField _right_border_palette_idx =
+        static private BitField _right_border_palette_index =
             BitFieldFactory.GetInstance(0x3F80);
         static private BitField _diag =
             BitFieldFactory.GetInstance(0xC000);
         private short field_7_palette_options;
 
         // field_8_adtl_palette_options bit map
-        static private BitField _top_border_palette_idx =
+        static private BitField _top_border_palette_index =
             BitFieldFactory.GetInstance(0x0000007F);
-        static private BitField _bottom_border_palette_idx =
+        static private BitField _bottom_border_palette_index =
             BitFieldFactory.GetInstance(0x00003F80);
         //is this used for diagional border color?
-        static private BitField _adtl_diag_border_palette_idx =
+        static private BitField _adtl_diag_border_palette_index =
             BitFieldFactory.GetInstance(0x001fc000);
         static private BitField _adtl_diag_line_style =
             BitFieldFactory.GetInstance(0x01e00000);
@@ -698,14 +698,14 @@ namespace NPOI.HSSF.Record
         /// <summary>
         ///  Get the palette index for the left border color
         /// </summary>
-        public short LeftBorderPaletteIdx
+        public short LeftBorderPaletteIndex
         {
-            get{return _left_border_palette_idx
+            get{return _left_border_palette_index
                 .GetShortValue(field_7_palette_options);
             }
             set {
                 field_7_palette_options =
-        _left_border_palette_idx.SetShortValue(field_7_palette_options,
+        _left_border_palette_index.SetShortValue(field_7_palette_options,
                                                value);
             }
         }
@@ -714,15 +714,15 @@ namespace NPOI.HSSF.Record
         /// <summary>
         /// Get the palette index for the right border color
         /// </summary>
-        public short RightBorderPaletteIdx
+        public short RightBorderPaletteIndex
         {
-            get{return _right_border_palette_idx
+            get{return _right_border_palette_index
                 .GetShortValue(field_7_palette_options);
             }
             set
             {
                 field_7_palette_options =
-                    _right_border_palette_idx.SetShortValue(field_7_palette_options,
+                    _right_border_palette_index.SetShortValue(field_7_palette_options,
                                           value);
             }
         }
@@ -741,14 +741,14 @@ namespace NPOI.HSSF.Record
         /// <summary>
         /// Get the palette index for the top border
         /// </summary>
-        public short TopBorderPaletteIdx
+        public short TopBorderPaletteIndex
         {
-            get{return (short)_top_border_palette_idx
+            get{return (short)_top_border_palette_index
                 .GetValue(field_8_adtl_palette_options);}
             set
             {
                 field_8_adtl_palette_options =
-                    _top_border_palette_idx.SetValue(field_8_adtl_palette_options,
+                    _top_border_palette_index.SetValue(field_8_adtl_palette_options,
                                    value);
             }
         }
@@ -756,15 +756,15 @@ namespace NPOI.HSSF.Record
         /// <summary>
         /// Get the palette index for the bottom border
         /// </summary>
-        public short BottomBorderPaletteIdx
+        public short BottomBorderPaletteIndex
         {
-            get{return (short)_bottom_border_palette_idx
+            get{return (short)_bottom_border_palette_index
                 .GetValue(field_8_adtl_palette_options);
             }
             set
             {
                 field_8_adtl_palette_options =
-                    _bottom_border_palette_idx.SetValue(field_8_adtl_palette_options,
+                    _bottom_border_palette_index.SetValue(field_8_adtl_palette_options,
                                       value);
             }
         }
@@ -772,13 +772,13 @@ namespace NPOI.HSSF.Record
         /// <summary>
         /// Get for diagonal borders
         /// </summary>
-        public short AdtlDiagBorderPaletteIdx
+        public short AdtlDiagBorderPaletteIndex
         {
-            get{return (short)_adtl_diag_border_palette_idx.GetValue(field_8_adtl_palette_options);}
+            get{return (short)_adtl_diag_border_palette_index.GetValue(field_8_adtl_palette_options);}
             set
             {
                 field_8_adtl_palette_options =
-                    _adtl_diag_border_palette_idx.SetValue(field_8_adtl_palette_options, value);
+                    _adtl_diag_border_palette_index.SetValue(field_8_adtl_palette_options, value);
             }
         }
 
@@ -886,7 +886,7 @@ namespace NPOI.HSSF.Record
                 .Append("\n");
             buffer.Append("          .recordtype= ")
                 .Append(StringUtil.ToHexString(XFType)).Append("\n");
-            buffer.Append("          .parentidx = ")
+            buffer.Append("          .parentIndex = ")
                 .Append(StringUtil.ToHexString(ParentIndex)).Append("\n");
             buffer.Append("    .alignmentoptions= ")
                 .Append(StringUtil.ToHexString(AlignmentOptions)).Append("\n");
@@ -935,10 +935,10 @@ namespace NPOI.HSSF.Record
             buffer.Append("    .paleteoptns     = ")
                 .Append(StringUtil.ToHexString(PaletteOptions)).Append("\n");
             buffer.Append("          .leftborder= ")
-                .Append(StringUtil.ToHexString(LeftBorderPaletteIdx))
+                .Append(StringUtil.ToHexString(LeftBorderPaletteIndex))
                 .Append("\n");
             buffer.Append("          .rghtborder= ")
-                .Append(StringUtil.ToHexString(RightBorderPaletteIdx))
+                .Append(StringUtil.ToHexString(RightBorderPaletteIndex))
                 .Append("\n");
             buffer.Append("          .diag      = ")
                 .Append(StringUtil.ToHexString(Diagonal)).Append("\n");
@@ -946,13 +946,13 @@ namespace NPOI.HSSF.Record
                 .Append(StringUtil.ToHexString(AdtlPaletteOptions))
                 .Append("\n");
             buffer.Append("          .topborder = ")
-                .Append(StringUtil.ToHexString(TopBorderPaletteIdx))
+                .Append(StringUtil.ToHexString(TopBorderPaletteIndex))
                 .Append("\n");
             buffer.Append("          .botmborder= ")
-                .Append(StringUtil.ToHexString(BottomBorderPaletteIdx))
+                .Append(StringUtil.ToHexString(BottomBorderPaletteIndex))
                 .Append("\n");
             buffer.Append("          .adtldiag  = ")
-                .Append(StringUtil.ToHexString(AdtlDiagBorderPaletteIdx)).Append("\n");
+                .Append(StringUtil.ToHexString(AdtlDiagBorderPaletteIndex)).Append("\n");
             buffer.Append("          .diaglnstyl= ")
                 .Append(StringUtil.ToHexString(AdtlDiagLineStyle)).Append("\n");
             buffer.Append("          .Fillpattrn= ")

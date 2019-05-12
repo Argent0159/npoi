@@ -795,7 +795,7 @@ namespace NPOI.HSSF.UserModel
             workbook.SetSheetName(newSheetIndex, name);
 
             // Check this sheet has an autofilter, (which has a built-in NameRecord at workbook level)
-            int filterDbNameIndex = FindExistingBuiltinNameRecordIdx(sheetIndex, NameRecord.BUILTIN_FILTER_DB);
+            int filterDbNameIndex = FindExistingBuiltinNameRecordIndex(sheetIndex, NameRecord.BUILTIN_FILTER_DB);
             if (filterDbNameIndex != -1)
             {
                 NameRecord newNameRecord = workbook.CloneFilter(filterDbNameIndex, newSheetIndex);
@@ -1056,7 +1056,7 @@ namespace NPOI.HSSF.UserModel
             sheet.RepeatingRows = (rows);
             sheet.RepeatingColumns = (cols);
         }
-        internal int FindExistingBuiltinNameRecordIdx(int sheetIndex, byte builtinCode)
+        internal int FindExistingBuiltinNameRecordIndex(int sheetIndex, byte builtinCode)
         {
             for (int defNameIndex = 0; defNameIndex < names.Count; defNameIndex++)
             {
@@ -1089,7 +1089,7 @@ namespace NPOI.HSSF.UserModel
 
         internal HSSFName GetBuiltInName(byte builtinCode, int sheetIndex)
         {
-            int index = FindExistingBuiltinNameRecordIdx(sheetIndex, builtinCode);
+            int index = FindExistingBuiltinNameRecordIndex(sheetIndex, builtinCode);
             if (index < 0)
             {
                 return null;
@@ -1204,9 +1204,9 @@ namespace NPOI.HSSF.UserModel
         /// <summary>
         /// Get the font at the given index number
         /// </summary>
-        /// <param name="idx">The index number</param>
+        /// <param name="index">The index number</param>
         /// <returns>HSSFFont at the index</returns>
-        public NPOI.SS.UserModel.IFont GetFontAt(short idx)
+        public NPOI.SS.UserModel.IFont GetFontAt(short index)
         {
             if (fonts == null) fonts = new Hashtable();
 
@@ -1214,14 +1214,14 @@ namespace NPOI.HSSF.UserModel
             //  the same object every time, but create
             //  them lazily
 
-            if (fonts.ContainsKey(idx))
+            if (fonts.ContainsKey(index))
             {
-                return (HSSFFont)fonts[idx];
+                return (HSSFFont)fonts[index];
             }
 
-            FontRecord font = workbook.GetFontRecordAt(idx);
-            HSSFFont retval = new HSSFFont(idx, font);
-            fonts[idx] = retval;
+            FontRecord font = workbook.GetFontRecordAt(index);
+            HSSFFont retval = new HSSFFont(index, font);
+            fonts[index] = retval;
 
             return retval;
         }
@@ -1270,12 +1270,12 @@ namespace NPOI.HSSF.UserModel
         /// <summary>
         /// Get the cell style object at the given index
         /// </summary>
-        /// <param name="idx">index within the Set of styles</param>
+        /// <param name="index">index within the Set of styles</param>
         /// <returns>HSSFCellStyle object at the index</returns>
-        public NPOI.SS.UserModel.ICellStyle GetCellStyleAt(short idx)
+        public NPOI.SS.UserModel.ICellStyle GetCellStyleAt(short index)
         {
-            ExtendedFormatRecord xfr = workbook.GetExFormatAt(idx);
-            HSSFCellStyle style = new HSSFCellStyle(idx, xfr, this);
+            ExtendedFormatRecord xfr = workbook.GetExFormatAt(index);
+            HSSFCellStyle style = new HSSFCellStyle(index, xfr, this);
 
             return style;
         }

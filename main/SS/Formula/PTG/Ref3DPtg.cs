@@ -56,19 +56,19 @@ namespace NPOI.SS.Formula.PTG
             ReadCoordinates(in1);
         }
 
-        public Ref3DPtg(string cellref, int externIdx)
+        public Ref3DPtg(string cellref, int externIndex)
         {
             CellReference c = new CellReference(cellref);
             Row=c.Row;
             Column=c.Col;
             IsColRelative=!c.IsColAbsolute;
             IsRowRelative=!c.IsRowAbsolute;
-            ExternSheetIndex=externIdx;
+            ExternSheetIndex=externIndex;
         }
 
-        public Ref3DPtg(CellReference cr, int externIdx):base(cr)
+        public Ref3DPtg(CellReference cr, int externindex):base(cr)
         {
-            ExternSheetIndex = externIdx;
+            ExternSheetIndex = externindex;
         }
 
         public override string ToString()

@@ -91,38 +91,38 @@ namespace NPOI.OpenXmlFormats.Dml
     [XmlRoot(Namespace="http://schemas.openxmlformats.org/drawingml/2006/main", IsNullable=true)]
     public partial class CT_AnimationChartElement {
         
-        private int seriesIdxField;
+        private int seriesIndexField;
         
-        private int categoryIdxField;
+        private int categoryIndexField;
         
         private ST_ChartBuildStep bldStepField;
         
         public CT_AnimationChartElement() {
-            this.seriesIdxField = -1;
-            this.categoryIdxField = -1;
+            this.seriesIndexField = -1;
+            this.categoryIndexField = -1;
         }
         
     
         [XmlAttribute]
         [DefaultValue(-1)]
-        public int seriesIdx {
+        public int seriesIndex {
             get {
-                return this.seriesIdxField;
+                return this.seriesIndexField;
             }
             set {
-                this.seriesIdxField = value;
+                this.seriesIndexField = value;
             }
         }
         
     
         [XmlAttribute]
         [DefaultValue(-1)]
-        public int categoryIdx {
+        public int categoryIndex {
             get {
-                return this.categoryIdxField;
+                return this.categoryIndexField;
             }
             set {
-                this.categoryIdxField = value;
+                this.categoryIndexField = value;
             }
         }
         

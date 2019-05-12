@@ -281,9 +281,9 @@ namespace NPOI.OpenXmlFormats.Dml
             return tabField.Count;
         }
 
-        public CT_TextTabStop GetTabArray(int idx)
+        public CT_TextTabStop GetTabArray(int index)
         {
-            return tabField[idx];
+            return tabField[index];
         }
     }
 

@@ -72,10 +72,10 @@ namespace NPOI.XSSF.UserModel
             {
                 if (_font.sizeOfColorArray() == 0) return -1;
 
-                int idx = 0;
+                int index = 0;
                 CT_Color color = _font.GetColorArray(0);
-                if (color.IsSetIndexed()) idx = (int)color.indexed;
-                return (short)idx;
+                if (color.IsSetIndexed()) index = (int)color.indexed;
+                return (short)index;
             }
             set 
             {

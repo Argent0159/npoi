@@ -513,20 +513,20 @@ namespace NPOI.HSSF.Record.Aggregates
 
         public void ExpandRow(int rowNumber)
         {
-            int idx = rowNumber;
-            if (idx == -1)
+            int index = rowNumber;
+            if (index == -1)
                 return;
 
             // If it is already expanded do nothing.
-            if (!IsRowGroupCollapsed(idx))
+            if (!IsRowGroupCollapsed(index))
                 return;
 
             // Find the start of the Group.
-            int startIdx = FindStartOfRowOutlineGroup(idx);
-            RowRecord row = GetRow(startIdx);
+            int startIndex = FindStartOfRowOutlineGroup(index);
+            RowRecord row = GetRow(startIndex);
 
             // Find the end of the Group.
-            int endIdx = FindEndOfRowOutlineGroup(idx);
+            int endIndex = FindEndOfRowOutlineGroup(index);
 
             // expand:
             // collapsed bit must be UnSet
@@ -535,9 +535,9 @@ namespace NPOI.HSSF.Record.Aggregates
             //   to look at the start and the end of the current Group to determine which
             //   is the enclosing Group
             // hidden bit only is altered for this outline level.  ie.  don't Un-collapse contained Groups
-            if (!IsRowGroupHiddenByParent(idx))
+            if (!IsRowGroupHiddenByParent(index))
             {
-                for (int i = startIdx; i <= endIdx; i++)
+                for (int i = startIndex; i <= endIndex; i++)
                 {
                     if (row.OutlineLevel == GetRow(i).OutlineLevel)
                         GetRow(i).ZeroHeight = (false);
@@ -547,7 +547,7 @@ namespace NPOI.HSSF.Record.Aggregates
             }
 
             // Write collapse field
-            GetRow(endIdx + 1).Colapsed = (false);
+            GetRow(endIndex + 1).Colapsed = (false);
         }
 
         public void UpdateFormulasAfterRowShift(FormulaShifter formulaShifter, int currentExternSheetIndex)
@@ -560,31 +560,31 @@ namespace NPOI.HSSF.Record.Aggregates
             // Look out outline details of end
             int endLevel;
             bool endHidden;
-            int endOfOutlineGroupIdx = FindEndOfRowOutlineGroup(row);
-            if (GetRow(endOfOutlineGroupIdx + 1) == null)
+            int endOfOutlineGroupIndex = FindEndOfRowOutlineGroup(row);
+            if (GetRow(endOfOutlineGroupIndex + 1) == null)
             {
                 endLevel = 0;
                 endHidden = false;
             }
             else
             {
-                endLevel = GetRow(endOfOutlineGroupIdx + 1).OutlineLevel;
-                endHidden = GetRow(endOfOutlineGroupIdx + 1).ZeroHeight;
+                endLevel = GetRow(endOfOutlineGroupIndex + 1).OutlineLevel;
+                endHidden = GetRow(endOfOutlineGroupIndex + 1).ZeroHeight;
             }
 
             // Look out outline details of start
             int startLevel;
             bool startHidden;
-            int startOfOutlineGroupIdx = FindStartOfRowOutlineGroup(row);
-            if (startOfOutlineGroupIdx - 1 < 0 || GetRow(startOfOutlineGroupIdx - 1) == null)
+            int startOfOutlineGroupIndex = FindStartOfRowOutlineGroup(row);
+            if (startOfOutlineGroupIndex - 1 < 0 || GetRow(startOfOutlineGroupIndex - 1) == null)
             {
                 startLevel = 0;
                 startHidden = false;
             }
             else
             {
-                startLevel = GetRow(startOfOutlineGroupIdx - 1).OutlineLevel;
-                startHidden = GetRow(startOfOutlineGroupIdx - 1).ZeroHeight;
+                startLevel = GetRow(startOfOutlineGroupIndex - 1).OutlineLevel;
+                startHidden = GetRow(startOfOutlineGroupIndex - 1).ZeroHeight;
             }
 
             if (endLevel > startLevel)

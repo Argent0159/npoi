@@ -90,9 +90,9 @@ namespace NPOI.SS.UserModel
         private HSSFColor hssfColor;
         
 
-        IndexedColors(int idx, HSSFColor color)
+        IndexedColors(int index, HSSFColor color)
         {
-            index = idx;
+            index = index;
             this.hssfColor = color;
         }
         static Dictionary<string, IndexedColors> mappingName = null;

@@ -1204,20 +1204,20 @@ namespace NPOI.HSSF.UserModel
             List<RecordBase> seriesTemplate = new List<RecordBase>();
             bool seriesTemplateFilled = false;
 
-            int idx = 0;
+            int index = 0;
             int deep = 0;
-            int chartRecordIdx = -1;
+            int chartRecordIndex = -1;
             int chartDeep = -1;
             int lastSeriesDeep = -1;
-            int endSeriesRecordIdx = -1;
-            int seriesIdx = 0;
+            int endSeriesRecordIndex = -1;
+            int seriesIndex = 0;
             IList records = sheet.Sheet.Records;
 
             /* store first series as template and find last series index */
             foreach (RecordBase record in records)
             {
 
-                idx++;
+                index++;
 
                 if (record is BeginRecord)
                 {
@@ -1230,7 +1230,7 @@ namespace NPOI.HSSF.UserModel
                     if (lastSeriesDeep == deep)
                     {
                         lastSeriesDeep = -1;
-                        endSeriesRecordIdx = idx;
+                        endSeriesRecordIndex = index;
                         if (!seriesTemplateFilled)
                         {
                             seriesTemplate.Add(record);
@@ -1248,15 +1248,15 @@ namespace NPOI.HSSF.UserModel
                 {
                     if (record == chartRecord)
                     {
-                        chartRecordIdx = idx;
+                        chartRecordIndex = index;
                         chartDeep = deep;
                     }
                 }
                 else if (record is SeriesRecord)
                 {
-                    if (chartRecordIdx != -1)
+                    if (chartRecordIndex != -1)
                     {
-                        seriesIdx++;
+                        seriesIndex++;
                         lastSeriesDeep = deep;
                     }
                 }
@@ -1268,13 +1268,13 @@ namespace NPOI.HSSF.UserModel
             }
 
             /* check if a series was found */
-            if (endSeriesRecordIdx == -1)
+            if (endSeriesRecordIndex == -1)
             {
                 return null;
             }
 
             /* next index in the records list where the new series can be inserted */
-            idx = endSeriesRecordIdx + 1;
+            index = endSeriesRecordIndex + 1;
 
             HSSFSeries newSeries = null;
 
@@ -1312,8 +1312,8 @@ namespace NPOI.HSSF.UserModel
                 {
                     DataFormatRecord dataFormatRecord = (DataFormatRecord)((DataFormatRecord)record).Clone();
 
-                    dataFormatRecord.SeriesIndex = ((short)seriesIdx);
-                    dataFormatRecord.SeriesNumber = ((short)seriesIdx);
+                    dataFormatRecord.SeriesIndex = ((short)seriesIndex);
+                    dataFormatRecord.SeriesNumber = ((short)seriesIndex);
 
                     newRecord = dataFormatRecord;
                 }
@@ -1346,7 +1346,7 @@ namespace NPOI.HSSF.UserModel
             /* transfer series to record list */
             foreach (RecordBase record in ClonedRecords)
             {
-                records.Insert(idx++, record);
+                records.Insert(index++, record);
             }
 
             return newSeries;
@@ -1354,11 +1354,11 @@ namespace NPOI.HSSF.UserModel
 
         public bool RemoveSeries(HSSFSeries series)
         {
-            int idx = 0;
+            int index = 0;
             int deep = 0;
             int chartDeep = -1;
             int lastSeriesDeep = -1;
-            int seriesIdx = -1;
+            int seriesindex = -1;
             bool RemoveSeries = false;
             bool chartEntered = false;
             bool result = false;
@@ -1370,7 +1370,7 @@ namespace NPOI.HSSF.UserModel
             while (iter.MoveNext())
             {
                 RecordBase record = (RecordBase)iter.Current;
-                idx++;
+                index++;
 
                 if (record is BeginRecord)
                 {
@@ -1417,7 +1417,7 @@ namespace NPOI.HSSF.UserModel
                         }
                         else
                         {
-                            seriesIdx++;
+                            seriesindex++;
                         }
                     }
                 }
@@ -1426,8 +1426,8 @@ namespace NPOI.HSSF.UserModel
                     if (chartEntered && !RemoveSeries)
                     {
                         DataFormatRecord dataFormatRecord = (DataFormatRecord)record;
-                        dataFormatRecord.SeriesIndex = ((short)seriesIdx);
-                        dataFormatRecord.SeriesNumber = ((short)seriesIdx);
+                        dataFormatRecord.SeriesIndex = ((short)seriesindex);
+                        dataFormatRecord.SeriesNumber = ((short)seriesindex);
                     }
                 }
 

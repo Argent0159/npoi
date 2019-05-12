@@ -49,7 +49,7 @@ namespace NPOI.HSSF.Model
 
             ObjRecord obj = ObjRecord;
             List<SubRecord> records = obj.SubRecords;
-            int cmoIdx = 0;
+            int cmoIndex = 0;
             for (int i = 0; i < records.Count; i++)
             {
                 object r = records[i];
@@ -59,13 +59,13 @@ namespace NPOI.HSSF.Model
                     //modify autoFill attribute inherited from <c>TextObjectRecord</c>
                     CommonObjectDataSubRecord cmo = (CommonObjectDataSubRecord)r;
                     cmo.IsAutoFill=(false);
-                    cmoIdx = i;
+                    cmoIndex = i;
                 }
             }
             //Add NoteStructure sub record
             //we don't know it's format, for now the record data Is empty
             NoteStructureSubRecord u = new NoteStructureSubRecord();
-            obj.AddSubRecord(cmoIdx + 1, u);
+            obj.AddSubRecord(cmoIndex + 1, u);
         }
 
         /// <summary>

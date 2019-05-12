@@ -41,15 +41,15 @@ namespace NPOI.SS.Formula.Udf
             FreeRefFunction func = base.FindFunction(name);
             if (func != null)
             {
-                int idx = GetFunctionIndex(name);
-                _funcMap[idx] = name;
+                int index = GetFunctionIndex(name);
+                _funcMap[index] = name;
             }
             return func;
         }
 
-        public string GetFunctionName(int idx)
+        public string GetFunctionName(int index)
         {
-            return _funcMap[idx];
+            return _funcMap[index];
         }
 
         public int GetFunctionIndex(string name)

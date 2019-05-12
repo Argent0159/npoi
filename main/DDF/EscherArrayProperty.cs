@@ -277,14 +277,14 @@ namespace NPOI.DDF
             {
                 dataHolder = eap;
             }
-            private int idx = -1;
+            private int index = -1;
             public byte[] Current
             {
                 get
                 {
-                    if (idx < 0 || idx > dataHolder.NumberOfElementsInArray)
+                    if (index < 0 || index > dataHolder.NumberOfElementsInArray)
                         throw new IndexOutOfRangeException();
-                    return dataHolder.GetElement(idx);
+                    return dataHolder.GetElement(index);
                 }
             }
 
@@ -300,8 +300,8 @@ namespace NPOI.DDF
 
             public bool MoveNext()
             {
-                idx++;
-                return (idx < dataHolder.NumberOfElementsInArray);
+                index++;
+                return (index < dataHolder.NumberOfElementsInArray);
             }
 
             public void Reset()

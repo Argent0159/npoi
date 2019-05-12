@@ -557,9 +557,9 @@ namespace NPOI.XSSF.UserModel
         public long RegisterTo(StylesTable styles)
         {
             this._themes = styles.GetTheme();
-            short idx = (short)styles.PutFont(this, true);
-            this._index = idx;
-            return idx;
+            short index = (short)styles.PutFont(this, true);
+            this._index = index;
+            return index;
         }
         /**
          * Records the Themes Table that is associated with

@@ -486,13 +486,13 @@ namespace NPOI.SS.Util
         // /**
         // * Copy text attributes from the supplied Font to Java2D AttributedString
         // */
-        //private static void copyAttributes(IFont font, AttributedString str, int startIdx, int endIdx)
+        //private static void copyAttributes(IFont font, AttributedString str, int startIndex, int endIndex)
         //{
-        //    str.AddAttribute(TextAttribute.FAMILY, font.FontName, startIdx, endIdx);
+        //    str.AddAttribute(TextAttribute.FAMILY, font.FontName, startIndex, endIndex);
         //    str.AddAttribute(TextAttribute.SIZE, (float)font.FontHeightInPoints);
-        //    if (font.Boldweight == (short)FontBoldWeight.BOLD) str.AddAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD, startIdx, endIdx);
-        //    if (font.IsItalic) str.AddAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE, startIdx, endIdx);
-        //    if (font.Underline == (byte)FontUnderlineType.SINGLE) str.AddAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON, startIdx, endIdx);           
+        //    if (font.Boldweight == (short)FontBoldWeight.BOLD) str.AddAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD, startIndex, endIndex);
+        //    if (font.IsItalic) str.AddAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE, startIndex, endIndex);
+        //    if (font.Underline == (byte)FontUnderlineType.SINGLE) str.AddAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON, startIndex, endIndex);
         //}
 
         /// <summary>

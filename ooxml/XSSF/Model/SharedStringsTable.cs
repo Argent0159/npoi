@@ -124,12 +124,12 @@ namespace NPOI.XSSF.Model
         /**
          * Return a string item by index
          *
-         * @param idx index of item to return.
+         * @param index index of item to return.
          * @return the item at the specified position in this Shared String table.
          */
-        public CT_Rst GetEntryAt(int idx)
+        public CT_Rst GetEntryAt(int index)
         {
-            return strings[idx];
+            return strings[index];
         }
 
         /**
@@ -186,10 +186,10 @@ namespace NPOI.XSSF.Model
             CT_Rst newSt = new CT_Rst();
             _sstDoc.GetSst().si.Add(newSt);
             newSt.Set(st);
-            int idx = strings.Count;
-            stmap[s] = idx;
+            int index = strings.Count;
+            stmap[s] = index;
             strings.Add(newSt);
-            return idx;
+            return index;
         }
         /**
          * Provide low-level access to the underlying array of CT_Rst beans

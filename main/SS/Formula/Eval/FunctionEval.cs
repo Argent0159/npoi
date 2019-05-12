@@ -475,10 +475,10 @@ namespace NPOI.SS.Formula.Eval
                 }
             }
 
-            int idx = metaData.Index;
-            if (functions[idx] is NotImplementedFunction)
+            int index = metaData.Index;
+            if (functions[index] is NotImplementedFunction)
             {
-                functions[idx] = func;
+                functions[index] = func;
             }
             else
             {

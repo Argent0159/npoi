@@ -396,15 +396,15 @@ namespace NPOI.SS.Formula
         private ValueEval GetLocalNameXEval(NameXPxg nameXPxg)
         {
             // Look up the sheet, if present
-            int sIdx = -1;
+            int sIndex = -1;
             if (nameXPxg.SheetName != null)
             {
-                sIdx = _workbook.GetSheetIndex(nameXPxg.SheetName);
+                sIndex = _workbook.GetSheetIndex(nameXPxg.SheetName);
             }
 
             // Is it a name or a function?
             string name = nameXPxg.NameName;
-            IEvaluationName evalName = _workbook.GetName(name, sIdx);
+            IEvaluationName evalName = _workbook.GetName(name, sIndex);
             if (evalName != null)
             {
                 // Process it as a name

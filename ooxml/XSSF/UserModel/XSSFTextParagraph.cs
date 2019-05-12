@@ -650,14 +650,14 @@ namespace NPOI.XSSF.UserModel
                 return false;
             }
         }
-        public double GetTabStop(int idx)
+        public double GetTabStop(int index)
         {
             //ParagraphPropertyFetcher<Double> fetcher = new ParagraphPropertyFetcher<Double>(getLevel()){
             //    public bool fetch(CTTextParagraphProperties props){
             //        if(props.IsSetTabLst()){
             //            CTTextTabStopList tabStops = props.GetTabLst();
-            //            if(idx < tabStops.sizeOfTabArray() ) {
-            //                CTTextTabStop ts = tabStops.GetTabArray(idx);
+            //            if(index < tabStops.sizeOfTabArray() ) {
+            //                CTTextTabStop ts = tabStops.GetTabArray(index);
             //                double val = Units.ToPoints(ts.GetPos());
             //                SetValue(val);
             //                return true;
@@ -666,23 +666,23 @@ namespace NPOI.XSSF.UserModel
             //        return false;
             //    }
             //};
-            ParagraphPropertyFetcherTabStop fetcher = new ParagraphPropertyFetcherTabStop(Level, idx);
+            ParagraphPropertyFetcherTabStop fetcher = new ParagraphPropertyFetcherTabStop(Level, index);
             fetchParagraphProperty(fetcher);
             return fetcher.GetValue();
         }
 
         class ParagraphPropertyFetcherTabStop : ParagraphPropertyFetcher<double>
         {
-            private int idx;
-            public ParagraphPropertyFetcherTabStop(int level, int idx) : base(level) { this.idx = idx; }
+            private int index;
+            public ParagraphPropertyFetcherTabStop(int level, int index) : base(level) { this.index = index; }
             public override bool Fetch(CT_TextParagraphProperties props)
             {
                 if (props.IsSetTabLst())
                 {
                     CT_TextTabStopList tabStops = props.tabLst;
-                    if (idx < tabStops.SizeOfTabArray())
+                    if (index < tabStops.SizeOfTabArray())
                     {
-                        CT_TextTabStop ts = tabStops.GetTabArray(idx);
+                        CT_TextTabStop ts = tabStops.GetTabArray(index);
                         double val = Units.ToPoints(ts.pos);
                         SetValue(val);
                         return true;

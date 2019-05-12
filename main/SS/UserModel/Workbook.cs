@@ -221,9 +221,9 @@ namespace NPOI.SS.UserModel
         /// <summary>
         /// Get the font at the given index number
         /// </summary>
-        /// <param name="idx">index number (0-based)</param>
+        /// <param name="index">index number (0-based)</param>
         /// <returns>font at the index</returns>
-        IFont GetFontAt(short idx);
+        IFont GetFontAt(short index);
 
         /// <summary>
         /// Create a new Cell style and add it to the workbook's style table
@@ -239,9 +239,9 @@ namespace NPOI.SS.UserModel
         /// <summary>
         /// Get the cell style object at the given index
         /// </summary>
-        /// <param name="idx">index within the set of styles (0-based)</param>
+        /// <param name="index">index within the set of styles (0-based)</param>
         /// <returns>CellStyle object at the index</returns>
-        ICellStyle GetCellStyleAt(short idx);
+        ICellStyle GetCellStyleAt(short index);
 
         /// <summary>
         /// Write out this workbook to an OutPutstream.

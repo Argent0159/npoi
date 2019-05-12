@@ -43,15 +43,15 @@ namespace NPOI.SS.Formula.PTG
         private BitField colRelative = BitFieldFactory.GetInstance(0x4000);
 
 
-        public Area3DPtg(string arearef, int externIdx):base(arearef)
+        public Area3DPtg(string arearef, int externIndex):base(arearef)
         {
-            ExternSheetIndex=externIdx;
+            ExternSheetIndex=externIndex;
 
         }
 
-        public Area3DPtg(AreaReference arearef, int externIdx):base(arearef)
+        public Area3DPtg(AreaReference arearef, int externIndex):base(arearef)
         {
-            ExternSheetIndex=(externIdx);
+            ExternSheetIndex=(externIndex);
         }
         public Area3DPtg(ILittleEndianInput in1)
         {

@@ -213,8 +213,8 @@ namespace NPOI.XSSF.UserModel
             else
             {
                 // Internal reference
-                int nameIdx = _uBook.GetNameIndex(nameName);
-                return new ExternalName(nameName, nameIdx, 0);  // TODO Is this right?
+                int nameIndex = _uBook.GetNameIndex(nameName);
+                return new ExternalName(nameName, nameIndex, 0);  // TODO Is this right?
             }
 
         }
@@ -282,16 +282,16 @@ namespace NPOI.XSSF.UserModel
         }
         public string ResolveNameXText(NameXPtg n)
         {
-            int idx = n.NameIndex;
+            int index = n.NameIndex;
             string name = null;
 
             // First, try to find it as a User Defined Function
             IndexedUDFFinder udfFinder = (IndexedUDFFinder)GetUDFFinder();
-            name = udfFinder.GetFunctionName(idx);
+            name = udfFinder.GetFunctionName(index);
             if (name != null) return name;
 
             // Otherwise, try it as a named range
-            IName xname = _uBook.GetNameAt(idx);
+            IName xname = _uBook.GetNameAt(index);
             if (xname != null)
             {
                 name = xname.NameName;

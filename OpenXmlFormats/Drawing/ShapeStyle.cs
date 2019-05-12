@@ -31,13 +31,13 @@ namespace NPOI.OpenXmlFormats.Dml
 
         private CT_PresetColor prstClrField;
 
-        private uint idxField;
+        private uint indexField;
         public static CT_StyleMatrixReference Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
             CT_StyleMatrixReference ctObj = new CT_StyleMatrixReference();
-            ctObj.idx = XmlHelper.ReadUInt(node.Attributes["idx"]);
+            ctObj.Index = XmlHelper.ReadUInt(node.Attributes["index"]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "scrgbClr")
@@ -61,7 +61,7 @@ namespace NPOI.OpenXmlFormats.Dml
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<a:{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "idx", this.idx, true);
+            XmlHelper.WriteAttribute(sw, "index", this.Index, true);
             sw.Write(">");
             if (this.scrgbClr != null)
                 this.scrgbClr.Write(sw, "scrgbClr");
@@ -162,15 +162,15 @@ namespace NPOI.OpenXmlFormats.Dml
 
 
         [XmlAttribute]
-        public uint idx
+        public uint Index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
     }
@@ -198,14 +198,14 @@ namespace NPOI.OpenXmlFormats.Dml
 
         private CT_PresetColor prstClrField;
 
-        private ST_FontCollectionIndex idxField;
+        private ST_FontCollectionIndex indexField;
         public static CT_FontReference Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
             CT_FontReference ctObj = new CT_FontReference();
-            if (node.Attributes["idx"] != null)
-                ctObj.idx = (ST_FontCollectionIndex)Enum.Parse(typeof(ST_FontCollectionIndex), node.Attributes["idx"].Value);
+            if (node.Attributes["index"] != null)
+                ctObj.index = (ST_FontCollectionIndex)Enum.Parse(typeof(ST_FontCollectionIndex), node.Attributes["index"].Value);
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "scrgbClr")
@@ -229,7 +229,7 @@ namespace NPOI.OpenXmlFormats.Dml
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<a:{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "idx", this.idx.ToString());
+            XmlHelper.WriteAttribute(sw, "index", this.index.ToString());
             sw.Write(">");
             if (this.scrgbClr != null)
                 this.scrgbClr.Write(sw, "scrgbClr");
@@ -329,15 +329,15 @@ namespace NPOI.OpenXmlFormats.Dml
 
 
         [XmlAttribute]
-        public ST_FontCollectionIndex idx
+        public ST_FontCollectionIndex index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
     }

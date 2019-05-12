@@ -451,14 +451,12 @@ namespace NPOI.HSSF.Model
          * "There is No Four" (someone at M$ must have gone to Rocky Horror one too
          * many times)
          *
-         * @param idx the index to look at (0 or greater but NOT 4)
+         * @param index the index to look at (0 or greater but NOT 4)
          * @return FontRecord located at the given index
          */
 
-        public FontRecord GetFontRecordAt(int idx)
+        public FontRecord GetFontRecordAt(int index)
         {
-            int index = idx;
-
             if (index > 4)
             {
                 index -= 1;   // adjust for "There is no 4"
@@ -467,7 +465,7 @@ namespace NPOI.HSSF.Model
             {
                 throw new IndexOutOfRangeException(
                 "There are only " + numfonts
-                + " font records, you asked for " + idx);
+                + " font records, you asked for " + index);
             }
             FontRecord retval =
             (FontRecord)records[(records.Fontpos - (numfonts - 1) + index)];
@@ -653,10 +651,10 @@ namespace NPOI.HSSF.Model
          * Determines whether a workbook Contains the provided sheet name.
          *
          * @param name the name to test (case insensitive match)
-         * @param excludeSheetIdx the sheet to exclude from the Check or -1 to include all sheets in the Check.
+         * @param excludeSheetindex the sheet to exclude from the Check or -1 to include all sheets in the Check.
          * @return true if the sheet Contains the name, false otherwise.
          */
-        public bool ContainsSheetName(string name, int excludeSheetIdx)
+        public bool ContainsSheetName(string name, int excludeSheetIndex)
         {
             string aName = name;
             if (aName.Length > MAX_SENSITIVE_SHEET_NAME_LEN)
@@ -666,7 +664,7 @@ namespace NPOI.HSSF.Model
             for (int i = 0; i < boundsheets.Count; i++)
             {
                 BoundSheetRecord boundSheetRecord = GetBoundSheetRec(i);
-                if (excludeSheetIdx == i)
+                if (excludeSheetIndex == i)
                 {
                     continue;
                 }
@@ -2017,10 +2015,10 @@ namespace NPOI.HSSF.Model
             retval.PaletteOptions=(short)0;
             retval.AdtlPaletteOptions=(short)0;
             retval.FillPaletteOptions=(short)0x20c0;
-            retval.TopBorderPaletteIdx=HSSFColor.Black.Index;
-            retval.BottomBorderPaletteIdx=HSSFColor.Black.Index;
-            retval.LeftBorderPaletteIdx=HSSFColor.Black.Index;
-            retval.RightBorderPaletteIdx=HSSFColor.Black.Index;
+            retval.TopBorderPaletteIndex=HSSFColor.Black.Index;
+            retval.BottomBorderPaletteIndex=HSSFColor.Black.Index;
+            retval.LeftBorderPaletteIndex=HSSFColor.Black.Index;
+            retval.RightBorderPaletteIndex=HSSFColor.Black.Index;
             return retval;
         }
 
@@ -2407,8 +2405,8 @@ namespace NPOI.HSSF.Model
 
             if (linkTable.NumNames > namenum)
             {
-                int idx = FindFirstRecordLocBySid(NameRecord.sid);
-                records.Remove(idx + namenum);
+                int index = FindFirstRecordLocBySid(NameRecord.sid);
+                records.Remove(index + namenum);
                 linkTable.RemoveName(namenum);
             }
 

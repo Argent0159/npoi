@@ -636,8 +636,8 @@ namespace NPOI.XSSF.UserModel
                 {
                     // get number of rows where row index < rownum
                     // --> this tells us where our row should go
-                    int idx = HeadMap(_rows, rownum).Count;
-                    ctRow = worksheet.sheetData.InsertNewRow(idx);
+                    int index = HeadMap(_rows, rownum).Count;
+                    ctRow = worksheet.sheetData.InsertNewRow(index);
                 }
             }
             XSSFRow r = new XSSFRow(ctRow, this);
@@ -830,8 +830,8 @@ namespace NPOI.XSSF.UserModel
          */
         public ICellStyle GetColumnStyle(int column)
         {
-            int idx = columnHelper.GetColDefaultStyle(column);
-            return Workbook.GetCellStyleAt((short)(idx == -1 ? 0 : idx));
+            int index = columnHelper.GetColDefaultStyle(column);
+            return Workbook.GetCellStyleAt((short)(index == -1 ? 0 : index));
         }
 
         /**
@@ -2131,21 +2131,21 @@ namespace NPOI.XSSF.UserModel
          * Sets all adjacent columns of the same outline level to the specified
          * hidden status.
          *
-         * @param pIdx
+         * @param pindex
          *                the col info index of the start of the outline group
          * @return the column index of the last column in the outline group
          */
-        private int SetGroupHidden(int pIdx, int level, bool hidden)
+        private int SetGroupHidden(int pIndex, int level, bool hidden)
         {
             CT_Cols cols = worksheet.GetColsArray(0);
-            int idx = pIdx;
-            CT_Col columnInfo = cols.GetColArray(idx);
-            while (idx < cols.sizeOfColArray())
+            int index = pIndex;
+            CT_Col columnInfo = cols.GetColArray(index);
+            while (index < cols.sizeOfColArray())
             {
                 columnInfo.hidden = (hidden);
-                if (idx + 1 < cols.sizeOfColArray())
+                if (index + 1 < cols.sizeOfColArray())
                 {
-                    CT_Col nextColumnInfo = cols.GetColArray(idx + 1);
+                    CT_Col nextColumnInfo = cols.GetColArray(index + 1);
 
                     if (!IsAdjacentBefore(columnInfo, nextColumnInfo))
                     {
@@ -2158,7 +2158,7 @@ namespace NPOI.XSSF.UserModel
                     }
                     columnInfo = nextColumnInfo;
                 }
-                idx++;
+                index++;
             }
             return (int)columnInfo.max;
         }
@@ -2168,16 +2168,16 @@ namespace NPOI.XSSF.UserModel
             return (col.max == (other_col.min - 1));
         }
 
-        private int FindStartOfColumnOutlineGroup(int pIdx)
+        private int FindStartOfColumnOutlineGroup(int pIndex)
         {
             // Find the start of the group.
             CT_Cols cols = worksheet.GetColsArray(0);
-            CT_Col columnInfo = cols.GetColArray(pIdx);
+            CT_Col columnInfo = cols.GetColArray(pIndex);
             int level = columnInfo.outlineLevel;
-            int idx = pIdx;
-            while (idx != 0)
+            int index = pIndex;
+            while (index != 0)
             {
-                CT_Col prevColumnInfo = cols.GetColArray(idx - 1);
+                CT_Col prevColumnInfo = cols.GetColArray(index - 1);
                 if (!IsAdjacentBefore(prevColumnInfo, columnInfo))
                 {
                     break;
@@ -2186,10 +2186,10 @@ namespace NPOI.XSSF.UserModel
                 {
                     break;
                 }
-                idx--;
+                index--;
                 columnInfo = prevColumnInfo;
             }
-            return idx;
+            return index;
         }
 
         private int FindEndOfColumnOutlineGroup(int colInfoIndex)
@@ -2198,10 +2198,10 @@ namespace NPOI.XSSF.UserModel
             // Find the end of the group.
             CT_Col columnInfo = cols.GetColArray(colInfoIndex);
             int level = columnInfo.outlineLevel;
-            int idx = colInfoIndex;
-            while (idx < cols.sizeOfColArray() - 1)
+            int index = colInfoIndex;
+            while (index < cols.sizeOfColArray() - 1)
             {
-                CT_Col nextColumnInfo = cols.GetColArray(idx + 1);
+                CT_Col nextColumnInfo = cols.GetColArray(index + 1);
                 if (!IsAdjacentBefore(columnInfo, nextColumnInfo))
                 {
                     break;
@@ -2210,10 +2210,10 @@ namespace NPOI.XSSF.UserModel
                 {
                     break;
                 }
-                idx++;
+                index++;
                 columnInfo = nextColumnInfo;
             }
-            return idx;
+            return index;
         }
 
         private void ExpandColumn(int columnIndex)
@@ -2222,21 +2222,21 @@ namespace NPOI.XSSF.UserModel
             CT_Col col = columnHelper.GetColumn(columnIndex, false);
             int colInfoIx = columnHelper.GetIndexOfColumn(cols, col);
 
-            int idx = FindColInfoIdx((int)col.max, colInfoIx);
-            if (idx == -1)
+            int index = FindColInfoIndex((int)col.max, colInfoIx);
+            if (index == -1)
             {
                 return;
             }
 
             // If it is already expanded do nothing.
-            if (!IsColumnGroupCollapsed(idx))
+            if (!IsColumnGroupCollapsed(index))
             {
                 return;
             }
 
             // Find the start/end of the group.
-            int startIdx = FindStartOfColumnOutlineGroup(idx);
-            int endIdx = FindEndOfColumnOutlineGroup(idx);
+            int startIndex = FindStartOfColumnOutlineGroup(index);
+            int endIndex = FindEndOfColumnOutlineGroup(index);
 
             // expand:
             // colapsed bit must be unset
@@ -2249,12 +2249,12 @@ namespace NPOI.XSSF.UserModel
             // is the enclosing group
             // hidden bit only is altered for this outline level. ie. don't
             // uncollapse Contained groups
-            CT_Col columnInfo = cols.GetColArray(endIdx);
-            if (!IsColumnGroupHiddenByParent(idx))
+            CT_Col columnInfo = cols.GetColArray(endIndex);
+            if (!IsColumnGroupHiddenByParent(index))
             {
                 int outlineLevel = columnInfo.outlineLevel;
                 bool nestedGroup = false;
-                for (int i = startIdx; i <= endIdx; i++)
+                for (int i = startIndex; i <= endIndex; i++)
                 {
                     CT_Col ci = cols.GetColArray(i);
                     if (outlineLevel == ci.outlineLevel)
@@ -2278,17 +2278,17 @@ namespace NPOI.XSSF.UserModel
                     false, false);
         }
 
-        private bool IsColumnGroupHiddenByParent(int idx)
+        private bool IsColumnGroupHiddenByParent(int index)
         {
             CT_Cols cols = worksheet.GetColsArray(0);
             // Look out outline details of end
             int endLevel = 0;
             bool endHidden = false;
-            int endOfOutlineGroupIdx = FindEndOfColumnOutlineGroup(idx);
-            if (endOfOutlineGroupIdx < cols.sizeOfColArray())
+            int endOfOutlineGroupIndex = FindEndOfColumnOutlineGroup(index);
+            if (endOfOutlineGroupIndex < cols.sizeOfColArray())
             {
-                CT_Col nextInfo = cols.GetColArray(endOfOutlineGroupIdx + 1);
-                if (IsAdjacentBefore(cols.GetColArray(endOfOutlineGroupIdx),
+                CT_Col nextInfo = cols.GetColArray(endOfOutlineGroupIndex + 1);
+                if (IsAdjacentBefore(cols.GetColArray(endOfOutlineGroupIndex),
                         nextInfo))
                 {
                     endLevel = nextInfo.outlineLevel;
@@ -2298,13 +2298,13 @@ namespace NPOI.XSSF.UserModel
             // Look out outline details of start
             int startLevel = 0;
             bool startHidden = false;
-            int startOfOutlineGroupIdx = FindStartOfColumnOutlineGroup(idx);
-            if (startOfOutlineGroupIdx > 0)
+            int startOfOutlineGroupIndex = FindStartOfColumnOutlineGroup(index);
+            if (startOfOutlineGroupIndex > 0)
             {
-                CT_Col prevInfo = cols.GetColArray(startOfOutlineGroupIdx - 1);
+                CT_Col prevInfo = cols.GetColArray(startOfOutlineGroupIndex - 1);
 
                 if (IsAdjacentBefore(prevInfo, cols
-                        .GetColArray(startOfOutlineGroupIdx)))
+                        .GetColArray(startOfOutlineGroupIndex)))
                 {
                     startLevel = prevInfo.outlineLevel;
                     startHidden = (bool)prevInfo.hidden;
@@ -2318,7 +2318,7 @@ namespace NPOI.XSSF.UserModel
             return startHidden;
         }
 
-        private int FindColInfoIdx(int columnValue, int fromColInfoIdx)
+        private int FindColInfoIndex(int columnValue, int fromColInfoIndex)
         {
             CT_Cols cols = worksheet.GetColsArray(0);
 
@@ -2327,13 +2327,13 @@ namespace NPOI.XSSF.UserModel
                 throw new ArgumentException(
                         "column parameter out of range: " + columnValue);
             }
-            if (fromColInfoIdx < 0)
+            if (fromColInfoIndex < 0)
             {
                 throw new ArgumentException(
-                        "fromIdx parameter out of range: " + fromColInfoIdx);
+                        "fromindex parameter out of range: " + fromColInfoIndex);
             }
 
-            for (int k = fromColInfoIdx; k < cols.sizeOfColArray(); k++)
+            for (int k = fromColInfoIndex; k < cols.sizeOfColArray(); k++)
             {
                 CT_Col ci = cols.GetColArray(k);
 
@@ -2342,7 +2342,7 @@ namespace NPOI.XSSF.UserModel
                     return k;
                 }
 
-                if (ci.min > fromColInfoIdx)
+                if (ci.min > fromColInfoIndex)
                 {
                     break;
                 }
@@ -2360,21 +2360,21 @@ namespace NPOI.XSSF.UserModel
          * 'Collapsed' state is stored in a single column col info record
          * immediately after the outline group
          *
-         * @param idx
+         * @param index
          * @return a bool represented if the column is collapsed
          */
-        private bool IsColumnGroupCollapsed(int idx)
+        private bool IsColumnGroupCollapsed(int index)
         {
             CT_Cols cols = worksheet.GetColsArray(0);
-            int endOfOutlineGroupIdx = FindEndOfColumnOutlineGroup(idx);
-            int nextColInfoIx = endOfOutlineGroupIdx + 1;
+            int endOfOutlineGroupIndex = FindEndOfColumnOutlineGroup(index);
+            int nextColInfoIx = endOfOutlineGroupIndex + 1;
             if (nextColInfoIx >= cols.sizeOfColArray())
             {
                 return false;
             }
             CT_Col nextColInfo = cols.GetColArray(nextColInfoIx);
 
-            CT_Col col = cols.GetColArray(endOfOutlineGroupIdx);
+            CT_Col col = cols.GetColArray(endOfOutlineGroupIndex);
             if (!IsAdjacentBefore(col, nextColInfo))
             {
                 return false;
@@ -2558,10 +2558,10 @@ namespace NPOI.XSSF.UserModel
                 return;
             }
             // Find the start of the group.
-            int startIdx = FindStartOfRowOutlineGroup(rowNumber);
+            int startIndex = FindStartOfRowOutlineGroup(rowNumber);
 
             // Find the end of the group.
-            int endIdx = FindEndOfRowOutlineGroup(rowNumber);
+            int endIndex = FindEndOfRowOutlineGroup(rowNumber);
 
             // expand:
             // collapsed must be unset
@@ -2576,7 +2576,7 @@ namespace NPOI.XSSF.UserModel
             // un-collapse Contained groups
             if (!IsRowGroupHiddenByParent(rowNumber))
             {
-                for (int i = startIdx; i < endIdx; i++)
+                for (int i = startIndex; i < endIndex; i++)
                 {
                     if (row.GetCTRow().outlineLevel == ((XSSFRow)GetRow(i)).GetCTRow()
                             .outlineLevel)
@@ -2590,7 +2590,7 @@ namespace NPOI.XSSF.UserModel
                 }
             }
             // Write collapse field
-            row = GetRow(endIdx) as XSSFRow;
+            row = GetRow(endIndex) as XSSFRow;
             if (row != null)
             {
                 CT_Row ctRow = row.GetCTRow();
@@ -2628,33 +2628,33 @@ namespace NPOI.XSSF.UserModel
             // Look out outline details of end
             int endLevel;
             bool endHidden;
-            int endOfOutlineGroupIdx = FindEndOfRowOutlineGroup(row);
-            if (GetRow(endOfOutlineGroupIdx) == null)
+            int endOfOutlineGroupindex = FindEndOfRowOutlineGroup(row);
+            if (GetRow(endOfOutlineGroupindex) == null)
             {
                 endLevel = 0;
                 endHidden = false;
             }
             else
             {
-                endLevel = ((XSSFRow)GetRow(endOfOutlineGroupIdx)).GetCTRow().outlineLevel;
-                endHidden = (bool)((XSSFRow)GetRow(endOfOutlineGroupIdx)).GetCTRow().hidden;
+                endLevel = ((XSSFRow)GetRow(endOfOutlineGroupindex)).GetCTRow().outlineLevel;
+                endHidden = (bool)((XSSFRow)GetRow(endOfOutlineGroupindex)).GetCTRow().hidden;
             }
 
             // Look out outline details of start
             int startLevel;
             bool startHidden;
-            int startOfOutlineGroupIdx = FindStartOfRowOutlineGroup(row);
-            if (startOfOutlineGroupIdx < 0
-                    || GetRow(startOfOutlineGroupIdx) == null)
+            int startOfOutlineGroupindex = FindStartOfRowOutlineGroup(row);
+            if (startOfOutlineGroupindex < 0
+                    || GetRow(startOfOutlineGroupindex) == null)
             {
                 startLevel = 0;
                 startHidden = false;
             }
             else
             {
-                startLevel = ((XSSFRow)GetRow(startOfOutlineGroupIdx)).GetCTRow()
+                startLevel = ((XSSFRow)GetRow(startOfOutlineGroupindex)).GetCTRow()
                 .outlineLevel;
-                startHidden = (bool)((XSSFRow)GetRow(startOfOutlineGroupIdx)).GetCTRow()
+                startHidden = (bool)((XSSFRow)GetRow(startOfOutlineGroupindex)).GetCTRow()
                 .hidden;
             }
             if (endLevel > startLevel)
@@ -2769,10 +2769,10 @@ namespace NPOI.XSSF.UserModel
                 if (ShouldRemoveRow(startRow, endRow, n, rownum))
                 {
                     // remove row from worksheet.GetSheetData row array
-                    //int idx = _rows.headMap(row.getRowNum()).size();
-                    int idx = _rows.IndexOfValue(row);
-                    //worksheet.sheetData.RemoveRow(idx);
-                    ctRowsToRemove.Add(worksheet.sheetData.GetRowArray(idx));
+                    //int index = _rows.headMap(row.getRowNum()).size();
+                    int index = _rows.IndexOfValue(row);
+                    //worksheet.sheetData.RemoveRow(index);
+                    ctRowsToRemove.Add(worksheet.sheetData.GetRowArray(index));
 
                     // remove row from _rows
                     rowsToRemove.Add(rowDict.Key);

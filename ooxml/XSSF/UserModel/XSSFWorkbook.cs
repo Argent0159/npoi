@@ -590,11 +590,11 @@ namespace NPOI.XSSF.UserModel
         public ISheet CreateSheet()
         {
             string sheetname = "Sheet" + (sheets.Count);
-            int idx = 0;
+            int index = 0;
             while (GetSheet(sheetname) != null)
             {
-                sheetname = "Sheet" + idx;
-                idx++;
+                sheetname = "Sheet" + index;
+                index++;
             }
             return CreateSheet(sheetname);
         }
@@ -760,33 +760,33 @@ namespace NPOI.XSSF.UserModel
         /**
          * Get the cell style object at the given index
          *
-         * @param idx  index within the Set of styles
+         * @param index  index within the Set of styles
          * @return XSSFCellStyle object at the index
          */
-        public ICellStyle GetCellStyleAt(short idx)
+        public ICellStyle GetCellStyleAt(short index)
         {
-            return GetCellStyleAt(idx & 0xffff);
+            return GetCellStyleAt(index & 0xffff);
         }
         /**
          * Get the cell style object at the given index
          *
-         * @param idx  index within the set of styles
+         * @param index  index within the set of styles
          * @return XSSFCellStyle object at the index
          */
-        public XSSFCellStyle GetCellStyleAt(int idx)
+        public XSSFCellStyle GetCellStyleAt(int index)
         {
-            return stylesSource.GetStyleAt(idx);
+            return stylesSource.GetStyleAt(index);
         }
 
         /**
          * Get the font at the given index number
          *
-         * @param idx  index number
+         * @param index  index number
          * @return XSSFFont at the index
          */
-        public IFont GetFontAt(short idx)
+        public IFont GetFontAt(short index)
         {
-            return stylesSource.GetFontAt(idx);
+            return stylesSource.GetFontAt(index);
         }
 
         public IName GetName(string name)
@@ -958,11 +958,11 @@ namespace NPOI.XSSF.UserModel
          */
         public int GetSheetIndex(ISheet sheet)
         {
-            int idx = 0;
+            int index = 0;
             foreach (XSSFSheet sh in sheets)
             {
-                if (sh == sheet) return idx;
-                idx++;
+                if (sh == sheet) return index;
+                index++;
             }
             return -1;
         }
@@ -1435,14 +1435,14 @@ namespace NPOI.XSSF.UserModel
          */
         public void SetSheetOrder(string sheetname, int pos)
         {
-            int idx = GetSheetIndex(sheetname);
-            XSSFSheet sheet = sheets[idx];
-            sheets.RemoveAt(idx);
+            int index = GetSheetIndex(sheetname);
+            XSSFSheet sheet = sheets[index];
+            sheets.RemoveAt(index);
             sheets.Insert(pos,sheet);
             // Reorder CT_Sheets
             CT_Sheets ct = workbook.sheets;
-            CT_Sheet cts = ct.GetSheetArray(idx).Copy();
-            workbook.sheets.RemoveSheet(idx);
+            CT_Sheet cts = ct.GetSheetArray(index).Copy();
+            workbook.sheets.RemoveSheet(index);
             CT_Sheet newcts = ct.InsertNewSheet(pos);
             newcts.Set(cts);
 
@@ -1455,17 +1455,17 @@ namespace NPOI.XSSF.UserModel
 
             // adjust active sheet if necessary
             int active = ActiveSheetIndex;
-            if (active == idx)
+            if (active == index)
             {
                 // Moved sheet was the active one
                 SetActiveSheet(pos);
             }
-            else if ((active < idx && active < pos) ||
-                  (active > idx && active > pos))
+            else if ((active < index && active < pos) ||
+                  (active > index && active > pos))
             {
                 // not affected
             }
-            else if (pos > idx)
+            else if (pos > index)
             {
                 // Moved sheet was below before and is above now => active is one less
                 SetActiveSheet(active - 1);
@@ -1605,11 +1605,11 @@ namespace NPOI.XSSF.UserModel
          * For the purpose of comparison, long names are tRuncated to 31 chars.
          *
          * @param name the name to Test (case insensitive match)
-         * @param excludeSheetIdx the sheet to exclude from the check or -1 to include all sheets in the Check.
+         * @param excludeSheetIndex the sheet to exclude from the check or -1 to include all sheets in the Check.
          * @return true if the sheet Contains the name, false otherwise.
          */
         //@SuppressWarnings("deprecation") //  GetXYZArray() array accessors are deprecated
-        private bool ContainsSheet(string name, int excludeSheetIdx)
+        private bool ContainsSheet(string name, int excludeSheetIndex)
         {
             List<CT_Sheet> ctSheetArray = workbook.sheets.sheet;
 
@@ -1626,7 +1626,7 @@ namespace NPOI.XSSF.UserModel
                     ctName = ctName.Substring(0, Max_SENSITIVE_SHEET_NAME_LEN);
                 }
 
-                if (excludeSheetIdx != i && name.Equals(ctName, StringComparison.InvariantCultureIgnoreCase))
+                if (excludeSheetIndex != i && name.Equals(ctName, StringComparison.InvariantCultureIgnoreCase))
                     return true;
             }
             return false;

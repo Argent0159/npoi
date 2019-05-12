@@ -1277,7 +1277,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_LegendEntry
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
 
         private object itemField;
 
@@ -1296,8 +1296,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             ctObj.extLst = new List<CT_Extension>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "Item")
                     ctObj.Item = new Object();
                 else if (childNode.LocalName == "extLst")
@@ -1312,8 +1312,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.Item != null)
                 sw.Write("<Item/>");
             if (this.extLst != null)
@@ -1327,15 +1327,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 
@@ -3762,13 +3762,13 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
 
         private string vField;
 
-        private uint idxField;
+        private uint indexField;
         public static CT_StrVal Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
             CT_StrVal ctObj = new CT_StrVal();
-            ctObj.idx = XmlHelper.ReadUInt(node.Attributes["idx"]);
+            ctObj.Index = XmlHelper.ReadUInt(node.Attributes["index"]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "v")
@@ -3782,7 +3782,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<c:{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "idx", this.idx, true);
+            XmlHelper.WriteAttribute(sw, "index", this.Index, true);
             sw.Write(">");
             if (this.v != null)
                 sw.Write(string.Format("<c:v>{0}</c:v>", this.v));
@@ -3803,15 +3803,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlAttribute]
-        public uint idx
+        public uint Index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
     }
@@ -6281,7 +6281,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_DPt
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
 
         private CT_Boolean invertIfNegativeField;
 
@@ -6304,8 +6304,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             ctObj.extLst = new List<CT_Extension>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "invertIfNegative")
                     ctObj.invertIfNegative = CT_Boolean.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "marker")
@@ -6330,8 +6330,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.invertIfNegative != null)
                 this.invertIfNegative.Write(sw, "invertIfNegative");
             if (this.marker != null)
@@ -6362,19 +6362,19 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             //this.bubble3DField = new CT_Boolean();
             //this.markerField = new CT_Marker();
             //this.invertIfNegativeField = new CT_Boolean();
-            //this.idxField = new CT_UnsignedInt();
+            //this.indexField = new CT_UnsignedInt();
         }
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 
@@ -7283,7 +7283,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_DLbl
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
         private string separatorField;
         private CT_NumFmt numFmtField;
         private CT_Boolean showBubbleSizeField;
@@ -7299,7 +7299,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
 
         public CT_DLbl()
         {
-            //this.idxField = new CT_UnsignedInt();
+            //this.indexField = new CT_UnsignedInt();
         }
         public static CT_DLbl Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -7309,8 +7309,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             ctObj.extLst = new List<CT_Extension>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "layout")
                     ctObj.layout = CT_Layout.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "dLblPos")
@@ -7349,8 +7349,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.layout != null)
                 this.layout.Write(sw, "layout");
             if (this.dLblPos != null)
@@ -7388,15 +7388,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
         [XmlElement(Order = 1)]
@@ -8884,7 +8884,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
 
         private string vField;
 
-        private uint idxField;
+        private uint indexField;
 
         private string formatCodeField;
         public static CT_NumVal Parse(XmlNode node, XmlNamespaceManager namespaceManager)
@@ -8892,8 +8892,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             if (node == null)
                 return null;
             CT_NumVal ctObj = new CT_NumVal();
-            if (node.Attributes["idx"] != null)
-                ctObj.idx = XmlHelper.ReadUInt(node.Attributes["idx"]);
+            if (node.Attributes["index"] != null)
+                ctObj.Index = XmlHelper.ReadUInt(node.Attributes["index"]);
             ctObj.formatCode = XmlHelper.ReadString(node.Attributes["formatCode"]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
@@ -8908,7 +8908,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<c:{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "idx", this.idx, true);
+            XmlHelper.WriteAttribute(sw, "index", this.Index, true);
             XmlHelper.WriteAttribute(sw, "formatCode", this.formatCode);
             sw.Write(">");
             if (this.v != null)
@@ -8930,15 +8930,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlAttribute]
-        public uint idx
+        public uint Index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 
@@ -9417,7 +9417,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_BandFmt
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
 
         private CT_ShapeProperties spPrField;
 
@@ -9432,8 +9432,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             CT_BandFmt ctObj = new CT_BandFmt();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "spPr")
                     ctObj.spPr = CT_ShapeProperties.Parse(childNode, namespaceManager);
             }
@@ -9446,8 +9446,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.spPr != null)
                 this.spPr.Write(sw, "spPr");
             sw.Write(string.Format("</c:{0}>", nodeName));
@@ -9455,15 +9455,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
 
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 
@@ -11053,7 +11053,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_PivotFmt
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
 
         private CT_ShapeProperties spPrField;
 
@@ -11070,7 +11070,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             //this.extLstField = new List<CT_Extension>();
             //this.dLblField = new CT_DLbl();
             //this.markerField = new CT_Marker();
-            //this.idxField = new CT_UnsignedInt();
+            //this.indexField = new CT_UnsignedInt();
         }
         public static CT_PivotFmt Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -11080,8 +11080,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             ctObj.extLst = new List<CT_Extension>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "spPr")
                     ctObj.spPr = CT_ShapeProperties.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "txPr")
@@ -11102,8 +11102,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.spPr != null)
                 this.spPr.Write(sw, "spPr");
             if (this.txPr != null)
@@ -11123,15 +11123,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 

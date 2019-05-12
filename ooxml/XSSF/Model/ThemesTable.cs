@@ -63,10 +63,10 @@ namespace NPOI.XSSF.Model
         }
         /**
          * Convert a theme "index" into a color.
-         * @param idx A theme "index"
+         * @param index A theme "index"
          * @return The mapped XSSFColor, or null if not mapped.
          */
-        public XSSFColor GetThemeColor(int idx)
+        public XSSFColor GetThemeColor(int index)
         {
             // Theme color references are NOT positional indices into the color scheme,
             // i.e. these keys are NOT the same as the order in which theme colors appear
@@ -74,7 +74,7 @@ namespace NPOI.XSSF.Model
             CT_ColorScheme colorScheme = theme.GetTheme().themeElements.clrScheme;
             NPOI.OpenXmlFormats.Dml.CT_Color ctColor = null;
 
-            switch (idx)
+            switch (index)
             {
                 case 0: ctColor = colorScheme.lt1; break;
                 case 1: ctColor = colorScheme.dk1; break;

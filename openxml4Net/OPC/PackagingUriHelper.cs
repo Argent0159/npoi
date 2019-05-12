@@ -751,11 +751,11 @@ namespace NPOI.OpenXml4Net.OPC
 
             // URI fragemnts (those starting with '#') are not encoded
             // and may contain white spaces and raw unicode characters
-            int fragmentIdx = value.IndexOf('#');
-            if (fragmentIdx != -1)
+            int fragmentIndex = value.IndexOf('#');
+            if (fragmentIndex != -1)
             {
-                string path = value.Substring(0, fragmentIdx);
-                string fragment = value.Substring(fragmentIdx + 1);
+                string path = value.Substring(0, fragmentIndex);
+                string fragment = value.Substring(fragmentIndex + 1);
 
                 value = path + "#" + Encode(fragment);
             }
@@ -763,10 +763,10 @@ namespace NPOI.OpenXml4Net.OPC
             if (value.Length > 0)
             {
                 StringBuilder b = new StringBuilder();
-                int idx = value.Length - 1;
-                for (; idx >= 0; idx--)
+                int index = value.Length - 1;
+                for (; index >= 0; index--)
                 {
-                    char c = value[idx];
+                    char c = value[index];
                     if (char.IsWhiteSpace(c) || c == '\u00A0')
                     {
                         b.Append(c);
@@ -780,7 +780,7 @@ namespace NPOI.OpenXml4Net.OPC
                 {
                     char[] ca = b.ToString().ToCharArray();
                     Array.Reverse(ca);
-                    value = value.Substring(0, idx + 1) + Encode(new string(ca));
+                    value = value.Substring(0, index + 1) + Encode(new string(ca));
                 }
             }
 

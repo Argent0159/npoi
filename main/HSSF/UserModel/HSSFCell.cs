@@ -1065,7 +1065,7 @@ namespace NPOI.HSSF.UserModel
         /// Formula cells return the formula string,
         /// rather than the formula result.
         /// Dates are Displayed in dd-MMM-yyyy format
-        /// Errors are Displayed as #ERR&lt;errIdx&gt;
+        /// Errors are Displayed as #ERR&lt;errIndex&gt;
         /// </summary>
         public override string ToString()
         {

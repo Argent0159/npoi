@@ -34,9 +34,9 @@ namespace NPOI.OpenXmlFormats.Dml.Diagram
 
         private string presStyleLblField;
 
-        private int presStyleIdxField;
+        private int presStyleIndexField;
 
-        private bool presStyleIdxFieldSpecified;
+        private bool presStyleIndexFieldSpecified;
 
         private int presStyleCntField;
 
@@ -192,28 +192,28 @@ namespace NPOI.OpenXmlFormats.Dml.Diagram
         }
 
         [XmlAttribute]
-        public int presStyleIdx
+        public int presStyleIndex
         {
             get
             {
-                return this.presStyleIdxField;
+                return this.presStyleIndexField;
             }
             set
             {
-                this.presStyleIdxField = value;
+                this.presStyleIndexField = value;
             }
         }
 
         [XmlIgnore]
-        public bool presStyleIdxSpecified
+        public bool presStyleIndexSpecified
         {
             get
             {
-                return this.presStyleIdxFieldSpecified;
+                return this.presStyleIndexFieldSpecified;
             }
             set
             {
-                this.presStyleIdxFieldSpecified = value;
+                this.presStyleIndexFieldSpecified = value;
             }
         }
 

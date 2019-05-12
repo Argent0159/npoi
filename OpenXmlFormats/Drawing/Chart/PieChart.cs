@@ -289,7 +289,7 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
     public class CT_PieSer
     {
 
-        private CT_UnsignedInt idxField;
+        private CT_UnsignedInt indexField;
 
         private CT_UnsignedInt orderField;
 
@@ -322,8 +322,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
             ctObj.extLst = new List<CT_Extension>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "idx")
-                    ctObj.idx = CT_UnsignedInt.Parse(childNode, namespaceManager);
+                if (childNode.LocalName == "index")
+                    ctObj.index = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "order")
                     ctObj.order = CT_UnsignedInt.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "tx")
@@ -352,8 +352,8 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         {
             sw.Write(string.Format("<c:{0}", nodeName));
             sw.Write(">");
-            if (this.idx != null)
-                this.idx.Write(sw, "idx");
+            if (this.index != null)
+                this.index.Write(sw, "index");
             if (this.order != null)
                 this.order.Write(sw, "order");
             if (this.tx != null)
@@ -386,15 +386,15 @@ namespace NPOI.OpenXmlFormats.Dml.Chart
         }
 
         [XmlElement(Order = 0)]
-        public CT_UnsignedInt idx
+        public CT_UnsignedInt index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
 

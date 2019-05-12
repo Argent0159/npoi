@@ -301,13 +301,13 @@ namespace NPOI.HSSF.Model
 
             SupBookRecord supbook = _externalBookBlocks[0].GetExternalBookRecord();
 
-            int idx = FindFirstRecordLocBySid(CountryRecord.sid);
-            if (idx < 0)
+            int index = FindFirstRecordLocBySid(CountryRecord.sid);
+            if (index < 0)
             {
                 throw new Exception("CountryRecord not found");
             }
-            _workbookRecordList.Add(idx + 1, _externSheetRecord);
-            _workbookRecordList.Add(idx + 1, supbook);
+            _workbookRecordList.Add(index + 1, _externSheetRecord);
+            _workbookRecordList.Add(index + 1, supbook);
         }
 
         /**
@@ -378,9 +378,9 @@ namespace NPOI.HSSF.Model
             _externSheetRecord.AdjustIndex(extRefIndex, offset);
         }
 
-        public void RemoveSheet(int sheetIdx)
+        public void RemoveSheet(int sheetIndex)
         {
-            _externSheetRecord.RemoveSheet(sheetIdx);
+            _externSheetRecord.RemoveSheet(sheetIndex);
         }
 
         public int NumNames
@@ -445,11 +445,11 @@ namespace NPOI.HSSF.Model
 
             // TODO - this Is messy
             // Not the most efficient way but the other way was causing too many bugs
-            int idx = FindFirstRecordLocBySid(ExternSheetRecord.sid);
-            if (idx == -1) idx = FindFirstRecordLocBySid(SupBookRecord.sid);
-            if (idx == -1) idx = FindFirstRecordLocBySid(CountryRecord.sid);
+            int index = FindFirstRecordLocBySid(ExternSheetRecord.sid);
+            if (index == -1) index = FindFirstRecordLocBySid(SupBookRecord.sid);
+            if (index == -1) index = FindFirstRecordLocBySid(CountryRecord.sid);
             int countNames = _definedNames.Count;
-            _workbookRecordList.Add(idx + countNames, name);
+            _workbookRecordList.Add(index + countNames, name);
 
         }
         /**
@@ -482,8 +482,8 @@ namespace NPOI.HSSF.Model
                 extBlockIndex = ExtendExternalBookBlocks(extBlock);
 
                 // add the created SupBookRecord before ExternSheetRecord
-                int idx = FindFirstRecordLocBySid(ExternSheetRecord.sid);
-                _workbookRecordList.Add(idx, extBlock.GetExternalBookRecord());
+                int index = FindFirstRecordLocBySid(ExternSheetRecord.sid);
+                _workbookRecordList.Add(index, extBlock.GetExternalBookRecord());
 
                 // register the SupBookRecord in the ExternSheetRecord
                 // -2 means that the scope of this name is Workbook and the reference applies to the entire workbook.
@@ -511,8 +511,8 @@ namespace NPOI.HSSF.Model
             int numberOfNames = extBlock.NumberOfNames;
             // a new name is inserted in the end of the SupBookRecord, after the last name
             _workbookRecordList.Add(supLinkIndex + numberOfNames, extNameRecord);
-            int fakeSheetIdx = -2; /* the scope is workbook*/
-            int ix = _externSheetRecord.GetRefIxForSheet(extBlockIndex, fakeSheetIdx, fakeSheetIdx);
+            int fakeSheetIndex = -2; /* the scope is workbook*/
+            int ix = _externSheetRecord.GetRefIxForSheet(extBlockIndex, fakeSheetIndex, fakeSheetIndex);
             return new NameXPtg(ix, nameIndex);
         }
         public void RemoveName(int namenum)
@@ -573,12 +573,12 @@ namespace NPOI.HSSF.Model
             extBookIndex = ExtendExternalBookBlocks(block);
 
             // add the created SupBookRecord before ExternSheetRecord
-            int idx = FindFirstRecordLocBySid(ExternSheetRecord.sid);
-            if (idx == -1)
+            int index = FindFirstRecordLocBySid(ExternSheetRecord.sid);
+            if (index == -1)
             {
-                idx = _workbookRecordList.Count;
+                index = _workbookRecordList.Count;
             }
-            _workbookRecordList.Add(idx, block.GetExternalBookRecord());
+            _workbookRecordList.Add(index, block.GetExternalBookRecord());
 
             // Setup links for the sheets
             for (int sn = 0; sn < sheetNames.Length; sn++)

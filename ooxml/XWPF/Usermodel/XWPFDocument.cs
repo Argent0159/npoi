@@ -1308,8 +1308,8 @@ namespace NPOI.XWPF.UserModel
             if (xwpfPicData == null)
             {
                 /* Part doesn't exist, create a new one */
-                int idx = GetNextPicNameNumber(format);
-                xwpfPicData = (XWPFPictureData)CreateRelationship(relDesc, XWPFFactory.GetInstance(), idx);
+                int index = GetNextPicNameNumber(format);
+                xwpfPicData = (XWPFPictureData)CreateRelationship(relDesc, XWPFFactory.GetInstance(), index);
                 /* write bytes to new part */
                 PackagePart picDataPart = xwpfPicData.GetPackagePart();
                 Stream out1 = null;

@@ -43,9 +43,9 @@ namespace NPOI.XSSF.UserModel
          */
         public short GetFormat(string format)
         {
-            int idx = BuiltinFormats.GetBuiltinFormat(format);
-            if (idx == -1) idx = stylesSource.PutNumberFormat(format);
-            return (short)idx;
+            int index = BuiltinFormats.GetBuiltinFormat(format);
+            if (index == -1) index = stylesSource.PutNumberFormat(format);
+            return (short)index;
         }
 
         /**

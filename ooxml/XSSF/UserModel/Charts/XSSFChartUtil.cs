@@ -116,7 +116,7 @@ namespace NPOI.XSSF.UserModel.Charts
                 if (value != null)
                 {
                     CT_StrVal ctStrVal = cache.AddNewPt();
-                    ctStrVal.idx = (uint)(i);
+                    ctStrVal.Index = (uint)(i);
                     ctStrVal.v = (value.ToString());
                 }
             }
@@ -133,7 +133,7 @@ namespace NPOI.XSSF.UserModel.Charts
                 if (!double.IsNaN(value))
                 {
                     CT_NumVal ctNumVal = cache.AddNewPt();
-                    ctNumVal.idx = (uint)(i);
+                    ctNumVal.Index = (uint)(i);
                     ctNumVal.v = (value.ToString());
                 }
             }

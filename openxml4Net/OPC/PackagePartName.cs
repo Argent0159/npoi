@@ -608,32 +608,32 @@ namespace NPOI.OpenXml4Net.OPC
 
             int len1 = str1.Length;
             int len2 = str2.Length;
-            for (int idx1 = 0, idx2 = 0; idx1 < len1 && idx2 < len2; /*nil*/)
+            for (int index1 = 0, index2 = 0; index1 < len1 && index2 < len2; /*nil*/)
             {
-                char c1 = str1[(idx1++)];
-                char c2 = str2[(idx2++)];
+                char c1 = str1[(index1++)];
+                char c2 = str2[(index2++)];
 
                 if (char.IsDigit(c1) && char.IsDigit(c2))
                 {
-                    int beg1 = idx1 - 1;  // undo previous increment
-                    while (idx1 < len1 && char.IsDigit(str1[(idx1)]))
+                    int beg1 = index1 - 1;  // undo previous increment
+                    while (index1 < len1 && char.IsDigit(str1[(index1)]))
                     {
-                        ++idx1;
+                        ++index1;
                     }
 
-                    int beg2 = idx2 - 1;  // undo previous increment
-                    while (idx2 < len2 && char.IsDigit(str2[(idx2)]))
+                    int beg2 = index2 - 1;  // undo previous increment
+                    while (index2 < len2 && char.IsDigit(str2[(index2)]))
                     {
-                        ++idx2;
+                        ++index2;
                     }
 
                     // note: BigInteger for extra safety
-                    //int cmp = new BigInteger(str1.Substring(beg1, idx1 - beg1)).CompareTo
+                    //int cmp = new BigInteger(str1.Substring(beg1, index1 - beg1)).CompareTo
                     //(
-                    //    new BigInteger(str2.Substring(beg2, idx2 - beg2))
+                    //    new BigInteger(str2.Substring(beg2, index2 - beg2))
                     //);
-                    int cmp = decimal.Parse(str1.Substring(beg1, idx1 - beg1)).CompareTo(
-                        decimal.Parse(str2.Substring(beg2, idx2 - beg2))
+                    int cmp = decimal.Parse(str1.Substring(beg1, index1 - beg1)).CompareTo(
+                        decimal.Parse(str2.Substring(beg2, index2 - beg2))
                         );
                     if (cmp != 0) return cmp;
                 }

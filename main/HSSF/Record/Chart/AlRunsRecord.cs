@@ -47,10 +47,10 @@ namespace NPOI.HSSF.Record.Chart
             private short m_offset;
             private short m_fontIndex;
 
-            public CTFormat(short offset, short fontIdx)
+            public CTFormat(short offset, short fontIndex)
             {
                 m_offset = offset;
-                m_fontIndex = fontIdx;
+                m_fontIndex = fontIndex;
             }
 
             public short Offset
@@ -86,13 +86,13 @@ namespace NPOI.HSSF.Record.Chart
         public AlRunsRecord(RecordInputStream in1)
         {
             m_recs = in1.ReadUShort();
-            int idx;
+            int index;
             CTFormat ctf;
             if (m_formats == null)
             {
                 m_formats = new ArrayList(m_recs);
             }
-            for (idx = 0; idx < m_recs; idx++)
+            for (index = 0; index < m_recs; index++)
             {
                 ctf = new CTFormat(in1.ReadShort(), in1.ReadShort());
                 m_formats.Add(ctf);
@@ -125,16 +125,16 @@ namespace NPOI.HSSF.Record.Chart
         public void ModifyFormatRun(short oldPos, short newLen)
         {
             short shift = (short)0;
-            for (int idx = 0; idx < m_formats.Count; idx++)
+            for (int index = 0; index < m_formats.Count; index++)
             {
-                CTFormat ctf = (CTFormat)m_formats[idx];
+                CTFormat ctf = (CTFormat)m_formats[index];
                 if (shift != 0)
                 {
                     ctf.Offset = ((short)(ctf.Offset + shift));
                 }
-                else if ((oldPos == ctf.Offset) && (idx < (m_formats.Count - 1)))
+                else if ((oldPos == ctf.Offset) && (index < (m_formats.Count - 1)))
                 {
-                    CTFormat nextCTF = (CTFormat)m_formats[idx + 1];
+                    CTFormat nextCTF = (CTFormat)m_formats[index + 1];
                     shift = (short)(newLen - (nextCTF.Offset - ctf.Offset));
                 }
             }
@@ -147,13 +147,13 @@ namespace NPOI.HSSF.Record.Chart
             buffer.Append("[ALRUNS]\n");
             buffer.Append("    .format_runs       = ").Append(m_recs)
                 .Append("\n");
-            int idx;
+            int index;
             CTFormat ctf;
-            for (idx = 0; idx < m_formats.Count; idx++)
+            for (index = 0; index < m_formats.Count; index++)
             {
-                ctf = (CTFormat)m_formats[idx];
+                ctf = (CTFormat)m_formats[index];
                 buffer.Append("       .char_offset= ").Append(ctf.Offset);
-                buffer.Append(",.fontidx= ").Append(ctf.FontIndex);
+                buffer.Append(",.fontindex= ").Append(ctf.FontIndex);
                 buffer.Append("\n");
             }
             buffer.Append("[/ALRUNS]\n");

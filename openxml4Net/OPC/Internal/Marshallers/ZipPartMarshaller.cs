@@ -106,7 +106,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal.Marshallers
 
             // <Relationship
             // TargetMode="External"
-            // Id="rIdx"
+            // Id="rindex"
             // Target="http://www.custom.com/images/pic1.jpg"
             // Type="http://www.custom.com/external-resource"/>
 

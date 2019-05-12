@@ -2290,8 +2290,8 @@ namespace NPOI.HSSF.UserModel
             get
             {
                 NPOI.SS.UserModel.IWorkbook wb = Workbook;
-                int idx = wb.GetSheetIndex(this);
-                return wb.GetSheetName(idx);
+                int index = wb.GetSheetIndex(this);
+                return wb.GetSheetName(index);
             }
         }
 
@@ -2335,8 +2335,8 @@ namespace NPOI.HSSF.UserModel
             // the number of columns that have AutoFilter enabled.
             int numcols = 1 + range.LastColumn - range.FirstColumn;
             r.NumEntries = (short)numcols;
-            int idx = _sheet.FindFirstRecordLocBySid(DimensionsRecord.sid);
-            _sheet.Records.Insert(idx, r);
+            int index = _sheet.FindFirstRecordLocBySid(DimensionsRecord.sid);
+            _sheet.Records.Insert(index, r);
 
             //create a combobox control for each column
             HSSFPatriarch p = (HSSFPatriarch)CreateDrawingPatriarch();
@@ -2557,7 +2557,7 @@ namespace NPOI.HSSF.UserModel
         {
             int sheetIndex = _workbook.GetSheetIndex(this);
             int recIndex =
-              _workbook.FindExistingBuiltinNameRecordIdx(sheetIndex, builtinCode);
+              _workbook.FindExistingBuiltinNameRecordIndex(sheetIndex, builtinCode);
             if (recIndex == -1)
             {
                 return null;
@@ -2725,8 +2725,8 @@ namespace NPOI.HSSF.UserModel
                     if (imgId <= pics.Count)
                     {
                         HSSFPictureData pic = (HSSFPictureData)pics[imgId - 1];
-                        int dstIdx = dest.AddPicture(pic.Data, (PictureType)pic.Format);
-                        remap.Add(imgId, dstIdx);
+                        int dstIndex = dest.AddPicture(pic.Data, (PictureType)pic.Format);
+                        remap.Add(imgId, dstIndex);
                     }
                 }
                 //Apply the new image Id's the destination
@@ -2829,9 +2829,9 @@ namespace NPOI.HSSF.UserModel
                 }
                 if (!found) //Color doesn't exist in this palette, add it
                 {
-                    short createdIdx = dest.Workbook.CustomPalette.NumColors;
-                    dest.Workbook.CustomPalette.SetColor((short)(createdIdx + PaletteRecord.FIRST_COLOR_INDEX), sourceColor[0], sourceColor[1], sourceColor[2]);
-                    retval.Add((short)(i + PaletteRecord.FIRST_COLOR_INDEX), (short)(createdIdx + PaletteRecord.FIRST_COLOR_INDEX));
+                    short createdIndex = dest.Workbook.CustomPalette.NumColors;
+                    dest.Workbook.CustomPalette.SetColor((short)(createdIndex + PaletteRecord.FIRST_COLOR_INDEX), sourceColor[0], sourceColor[1], sourceColor[2]);
+                    retval.Add((short)(i + PaletteRecord.FIRST_COLOR_INDEX), (short)(createdIndex + PaletteRecord.FIRST_COLOR_INDEX));
                 }
             }
             return retval;

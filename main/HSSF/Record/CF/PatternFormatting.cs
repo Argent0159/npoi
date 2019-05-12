@@ -116,8 +116,8 @@ namespace NPOI.HSSF.Record.CF
             StringBuilder buffer = new StringBuilder();
             buffer.Append("    [Pattern Formatting]\n");
             buffer.Append("          .Fillpattern= ").Append(StringUtil.ToHexString((int) FillPattern)).Append("\n");
-            buffer.Append("          .fgcoloridx= ").Append(StringUtil.ToHexString(FillForegroundColor)).Append("\n");
-            buffer.Append("          .bgcoloridx= ").Append(StringUtil.ToHexString(FillBackgroundColor)).Append("\n");
+            buffer.Append("          .ForegroundColorIndex= ").Append(StringUtil.ToHexString(FillForegroundColor)).Append("\n");
+            buffer.Append("          .BackgroundColorIndex= ").Append(StringUtil.ToHexString(FillBackgroundColor)).Append("\n");
             buffer.Append("    [/Pattern Formatting]\n");
             return buffer.ToString();
         }

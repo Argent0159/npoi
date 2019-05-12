@@ -215,23 +215,23 @@ namespace NPOI.HSSF.Record.Aggregates
             get { return header; }
         }
 
-        private void CheckRuleIndex(int idx)
+        private void CheckRuleIndex(int index)
         {
-            if (idx < 0 || idx >= rules.Count)
+            if (index < 0 || index >= rules.Count)
             {
-                throw new ArgumentException("Bad rule record index (" + idx
+                throw new ArgumentException("Bad rule record index (" + index
                         + ") nRules=" + rules.Count);
             }
         }
-        public CFRuleRecord GetRule(int idx)
+        public CFRuleRecord GetRule(int index)
         {
-            CheckRuleIndex(idx);
-            return rules[idx];
+            CheckRuleIndex(index);
+            return rules[index];
         }
-        public void SetRule(int idx, CFRuleRecord r)
+        public void SetRule(int index, CFRuleRecord r)
         {
-            CheckRuleIndex(idx);
-            rules[idx] = r;
+            CheckRuleIndex(index);
+            rules[index] = r;
         }
 
         /**

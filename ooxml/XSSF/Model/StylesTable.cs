@@ -129,13 +129,13 @@ namespace NPOI.XSSF.Model
                 CT_Fonts ctfonts = styleSheet.fonts;
                 if (ctfonts != null)
                 {
-                    int idx = 0;
+                    int index = 0;
                     foreach (CT_Font font in ctfonts.font)
                     {
                         // Create the font and save it. Themes Table supplied later
-                        XSSFFont f = new XSSFFont(font, idx);
+                        XSSFFont f = new XSSFFont(font, index);
                         fonts.Add(f);
-                        idx++;
+                        index++;
                     }
                 }
                 CT_Fills ctFills = styleSheet.fills;
@@ -179,10 +179,10 @@ namespace NPOI.XSSF.Model
         //  Start of style related Getters and Setters
         // ===========================================================
 
-        public string GetNumberFormatAt(int idx)
+        public string GetNumberFormatAt(int index)
         {
-            if (numberFormats.ContainsKey(idx))
-                return numberFormats[idx];
+            if (numberFormats.ContainsKey(index))
+                return numberFormats[index];
             else
                 return null;
         }
@@ -217,9 +217,9 @@ namespace NPOI.XSSF.Model
               "You can define up to " + usedNumberFormats.Length + " formats in a .xlsx Workbook");
         }
 
-        public XSSFFont GetFontAt(int idx)
+        public XSSFFont GetFontAt(int index)
         {
-            return fonts[idx];
+            return fonts[index];
         }
 
         /**
@@ -234,37 +234,37 @@ namespace NPOI.XSSF.Model
          */
         public int PutFont(XSSFFont font, bool forceRegistration)
         {
-            int idx = -1;
+            int index = -1;
             if (!forceRegistration)
             {
-                idx = fonts.IndexOf(font);
+                index = fonts.IndexOf(font);
             }
 
-            if (idx != -1)
+            if (index != -1)
             {
-                return idx;
+                return index;
             }
 
-            idx = fonts.Count;
+            index = fonts.Count;
             fonts.Add(font);
-            return idx;
+            return index;
         }
         public int PutFont(XSSFFont font)
         {
             return PutFont(font, false);
         }
 
-        public XSSFCellStyle GetStyleAt(int idx)
+        public XSSFCellStyle GetStyleAt(int index)
         {
             int styleXfId = 0;
 
             // 0 is the empty default
-            if (xfs[idx].xfId > 0)
+            if (xfs[index].xfId > 0)
             {
-                styleXfId = (int)xfs[idx].xfId;
+                styleXfId = (int)xfs[index].xfId;
             }
 
-            return new XSSFCellStyle(idx, styleXfId, this, theme);
+            return new XSSFCellStyle(index, styleXfId, this, theme);
         }
         public int PutStyle(XSSFCellStyle style)
         {
@@ -277,26 +277,26 @@ namespace NPOI.XSSF.Model
             return xfs.IndexOf(mainXF);
         }
 
-        public XSSFCellBorder GetBorderAt(int idx)
+        public XSSFCellBorder GetBorderAt(int index)
         {
-            return borders[idx];
+            return borders[index];
         }
 
         public int PutBorder(XSSFCellBorder border)
         {
-            int idx = borders.IndexOf(border);
-            if (idx != -1)
+            int index = borders.IndexOf(border);
+            if (index != -1)
             {
-                return idx;
+                return index;
             }
             borders.Add(border);
             border.SetThemesTable(theme);
             return borders.Count - 1;
         }
 
-        public XSSFCellFill GetFillAt(int idx)
+        public XSSFCellFill GetFillAt(int index)
         {
-            return fills[idx];
+            return fills[index];
         }
 
         public List<XSSFCellBorder> GetBorders()
@@ -321,43 +321,43 @@ namespace NPOI.XSSF.Model
 
         public int PutFill(XSSFCellFill fill)
         {
-            int idx = fills.IndexOf(fill);
-            if (idx != -1)
+            int index = fills.IndexOf(fill);
+            if (index != -1)
             {
-                return idx;
+                return index;
             }
             fills.Add(fill);
             return fills.Count - 1;
         }
 
-        internal CT_Xf GetCellXfAt(int idx)
+        internal CT_Xf GetCellXfAt(int index)
         {
-            return xfs[idx];
+            return xfs[index];
         }
         internal int PutCellXf(CT_Xf cellXf)
         {
             xfs.Add(cellXf);
             return xfs.Count;
         }
-        internal void ReplaceCellXfAt(int idx, CT_Xf cellXf)
+        internal void ReplaceCellXfAt(int index, CT_Xf cellXf)
         {
-            xfs[idx] = cellXf;
+            xfs[index] = cellXf;
         }
 
-        internal CT_Xf GetCellStyleXfAt(int idx)
+        internal CT_Xf GetCellStyleXfAt(int index)
         {
-            if (idx < 0 || idx > styleXfs.Count)
+            if (index < 0 || index > styleXfs.Count)
                 return null;
-            return styleXfs[idx];
+            return styleXfs[index];
         }
         internal int PutCellStyleXf(CT_Xf cellStyleXf)
         {
             styleXfs.Add(cellStyleXf);
             return styleXfs.Count;
         }
-        internal void ReplaceCellStyleXfAt(int idx, CT_Xf cellStyleXf)
+        internal void ReplaceCellStyleXfAt(int index, CT_Xf cellStyleXf)
         {
-            styleXfs[idx] = cellStyleXf;
+            styleXfs[index] = cellStyleXf;
         }
 
         /**
@@ -619,9 +619,9 @@ namespace NPOI.XSSF.Model
             return xssfFont;
         }
 
-        public CT_Dxf GetDxfAt(int idx)
+        public CT_Dxf GetDxfAt(int index)
         {
-            return dxfs[idx];
+            return dxfs[index];
         }
 
         public int PutDxf(CT_Dxf dxf)

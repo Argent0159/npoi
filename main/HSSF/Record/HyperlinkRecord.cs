@@ -329,12 +329,12 @@ namespace NPOI.HSSF.Record
             {
                 return null;
             }
-            int idx = s.IndexOf('\u0000');
-            if (idx < 0)
+            int index = s.IndexOf('\u0000');
+            if (index < 0)
             {
                 return s;
             }
-            return s.Substring(0, idx);
+            return s.Substring(0, index);
         }
         private static string AppendNullTerm(string s)
         {

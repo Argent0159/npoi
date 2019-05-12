@@ -97,8 +97,8 @@ namespace NPOI.XSSF.UserModel
                         string fontName = pr.GetRFontArray(0).val;
                         if (fontName.StartsWith("#"))
                         {
-                            int idx = int.Parse(fontName.Substring(1));
-                            XSSFFont font = styles.GetFontAt(idx);
+                            int index = int.Parse(fontName.Substring(1));
+                            XSSFFont font = styles.GetFontAt(index);
                             pr.rFont = null;
                             SetRunAttributes(font.GetCTFont(), pr);
                         }
@@ -150,14 +150,14 @@ namespace NPOI.XSSF.UserModel
             
             // delete format runs that fit between startIndex and endIndex
             // runs intersecting startIndex and endIndex remain
-            //int runStartIdx = 0;
+            //int runStartindex = 0;
             List<int> toRemoveKeys=new List<int>();
             for (SortedDictionary<int, CT_RPrElt>.KeyCollection.Enumerator it = formats.Keys.GetEnumerator(); it.MoveNext(); )
             {
-                int runIdx = it.Current;
-                if (runIdx >= startIndex && runIdx < endIndex)
+                int runIndex = it.Current;
+                if (runIndex >= startIndex && runIndex < endIndex)
                 {
-                    toRemoveKeys.Add(runIdx);
+                    toRemoveKeys.Add(runIndex);
                 }
             }
             foreach (int key in toRemoveKeys)
@@ -610,22 +610,22 @@ namespace NPOI.XSSF.UserModel
 
             StringBuilder buf = new StringBuilder();
             MatchCollection mc = utfPtrn.Matches(value);
-            int idx = 0;
+            int index = 0;
             for (int i = 0; i < mc.Count;i++ )
             {
                     int pos = mc[i].Index;
-                    if (pos > idx)
+                    if (pos > index)
                     {
-                        buf.Append(value.Substring(idx, pos-idx));
+                        buf.Append(value.Substring(index, pos - index));
                     }
 
                 string code = mc[i].Groups[1].Value;
                     int icode = int.Parse(code, System.Globalization.NumberStyles.AllowHexSpecifier);
                     buf.Append((char)icode);
 
-                    idx = mc[i].Index+mc[i].Length;
+                    index = mc[i].Index+mc[i].Length;
                 }
-            buf.Append(value.Substring(idx));
+            buf.Append(value.Substring(index));
             return buf.ToString();
         }
 
@@ -649,18 +649,18 @@ namespace NPOI.XSSF.UserModel
                         " but the last format index was " + GetLastKey(formats.Keys));
             }
             CT_Rst st = new CT_Rst();
-            int runStartIdx = 0;
+            int runStartIndex = 0;
             for (SortedDictionary<int, CT_RPrElt>.KeyCollection.Enumerator it = formats.Keys.GetEnumerator(); it.MoveNext(); )
             {
-                int runEndIdx = it.Current;
+                int runEndIndex = it.Current;
                 CT_RElt run = st.AddNewR();
-                string fragment = text.Substring(runStartIdx, runEndIdx - runStartIdx);
+                string fragment = text.Substring(runStartIndex, runEndIndex - runStartIndex);
                 run.t = (fragment);
                 PreserveSpaces(run.t);
-                CT_RPrElt fmt = formats[runEndIdx];
+                CT_RPrElt fmt = formats[runEndIndex];
                 if (fmt != null)
                     run.rPr = (fmt);
-                runStartIdx = runEndIdx;
+                runStartIndex = runEndIndex;
             }
             return st;
         }

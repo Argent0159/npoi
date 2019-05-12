@@ -325,8 +325,8 @@ namespace NPOI.XSSF.UserModel
                         {
                             if (_cell.IsSetV())
                             {
-                                int idx = int.Parse(_cell.v);
-                                rt = new XSSFRichTextString(_sharedStringSource.GetEntryAt(idx));
+                                int index = int.Parse(_cell.v);
+                                rt = new XSSFRichTextString(_sharedStringSource.GetEntryAt(index));
                             }
                             else
                             {
@@ -565,8 +565,8 @@ namespace NPOI.XSSF.UserModel
                 XSSFCellStyle style = null;
                 if ((null != _stylesSource) && (_stylesSource.NumCellStyles > 0))
                 {
-                    long idx = _cell.IsSetS() ? _cell.s : 0;
-                    style = _stylesSource.GetStyleAt((int)idx);
+                    long index = _cell.IsSetS() ? _cell.s : 0;
+                    style = _stylesSource.GetStyleAt((int)index);
                 }
                 return style;
             }
@@ -581,8 +581,8 @@ namespace NPOI.XSSF.UserModel
                     XSSFCellStyle xStyle = (XSSFCellStyle)value;
                     xStyle.VerifyBelongsToStylesSource(_stylesSource);
 
-                    long idx = _stylesSource.PutStyle(xStyle);
-                    _cell.s = (uint)idx;
+                    long index = _stylesSource.PutStyle(xStyle);
+                    _cell.s = (uint)index;
                 }
             }
         }
@@ -827,7 +827,7 @@ namespace NPOI.XSSF.UserModel
         /// </summary>
         /// <returns>Formula cells return the formula string, rather than the formula result.
         /// Dates are displayed in dd-MMM-yyyy format
-        /// Errors are displayed as #ERR&lt;errIdx&gt;
+        /// Errors are displayed as #ERR&lt;errindex&gt;
         /// </returns>
         public override string ToString()
         {

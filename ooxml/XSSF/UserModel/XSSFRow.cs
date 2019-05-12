@@ -477,8 +477,8 @@ namespace NPOI.XSSF.UserModel
                     XSSFCellStyle xStyle = (XSSFCellStyle)value;
                     xStyle.VerifyBelongsToStylesSource(styleSource);
 
-                    long idx = styleSource.PutStyle(xStyle);
-                    _row.s = (uint)idx;
+                    long index = styleSource.PutStyle(xStyle);
+                    _row.s = (uint)index;
                     _row.customFormat = (true);
                 }
             }

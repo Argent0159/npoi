@@ -1437,14 +1437,14 @@ namespace NPOI.OpenXmlFormats.Dml
 
         private uint idField;
 
-        private uint idxField;
+        private uint indexField;
         public static CT_Connection Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
             CT_Connection ctObj = new CT_Connection();
             ctObj.id = XmlHelper.ReadUInt(node.Attributes["id"]);
-            ctObj.idx = XmlHelper.ReadUInt(node.Attributes["idx"]);
+            ctObj.index = XmlHelper.ReadUInt(node.Attributes["index"]);
             return ctObj;
         }
 
@@ -1454,7 +1454,7 @@ namespace NPOI.OpenXmlFormats.Dml
         {
             sw.Write(string.Format("<a:{0}", nodeName));
             XmlHelper.WriteAttribute(sw, "id", this.id);
-            XmlHelper.WriteAttribute(sw, "idx", this.idx);
+            XmlHelper.WriteAttribute(sw, "index", this.index);
             sw.Write("/>");
         }
 
@@ -1474,15 +1474,15 @@ namespace NPOI.OpenXmlFormats.Dml
 
 
         [XmlAttribute]
-        public uint idx
+        public uint index
         {
             get
             {
-                return this.idxField;
+                return this.indexField;
             }
             set
             {
-                this.idxField = value;
+                this.indexField = value;
             }
         }
     }

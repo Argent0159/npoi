@@ -404,7 +404,7 @@ namespace NPOI.XWPF.Model
          * This is the default Watermark paragraph; the only variable is the text message
          * TODO: manage all the other variables
          */
-        private XWPFParagraph GetWatermarkParagraph(string text, int idx)
+        private XWPFParagraph GetWatermarkParagraph(string text, int index)
         {
             CT_P p = new CT_P();
             byte[] rsidr = doc.Document.body.GetPArray(0).rsidR;
@@ -456,8 +456,8 @@ namespace NPOI.XWPF.Model
             NPOI.OpenXmlFormats.Vml.Office.CT_Lock lock1 = shapetype.AddNewLock();
             lock1.ext=(ST_Ext.edit);
             CT_Shape shape = group.AddNewShape();
-            shape.id = ("PowerPlusWaterMarkObject" + idx);
-            shape.spid = ("_x0000_s102" + (4 + idx));
+            shape.id = ("PowerPlusWaterMarkObject" + index);
+            shape.spid = ("_x0000_s102" + (4 + index));
             shape.type = ("#_x0000_t136");
             shape.style = ("position:absolute;margin-left:0;margin-top:0;width:415pt;height:207.5pt;z-index:-251654144;mso-wrap-edited:f;mso-position-horizontal:center;mso-position-horizontal-relative:margin;mso-position-vertical:center;mso-position-vertical-relative:margin");
             shape.wrapcoords = ("616 5068 390 16297 39 16921 -39 17155 7265 17545 7186 17467 -39 17467 18904 17467 10507 17467 8710 17545 18904 17077 18787 16843 18358 16297 18279 12554 19178 12476 20701 11774 20779 11228 21131 10059 21248 8811 21248 7563 20975 6316 20935 5380 19490 5146 14022 5068 2616 5068");

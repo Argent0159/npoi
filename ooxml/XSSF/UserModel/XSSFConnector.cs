@@ -76,18 +76,18 @@ namespace NPOI.XSSF.UserModel
                 NPOI.OpenXmlFormats.Dml.Spreadsheet.CT_ShapeStyle style = shape.AddNewStyle();
                 CT_SchemeColor scheme = style.AddNewLnRef().AddNewSchemeClr();
                 scheme.val = (ST_SchemeColorVal.accent1);
-                style.lnRef.idx = (1);
+                style.lnRef.Index = (1);
 
                 CT_StyleMatrixReference fillref = style.AddNewFillRef();
-                fillref.idx = (0);
+                fillref.Index = (0);
                 fillref.AddNewSchemeClr().val=(ST_SchemeColorVal.accent1);
 
                 CT_StyleMatrixReference effectRef = style.AddNewEffectRef();
-                effectRef.idx = (0);
+                effectRef.Index = (0);
                 effectRef.AddNewSchemeClr().val = (ST_SchemeColorVal.accent1);
 
                 CT_FontReference fontRef = style.AddNewFontRef();
-                fontRef.idx = (ST_FontCollectionIndex.minor);
+                fontRef.index = (ST_FontCollectionIndex.minor);
                 fontRef.AddNewSchemeClr().val = (ST_SchemeColorVal.tx1);
 
                 prototype = shape;

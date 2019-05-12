@@ -525,9 +525,9 @@ namespace NPOI.XSSF.Streaming
             return XssfWorkbook.FindFont(boldWeight, color, fontHeight, name, italic, strikeout, typeOffset, underline);
         }
 
-        public IFont GetFontAt(short idx)
+        public IFont GetFontAt(short index)
         {
-            return XssfWorkbook.GetFontAt(idx);
+            return XssfWorkbook.GetFontAt(index);
         }
 
         public ICellStyle CreateCellStyle()
@@ -535,9 +535,9 @@ namespace NPOI.XSSF.Streaming
             return XssfWorkbook.CreateCellStyle();
         }
 
-        public ICellStyle GetCellStyleAt(short idx)
+        public ICellStyle GetCellStyleAt(short index)
         {
-            return XssfWorkbook.GetCellStyleAt(idx);
+            return XssfWorkbook.GetCellStyleAt(index);
         }
 
         public void Write(Stream stream)

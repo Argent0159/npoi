@@ -108,19 +108,19 @@ namespace NPOI.HSSF.UserModel
             return cfAggregate.Header.CellRanges;
         }
         /// <summary>
-        /// Replaces an existing Conditional Formatting rule at position idx.
+        /// Replaces an existing Conditional Formatting rule at position index.
         /// Excel allows to Create up to 3 Conditional Formatting rules.
         /// This method can be useful to modify existing  Conditional Formatting rules.
         /// </summary>
-        /// <param name="idx">position of the rule. Should be between 0 and 2.</param>
+        /// <param name="index">position of the rule. Should be between 0 and 2.</param>
         /// <param name="cfRule">Conditional Formatting rule</param>
-        public void SetRule(int idx, HSSFConditionalFormattingRule cfRule)
+        public void SetRule(int index, HSSFConditionalFormattingRule cfRule)
         {
-            cfAggregate.SetRule(idx, cfRule.CfRuleRecord);
+            cfAggregate.SetRule(index, cfRule.CfRuleRecord);
         }
-        public void SetRule(int idx, IConditionalFormattingRule cfRule)
+        public void SetRule(int index, IConditionalFormattingRule cfRule)
         {
-            SetRule(idx, (HSSFConditionalFormattingRule)cfRule);
+            SetRule(index, (HSSFConditionalFormattingRule)cfRule);
         }
         /// <summary>
         /// Add a Conditional Formatting rule.
@@ -136,13 +136,13 @@ namespace NPOI.HSSF.UserModel
             AddRule((HSSFConditionalFormattingRule)cfRule);
         }
         /// <summary>
-        /// Gets the Conditional Formatting rule at position idx
+        /// Gets the Conditional Formatting rule at position index
         /// </summary>
-        /// <param name="idx">The index.</param>
+        /// <param name="index">The index.</param>
         /// <returns></returns>
-        public IConditionalFormattingRule GetRule(int idx)
+        public IConditionalFormattingRule GetRule(int index)
         {
-            CFRuleRecord ruleRecord = cfAggregate.GetRule(idx);
+            CFRuleRecord ruleRecord = cfAggregate.GetRule(index);
             return new HSSFConditionalFormattingRule(_workbook, ruleRecord);
         }
         /// <summary>

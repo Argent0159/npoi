@@ -57,7 +57,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Authors ctObj = new CT_Authors();
-            ctObj.author = new List<String>();
+            ctObj.author = new List<string>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "author")
@@ -73,7 +73,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}>", nodeName));
             if (this.author != null)
             {
-                foreach (String x in this.author)
+                foreach (string x in this.author)
                 {
                     sw.Write(string.Format("<author>{0}</author>", XmlHelper.EncodeXml(x)));
                 }

@@ -49,7 +49,7 @@ namespace NPOI.HSSF.UserModel
         /**
          * Returns the OLE2 Class Name of the object
          */
-        public String OLE2ClassName
+        public string OLE2ClassName
         {
             get
             {
@@ -69,7 +69,7 @@ namespace NPOI.HSSF.UserModel
             EmbeddedObjectRefSubRecord subRecord = FindObjectRecord();
 
             int? streamId = ((EmbeddedObjectRefSubRecord)subRecord).StreamId;
-            String streamName = "MBD" + HexDump.ToHex((int)streamId);
+            string streamName = "MBD" + HexDump.ToHex((int)streamId);
 
             Entry entry = _root.GetEntry(streamName);
             if (entry is DirectoryEntry)
@@ -116,7 +116,7 @@ namespace NPOI.HSSF.UserModel
 
             while (subRecordIter.MoveNext())
             {
-                Object subRecord = subRecordIter.Current;
+                object subRecord = subRecordIter.Current;
                 if (subRecord is EmbeddedObjectRefSubRecord)
                 {
                     return (EmbeddedObjectRefSubRecord)subRecord;

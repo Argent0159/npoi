@@ -68,16 +68,16 @@ using NPOI.HSSF.Record;
 
         private int _validationType;
         private int _operator;
-        private String[] _explicitListValues;
+        private string[] _explicitListValues;
 
-        private String _formula1;
-        private String _formula2;
-        private Double _value1;
-        private Double _value2;
+        private string _formula1;
+        private string _formula2;
+        private double _value1;
+        private double _value2;
 
 
-        private DVConstraint(int validationType, int comparisonOperator, String formulaA,
-                String formulaB, Double value1, Double value2, String[] excplicitListValues)
+        private DVConstraint(int validationType, int comparisonOperator, string formulaA,
+                string formulaB, double value1, double value2, string[] excplicitListValues)
         {
             _validationType = validationType;
             _operator = comparisonOperator;
@@ -92,9 +92,9 @@ using NPOI.HSSF.Record;
         /**
          * Creates a list constraint
          */
-        private DVConstraint(String listFormula, String[] excplicitListValues)
+        private DVConstraint(string listFormula, string[] excplicitListValues)
             : this(ValidationType.LIST, OperatorType.IGNORED,
-                listFormula, null, Double.NaN, Double.NaN, excplicitListValues)
+                listFormula, null, double.NaN, double.NaN, excplicitListValues)
         {
             ;
         }
@@ -113,7 +113,7 @@ using NPOI.HSSF.Record;
          * @param expr2 date formula (when first char is '=') or formatted number value
          */
         public static DVConstraint CreateNumericConstraint(int validationType, int comparisonOperator,
-                String expr1, String expr2)
+                string expr1, string expr2)
         {
             switch (validationType)
             {
@@ -137,19 +137,19 @@ using NPOI.HSSF.Record;
                             + validationType + ") not supported with this method");
             }
             // formula1 and value1 are mutually exclusive
-            String formula1 = GetFormulaFromTextExpression(expr1);
-            Double value1 = formula1 == null ? ConvertNumber(expr1) : double.NaN;
+            string formula1 = GetFormulaFromTextExpression(expr1);
+            double value1 = formula1 == null ? ConvertNumber(expr1) : double.NaN;
             // formula2 and value2 are mutually exclusive
-            String formula2 = GetFormulaFromTextExpression(expr2);
-            Double value2 = formula2 == null ? ConvertNumber(expr2) : double.NaN;
+            string formula2 = GetFormulaFromTextExpression(expr2);
+            double value2 = formula2 == null ? ConvertNumber(expr2) : double.NaN;
             return new DVConstraint(validationType, comparisonOperator, formula1, formula2, value1, value2, null);
         }
 
-        public static DVConstraint CreateFormulaListConstraint(String listFormula)
+        public static DVConstraint CreateFormulaListConstraint(string listFormula)
         {
             return new DVConstraint(listFormula, null);
         }
-        public static DVConstraint CreateExplicitListConstraint(String[] explicitListValues)
+        public static DVConstraint CreateExplicitListConstraint(string[] explicitListValues)
         {
             return new DVConstraint(null, explicitListValues);
         }
@@ -166,7 +166,7 @@ using NPOI.HSSF.Record;
          * @param expr1 date formula (when first char is '=') or formatted time value
          * @param expr2 date formula (when first char is '=') or formatted time value
          */
-        public static DVConstraint CreateTimeConstraint(int comparisonOperator, String expr1, String expr2)
+        public static DVConstraint CreateTimeConstraint(int comparisonOperator, string expr1, string expr2)
         {
             if (expr1 == null)
             {
@@ -175,11 +175,11 @@ using NPOI.HSSF.Record;
             OperatorType.ValidateSecondArg(comparisonOperator, expr1);
 
             // formula1 and value1 are mutually exclusive
-            String formula1 = GetFormulaFromTextExpression(expr1);
-            Double value1 = formula1 == null ? ConvertTime(expr1) : Double.NaN;
+            string formula1 = GetFormulaFromTextExpression(expr1);
+            double value1 = formula1 == null ? ConvertTime(expr1) : double.NaN;
             // formula2 and value2 are mutually exclusive
-            String formula2 = GetFormulaFromTextExpression(expr2);
-            Double value2 = formula2 == null ? ConvertTime(expr2) : Double.NaN;
+            string formula2 = GetFormulaFromTextExpression(expr2);
+            double value2 = formula2 == null ? ConvertTime(expr2) : double.NaN;
             return new DVConstraint(ValidationType.TIME, comparisonOperator, formula1, formula2, value1, value2, null);
         }
 
@@ -197,7 +197,7 @@ using NPOI.HSSF.Record;
          * otherwise any other valid argument for <c>SimpleDateFormat</c> can be used
          * @see <a href='http://java.sun.com/j2se/1.5.0/docs/api/java/text/DateFormat.html'>SimpleDateFormat</a>
          */
-        public static DVConstraint CreateDateConstraint(int comparisonOperator, String expr1, String expr2, String dateFormat)
+        public static DVConstraint CreateDateConstraint(int comparisonOperator, string expr1, string expr2, string dateFormat)
         {
             if (expr1 == null)
             {
@@ -207,11 +207,11 @@ using NPOI.HSSF.Record;
             SimpleDateFormat df = dateFormat == null ? null : new SimpleDateFormat(dateFormat);
 
             // formula1 and value1 are mutually exclusive
-            String formula1 = GetFormulaFromTextExpression(expr1);
-            Double value1 = formula1 == null ? ConvertDate(expr1, df) : Double.NaN;
+            string formula1 = GetFormulaFromTextExpression(expr1);
+            double value1 = formula1 == null ? ConvertDate(expr1, df) : double.NaN;
             // formula2 and value2 are mutually exclusive
-            String formula2 = GetFormulaFromTextExpression(expr2);
-            Double value2 = formula2 == null ? ConvertDate(expr2, df) : Double.NaN;
+            string formula2 = GetFormulaFromTextExpression(expr2);
+            double value2 = formula2 == null ? ConvertDate(expr2, df) : double.NaN;
             return new DVConstraint(ValidationType.DATE, comparisonOperator, formula1, formula2, value1, value2, null);
         }
 
@@ -226,7 +226,7 @@ using NPOI.HSSF.Record;
          * @param textExpr a formula or value expression
          * @return all text After '=' if textExpr begins with '='. Otherwise <code>null</code> if textExpr does not begin with '='
          */
-        private static String GetFormulaFromTextExpression(String textExpr)
+        private static string GetFormulaFromTextExpression(string textExpr)
         {
             if (textExpr == null)
             {
@@ -247,11 +247,11 @@ using NPOI.HSSF.Record;
         /**
          * @return <code>null</code> if numberStr is <code>null</code>
          */
-        private static Double ConvertNumber(String numberStr)
+        private static double ConvertNumber(string numberStr)
         {
             if (numberStr == null)
             {
-                return Double.NaN;
+                return double.NaN;
             }
             try
             {
@@ -267,11 +267,11 @@ using NPOI.HSSF.Record;
         /**
          * @return <code>null</code> if timeStr is <code>null</code>
          */
-        private static Double ConvertTime(String timeStr)
+        private static double ConvertTime(string timeStr)
         {
             if (timeStr == null)
             {
-                return Double.NaN;
+                return double.NaN;
             }
             return HSSFDateUtil.ConvertTime(timeStr);
         }
@@ -279,11 +279,11 @@ using NPOI.HSSF.Record;
          * @param dateFormat pass <code>null</code> for default YYYYMMDD
          * @return <code>null</code> if timeStr is <code>null</code>
          */
-        private static Double ConvertDate(String dateStr, SimpleDateFormat dateFormat)
+        private static double ConvertDate(string dateStr, SimpleDateFormat dateFormat)
         {
             if (dateStr == null)
             {
-                return Double.NaN;
+                return double.NaN;
             }
             DateTime dateVal;
             if (dateFormat == null)
@@ -305,7 +305,7 @@ using NPOI.HSSF.Record;
             return HSSFDateUtil.GetExcelDate(dateVal);
         }
 
-        public static DVConstraint CreateCustomFormulaConstraint(String formula)
+        public static DVConstraint CreateCustomFormulaConstraint(string formula)
         {
             if (formula == null)
             {
@@ -357,7 +357,7 @@ using NPOI.HSSF.Record;
         }
 
 
-        public String[] ExplicitListValues
+        public string[] ExplicitListValues
         {
             get
             {
@@ -376,7 +376,7 @@ using NPOI.HSSF.Record;
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidationConstraint#getFormula1()
          */
-        public String Formula1
+        public string Formula1
         {
             get
             {
@@ -393,7 +393,7 @@ using NPOI.HSSF.Record;
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidationConstraint#getFormula2()
          */
-        public String Formula2
+        public string Formula2
         {
             get
             {
@@ -410,7 +410,7 @@ using NPOI.HSSF.Record;
         /**
         * @return the numeric value for expression 1. May be <c>null</c>
         */
-        public Double Value1
+        public double Value1
         {
             get
             {
@@ -427,7 +427,7 @@ using NPOI.HSSF.Record;
         /**
          * @return the numeric value for expression 2. May be <c>null</c>
          */
-        public Double Value2
+        public double Value2
         {
             get
             {
@@ -490,7 +490,7 @@ using NPOI.HSSF.Record;
          * @return The Parsed token array representing the formula or value specified. 
          * Empty array if both formula and value are <code>null</code>
          */
-        private static Ptg[] ConvertDoubleFormula(String formula, Double value, HSSFSheet sheet)
+        private static Ptg[] ConvertDoubleFormula(string formula, double value, HSSFSheet sheet)
         {
             if (formula == null)
             {
@@ -526,7 +526,7 @@ using NPOI.HSSF.Record;
                 case ValidationType.LIST:
                     if (dvRecord.ListExplicitFormula)
                     {
-                        String values = toFormulaString(dvRecord.Formula1, book).AsString();
+                        string values = toFormulaString(dvRecord.Formula1, book).AsString();
                         if (values.StartsWith("\""))
                         {
                             values = values.Substring(1);
@@ -535,12 +535,12 @@ using NPOI.HSSF.Record;
                         {
                             values = values.Substring(0, values.Length - 1);
                         }
-                        String[] explicitListValues = values.Split("\0".ToCharArray());
+                        string[] explicitListValues = values.Split("\0".ToCharArray());
                         return CreateExplicitListConstraint(explicitListValues);
                     }
                     else
                     {
-                        String listFormula = toFormulaString(dvRecord.Formula1, book).AsString();
+                        string listFormula = toFormulaString(dvRecord.Formula1, book).AsString();
                         return CreateFormulaListConstraint(listFormula);
                     }
                 case ValidationType.FORMULA:
@@ -552,15 +552,15 @@ using NPOI.HSSF.Record;
 
         private class FormulaValuePair
         {
-            internal String _formula;
-            internal String _value;
+            internal string _formula;
+            internal string _value;
 
-            public String formula()
+            public string formula()
             {
                 return _formula;
             }
 
-            public Double Value
+            public double Value
             {
                 get
                 {
@@ -572,7 +572,7 @@ using NPOI.HSSF.Record;
                 }
             }
 
-            public String AsString()
+            public string AsString()
             {
                 if (_formula != null)
                 {
@@ -591,7 +591,7 @@ using NPOI.HSSF.Record;
             FormulaValuePair pair = new FormulaValuePair();
             if (ptgs != null && ptgs.Length > 0)
             {
-                String aString = FormulaRenderer.ToFormulaString(book, ptgs);
+                string aString = FormulaRenderer.ToFormulaString(book, ptgs);
                 if (ptgs.Length == 1 && ptgs[0].GetType() == typeof(NumberPtg))
                 {
                     pair._value = aString;

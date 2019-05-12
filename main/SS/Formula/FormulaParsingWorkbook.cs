@@ -38,7 +38,7 @@ namespace NPOI.SS.Formula
         /// <param name="name">The name.</param>
         /// <param name="sheetIndex">Index of the sheet.</param>
         /// <returns></returns>        
-        IEvaluationName GetName(String name, int sheetIndex);
+        IEvaluationName GetName(string name, int sheetIndex);
 
         /// <summary>
         /// Gets the name XPTG.
@@ -46,7 +46,7 @@ namespace NPOI.SS.Formula
         /// <param name="name">The name.</param>
         /// <param name="sheet"></param>
         /// <returns></returns>
-        Ptg GetNameXPtg(String name, SheetIdentifier sheet);
+        Ptg GetNameXPtg(string name, SheetIdentifier sheet);
 
         /// <summary>
         /// Produce the appropriate Ptg for a 3d cell reference
@@ -69,14 +69,14 @@ namespace NPOI.SS.Formula
         /// </summary>
         /// <param name="sheetName">Name of the sheet.</param>
         /// <returns></returns>
-        int GetExternalSheetIndex(String sheetName);
+        int GetExternalSheetIndex(string sheetName);
         /// <summary>
         /// Gets the externSheet index for a sheet from an external workbook
         /// </summary>
         /// <param name="workbookName">Name of the workbook, e.g. "BudGet.xls"</param>
         /// <param name="sheetName">a name of a sheet in that workbook</param>
         /// <returns></returns>
-        int GetExternalSheetIndex(String workbookName, String sheetName);
+        int GetExternalSheetIndex(string workbookName, string sheetName);
 
         /// <summary>
         /// Returns an enum holding spReadhseet properties specific to an Excel version (

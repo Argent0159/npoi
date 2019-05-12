@@ -115,9 +115,9 @@ namespace NPOI.HSSF.Record
          * print a sort of string representation ([UNKNOWN RECORD] id = x [/UNKNOWN RECORD])
          */
 
-        public override String ToString()
+        public override string ToString()
         {
-            String biffName = GetBiffName(_sid);
+            string biffName = GetBiffName(_sid);
             if (biffName == null)
             {
                 biffName = "UNKNOWNRECORD";
@@ -140,7 +140,7 @@ namespace NPOI.HSSF.Record
  *
  * @return the documented name of this BIFF record type, <code>null</code> if unknown to POI
  */
-        public static String GetBiffName(int sid)
+        public static string GetBiffName(int sid)
         {
             // Note to POI developers:
             // Make sure you delete the corresponding entry from
@@ -311,7 +311,7 @@ namespace NPOI.HSSF.Record
 
 
         /** Unlike the other Record.Clone methods this Is a shallow Clone*/
-        public override Object Clone()
+        public override object Clone()
         {
             //UnknownRecord rec = new UnknownRecord();
             //rec._sid= _sid;

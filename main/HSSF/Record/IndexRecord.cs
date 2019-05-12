@@ -127,7 +127,7 @@ namespace NPOI.HSSF.Record
             return field_5_dbcells.Get(cellnum);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -175,7 +175,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             IndexRecord rec = new IndexRecord();
             rec.field_1_zero = field_1_zero;

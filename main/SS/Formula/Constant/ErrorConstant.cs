@@ -58,7 +58,7 @@ namespace NPOI.SS.Formula.Constant
         /// Gets the text.
         /// </summary>
         /// <value>The text.</value>
-        public String Text {
+        public string Text {
             get
             {
                 if (HSSFErrorConstants.IsValidCode(_errorCode))
@@ -112,7 +112,7 @@ namespace NPOI.SS.Formula.Constant
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString() {
+        public override string ToString() {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
             sb.Append(Text);

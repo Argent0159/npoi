@@ -190,7 +190,7 @@ namespace NPOI.SS.Util
             }
         }
 
-        public String ReferenceText
+        public string ReferenceText
         {
             get
             {

@@ -37,7 +37,7 @@ namespace NPOI.XSSF.Streaming
     }
 
 
-    public Object getIdentityKey()
+    public object getIdentityKey()
     {
         // save memory by just using the cell itself as the identity key
         // Note - this assumes SXSSFCell has not overridden hashCode and equals
@@ -101,7 +101,7 @@ namespace NPOI.XSSF.Streaming
         return _evalSheet;
     }
     
-    public String getStringCellValue()
+    public string getStringCellValue()
     {
         return _cell.RichStringCellValue.String;
     }

@@ -49,7 +49,7 @@ namespace NPOI.SS.Formula.PTG
         }
 
         /** implementation of method from OperationsPtg*/
-        public override String ToFormulaString(String[] operands)
+        public override string ToFormulaString(string[] operands)
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append(MINUS);

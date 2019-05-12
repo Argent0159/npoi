@@ -124,7 +124,7 @@ namespace NPOI.HSSF.Record
         }
         
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder retval = new StringBuilder();
 
@@ -148,7 +148,7 @@ namespace NPOI.HSSF.Record
             return retval.ToString();
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             int nRegions = _numberOfRegions;
             CellRangeAddress[] clonedRegions = new CellRangeAddress[nRegions];

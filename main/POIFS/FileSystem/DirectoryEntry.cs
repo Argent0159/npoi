@@ -62,7 +62,7 @@ namespace NPOI.POIFS.FileSystem
         /// <value>the names of all the entries that may be retrieved with
         /// getEntry(String), which may be empty (if this DirectoryEntry is empty
         /// </value>
-        List<String> EntryNames { get; }
+        List<string> EntryNames { get; }
 
         /// <summary>
         ///is this DirectoryEntry empty?
@@ -84,7 +84,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="name">the name of the Entry to obtain.</param>
         /// <returns>the specified Entry, if it is directly contained in
         /// this DirectoryEntry</returns>
-        Entry GetEntry(String name);
+        Entry GetEntry(string name);
 
         /// <summary>
         /// Create a new DocumentEntry
@@ -92,7 +92,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="name">the name of the new DocumentEntry</param>
         /// <param name="stream">the Stream from which to Create the new DocumentEntry</param>
         /// <returns>the new DocumentEntry</returns>
-        DocumentEntry CreateDocument(String name,
+        DocumentEntry CreateDocument(string name,
                                             Stream stream);
         // <summary>
         // Create a new DocumentEntry; the data will be provided later
@@ -116,7 +116,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="name">the name of the new DirectoryEntry</param>
         /// <returns>the name of the new DirectoryEntry</returns>
-        DirectoryEntry CreateDirectory(String name);
+        DirectoryEntry CreateDirectory(string name);
 
         /// <summary>
         /// Gets or sets the storage ClassID.
@@ -129,6 +129,6 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="name">entry name</param>
         /// <returns>true if have</returns>
-        bool HasEntry(String name );
+        bool HasEntry(string name );
     }
 }

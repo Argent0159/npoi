@@ -38,7 +38,7 @@ namespace NPOI.POIFS.FileSystem
     [Serializable]
     public class OfficeXmlFileException:ArgumentException
     {
-        public OfficeXmlFileException(String s):base(s)
+        public OfficeXmlFileException(string s):base(s)
         { 
         
         }

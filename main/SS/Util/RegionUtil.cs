@@ -41,11 +41,11 @@ namespace NPOI.SS.Util
         {
 
             private IWorkbook _workbook;
-            private String _propertyName;
+            private string _propertyName;
             private short _propertyValue;
 
 
-            public CellPropertySetter(IWorkbook workbook, String propertyName, int value)
+            public CellPropertySetter(IWorkbook workbook, string propertyName, int value)
             {
                 _workbook = workbook;
                 _propertyName = propertyName;

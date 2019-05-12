@@ -27,13 +27,13 @@ namespace NPOI.SS.UserModel
          * @param format string matching a built in format
          * @return index of format.
          */
-        short GetFormat(String format);
+        short GetFormat(string format);
 
         /**
          * get the format string that matches the given format index
          * @param index of a format
          * @return string represented at index of format or null if there is not a  format at that index
          */
-        String GetFormat(short index);
+        string GetFormat(short index);
     }
 }

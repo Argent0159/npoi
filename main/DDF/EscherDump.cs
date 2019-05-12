@@ -72,7 +72,7 @@ namespace NPOI.DDF
             int recordBytesRemaining;       // including enclosing records
             StringBuilder stringBuf = new StringBuilder();
             short nDumpSize;
-            String recordName;
+            string recordName;
 
             bool atEOF = false;
 
@@ -426,14 +426,14 @@ namespace NPOI.DDF
 
         private class PropName
         {
-            public PropName(int id, String name)
+            public PropName(int id, string name)
             {
                 this.id = id;
                 this.name = name;
             }
 
             public int id;
-            public String name;
+            public string name;
         }
         /// <summary>
         /// Returns a property name given a property id.  This is used only by the
@@ -441,7 +441,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="propertyId">The property number for the name</param>
         /// <returns>A descriptive name.</returns>
-        private String PropertyName(short propertyId)
+        private string PropertyName(short propertyId)
         {
 
 
@@ -738,7 +738,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="b">blip id</param>
         /// <returns> A description.</returns>
-        private String GetBlipType(byte b)
+        private string GetBlipType(byte b)
         {
             switch (b)
             {
@@ -771,9 +771,9 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="n32">The N32.</param>
         /// <returns></returns>
-        private String Dec1616(int n32)
+        private string Dec1616(int n32)
         {
-            String result = "";
+            string result = "";
             result += (short)(n32 >> 16);
             result += '.';
             result += (short)(n32 & unchecked((short)0xFFFF));

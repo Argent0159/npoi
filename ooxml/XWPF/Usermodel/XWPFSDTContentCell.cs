@@ -40,7 +40,7 @@ namespace NPOI.XWPF.UserModel
 
         //private List<ICell> cells = new List<ICell>().
 
-        private String text = "";
+        private string text = "";
 
         public XWPFSDTContentCell(CT_SdtContentCell sdtContentCell,
                                   XWPFTableRow xwpfTableRow, IBody part)
@@ -140,7 +140,7 @@ namespace NPOI.XWPF.UserModel
             //}
             text = sb.ToString();
         }
-        private bool IsStartToken(XmlReader cursor, String string1)
+        private bool IsStartToken(XmlReader cursor, string string1)
         {
             if (!cursor.IsStartElement())
             {
@@ -154,7 +154,7 @@ namespace NPOI.XWPF.UserModel
             return false;
         }
 
-        private bool IsStartToken(object cursor, String string1)
+        private bool IsStartToken(object cursor, string string1)
         {
             throw new NotImplementedException();
             //if (!cursor.IsStart())

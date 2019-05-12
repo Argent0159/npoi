@@ -53,7 +53,7 @@ namespace NPOI.HSSF.Record.PivotTable
         private int grbitSub;
         private int cItm;
 
-        private String _name = null;
+        private string _name = null;
 
         public ViewFieldsRecord(RecordInputStream in1)
         {

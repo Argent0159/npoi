@@ -91,7 +91,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public abstract Object Clone();
+        public abstract object Clone();
     }
 
      public class UnknownSubRecord : SubRecord
@@ -127,11 +127,11 @@ namespace NPOI.HSSF.Record
              out1.WriteShort(_data.Length);
              out1.Write(_data);
          }
-         public override Object Clone()
+         public override object Clone()
          {
              return this;
          }
-         public override String ToString()
+         public override string ToString()
          {
              StringBuilder sb = new StringBuilder(64);
              sb.Append(GetType().Name).Append(" [");

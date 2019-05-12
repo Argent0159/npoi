@@ -100,7 +100,7 @@ namespace NPOI.HSSF.UserModel
             Hashtable coordinates = new Hashtable(tailRecords.Count);
             foreach (NoteRecord rec in tailRecords.Values)
             {
-                String noteRef = new CellReference(rec.Row, rec.Column).FormatAsString(); // A1-style notation
+                string noteRef = new CellReference(rec.Row, rec.Column).FormatAsString(); // A1-style notation
                 if (coordinates.Contains(noteRef))
                 {
                     throw new InvalidOperationException("found multiple cell comments for cell " + noteRef);
@@ -258,7 +258,7 @@ namespace NPOI.HSSF.UserModel
             obj.AddSubRecord(ftPictFmla);
             obj.AddSubRecord(new EndSubRecord());
 
-            String entryName = "MBD" + HexDump.ToHex(storageId);
+            string entryName = "MBD" + HexDump.ToHex(storageId);
             DirectoryEntry oleRoot;
             try
             {
@@ -476,7 +476,7 @@ namespace NPOI.HSSF.UserModel
                 if (prop.PropertyNumber == 896 && prop.IsComplex)
                 {
                     EscherComplexProperty cp = (EscherComplexProperty)prop;
-                    String str = StringUtil.GetFromUnicodeLE(cp.ComplexData);
+                    string str = StringUtil.GetFromUnicodeLE(cp.ComplexData);
                     //Console.Error.WriteLine(str);
                     if (str.Equals("Chart 1\0"))
                     {

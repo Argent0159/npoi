@@ -35,7 +35,7 @@ namespace NPOI.SS.Formula.PTG
          *  @see #GetNumberOfOperands
          *  
          */
-        public abstract String ToFormulaString(String[] operands);
+        public abstract string ToFormulaString(string[] operands);
 
         /**
          * The number of operands expected by the operations

@@ -41,7 +41,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Always . You cannot change text of a line break.
          */
-        public void SetText(String text)
+        public void SetText(string text)
         {
             throw new InvalidOperationException("You cannot change text of a line break, it is always '\\n'");
         }

@@ -31,14 +31,14 @@ namespace NPOI.SS.UserModel
          *
          * @return sheet name, which this named range refered to
          */
-        String SheetName { get; }
+        string SheetName { get; }
 
         /**
          * Gets the name of the named range
          *
          * @return named range name
          */
-        String NameName { get; set; }
+        string NameName { get; set; }
 
 
         /**
@@ -47,7 +47,7 @@ namespace NPOI.SS.UserModel
          * @return the reference for this name, <code>null</code> if it has not been set yet. Never empty string
          * @see #SetRefersToFormula(String)
          */
-        String RefersToFormula { get; set; }
+        string RefersToFormula { get; set; }
 
         /**
          * Checks if this name is a function name
@@ -75,7 +75,7 @@ namespace NPOI.SS.UserModel
          *
          * @return the user comment for this named range
          */
-        String Comment { get; set; }
+        string Comment { get; set; }
         /**
          * Indicates that the defined name refers to a user-defined function.
          * This attribute is used when there is an add-in or other code project associated with the file.

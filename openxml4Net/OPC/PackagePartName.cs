@@ -30,18 +30,18 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Reserved characters for sub delimitations.
          */
-        private static String[] RFC3986_PCHAR_SUB_DELIMS = { "!", "$", "&", "'",
+        private static string[] RFC3986_PCHAR_SUB_DELIMS = { "!", "$", "&", "'",
             "(", ")", "*", "+", ",", ";", "=" };
 
         /**
          * Unreserved character (+ ALPHA & DIGIT).
          */
-        private static String[] RFC3986_PCHAR_UNRESERVED_SUP = { "-", ".", "_", "~" };
+        private static string[] RFC3986_PCHAR_UNRESERVED_SUP = { "-", ".", "_", "~" };
 
         /**
          * Authorized reserved characters for pChar.
          */
-        private static String[] RFC3986_PCHAR_AUTHORIZED_SUP = { ":", "@" };
+        private static string[] RFC3986_PCHAR_AUTHORIZED_SUP = { ":", "@" };
 
         /**
          * Flag to know if this part name is from a relationship part name.
@@ -95,7 +95,7 @@ namespace NPOI.OpenXml4Net.OPC
          *             Throw if the specified part name is not conform to Open
          *             Packaging Convention specifications.
          */
-        internal PackagePartName(String partName, bool checkConformance)
+        internal PackagePartName(string partName, bool checkConformance)
         {
             Uri partURI;
             try
@@ -197,7 +197,7 @@ namespace NPOI.OpenXml4Net.OPC
             if (partURI == null)
                 throw new ArgumentException("partURI");
 
-            String uriPath = partURI.OriginalString;
+            string uriPath = partURI.OriginalString;
             if (uriPath.Length == 0
                     || ((uriPath.Length == 1) && (uriPath[0] == PackagingUriHelper.FORWARD_SLASH_CHAR)))
                 throw new InvalidFormatException(
@@ -238,7 +238,7 @@ namespace NPOI.OpenXml4Net.OPC
             }
 
             // Split the URI into several part and analyze each
-            String[] segments = partUri.OriginalString.Split('/');
+            string[] segments = partUri.OriginalString.Split('/');
             if (segments.Length <= 1 || !segments[0].Equals(""))
                 throw new InvalidFormatException(
                         "A part name shall not have empty segments [M1.3]: "
@@ -246,7 +246,7 @@ namespace NPOI.OpenXml4Net.OPC
 
             for (int i = 1; i < segments.Length; ++i)
             {
-                String seg = segments[i];
+                string seg = segments[i];
                 if (seg == null || "".Equals(seg))
                 {
                     throw new InvalidFormatException(
@@ -288,7 +288,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @param segment
          *            The segment to check
          */
-        private static void CheckPCharCompliance(String segment)
+        private static void CheckPCharCompliance(string segment)
         {
             bool errorFlag;
             for (int i = 0; i < segment.Length; ++i)
@@ -403,7 +403,7 @@ namespace NPOI.OpenXml4Net.OPC
         private static void ThrowExceptionIfPartNameNotStartsWithForwardSlashChar(
                 Uri partUri)
         {
-            String uriPath = partUri.OriginalString;
+            string uriPath = partUri.OriginalString;
             if (uriPath.Length > 0
                     && uriPath[0] != PackagingUriHelper.FORWARD_SLASH_CHAR)
                 throw new InvalidFormatException(
@@ -424,7 +424,7 @@ namespace NPOI.OpenXml4Net.OPC
         private static void ThrowExceptionIfPartNameEndsWithForwardSlashChar(
                 Uri partUri)
         {
-            String uriPath = partUri.OriginalString;
+            string uriPath = partUri.OriginalString;
             if (uriPath.Length > 0
                     && uriPath[uriPath.Length - 1] == PackagingUriHelper.FORWARD_SLASH_CHAR)
                 throw new InvalidFormatException(
@@ -467,11 +467,11 @@ namespace NPOI.OpenXml4Net.OPC
          *
          * @return The extension of the part name.
          */
-        public String Extension
+        public string Extension
         {
             get
             {
-                String fragment = this.partNameURI.OriginalString;
+                string fragment = this.partNameURI.OriginalString;
                 if (fragment.Length > 0)
                 {
                     int i = fragment.LastIndexOf(".");
@@ -487,7 +487,7 @@ namespace NPOI.OpenXml4Net.OPC
          *
          * @return The name of this part name.
          */
-        public String Name
+        public string Name
         {
             get
             {
@@ -502,7 +502,7 @@ namespace NPOI.OpenXml4Net.OPC
          * packages with equivalent part names. [M1.12]
          */
 
-        public override bool Equals(Object other)
+        public override bool Equals(object other)
         {
             if (other is PackagePartName)
             {
@@ -525,7 +525,7 @@ namespace NPOI.OpenXml4Net.OPC
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return this.Name;
         }
@@ -593,7 +593,7 @@ namespace NPOI.OpenXml4Net.OPC
          * numerical portion), but sorts "File10.png" before "file2.png"
          * (lexigraphical sort)
          */
-        public static int Compare(String str1, String str2)
+        public static int Compare(string str1, string str2)
         {
             if (str1 == null)
             {

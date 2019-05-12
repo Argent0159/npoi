@@ -101,8 +101,8 @@ namespace NPOI.SS.UserModel
          */
         IConditionalFormattingRule CreateConditionalFormattingRule(
                 ComparisonOperator comparisonOperation,
-                String formula1,
-                String formula2);
+                string formula1,
+                string formula2);
 
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace NPOI.SS.UserModel
         /// <returns>a conditional formatting rule</returns>
         IConditionalFormattingRule CreateConditionalFormattingRule(
                 ComparisonOperator comparisonOperation,
-                String formula);
+                string formula);
 
         /// <summary>
         /// Create a conditional formatting rule based on a Boolean formula.
@@ -121,7 +121,7 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="formula">the formula to Evaluate. MUST be a Boolean function.</param>
         /// <returns>conditional formatting rule</returns>
-        IConditionalFormattingRule CreateConditionalFormattingRule(String formula);
+        IConditionalFormattingRule CreateConditionalFormattingRule(string formula);
 
         /// <summary>
         /// Gets Conditional Formatting object at a particular index

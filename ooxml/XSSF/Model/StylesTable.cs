@@ -38,7 +38,7 @@ namespace NPOI.XSSF.Model
      */
     public class StylesTable : POIXMLDocumentPart
     {
-        private Dictionary<int, String> numberFormats = new Dictionary<int, String>();
+        private Dictionary<int, string> numberFormats = new Dictionary<int, string>();
         private bool[] usedNumberFormats = new bool[SpreadsheetVersion.EXCEL2007.MaxCellStyles];
         private List<XSSFFont> fonts = new List<XSSFFont>();
         private List<XSSFCellFill> fills = new List<XSSFCellFill>();
@@ -179,7 +179,7 @@ namespace NPOI.XSSF.Model
         //  Start of style related Getters and Setters
         // ===========================================================
 
-        public String GetNumberFormatAt(int idx)
+        public string GetNumberFormatAt(int idx)
         {
             if (numberFormats.ContainsKey(idx))
                 return numberFormats[idx];
@@ -187,7 +187,7 @@ namespace NPOI.XSSF.Model
                 return null;
         }
 
-        public int PutNumberFormat(String fmt)
+        public int PutNumberFormat(string fmt)
         {
             if (numberFormats.ContainsValue(fmt))
             {
@@ -314,7 +314,7 @@ namespace NPOI.XSSF.Model
             return fonts;
         }
 
-        public Dictionary<int, String> GetNumberFormats()
+        public Dictionary<int, string> GetNumberFormats()
         {
             return numberFormats;
         }
@@ -651,7 +651,7 @@ namespace NPOI.XSSF.Model
         /**
          * Finds a font that matches the one with the supplied attributes
          */
-        public XSSFFont FindFont(short boldWeight, short color, short fontHeight, String name, bool italic, bool strikeout, FontSuperScript typeOffset,FontUnderlineType underline)
+        public XSSFFont FindFont(short boldWeight, short color, short fontHeight, string name, bool italic, bool strikeout, FontSuperScript typeOffset,FontUnderlineType underline)
         {
             foreach (XSSFFont font in fonts)
             {

@@ -83,7 +83,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             CellValueRecordInterface loc = (CellValueRecordInterface)obj;
 
@@ -111,10 +111,10 @@ namespace NPOI.HSSF.Record
             return -1;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            String recordName = RecordName;
+            string recordName = RecordName;
 
             sb.Append("[").Append(recordName).Append("]\n");
             sb.Append("    .row    = ").Append(HexDump.ShortToHex(Row)).Append("\n");
@@ -136,7 +136,7 @@ namespace NPOI.HSSF.Record
         /**
          * Gets the debug info BIFF record type name (used by {@link #toString()}.
          */
-        protected abstract String RecordName { get; }
+        protected abstract string RecordName { get; }
 
         /**
          * writes out the value data for this cell record

@@ -24,44 +24,44 @@ namespace NPOI.XSSF.UserModel.Helpers
     {
         // Note - XmlBeans handles entity encoding for us,
         //  so these should be & forms, not the &amp; ones!
-        private static String HeaderFooterEntity_L = "&L";
-        private static String HeaderFooterEntity_C = "&C";
-        private static String HeaderFooterEntity_R = "&R";
+        private static string HeaderFooterEntity_L = "&L";
+        private static string HeaderFooterEntity_C = "&C";
+        private static string HeaderFooterEntity_R = "&R";
 
         // These are other entities that may be used in the
         //  left, center or right. Not exhaustive
-        public static String HeaderFooterEntity_File = "&F";
-        public static String HeaderFooterEntity_Date = "&D";
-        public static String HeaderFooterEntity_Time = "&T";
+        public static string HeaderFooterEntity_File = "&F";
+        public static string HeaderFooterEntity_Date = "&D";
+        public static string HeaderFooterEntity_Time = "&T";
 
-        public String GetLeftSection(String str)
+        public string GetLeftSection(string str)
         {
             return GetParts(str)[0];
         }
-        public String GetCenterSection(String str)
+        public string GetCenterSection(string str)
         {
             return GetParts(str)[1];
         }
-        public String GetRightSection(String str)
+        public string GetRightSection(string str)
         {
             return GetParts(str)[2];
         }
 
-        public String SetLeftSection(String str, String newLeft)
+        public string SetLeftSection(string str, string newLeft)
         {
-            String[] parts = GetParts(str);
+            string[] parts = GetParts(str);
             parts[0] = newLeft;
             return JoinParts(parts);
         }
-        public String SetCenterSection(String str, String newCenter)
+        public string SetCenterSection(string str, string newCenter)
         {
-            String[] parts = GetParts(str);
+            string[] parts = GetParts(str);
             parts[1] = newCenter;
             return JoinParts(parts);
         }
-        public String SetRightSection(String str, String newRight)
+        public string SetRightSection(string str, string newRight)
         {
-            String[] parts = GetParts(str);
+            string[] parts = GetParts(str);
             parts[2] = newRight;
             return JoinParts(parts);
         }
@@ -69,9 +69,9 @@ namespace NPOI.XSSF.UserModel.Helpers
         /**
          * Split into left, center, right
          */
-        private String[] GetParts(String str)
+        private string[] GetParts(string str)
         {
-            String[] parts = new String[] { "", "", "" };
+            string[] parts = new string[] { "", "", "" };
             if (str == null)
                 return parts;
 
@@ -110,11 +110,11 @@ namespace NPOI.XSSF.UserModel.Helpers
 
             return parts;
         }
-        private String JoinParts(String[] parts)
+        private string JoinParts(string[] parts)
         {
             return JoinParts(parts[0], parts[1], parts[2]);
         }
-        private String JoinParts(String l, String c, String r)
+        private string JoinParts(string l, string c, string r)
         {
             StringBuilder ret = new StringBuilder();
 

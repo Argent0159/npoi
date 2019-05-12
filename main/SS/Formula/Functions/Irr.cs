@@ -131,7 +131,7 @@ namespace NPOI.SS.Formula.Functions
                 ++i;
             }
             // maximum number of iterations is exceeded
-            return Double.NaN;
+            return double.NaN;
         }
     }
 }

@@ -136,7 +136,7 @@ namespace NPOI.HSSF.Record
             set { field_6_refs = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -183,7 +183,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             SelectionRecord rec = new SelectionRecord(field_2_row_active_cell, field_3_col_active_cell);
             rec.field_1_pane = field_1_pane;

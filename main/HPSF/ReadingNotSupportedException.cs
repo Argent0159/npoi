@@ -48,7 +48,7 @@ namespace NPOI.HPSF
         /// <param name="variantType">The unsupported variant type</param>
         /// <param name="value">The value who's variant type is not yet supported</param>
         public ReadingNotSupportedException(long variantType,
-                                            Object value):base(variantType, value)
+                                            object value):base(variantType, value)
         {
             
         }

@@ -35,18 +35,18 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
          * Type in Type/Subtype.
          */
-        private String type;
+        private string type;
 
         /**
          * Subtype
          */
-        private String subType;
+        private string subType;
 
         /**
          * Parameters
          */
         Hashtable p;
-        private Dictionary<String, String> parameters;
+        private Dictionary<string, string> parameters;
 
         /**
          * Media type compiled pattern for parameters.
@@ -84,7 +84,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
              *
              * value = token | quoted-string
              */
-            String parameter = "(" + token + "+)=(\"?" + token + "+\"?)";
+            string parameter = "(" + token + "+)=(\"?" + token + "+\"?)";
             /*
              * Pattern for media type.
              *
@@ -124,7 +124,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * @throws InvalidFormatException
          *             If the specified content type is not valid with RFC 2616.
          */
-        public ContentType(String contentType)
+        public ContentType(string contentType)
         {
             Match mMediaType = patternTypeSubType.Match(contentType);
             if (!mMediaType.Success)
@@ -143,7 +143,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
                 this.type = mMediaType.Groups[1].Value;
                 this.subType = mMediaType.Groups[2].Value;
                 // Parameters
-                this.parameters = new Dictionary<String, String>();
+                this.parameters = new Dictionary<string, string>();
                 // Java RegExps are unhelpful, and won't do multiple group captures
                 // See http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#cg
                 if (mMediaType.Groups.Count >= 5)
@@ -157,11 +157,11 @@ namespace NPOI.OpenXml4Net.OPC.Internal
                 }
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             return ToString(true);
         }
-        public String ToString(bool withParameters)
+        public string ToString(bool withParameters)
         {
             StringBuilder retVal = new StringBuilder();
             retVal.Append(this.Type);
@@ -169,7 +169,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
             retVal.Append(this.SubType);
             if (withParameters)
             {
-                foreach (String key in parameters.Keys)
+                foreach (string key in parameters.Keys)
                 {
                     retVal.Append(";");
                     retVal.Append(key);
@@ -179,12 +179,12 @@ namespace NPOI.OpenXml4Net.OPC.Internal
             }
             return retVal.ToString();
         }
-        public String ToStringWithParameters()
+        public string ToStringWithParameters()
         {
             StringBuilder retVal = new StringBuilder();
             retVal.Append(ToString());
 
-            foreach (String key in parameters.Keys)
+            foreach (string key in parameters.Keys)
             {
                 retVal.Append(";");
                 retVal.Append(key);
@@ -195,7 +195,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         }
 
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             return (!(obj is ContentType))
                     || (this.ToString().Equals(obj.ToString(), StringComparison.InvariantCultureIgnoreCase));
@@ -216,7 +216,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *
          * @return The subtype of this content type.
          */
-        public String SubType
+        public string SubType
         {
             get
             {
@@ -229,7 +229,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *
          * @return The type of this content type.
          */
-        public String Type
+        public string Type
         {
             get
             {
@@ -248,10 +248,10 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
          * Return the parameter keys
          */
-        public String[] GetParameterKeys()
+        public string[] GetParameterKeys()
         {
             if (parameters == null)
-                return new String[0];
+                return new string[0];
             List<string> keys = new List<string>();
             keys.AddRange(parameters.Keys);
             return keys.ToArray();
@@ -264,7 +264,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            The key of the key/value pair.
          * @return The value associated to the specified key.
          */
-        public String GetParameter(String key)
+        public string GetParameter(string key)
         {
             return parameters[key];
         }
@@ -272,7 +272,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
      * @deprecated Use {@link #getParameter(String)} instead
      */
-        public String GetParameters(String key)
+        public string GetParameters(string key)
         {
             return GetParameter(key);
         }

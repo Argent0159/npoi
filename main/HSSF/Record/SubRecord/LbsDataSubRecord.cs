@@ -27,7 +27,7 @@ namespace NPOI.HSSF.Record
          */
         private int _unknownPreFormulaInt;
         private Ptg _linkPtg;
-        private Byte? _unknownPostFormulaByte;
+        private byte? _unknownPostFormulaByte;
 
         /**
          * An unsigned integer that specifies the number of items in the list.
@@ -61,7 +61,7 @@ namespace NPOI.HSSF.Record
          * An optional array of strings where each string specifies an item in the list.
          * The number of elements in this array, if it exists, MUST be {@link #_cLines}
          */
-        private String[] _rgLines;
+        private string[] _rgLines;
 
         /**
          * An optional array of bools that specifies
@@ -124,7 +124,7 @@ namespace NPOI.HSSF.Record
             // This array MUST exist if and only if the fValidPlex flag (0x2) is set
             if ((_flags & 0x2) != 0)
             {
-                _rgLines = new String[_cLines];
+                _rgLines = new string[_cLines];
                 for (int i = 0; i < _cLines; i++)
                 {
                     _rgLines[i] = StringUtil.ReadUnicodeString(in1);
@@ -204,7 +204,7 @@ namespace NPOI.HSSF.Record
                 }
                 if (_rgLines != null)
                 {
-                    foreach (String str in _rgLines)
+                    foreach (string str in _rgLines)
                     {
                         result += StringUtil.GetEncodedSize(str);
                     }
@@ -253,7 +253,7 @@ namespace NPOI.HSSF.Record
 
             if (_rgLines != null)
             {
-                foreach (String str in _rgLines)
+                foreach (string str in _rgLines)
                 {
                     StringUtil.WriteUnicodeString(out1, str);
                 }
@@ -280,11 +280,11 @@ namespace NPOI.HSSF.Record
             }
             return null;
         }
-        public override Object Clone()
+        public override object Clone()
         {
             return this;
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(256);
 
@@ -357,13 +357,13 @@ namespace NPOI.HSSF.Record
         /**
          * a string that specifies the current string value in the dropdown
          */
-        private String _str;
+        private string _str;
 
         /**
          * Optional, undefined and MUST be ignored.
          * This field MUST exist if and only if the size of str in bytes is an odd number
          */
-        private Byte _unused;
+        private byte _unused;
 
         public LbsDropData()
         {
@@ -400,7 +400,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString(){
+        public override string ToString(){
             StringBuilder sb = new StringBuilder();
             sb.Append("[LbsDropData]\n");
             sb.Append("  ._wStyle:  ").Append(_wStyle).Append('\n');

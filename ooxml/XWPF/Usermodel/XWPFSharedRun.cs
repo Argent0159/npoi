@@ -81,7 +81,7 @@ namespace NPOI.XWPF.Usermodel
         /// </summary>
         /// <param name="fontFamily">fontFamily</param>
         /// <param name="fcr">FontCharRange or null for default handling</param>
-        public void SetFontFamily(String fontFamily, FontCharRange fcr)
+        public void SetFontFamily(string fontFamily, FontCharRange fcr)
         {
             W.CT_RPr pr = run.IsSetRPr1() ? run.rPr1 : run.AddNewRPr1();
             W.CT_Fonts fonts = pr.IsSetRFonts() ? pr.rFonts : pr.AddNewRFonts();
@@ -131,7 +131,7 @@ namespace NPOI.XWPF.Usermodel
         /// </summary>
         /// <param name="fcr">the font char range, defaults to "ansi"</param>
         /// <returns>a string representing the font famil</returns>
-        public String GetFontFamily(FontCharRange fcr)
+        public string GetFontFamily(FontCharRange fcr)
         {
             OpenXmlFormats.Wordprocessing.CT_RPr pr = run.rPr1;
             if (pr == null || !pr.IsSetRFonts()) return null;
@@ -186,7 +186,7 @@ namespace NPOI.XWPF.Usermodel
         /// </summary>
         /// <param name="value">the literal text which shall be displayed in the document</param>
         /// <param name="pos">position in the text array (NB: 0 based)</param>
-        private XWPFSharedRun SetText(String value, int pos)
+        private XWPFSharedRun SetText(string value, int pos)
         {
             int length = run.SizeOfTArray();
             if (pos > length) throw new IndexOutOfRangeException("Value too large for the parameter position");
@@ -202,7 +202,7 @@ namespace NPOI.XWPF.Usermodel
         /// <param name="xs">the string to check</param>
         static void preserveSpaces(CT_Text1 xs)
         {
-            String text = xs.Value;
+            string text = xs.Value;
             if (text != null && (text.StartsWith(" ") || text.EndsWith(" ")))
             {
                 //    XmlCursor c = xs.NewCursor();

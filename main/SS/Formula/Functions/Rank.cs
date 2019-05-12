@@ -48,7 +48,7 @@ namespace NPOI.SS.Formula.Functions
             {
                 ValueEval ve = OperandResolver.GetSingleValue(arg0, srcRowIndex, srcColumnIndex);
                 result = OperandResolver.CoerceValueToDouble(ve);
-                if (Double.IsNaN(result) || Double.IsInfinity(result))
+                if (double.IsNaN(result) || double.IsInfinity(result))
                 {
                     throw new EvaluationException(ErrorEval.NUM_ERROR);
                 }
@@ -71,7 +71,7 @@ namespace NPOI.SS.Formula.Functions
             {
                 ValueEval ve = OperandResolver.GetSingleValue(arg0, srcRowIndex, srcColumnIndex);
                 result = OperandResolver.CoerceValueToDouble(ve);
-                if (Double.IsNaN(result) || Double.IsInfinity(result))
+                if (double.IsNaN(result) || double.IsInfinity(result))
                 {
                     throw new EvaluationException(ErrorEval.NUM_ERROR);
                 }
@@ -108,8 +108,8 @@ namespace NPOI.SS.Formula.Functions
                 for (int c = 0; c < width; c++)
                 {
 
-                    Double value = GetValue(aeRange, r, c);
-                    if (Double.IsNaN(value)) continue;
+                    double value = GetValue(aeRange, r, c);
+                    if (double.IsNaN(value)) continue;
                     if (descending_order && value > arg0 || !descending_order && value < arg0)
                     {
                         rank++;
@@ -119,7 +119,7 @@ namespace NPOI.SS.Formula.Functions
             return new NumberEval(rank);
         }
 
-        private static Double GetValue(AreaEval aeRange, int relRowIndex, int relColIndex)
+        private static double GetValue(AreaEval aeRange, int relRowIndex, int relColIndex)
         {
 
             ValueEval addend = aeRange.GetRelativeValue(relRowIndex, relColIndex);
@@ -128,7 +128,7 @@ namespace NPOI.SS.Formula.Functions
                 return ((NumberEval)addend).NumberValue;
             }
             // everything else (including string and boolean values) counts as zero
-            return Double.NaN;
+            return double.NaN;
         }
 
         private static AreaEval ConvertRangeArg(ValueEval eval)

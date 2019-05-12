@@ -71,8 +71,8 @@ namespace NPOI.SS.Formula.Functions
             {
                 return e.GetErrorEval();
             }
-            String strText1 = OperandResolver.CoerceValueToString(veText1);
-            Double number1 = OperandResolver.ParseDouble(strText1);
+            string strText1 = OperandResolver.CoerceValueToString(veText1);
+            double number1 = OperandResolver.ParseDouble(strText1);
 
             //If this number argument is non numeric, this function returns the #VALUE! error value.
             if (double.IsNaN(number1))
@@ -102,8 +102,8 @@ namespace NPOI.SS.Formula.Functions
                 {
                     return e.GetErrorEval();
                 }
-                String placesStr = OperandResolver.CoerceValueToString(placesValueEval);
-                Double placesNumberDouble = OperandResolver.ParseDouble(placesStr);
+                string placesStr = OperandResolver.CoerceValueToString(placesValueEval);
+                double placesNumberDouble = OperandResolver.ParseDouble(placesStr);
 
                 //non numeric value
                 if (double.IsNaN(placesNumberDouble))
@@ -120,14 +120,14 @@ namespace NPOI.SS.Formula.Functions
                 }
             }
 
-            String hex = "";
+            string hex = "";
             if (placesNumber != 0)
             {
-                hex = String.Format("{0:X" + placesNumber + "}", (int)number1);
+                hex = string.Format("{0:X" + placesNumber + "}", (int)number1);
             }
             else
             {
-                hex = String.Format("{0:X}", (int)number1);
+                hex = string.Format("{0:X}", (int)number1);
             }
             if (number1 < 0)
             {

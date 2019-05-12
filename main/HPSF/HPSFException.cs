@@ -54,7 +54,7 @@ namespace NPOI.HPSF
         /// Initializes a new instance of the <see cref="HPSFException"/> class.
         /// </summary>
         /// <param name="msg">The message string.</param>
-        public HPSFException(String msg)
+        public HPSFException(string msg)
             : base(msg)
         {
 
@@ -81,7 +81,7 @@ namespace NPOI.HPSF
         /// <param name="msg">The message string.</param>
         /// <param name="reason">The reason, i.e. a throwable that indirectly
         /// caused this exception.</param>
-        public HPSFException(String msg, Exception reason)
+        public HPSFException(string msg, Exception reason)
             : base(msg,reason)
         {
         }

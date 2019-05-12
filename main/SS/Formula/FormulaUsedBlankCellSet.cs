@@ -38,7 +38,7 @@ namespace NPOI.SS.Formula
         {
             return _bookIndex * 17 + _sheetIndex;
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             BookSheetKey other = (BookSheetKey)obj;
             return _bookIndex == other._bookIndex && _sheetIndex == other._sheetIndex;
@@ -183,7 +183,7 @@ namespace NPOI.SS.Formula
                 _lastRowIndex = rowIndex;
                 return true;
             }
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder sb = new StringBuilder(64);
                 CellReference crA = new CellReference(_firstRowIndex, _firstColumnIndex, false, false);

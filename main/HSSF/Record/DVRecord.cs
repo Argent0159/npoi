@@ -88,8 +88,8 @@ namespace NPOI.HSSF.Record
         }
         public DVRecord(int validationType, int operator1, int errorStyle, bool emptyCellAllowed,
             bool suppressDropDownArrow, bool isExplicitList,
-            bool showPromptBox, String promptTitle, String promptText,
-            bool showErrorBox, String errorTitle, String errorText,
+            bool showPromptBox, string promptTitle, string promptText,
+            bool showErrorBox, string errorTitle, string errorText,
             Ptg[] formula1, Ptg[] formula2,
             CellRangeAddressList regions)
         {
@@ -149,7 +149,7 @@ namespace NPOI.HSSF.Record
          * the resulting tool-tip text / message box looks wrong.  It is best to do the same as the 
          * Excel UI and encode 'not present' as "\0". 
          */
-        private static UnicodeString ResolveTitleText(String str)
+        private static UnicodeString ResolveTitleText(string str)
         {
             if (str == null || str.Length < 1)
             {
@@ -158,7 +158,7 @@ namespace NPOI.HSSF.Record
             return new UnicodeString(str);
         }
 
-        private static String ResolveTitleString(UnicodeString us)
+        private static string ResolveTitleString(UnicodeString us)
         {
             if (us == null || us.Equals(NULL_TEXT_STRING))
             {
@@ -290,7 +290,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public String PromptTitle
+        public string PromptTitle
         {
             get
             {
@@ -298,7 +298,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public String ErrorTitle
+        public string ErrorTitle
         {
             get
             {
@@ -306,7 +306,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public String PromptText
+        public string PromptText
         {
             get
             {
@@ -314,7 +314,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public String ErrorText
+        public string ErrorText
         {
             get
             {
@@ -359,7 +359,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             /* @todo DVRecord string representation */
             StringBuilder buffer = new StringBuilder();
@@ -393,7 +393,7 @@ namespace NPOI.HSSF.Record
 
         private static int GetUnicodeStringSize(UnicodeString us)
         {
-            String str = us.String;
+            string str = us.String;
             return 3 + str.Length * (StringUtil.HasMultibyte(str) ? 2 : 1);
         }
         protected override int DataSize
@@ -421,7 +421,7 @@ namespace NPOI.HSSF.Record
          * Clones the object. Uses serialisation, as the
          *  contents are somewhat complex
          */
-        public override Object Clone()
+        public override object Clone()
         {
             return CloneViaReserialise();
         }

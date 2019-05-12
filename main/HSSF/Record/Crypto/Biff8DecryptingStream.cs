@@ -79,7 +79,7 @@ namespace NPOI.HSSF.Record.Crypto
         {
             long valueLongBits = ReadLong();
             double result = BitConverter.Int64BitsToDouble(valueLongBits);
-            if (Double.IsNaN(result))
+            if (double.IsNaN(result))
             {
                 throw new Exception("Did not expect to read NaN"); // (Because Excel typically doesn't write NaN
             }

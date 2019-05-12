@@ -104,7 +104,7 @@ namespace NPOI.SS.Formula.Functions
 
         public static void CheckValue(double result)
         {
-            if (Double.IsNaN(result) || Double.IsInfinity(result))
+            if (double.IsNaN(result) || double.IsInfinity(result))
             {
                 throw new EvaluationException(ErrorEval.NUM_ERROR);
             }

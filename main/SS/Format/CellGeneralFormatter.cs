@@ -42,7 +42,7 @@ namespace NPOI.SS.Format
          * @param toAppendTo The buffer to append to.
          * @param value      The value to format.
          */
-        public override void FormatValue(StringBuilder toAppendTo, Object value)
+        public override void FormatValue(StringBuilder toAppendTo, object value)
         {
             //if (value is Number) {
             if (NPOI.Util.Number.IsNumber(value))
@@ -55,7 +55,7 @@ namespace NPOI.SS.Format
                     return;
                 }
 
-                String fmt;
+                string fmt;
                 double exp = Math.Log10(Math.Abs(val));
                 bool stripZeros = true;
                 if (exp > 10 || exp < -9)
@@ -107,7 +107,7 @@ namespace NPOI.SS.Format
                     }
                 }
             } 
-            else if (value is Boolean) {
+            else if (value is bool) {
                 toAppendTo.Append(value.ToString().ToUpper());
             }
             else
@@ -117,7 +117,7 @@ namespace NPOI.SS.Format
         }
 
         /** Equivalent to {@link #formatValue(StringBuilder,Object)}. {@inheritDoc}. */
-        public override void SimpleValue(StringBuilder toAppendTo, Object value)
+        public override void SimpleValue(StringBuilder toAppendTo, object value)
         {
             FormatValue(toAppendTo, value);
         }

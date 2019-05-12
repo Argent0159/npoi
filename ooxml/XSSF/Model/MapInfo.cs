@@ -110,7 +110,7 @@ namespace NPOI.XSSF.Model
          * @param schemaId the schema ID
          * @return CTSchema by it's ID
          */
-        public NPOI.OpenXmlFormats.Spreadsheet.CT_Schema GetCTSchemaById(String schemaId)
+        public NPOI.OpenXmlFormats.Spreadsheet.CT_Schema GetCTSchemaById(string schemaId)
         {
             NPOI.OpenXmlFormats.Spreadsheet.CT_Schema xmlSchema = null;
 
@@ -131,7 +131,7 @@ namespace NPOI.XSSF.Model
             return maps[id];
         }
 
-        public XSSFMap GetXSSFMapByName(String name){
+        public XSSFMap GetXSSFMapByName(string name){
 		
 		XSSFMap matchedMap = null;
 		

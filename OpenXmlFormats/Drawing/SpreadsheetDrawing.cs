@@ -1183,19 +1183,19 @@ namespace NPOI.OpenXmlFormats.Dml.Spreadsheet
             {
                 if (subnode.LocalName == "col")
                 {
-                    ctMarker.col = Int32.Parse(subnode.InnerText);
+                    ctMarker.col = int.Parse(subnode.InnerText);
                 }
                 else if (subnode.LocalName == "colOff")
                 {
-                    ctMarker.colOff = Int64.Parse(subnode.InnerText);
+                    ctMarker.colOff = long.Parse(subnode.InnerText);
                 }
                 else if (subnode.LocalName == "row")
                 {
-                    ctMarker.row = Int32.Parse(subnode.InnerText);
+                    ctMarker.row = int.Parse(subnode.InnerText);
                 }
                 else if (subnode.LocalName == "rowOff")
                 {
-                    ctMarker.rowOff = Int64.Parse(subnode.InnerText);
+                    ctMarker.rowOff = long.Parse(subnode.InnerText);
                 }
             }
             return ctMarker;

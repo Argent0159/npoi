@@ -30,7 +30,7 @@ namespace NPOI.DDF
     public class EscherChildAnchorRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF00F);
-        public const String RECORD_DESCRIPTION = "MsofbtChildAnchor";
+        public const string RECORD_DESCRIPTION = "MsofbtChildAnchor";
 
         private int field_1_dx1;
         private int field_2_dy1;
@@ -101,7 +101,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "ChildAnchor"; }
         }
@@ -112,9 +112,9 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             return GetType().Name + ":" + nl +
                     "  RecordId: 0x" + HexDump.ToHex(RECORD_ID) + nl +
@@ -126,7 +126,7 @@ namespace NPOI.DDF
                     "  Y2: " + field_4_dy2 + nl;
 
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))

@@ -36,6 +36,6 @@ namespace NPOI.SS.Formula.Udf
          * @param name Name of function.
          * @return Function executor.
          */
-        public abstract FreeRefFunction FindFunction(String name);
+        public abstract FreeRefFunction FindFunction(string name);
     }
 }

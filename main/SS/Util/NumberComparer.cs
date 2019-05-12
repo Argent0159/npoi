@@ -162,7 +162,7 @@ namespace NPOI.SS.Util
         /**
          * for formatting double values in error messages
          */
-        private static String ToHex(double a)
+        private static string ToHex(double a)
         {
             return "0x" + StringUtil.ToHexString(BitConverter.DoubleToInt64Bits(a)).ToUpper();
         }

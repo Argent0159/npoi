@@ -56,7 +56,7 @@ namespace NPOI.HPSF
         /// Initializes a new instance of the <see cref="NoFormatIDException"/> class.
         /// </summary>
         /// <param name="msg">The exception's message string</param>
-        public NoFormatIDException(String msg)
+        public NoFormatIDException(string msg)
             : base(msg)
         {
 
@@ -79,7 +79,7 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="msg">The exception's message string</param>
         /// <param name="reason">This exception's underlying reason</param>
-        public NoFormatIDException(String msg, Exception reason)
+        public NoFormatIDException(string msg, Exception reason)
             : base(msg, reason)
         {
 

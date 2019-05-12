@@ -37,7 +37,7 @@ namespace NPOI.POIFS.FileSystem
     public class DocumentDescriptor
     {
         private POIFSDocumentPath path;
-        private String            name;
+        private string name;
         private int               hashcode = 0;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="path">the Document path</param>
         /// <param name="name">the Document name</param>
-        public DocumentDescriptor(POIFSDocumentPath path, String name)
+        public DocumentDescriptor(POIFSDocumentPath path, string name)
         {
             if (path == null)
             {
@@ -86,7 +86,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="o">the object we're checking equality for</param>
         /// <returns>true if the object is equal to this object</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             bool rval = false;
 
@@ -128,7 +128,7 @@ namespace NPOI.POIFS.FileSystem
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder(40 * (path.Length + 1));
 

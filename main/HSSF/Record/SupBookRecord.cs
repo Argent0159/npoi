@@ -41,8 +41,8 @@ namespace NPOI.HSSF.Record
         private const short TAG_ADD_IN_FUNCTIONS = 0x3A01;
 
         private short field_1_number_of_sheets;
-        private String field_2_encoded_url;
-        private String[] field_3_sheet_names;
+        private string field_2_encoded_url;
+        private string[] field_3_sheet_names;
         private bool _isAddInFunctions;
 
         public const char CH_VOLUME = (char)1;
@@ -64,7 +64,7 @@ namespace NPOI.HSSF.Record
         {
             return new SupBookRecord(true, (short)1);
         }
-        public static SupBookRecord CreateExternalReferences(String url, String[] sheetNames)
+        public static SupBookRecord CreateExternalReferences(string url, string[] sheetNames)
         {
             return new SupBookRecord(url, sheetNames);
         }
@@ -76,7 +76,7 @@ namespace NPOI.HSSF.Record
             field_3_sheet_names = null;
             _isAddInFunctions = IsAddInFuncs;
         }
-        public SupBookRecord(String url, String[] sheetNames)
+        public SupBookRecord(string url, string[] sheetNames)
         {
             field_1_number_of_sheets = (short)sheetNames.Length;
             field_2_encoded_url = url;
@@ -103,7 +103,7 @@ namespace NPOI.HSSF.Record
                 _isAddInFunctions = false;
 
                 field_2_encoded_url = in1.ReadString();
-                String[] sheetNames = new String[field_1_number_of_sheets];
+                string[] sheetNames = new string[field_1_number_of_sheets];
                 for (int i = 0; i < sheetNames.Length; i++)
                 {
                     sheetNames[i] = in1.ReadString();
@@ -157,7 +157,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("[SUPBOOK ");
@@ -167,7 +167,7 @@ namespace NPOI.HSSF.Record
                 sb.Append("External References]\n");
                 sb.Append(" .url     = ").Append(field_2_encoded_url).Append("\n");
                 sb.Append(" .nSheets = ").Append(field_1_number_of_sheets).Append("\n");
-                foreach (String sheetname in field_3_sheet_names)
+                foreach (string sheetname in field_3_sheet_names)
                 {
                     sb.Append("    .name = ").Append(sheetname).Append("\n");
                 }
@@ -235,11 +235,11 @@ namespace NPOI.HSSF.Record
         {
             get { return sid; }
         }
-        public String URL
+        public string URL
         {
             get
             {
-                String encodedUrl = field_2_encoded_url;
+                string encodedUrl = field_2_encoded_url;
                 switch ((int)encodedUrl[0])
                 {
                     case 0: // Reference to an empty workbook name
@@ -258,7 +258,7 @@ namespace NPOI.HSSF.Record
                 field_2_encoded_url = field_2_encoded_url.Substring(0, 1) + value;
             }
         }
-        private static String DecodeFileName(String encodedUrl)
+        private static string DecodeFileName(string encodedUrl)
         {
             /* see "MICROSOFT OFFICE EXCEL 97-2007  BINARY FILE FORMAT SPECIFICATION" */
             StringBuilder sb = new StringBuilder();
@@ -305,11 +305,11 @@ namespace NPOI.HSSF.Record
             }
             return sb.ToString();
         }
-        public String[] SheetNames
+        public string[] SheetNames
         {
             get
             {
-                return (String[])field_3_sheet_names.Clone();
+                return (string[])field_3_sheet_names.Clone();
             }
         }
     }

@@ -32,21 +32,21 @@ namespace NPOI.SS.Formula.PTG
     public class NameXPxg : OperandPtg, Pxg
     {
         private int externalWorkbookNumber = -1;
-        private String sheetName;
-        private String nameName;
+        private string sheetName;
+        private string nameName;
 
-        public NameXPxg(int externalWorkbookNumber, String sheetName, String nameName)
+        public NameXPxg(int externalWorkbookNumber, string sheetName, string nameName)
         {
             this.externalWorkbookNumber = externalWorkbookNumber;
             this.sheetName = sheetName;
             this.nameName = nameName;
         }
-        public NameXPxg(String sheetName, String nameName)
+        public NameXPxg(string sheetName, string nameName)
             : this(-1, sheetName, nameName)
         {
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name);
@@ -75,7 +75,7 @@ namespace NPOI.SS.Formula.PTG
                 return externalWorkbookNumber;
             }
         }
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -86,7 +86,7 @@ namespace NPOI.SS.Formula.PTG
                 sheetName = value;
             }
         }
-        public String NameName
+        public string NameName
         {
             get
             {
@@ -94,7 +94,7 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             StringBuilder sb = new StringBuilder();
             bool needsExclamation = false;

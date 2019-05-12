@@ -169,7 +169,7 @@
                 return (_lastRow - _firstRow + 1) * (_lastCol - _firstCol + 1);
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             CellReference crA = new CellReference(_firstRow, _firstCol);
             CellReference crB = new CellReference(_lastRow, _lastCol);

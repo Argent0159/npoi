@@ -77,7 +77,7 @@ namespace NPOI.HSSF.Record
 
         internal int offsetForFilePointer;  //used for defcolwidth position of IndexRecord 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -103,7 +103,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             DefaultColWidthRecord rec = new DefaultColWidthRecord();
             rec.field_1_col_width = field_1_col_width;

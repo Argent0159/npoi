@@ -24,7 +24,7 @@ namespace NPOI.XSSF
      */
     public class XLSBUnsupportedException : UnsupportedFileFormatException
     {
-        public static String MESSAGE = ".XLSB Binary Workbooks are not supported";
+        public static string MESSAGE = ".XLSB Binary Workbooks are not supported";
 
         public XLSBUnsupportedException()
             : base(MESSAGE)

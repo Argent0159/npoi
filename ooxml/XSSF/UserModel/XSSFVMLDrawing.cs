@@ -131,7 +131,7 @@ namespace NPOI.XSSF.UserModel
                 else if (nd.LocalName == QNAME_SHAPE_TYPE.Name)
                 {
                     CT_Shapetype st = CT_Shapetype.Parse(nd, nsmgr);
-                                        String typeid = st.id;
+                    string typeid = st.id;
                                         if (typeid != null)
                     {
                         MatchCollection m = ptrn_shapeTypeId.Matches(typeid);
@@ -143,7 +143,7 @@ namespace NPOI.XSSF.UserModel
                 else if (nd.LocalName == QNAME_SHAPE.Name)
                 {
                     CT_Shape shape = CT_Shape.Parse(nd, nsmgr);
-                    String id = shape.id;
+                    string id = shape.id;
                     if (id != null)
                     {
                         MatchCollection m = ptrn_shapeId.Matches(id);

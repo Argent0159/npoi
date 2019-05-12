@@ -32,7 +32,7 @@ namespace NPOI.XSSF.Model
          *  to search, so we wrap things with our own
          *  map for fast Lookup.
          */
-        private Dictionary<String, CT_Comment> commentRefs;
+        private Dictionary<string, CT_Comment> commentRefs;
 
         public CommentsTable()
             : base()
@@ -84,7 +84,7 @@ namespace NPOI.XSSF.Model
          * Called after the reference is updated, so that
          *  we can reflect that in our cache
          */
-        public void ReferenceUpdated(String oldReference, CT_Comment comment)
+        public void ReferenceUpdated(string oldReference, CT_Comment comment)
         {
             if (commentRefs != null)
             {
@@ -112,7 +112,7 @@ namespace NPOI.XSSF.Model
             return comments.authors.SizeOfAuthorArray();
         }
 
-        public String GetAuthor(long authorId)
+        public string GetAuthor(long authorId)
         {
             return comments.authors.GetAuthorArray((int)authorId);
         }
@@ -122,7 +122,7 @@ namespace NPOI.XSSF.Model
         /// </summary>
         /// <param name="author">author to search</param>
         /// <returns>index of the author</returns>
-        public int FindAuthor(String author)
+        public int FindAuthor(string author)
         {
             for (int i = 0; i < comments.authors.SizeOfAuthorArray(); i++)
             {
@@ -134,18 +134,18 @@ namespace NPOI.XSSF.Model
             return AddNewAuthor(author);
         }
 
-        public XSSFComment FindCellComment(String cellRef)
+        public XSSFComment FindCellComment(string cellRef)
         {
             CT_Comment ct = GetCTComment(cellRef);
             return ct == null ? null : new XSSFComment(this, ct, null);
         }
 
-        public CT_Comment GetCTComment(String cellRef)
+        public CT_Comment GetCTComment(string cellRef)
         {
             // Create the cache if needed
             if (commentRefs == null)
             {
-                commentRefs = new Dictionary<String, CT_Comment>();
+                commentRefs = new Dictionary<string, CT_Comment>();
                 if (comments.commentList.comment != null)
                 {
                     foreach (CT_Comment comment in comments.commentList.comment)
@@ -172,7 +172,7 @@ namespace NPOI.XSSF.Model
             return NewComment("A1");
         }
 
-        public CT_Comment NewComment(String ref1)
+        public CT_Comment NewComment(string ref1)
         {
             CT_Comment ct = comments.commentList.AddNewComment();
             ct.@ref = (ref1);
@@ -185,7 +185,7 @@ namespace NPOI.XSSF.Model
             return ct;
         }
 
-        public bool RemoveComment(String cellRef)
+        public bool RemoveComment(string cellRef)
         {
             CT_CommentList lst = comments.commentList;
             if (lst != null) for (int i = 0; i < lst.SizeOfCommentArray(); i++)
@@ -205,7 +205,7 @@ namespace NPOI.XSSF.Model
             return false;
         }
 
-        private int AddNewAuthor(String author)
+        private int AddNewAuthor(string author)
         {
             int index = comments.authors.SizeOfAuthorArray();
             comments.authors.Insert(index, author);

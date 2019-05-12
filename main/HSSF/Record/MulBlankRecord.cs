@@ -141,7 +141,7 @@ namespace NPOI.HSSF.Record
             return retval;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -182,7 +182,7 @@ namespace NPOI.HSSF.Record
             out1.WriteShort(_last_col);
         }
         //poi bug 46776
-        public override Object Clone()
+        public override object Clone()
         {
             // immutable - so OK to return this
             return this;

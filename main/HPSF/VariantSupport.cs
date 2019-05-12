@@ -141,7 +141,7 @@ namespace NPOI.HPSF
         /// <returns>A Java object that corresponds best To the variant field. For
         /// example, a VT_I4 is returned as a {@link long}, a VT_LPSTR as a
         /// {@link String}.</returns>
-        public static Object Read(byte[] src, int offset,
+        public static object Read(byte[] src, int offset,
                 int length, long type, int codepage)
         {
             TypedPropertyValue typedPropertyValue = new TypedPropertyValue(
@@ -254,7 +254,7 @@ namespace NPOI.HPSF
          * @exception UnsupportedEncodingException if the specified codepage is
          * less than zero.
          */
-        public static String CodepageToEncoding(int codepage)
+        public static string CodepageToEncoding(int codepage)
         {
             return CodePageUtil.CodepageToEncoding(codepage);
         }
@@ -274,7 +274,7 @@ namespace NPOI.HPSF
         /// <returns>The number of entities that have been written. In many cases an
         /// "entity" is a byte but this is not always the case.</returns>
         public static int Write(Stream out1, long type,
-                                Object value, int codepage)
+                                object value, int codepage)
         {
             int length = 0;
             switch ((int)type)
@@ -297,16 +297,16 @@ namespace NPOI.HPSF
                     }
                 case Variant.VT_LPSTR:
                     {
-                        CodePageString codePageString = new CodePageString((String)value,
+                        CodePageString codePageString = new CodePageString((string)value,
                         codepage);
                         length += codePageString.Write(out1);
                         break;
                     }
                 case Variant.VT_LPWSTR:
                     {
-                        int nrOfChars = ((String)value).Length + 1;
+                        int nrOfChars = ((string)value).Length + 1;
                         length += TypeWriter.WriteUIntToStream(out1, (uint)nrOfChars);
-                        char[] s = ((String)value).ToCharArray();
+                        char[] s = ((string)value).ToCharArray();
                         for (int i = 0; i < s.Length; i++)
                         {
                             int high = ((s[i] & 0x0000ff00) >> 8);
@@ -370,7 +370,7 @@ namespace NPOI.HPSF
                 case Variant.VT_R8:
                     {
                         length += TypeWriter.WriteToStream(out1,
-                                  (Double)value);
+                                  (double)value);
                         break;
                     }
                 case Variant.VT_FILETIME:

@@ -303,7 +303,7 @@ namespace NPOI.HPSF
              *
              * @see Comparable#CompareTo(java.lang.Object)
              */
-            public int CompareTo(Object o)
+            public int CompareTo(object o)
             {
                 if (!(o is PropertyListEntry))
                     throw new InvalidCastException(o.ToString());
@@ -316,7 +316,7 @@ namespace NPOI.HPSF
                     return 1;
             }
 
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder b = new StringBuilder();
                 b.Append(GetType().Name);
@@ -343,7 +343,7 @@ namespace NPOI.HPSF
          *
          * @return The property's value
          */
-        public virtual Object GetProperty(long id)
+        public virtual object GetProperty(long id)
         {
             wasNull = false;
             for (int i = 0; i < properties.Length; i++)
@@ -368,7 +368,7 @@ namespace NPOI.HPSF
          */
         public virtual int GetPropertyIntValue(long id)
         {
-            Object o = GetProperty(id);
+            object o = GetProperty(id);
             if (o == null)
                 return 0;
             if (!(o is long || o is int))
@@ -441,11 +441,11 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="pid">The property ID.</param>
         /// <returns>The property ID's string value</returns>
-        public String GetPIDString(long pid)
+        public string GetPIDString(long pid)
         {
-            String s = null;
+            string s = null;
             if (dictionary != null)
-                s = (String)dictionary[pid];
+                s = (string)dictionary[pid];
             if (s == null)
                 s = SectionIDMap.GetPIDString(FormatID.Bytes, pid);
             if (s == null)
@@ -479,7 +479,7 @@ namespace NPOI.HPSF
          * @return <c>true</c> if the objects are equal, <c>false</c> if
          * not
          */
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is Section))
                 return false;
@@ -600,7 +600,7 @@ namespace NPOI.HPSF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder b = new StringBuilder();
             Property[] pa = Properties;

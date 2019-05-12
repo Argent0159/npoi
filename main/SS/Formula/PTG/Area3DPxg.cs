@@ -33,10 +33,10 @@ namespace NPOI.SS.Formula.PTG
     public class Area3DPxg : AreaPtgBase, Pxg3D
     {
         private int externalWorkbookNumber = -1;
-        private String firstSheetName;
-        private String lastSheetName;
+        private string firstSheetName;
+        private string lastSheetName;
 
-        public Area3DPxg(int externalWorkbookNumber, SheetIdentifier sheetName, String arearef)
+        public Area3DPxg(int externalWorkbookNumber, SheetIdentifier sheetName, string arearef)
             : this(externalWorkbookNumber, sheetName, new AreaReference(arearef))
         {
             ;
@@ -56,7 +56,7 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public Area3DPxg(SheetIdentifier sheetName, String arearef)
+        public Area3DPxg(SheetIdentifier sheetName, string arearef)
             : this(sheetName, new AreaReference(arearef))
         {
         }
@@ -67,7 +67,7 @@ namespace NPOI.SS.Formula.PTG
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this.GetType().Name);
@@ -97,7 +97,7 @@ namespace NPOI.SS.Formula.PTG
                 return externalWorkbookNumber;
             }
         }
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -115,12 +115,12 @@ namespace NPOI.SS.Formula.PTG
             set { lastSheetName = value; }
         }
 
-        public String Format2DRefAsString()
+        public string Format2DRefAsString()
         {
             return FormatReferenceAsString();
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             StringBuilder sb = new StringBuilder();
             if (externalWorkbookNumber >= 0)

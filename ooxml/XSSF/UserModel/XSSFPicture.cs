@@ -337,7 +337,7 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String blipId = ctPicture.blipFill.blip.embed;
+                string blipId = ctPicture.blipFill.blip.embed;
                 return (XSSFPictureData)GetDrawing().GetRelationById(blipId);
             }
         }

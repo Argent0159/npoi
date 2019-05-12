@@ -220,7 +220,7 @@ namespace NPOI.SS.Util
 		});
         }
 
-        public String GetSignificantDecimalDigits()
+        public string GetSignificantDecimalDigits()
         {
             return _wholePart.ToString(CultureInfo.InvariantCulture);
         }
@@ -229,7 +229,7 @@ namespace NPOI.SS.Util
          * Caller should check total digit count of result to see whether the rounding operation caused
          * a carry out of the most significant digit
          */
-        public String GetSignificantDecimalDigitsLastDigitRounded()
+        public string GetSignificantDecimalDigitsLastDigitRounded()
         {
             long wp = _wholePart + 5; // rounds last digit
             StringBuilder sb = new StringBuilder(24);
@@ -271,7 +271,7 @@ namespace NPOI.SS.Util
             return new decimal(_fractionalPart)/(BD_2_POW_24);
         }
 
-        private String GetFractionalDigits()
+        private string GetFractionalDigits()
         {
             if (_fractionalPart == 0)
             {
@@ -281,13 +281,13 @@ namespace NPOI.SS.Util
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
 
             StringBuilder sb = new StringBuilder();
             sb.Append(this.GetType().Name);
             sb.Append(" [");
-            String ws = _wholePart.ToString(CultureInfo.InvariantCulture);
+            string ws = _wholePart.ToString(CultureInfo.InvariantCulture);
             sb.Append(ws[0]);
             sb.Append('.');
             sb.Append(ws.Substring(1));

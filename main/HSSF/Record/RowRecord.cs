@@ -317,7 +317,7 @@ namespace NPOI.HSSF.Record
             get { return phoeneticGuide.IsSet(field_8_option_flags); }
             set { field_8_option_flags = phoeneticGuide.SetBoolean(field_8_option_flags, value); }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -372,7 +372,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             RowRecord loc = (RowRecord)obj;
 
@@ -391,7 +391,7 @@ namespace NPOI.HSSF.Record
             return -1;
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is RowRecord))
             {
@@ -411,7 +411,7 @@ namespace NPOI.HSSF.Record
             return RowNumber;
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             RowRecord rec = new RowRecord(field_1_row_number);
             rec.field_2_first_col = field_2_first_col;

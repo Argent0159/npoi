@@ -159,7 +159,7 @@ namespace NPOI.XWPF.UserModel
          * @param styleID		styleID of the Style in the style-Document
          * @return				true if style exist, false if style not exist
          */
-        public bool StyleExist(String styleID)
+        public bool StyleExist(string styleID)
         {
             foreach (XWPFStyle style in listStyle)
             {
@@ -185,7 +185,7 @@ namespace NPOI.XWPF.UserModel
          * @param styleID	styleID of the searched style
          * @return style
          */
-        public XWPFStyle GetStyle(String styleID)
+        public XWPFStyle GetStyle(string styleID)
         {
             foreach (XWPFStyle style in listStyle)
             {
@@ -222,14 +222,14 @@ namespace NPOI.XWPF.UserModel
          */
         private List<XWPFStyle> GetUsedStyleList(XWPFStyle style, List<XWPFStyle> usedStyleList)
         {
-            String basisStyleID = style.BasisStyleID;
+            string basisStyleID = style.BasisStyleID;
             XWPFStyle basisStyle = GetStyle(basisStyleID);
             if ((basisStyle != null) && (!usedStyleList.Contains(basisStyle)))
             {
                 usedStyleList.Add(basisStyle);
                 GetUsedStyleList(basisStyle, usedStyleList);
             }
-            String linkStyleID = style.LinkStyleID;
+            string linkStyleID = style.LinkStyleID;
             XWPFStyle linkStyle = GetStyle(linkStyleID);
             if ((linkStyle != null) && (!usedStyleList.Contains(linkStyle)))
             {
@@ -237,7 +237,7 @@ namespace NPOI.XWPF.UserModel
                 GetUsedStyleList(linkStyle, usedStyleList);
             }
 
-            String nextStyleID = style.NextStyleID;
+            string nextStyleID = style.NextStyleID;
             XWPFStyle nextStyle = GetStyle(nextStyleID);
             if ((nextStyle != null) && (!usedStyleList.Contains(nextStyle)))
             {
@@ -268,7 +268,7 @@ namespace NPOI.XWPF.UserModel
          * Sets the default spelling language on ctStyles DocDefaults parameter
          * @param strSpellingLanguage
          */
-        public void SetSpellingLanguage(String strSpellingLanguage)
+        public void SetSpellingLanguage(string strSpellingLanguage)
         {
             CT_Language lang = GetCTLanguage();
             lang.val = (/*setter*/strSpellingLanguage);
@@ -279,7 +279,7 @@ namespace NPOI.XWPF.UserModel
          * Sets the default East Asia spelling language on ctStyles DocDefaults parameter
          * @param strEastAsia
          */
-        public void SetEastAsia(String strEastAsia)
+        public void SetEastAsia(string strEastAsia)
         {
             CT_Language lang = GetCTLanguage();
             lang.eastAsia = (/*setter*/strEastAsia);

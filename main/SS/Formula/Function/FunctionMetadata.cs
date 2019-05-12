@@ -28,14 +28,14 @@ namespace NPOI.SS.Formula.Function
     {
 
         private int _index;
-        private String _name;
+        private string _name;
         private int _minParams;
         private int _maxParams;
         private byte _returnClassCode;
         private byte[] _parameterClassCodes;
         private const short FUNCTION_MAX_PARAMS = 30;
         /* package */
-        internal FunctionMetadata(int index, String name, int minParams, int maxParams,
+        internal FunctionMetadata(int index, string name, int minParams, int maxParams,
             byte returnClassCode, byte[] parameterClassCodes)
         {
             _index = index;
@@ -49,7 +49,7 @@ namespace NPOI.SS.Formula.Function
         {
             get { return _index; }
         }
-        public String Name
+        public string Name
         {
             get { return _name; }
         }
@@ -80,7 +80,7 @@ namespace NPOI.SS.Formula.Function
                 return FUNCTION_MAX_PARAMS == _maxParams;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");

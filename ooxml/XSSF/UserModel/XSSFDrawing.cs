@@ -38,8 +38,8 @@ namespace NPOI.XSSF.UserModel
      */
     public class XSSFDrawing : POIXMLDocumentPart, IDrawing
     {
-        public const String NAMESPACE_A = "http://schemas.openxmlformats.org/drawingml/2006/main";
-        public const String NAMESPACE_C = "http://schemas.openxmlformats.org/drawingml/2006/chart";
+        public const string NAMESPACE_A = "http://schemas.openxmlformats.org/drawingml/2006/main";
+        public const string NAMESPACE_C = "http://schemas.openxmlformats.org/drawingml/2006/chart";
 
         /**
          * Root element of the SpreadsheetML Drawing part
@@ -171,7 +171,7 @@ namespace NPOI.XSSF.UserModel
 
             XSSFChart chart = (XSSFChart)CreateRelationship(
                     XSSFRelation.CHART, XSSFFactory.GetInstance(), chartNumber);
-            String chartRelId = chart.GetPackageRelationship().Id;
+            string chartRelId = chart.GetPackageRelationship().Id;
 
             XSSFGraphicFrame frame = CreateGraphicFrame((XSSFClientAnchor)anchor);
             frame.SetChart(chart, chartRelId);
@@ -281,14 +281,14 @@ namespace NPOI.XSSF.UserModel
                 int dy1Pixels = ca.Dy1 / Units.EMU_PER_PIXEL;
                 int dx2Pixels = ca.Dx2 / Units.EMU_PER_PIXEL;
                 int dy2Pixels = ca.Dy2 / Units.EMU_PER_PIXEL;
-                String position =
+                string position =
                         ca.Col1 + ", " + dx1Pixels + ", " +
                         ca.Row1 + ", " + dy1Pixels + ", " +
                         ca.Col2 + ", " + dx2Pixels + ", " +
                         ca.Row2 + ", " + dy2Pixels;
                 vmlShape.GetClientDataArray(0).SetAnchorArray(0, position);
             }
-            String ref1 = new CellReference(ca.Row1, ca.Col1).FormatAsString();
+            string ref1 = new CellReference(ca.Row1, ca.Col1).FormatAsString();
             if (comments.FindCellComment(ref1) != null)
             {
                 throw new ArgumentException("Multiple cell comments in one cell are not allowed, cell: " + ref1);

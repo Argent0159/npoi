@@ -59,7 +59,7 @@ using NPOI.POIFS.FileSystem;
          * @exception EncoderFallbackException if the specified codepage is not
          * supported.
          */
-        public static PropertySet Create(DirectoryEntry dir, String name)
+        public static PropertySet Create(DirectoryEntry dir, string name)
         {
             Stream inp = null;
             try

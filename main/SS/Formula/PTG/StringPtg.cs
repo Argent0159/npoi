@@ -46,7 +46,7 @@ namespace NPOI.SS.Formula.PTG
         private byte field_2_options;      
 
         private bool _is16bitUnicode;
-        private String field_3_string;
+        private string field_3_string;
 
         /** Create a StringPtg from a stream */
         public StringPtg(ILittleEndianInput in1)
@@ -72,7 +72,7 @@ namespace NPOI.SS.Formula.PTG
          * @param value :
          *            String representation of a floating point number
          */
-        public StringPtg(String value)
+        public StringPtg(string value)
         {
             if (value.Length > 255)
             {
@@ -84,7 +84,7 @@ namespace NPOI.SS.Formula.PTG
             field_1_Length = value.Length; // for the moment, we support only ASCII strings in formulas we Create
         }
 
-        public String Value
+        public string Value
         {
             get { return field_3_string; }
         }
@@ -112,9 +112,9 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
-            String value = field_3_string;
+            string value = field_3_string;
             int len = value.Length;
             StringBuilder sb = new StringBuilder(len + 4);
             sb.Append(FORMULA_DELIMITER);
@@ -133,7 +133,7 @@ namespace NPOI.SS.Formula.PTG
             return sb.ToString();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");

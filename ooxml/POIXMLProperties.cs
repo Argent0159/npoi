@@ -35,7 +35,7 @@ namespace NPOI
             this.part = part;
         }
 
-        public String Category
+        public string Category
         {
             get
             {
@@ -46,7 +46,7 @@ namespace NPOI
                 part.SetCategoryProperty(value);
             }
         }
-        public String ContentStatus
+        public string ContentStatus
         {
             get
             {
@@ -57,7 +57,7 @@ namespace NPOI
                 part.SetContentStatusProperty(value);
             }
         }
-        public String ContentType
+        public string ContentType
         {
             get
             {
@@ -79,11 +79,11 @@ namespace NPOI
                 part.SetCreatedProperty(value);    
             }
         }
-        public void SetCreated(String date)
+        public void SetCreated(string date)
         {
             part.SetCreatedProperty(date);
         }
-        public String Creator
+        public string Creator
         {
             get
             {
@@ -94,7 +94,7 @@ namespace NPOI
                 part.SetCreatorProperty(value);
             }
         }
-        public String Description
+        public string Description
         {
             get
             {
@@ -105,7 +105,7 @@ namespace NPOI
                 part.SetDescriptionProperty(value);
             }
         }
-        public String Identifier
+        public string Identifier
         {
             get
             {
@@ -116,7 +116,7 @@ namespace NPOI
                 part.SetIdentifierProperty(value);
             }
         }
-        public String Keywords
+        public string Keywords
         {
             get
             {
@@ -138,7 +138,7 @@ namespace NPOI
                 part.SetLastPrintedProperty(value);
             }
         }
-        public void SetLastPrinted(String date)
+        public void SetLastPrinted(string date)
         {
             part.SetLastPrintedProperty(date);
         }
@@ -153,11 +153,11 @@ namespace NPOI
                 part.SetModifiedProperty(value);
             }
         }
-        public void SetModified(String date)
+        public void SetModified(string date)
         {
             part.SetModifiedProperty(date);
         }
-        public String Subject
+        public string Subject
         {
             get
             {
@@ -168,7 +168,7 @@ namespace NPOI
                 part.SetSubjectProperty(value);
             }
         }
-        public String Title
+        public string Title
         {
             get
             {
@@ -179,7 +179,7 @@ namespace NPOI
                 part.SetTitleProperty(value);
             }
         }
-        public String Revision
+        public string Revision
         {
             get
             {
@@ -218,30 +218,30 @@ namespace NPOI
             return props.GetProperties();
         }
 
-        public String Template
+        public string Template
         {
             get
             {
                 return props.GetProperties().Template;
             }
         }
-        public String Manager
+        public string Manager
         {
             get { return props.GetProperties().Manager; }
         }
-        public String Company
+        public string Company
         {
             get { return props.GetProperties().Company; }
         }
-        public String PresentationFormat
+        public string PresentationFormat
         {
             get { return props.GetProperties().PresentationFormat; }
         }
-        public String Application
+        public string Application
         {
             get { return props.GetProperties().Application; }
         }
-        public String AppVersion
+        public string AppVersion
         {
             get { return props.GetProperties().AppVersion; }
         }
@@ -368,7 +368,7 @@ namespace NPOI
             }
         }
 
-        public String HyperlinkBase
+        public string HyperlinkBase
         {
             get { return props.GetProperties().HyperlinkBase; }
         }
@@ -383,7 +383,7 @@ namespace NPOI
          *  Each custom property element Contains an fmtid attribute
          *  with the same GUID value ({D5CDD505-2E9C-101B-9397-08002B2CF9AE}).
          */
-        public static String FORMAT_ID = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}";
+        public static string FORMAT_ID = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}";
 
         public CustomPropertiesDocument props;
         internal CustomProperties(CustomPropertiesDocument props)
@@ -402,7 +402,7 @@ namespace NPOI
          * @param name the property name
          * @throws IllegalArgumentException if a property with this name already exists
          */
-        private CT_Property Add(String name)
+        private CT_Property Add(string name)
         {
             if (Contains(name))
             {
@@ -423,7 +423,7 @@ namespace NPOI
          *
          * @throws IllegalArgumentException if a property with this name already exists
          */
-        public void AddProperty(String name, String value)
+        public void AddProperty(string name, string value)
         {
             CT_Property p = Add(name);
             p.ItemElementName = ItemChoiceType.lpwstr;
@@ -435,7 +435,7 @@ namespace NPOI
          *
          * @throws IllegalArgumentException if a property with this name already exists
          */
-        public void AddProperty(String name, double value)
+        public void AddProperty(string name, double value)
         {
             CT_Property p = Add(name);
             p.ItemElementName = ItemChoiceType.r8;
@@ -447,7 +447,7 @@ namespace NPOI
          *
          * @throws IllegalArgumentException if a property with this name already exists
          */
-        public void AddProperty(String name, int value)
+        public void AddProperty(string name, int value)
         {
             CT_Property p = Add(name);
             p.ItemElementName = ItemChoiceType.i4;
@@ -459,7 +459,7 @@ namespace NPOI
          *
          * @throws IllegalArgumentException if a property with this name already exists
          */
-        public void AddProperty(String name, bool value)
+        public void AddProperty(string name, bool value)
         {
             CT_Property p = Add(name);
             p.ItemElementName = ItemChoiceType.@bool;
@@ -487,7 +487,7 @@ namespace NPOI
          * @param name the name to check
          * @return whether a property with the given name exists in the custom properties
          */
-        public bool Contains(String name)
+        public bool Contains(string name)
         {
             foreach (CT_Property p in props.GetProperties().GetPropertyList())
             {
@@ -505,7 +505,7 @@ namespace NPOI
          *
          * @param name the name of the property to fetch
          */
-        public CT_Property GetProperty(String name) {
+        public CT_Property GetProperty(string name) {
             foreach(CT_Property p in props.GetProperties().GetPropertyList()){
                 if(p.name.Equals(name)) {
                     return p;

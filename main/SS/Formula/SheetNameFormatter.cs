@@ -51,7 +51,7 @@ namespace NPOI.SS.Formula
          * name is enclosed in single quotes (').  Any single quotes which were already present in the 
          * sheet name will be converted to double single quotes ('').  
          */
-        public static String Format(String rawSheetName)
+        public static string Format(string rawSheetName)
         {
             StringBuilder sb = new StringBuilder(rawSheetName.Length + 2);
             AppendFormat(sb, rawSheetName);
@@ -63,7 +63,7 @@ namespace NPOI.SS.Formula
          * 
          * @param out - sheet name will be Appended here possibly with delimiting quotes 
          */
-        public static void AppendFormat(StringBuilder out1, String rawSheetName)
+        public static void AppendFormat(StringBuilder out1, string rawSheetName)
         {
             bool needsQuotes = NeedsDelimiting(rawSheetName);
             if (needsQuotes)
@@ -78,7 +78,7 @@ namespace NPOI.SS.Formula
             }
         }
 
-        public static void AppendFormat(StringBuilder out1, String workbookName, String rawSheetName)
+        public static void AppendFormat(StringBuilder out1, string workbookName, string rawSheetName)
         {
             bool needsQuotes = NeedsDelimiting(workbookName) || NeedsDelimiting(rawSheetName);
             if (needsQuotes)
@@ -99,7 +99,7 @@ namespace NPOI.SS.Formula
             }
         }
 
-        private static void AppendAndEscape(StringBuilder sb, String rawSheetName)
+        private static void AppendAndEscape(StringBuilder sb, string rawSheetName)
         {
             int len = rawSheetName.Length;
             for (int i = 0; i < len; i++)
@@ -114,14 +114,14 @@ namespace NPOI.SS.Formula
             }
         }
 
-        private static bool NeedsDelimiting(String rawSheetName)
+        private static bool NeedsDelimiting(string rawSheetName)
         {
             int len = rawSheetName.Length;
             if (len < 1)
             {
                 throw new Exception("Zero Length string is an invalid sheet name");
             }
-            if (Char.IsDigit(rawSheetName[0]))
+            if (char.IsDigit(rawSheetName[0]))
             {
                 // sheet name with digit in the first position always requires delimiting
                 return true;
@@ -134,8 +134,8 @@ namespace NPOI.SS.Formula
                     return true;
                 }
             }
-            if (Char.IsLetter(rawSheetName[0])
-                    && Char.IsDigit(rawSheetName[len - 1]))
+            if (char.IsLetter(rawSheetName[0])
+                    && char.IsDigit(rawSheetName[len - 1]))
             {
                 // note - values like "A$1:$C$20" don't Get this far 
                 if (NameLooksLikePlainCellReference(rawSheetName))
@@ -149,7 +149,7 @@ namespace NPOI.SS.Formula
             }
             return false;
         }
-        private static bool NameLooksLikeBooleanLiteral(String rawSheetName)
+        private static bool NameLooksLikeBooleanLiteral(string rawSheetName)
         {
             switch (rawSheetName[0])
             {
@@ -171,7 +171,7 @@ namespace NPOI.SS.Formula
         static bool IsSpecialChar(char ch)
         {
             // note - Char.IsJavaIdentifierPart() would allow dollars '$'
-            if (Char.IsLetterOrDigit(ch))
+            if (char.IsLetterOrDigit(ch))
             {
                 return false;
             }
@@ -214,7 +214,7 @@ namespace NPOI.SS.Formula
          * the maximum sheet size varies across versions.
          * @see org.apache.poi.hssf.util.CellReference
          */
-        public static bool CellReferenceIsWithinRange(String lettersPrefix, String numbersSuffix)
+        public static bool CellReferenceIsWithinRange(string lettersPrefix, string numbersSuffix)
         {
             return NPOI.SS.Util.CellReference.CellReferenceIsWithinRange(lettersPrefix, numbersSuffix, NPOI.SS.SpreadsheetVersion.EXCEL97);
         }
@@ -241,7 +241,7 @@ namespace NPOI.SS.Formula
          * @return <c>true</c> if there is any possible ambiguity that the specified rawSheetName
          * could be interpreted as a valid cell name.
          */
-        public static bool NameLooksLikePlainCellReference(String rawSheetName)
+        public static bool NameLooksLikePlainCellReference(string rawSheetName)
         {
             Regex matcher = new Regex(CELL_REF_PATTERN);
             if (!matcher.IsMatch(rawSheetName))
@@ -251,8 +251,8 @@ namespace NPOI.SS.Formula
 
             Match match = matcher.Matches(rawSheetName)[0];
             // rawSheetName == "Sheet1" Gets this far.
-            String lettersPrefix = match.Groups[1].Value;
-            String numbersSuffix = match.Groups[2].Value;
+            string lettersPrefix = match.Groups[1].Value;
+            string numbersSuffix = match.Groups[2].Value;
             return CellReferenceIsWithinRange(lettersPrefix, numbersSuffix);
         }
 

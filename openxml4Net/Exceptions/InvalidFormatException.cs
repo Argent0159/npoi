@@ -9,7 +9,7 @@ namespace NPOI.OpenXml4Net.Exceptions
         private string p;
         private InvalidFormatException ex;
 
-        public InvalidFormatException(String message):base(message)
+        public InvalidFormatException(string message):base(message)
         {
             
         }

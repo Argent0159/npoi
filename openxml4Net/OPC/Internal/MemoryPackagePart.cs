@@ -28,7 +28,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *             If the specified URI is not OPC compliant.
          */
         public MemoryPackagePart(OPCPackage pack, PackagePartName partName,
-                String contentType)
+                string contentType)
             : base(pack, partName, contentType)
         {
 
@@ -49,7 +49,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *             If the specified URI is not OPC compliant.
          */
         public MemoryPackagePart(OPCPackage pack, PackagePartName partName,
-                String contentType, bool loadRelationships) :
+                string contentType, bool loadRelationships) :
             base(pack, partName, new ContentType(contentType), loadRelationships)
         {
 

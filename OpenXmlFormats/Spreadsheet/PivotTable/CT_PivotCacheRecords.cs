@@ -19,7 +19,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             CT_PivotCacheRecords ctObj = new CT_PivotCacheRecords();
             if (node.Attributes["count"] != null)
                 ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
-            ctObj.r = new List<Object>();
+            ctObj.r = new List<object>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "extLst")

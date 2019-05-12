@@ -101,7 +101,7 @@ namespace NPOI.XSSF.UserModel
 
 
 
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is XSSFClientAnchor)) return false;
 
@@ -118,7 +118,7 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return "from : " + cell1.ToString() + "; to: " + cell2.ToString();
         }

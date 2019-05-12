@@ -426,16 +426,16 @@ namespace NPOI.HSSF.Record
          *      there is not enough data in string to Create a String of that     
          *      Length)     
          */
-        public String ReadUnicodeLEString(int requestedLength)
+        public string ReadUnicodeLEString(int requestedLength)
         {
             return ReadStringCommon(requestedLength, false);
         }
 
-        public String ReadCompressedUnicode(int requestedLength)
+        public string ReadCompressedUnicode(int requestedLength)
         {
             return ReadStringCommon(requestedLength, true);
         }
-        private String ReadStringCommon(int requestedLength, bool pIsCompressedEncoding)
+        private string ReadStringCommon(int requestedLength, bool pIsCompressedEncoding)
         {
             // Sanity check to detect garbage string lengths
             if (requestedLength < 0 || requestedLength > 0x100000)
@@ -465,7 +465,7 @@ namespace NPOI.HSSF.Record
                         buf[curLen] = ch;
                         curLen++;
                     }
-                    return new String(buf);// Encoding.UTF8.GetChars(buf,0,buf.Length);
+                    return new string(buf);// Encoding.UTF8.GetChars(buf,0,buf.Length);
                 }
                 // else string has been spilled into next continue record
                 // so read what's left of the current record
@@ -500,7 +500,7 @@ namespace NPOI.HSSF.Record
                 isCompressedEncoding = (compressFlag == 0);
             }
         }
-        public String ReadString()
+        public string ReadString()
         {
             int requestedLength = ReadUShort();
             byte compressFlag = (byte)ReadByte();

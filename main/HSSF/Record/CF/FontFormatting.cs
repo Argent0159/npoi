@@ -375,7 +375,7 @@ namespace NPOI.HSSF.Record.CF
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("	[Font Formatting]\n");
@@ -455,7 +455,7 @@ namespace NPOI.HSSF.Record.CF
             return buffer.ToString();
         }
 
-        public Object Clone()
+        public object Clone()
         {
             byte[] rawData = (byte[])_rawData.Clone();
             return new FontFormatting(rawData);

@@ -84,7 +84,7 @@ namespace NPOI.HSSF.Record.Chart
             field_5_formulaOfLink = Formula.Read(encodedTokenLen, in1);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -140,7 +140,7 @@ namespace NPOI.HSSF.Record.Chart
             }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             BRAIRecord rec = new BRAIRecord();
 

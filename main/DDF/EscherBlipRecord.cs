@@ -31,7 +31,7 @@ namespace NPOI.DDF
     {
         public const short RECORD_ID_START = unchecked((short)0xF018);
         public const short RECORD_ID_END = unchecked((short)0xF117);
-        public const String RECORD_DESCRIPTION = "msofbtBlip";
+        public const string RECORD_DESCRIPTION = "msofbtBlip";
 
         private const int HEADER_SIZE = 8;
 
@@ -92,7 +92,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "Blip"; }
         }
@@ -114,11 +114,11 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String extraData = string.Empty;
+            string extraData = string.Empty;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -139,9 +139,9 @@ namespace NPOI.DDF
             }
         }
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String extraData = HexDump.ToHex(field_pictureData, 32);
+            string extraData = HexDump.ToHex(field_pictureData, 32);
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))
                     .Append(tab).Append("\t").Append("<ExtraData>").Append(extraData).Append("</ExtraData>\n");

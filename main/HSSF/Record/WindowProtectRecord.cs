@@ -82,7 +82,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

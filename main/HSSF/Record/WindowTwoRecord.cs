@@ -423,7 +423,7 @@ namespace NPOI.HSSF.Record
             set { field_7_reserved = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -493,7 +493,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             WindowTwoRecord rec = new WindowTwoRecord();
             rec.field_1_options = field_1_options;

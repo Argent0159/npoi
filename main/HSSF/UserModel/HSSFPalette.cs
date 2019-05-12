@@ -210,7 +210,7 @@ namespace NPOI.HSSF.UserModel
             /// Gets a hex string exactly like a gnumeric triplet
             /// </summary>
             /// <value></value>
-            public override String GetHexString()
+            public override string GetHexString()
             {
                     StringBuilder sb = new StringBuilder();
                     sb.Append(GetGnumericPart(red));
@@ -226,9 +226,9 @@ namespace NPOI.HSSF.UserModel
             /// </summary>
             /// <param name="color">The color.</param>
             /// <returns></returns>
-            private String GetGnumericPart(byte color)
+            private string GetGnumericPart(byte color)
             {
-                String s;
+                string s;
                 if (color == 0)
                 {
                     s = "0";

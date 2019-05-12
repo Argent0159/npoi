@@ -49,7 +49,7 @@ namespace NPOI.XSSF.UserModel.Helpers
             return ctXmlColumnPr.mapId;
         }
 
-        public String GetXPath()
+        public string GetXPath()
         {
             return ctXmlColumnPr.xpath;
             
@@ -69,12 +69,12 @@ namespace NPOI.XSSF.UserModel.Helpers
          * 	
          * @return the local XPath 
          */
-        public String GetLocalXPath()
+        public string GetLocalXPath()
         {
-            String localXPath = "";
+            string localXPath = "";
             int numberOfCommonXPathAxis = table.GetCommonXpath().Split(new char[] { '/' }).Length - 1;
 
-            String[] xPathTokens = ctXmlColumnPr.xpath.Split(new char[] { '/' });
+            string[] xPathTokens = ctXmlColumnPr.xpath.Split(new char[] { '/' });
             for (int i = numberOfCommonXPathAxis; i < xPathTokens.Length; i++)
             {
                 localXPath += "/" + xPathTokens[i];

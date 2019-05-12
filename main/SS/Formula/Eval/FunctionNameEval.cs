@@ -25,16 +25,16 @@ namespace NPOI.SS.Formula.Eval
     public class FunctionNameEval : ValueEval
     {
 
-        private String _functionName;
+        private string _functionName;
 
         /**
          * Creates a NameEval representing a function name
          */
-        public FunctionNameEval(String functionName) {
+        public FunctionNameEval(string functionName) {
             _functionName = functionName;
         }
 
-        public String FunctionName
+        public string FunctionName
         {
             get
             {
@@ -42,7 +42,7 @@ namespace NPOI.SS.Formula.Eval
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");

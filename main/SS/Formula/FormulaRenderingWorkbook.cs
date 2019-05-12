@@ -40,12 +40,12 @@ namespace NPOI.SS.Formula
         /**
          * @return the name of the (first) sheet referred to by the given external sheet index
          */
-        String GetSheetFirstNameByExternSheet(int externSheetIndex);
+        string GetSheetFirstNameByExternSheet(int externSheetIndex);
         /**
          * @return the name of the (last) sheet referred to by the given external sheet index
          */
-        String GetSheetLastNameByExternSheet(int externSheetIndex);
-        String ResolveNameXText(NameXPtg nameXPtg);
-        String GetNameText(NamePtg namePtg);
+        string GetSheetLastNameByExternSheet(int externSheetIndex);
+        string ResolveNameXText(NameXPtg nameXPtg);
+        string GetNameText(NamePtg namePtg);
     }
 }

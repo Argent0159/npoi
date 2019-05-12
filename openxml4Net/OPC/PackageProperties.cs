@@ -18,34 +18,34 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Set the category of the content of this package.
          */
-        String GetCategoryProperty();
+        string GetCategoryProperty();
 
         /**
          * Set the category of the content of this package.
          */
-        void SetCategoryProperty(String category);
+        void SetCategoryProperty(string category);
 
         /**
          * Set the status of the content.
          */
-        String GetContentStatusProperty();
+        string GetContentStatusProperty();
 
         /**
          * Get the status of the content.
          */
-        void SetContentStatusProperty(String contentStatus);
+        void SetContentStatusProperty(string contentStatus);
 
         /**
          * Get the type of content represented, generally defined by a specific use
          * and intended audience.
          */
-        String GetContentTypeProperty();
+        string GetContentTypeProperty();
 
         /**
          * Set the type of content represented, generally defined by a specific use
          * and intended audience.
          */
-        void SetContentTypeProperty(String contentType);
+        void SetContentTypeProperty(string contentType);
 
         /**
          * Get the date of creation of the resource.
@@ -55,7 +55,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Set the date of creation of the resource.
          */
-        void SetCreatedProperty(String created);
+        void SetCreatedProperty(string created);
 
         /**
          * Set the date of creation of the resource.
@@ -66,67 +66,67 @@ namespace NPOI.OpenXml4Net.OPC
          * Get the entity primarily responsible for making the content of the
          * resource.
          */
-        String GetCreatorProperty();
+        string GetCreatorProperty();
 
         /**
          * Set the entity primarily responsible for making the content of the
          * resource.
          */
-        void SetCreatorProperty(String creator);
+        void SetCreatorProperty(string creator);
 
         /**
          * Get the explanation of the content of the resource.
          */
-        String GetDescriptionProperty();
+        string GetDescriptionProperty();
 
         /**
          * Set the explanation of the content of the resource.
          */
-        void SetDescriptionProperty(String description);
+        void SetDescriptionProperty(string description);
 
         /**
          * Get an unambiguous reference to the resource within a given context.
          */
-        String GetIdentifierProperty();
+        string GetIdentifierProperty();
 
         /**
          * Set an unambiguous reference to the resource within a given context.
          */
-        void SetIdentifierProperty(String identifier);
+        void SetIdentifierProperty(string identifier);
 
         /**
          * Get a delimited Set of keywords to support searching and indexing. This
          * is typically a list of terms that are not available elsewhere in the
          * properties
          */
-        String GetKeywordsProperty();
+        string GetKeywordsProperty();
 
         /**
          * Set a delimited Set of keywords to support searching and indexing. This
          * is typically a list of terms that are not available elsewhere in the
          * properties
          */
-        void SetKeywordsProperty(String keywords);
+        void SetKeywordsProperty(string keywords);
 
         /**
          * Get the language of the intellectual content of the resource.
          */
-        String GetLanguageProperty();
+        string GetLanguageProperty();
 
         /**
          * Set the language of the intellectual content of the resource.
          */
-        void SetLanguageProperty(String language);
+        void SetLanguageProperty(string language);
 
         /**
          * Get the user who performed the last modification.
          */
-        String GetLastModifiedByProperty();
+        string GetLastModifiedByProperty();
 
         /**
          * Set the user who performed the last modification.
          */
-        void SetLastModifiedByProperty(String lastModifiedBy);
+        void SetLastModifiedByProperty(string lastModifiedBy);
 
         /**
          * Get the date and time of the last printing.
@@ -136,7 +136,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Set the date and time of the last printing.
          */
-        void SetLastPrintedProperty(String lastPrinted);
+        void SetLastPrintedProperty(string lastPrinted);
 
         /**
          * Set the date and time of the last printing.
@@ -151,7 +151,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Set the date on which the resource was changed.
          */
-        void SetModifiedProperty(String modified);
+        void SetModifiedProperty(string modified);
 
         /**
          * Set the date on which the resource was changed.
@@ -161,41 +161,41 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Get the revision number.
          */
-        String GetRevisionProperty();
+        string GetRevisionProperty();
 
         /**
          * Set the revision number.
          */
-        void SetRevisionProperty(String revision);
+        void SetRevisionProperty(string revision);
 
         /**
          * Get the topic of the content of the resource.
          */
-        String GetSubjectProperty();
+        string GetSubjectProperty();
 
         /**
          * Set the topic of the content of the resource.
          */
-        void SetSubjectProperty(String subject);
+        void SetSubjectProperty(string subject);
 
         /**
          * Get the name given to the resource.
          */
-        String GetTitleProperty();
+        string GetTitleProperty();
 
         /**
          * Set the name given to the resource.
          */
-        void SetTitleProperty(String title);
+        void SetTitleProperty(string title);
 
         /**
          * Get the version number.
          */
-        String GetVersionProperty();
+        string GetVersionProperty();
 
         /**
          * Set the version number.
          */
-        void SetVersionProperty(String version);
+        void SetVersionProperty(string version);
     }
 }

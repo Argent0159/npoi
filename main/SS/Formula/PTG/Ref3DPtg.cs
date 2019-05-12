@@ -56,7 +56,7 @@ namespace NPOI.SS.Formula.PTG
             ReadCoordinates(in1);
         }
 
-        public Ref3DPtg(String cellref, int externIdx)
+        public Ref3DPtg(string cellref, int externIdx)
         {
             CellReference c = new CellReference(cellref);
             Row=c.Row;
@@ -71,7 +71,7 @@ namespace NPOI.SS.Formula.PTG
             ExternSheetIndex = externIdx;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             CellReference cr = new CellReference(Row, Column, !IsRowRelative, !IsColRelative);
             StringBuilder sb = new StringBuilder();
@@ -106,12 +106,12 @@ namespace NPOI.SS.Formula.PTG
          * @return text representation of this cell reference that can be used in text 
          * formulas. The sheet name will Get properly delimited if required.
          */
-        public String ToFormulaString(IFormulaRenderingWorkbook book)
+        public string ToFormulaString(IFormulaRenderingWorkbook book)
         {
             return ExternSheetNameResolver.PrependSheetName(book, field_1_index_extern_sheet, FormatReferenceAsString());
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             throw new NotImplementedException("3D references need a workbook to determine formula text");
         }

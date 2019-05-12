@@ -29,9 +29,9 @@ namespace NPOI.SS.Formula.Udf
      */
     public class DefaultUDFFinder : UDFFinder
     {
-        private Dictionary<String, FreeRefFunction> _functionsByName;
+        private Dictionary<string, FreeRefFunction> _functionsByName;
 
-        public DefaultUDFFinder(String[] functionNames, FreeRefFunction[] functionImpls)
+        public DefaultUDFFinder(string[] functionNames, FreeRefFunction[] functionImpls)
         {
             int nFuncs = functionNames.Length;
             if (functionImpls.Length != nFuncs)
@@ -39,7 +39,7 @@ namespace NPOI.SS.Formula.Udf
                 throw new ArgumentException(
                         "Mismatch in number of function names and implementations");
             }
-            Dictionary<String, FreeRefFunction> m = new Dictionary<String, FreeRefFunction>(nFuncs * 3 / 2);
+            Dictionary<string, FreeRefFunction> m = new Dictionary<string, FreeRefFunction>(nFuncs * 3 / 2);
             for (int i = 0; i < functionImpls.Length; i++)
             {
                 m[functionNames[i].ToUpper()]= functionImpls[i];
@@ -47,7 +47,7 @@ namespace NPOI.SS.Formula.Udf
             _functionsByName = m;
         }
 
-        public override FreeRefFunction FindFunction(String name)
+        public override FreeRefFunction FindFunction(string name)
         {
             if (!_functionsByName.ContainsKey(name.ToUpper()))
                 return null;

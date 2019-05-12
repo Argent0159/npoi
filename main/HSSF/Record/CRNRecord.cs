@@ -38,7 +38,7 @@ namespace NPOI.HSSF.Record
         private int field_1_last_column_index;
         private int field_2_first_column_index;
         private int field_3_row_index;
-        private Object[] field_4_constant_values;
+        private object[] field_4_constant_values;
 
         public CRNRecord()
         {
@@ -64,7 +64,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name).Append(" [CRN");

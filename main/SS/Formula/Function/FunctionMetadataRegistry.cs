@@ -30,7 +30,7 @@ namespace NPOI.SS.Formula.Function
         /**
          * The name of the IF function (i.e. "IF").  Extracted as a constant for clarity.
          */
-        public const String FUNCTION_NAME_IF = "IF";
+        public const string FUNCTION_NAME_IF = "IF";
 
         public const int FUNCTION_INDEX_IF = 1;
         public const short FUNCTION_INDEX_SUM = 4;
@@ -80,7 +80,7 @@ namespace NPOI.SS.Formula.Function
          * @return a negative value if the function name is not found.
          * This typically occurs for external functions.
          */
-        public static short LookupIndexByName(String name)
+        public static short LookupIndexByName(string name)
         {
             FunctionMetadata fd = GetInstance().GetFunctionByNameInternal(name);
             if (fd == null)
@@ -90,13 +90,13 @@ namespace NPOI.SS.Formula.Function
             return (short)fd.Index;
         }
 
-        private FunctionMetadata GetFunctionByNameInternal(String name)
+        private FunctionMetadata GetFunctionByNameInternal(string name)
         {
             return (FunctionMetadata)_functionDataByName[name];
         }
 
 
-        public static FunctionMetadata GetFunctionByName(String name)
+        public static FunctionMetadata GetFunctionByName(string name)
         {
             return GetInstance().GetFunctionByNameInternal(name);
         }

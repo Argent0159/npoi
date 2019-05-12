@@ -32,7 +32,7 @@ namespace NPOI.XWPF.UserModel
         protected StringBuilder text = new StringBuilder();
         private CT_Tbl ctTbl;
         protected List<XWPFTableRow> tableRows;
-        protected List<String> styleIDs;
+        protected List<string> styleIDs;
 
         // Create a map from this XWPF-level enum to the STBorder.Enum values
         public enum XWPFBorderType { NIL, NONE, SINGLE, THICK, DOUBLE, DOTTED, DASHED, DOT_DASH };
@@ -178,7 +178,7 @@ namespace NPOI.XWPF.UserModel
          *
          * @return text
          */
-        public String Text
+        public string Text
         {
             get
             {
@@ -287,11 +287,11 @@ namespace NPOI.XWPF.UserModel
          * Get the StyleID of the table
          * @return	style-ID of the table
          */
-        public String StyleID
+        public string StyleID
         {
             get
             {
-                String styleId = null;
+                string styleId = null;
                 CT_TblPr tblPr = ctTbl.tblPr;
                 if (tblPr != null)
                 {
@@ -374,11 +374,11 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String InsideHBorderColor
+        public string InsideHBorderColor
         {
             get
             {
-                String color = null;
+                string color = null;
 
                 CT_TblPr tblPr = GetTrPr();
                 if (tblPr.IsSetTblBorders())
@@ -455,11 +455,11 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String InsideVBorderColor
+        public string InsideVBorderColor
         {
             get
             {
-                String color = null;
+                string color = null;
 
                 CT_TblPr tblPr = GetTrPr();
                 if (tblPr.IsSetTblBorders())
@@ -516,7 +516,7 @@ namespace NPOI.XWPF.UserModel
                 colSize.val = value.ToString();
             }
         }
-        public void SetTopBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetTopBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();
@@ -526,7 +526,7 @@ namespace NPOI.XWPF.UserModel
             b.space = (ulong)space;
             b.color = (rgbColor);
         }
-        public void SetBottomBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetBottomBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();
@@ -536,7 +536,7 @@ namespace NPOI.XWPF.UserModel
             b.space = (ulong)space;
             b.color = (rgbColor);
         }
-        public void SetLeftBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetLeftBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();
@@ -546,7 +546,7 @@ namespace NPOI.XWPF.UserModel
             b.space = (ulong)space;
             b.color = (rgbColor);
         }
-        public void SetRightBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetRightBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();
@@ -556,7 +556,7 @@ namespace NPOI.XWPF.UserModel
             b.space = (ulong)space;
             b.color = (rgbColor);
         }
-        public void SetInsideHBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetInsideHBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();
@@ -567,7 +567,7 @@ namespace NPOI.XWPF.UserModel
             b.color = (rgbColor);
         }
 
-        public void SetInsideVBorder(XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetInsideVBorder(XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TblPr tblPr = GetTrPr();
             CT_TblBorders ctb = tblPr.IsSetTblBorders() ? tblPr.tblBorders : tblPr.AddNewTblBorders();

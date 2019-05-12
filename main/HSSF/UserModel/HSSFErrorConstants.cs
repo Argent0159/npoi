@@ -53,7 +53,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         /// <returns></returns>
-        public static String GetText(int errorCode)
+        public static string GetText(int errorCode)
         {
             if (errorCode == ERROR_NULL)
             {

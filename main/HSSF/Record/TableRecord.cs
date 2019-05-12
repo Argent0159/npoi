@@ -185,7 +185,7 @@ namespace NPOI.HSSF.Record
             out1.WriteShort(field_10_colInputCol);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[TABLE]\n");

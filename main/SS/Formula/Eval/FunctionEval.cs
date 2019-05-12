@@ -459,7 +459,7 @@ namespace NPOI.SS.Formula.Eval
      * @since 3.8 beta6
      */
 
-        public static void RegisterFunction(String name, Function func)
+        public static void RegisterFunction(string name, Function func)
         {
             FunctionMetadata metaData = FunctionMetadataRegistry.GetFunctionByName(name);
             if (metaData == null)
@@ -494,9 +494,9 @@ namespace NPOI.SS.Formula.Eval
          * @since 3.8 beta6
          */
 
-        public static ReadOnlyCollection<String> GetSupportedFunctionNames()
+        public static ReadOnlyCollection<string> GetSupportedFunctionNames()
         {
-            List<String> lst = new List<String>();
+            List<string> lst = new List<string>();
             for (int i = 0; i < functions.Length; i++)
             {
                 Function func = functions[i];
@@ -517,9 +517,9 @@ namespace NPOI.SS.Formula.Eval
          * @since 3.8 beta6
          */
 
-        public static ReadOnlyCollection<String> GetNotSupportedFunctionNames()
+        public static ReadOnlyCollection<string> GetNotSupportedFunctionNames()
         {
-            List<String> lst = new List<String>();
+            List<string> lst = new List<string>();
             for (int i = 0; i < functions.Length; i++)
             {
                 Function func = functions[i];

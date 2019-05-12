@@ -84,7 +84,7 @@ namespace NPOI.SS.Formula.Functions
                 double[] values = new double[temp.Count];
                 for (int i = 0; i < values.Length; i++)
                 {
-                    values[i] = (Double)temp[i];
+                    values[i] = (double)temp[i];
                 }
                 result = Evaluate(values);
             }

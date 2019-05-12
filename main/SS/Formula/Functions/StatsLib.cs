@@ -68,7 +68,7 @@ namespace NPOI.SS.Formula.Functions
         }
         public static double var(double[] v)
         {
-            double r = Double.NaN;
+            double r = double.NaN;
             if (v != null && v.Length > 1)
             {
                 r = devsq(v) / (v.Length - 1);
@@ -78,7 +78,7 @@ namespace NPOI.SS.Formula.Functions
 
         public static double varp(double[] v)
         {
-            double r = Double.NaN;
+            double r = double.NaN;
             if (v != null && v.Length > 1)
             {
                 r = devsq(v) / v.Length;

@@ -47,7 +47,7 @@ namespace NPOI.SS.Formula.Functions
 
         public override ValueEval Evaluate(int srcRowIndex, int srcColumnIndex, ValueEval numberVE)
         {
-            String hex;
+            string hex;
             if (numberVE is RefEval)
             {
                 RefEval re = (RefEval)numberVE;

@@ -49,7 +49,7 @@ namespace NPOI.HPSF
         /// <param name="variantType">The unsupported variant type</param>
         /// <param name="value">The value who's variant type is not yet supported</param>
         public UnsupportedVariantTypeException(long variantType,
-                                               Object value)
+                                               object value)
             : base(variantType, value,
                 "HPSF does not yet support the variant type " + variantType +
                 " (" + Variant.GetVariantName(variantType) + ", " +

@@ -39,9 +39,9 @@ namespace NPOI.HSSF.Util
         const int WRONG_POS = -1;
         const int MAX_HEIGHT = 66666;
         //static char SO_FORMNAME_ENCLOSURE =  '\'';
-        String m_sheetName;
-        String m_cellFrom;
-        String m_cellTo;
+        string m_sheetName;
+        string m_cellFrom;
+        string m_cellTo;
 
         /**
          * Accepts an external reference from excel.
@@ -49,7 +49,7 @@ namespace NPOI.HSSF.Util
          * i.e. Sheet1!$A$4:$B$9
          * @param _url
          */
-        public RangeAddress(String _url)
+        public RangeAddress(string _url)
         {
             init(_url);
         }
@@ -64,11 +64,11 @@ namespace NPOI.HSSF.Util
          * 
          * @return String <b>note: </b> All absolute references are Removed
          */
-        public String Address
+        public string Address
         {
             get
             {
-                String result = "";
+                string result = "";
                 if (m_sheetName != null)
                     result += m_sheetName + "!";
                 if (m_cellFrom != null)
@@ -82,7 +82,7 @@ namespace NPOI.HSSF.Util
         }
 
 
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -90,11 +90,11 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        public String Range
+        public string Range
         {
             get
             {
-                String result = "";
+                string result = "";
                 if (m_cellFrom != null)
                 {
                     result += m_cellFrom;
@@ -105,7 +105,7 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        public bool IsCellOk(String _cell)
+        public bool IsCellOk(string _cell)
         {
             if (_cell != null)
             {
@@ -125,12 +125,12 @@ namespace NPOI.HSSF.Util
             return IsSheetNameOk(m_sheetName);
         }
 
-        private static bool intern_isSheetNameOk(String _sheetName, bool _canBeWaitSpace)
+        private static bool intern_isSheetNameOk(string _sheetName, bool _canBeWaitSpace)
         {
             for (int i = 0; i < _sheetName.Length; i++)
             {
                 char ch = _sheetName[i];
-                if (!(Char.IsLetterOrDigit(ch) || (ch == '_') ||
+                if (!(char.IsLetterOrDigit(ch) || (ch == '_') ||
                 _canBeWaitSpace && (ch == ' ')))
                 {
                     return false;
@@ -139,7 +139,7 @@ namespace NPOI.HSSF.Util
             return true;
         }
 
-        public static bool IsSheetNameOk(String _sheetName)
+        public static bool IsSheetNameOk(string _sheetName)
         {
             bool res = false;
             if (!string.IsNullOrEmpty(_sheetName))
@@ -152,7 +152,7 @@ namespace NPOI.HSSF.Util
         }
 
 
-        public String FromCell
+        public string FromCell
         {
             get
             {
@@ -160,7 +160,7 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        public String ToCell
+        public string ToCell
         {
             get
             {
@@ -245,13 +245,13 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        private void init(String _url)
+        private void init(string _url)
         {
 
             _url = RemoveString(_url, "$");
             _url = RemoveString(_url, "'");
 
-            String[] urls = ParseURL(_url);
+            string[] urls = ParseURL(_url);
             m_sheetName = urls[0];
             m_cellFrom = urls[1];
             m_cellTo = urls[2];
@@ -268,14 +268,14 @@ namespace NPOI.HSSF.Util
 
         }
 
-        private String[] ParseURL(String _url)
+        private string[] ParseURL(string _url)
         {
-            String[] result = new String[3];
+            string[] result = new string[3];
             int index = _url.IndexOf(':');
             if (index >= 0)
             {
-                String fromStr = _url.Substring(0, index);
-                String toStr = _url.Substring(index + 1);
+                string fromStr = _url.Substring(0, index);
+                string toStr = _url.Substring(index + 1);
                 index = fromStr.IndexOf('!');
                 if (index >= 0)
                 {
@@ -312,13 +312,13 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        public int GetYPosition(String _subrange)
+        public int GetYPosition(string _subrange)
         {
             int result = WRONG_POS;
             _subrange = _subrange.Trim();
             if (_subrange.Length != 0)
             {
-                String digitstr = GetDigitPart(_subrange);
+                string digitstr = GetDigitPart(_subrange);
                 try
                 {
                     result = int.Parse(digitstr, CultureInfo.InvariantCulture);
@@ -336,7 +336,7 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        private static bool IsLetter(String _str)
+        private static bool IsLetter(string _str)
         {
             bool res = true;
             if (!string.IsNullOrEmpty(_str))
@@ -344,7 +344,7 @@ namespace NPOI.HSSF.Util
                 for (int i = 0; i < _str.Length; i++)
                 {
                     char ch = _str[i];
-                    if (!Char.IsLetter(ch))
+                    if (!char.IsLetter(ch))
                     {
                         res = false;
                         break;
@@ -356,10 +356,10 @@ namespace NPOI.HSSF.Util
             return res;
         }
 
-        public int GetXPosition(String _subrange)
+        public int GetXPosition(string _subrange)
         {
             int result = WRONG_POS;
-            String tmp = Filter(_subrange);
+            string tmp = Filter(_subrange);
             tmp = this.GetCharPart(_subrange);
             // we will Process only 2 letters ranges
             if (IsLetter(tmp) && ((tmp.Length == 2) || (tmp.Length == 1)))
@@ -369,9 +369,9 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        public String GetDigitPart(String _value)
+        public string GetDigitPart(string _value)
         {
-            String result = "";
+            string result = "";
             int digitpos = GetFirstDigitPosition(_value);
             if (digitpos >= 0)
             {
@@ -380,9 +380,9 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        public String GetCharPart(String _value)
+        public string GetCharPart(string _value)
         {
-            String result = "";
+            string result = "";
             int digitpos = GetFirstDigitPosition(_value);
             if (digitpos >= 0)
             {
@@ -391,9 +391,9 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        private String Filter(String _range)
+        private string Filter(string _range)
         {
-            String res = "";
+            string res = "";
             for (int i = 0; i < _range.Length; i++)
             {
                 char ch = _range[i];
@@ -405,7 +405,7 @@ namespace NPOI.HSSF.Util
             return res;
         }
 
-        private int GetFirstDigitPosition(String _value)
+        private int GetFirstDigitPosition(string _value)
         {
             int result = WRONG_POS;
             if (_value != null && _value.Trim().Length == 0)
@@ -416,7 +416,7 @@ namespace NPOI.HSSF.Util
             int Length = _value.Length;
             for (int i = 0; i < Length; i++)
             {
-                if (Char.IsDigit(_value[i]))
+                if (char.IsDigit(_value[i]))
                 {
                     result = i;
                     break;
@@ -425,7 +425,7 @@ namespace NPOI.HSSF.Util
             return result;
         }
 
-        public int Get26Sys(String _s)
+        public int Get26Sys(string _s)
         {
             int sum = 0;
             int multiplier = 1;
@@ -434,7 +434,7 @@ namespace NPOI.HSSF.Util
                 for (int i = _s.Length - 1; i >= 0; i--)
                 {
                     char ch = _s[i];
-                    int val = (int)(Char.GetNumericValue(ch) - Char.GetNumericValue('A') + 1);
+                    int val = (int)(char.GetNumericValue(ch) - char.GetNumericValue('A') + 1);
                     sum = sum + val * multiplier;
                     multiplier = multiplier * 26;
                 }
@@ -443,11 +443,11 @@ namespace NPOI.HSSF.Util
             return WRONG_POS;
         }
 
-        public String NumTo26Sys(int _num)
+        public string NumTo26Sys(int _num)
         {
             //int sum = 0;
             int reminder;
-            String s = "";
+            string s = "";
             do
             {
                 _num--;
@@ -459,8 +459,8 @@ namespace NPOI.HSSF.Util
             return s;
         }
 
-        public String ReplaceString(String _source, String _oldPattern,
-        String _newPattern)
+        public string ReplaceString(string _source, string _oldPattern,
+        string _newPattern)
         {
             StringBuilder res = new StringBuilder(_source);
             res = res.Replace(_oldPattern, _newPattern);
@@ -468,7 +468,7 @@ namespace NPOI.HSSF.Util
             return res.ToString();
         }
 
-        public String RemoveString(String _source, String _match)
+        public string RemoveString(string _source, string _match)
         {
             return ReplaceString(_source, _match, "");
         }

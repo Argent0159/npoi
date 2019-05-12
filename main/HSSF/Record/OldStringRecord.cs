@@ -81,12 +81,12 @@ namespace NPOI.HSSF.Record
         /**
          * @return The string represented by this record.
          */
-        public String GetString()
+        public string GetString()
         {
             return GetString(field_2_bytes, codepage);
         }
 
-        protected internal static String GetString(byte[] data, CodepageRecord codepage)
+        protected internal static string GetString(byte[] data, CodepageRecord codepage)
         {
             int cp = CodePageUtil.CP_ISO_8859_1;
             if (codepage != null)
@@ -103,7 +103,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

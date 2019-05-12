@@ -126,8 +126,8 @@ namespace NPOI.HSSF.UserModel
                 throw new Exception("Unexpected operation ptg class (" + ptgClass.Name + ")");
             }
 
-            Object result;
-            Object[] initargs = { ptg };
+            object result;
+            object[] initargs = { ptg };
             try
             {
                 result = constructor.Invoke(initargs);

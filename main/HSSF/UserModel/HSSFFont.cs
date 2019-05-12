@@ -31,7 +31,7 @@ namespace NPOI.HSSF.UserModel
     /// </summary>
     public class HSSFFont:NPOI.SS.UserModel.IFont
     {
-        public const String FONT_ARIAL = "Arial";
+        public const string FONT_ARIAL = "Arial";
 
         private FontRecord font;
         private short index;
@@ -52,7 +52,7 @@ namespace NPOI.HSSF.UserModel
         /// Get the name for the font (i.e. Arial)
         /// </summary>
         /// <value>the name of the font to use</value>
-        public String FontName
+        public string FontName
         {
             get { return font.FontName; }
             set
@@ -202,7 +202,7 @@ namespace NPOI.HSSF.UserModel
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             return "NPOI.HSSF.UserModel.HSSFFont{" +
                      font +
@@ -234,7 +234,7 @@ namespace NPOI.HSSF.UserModel
         /// <exception cref="T:System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (this == obj) return true;
             if (obj == null) return false;

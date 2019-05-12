@@ -36,28 +36,28 @@ namespace NPOI.SS.Formula.Eval.Forked
     {
 
         private IEvaluationWorkbook _masterBook;
-        private Dictionary<String, ForkedEvaluationSheet> _sharedSheetsByName;
+        private Dictionary<string, ForkedEvaluationSheet> _sharedSheetsByName;
 
         public ForkedEvaluationWorkbook(IEvaluationWorkbook master)
         {
             _masterBook = master;
-            _sharedSheetsByName = new Dictionary<String, ForkedEvaluationSheet>();
+            _sharedSheetsByName = new Dictionary<string, ForkedEvaluationSheet>();
         }
 
-        public ForkedEvaluationCell GetOrCreateUpdatableCell(String sheetName, int rowIndex,
+        public ForkedEvaluationCell GetOrCreateUpdatableCell(string sheetName, int rowIndex,
                 int columnIndex)
         {
             ForkedEvaluationSheet sheet = GetSharedSheet(sheetName);
             return sheet.GetOrCreateUpdatableCell(rowIndex, columnIndex);
         }
 
-        public IEvaluationCell GetEvaluationCell(String sheetName, int rowIndex, int columnIndex)
+        public IEvaluationCell GetEvaluationCell(string sheetName, int rowIndex, int columnIndex)
         {
             ForkedEvaluationSheet sheet = GetSharedSheet(sheetName);
             return sheet.GetCell(rowIndex, columnIndex);
         }
 
-        private ForkedEvaluationSheet GetSharedSheet(String sheetName)
+        private ForkedEvaluationSheet GetSharedSheet(string sheetName)
         {
             ForkedEvaluationSheet result = null;
             if(_sharedSheetsByName.ContainsKey(sheetName))
@@ -80,17 +80,17 @@ namespace NPOI.SS.Formula.Eval.Forked
 
         public void CopyUpdatedCells(IWorkbook workbook)
         {
-            String[] sheetNames = new String[_sharedSheetsByName.Count];
+            string[] sheetNames = new string[_sharedSheetsByName.Count];
             _sharedSheetsByName.Keys.CopyTo(sheetNames, 0);
             OrderedSheet[] oss = new OrderedSheet[sheetNames.Length];
             for (int i = 0; i < sheetNames.Length; i++)
             {
-                String sheetName = sheetNames[i];
+                string sheetName = sheetNames[i];
                 oss[i] = new OrderedSheet(sheetName, _masterBook.GetSheetIndex(sheetName));
             }
             for (int i = 0; i < oss.Length; i++)
             {
-                String sheetName = oss[i].GetSheetName();
+                string sheetName = oss[i].GetSheetName();
                 ForkedEvaluationSheet sheet = _sharedSheetsByName[(sheetName)];
                 sheet.CopyUpdatedCells(workbook.GetSheet(sheetName));
             }
@@ -105,7 +105,7 @@ namespace NPOI.SS.Formula.Eval.Forked
         {
             return _masterBook.GetExternalSheet(externSheetIndex);
         }
-        public ExternalSheet GetExternalSheet(String firstSheetName, string lastSheetName, int externalWorkbookNumber)
+        public ExternalSheet GetExternalSheet(string firstSheetName, string lastSheetName, int externalWorkbookNumber)
         {
             return _masterBook.GetExternalSheet(firstSheetName, lastSheetName, externalWorkbookNumber);
         }
@@ -124,7 +124,7 @@ namespace NPOI.SS.Formula.Eval.Forked
             return _masterBook.GetName(namePtg);
         }
 
-        public IEvaluationName GetName(String name, int sheetIndex)
+        public IEvaluationName GetName(string name, int sheetIndex)
         {
             return _masterBook.GetName(name, sheetIndex);
         }
@@ -138,7 +138,7 @@ namespace NPOI.SS.Formula.Eval.Forked
         {
             return _masterBook.GetExternalName(externSheetIndex, externNameIndex);
         }
-        public ExternalName GetExternalName(String nameName, String sheetName, int externalWorkbookNumber)
+        public ExternalName GetExternalName(string nameName, string sheetName, int externalWorkbookNumber)
         {
             return _masterBook.GetExternalName(nameName, sheetName, externalWorkbookNumber);
         }
@@ -152,17 +152,17 @@ namespace NPOI.SS.Formula.Eval.Forked
             return _masterBook.GetSheetIndex(sheet);
         }
 
-        public int GetSheetIndex(String sheetName)
+        public int GetSheetIndex(string sheetName)
         {
             return _masterBook.GetSheetIndex(sheetName);
         }
 
-        public String GetSheetName(int sheetIndex)
+        public string GetSheetName(int sheetIndex)
         {
             return _masterBook.GetSheetName(sheetIndex);
         }
 
-        public String ResolveNameXText(NameXPtg ptg)
+        public string ResolveNameXText(NameXPtg ptg)
         {
             return _masterBook.ResolveNameXText(ptg);
         }
@@ -174,15 +174,15 @@ namespace NPOI.SS.Formula.Eval.Forked
 
         private class OrderedSheet : IComparable<OrderedSheet>
         {
-            private String _sheetName;
+            private string _sheetName;
             private int _index;
 
-            public OrderedSheet(String sheetName, int index)
+            public OrderedSheet(string sheetName, int index)
             {
                 _sheetName = sheetName;
                 _index = index;
             }
-            public String GetSheetName()
+            public string GetSheetName()
             {
                 return _sheetName;
             }

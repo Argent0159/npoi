@@ -82,7 +82,7 @@ namespace NPOI.SS.Util
 
         private int _rowIndex;
         private int _colIndex;
-        private String _sheetName;
+        private string _sheetName;
         private bool _isRowAbs;
         private bool _isColAbs;
 
@@ -90,15 +90,15 @@ namespace NPOI.SS.Util
          * Create an cell ref from a string representation.  Sheet names containing special characters should be
          * delimited and escaped as per normal syntax rules for formulas.
          */
-        public CellReference(String cellRef)
+        public CellReference(string cellRef)
         {
             if (cellRef.EndsWith("#REF!", StringComparison.CurrentCulture))
             {
                 throw new ArgumentException("Cell reference invalid: " + cellRef);
             }
-            String[] parts = SeparateRefParts(cellRef);
+            string[] parts = SeparateRefParts(cellRef);
             _sheetName = parts[0];
-            String colRef = parts[1];
+            string colRef = parts[1];
             //if (colRef.Length < 1)
             //{
             //    throw new ArgumentException("Invalid Formula cell reference: '" + cellRef + "'");
@@ -117,9 +117,9 @@ namespace NPOI.SS.Util
             {
                 _colIndex = ConvertColStringToIndex(colRef);
             }
-            
 
-            String rowRef = parts[2];
+
+            string rowRef = parts[2];
             //if (rowRef.Length < 1)
             //{
             //    throw new ArgumentException("Invalid Formula cell reference: '" + cellRef + "'");
@@ -158,7 +158,7 @@ namespace NPOI.SS.Util
         {
 
         }
-        public CellReference(String pSheetName, int pRow, int pCol, bool pAbsRow, bool pAbsCol)
+        public CellReference(string pSheetName, int pRow, int pCol, bool pAbsRow, bool pAbsCol)
         {
             // TODO - "-1" is a special value being temporarily used for whole row and whole column area references.
             // so these Checks are currently N.Q.R.
@@ -200,7 +200,7 @@ namespace NPOI.SS.Util
           * @return possibly <c>null</c> if this is a 2D reference.  Special characters are not
           * escaped or delimited
           */
-        public String SheetName
+        public string SheetName
         {
             get { return _sheetName; }
         }
@@ -214,7 +214,7 @@ namespace NPOI.SS.Util
          * 'IV' -> 255
          * @return zero based column index
          */
-        public static int ConvertColStringToIndex(String ref1)
+        public static int ConvertColStringToIndex(string ref1)
         {
             int retval = 0;
             char[] refs = ref1.ToUpper().ToCharArray();
@@ -235,11 +235,11 @@ namespace NPOI.SS.Util
             }
             return retval - 1;
         }
-        public static bool IsPartAbsolute(String part)
+        public static bool IsPartAbsolute(string part)
         {
             return part[0] == ABSOLUTE_REFERENCE_MARKER;
         }
-        public static NameType ClassifyCellReference(String str, SpreadsheetVersion ssVersion)
+        public static NameType ClassifyCellReference(string str, SpreadsheetVersion ssVersion)
         {
             int len = str.Length;
             if (len < 1)
@@ -254,14 +254,14 @@ namespace NPOI.SS.Util
                 case '_':
                     break;
                 default:
-                    if (!Char.IsLetter(firstChar) && !Char.IsDigit(firstChar))
+                    if (!char.IsLetter(firstChar) && !char.IsDigit(firstChar))
                     {
                         throw new ArgumentException("Invalid first char (" + firstChar
                                 + ") of cell reference or named range.  Letter expected");
                     }
                     break;
             }
-            if (!Char.IsDigit(str[len - 1]))
+            if (!char.IsDigit(str[len - 1]))
             {
                 // no digits at end of str
                 return ValidateNamedRangeName(str, ssVersion);
@@ -291,7 +291,7 @@ namespace NPOI.SS.Util
             }
             return NameType.NamedRange;
         }
-        private static NameType ValidateNamedRangeName(String str, SpreadsheetVersion ssVersion)
+        private static NameType ValidateNamedRangeName(string str, SpreadsheetVersion ssVersion)
         {
             Regex colMatcher = new Regex(COLUMN_REF_PATTERN);
 
@@ -323,7 +323,7 @@ namespace NPOI.SS.Util
          *  representation.
          * eg column #3 -> D
          */
-        public static String ConvertNumToColString(int col)
+        public static string ConvertNumToColString(int col)
         {
             // Excel counts column A as the 1st column, we
             //  treat it as the 0th one
@@ -351,11 +351,11 @@ namespace NPOI.SS.Util
          * is the sheet name. Only the first element may be null.  The second element in is the column 
          * name still in ALPHA-26 number format.  The third element is the row.
          */
-        private static String[] SeparateRefParts(String reference)
+        private static string[] SeparateRefParts(string reference)
         {
 
             int plingPos = reference.LastIndexOf(SHEET_NAME_DELIMITER);
-            String sheetName = ParseSheetName(reference, plingPos);
+            string sheetName = ParseSheetName(reference, plingPos);
             int start = plingPos + 1;
 
             int Length = reference.Length;
@@ -371,19 +371,19 @@ namespace NPOI.SS.Util
             for (; loc < Length; loc++)
             {
                 char ch = reference[loc];
-                if (Char.IsDigit(ch) || ch == ABSOLUTE_REFERENCE_MARKER)
+                if (char.IsDigit(ch) || ch == ABSOLUTE_REFERENCE_MARKER)
                 {
                     break;
                 }
             }
-            return new String[] {
+            return new string[] {
                sheetName,
                reference.Substring(start,loc-start),
                reference.Substring(loc),
             };
         }
 
-        private static String ParseSheetName(String reference, int indexOfSheetNameDelimiter)
+        private static string ParseSheetName(string reference, int indexOfSheetNameDelimiter)
         {
             if (indexOfSheetNameDelimiter < 0)
             {
@@ -444,7 +444,7 @@ namespace NPOI.SS.Util
          *    </table>
          * @return the text representation of this cell reference as it would appear in a formula.
          */
-        public String FormatAsString()
+        public string FormatAsString()
         {
 
             StringBuilder sb = new StringBuilder(32);
@@ -457,7 +457,7 @@ namespace NPOI.SS.Util
             return sb.ToString();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(this.GetType().Name).Append(" [");
@@ -474,11 +474,11 @@ namespace NPOI.SS.Util
          *  references, so use {@link #formatAsString()}
          *  to properly turn references into strings. 
          */
-        public String[] CellRefParts
+        public string[] CellRefParts
         {
             get
             {
-                return new String[] {
+                return new string[] {
                     _sheetName,
                     (_rowIndex+1).ToString(CultureInfo.InvariantCulture),
                    ConvertNumToColString(_colIndex)
@@ -548,7 +548,7 @@ namespace NPOI.SS.Util
          * @param rowStr a string of only digit characters
          * @return <c>true</c> if the row and col parameters are within range of a BIFF8 spreadsheet.
          */
-        public static bool CellReferenceIsWithinRange(String colStr, String rowStr, SpreadsheetVersion ssVersion)
+        public static bool CellReferenceIsWithinRange(string colStr, string rowStr, SpreadsheetVersion ssVersion)
         {
             if (!IsColumnWithnRange(colStr, ssVersion))
             {
@@ -556,9 +556,9 @@ namespace NPOI.SS.Util
             }
             return IsRowWithnRange(rowStr, ssVersion);
         }
-        public static bool IsRowWithnRange(String rowStr, SpreadsheetVersion ssVersion)
+        public static bool IsRowWithnRange(string rowStr, SpreadsheetVersion ssVersion)
         {
-            int rowNum = Int32.Parse(rowStr, CultureInfo.InvariantCulture);
+            int rowNum = int.Parse(rowStr, CultureInfo.InvariantCulture);
 
             if (rowNum < 0)
             {
@@ -573,9 +573,9 @@ namespace NPOI.SS.Util
             return rowNum <= ssVersion.MaxRows;
         }
 
-        public static bool IsColumnWithnRange(String colStr, SpreadsheetVersion ssVersion)
+        public static bool IsColumnWithnRange(string colStr, SpreadsheetVersion ssVersion)
         {
-            String lastCol = ssVersion.LastColumnName;
+            string lastCol = ssVersion.LastColumnName;
             int lastColLength = lastCol.Length;
 
             int numberOfLetters = colStr.Length;
@@ -599,7 +599,7 @@ namespace NPOI.SS.Util
             }
             return true;
         }
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (object.ReferenceEquals(this, o))
                 return true;

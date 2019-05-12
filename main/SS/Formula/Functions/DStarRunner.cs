@@ -178,7 +178,7 @@ namespace NPOI.SS.Formula.Functions
 
         private static int GetColumnForName(ValueEval nameValueEval, TwoDEval db)
         {
-            String name = GetStringFromValueEval(nameValueEval);
+            string name = GetStringFromValueEval(nameValueEval);
             return GetColumnForString(db, name);
         }
 
@@ -190,13 +190,13 @@ namespace NPOI.SS.Formula.Functions
          * @return Corresponding column number.
          * @If it's not possible to turn all headings into strings.
          */
-        private static int GetColumnForString(TwoDEval db, String name)
+        private static int GetColumnForString(TwoDEval db, string name)
         {
             int resultColumn = -1;
             for (int column = 0; column < db.Width; ++column)
             {
                 ValueEval columnNameValueEval = db.GetValue(0, column);
-                String columnName = GetStringFromValueEval(columnNameValueEval);
+                string columnName = GetStringFromValueEval(columnNameValueEval);
                 if (name.Equals(columnName))
                 {
                     resultColumn = column;
@@ -260,7 +260,7 @@ namespace NPOI.SS.Formula.Functions
                         ValueEval target = db.GetValue(
                                 row, GetColumnForName(targetHeader, db));
                         // Must be a string.
-                        String conditionString = GetStringFromValueEval(condition);
+                        string conditionString = GetStringFromValueEval(condition);
                         if (!testNormalCondition(target, conditionString))
                         {
                             matches = false;
@@ -289,10 +289,10 @@ namespace NPOI.SS.Formula.Functions
          * @return Whether the condition holds.
          * @If comparison operator and operands don't match.
          */
-        private static bool testNormalCondition(ValueEval value, String condition)
+        private static bool testNormalCondition(ValueEval value, string condition)
             {
         if(condition.StartsWith("<")) { // It's a </<= condition.
-            String number = condition.Substring(1);
+                string number = condition.Substring(1);
             if(number.StartsWith("=")) {
                 number = number.Substring(1);
                 return testNumericCondition(value, Operator.smallerEqualThan, number);
@@ -301,7 +301,7 @@ namespace NPOI.SS.Formula.Functions
             }
         }
         else if(condition.StartsWith(">")) { // It's a >/>= condition.
-            String number = condition.Substring(1);
+                string number = condition.Substring(1);
             if(number.StartsWith("=")) {
                 number = number.Substring(1);
                 return testNumericCondition(value, Operator.largerEqualThan, number);
@@ -310,15 +310,15 @@ namespace NPOI.SS.Formula.Functions
             }
         }
         else if(condition.StartsWith("=")) { // It's a = condition.
-            String stringOrNumber = condition.Substring(1);
+                string stringOrNumber = condition.Substring(1);
             // Distinguish between string and number.
             bool itsANumber = false;
             try {
-                Int32.Parse(stringOrNumber);
+                    int.Parse(stringOrNumber);
                 itsANumber = true;
             } catch (FormatException) { // It's not an int.
                 try {
-                    Double.Parse(stringOrNumber);
+                        double.Parse(stringOrNumber);
                     itsANumber = true;
                 } catch (FormatException) { // It's a string.
                     itsANumber = false;
@@ -327,11 +327,11 @@ namespace NPOI.SS.Formula.Functions
             if(itsANumber) {
                 return testNumericCondition(value, Operator.equal, stringOrNumber);
             } else { // It's a string.
-                String valueString = GetStringFromValueEval(value);
+                    string valueString = GetStringFromValueEval(value);
                 return stringOrNumber.Equals(valueString);
             }
         } else { // It's a text starts-with condition.
-            String valueString = GetStringFromValueEval(value);
+                string valueString = GetStringFromValueEval(value);
             return valueString.StartsWith(condition);
         }
     }
@@ -345,7 +345,7 @@ namespace NPOI.SS.Formula.Functions
          * @If it's impossible to turn the condition into a number.
          */
         private static bool testNumericCondition(
-                ValueEval valueEval, Operator op, String condition)
+                ValueEval valueEval, Operator op, string condition)
         {
             // Construct double from ValueEval.
             if (!(valueEval is NumericValueEval))
@@ -356,14 +356,14 @@ namespace NPOI.SS.Formula.Functions
             double conditionValue = 0.0;
             try
             {
-                int intValue = Int32.Parse(condition);
+                int intValue = int.Parse(condition);
                 conditionValue = intValue;
             }
             catch (FormatException)
             { // It's not an int.
                 try
                 {
-                    conditionValue = Double.Parse(condition);
+                    conditionValue = double.Parse(condition);
                 }
                 catch (FormatException)
                 { // It's not a double.
@@ -396,7 +396,7 @@ namespace NPOI.SS.Formula.Functions
          * @return String corresponding to the given ValueEval.
          * @If it's not possible to retrieve a String value.
          */
-        private static String GetStringFromValueEval(ValueEval value)
+        private static string GetStringFromValueEval(ValueEval value)
         {
             value = solveReference(value);
             if (value is BlankEval)

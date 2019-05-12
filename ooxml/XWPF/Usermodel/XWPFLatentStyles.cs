@@ -51,7 +51,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * checks whether specific LatentStyleID is a latentStyle
         */
-        public bool IsLatentStyle(String latentStyleID)
+        public bool IsLatentStyle(string latentStyleID)
         {
             foreach (CT_LsdException lsd in latentStyles.lsdException)
             {

@@ -77,7 +77,7 @@ namespace NPOI.HPSF
         /// Gets or sets the category.
         /// </summary>
         /// <value>The category value</value>
-        public String Category
+        public string Category
         {
             get
             {
@@ -105,7 +105,7 @@ namespace NPOI.HPSF
         /// Gets or sets the presentation format (or null).
         /// </summary>
         /// <value>The presentation format value</value>
-        public String PresentationFormat
+        public string PresentationFormat
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_PRESFORMAT); }
             set
@@ -400,7 +400,7 @@ namespace NPOI.HPSF
         /// Gets or sets the manager (or <c>null</c>).
         /// </summary>
         /// <value>The manager value</value>
-        public String Manager
+        public string Manager
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_MANAGER); }
             set
@@ -425,7 +425,7 @@ namespace NPOI.HPSF
         /// Gets or sets the company (or <c>null</c>).
         /// </summary>
         /// <value>The company value</value>
-        public String Company
+        public string Company
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_COMPANY); }
             set

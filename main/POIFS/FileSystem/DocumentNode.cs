@@ -106,7 +106,7 @@ namespace NPOI.POIFS.FileSystem
 
         public Array ViewableArray
         {
-            get { return new Object[0]; }
+            get { return new object[0]; }
         }
 
         /**
@@ -149,7 +149,7 @@ namespace NPOI.POIFS.FileSystem
          * @return short description
          */
 
-        public String ShortDescription
+        public string ShortDescription
         {
             get{return Name;}
         }

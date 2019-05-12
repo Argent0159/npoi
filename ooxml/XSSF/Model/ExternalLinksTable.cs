@@ -93,11 +93,11 @@ namespace NPOI.XSSF.Model
          * get or set the last recorded name of the file that this
          *  is linked to
          */
-        public virtual String LinkedFileName
+        public virtual string LinkedFileName
         {
             get
             {
-                String rId = link.externalBook.id;
+                string rId = link.externalBook.id;
                 PackageRelationship rel = GetPackagePart().GetRelationship(rId);
                 if (rel != null && rel.TargetMode == TargetMode.External)
                 {
@@ -110,7 +110,7 @@ namespace NPOI.XSSF.Model
             }
             set
             {
-                String rId = link.externalBook.id;
+                string rId = link.externalBook.id;
 
                 if (string.IsNullOrEmpty(rId))
                 {
@@ -130,13 +130,13 @@ namespace NPOI.XSSF.Model
         }
 
 
-        public List<String> SheetNames
+        public List<string> SheetNames
         {
             get
             {
                 CT_ExternalSheetName[] sheetNames =
                         link.externalBook.sheetNames.sheetName;
-                List<String> names = new List<String>(sheetNames.Length);
+                List<string> names = new List<string>(sheetNames.Length);
                 foreach (CT_ExternalSheetName name in sheetNames)
                 {
                     names.Add(name.val);
@@ -174,7 +174,7 @@ namespace NPOI.XSSF.Model
                 this.externalLinkTable = externalLinkTable;
             }
 
-            public String NameName
+            public string NameName
             {
                 get
                 {
@@ -186,7 +186,7 @@ namespace NPOI.XSSF.Model
                 }
             }
 
-            public String SheetName
+            public string SheetName
             {
                 get
                 {
@@ -216,7 +216,7 @@ namespace NPOI.XSSF.Model
                     name.sheetId = (uint)value;
                 }
             }
-            public String RefersToFormula
+            public string RefersToFormula
             {
                 get
                 {
@@ -244,7 +244,7 @@ namespace NPOI.XSSF.Model
                 }
             }
 
-            public String Comment
+            public string Comment
             {
                 get
                 {

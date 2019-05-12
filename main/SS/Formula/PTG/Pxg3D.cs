@@ -25,7 +25,7 @@ namespace NPOI.SS.Formula.PTG
      */
     public interface Pxg3D : Pxg
     {
-        String LastSheetName { get; set; }
+        string LastSheetName { get; set; }
     }
 
 }

@@ -248,7 +248,7 @@ namespace NPOI.XWPF.UserModel
          * Return the textual content of the paragraph, including text from pictures
          * and std element in it.
          */
-        public String Text
+        public string Text
         {
             get
             {
@@ -274,7 +274,7 @@ namespace NPOI.XWPF.UserModel
          * if not, null will be returned     
          * @return		styleID as String
          */
-        public String StyleID
+        public string StyleID
         {
             get
             {
@@ -330,7 +330,7 @@ namespace NPOI.XWPF.UserModel
          *  lowerLetter.
          * Returns null if this paragraph does not have numeric style.
          */
-        public String GetNumFmt()
+        public string GetNumFmt()
         {
             string numID = GetNumID();
             XWPFNumbering numbering = document.GetNumbering();
@@ -364,7 +364,7 @@ namespace NPOI.XWPF.UserModel
      *
      * @return a string (e.g. "%1.") or null if the value is not found.
      */
-        public String NumLevelText
+        public string NumLevelText
         {
             get
             {
@@ -500,7 +500,7 @@ namespace NPOI.XWPF.UserModel
          * Returns the text of the paragraph, but not of any objects in the
          * paragraph
          */
-        public String ParagraphText
+        public string ParagraphText
         {
             get
             {
@@ -516,7 +516,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * Returns any text from any suitable pictures in the paragraph
          */
-        public String PictureText
+        public string PictureText
         {
             get
             {
@@ -534,7 +534,7 @@ namespace NPOI.XWPF.UserModel
          *
          * @return  the footnote text or empty string if the paragraph does not have footnotes
          */
-        public String FootnoteText
+        public string FootnoteText
         {
             get
             {
@@ -1174,7 +1174,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * @return  the style of the paragraph
          */
-        public String Style
+        public string Style
         {
             get
             {
@@ -1282,7 +1282,7 @@ namespace NPOI.XWPF.UserModel
         /// <param name="searched"></param>
         /// <param name="startPos"></param>
         /// <returns></returns>
-        public TextSegment SearchText(String searched, PositionInParagraph startPos)
+        public TextSegment SearchText(string searched, PositionInParagraph startPos)
         {
 
             int startRun = startPos.Run,
@@ -1300,7 +1300,7 @@ namespace NPOI.XWPF.UserModel
                     {
                         if (textPos >= startText)
                         {
-                            String candidate = ((CT_Text)o).Value;
+                            string candidate = ((CT_Text)o).Value;
                             if (runPos == startRun)
                                 charPos = startChar;
                             else
@@ -1417,7 +1417,7 @@ namespace NPOI.XWPF.UserModel
          * Get a Text
          * @param segment
          */
-        public String GetText(TextSegment segment)
+        public string GetText(TextSegment segment)
         {
             int RunBegin = segment.BeginRun;
             int textBegin = segment.BeginText;
@@ -1435,7 +1435,7 @@ namespace NPOI.XWPF.UserModel
                     endText = textEnd;
                 for (int j = startText; j <= endText; j++)
                 {
-                    String tmpText = paragraph.GetRList()[i].GetTArray(j).Value;
+                    string tmpText = paragraph.GetRList()[i].GetTArray(j).Value;
                     int startChar = 0, endChar = tmpText.Length - 1;
                     if ((j == textBegin) && (i == RunBegin))
                         startChar = charBegin;

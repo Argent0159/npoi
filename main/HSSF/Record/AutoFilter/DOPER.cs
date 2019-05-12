@@ -160,7 +160,7 @@ namespace NPOI.HSSF.Record.AutoFilter
             set { grbitSgn = (byte)value; }
         }
 
-        public Double IEEENumber
+        public double IEEENumber
         {
             get { return _IEEENumber; }
             set { 

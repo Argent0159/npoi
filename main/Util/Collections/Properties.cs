@@ -143,7 +143,7 @@ namespace NPOI.Util.Collections
             StreamReader inp = new StreamReader(inStream, Encoding.GetEncoding(1252));
             while (true) {
                 // Get next line
-                String line = inp.ReadLine();
+                string line = inp.ReadLine();
                 if (line == null)
                     return;
 
@@ -164,10 +164,10 @@ namespace NPOI.Util.Collections
                     char firstChar = line[keyStart];
                     if ((firstChar != '#') && (firstChar != '!')) {
                         while (ContinueLine(line)) {
-                            String nextLine = inp.ReadLine();
+                            string nextLine = inp.ReadLine();
                             if (nextLine == null)
                                 nextLine = "";
-                            String loppedLine = line.Substring(0, len-1);
+                            string loppedLine = line.Substring(0, len-1);
                             // Advance beyond whitespace on new line
                             int startIndex;
                             for (startIndex=0; startIndex<nextLine.Length; startIndex++)
@@ -205,8 +205,8 @@ namespace NPOI.Util.Collections
                                 break;
                             valueIndex++;
                         }
-                        String key = line.Substring(keyStart, separatorIndex - keyStart);
-                        String value = (separatorIndex < len) ? line.Substring(valueIndex, len - valueIndex) : "";
+                        string key = line.Substring(keyStart, separatorIndex - keyStart);
+                        string value = (separatorIndex < len) ? line.Substring(valueIndex, len - valueIndex) : "";
 
                         // Convert then store key and value
                         key = LoadConvert(key);
@@ -226,7 +226,7 @@ namespace NPOI.Util.Collections
         /// Converts encoded &#92;uxxxx to unicode chars
         /// and changes special saved chars to their original forms
         /// </remarks>
-        private String LoadConvert(String theString) {
+        private string LoadConvert(string theString) {
             char aChar;
             int len = theString.Length;
             StringBuilder outBuffer = new StringBuilder(len);
@@ -277,7 +277,7 @@ namespace NPOI.Util.Collections
         /// </summary>
         /// <param name="line">The line.</param>
         /// <returns></returns>
-        private bool ContinueLine(String line) {
+        private bool ContinueLine(string line) {
             int slashCount = 0;
             int index = line.Length - 1;
             while ((index >= 0) && (line[index--] == '\\'))

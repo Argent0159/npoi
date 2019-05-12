@@ -23,22 +23,22 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Extension name of a relationship part.
          */
-        public static String RELATIONSHIP_PART_EXTENSION_NAME;
+        public static string RELATIONSHIP_PART_EXTENSION_NAME;
 
         /**
          * Segment name of a relationship part.
          */
-        public static String RELATIONSHIP_PART_SEGMENT_NAME;
+        public static string RELATIONSHIP_PART_SEGMENT_NAME;
 
         /**
          * Segment name of the package properties folder.
          */
-        public static String PACKAGE_PROPERTIES_SEGMENT_NAME;
+        public static string PACKAGE_PROPERTIES_SEGMENT_NAME;
 
         /**
          * Core package properties art name.
          */
-        public static String PACKAGE_CORE_PROPERTIES_NAME;
+        public static string PACKAGE_CORE_PROPERTIES_NAME;
 
         /**
          * Forward slash Uri separator.
@@ -48,7 +48,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Forward slash Uri separator.
          */
-        public static String FORWARD_SLASH_STRING;
+        public static string FORWARD_SLASH_STRING;
 
         /**
          * Package relationships part Uri
@@ -175,11 +175,11 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Get file name from the specified Uri.
          */
-        public static String GetFilename(Uri uri)
+        public static string GetFilename(Uri uri)
         {
             if (uri != null)
             {
-                String path = uri.OriginalString;
+                string path = uri.OriginalString;
                 int len = path.Length;
                 int num2 = len;
                 while (--num2 >= 0)
@@ -195,9 +195,9 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Get the file name without the trailing extension.
          */
-        public static String GetFilenameWithoutExtension(Uri uri)
+        public static string GetFilenameWithoutExtension(Uri uri)
         {
-            String filename = GetFilename(uri);
+            string filename = GetFilename(uri);
             int dotIndex = filename.LastIndexOf(".");
             if (dotIndex == -1)
                 return filename;
@@ -211,7 +211,7 @@ namespace NPOI.OpenXml4Net.OPC
         {
             if (uri != null)
             {
-                String path = uri.OriginalString;
+                string path = uri.OriginalString;
                 int len = path.Length;
                 int num2 = len;
                 while (--num2 >= 0)
@@ -259,7 +259,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Combine a string Uri with a prefix and a suffix.
          */
-        public static String Combine(String prefix, String suffix)
+        public static string Combine(string prefix, string suffix)
         {
             if (!prefix.EndsWith("" + FORWARD_SLASH_CHAR)
                     && !suffix.StartsWith("" + FORWARD_SLASH_CHAR))
@@ -287,8 +287,8 @@ namespace NPOI.OpenXml4Net.OPC
         public static Uri RelativizeUri(Uri sourceURI, Uri targetURI, bool msCompatible)
         {
             StringBuilder retVal = new StringBuilder();
-            String[] segmentsSource = sourceURI.ToString().Split(new char[] { '/' });
-            String[] segmentsTarget = targetURI.ToString().Split(new char[] { '/' });
+            string[] segmentsSource = sourceURI.ToString().Split(new char[] { '/' });
+            string[] segmentsTarget = targetURI.ToString().Split(new char[] { '/' });
 
             // If the source Uri is empty
             if (segmentsSource.Length == 0)
@@ -308,7 +308,7 @@ namespace NPOI.OpenXml4Net.OPC
             //  form must actually be an absolute Uri
             if (sourceURI.ToString().Equals("/"))
             {
-                String path = targetURI.ToString();
+                string path = targetURI.ToString();
                 if (msCompatible && path.Length > 0 && path[0] == '/')
                 {
                     try
@@ -503,7 +503,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Get Uri from a string path.
          */
-        public static Uri GetURIFromPath(String path)
+        public static Uri GetURIFromPath(string path)
         {
             Uri retUri = null;
             try
@@ -538,8 +538,8 @@ namespace NPOI.OpenXml4Net.OPC
             if (Uri.Compare(relationshipPartUri, PACKAGE_RELATIONSHIPS_ROOT_URI, UriComponents.AbsoluteUri, UriFormat.SafeUnescaped, StringComparison.InvariantCultureIgnoreCase) == 0)
                 return PACKAGE_ROOT_URI;
 
-            String filename = relationshipPartUri.OriginalString;
-            String filenameWithoutExtension = GetFilenameWithoutExtension(relationshipPartUri);
+            string filename = relationshipPartUri.OriginalString;
+            string filenameWithoutExtension = GetFilenameWithoutExtension(relationshipPartUri);
             filename = filename
                     .Substring(0, ((filename.Length - filenameWithoutExtension
                             .Length) - RELATIONSHIP_PART_EXTENSION_NAME.Length));
@@ -577,7 +577,7 @@ namespace NPOI.OpenXml4Net.OPC
          *             Throws if the specified part name is not OPC compliant.
          * @see #CreatePartName(Uri)
          */
-        public static PackagePartName CreatePartName(String partName)
+        public static PackagePartName CreatePartName(string partName)
         {
             Uri partNameURI;
             try
@@ -604,7 +604,7 @@ namespace NPOI.OpenXml4Net.OPC
          *             Throws if the specified part name is not OPC compliant.
          * @see #CreatePartName(Uri)
          */
-        public static PackagePartName CreatePartName(String partName,
+        public static PackagePartName CreatePartName(string partName,
                 PackagePart relativePart)
         {
             Uri newPartNameURI;
@@ -689,10 +689,10 @@ namespace NPOI.OpenXml4Net.OPC
          * @return The specified Uri in a String with converted percent encoded
          *         characters.
          */
-        public static String DecodeURI(Uri uri)
+        public static string DecodeURI(Uri uri)
         {
             StringBuilder retVal = new StringBuilder();
-            String uriStr = uri.OriginalString;
+            string uriStr = uri.OriginalString;
             char c;
             for (int i = 0; i < uriStr.Length; ++i)
             {
@@ -741,7 +741,7 @@ namespace NPOI.OpenXml4Net.OPC
      *
      * TODO YK: for now this method does only (5). Finish the rest.
      */
-        public static Uri ToUri(String value)
+        public static Uri ToUri(string value)
         {
             //5. Convert all back slashes to forward slashes
             if (value.IndexOf("\\") != -1)
@@ -754,8 +754,8 @@ namespace NPOI.OpenXml4Net.OPC
             int fragmentIdx = value.IndexOf('#');
             if (fragmentIdx != -1)
             {
-                String path = value.Substring(0, fragmentIdx);
-                String fragment = value.Substring(fragmentIdx + 1);
+                string path = value.Substring(0, fragmentIdx);
+                string fragment = value.Substring(fragmentIdx + 1);
 
                 value = path + "#" + Encode(fragment);
             }
@@ -803,7 +803,7 @@ namespace NPOI.OpenXml4Net.OPC
      * @param s the string to encode
      * @return  the encoded string
      */
-    public static String Encode(String s) {
+    public static string Encode(string s) {
         int n = s.Length;
         if (n == 0) return s;
 
@@ -855,8 +855,8 @@ namespace NPOI.OpenXml4Net.OPC
             if (partName.IsRelationshipPartURI())
                 throw new InvalidOperationException("Can't be a relationship part");
 
-            String fullPath = partName.URI.OriginalString;
-            String filename = GetFilename(partName.URI);
+            string fullPath = partName.URI.OriginalString;
+            string filename = GetFilename(partName.URI);
             fullPath = fullPath.Substring(0, fullPath.Length - filename.Length);
             fullPath = Combine(fullPath,
                     PackagingUriHelper.RELATIONSHIP_PART_SEGMENT_NAME);

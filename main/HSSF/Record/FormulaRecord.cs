@@ -100,14 +100,14 @@ namespace NPOI.HSSF.Record
             out1.WriteShort(0xFFFF);
         }
 
-        public String FormatDebugString
+        public string FormatDebugString
         {
             get
             {
                 return FormatValue + ' ' + HexDump.ToHex(_variableData);
             }
         }
-        private String FormatValue
+        private string FormatValue
         {
             get
             {
@@ -157,7 +157,7 @@ namespace NPOI.HSSF.Record
             };
             return new SpecialCachedValue(vd);
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name);
@@ -365,7 +365,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        protected override String RecordName
+        protected override string RecordName
         {
             get
             {
@@ -429,7 +429,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is CellValueRecordInterface))
             {
@@ -493,7 +493,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             FormulaRecord rec = new FormulaRecord();
             CopyBaseFields(rec);

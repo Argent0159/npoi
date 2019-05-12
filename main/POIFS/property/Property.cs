@@ -69,7 +69,7 @@ namespace NPOI.POIFS.Properties
 
         // documents must be at least this size to be stored in big blocks
         private const int _big_block_minimum_bytes = POIFSConstants.BIG_BLOCK_MINIMUM_DOCUMENT_SIZE;   //4096;
-        private String              _name;
+        private string _name;
         private ShortField          _name_size;
         private ByteField           _property_type;
         private ByteField           _node_color;
@@ -173,7 +173,7 @@ namespace NPOI.POIFS.Properties
                                                               _raw_data).Value;
                     name_offset     += LittleEndianConsts.SHORT_SIZE;
                 }
-                _name = new String(char_array, 0, name_length);
+                _name = new string(char_array, 0, name_length);
             }
             _next_child     = null;
             _previous_child = null;
@@ -233,7 +233,7 @@ namespace NPOI.POIFS.Properties
         /// Gets or sets the name of this property
         /// </summary>
         /// <value>property name</value>
-        public String Name
+        public string Name
         {
             get { return _name; }
             set
@@ -241,7 +241,7 @@ namespace NPOI.POIFS.Properties
                 char[] char_array = value.ToCharArray();
                 int limit = Math.Min(char_array.Length, _max_name_length);
 
-                _name = new String(char_array, 0, limit);
+                _name = new string(char_array, 0, limit);
                 short offset = 0;
                 int j = 0;
 
@@ -517,7 +517,7 @@ namespace NPOI.POIFS.Properties
         /// POIFSViewable object has not provided its contents.
         /// </summary>
         /// <value>The short description.</value>
-        public String ShortDescription
+        public string ShortDescription
         {
             get
             {

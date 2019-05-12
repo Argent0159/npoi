@@ -18,7 +18,7 @@ namespace NPOI.SS.UserModel.Charts
  *
  * @param title
  */
-        void SetTitle(String title);
+        void SetTitle(string title);
 
         /**
          * Sets the title of the series as a cell reference.
@@ -30,7 +30,7 @@ namespace NPOI.SS.UserModel.Charts
         /**
          * @return title as string literal.
          */
-        String GetTitleString();
+        string GetTitleString();
 
         /**
          * @return title as cell reference.

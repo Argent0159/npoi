@@ -103,7 +103,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -115,7 +115,7 @@ namespace NPOI.HSSF.Record
         }
 
         //HACK: do a "cheat" Clone, see Record.java for more information
-        public override Object Clone()
+        public override object Clone()
         {
             return CloneViaReserialise();
         }

@@ -188,9 +188,9 @@ namespace NPOI.DDF
         /**
          * Retrieve the string representation of this record.
          */
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(GetType().Name);
@@ -222,7 +222,7 @@ namespace NPOI.DDF
             return stringBuilder.ToString();
         }
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name,

@@ -242,7 +242,7 @@ namespace NPOI.HSSF.Record.CF
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("    [Border Formatting]\n");
@@ -260,7 +260,7 @@ namespace NPOI.HSSF.Record.CF
             return buffer.ToString();
         }
 
-        public Object Clone()
+        public object Clone()
         {
             BorderFormatting rec = new BorderFormatting();
             rec.field_13_border_styles1 = field_13_border_styles1;

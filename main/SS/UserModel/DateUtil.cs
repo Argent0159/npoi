@@ -354,7 +354,7 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="timeStr">The time STR.</param>
         /// <returns> a double between 0 and 1 representing the fraction of the day</returns>
-        public static double ConvertTime(String timeStr)
+        public static double ConvertTime(string timeStr)
         {
             try
             {
@@ -362,7 +362,7 @@ namespace NPOI.SS.UserModel
             }
             catch (FormatException e)
             {
-                String msg = "Bad time format '" + timeStr
+                string msg = "Bad time format '" + timeStr
                     + "' expected 'HH:MM' or 'HH:MM:SS' - " + e.Message;
                 throw new ArgumentException(msg);
             }
@@ -372,16 +372,16 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="timeStr">The time STR.</param>
         /// <returns></returns>
-        private static double ConvertTimeInternal(String timeStr)
+        private static double ConvertTimeInternal(string timeStr)
         {
             int len = timeStr.Length;
             if (len < 4 || len > 8)
             {
                 throw new FormatException("Bad length");
             }
-            String[] parts = timeStr.Split(TIME_SEPARATOR_PATTERN);
+            string[] parts = timeStr.Split(TIME_SEPARATOR_PATTERN);
 
-            String secStr;
+            string secStr;
             switch (parts.Length)
             {
                 case 2: secStr = "00"; break;
@@ -389,8 +389,8 @@ namespace NPOI.SS.UserModel
                 default:
                     throw new FormatException("Expected 2 or 3 fields but got (" + parts.Length + ")");
             }
-            String hourStr = parts[0];
-            String minStr = parts[1];
+            string hourStr = parts[0];
+            string minStr = parts[1];
             int hours = ParseInt(hourStr, "hour", HOURS_PER_DAY);
             int minutes = ParseInt(minStr, "minute", MINUTES_PER_HOUR);
             int seconds = ParseInt(secStr, "second", SECONDS_PER_MINUTE);
@@ -404,7 +404,7 @@ namespace NPOI.SS.UserModel
         // string represents a date format if the same string is passed multiple times.
         // see https://issues.apache.org/bugzilla/show_bug.cgi?id=55611
         private static int lastFormatIndex = -1;
-        private static String lastFormatString = null;
+        private static string lastFormatString = null;
         private static bool cached = false;
         private static string syncIsADateFormat = "IsADateFormat";
         /// <summary>
@@ -421,7 +421,7 @@ namespace NPOI.SS.UserModel
         /// <returns>
         /// 	<c>true</c> if [is A date format] [the specified format index]; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsADateFormat(int formatIndex, String formatString)
+        public static bool IsADateFormat(int formatIndex, string formatString)
         {
             lock (syncIsADateFormat)
             {
@@ -447,7 +447,7 @@ namespace NPOI.SS.UserModel
                     return false;
                 }
 
-                String fs = formatString;
+                string fs = formatString;
 
                 // If it end in ;@, that's some crazy dd/mm vs mm/dd
                 //  switching stuff, which we can ignore
@@ -544,7 +544,7 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="dateStr">The date STR.</param>
         /// <returns>a double representing the (integer) number of days since the start of the Excel epoch</returns>
-        public static DateTime ParseYYYYMMDDDate(String dateStr)
+        public static DateTime ParseYYYYMMDDDate(string dateStr)
         {
             try
             {
@@ -552,7 +552,7 @@ namespace NPOI.SS.UserModel
             }
             catch (FormatException e)
             {
-                String msg = "Bad time format " + dateStr
+                string msg = "Bad time format " + dateStr
                     + " expected 'YYYY/MM/DD' - " + e.Message;
                 throw new ArgumentException(msg);
             }
@@ -562,16 +562,16 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="timeStr">The time string.</param>
         /// <returns></returns>
-        private static DateTime ParseYYYYMMDDDateInternal(String timeStr)
+        private static DateTime ParseYYYYMMDDDateInternal(string timeStr)
         {
             if (timeStr.Length != 10)
             {
                 throw new FormatException("Bad length");
             }
 
-            String yearStr = timeStr.Substring(0, 4);
-            String monthStr = timeStr.Substring(5, 2);
-            String dayStr = timeStr.Substring(8, 2);
+            string yearStr = timeStr.Substring(0, 4);
+            string monthStr = timeStr.Substring(5, 2);
+            string dayStr = timeStr.Substring(8, 2);
             int year = ParseInt(yearStr, "year", short.MinValue, short.MaxValue);
             int month = ParseInt(monthStr, "month", 1, 12);
             int day = ParseInt(dayStr, "day", 1, 31);
@@ -586,7 +586,7 @@ namespace NPOI.SS.UserModel
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="rangeMax">The range max.</param>
         /// <returns></returns>
-        private static int ParseInt(String strVal, String fieldName, int rangeMax)
+        private static int ParseInt(string strVal, string fieldName, int rangeMax)
         {
             return ParseInt(strVal, fieldName, 0, rangeMax - 1);
         }
@@ -598,7 +598,7 @@ namespace NPOI.SS.UserModel
         /// <param name="lowerLimit">The lower limit.</param>
         /// <param name="upperLimit">The upper limit.</param>
         /// <returns></returns>
-        private static int ParseInt(String strVal, String fieldName, int lowerLimit, int upperLimit)
+        private static int ParseInt(string strVal, string fieldName, int lowerLimit, int upperLimit)
         {
             int result;
             try
@@ -668,7 +668,7 @@ namespace NPOI.SS.UserModel
                 if (style == null)
                     return false;
                 int i = style.DataFormat;
-                String f = style.GetDataFormatString();
+                string f = style.GetDataFormatString();
                 bDate = IsADateFormat(i, f);
             }
             return bDate;
@@ -704,7 +704,7 @@ namespace NPOI.SS.UserModel
         public static bool IsValidExcelDate(double value)
         {
             //return true;
-            return value > -Double.Epsilon;
+            return value > -double.Epsilon;
         }
 
     }

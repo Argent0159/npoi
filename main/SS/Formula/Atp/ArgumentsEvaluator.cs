@@ -51,9 +51,9 @@ namespace NPOI.SS.Formula.Atp
 
             if (ve is StringEval)
             {
-                String strVal = ((StringEval)ve).StringValue;
-                Double dVal = OperandResolver.ParseDouble(strVal);
-                if (!Double.IsNaN(dVal))
+                string strVal = ((StringEval)ve).StringValue;
+                double dVal = OperandResolver.ParseDouble(strVal);
+                if (!double.IsNaN(dVal))
                 {
                     return dVal;
                 }
@@ -85,7 +85,7 @@ namespace NPOI.SS.Formula.Atp
             }
             else if (arg is AreaEvalBase)
             {
-                List<Double> valuesList = new List<Double>();
+                List<double> valuesList = new List<double>();
                 AreaEvalBase area = (AreaEvalBase)arg;
                 for (int i = area.FirstRow; i <= area.LastRow; i++)
                 {

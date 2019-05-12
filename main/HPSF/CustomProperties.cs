@@ -94,7 +94,7 @@ namespace NPOI.HPSF
                 isPure = false;
                 return null;
             }
-            if (!(name is String))
+            if (!(name is string))
                 throw new ArgumentException("The name of a custom property must " +
                         "be a String, but it is a " +
                         name.GetType().Name);
@@ -105,7 +105,7 @@ namespace NPOI.HPSF
 
             /* Register name and ID in the dictionary. Mapping in both directions is possible. If there is alReady a  */
             long idKey = cp.ID;
-            Object oldID = dictionaryNameToID[name];
+            object oldID = dictionaryNameToID[name];
             if(oldID!=null)
                 dictionaryIDToName.Remove(oldID);
             dictionaryNameToID[name]=idKey;
@@ -158,9 +158,9 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="customProperty">The custom property.</param>
         /// <returns>If the was alReady a property with the same name, the</returns>
-        private Object Put(CustomProperty customProperty)
+        private object Put(CustomProperty customProperty)
         {
-            String name = customProperty.Name;
+            string name = customProperty.Name;
             
             /* Check whether a property with this name is in the map alReady. */
             object oldId = dictionaryNameToID[(name)];
@@ -191,7 +191,7 @@ namespace NPOI.HPSF
         /// <returns>The Removed property or 
         /// <c>null</c>
         ///  if the specified property was not found.</returns>
-        public object Remove(String name)
+        public object Remove(string name)
         {
             if (dictionaryNameToID[name] == null)
                 return null;
@@ -211,7 +211,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name, String value)
+        public object Put(string name, string value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -229,7 +229,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name, long value)
+        public object Put(string name, long value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -247,7 +247,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name, Double value)
+        public object Put(string name, double value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -265,7 +265,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name, int value)
+        public object Put(string name, int value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -283,7 +283,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name, bool value)
+        public object Put(string name, bool value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -302,7 +302,7 @@ namespace NPOI.HPSF
         /// <returns>the property that was stored under the specified name before, or
         /// <c>null</c>
         ///  if there was no such property before.</returns>
-        public Object Put(String name,DateTime value)
+        public object Put(string name,DateTime value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=-1;
@@ -319,7 +319,7 @@ namespace NPOI.HPSF
         /// <c>null</c>
         ///  if a value with the specified
         /// name is not found in the custom properties.</value>
-        public Object this[string name]
+        public object this[string name]
         {
             get
             {
@@ -353,13 +353,13 @@ namespace NPOI.HPSF
         /**
      * Checks against both String Name and Long ID
      */
-        public override bool ContainsKey(Object key)
+        public override bool ContainsKey(object key)
         {
             if (key is long)
             {
                 return base.ContainsKey((long)key);
             }
-            if (key is String)
+            if (key is string)
             {
                 return base.ContainsKey((long)dictionaryNameToID[(key)]);
             }
@@ -369,7 +369,7 @@ namespace NPOI.HPSF
         /**
          * Checks against both the property, and its values. 
          */
-        public override bool ContainsValue(Object value)
+        public override bool ContainsValue(object value)
         {
             if (value is CustomProperty)
             {

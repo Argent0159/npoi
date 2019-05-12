@@ -84,7 +84,7 @@ namespace NPOI.XSSF.Model
          * @param ref  A1 style reference to the cell Containing the formula.
          */
         //  GetXYZArray() array accessors are deprecated 
-        public void RemoveItem(int sheetId, String ref1)
+        public void RemoveItem(int sheetId, string ref1)
         {
             //sheet Id of a sheet the cell belongs to
             int id = -1;

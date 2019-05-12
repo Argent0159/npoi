@@ -32,10 +32,10 @@ namespace NPOI.SS.Util
     {
 
         private IWorkbook workbook;
-        private Object[][] cells;
+        private object[][] cells;
         private bool shouldCreateEmptyCells = false;
-        private String sheetName = null;
-        public SheetBuilder(IWorkbook workbook, Object[][] cells)
+        private string sheetName = null;
+        public SheetBuilder(IWorkbook workbook, object[][] cells)
         {
             this.workbook = workbook;
             this.cells = cells;
@@ -71,7 +71,7 @@ namespace NPOI.SS.Util
          * @param sheetName sheet name to use
          * @return {@code this}
          */
-        public SheetBuilder SetSheetName(String sheetName)
+        public SheetBuilder SetSheetName(string sheetName)
         {
             this.sheetName = sheetName;
             return this;
@@ -103,12 +103,12 @@ namespace NPOI.SS.Util
 
             for (int rowIndex = 0; rowIndex < cells.Length; ++rowIndex)
             {
-                Object[] rowArray = cells[rowIndex];
+                object[] rowArray = cells[rowIndex];
                 currentRow = sheet.CreateRow(rowIndex);
 
                 for (int cellIndex = 0; cellIndex < rowArray.Length; ++cellIndex)
                 {
-                    Object cellValue = rowArray[cellIndex];
+                    object cellValue = rowArray[cellIndex];
                     if (cellValue != null || shouldCreateEmptyCells)
                     {
                         currentCell = currentRow.CreateCell(cellIndex);
@@ -124,7 +124,7 @@ namespace NPOI.SS.Util
          * @param cell cell to change
          * @param value value to set
          */
-        private void SetCellValue(ICell cell, Object value)
+        private void SetCellValue(ICell cell, object value)
         {
             if (value == null || cell == null)
             {
@@ -153,18 +153,18 @@ namespace NPOI.SS.Util
             }
         }
 
-        private bool IsFormulaDefinition(Object obj)
+        private bool IsFormulaDefinition(object obj)
         {
-            if (obj is String)
+            if (obj is string)
             {
-                String str = (String)obj;
+                string str = (string)obj;
                 if (str.Length < 2)
                 {
                     return false;
                 }
                 else
                 {
-                    return ((String)obj)[0] == '=';
+                    return ((string)obj)[0] == '=';
                 }
             }
             else
@@ -173,9 +173,9 @@ namespace NPOI.SS.Util
             }
         }
 
-        private String GetFormula(Object obj)
+        private string GetFormula(object obj)
         {
-            return ((String)obj).Substring(1);
+            return ((string)obj).Substring(1);
         }
     }
 }

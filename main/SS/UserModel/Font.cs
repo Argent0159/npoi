@@ -112,7 +112,7 @@ namespace NPOI.SS.UserModel
         /// <summary>
         /// get the name for the font (i.e. Arial)
         /// </summary>
-        String FontName { get; set; }
+        string FontName { get; set; }
 
         /// <summary>
         ///  Get the font height in unit's of 1/20th of a point.

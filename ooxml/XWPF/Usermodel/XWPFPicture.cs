@@ -30,7 +30,7 @@ namespace NPOI.XWPF.UserModel
     {
 
         private CT_Picture ctPic;
-        private String description;
+        private string description;
         private XWPFRun run;
 
         public XWPFPicture(CT_Picture ctPic, XWPFRun Run)
@@ -74,7 +74,7 @@ namespace NPOI.XWPF.UserModel
                 return null;
             }
 
-            String blipId = blipProps.blip.embed;
+            string blipId = blipProps.blip.embed;
 
 
             POIXMLDocumentPart part = run.Parent.Part;
@@ -89,7 +89,7 @@ namespace NPOI.XWPF.UserModel
             return null;
         }
 
-        public String GetDescription()
+        public string GetDescription()
         {
             return description;
         }

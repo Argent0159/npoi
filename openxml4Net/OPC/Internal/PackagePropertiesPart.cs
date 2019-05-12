@@ -17,15 +17,15 @@ namespace NPOI.OpenXml4Net.OPC.Internal
  */
 public class PackagePropertiesPart:PackagePart,PackageProperties 
 {
-    static String NAMESPACE_DC = "http://purl.org/dc/elements/1.1/";
+    static string NAMESPACE_DC = "http://purl.org/dc/elements/1.1/";
 
-	public static String NAMESPACE_DC_URI = "http://purl.org/dc/elements/1.1/";
+	public static string NAMESPACE_DC_URI = "http://purl.org/dc/elements/1.1/";
 
-	public static String NAMESPACE_CP_URI = "http://schemas.openxmlformats.org/package/2006/metadata/core-properties";
+	public static string NAMESPACE_CP_URI = "http://schemas.openxmlformats.org/package/2006/metadata/core-properties";
 
-	public static String NAMESPACE_DCTERMS_URI = "http://purl.org/dc/terms/";
+	public static string NAMESPACE_DCTERMS_URI = "http://purl.org/dc/terms/";
 
-	public static String NAMESPACE_XSI_URI = "http://www.w3.org/2001/XMLSchema-instance";
+	public static string NAMESPACE_XSI_URI = "http://www.w3.org/2001/XMLSchema-instance";
 
 	/**
 	 * Constructor.
@@ -51,7 +51,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * value might be used by an application's user interface to facilitate
 	 * navigation of a large Set of documents. end example]
 	 */
-	protected String category = null;
+	protected string category = null;
 
 	/**
 	 * The status of the content.
@@ -59,7 +59,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * [Example: Values might include "Draft", "Reviewed", and "Final". end
 	 * example]
 	 */
-	protected String contentStatus = null;
+	protected string contentStatus = null;
 
 	/**
 	 * The type of content represented, generally defined by a specific use and
@@ -69,7 +69,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * "Exam". end example] [Note: This property is distinct from MIME content
 	 * types as defined in RFC 2616. end note]
 	 */
-	protected String contentType = null;
+	protected string contentType = null;
 
 	/**
 	 * Date of creation of the resource.
@@ -79,7 +79,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	/**
 	 * An entity primarily responsible for making the content of the resource.
 	 */
-	protected String creator = null;
+	protected string creator = null;
 
 	/**
 	 * An explanation of the content of the resource.
@@ -88,19 +88,19 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * to a graphical representation of content, and a free-text account of the
 	 * content. end example]
 	 */
-	protected String description = null;
+	protected string description = null;
 
 	/**
 	 * An unambiguous reference to the resource within a given context.
 	 */
-	protected String identifier = null;
+	protected string identifier = null;
 
 	/**
 	 * A delimited Set of keywords to support searching and indexing. This is
 	 * typically a list of terms that are not available elsewhere in the
 	 * properties.
 	 */
-	protected String keywords = null;
+	protected string keywords = null;
 
 	/**
 	 * The language of the intellectual content of the resource.
@@ -108,7 +108,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * [Note: IETF RFC 3066 provides guidance on encoding to represent
 	 * languages. end note]
 	 */
-	protected String language = null;
+	protected string language = null;
 
 	/**
 	 * The user who performed the last modification. The identification is
@@ -117,7 +117,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * [Example: A name, email address, or employee ID. end example] It is
 	 * recommended that this value be as concise as possible.
 	 */
-	protected String lastModifiedBy = null;
+	protected string lastModifiedBy = null;
 
 	/**
 	 * The date and time of the last printing.
@@ -135,22 +135,22 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * [Example: This value might indicate the number of saves or revisions,
 	 * provided the application updates it after each revision. end example]
 	 */
-	protected String revision = null;
+	protected string revision = null;
 
 	/**
 	 * The topic of the content of the resource.
 	 */
-	protected String subject = null;
+	protected string subject = null;
 
 	/**
 	 * The name given to the resource.
 	 */
-	protected String title = null;
+	protected string title = null;
 
 	/**
 	 * The version number. This value is Set by the user or by the application.
 	 */
-	protected String version = null;
+	protected string version = null;
 
 	/*
 	 * Getters and Setters
@@ -161,7 +161,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getCategoryProperty()
 	 */
-	public String GetCategoryProperty() {
+	public string GetCategoryProperty() {
 		return category;
 	}
 
@@ -170,7 +170,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getContentStatusProperty()
 	 */
-	public String GetContentStatusProperty() {
+	public string GetContentStatusProperty() {
 		return contentStatus;
 	}
 
@@ -179,7 +179,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getContentTypeProperty()
 	 */
-	public String GetContentTypeProperty() {
+	public string GetContentTypeProperty() {
 		return contentType;
 	}
 
@@ -197,7 +197,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @return A string representation of the created date.
 	 */
-	public String GetCreatedPropertyString() {
+	public string GetCreatedPropertyString() {
 		return GetDateValue(created);
 	}
 
@@ -206,7 +206,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getCreatorProperty()
 	 */
-	public String GetCreatorProperty() {
+	public string GetCreatorProperty() {
 		return creator;
 	}
 
@@ -215,7 +215,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getDescriptionProperty()
 	 */
-	public String GetDescriptionProperty() {
+	public string GetDescriptionProperty() {
 		return description;
 	}
 
@@ -224,7 +224,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getIdentifierProperty()
 	 */
-	public String GetIdentifierProperty() {
+	public string GetIdentifierProperty() {
 		return identifier;
 	}
 
@@ -233,7 +233,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getKeywordsProperty()
 	 */
-	public String GetKeywordsProperty() {
+	public string GetKeywordsProperty() {
 		return keywords;
 	}
 
@@ -242,7 +242,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getLanguageProperty()
 	 */
-	public String GetLanguageProperty() {
+	public string GetLanguageProperty() {
 		return language;
 	}
 
@@ -251,7 +251,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getLastModifiedByProperty()
 	 */
-	public String GetLastModifiedByProperty() {
+	public string GetLastModifiedByProperty() {
 		return lastModifiedBy;
 	}
 
@@ -269,7 +269,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @return A string representation of the last printed date.
 	 */
-	public String GetLastPrintedPropertyString() {
+	public string GetLastPrintedPropertyString() {
         return GetDateValue(lastPrinted);
 	}
 
@@ -287,7 +287,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @return A string representation of the modified date.
 	 */
-	public String GetModifiedPropertyString() {
+	public string GetModifiedPropertyString() {
 		if (modified.Value==null)
 			return GetDateValue(new Nullable<DateTime>(new DateTime()));
 		else
@@ -299,7 +299,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getRevisionProperty()
 	 */
-	public String GetRevisionProperty() {
+	public string GetRevisionProperty() {
 		return revision;
 	}
 
@@ -308,7 +308,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getSubjectProperty()
 	 */
-	public String GetSubjectProperty() {
+	public string GetSubjectProperty() {
 		return subject;
 	}
 
@@ -317,7 +317,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getTitleProperty()
 	 */
-	public String GetTitleProperty() {
+	public string GetTitleProperty() {
 		return title;
 	}
 
@@ -326,7 +326,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#getVersionProperty()
 	 */
-	public String GetVersionProperty() {
+	public string GetVersionProperty() {
 		return version;
 	}
 
@@ -335,7 +335,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setCategoryProperty(java.lang.String)
 	 */
-	public void SetCategoryProperty(String category) {
+	public void SetCategoryProperty(string category) {
 		this.category = SetStringValue(category);
 	}
 
@@ -344,7 +344,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setContentStatusProperty(java.lang.String)
 	 */
-	public void SetContentStatusProperty(String contentStatus) {
+	public void SetContentStatusProperty(string contentStatus) {
 		this.contentStatus = SetStringValue(contentStatus);
 	}
 
@@ -353,7 +353,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setContentTypeProperty(java.lang.String)
 	 */
-	public void SetContentTypeProperty(String contentType) {
+	public void SetContentTypeProperty(string contentType) {
 		this.contentType = SetStringValue(contentType);
 	}
 
@@ -362,7 +362,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setCreatedProperty(org.apache.poi.OpenXml4Net.util.Nullable)
 	 */
-	public void SetCreatedProperty(String created) {
+	public void SetCreatedProperty(string created) {
 		try {
 			this.created = SetDateValue(created);
 		} catch (InvalidFormatException e) {
@@ -386,7 +386,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setCreatorProperty(java.lang.String)
 	 */
-	public void SetCreatorProperty(String creator) {
+	public void SetCreatorProperty(string creator) {
 		this.creator = SetStringValue(creator);
 	}
 
@@ -395,7 +395,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setDescriptionProperty(java.lang.String)
 	 */
-	public void SetDescriptionProperty(String description) {
+	public void SetDescriptionProperty(string description) {
 		this.description = SetStringValue(description);
 	}
 
@@ -404,7 +404,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setIdentifierProperty(java.lang.String)
 	 */
-	public void SetIdentifierProperty(String identifier) {
+	public void SetIdentifierProperty(string identifier) {
 		this.identifier = SetStringValue(identifier);
 	}
 
@@ -413,7 +413,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setKeywordsProperty(java.lang.String)
 	 */
-	public void SetKeywordsProperty(String keywords) {
+	public void SetKeywordsProperty(string keywords) {
 		this.keywords = SetStringValue(keywords);
 	}
 
@@ -422,7 +422,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setLanguageProperty(java.lang.String)
 	 */
-	public void SetLanguageProperty(String language) {
+	public void SetLanguageProperty(string language) {
 		this.language = SetStringValue(language);
 	}
 
@@ -431,7 +431,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setLastModifiedByProperty(java.lang.String)
 	 */
-	public void SetLastModifiedByProperty(String lastModifiedBy) {
+	public void SetLastModifiedByProperty(string lastModifiedBy) {
 		this.lastModifiedBy = SetStringValue(lastModifiedBy);
 	}
 
@@ -440,7 +440,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setLastPrintedProperty(org.apache.poi.OpenXml4Net.util.Nullable)
 	 */
-	public void SetLastPrintedProperty(String lastPrinted) {
+	public void SetLastPrintedProperty(string lastPrinted) {
 		try {
 			this.lastPrinted = SetDateValue(lastPrinted);
 		} catch (InvalidFormatException e) {
@@ -464,7 +464,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setModifiedProperty(org.apache.poi.OpenXml4Net.util.Nullable)
 	 */
-	public void SetModifiedProperty(String modified) {
+	public void SetModifiedProperty(string modified) {
 		try {
 			this.modified = SetDateValue(modified);
 		} catch (InvalidFormatException e) {
@@ -488,7 +488,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setRevisionProperty(java.lang.String)
 	 */
-	public void SetRevisionProperty(String revision) {
+	public void SetRevisionProperty(string revision) {
 		this.revision = SetStringValue(revision);
 	}
 
@@ -497,7 +497,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setSubjectProperty(java.lang.String)
 	 */
-	public void SetSubjectProperty(String subject) {
+	public void SetSubjectProperty(string subject) {
 		this.subject = SetStringValue(subject);
 	}
 
@@ -506,7 +506,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setTitleProperty(java.lang.String)
 	 */
-	public void SetTitleProperty(String title) {
+	public void SetTitleProperty(string title) {
 		this.title = SetStringValue(title);
 	}
 
@@ -515,14 +515,14 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * 
 	 * @see org.apache.poi.OpenXml4Net.opc.PackageProperties#setVersionProperty(java.lang.String)
 	 */
-	public void SetVersionProperty(String version) {
+	public void SetVersionProperty(string version) {
 		this.version = SetStringValue(version);
 	}
 
 	/**
 	 * Convert a strig value into a String
 	 */
-	private String SetStringValue(String s) {
+	private string SetStringValue(string s) {
 		if (s == null || s.Equals(""))
 			return null;
 		else
@@ -535,7 +535,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * @throws InvalidFormatException
 	 *             Throws if the date format isnot valid.
 	 */
-	private Nullable<DateTime> SetDateValue(String s){
+	private Nullable<DateTime> SetDateValue(string s){
 		if (s == null || s.Equals(""))
 			return new Nullable<DateTime>();
 		else {
@@ -556,7 +556,7 @@ public class PackagePropertiesPart:PackagePart,PackageProperties
 	 * @return The formated date or null.
 	 * @see java.util.SimpleDateFormat
 	 */
-	private String GetDateValue(Nullable<DateTime> d) {
+	private string GetDateValue(Nullable<DateTime> d) {
 		if (d == null || d.Equals(""))
 			return "";
 		else {

@@ -134,7 +134,7 @@ namespace NPOI.XSSF.UserModel
          * 
          * @return  text Contained within this shape or empty string
          */
-        public String Text
+        public string Text
         {
             get
             {
@@ -170,7 +170,7 @@ namespace NPOI.XSSF.UserModel
                             {
                                 out1.Append('\t');
                             }
-                            String character = p.BulletCharacter;
+                            string character = p.BulletCharacter;
                             out1.Append(character.Length > 0 ? character + " " : "- ");
                             out1.Append(p.Text);
                         }
@@ -281,7 +281,7 @@ namespace NPOI.XSSF.UserModel
          * @param value the value of the bullet
          * @return appropriate prefix for an auto-numbering bullet
          */
-        private String GetBulletPrefix(ListAutoNumber scheme, int value)
+        private string GetBulletPrefix(ListAutoNumber scheme, int value)
         {
             StringBuilder out1 = new StringBuilder();
 
@@ -351,9 +351,9 @@ namespace NPOI.XSSF.UserModel
         /**
          * Convert an integer to its alpha equivalent e.g. 1 = A, 2 = B, 27 = AA etc
          */
-        private String valueToAlpha(int value)
+        private string valueToAlpha(int value)
         {
-            String alpha = "";
+            string alpha = "";
             int modulo;
             while (value > 0)
             {
@@ -364,13 +364,13 @@ namespace NPOI.XSSF.UserModel
             return alpha;
         }
 
-        private static String[] _romanChars = new String[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+        private static string[] _romanChars = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
         private static int[] _romanAlphaValues = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 
         /**
          * Convert an integer to its roman equivalent e.g. 1 = I, 9 = IX etc
          */
-        private String valueToRoman(int value)
+        private string valueToRoman(int value)
         {
             StringBuilder out1 = new StringBuilder();
             for (int i = 0; value > 0 && i < _romanChars.Length; i++)
@@ -398,7 +398,7 @@ namespace NPOI.XSSF.UserModel
          * Set a single paragraph of text on the shape. Note this will replace all existing paragraphs Created on the shape.
          * @param text	string representing the paragraph text
          */
-        public void SetText(String text)
+        public void SetText(string text)
         {
             ClearText();
 
@@ -480,7 +480,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return Created paragraph run
          */
-        public XSSFTextParagraph AddNewTextParagraph(String text)
+        public XSSFTextParagraph AddNewTextParagraph(string text)
         {
             XSSFTextParagraph paragraph = AddNewTextParagraph();
             paragraph.AddNewTextRun().Text=(text);

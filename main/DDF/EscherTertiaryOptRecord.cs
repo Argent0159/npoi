@@ -28,7 +28,7 @@ namespace NPOI.DDF
     {
         public const short RECORD_ID = unchecked((short)0xF122);
 
-        public override String RecordName
+        public override string RecordName
         {
             get
             {

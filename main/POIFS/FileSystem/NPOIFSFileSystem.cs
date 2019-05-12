@@ -677,7 +677,7 @@ namespace NPOI.POIFS.FileSystem
           * @exception IOException on error creating the new POIFSDocument
           */
 
-        public DocumentEntry CreateDocument(Stream stream, String name)
+        public DocumentEntry CreateDocument(Stream stream, string name)
         {
             return Root.CreateDocument(name, stream);
         }
@@ -695,7 +695,7 @@ namespace NPOI.POIFS.FileSystem
          * @exception IOException
          */
 
-        public DocumentEntry CreateDocument(String name, int size, POIFSWriterListener writer)
+        public DocumentEntry CreateDocument(string name, int size, POIFSWriterListener writer)
         {
             return Root.CreateDocument(name, size, writer);
         }
@@ -710,7 +710,7 @@ namespace NPOI.POIFS.FileSystem
          * @exception IOException on name duplication
          */
 
-        public DirectoryEntry CreateDirectory(String name)
+        public DirectoryEntry CreateDirectory(string name)
         {
             return Root.CreateDirectory(name);
         }
@@ -855,12 +855,12 @@ namespace NPOI.POIFS.FileSystem
          * @return an array of Object; may not be null, but may be empty
          */
 
-        protected Object[] GetViewableArray()
+        protected object[] GetViewableArray()
         {
             if (PreferArray)
             {
                 Array ar = ((POIFSViewable)Root).ViewableArray;
-                Object[] rval = new Object[ar.Length];
+                object[] rval = new object[ar.Length];
 
                 for (int i = 0; i < ar.Length; i++)
                     rval[i] = ar.GetValue(i);
@@ -868,7 +868,7 @@ namespace NPOI.POIFS.FileSystem
                 return rval;
 
             }
-            return new Object[0];
+            return new object[0];
         }
 
         /**
@@ -895,7 +895,7 @@ namespace NPOI.POIFS.FileSystem
          * @return short description
          */
 
-        protected String GetShortDescription()
+        protected string GetShortDescription()
         {
             return "POIFS FileSystem";
         }

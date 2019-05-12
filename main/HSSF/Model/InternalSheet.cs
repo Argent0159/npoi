@@ -1610,7 +1610,7 @@ namespace NPOI.HSSF.Model
             int max = records.Count;
             for (int i = 0; i < max; i++)
             {
-                Object rb = records[i];
+                object rb = records[i];
                 if (!(rb is Record))
                 {
                     continue;

@@ -110,7 +110,7 @@ namespace NPOI.HSSF.Record
         }
 
         
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -142,7 +142,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             DefaultRowHeightRecord rec = new DefaultRowHeightRecord();
             rec.field_1_option_flags = field_1_option_flags;

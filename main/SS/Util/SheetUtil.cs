@@ -62,7 +62,7 @@ namespace NPOI.SS.Util
             public CellValue Evaluate(ICell cell) { return null; }
             public ICell EvaluateInCell(ICell cell) { return null; }
             public bool IgnoreMissingWorkbooks { get; set; }
-            public void SetupReferencedWorkbooks(Dictionary<String, IFormulaEvaluator> workbooks) { }
+            public void SetupReferencedWorkbooks(Dictionary<string, IFormulaEvaluator> workbooks) { }
             public void EvaluateAll() { }
 
             public CellType EvaluateFormulaCell(ICell cell)
@@ -317,10 +317,10 @@ namespace NPOI.SS.Util
                 if (cellType == CellType.String)
                 {
                     IRichTextString rt = cell.RichStringCellValue;
-                    String[] lines = rt.String.Split("\n".ToCharArray());
+                    string[] lines = rt.String.Split("\n".ToCharArray());
                     for (int i = 0; i < lines.Length; i++)
                     {
-                        String txt = lines[i] + defaultChar;
+                        string txt = lines[i] + defaultChar;
 
                         //str = new AttributedString(txt);
                         //copyAttributes(font, str, 0, txt.length());
@@ -366,7 +366,7 @@ namespace NPOI.SS.Util
                 }
                 else
                 {
-                    String sval = null;
+                    string sval = null;
                     if (cellType == CellType.Numeric)
                     {
                         // Try to get it formatted to look the same as excel
@@ -385,7 +385,7 @@ namespace NPOI.SS.Util
                     }
                     if (sval != null)
                     {
-                        String txt = sval + defaultChar;
+                        string txt = sval + defaultChar;
                         //str = new AttributedString(txt);
                         //copyAttributes(font, str, 0, txt.length());
                         windowsFont = IFont2Font(font);
@@ -462,7 +462,7 @@ namespace NPOI.SS.Util
                 using (var g = Graphics.FromImage(image))
                 {
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-                    defaultCharWidth = (int)g.MeasureString(new String(defaultChar, 1), font, int.MaxValue).Width;
+                    defaultCharWidth = (int)g.MeasureString(new string(defaultChar, 1), font, int.MaxValue).Width;
                 }
             }
             //DummyEvaluator dummyEvaluator = new DummyEvaluator();
@@ -533,21 +533,21 @@ namespace NPOI.SS.Util
          * @param srcName the original sheet name to
          * @return clone sheet name
          */
-        public static String GetUniqueSheetName(IWorkbook wb, String srcName)
+        public static string GetUniqueSheetName(IWorkbook wb, string srcName)
         {
             if (wb.GetSheetIndex(srcName) == -1)
             {
                 return srcName;
             }
             int uniqueIndex = 2;
-            String baseName = srcName;
+            string baseName = srcName;
             int bracketPos = srcName.LastIndexOf('(');
             if (bracketPos > 0 && srcName.EndsWith(")"))
             {
-                String suffix = srcName.Substring(bracketPos + 1, srcName.Length - bracketPos - 2);
+                string suffix = srcName.Substring(bracketPos + 1, srcName.Length - bracketPos - 2);
                 try
                 {
-                    uniqueIndex = Int32.Parse(suffix.Trim());
+                    uniqueIndex = int.Parse(suffix.Trim());
                     uniqueIndex++;
                     baseName = srcName.Substring(0, bracketPos).Trim();
                 }
@@ -559,8 +559,8 @@ namespace NPOI.SS.Util
             while (true)
             {
                 // Try and find the next sheet name that is unique
-                String index = (uniqueIndex++).ToString();
-                String name;
+                string index = (uniqueIndex++).ToString();
+                string name;
                 if (baseName.Length + index.Length + 2 < 31)
                 {
                     name = baseName + " (" + index + ")";

@@ -115,7 +115,7 @@ namespace NPOI.HSSF.Record
                     {
                         if (!CanPaddingBeDiscarded(subRecordData, nRemainingBytes))
                         {
-                            String msg = "Leftover " + nRemainingBytes
+                            string msg = "Leftover " + nRemainingBytes
                                 + " bytes in subrecord data " + HexDump.ToHex(subRecordData);
                             throw new RecordFormatException(msg);
                         }
@@ -151,7 +151,7 @@ namespace NPOI.HSSF.Record
             return true;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -259,7 +259,7 @@ namespace NPOI.HSSF.Record
             subrecords.Add(o);
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             ObjRecord rec = new ObjRecord();
 

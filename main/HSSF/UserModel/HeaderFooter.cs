@@ -35,15 +35,15 @@ namespace NPOI.HSSF.UserModel
          * @return the internal text representation (combining center, left and right parts).
          * Possibly empty string if no header or footer is set.  Never <c>null</c>.
          */
-        public abstract String RawText { get; }
+        public abstract string RawText { get; }
         
-        private String[] SplitParts()
+        private string[] SplitParts()
         {
-            String text = RawText;
+            string text = RawText;
             // default values
-            String _left = "";
-            String _center = "";
-            String _right = "";
+            string _left = "";
+            string _center = "";
+            string _right = "";
 
             while (text.Length > 1)
             {
@@ -96,11 +96,11 @@ namespace NPOI.HSSF.UserModel
                         break;
                 }
             }
-            return new String[] { _left, _center, _right, };
+            return new string[] { _left, _center, _right, };
         }
-        private void UpdatePart(int partIndex, String newValue)
+        private void UpdatePart(int partIndex, string newValue)
         {
-            String[] parts = SplitParts();
+            string[] parts = SplitParts();
             parts[partIndex] = newValue == null ? "" : newValue;
             UpdateHeaderFooterText(parts);
         }
@@ -109,11 +109,11 @@ namespace NPOI.HSSF.UserModel
         /// strings.
         /// </summary>
         /// <param name="parts">The parts.</param>
-        private void UpdateHeaderFooterText(String[] parts)
+        private void UpdateHeaderFooterText(string[] parts)
         {
-            String _left = parts[0];
-            String _center = parts[1];
-            String _right = parts[2];
+            string _left = parts[0];
+            string _center = parts[1];
+            string _right = parts[2];
 
             if (_center.Length < 1 && _left.Length < 1 && _right.Length < 1)
             {
@@ -127,7 +127,7 @@ namespace NPOI.HSSF.UserModel
             sb.Append(_left);
             sb.Append("&R");
             sb.Append(_right);
-            String text = sb.ToString();
+            string text = sb.ToString();
             SetHeaderFooterText(text);
         }
         protected HeaderFooter()
@@ -139,13 +139,13 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="text">the new header footer text (contains mark-up tags). Possibly
         /// empty string never </param>
-        protected abstract void SetHeaderFooterText(String text);
+        protected abstract void SetHeaderFooterText(string text);
 
         /// <summary>
         /// Get the left side of the header or footer.
         /// </summary>
         /// <value>The string representing the left side.</value>
-        public String Left 
+        public string Left 
         {
             get
             {
@@ -160,7 +160,7 @@ namespace NPOI.HSSF.UserModel
         /// Get the center of the header or footer.
         /// </summary>
         /// <value>The string representing the center.</value>
-        public String Center
+        public string Center
         {
             get
             {
@@ -176,7 +176,7 @@ namespace NPOI.HSSF.UserModel
         /// Get the right side of the header or footer.
         /// </summary>
         /// <value>The string representing the right side..</value>
-        public String Right
+        public string Right
         {
             get
             {
@@ -194,7 +194,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="size">the new font size.</param>
         /// <returns>The special string to represent a new font size</returns>
-        public static String FontSize(short size)
+        public static string FontSize(short size)
         {
             return "&" + size;
         }
@@ -205,7 +205,7 @@ namespace NPOI.HSSF.UserModel
         /// <param name="font">the new font.</param>
         /// <param name="style">the fonts style, one of regular, italic, bold, italic bold or bold italic.</param>
         /// <returns>The special string to represent a new font size</returns>
-        public static String Font(String font, String style)
+        public static string Font(string font, string style)
         {
             return "&\"" + font + "," + style + "\"";
         }
@@ -214,7 +214,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the current page number
         /// </summary>
         /// <value>The special string for page number.</value>
-        public static String Page
+        public static string Page
         {
             get
             {
@@ -226,7 +226,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the number of pages.
         /// </summary>
         /// <value>The special string for the number of pages.</value>
-        public static String NumPages
+        public static string NumPages
         {
             get
             {
@@ -238,7 +238,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the current date
         /// </summary>
         /// <value>The special string for the date</value>
-        public static String Date
+        public static string Date
         {
             get
             {
@@ -252,7 +252,7 @@ namespace NPOI.HSSF.UserModel
         /// <value>The time.</value>
         /// Returns the string representing the current time
         /// @return The special string for the time
-        public static String Time
+        public static string Time
         {
             get
             {
@@ -264,7 +264,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the current file name
         /// </summary>
         /// <value>The special string for the file name.</value>
-        public static String File
+        public static string File
         {
             get{
                 return FILE_FIELD.sequence;
@@ -275,7 +275,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the current tab (sheet) name
         /// </summary>
         /// <value>The special string for tab name.</value>
-        public static String Tab
+        public static string Tab
         {
             get
             {
@@ -287,7 +287,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the start bold
         /// </summary>
         /// <returns>The special string for start bold</returns>
-        public static String StartBold
+        public static string StartBold
         {
             get
             {
@@ -299,7 +299,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the end bold
         /// </summary>
         /// <value>The special string for end bold.</value>
-        public static String EndBold
+        public static string EndBold
         {
             get
             {
@@ -311,7 +311,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the start underline
         /// </summary>
         /// <value>The special string for start underline.</value>
-        public static String StartUnderline
+        public static string StartUnderline
         {
             get
             {
@@ -323,7 +323,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the end underline
         /// </summary>
         /// <value>The special string for end underline.</value>
-        public static String EndUnderline
+        public static string EndUnderline
         {
             get
             {
@@ -335,7 +335,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the start double underline
         /// </summary>
         /// <value>The special string for start double underline.</value>
-        public static String StartDoubleUnderline
+        public static string StartDoubleUnderline
         {
             get
             {
@@ -347,7 +347,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the string representing the end double underline
         /// </summary>
         /// <value>The special string for end double underline.</value>
-        public static String EndDoubleUnderline
+        public static string EndDoubleUnderline
         {
             get
             {
@@ -365,7 +365,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
-        public static String StripFields(String text)
+        public static string StripFields(string text)
         {
             int pos;
 
@@ -377,7 +377,7 @@ namespace NPOI.HSSF.UserModel
 
             foreach(Field field in Fields.AllFields)
             {
-                String seq = field.sequence;
+                string seq = field.sequence;
                 while ((pos = text.IndexOf(seq, StringComparison.CurrentCulture)) > -1)
                 {
                     text = text.Substring(0, pos) +
@@ -444,8 +444,8 @@ namespace NPOI.HSSF.UserModel
             public static ArrayList ALL_FIELDS { get { return new ArrayList(Fields.AllFields); } }
 
             /** The character sequence that marks this field */
-            public String sequence;
-            public Field(Fields fields, String sequence)
+            public string sequence;
+            public Field(Fields fields, string sequence)
             {
                 this.sequence = sequence;
                 fields.Add(this);
@@ -459,7 +459,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         public class PairField : Field
         {
-            public PairField(Fields fields, String sequence)
+            public PairField(Fields fields, string sequence)
                 : base(fields, sequence)
             {
 

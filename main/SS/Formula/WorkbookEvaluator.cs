@@ -53,7 +53,7 @@ namespace NPOI.SS.Formula
 
         private IEvaluationListener _evaluationListener;
         private Hashtable _sheetIndexesBySheet;
-        private Dictionary<String, int> _sheetIndexesByName;
+        private Dictionary<string, int> _sheetIndexesByName;
         private CollaboratingWorkbooksEnvironment _collaboratingWorkbookEnvironment;
         private IStabilityClassifier _stabilityClassifier;
         private UDFFinder _udfFinder;
@@ -90,12 +90,12 @@ namespace NPOI.SS.Formula
          * also for debug use. Used in ToString methods
          */
         /* package */
-        public String GetSheetName(int sheetIndex)
+        public string GetSheetName(int sheetIndex)
         {
             return _workbook.GetSheetName(sheetIndex);
         }
 
-        public WorkbookEvaluator GetOtherWorkbookEvaluator(String workbookName)
+        public WorkbookEvaluator GetOtherWorkbookEvaluator(string workbookName)
         {
             return _collaboratingWorkbookEnvironment.GetWorkbookEvaluator(workbookName);
         }
@@ -112,7 +112,7 @@ namespace NPOI.SS.Formula
             return _workbook.GetSheet(sheetIndex);
         }
         /* package */
-        internal IEvaluationName GetName(String name, int sheetIndex)
+        internal IEvaluationName GetName(string name, int sheetIndex)
         {
             IEvaluationName evalName = _workbook.GetName(name, sheetIndex);
             return evalName;
@@ -134,14 +134,14 @@ namespace NPOI.SS.Formula
             return false;
 #endif
         }
-        private static void LogDebug(String s)
+        private static void LogDebug(string s)
         {
             if (IsDebugLogEnabled())
             {
                 Debug.WriteLine(s);
             }
         }
-        private static void LogInfo(String s)
+        private static void LogInfo(string s)
         {
             if (IsInfoLogEnabled())
             {
@@ -230,7 +230,7 @@ namespace NPOI.SS.Formula
          * @return -1 if sheet with specified name does not exist
          */
         /* package */
-        public int GetSheetIndex(String sheetName)
+        public int GetSheetIndex(string sheetName)
         {
             int result;
             if (_sheetIndexesByName.ContainsKey(sheetName))
@@ -357,7 +357,7 @@ namespace NPOI.SS.Formula
             }
             if (IsDebugLogEnabled())
             {
-                String sheetName = GetSheetName(sheetIndex);
+                string sheetName = GetSheetName(sheetIndex);
                 CellReference cr = new CellReference(rowIndex, columnIndex);
                 LogDebug("Evaluated " + sheetName + "!" + cr.FormatAsString() + " To " + cce.GetValue());
             }
@@ -377,9 +377,9 @@ namespace NPOI.SS.Formula
         {
             try
             {
-                String sheetName = _workbook.GetSheetName(sheetIndex);
+                string sheetName = _workbook.GetSheetName(sheetIndex);
                 CellReference cr = new CellReference(sheetName, rowIndex, columnIndex, false, false);
-                String msg = "Error evaluating cell " + cr.FormatAsString();
+                string msg = "Error evaluating cell " + cr.FormatAsString();
                 return new NotImplementedException(msg, inner);
             }
             catch (Exception)
@@ -432,7 +432,7 @@ namespace NPOI.SS.Formula
         /* package */
         public ValueEval EvaluateFormula(OperationEvaluationContext ec, Ptg[] ptgs)
         {
-            String dbgIndentStr = "";		// always init. to non-null just for defensive avoiding NPE
+            string dbgIndentStr = "";		// always init. to non-null just for defensive avoiding NPE
             if (dbgEvaluationOutputForNextEval)
             {
                 // first evaluation call when ouput is desired, so iit. this evaluator instance
@@ -814,7 +814,7 @@ namespace NPOI.SS.Formula
             return EvaluateAny(cell, sheetIndex, rowIndex, columnIndex, tracker);
         }
 
-        public FreeRefFunction FindUserDefinedFunction(String functionName)
+        public FreeRefFunction FindUserDefinedFunction(string functionName)
         {
             return _udfFinder.FindFunction(functionName);
         }
@@ -846,9 +846,9 @@ namespace NPOI.SS.Formula
          *
          * @return names of functions supported by POI
          */
-        public static List<String> GetSupportedFunctionNames()
+        public static List<string> GetSupportedFunctionNames()
         {
-            List<String> lst = new List<String>();
+            List<string> lst = new List<string>();
             lst.AddRange(FunctionEval.GetSupportedFunctionNames());
             lst.AddRange(AnalysisToolPak.GetSupportedFunctionNames());
             return lst;
@@ -859,9 +859,9 @@ namespace NPOI.SS.Formula
          *
          * @return names of functions NOT supported by POI
          */
-        public static List<String> GetNotSupportedFunctionNames()
+        public static List<string> GetNotSupportedFunctionNames()
         {
-            List<String> lst = new List<String>();
+            List<string> lst = new List<string>();
             lst.AddRange(FunctionEval.GetNotSupportedFunctionNames());
             lst.AddRange(AnalysisToolPak.GetNotSupportedFunctionNames());
             return lst;
@@ -875,7 +875,7 @@ namespace NPOI.SS.Formula
          * @throws IllegalArgumentException if the function is unknown or already  registered.
          * @since 3.8 beta6
          */
-        public static void RegisterFunction(String name, FreeRefFunction func)
+        public static void RegisterFunction(string name, FreeRefFunction func)
         {
             AnalysisToolPak.RegisterFunction(name, func);
         }
@@ -888,7 +888,7 @@ namespace NPOI.SS.Formula
          * @throws IllegalArgumentException if the function is unknown or already  registered.
          * @since 3.8 beta6
          */
-        public static void RegisterFunction(String name, Functions.Function func)
+        public static void RegisterFunction(string name, Functions.Function func)
         {
             FunctionEval.RegisterFunction(name, func);
         }

@@ -29,8 +29,8 @@ namespace NPOI.POIFS.FileSystem
     public class FilteringDirectoryNode : DirectoryEntry
     {
 
-        private List<String> excludes;
-        private Dictionary<String, List<String>> childExcludes;
+        private List<string> excludes;
+        private Dictionary<string, List<string>> childExcludes;
         private DirectoryEntry directory;
         /// <summary>
         /// Creates a filter round the specified directory, which will exclude entries such as 
@@ -38,14 +38,14 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="directory">The Directory to filter</param>
         /// <param name="excludes">The Entries to exclude</param>
-        public FilteringDirectoryNode(DirectoryEntry directory, ICollection<String> excludes)
+        public FilteringDirectoryNode(DirectoryEntry directory, ICollection<string> excludes)
         {
             this.directory = directory;
 
             // Process the excludes
-            this.excludes = new List<String>();
-            this.childExcludes = new Dictionary<String, List<String>>();
-            foreach (String excl in excludes)
+            this.excludes = new List<string>();
+            this.childExcludes = new Dictionary<string, List<string>>();
+            foreach (string excl in excludes)
             {
                 int splitAt = excl.IndexOf('/');
                 if (splitAt == -1)
@@ -56,11 +56,11 @@ namespace NPOI.POIFS.FileSystem
                 else
                 {
                     // Applies to a child
-                    String child = excl.Substring(0, splitAt);
-                    String childExcl = excl.Substring(splitAt + 1);
+                    string child = excl.Substring(0, splitAt);
+                    string childExcl = excl.Substring(splitAt + 1);
                     if (!this.childExcludes.ContainsKey(child))
                     {
-                        this.childExcludes.Add(child, new List<String>());
+                        this.childExcludes.Add(child, new List<string>());
                     }
                     this.childExcludes[child].Add(childExcl);
                 }
@@ -73,12 +73,12 @@ namespace NPOI.POIFS.FileSystem
             get { return GetEntries(); }
         }
 
-        public List<String> EntryNames
+        public List<string> EntryNames
         {
             get
             {
-                List<String> names = new List<String>();
-                foreach (String name in directory.EntryNames)
+                List<string> names = new List<string>();
+                foreach (string name in directory.EntryNames)
                 {
                     if (!excludes.Contains(name))
                     {
@@ -93,7 +93,7 @@ namespace NPOI.POIFS.FileSystem
         {
             get { return EntryCount == 0; }
         }
-        public bool HasEntry(String name)
+        public bool HasEntry(string name)
         {
             if (excludes.Contains(name))
             {
@@ -106,7 +106,7 @@ namespace NPOI.POIFS.FileSystem
             get
             {
                 int size = directory.EntryCount;
-                foreach (String excl in excludes)
+                foreach (string excl in excludes)
                 {
                     if (directory.HasEntry(excl))
                     {
@@ -121,7 +121,7 @@ namespace NPOI.POIFS.FileSystem
         {
             return new FilteringIterator(this); ;
         }
-        public Entry GetEntry(String name)
+        public Entry GetEntry(string name)
         {
             if (excludes.Contains(name))
             {
@@ -133,7 +133,7 @@ namespace NPOI.POIFS.FileSystem
         }
         private Entry WrapEntry(Entry entry)
         {
-            String name = entry.Name;
+            string name = entry.Name;
             if (childExcludes.ContainsKey(name) && entry is DirectoryEntry)
             {
                 return new FilteringDirectoryNode(

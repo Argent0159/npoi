@@ -124,9 +124,9 @@ namespace NPOI.SS.Util
             Size imgSize = GetImageDimension(new MemoryStream(data.Data), data.PictureType);
             // in emus
             Size anchorSize = ImageUtils.GetDimensionFromAnchor(picture);
-            double scaledWidth = (scaleX == Double.MaxValue)
+            double scaledWidth = (scaleX == double.MaxValue)
                 ? imgSize.Width : anchorSize.Width / Units.EMU_PER_PIXEL * scaleX;
-            double scaledHeight = (scaleY == Double.MaxValue)
+            double scaledHeight = (scaleY == double.MaxValue)
                 ? imgSize.Height : anchorSize.Height / Units.EMU_PER_PIXEL * scaleY;
 
             double w = 0;

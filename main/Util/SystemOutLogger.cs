@@ -33,9 +33,9 @@ namespace NPOI.Util
     /// </remarks>
     public class SystemOutLogger : POILogger
     {
-        private String _cat;
+        private string _cat;
 
-        public override void Initialize(String cat)
+        public override void Initialize(string cat)
         {
             this._cat = cat;
         }
@@ -45,7 +45,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="level">One of DEBUG, INFO, WARN, ERROR, FATAL</param>
         /// <param name="obj1">The object to log.</param>
-        public override void Log(int level, Object obj1)
+        public override void Log(int level, object obj1)
         {
             Log(level, obj1, null);
         }
@@ -56,7 +56,7 @@ namespace NPOI.Util
         /// <param name="level"> One of DEBUG, INFO, WARN, ERROR, FATAL</param>
         /// <param name="obj1">The object to log.  This is Converted to a string.</param>
         /// <param name="exception">An exception to be logged</param>
-        public override void Log(int level, Object obj1,
+        public override void Log(int level, object obj1,
                         Exception exception) {
         if (Check(level)) {
             Console.WriteLine("["+_cat+"] "+obj1);

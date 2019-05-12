@@ -43,7 +43,7 @@ namespace NPOI.SS.Formula.PTG
         private BitField colRelative = BitFieldFactory.GetInstance(0x4000);
 
 
-        public Area3DPtg(String arearef, int externIdx):base(arearef)
+        public Area3DPtg(string arearef, int externIdx):base(arearef)
         {
             ExternSheetIndex=externIdx;
 
@@ -67,7 +67,7 @@ namespace NPOI.SS.Formula.PTG
             ExternSheetIndex= externalSheetIndex;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name);
@@ -104,7 +104,7 @@ namespace NPOI.SS.Formula.PTG
             return result;
         }*/
 
-        public void SetArea(String ref1)
+        public void SetArea(string ref1)
         {
             AreaReference ar = new AreaReference(ref1);
 
@@ -121,7 +121,7 @@ namespace NPOI.SS.Formula.PTG
             IsLastRowRelative=!lastCell.IsRowAbsolute;
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             throw new NotImplementedException("3D references need a workbook to determine formula text");
         }
@@ -129,7 +129,7 @@ namespace NPOI.SS.Formula.PTG
  * @return text representation of this area reference that can be used in text
  *  formulas. The sheet name will get properly delimited if required.
  */
-        public String ToFormulaString(IFormulaRenderingWorkbook book)
+        public string ToFormulaString(IFormulaRenderingWorkbook book)
         {
             return ExternSheetNameResolver.PrependSheetName(book, field_1_index_extern_sheet, FormatReferenceAsString());
         }

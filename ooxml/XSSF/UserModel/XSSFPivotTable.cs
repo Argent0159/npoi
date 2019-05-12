@@ -286,7 +286,7 @@ namespace NPOI.XSSF.UserModel
          * @param valueFieldName the name of pivot table value field
          */
 
-        public void AddColumnLabel(DataConsolidateFunction function, int columnIndex, String valueFieldName)
+        public void AddColumnLabel(DataConsolidateFunction function, int columnIndex, string valueFieldName)
         {
             AreaReference pivotArea = GetPivotArea();
             int lastColIndex = pivotArea.LastCell.Col - pivotArea.FirstCell.Col;
@@ -338,7 +338,7 @@ namespace NPOI.XSSF.UserModel
          * @param valueFieldName the name of pivot table value field
          */
 
-        private void AddDataField(DataConsolidateFunction function, int columnIndex, String valueFieldName)
+        private void AddDataField(DataConsolidateFunction function, int columnIndex, string valueFieldName)
         {
             AreaReference pivotArea = GetPivotArea();
             int lastColIndex = pivotArea.LastCell.Col - pivotArea.FirstCell.Col;
@@ -470,8 +470,8 @@ namespace NPOI.XSSF.UserModel
             worksheetSource.sheet = (/*setter*/sourceSheet.SheetName);
             SetDataSheet(sourceSheet);
 
-            String[] firstCell = source.FirstCell.CellRefParts;
-            String[] lastCell = source.LastCell.CellRefParts;
+            string[] firstCell = source.FirstCell.CellRefParts;
+            string[] lastCell = source.LastCell.CellRefParts;
             worksheetSource.@ref = (/*setter*/firstCell[2] + firstCell[1] + ':' + lastCell[2] + lastCell[1]);
         }
 

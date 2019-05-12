@@ -105,7 +105,7 @@ namespace NPOI.HSSF.Model
             while (i > 0)
             {
                 i--;
-                Object rb = records[i];
+                object rb = records[i];
                 if (!IsProtectionSubsequentRecord(rb))
                 {
                     return i + 1;
@@ -123,7 +123,7 @@ namespace NPOI.HSSF.Model
         /// oo COLINFO
         /// o SORT
         /// </remarks>
-        private static bool IsProtectionSubsequentRecord(Object rb)
+        private static bool IsProtectionSubsequentRecord(object rb)
         {
             if (rb is ColumnInfoRecordsAggregate)
             {
@@ -197,7 +197,7 @@ namespace NPOI.HSSF.Model
 
             for (int i = records.Count - 2; i >= 0; i--)
             { // -2 to skip EOF record
-                Object rb = records[i];
+                object rb = records[i];
                 if (rb is MergedCellsTable)
                 {
                     return i + 1;
@@ -230,7 +230,7 @@ namespace NPOI.HSSF.Model
         {
             for (int i = records.Count - 2; i >= 0; i--)
             { // -2 to skip EOF record
-                Object rb = records[i];
+                object rb = records[i];
                 if (!(rb is Record))
                 {
                     // DataValidityTable, ConditionalFormattingTable, 

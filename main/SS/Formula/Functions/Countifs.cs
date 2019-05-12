@@ -35,7 +35,7 @@ namespace NPOI.SS.Formula.Functions
 
         public ValueEval Evaluate(ValueEval[] args, OperationEvaluationContext ec)
         {
-            Double result = double.NaN;
+            double result = double.NaN;
             if (args.Length == 0 || args.Length % 2 > 0)
             {
                 return ErrorEval.VALUE_INVALID;

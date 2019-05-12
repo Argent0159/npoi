@@ -149,7 +149,7 @@ namespace NPOI.SS.Formula.Functions
             {
                 return e.GetErrorEval();
             }
-            if (Double.IsNaN(result) || Double.IsInfinity(result))
+            if (double.IsNaN(result) || double.IsInfinity(result))
             {
                 return ErrorEval.NUM_ERROR;
             }

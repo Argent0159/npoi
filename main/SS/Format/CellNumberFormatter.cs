@@ -31,8 +31,8 @@ namespace NPOI.SS.Format
      */
     public class CellNumberFormatter : CellFormatter
     {
-        private String desc;
-        private String printfFmt;
+        private string desc;
+        private string printfFmt;
         private double scale;
         private Special decimalPoint;
         private Special slash;
@@ -49,8 +49,8 @@ namespace NPOI.SS.Format
         private List<Special> exponentSpecials;
         private List<Special> exponentDigitSpecials;
         private int maxDenominator;
-        private String numeratorFmt;
-        private String denominatorFmt;
+        private string numeratorFmt;
+        private string denominatorFmt;
         private bool improperFraction;
         private DecimalFormat decimalFmt;
         private static List<Special> EmptySpecialList = new List<Special>();
@@ -71,7 +71,7 @@ namespace NPOI.SS.Format
             {
 
             }
-            public override void FormatValue(StringBuilder toAppendTo, Object value)
+            public override void FormatValue(StringBuilder toAppendTo, object value)
             {
                 if (value == null)
                     return;
@@ -90,7 +90,7 @@ namespace NPOI.SS.Format
                     CellTextFormatter.SIMPLE_TEXT.FormatValue(toAppendTo, value);
                 }
             }
-            public override void SimpleValue(StringBuilder toAppendTo, Object value)
+            public override void SimpleValue(StringBuilder toAppendTo, object value)
             {
                 FormatValue(toAppendTo, value);
             }
@@ -116,7 +116,7 @@ namespace NPOI.SS.Format
             }
 
 
-            public override String ToString()
+            public override string ToString()
             {
                 return "'" + ch + "' @ " + pos;
             }
@@ -179,7 +179,7 @@ namespace NPOI.SS.Format
             }
 
 
-            public override bool Equals(Object that)
+            public override bool Equals(object that)
             {
                 try
                 {
@@ -207,7 +207,7 @@ namespace NPOI.SS.Format
             {
                 this.formatter = formatter;
             }
-            public String HandlePart(Match m, String part, CellFormatType type,
+            public string HandlePart(Match m, string part, CellFormatType type,
                     StringBuilder desc)
             {
                 int pos = desc.Length;
@@ -278,7 +278,7 @@ namespace NPOI.SS.Format
          *
          * @param format The format to Parse.
          */
-        public CellNumberFormatter(String format)
+        public CellNumberFormatter(string format)
             : base(format)
         {
             ;
@@ -463,7 +463,7 @@ namespace NPOI.SS.Format
                     withChar);
         }
 
-        private static String SingleNumberFormat(List<Special> numSpecials)
+        private static string SingleNumberFormat(List<Special> numSpecials)
         {
             //return "%0" + numSpecials.Count + "d";
             return "D" + numSpecials.Count;
@@ -674,7 +674,7 @@ namespace NPOI.SS.Format
         }
 
         /** {@inheritDoc} */
-        public override void FormatValue(StringBuilder toAppendTo, Object valueObject)
+        public override void FormatValue(StringBuilder toAppendTo, object valueObject)
         {
             double value = ((double)valueObject);
             value *= scale;
@@ -1074,7 +1074,7 @@ namespace NPOI.SS.Format
             return true;
         }
 
-        private void WriteSingleint(String fmt, int num, StringBuilder output,
+        private void WriteSingleint(string fmt, int num, StringBuilder output,
                 List<Special> numSpecials, SortedList<StringMod, object> mods)
         {
 
@@ -1199,7 +1199,7 @@ namespace NPOI.SS.Format
          * For a number, this is <tt>"#"</tt> for integer values, and <tt>"#.#"</tt>
          * for floating-point values.
          */
-        public override void SimpleValue(StringBuilder toAppendTo, Object value)
+        public override void SimpleValue(StringBuilder toAppendTo, object value)
         {
             SIMPLE_NUMBER.FormatValue(toAppendTo, value);
         }

@@ -284,7 +284,7 @@ namespace NPOI.XSSF.UserModel
          * 
          * @param      path   the file name.
          */
-        public XSSFWorkbook(String path)
+        public XSSFWorkbook(string path)
             : this(OpenPackage(path))
         {
 
@@ -312,8 +312,8 @@ namespace NPOI.XSSF.UserModel
                 doc = WorkbookDocument.Parse(xmldoc, NamespaceManager);
                 this.workbook = doc.Workbook;
 
-                Dictionary<String, XSSFSheet> shIdMap = new Dictionary<String, XSSFSheet>();
-                Dictionary<String, ExternalLinksTable> elIdMap = new Dictionary<String, ExternalLinksTable>();
+                Dictionary<string, XSSFSheet> shIdMap = new Dictionary<string, XSSFSheet>();
+                Dictionary<string, ExternalLinksTable> elIdMap = new Dictionary<string, ExternalLinksTable>();
                 foreach (POIXMLDocumentPart p in GetRelations())
                 {
                     if (p is SharedStringsTable) sharedStringSource = (SharedStringsTable)p;
@@ -589,7 +589,7 @@ namespace NPOI.XSSF.UserModel
          */
         public ISheet CreateSheet()
         {
-            String sheetname = "Sheet" + (sheets.Count);
+            string sheetname = "Sheet" + (sheets.Count);
             int idx = 0;
             while (GetSheet(sheetname) != null)
             {
@@ -646,7 +646,7 @@ namespace NPOI.XSSF.UserModel
          *  or workbook already contains a sheet with this name
          * @see org.apache.poi.ss.util.WorkbookUtil#createSafeSheetName(String nameProposal)
          */
-        public ISheet CreateSheet(String sheetname)
+        public ISheet CreateSheet(string sheetname)
         {
             if (sheetname == null)
             {
@@ -676,7 +676,7 @@ namespace NPOI.XSSF.UserModel
 
                 // Bug 57165: We also need to check that the resulting file name is not already taken
                 // this can happen when moving/cloning sheets
-                String sheetName = XSSFRelation.WORKSHEET.GetFileName(sheetNumber);
+                string sheetName = XSSFRelation.WORKSHEET.GetFileName(sheetNumber);
                 foreach (POIXMLDocumentPart relation in GetRelations())
                 {
                     if (relation.GetPackagePart() != null &&
@@ -701,13 +701,13 @@ namespace NPOI.XSSF.UserModel
             return wrapper;
         }
 
-        protected XSSFDialogsheet CreateDialogsheet(String sheetname, CT_Dialogsheet dialogsheet)
+        protected XSSFDialogsheet CreateDialogsheet(string sheetname, CT_Dialogsheet dialogsheet)
         {
             ISheet sheet = CreateSheet(sheetname);
             return new XSSFDialogsheet((XSSFSheet)sheet);
         }
 
-        private CT_Sheet AddSheet(String sheetname)
+        private CT_Sheet AddSheet(string sheetname)
         {
             CT_Sheet sheet = workbook.sheets.AddNewSheet();
             sheet.name = (sheetname);
@@ -717,7 +717,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Finds a font that matches the one with the supplied attributes
          */
-        public IFont FindFont(short boldWeight, short color, short fontHeight, String name, bool italic, bool strikeout,FontSuperScript typeOffset, FontUnderlineType underline)
+        public IFont FindFont(short boldWeight, short color, short fontHeight, string name, bool italic, bool strikeout,FontSuperScript typeOffset, FontUnderlineType underline)
         {
             return stylesSource.FindFont(boldWeight, color, fontHeight, name, italic, strikeout, typeOffset, underline);
         }
@@ -789,7 +789,7 @@ namespace NPOI.XSSF.UserModel
             return stylesSource.GetFontAt(idx);
         }
 
-        public IName GetName(String name)
+        public IName GetName(string name)
         {
             int nameIndex = GetNameIndex(name);
             if (nameIndex < 0)
@@ -822,7 +822,7 @@ namespace NPOI.XSSF.UserModel
          * @param name named range name
          * @return named range index
          */
-        public int GetNameIndex(String name)
+        public int GetNameIndex(string name)
         {
             int i = 0;
             foreach (XSSFName nr in namedRanges)
@@ -891,7 +891,7 @@ namespace NPOI.XSSF.UserModel
          * @param sheetIndex Zero-based sheet index (0 Represents the first sheet to keep consistent with java)
          * @return String Null if no print area has been defined
          */
-        public String GetPrintArea(int sheetIndex)
+        public string GetPrintArea(int sheetIndex)
         {
             XSSFName name = GetBuiltInName(XSSFName.BUILTIN_PRINT_AREA, sheetIndex);
             if (name == null) return null;
@@ -906,7 +906,7 @@ namespace NPOI.XSSF.UserModel
          * @param name of the sheet
          * @return XSSFSheet with the name provided or <code>null</code> if it does not exist
          */
-        public ISheet GetSheet(String name)
+        public ISheet GetSheet(string name)
         {
             foreach (XSSFSheet sheet in sheets)
             {
@@ -937,7 +937,7 @@ namespace NPOI.XSSF.UserModel
         /// </summary>
         /// <param name="name">the sheet name</param>
         /// <returns>index of the sheet (0 based) or -1 if not found</returns>
-        public int GetSheetIndex(String name)
+        public int GetSheetIndex(string name)
         {
             for (int i = 0; i < sheets.Count; ++i)
             {
@@ -973,7 +973,7 @@ namespace NPOI.XSSF.UserModel
          * @param sheetIx Number
          * @return Sheet name
          */
-        public String GetSheetName(int sheetIx)
+        public string GetSheetName(int sheetIx)
         {
             ValidateSheetIndex(sheetIx);
             return sheets[sheetIx].SheetName;
@@ -1006,7 +1006,7 @@ namespace NPOI.XSSF.UserModel
             namedRanges.RemoveAt(nameIndex);
         }
 
-        public void RemoveName(String name)
+        public void RemoveName(string name)
         {
             for (int i = 0; i < namedRanges.Count; i++)
             {
@@ -1174,7 +1174,7 @@ namespace NPOI.XSSF.UserModel
             int lastSheetIx = sheets.Count - 1;
             if (index < 0 || index > lastSheetIx)
             {
-                String range = "(0.." + lastSheetIx + ")";
+                string range = "(0.." + lastSheetIx + ")";
                 if (lastSheetIx == -1)
                 {
                     range = "(no sheets)";
@@ -1212,7 +1212,7 @@ namespace NPOI.XSSF.UserModel
          * @param sheetIndex Zero-based sheet index (0 Represents the first sheet to keep consistent with java)
          * @param reference Valid name Reference for the Print Area
          */
-        public void SetPrintArea(int sheetIndex, String reference)
+        public void SetPrintArea(int sheetIndex, string reference)
         {
             XSSFName name = GetBuiltInName(XSSFName.BUILTIN_PRINT_AREA, sheetIndex);
             if (name == null)
@@ -1221,7 +1221,7 @@ namespace NPOI.XSSF.UserModel
             }
             //short externSheetIndex = Workbook.CheckExternSheet(sheetIndex);
             //name.SetExternSheetNumber(externSheetIndex);
-            String[] parts = COMMA_PATTERN.Split(reference);
+            string[] parts = COMMA_PATTERN.Split(reference);
             StringBuilder sb = new StringBuilder(32);
             for (int i = 0; i < parts.Length; i++)
             {
@@ -1247,7 +1247,7 @@ namespace NPOI.XSSF.UserModel
          */
         public void SetPrintArea(int sheetIndex, int startColumn, int endColumn, int startRow, int endRow)
         {
-            String reference = GetReferencePrintArea(GetSheetName(sheetIndex), startColumn, endColumn, startRow, endRow);
+            string reference = GetReferencePrintArea(GetSheetName(sheetIndex), startColumn, endColumn, startRow, endRow);
             SetPrintArea(sheetIndex, reference);
         }
 
@@ -1298,22 +1298,22 @@ namespace NPOI.XSSF.UserModel
 
         }
 
-        private static String GetReferenceBuiltInRecord(String sheetName, int startC, int endC, int startR, int endR)
+        private static string GetReferenceBuiltInRecord(string sheetName, int startC, int endC, int startR, int endR)
         {
             //windows excel example for built-in title: 'second sheet'!$E:$F,'second sheet'!$2:$3
             CellReference colRef = new CellReference(sheetName, 0, startC, true, true);
             CellReference colRef2 = new CellReference(sheetName, 0, endC, true, true);
 
-            String escapedName = SheetNameFormatter.Format(sheetName);
+            string escapedName = SheetNameFormatter.Format(sheetName);
 
-            String c;
+            string c;
             if (startC == -1 && endC == -1) c = "";
             else c = escapedName + "!$" + colRef.CellRefParts[2] + ":$" + colRef2.CellRefParts[2];
 
             CellReference rowRef = new CellReference(sheetName, startR, 0, true, true);
             CellReference rowRef2 = new CellReference(sheetName, endR, 0, true, true);
 
-            String r = "";
+            string r = "";
             if (startR == -1 && endR == -1) r = "";
             else
             {
@@ -1330,7 +1330,7 @@ namespace NPOI.XSSF.UserModel
             return rng.ToString();
         }
 
-        private static String GetReferencePrintArea(String sheetName, int startC, int endC, int startR, int endR)
+        private static string GetReferencePrintArea(string sheetName, int startC, int endC, int startR, int endR)
         {
             //windows excel example: Sheet1!$C$3:$E$4
             CellReference colRef = new CellReference(sheetName, startR, startC, true, true);
@@ -1339,7 +1339,7 @@ namespace NPOI.XSSF.UserModel
             return "$" + colRef.CellRefParts[2] + "$" + colRef.CellRefParts[1] + ":$" + colRef2.CellRefParts[2] + "$" + colRef2.CellRefParts[1];
         }
 
-        public XSSFName GetBuiltInName(String builtInCode, int sheetNumber)
+        public XSSFName GetBuiltInName(string builtInCode, int sheetNumber)
         {
             foreach (XSSFName name in namedRanges)
             {
@@ -1359,7 +1359,7 @@ namespace NPOI.XSSF.UserModel
          * @throws ArgumentException if sheetNumber is invalid
          * @throws POIXMLException if such a name already exists in the workbook
          */
-        internal XSSFName CreateBuiltInName(String builtInName, int sheetNumber)
+        internal XSSFName CreateBuiltInName(string builtInName, int sheetNumber)
         {
             ValidateSheetIndex(sheetNumber);
 
@@ -1404,10 +1404,10 @@ namespace NPOI.XSSF.UserModel
          * @see {@link NPOI.ss.util.WorkbookUtil#CreateSafeSheetName(String nameProposal)}
          *      for a safe way to create valid names
          */
-        public void SetSheetName(int sheetIndex, String sheetname)
+        public void SetSheetName(int sheetIndex, string sheetname)
         {
             ValidateSheetIndex(sheetIndex);
-            String oldSheetName = GetSheetName(sheetIndex);
+            string oldSheetName = GetSheetName(sheetIndex);
 
             // YK: Mimic Excel and silently tRuncate sheet names longer than 31 characters
             if (sheetname != null && sheetname.Length > 31) sheetname = sheetname.Substring(0, 31);
@@ -1433,7 +1433,7 @@ namespace NPOI.XSSF.UserModel
          * @param sheetname the name of the sheet to reorder
          * @param pos the position that we want to insert the sheet into (0 based)
          */
-        public void SetSheetOrder(String sheetname, int pos)
+        public void SetSheetOrder(string sheetname, int pos)
         {
             int idx = GetSheetIndex(sheetname);
             XSSFSheet sheet = sheets[idx];
@@ -1609,7 +1609,7 @@ namespace NPOI.XSSF.UserModel
          * @return true if the sheet Contains the name, false otherwise.
          */
         //@SuppressWarnings("deprecation") //  GetXYZArray() array accessors are deprecated
-        private bool ContainsSheet(String name, int excludeSheetIdx)
+        private bool ContainsSheet(string name, int excludeSheetIdx)
         {
             List<CT_Sheet> ctSheetArray = workbook.sheets.sheet;
 
@@ -1620,7 +1620,7 @@ namespace NPOI.XSSF.UserModel
 
             for (int i = 0; i < ctSheetArray.Count; i++)
             {
-                String ctName = ctSheetArray[i].name;
+                string ctName = ctSheetArray[i].name;
                 if (ctName.Length > Max_SENSITIVE_SHEET_NAME_LEN)
                 {
                     ctName = ctName.Substring(0, Max_SENSITIVE_SHEET_NAME_LEN);
@@ -1847,7 +1847,7 @@ namespace NPOI.XSSF.UserModel
          * @param name The name the workbook will be referenced as in formulas
          * @param workbook The open workbook to fetch the link required information from
          */
-        public int LinkExternalWorkbook(String name, IWorkbook workbook)
+        public int LinkExternalWorkbook(string name, IWorkbook workbook)
         {
             throw new RuntimeException("Not Implemented - see bug #57184");
         }
@@ -2037,7 +2037,7 @@ namespace NPOI.XSSF.UserModel
        /**
          * Add pivotCache to the workbook
          */
-        protected internal CT_PivotCache AddPivotCache(String rId)
+        protected internal CT_PivotCache AddPivotCache(string rId)
         {
             CT_Workbook ctWorkbook = GetCTWorkbook();
             CT_PivotCaches caches;

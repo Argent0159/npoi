@@ -41,7 +41,7 @@ namespace NPOI.XSSF.UserModel
          * @param format string matching a built in format
          * @return index of format.
          */
-        public short GetFormat(String format)
+        public short GetFormat(string format)
         {
             int idx = BuiltinFormats.GetBuiltinFormat(format);
             if (idx == -1) idx = stylesSource.PutNumberFormat(format);
@@ -53,7 +53,7 @@ namespace NPOI.XSSF.UserModel
          * @param index of a format
          * @return string represented at index of format or null if there is not a  format at that index
          */
-        public String GetFormat(short index)
+        public string GetFormat(short index)
         {
             return GetFormat(index & 0xffff);
         }
@@ -62,9 +62,9 @@ namespace NPOI.XSSF.UserModel
          * @param index of a format
          * @return string represented at index of format or null if there is not a  format at that index
          */
-        public String GetFormat(int index)
+        public string GetFormat(int index)
         {
-            String fmt = stylesSource.GetNumberFormatAt(index);
+            string fmt = stylesSource.GetNumberFormatAt(index);
             if (fmt == null) fmt = BuiltinFormats.GetBuiltinFormat(index);
             return fmt;
         }

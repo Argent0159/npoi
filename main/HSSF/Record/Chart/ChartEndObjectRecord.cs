@@ -85,7 +85,7 @@ namespace NPOI.HSSF.Record.Chart
             out1.Write(reserved);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

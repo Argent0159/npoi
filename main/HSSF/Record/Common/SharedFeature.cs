@@ -26,7 +26,7 @@ namespace NPOI.HSSF.Record.Common
      */
     public interface SharedFeature
     {
-        String ToString();
+        string ToString();
         void Serialize(ILittleEndianOutput out1);
         int DataSize { get; }
     }

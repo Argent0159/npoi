@@ -150,9 +150,9 @@ namespace NPOI.POIFS.Storage
             }
             return data;
         }
-        private static String LongToHex(long value)
+        private static string LongToHex(long value)
         {
-            return new String(HexDump.LongToHex(value));
+            return new string(HexDump.LongToHex(value));
         }
         /// <summary>
         /// Alerts the short read.
@@ -164,7 +164,7 @@ namespace NPOI.POIFS.Storage
             if (read < 0)
     		    //Cant have -1 bytes Read in the error message!
     		    read = 0;
-            String type = " byte" + ((read == 1) ? (""): ("s"));
+            string type = " byte" + ((read == 1) ? (""): ("s"));
 
             throw new IOException("Unable to Read entire header; "
                                   + read + type + " Read; expected "

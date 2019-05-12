@@ -31,10 +31,10 @@ namespace NPOI.HSSF.UserModel
      */
     public class HSSFDataValidation : IDataValidation
     {
-        private String _prompt_title;
-        private String _prompt_text;
-        private String _error_title;
-        private String _error_text;
+        private string _prompt_title;
+        private string _prompt_text;
+        private string _error_title;
+        private string _error_text;
 
         private int _errorStyle = ERRORSTYLE.STOP;
         private bool _emptyCellAllowed = true;
@@ -151,7 +151,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#CreatePromptBox(java.lang.String, java.lang.String)
          */
-        public void CreatePromptBox(String title, String text)
+        public void CreatePromptBox(string title, string text)
         {
             _prompt_title = title;
             _prompt_text = text;
@@ -161,7 +161,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#getPromptBoxTitle()
          */
-        public String PromptBoxTitle
+        public string PromptBoxTitle
         {
             get
             {
@@ -172,7 +172,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#getPromptBoxText()
          */
-        public String PromptBoxText
+        public string PromptBoxText
         {
             get
             {
@@ -183,7 +183,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#CreateErrorBox(java.lang.String, java.lang.String)
          */
-        public void CreateErrorBox(String title, String text)
+        public void CreateErrorBox(string title, string text)
         {
             _error_title = title;
             _error_text = text;
@@ -193,7 +193,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#getErrorBoxTitle()
          */
-        public String ErrorBoxTitle
+        public string ErrorBoxTitle
         {
             get
             {
@@ -204,7 +204,7 @@ namespace NPOI.HSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.HSSF.UserModel.DataValidation#getErrorBoxText()
          */
-        public String ErrorBoxText
+        public string ErrorBoxText
         {
             get
             {

@@ -238,7 +238,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return  the first formula
          */
-        public String Formula1
+        public string Formula1
         {
             get
             {
@@ -253,7 +253,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return  the second formula
          */
-        public String Formula2
+        public string Formula2
         {
             get
             {

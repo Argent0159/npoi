@@ -24,7 +24,7 @@ namespace NPOI.HSSF.Record.Crypto
         {
             return new Biff8EncryptionKey(CreateKeyDigest("VelvetSweatshop", docId));
         }
-        public static Biff8EncryptionKey Create(String password, byte[] docIdData)
+        public static Biff8EncryptionKey Create(string password, byte[] docIdData)
         {
             return new Biff8EncryptionKey(CreateKeyDigest(password, docIdData));
         }
@@ -38,7 +38,7 @@ namespace NPOI.HSSF.Record.Crypto
             _keyDigest = keyDigest;
         }
 
-        internal static byte[] CreateKeyDigest(String password, byte[] docIdData)
+        internal static byte[] CreateKeyDigest(string password, byte[] docIdData)
         {
             Check16Bytes(docIdData, "docId");
             int nChars = Math.Min(password.Length, 16);
@@ -117,7 +117,7 @@ namespace NPOI.HSSF.Record.Crypto
             }
             return c;
         }
-        private static void Check16Bytes(byte[] data, String argName)
+        private static void Check16Bytes(byte[] data, string argName)
         {
             if (data.Length != 16)
             {
@@ -156,13 +156,13 @@ namespace NPOI.HSSF.Record.Crypto
          * (e.g. {@link HSSFWorkbook}) that need this functionality.
          */
         [ThreadStatic]
-        private static String _userPasswordTLS = null;
+        private static string _userPasswordTLS = null;
 
         /**
          * @return the BIFF8 encryption/decryption password for the current thread.
          * <code>null</code> if it is currently unSet.
          */
-        public static String CurrentUserPassword
+        public static string CurrentUserPassword
         {
             get
             {

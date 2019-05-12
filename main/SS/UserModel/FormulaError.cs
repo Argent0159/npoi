@@ -136,9 +136,9 @@ namespace NPOI.SS.UserModel
 
         private byte type;
         private int longType;
-        private String repr;
+        private string repr;
 
-        private FormulaError(int type, String repr)
+        private FormulaError(int type, string repr)
         {
             this.type = (byte)type;
             this.longType = type;
@@ -174,7 +174,7 @@ namespace NPOI.SS.UserModel
         /**
          * @return string representation of the error
          */
-        public String String
+        public string String
         {
             get
             {
@@ -182,8 +182,8 @@ namespace NPOI.SS.UserModel
             }
         }
 
-        private static Dictionary<String, FormulaError> smap = new Dictionary<string, FormulaError>();
-        private static Dictionary<Byte, FormulaError> bmap = new Dictionary<byte, FormulaError>();
+        private static Dictionary<string, FormulaError> smap = new Dictionary<string, FormulaError>();
+        private static Dictionary<byte, FormulaError> bmap = new Dictionary<byte, FormulaError>();
         private static Dictionary<int, FormulaError> imap = new Dictionary<int, FormulaError>();
         public static bool IsValidCode(int errorCode)
         {
@@ -211,7 +211,7 @@ namespace NPOI.SS.UserModel
             throw new ArgumentException("Unknown error type: " + type);
         }
 
-        public static FormulaError ForString(String code)
+        public static FormulaError ForString(string code)
         {
             if (smap.ContainsKey(code))
                 return smap[code];

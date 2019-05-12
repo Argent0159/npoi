@@ -81,10 +81,10 @@ namespace NPOI.HSSF.Util
         private class UnicodeMapping
         {
 
-            public String entityName;
-            public String resolvedValue;
+            public string entityName;
+            public string resolvedValue;
 
-            public UnicodeMapping(String pEntityName, String pResolvedValue)
+            public UnicodeMapping(string pEntityName, string pResolvedValue)
             {
                 entityName = "&" + pEntityName + ";";
                 resolvedValue = pResolvedValue;
@@ -140,7 +140,7 @@ namespace NPOI.HSSF.Util
         /// <param name="value">The value of the cell</param>
         /// <param name="style">If the style is not null, then Set</param>
         /// <returns>A new HSSFCell</returns>
-        public static ICell CreateCell(IRow row, int column, String value, HSSFCellStyle style)
+        public static ICell CreateCell(IRow row, int column, string value, HSSFCellStyle style)
         {
             ICell cell = GetCell(row, column);
 
@@ -161,7 +161,7 @@ namespace NPOI.HSSF.Util
         /// <param name="column">the column index to Create the cell in</param>
         /// <param name="value">The value of the cell</param>
         /// <returns>A new HSSFCell.</returns>
-        public static ICell CreateCell(IRow row, int column, String value)
+        public static ICell CreateCell(IRow row, int column, string value)
         {
             return CreateCell(row, column, value, null);
         }
@@ -201,7 +201,7 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        public static void CopyCell(HSSFCell oldCell, HSSFCell newCell, IDictionary<Int32, HSSFCellStyle> styleMap, Dictionary<short, short> paletteMap, Boolean keepFormulas)
+        public static void CopyCell(HSSFCell oldCell, HSSFCell newCell, IDictionary<int, HSSFCellStyle> styleMap, Dictionary<short, short> paletteMap, bool keepFormulas)
         {
             if (styleMap != null)
             {
@@ -360,7 +360,7 @@ namespace NPOI.HSSF.Util
          *@param  cell                   The cell that needs it's style changes
          *@exception  NestableException  Thrown if an error happens.
          */
-        public static void SetCellStyleProperty(ICell cell, HSSFWorkbook workbook, String propertyName, Object propertyValue)
+        public static void SetCellStyleProperty(ICell cell, HSSFWorkbook workbook, string propertyName, object propertyValue)
         {
             ICellStyle originalStyle = cell.CellStyle;
             ICellStyle newStyle = null;
@@ -462,9 +462,9 @@ namespace NPOI.HSSF.Util
         /// <param name="properties">The map of named properties (String -&gt; Object)</param>
         /// <param name="name">The property name.</param>
         /// <returns>property value, or zero</returns>
-        private static short GetShort(Hashtable properties, String name)
+        private static short GetShort(Hashtable properties, string name)
         {
-            Object value = properties[name];
+            object value = properties[name];
             if (value is short)
             {
                 return (short)value;
@@ -482,12 +482,12 @@ namespace NPOI.HSSF.Util
         /// <param name="properties">map of properties (String -&gt; Object)</param>
         /// <param name="name">The property name.</param>
         /// <returns>property value, or false</returns>
-        private static bool GetBoolean(Hashtable properties, String name)
+        private static bool GetBoolean(Hashtable properties, string name)
         {
-            Object value = properties[name];
-            if (value is Boolean)
+            object value = properties[name];
+            if (value is bool)
             {
-                return ((Boolean)value);
+                return ((bool)value);
             }
             else
             {
@@ -501,7 +501,7 @@ namespace NPOI.HSSF.Util
         /// <param name="properties">The map of properties (String -&gt; Object).</param>
         /// <param name="name">The property name.</param>
         /// <param name="value">The property value.</param>
-        private static void PutShort(Hashtable properties, String name, short value)
+        private static void PutShort(Hashtable properties, string name, short value)
         {
             properties[name] = value;
         }
@@ -512,7 +512,7 @@ namespace NPOI.HSSF.Util
         /// <param name="properties">map of properties (String -&gt; Object)</param>
         /// <param name="name">property name</param>
         /// <param name="value">property value</param>
-        private static void PutBoolean(Hashtable properties, String name, bool value)
+        private static void PutBoolean(Hashtable properties, string name, bool value)
         {
             properties[name] = value;
         }
@@ -526,14 +526,14 @@ namespace NPOI.HSSF.Util
         public static ICell TranslateUnicodeValues(ICell cell)
         {
 
-            String s = cell.RichStringCellValue.String;
+            string s = cell.RichStringCellValue.String;
             bool foundUnicode = false;
-            String lowerCaseStr = s.ToLower();
+            string lowerCaseStr = s.ToLower();
 
             for (int i = 0; i < unicodeMappings.Length; i++)
             {
                 UnicodeMapping entry = unicodeMappings[i];
-                String key = entry.entityName;
+                string key = entry.entityName;
                 if (lowerCaseStr.IndexOf(key, StringComparison.Ordinal) != -1)
                 {
                     s = s.Replace(key, entry.resolvedValue);
@@ -547,7 +547,7 @@ namespace NPOI.HSSF.Util
             return cell;
         }
 
-        private static UnicodeMapping um(String entityName, String resolvedValue)
+        private static UnicodeMapping um(string entityName, string resolvedValue)
         {
             return new UnicodeMapping(entityName, resolvedValue);
         }

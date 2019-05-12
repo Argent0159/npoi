@@ -144,7 +144,7 @@ namespace NPOI.Util
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             return Convert.ToString(_value);
         }

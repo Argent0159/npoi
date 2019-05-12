@@ -46,7 +46,7 @@ namespace NPOI.HSSF.Util
         }
 
         
-        public override bool Equals(Object obj) {
+        public override bool Equals(object obj) {
             if (!(obj is GUID)) return false;
             GUID other = (GUID) obj;
             return _d1 == other._d1 && _d2 == other._d2 
@@ -97,7 +97,7 @@ namespace NPOI.HSSF.Util
             }
         }
 
-        public String FormatAsString() {
+        public string FormatAsString() {
 
             StringBuilder sb = new StringBuilder(36);
 
@@ -116,7 +116,7 @@ namespace NPOI.HSSF.Util
         }
 
 
-        public override String ToString() {
+        public override string ToString() {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
             sb.Append(FormatAsString());
@@ -130,7 +130,7 @@ namespace NPOI.HSSF.Util
          * <br/> -&gt; <br/>
          *  0x13579BDF, 0x0246, 0x8ACE 0x0123456789ABCDEF
          */
-        public static GUID Parse(String rep) {
+        public static GUID Parse(string rep) {
             char[] cc = rep.ToCharArray();
             if (cc.Length != TEXT_FORMAT_LENGTH) {
                 throw new RecordFormatException("supplied text is the wrong length for a GUID");

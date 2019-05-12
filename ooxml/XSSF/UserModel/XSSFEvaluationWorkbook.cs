@@ -77,13 +77,13 @@ namespace NPOI.XSSF.UserModel
             return sheetIndex;
         }
 
-        public int GetExternalSheetIndex(String sheetName)
+        public int GetExternalSheetIndex(string sheetName)
         {
             int sheetIndex = _uBook.GetSheetIndex(sheetName);
             return ConvertToExternalSheetIndex(sheetIndex);
         }
 
-        private int ResolveBookIndex(String bookName)
+        private int ResolveBookIndex(string bookName)
         {
             // Strip the [] wrapper, if still present
             if (bookName.StartsWith("[") && bookName.EndsWith("]"))
@@ -94,7 +94,7 @@ namespace NPOI.XSSF.UserModel
             // Is it already in numeric form?
             try
             {
-                return Int32.Parse(bookName);
+                return int.Parse(bookName);
             }
             catch (FormatException e) { }
 
@@ -106,7 +106,7 @@ namespace NPOI.XSSF.UserModel
             // Is it an absolute file reference?
             if (bookName.StartsWith("'file:///") && bookName.EndsWith("'"))
             {
-                String relBookName = bookName.Substring(bookName.LastIndexOf('/') + 1);
+                string relBookName = bookName.Substring(bookName.LastIndexOf('/') + 1);
                 relBookName = relBookName.Substring(0, relBookName.Length - 1); // Trailing '
 
                 // Try with this name
@@ -124,7 +124,7 @@ namespace NPOI.XSSF.UserModel
             // Not properly referenced
             throw new Exception("Book not linked for filename " + bookName);
         }
-        private int FindExternalLinkIndex(String bookName, List<ExternalLinksTable> tables)
+        private int FindExternalLinkIndex(string bookName, List<ExternalLinksTable> tables)
         {
             for (int i = 0; i < tables.Count; i++)
             {
@@ -137,12 +137,12 @@ namespace NPOI.XSSF.UserModel
         }
         private class FakeExternalLinksTable : ExternalLinksTable
         {
-            private String fileName;
-            public FakeExternalLinksTable(String fileName)
+            private string fileName;
+            public FakeExternalLinksTable(string fileName)
             {
                 this.fileName = fileName;
             }
-            public override String LinkedFileName
+            public override string LinkedFileName
             {
                 get
                 {
@@ -156,12 +156,12 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public IEvaluationName GetName(String name, int sheetIndex)
+        public IEvaluationName GetName(string name, int sheetIndex)
         {
             for (int i = 0; i < _uBook.NumberOfNames; i++)
             {
                 IName nm = _uBook.GetNameAt(i);
-                String nameText = nm.NameName;
+                string nameText = nm.NameName;
                 int nameSheetindex = nm.SheetIndex;
                 if (name.Equals(nameText, StringComparison.CurrentCultureIgnoreCase) &&
                        (nameSheetindex == -1 || nameSheetindex == sheetIndex))
@@ -178,7 +178,7 @@ namespace NPOI.XSSF.UserModel
             return _uBook.GetSheetIndex(sheet);
         }
 
-        public String GetSheetName(int sheetIndex)
+        public string GetSheetName(int sheetIndex)
         {
             return _uBook.GetSheetName(sheetIndex);
         }
@@ -187,7 +187,7 @@ namespace NPOI.XSSF.UserModel
         {
             throw new InvalidOperationException("HSSF-style external references are not supported for XSSF");
         }
-        public ExternalName GetExternalName(String nameName, String sheetName, int externalWorkbookNumber)
+        public ExternalName GetExternalName(string nameName, string sheetName, int externalWorkbookNumber)
         {
             if (externalWorkbookNumber > 0)
             {
@@ -218,7 +218,7 @@ namespace NPOI.XSSF.UserModel
             }
 
         }
-        public Ptg GetNameXPtg(String name, SheetIdentifier sheet)
+        public Ptg GetNameXPtg(string name, SheetIdentifier sheet)
         {
             IndexedUDFFinder udfFinder = (IndexedUDFFinder)GetUDFFinder();
             FreeRefFunction func = udfFinder.FindFunction(name);
@@ -244,7 +244,7 @@ namespace NPOI.XSSF.UserModel
             }
 
             // Use the sheetname and process
-            String sheetName = sheet._sheetIdentifier.Name;
+            string sheetName = sheet._sheetIdentifier.Name;
 
             if (sheet._bookName != null)
             {
@@ -280,10 +280,10 @@ namespace NPOI.XSSF.UserModel
                 return new Area3DPxg(sheet, area);
             }
         }
-        public String ResolveNameXText(NameXPtg n)
+        public string ResolveNameXText(NameXPtg n)
         {
             int idx = n.NameIndex;
-            String name = null;
+            string name = null;
 
             // First, try to find it as a User Defined Function
             IndexedUDFFinder udfFinder = (IndexedUDFFinder)GetUDFFinder();
@@ -310,9 +310,9 @@ namespace NPOI.XSSF.UserModel
             throw new InvalidOperationException("HSSF-style external references are not supported for XSSF");
         }
 
-        public ExternalSheet GetExternalSheet(String firstSheetName, String lastSheetName, int externalWorkbookNumber)
+        public ExternalSheet GetExternalSheet(string firstSheetName, string lastSheetName, int externalWorkbookNumber)
         {
-            String workbookName;
+            string workbookName;
             if (externalWorkbookNumber > 0)
             {
                 // External reference - reference is 1 based, link table is 0 based
@@ -337,28 +337,28 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public int GetExternalSheetIndex(String workbookName, String sheetName)
+        public int GetExternalSheetIndex(string workbookName, string sheetName)
         {
             throw new RuntimeException("not implemented yet");
         }
-        public int GetSheetIndex(String sheetName)
+        public int GetSheetIndex(string sheetName)
         {
             return _uBook.GetSheetIndex(sheetName);
         }
 
-        public String GetSheetFirstNameByExternSheet(int externSheetIndex)
+        public string GetSheetFirstNameByExternSheet(int externSheetIndex)
         {
             int sheetIndex = ConvertFromExternalSheetIndex(externSheetIndex);
             return _uBook.GetSheetName(sheetIndex);
         }
 
-        public String GetSheetLastNameByExternSheet(int externSheetIndex)
+        public string GetSheetLastNameByExternSheet(int externSheetIndex)
         {
             // XSSF does multi-sheet references differently, so this is the same as the first
             return GetSheetFirstNameByExternSheet(externSheetIndex);
         }
 
-        public String GetNameText(NamePtg namePtg)
+        public string GetNameText(NamePtg namePtg)
         {
             return _uBook.GetNameAt(namePtg.Index).NameName;
         }
@@ -385,7 +385,7 @@ namespace NPOI.XSSF.UserModel
          *  HSSF does not. As these can't be composed down to HSSF-compatible
          *  Ptgs, this method strips them out for us.
          */
-        private String CleanXSSFFormulaText(String text)
+        private string CleanXSSFFormulaText(string text)
         {
             // Newlines are allowed in XSSF
             text = text.Replace("\\n", "").Replace("\\r", "");
@@ -418,7 +418,7 @@ namespace NPOI.XSSF.UserModel
                 }
             }
 
-            public String NameText
+            public string NameText
             {
                 get
                 {
@@ -432,7 +432,7 @@ namespace NPOI.XSSF.UserModel
                 {
                     // TODO - no idea if this is right
                     CT_DefinedName ctn = _nameRecord.GetCTName();
-                    String strVal = ctn.Value;
+                    string strVal = ctn.Value;
                     return !ctn.function && strVal != null && strVal.Length > 0;
                 }
             }

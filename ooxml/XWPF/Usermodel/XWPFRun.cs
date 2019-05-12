@@ -48,7 +48,7 @@ namespace NPOI.XWPF.UserModel
     public class XWPFRun : ISDTContents, IRunElement, ICharacterRun
     {
         private CT_R run;
-        private String pictureText;
+        private string pictureText;
         //private XWPFParagraph paragraph;
         private IRunBody parent;
         private List<XWPFPicture> pictures;
@@ -293,9 +293,9 @@ namespace NPOI.XWPF.UserModel
         /**
      * Get text color. The returned value is a string in the hex form "RRGGBB".
      */
-        public String GetColor()
+        public string GetColor()
         {
-            String color = null;
+            string color = null;
             if (run.IsSetRPr())
             {
                 CT_RPr pr = run.rPr;
@@ -312,7 +312,7 @@ namespace NPOI.XWPF.UserModel
          * Set text color.
          * @param rgbStr - the desired color, in the hex form "RRGGBB".
          */
-        public void SetColor(String rgbStr)
+        public void SetColor(string rgbStr)
         {
             CT_RPr pr = run.IsSetRPr() ? run.rPr : run.AddNewRPr();
             NPOI.OpenXmlFormats.Wordprocessing.CT_Color color = pr.IsSetColor() ? pr.color : pr.AddNewColor();
@@ -323,7 +323,7 @@ namespace NPOI.XWPF.UserModel
          *
          * @return the text of this text run.or <code>null</code> if not Set
          */
-        public String GetText(int pos)
+        public string GetText(int pos)
         {
             return run.SizeOfTArray() == 0 ? null : run.GetTArray(pos).Value;
         }
@@ -331,7 +331,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * Returns text embedded in pictures
          */
-        public String PictureText
+        public string PictureText
         {
             get
             {
@@ -347,13 +347,13 @@ namespace NPOI.XWPF.UserModel
         ///Sets the text of this text run
         /// </summary>
         /// <param name="value">the literal text which shall be displayed in the document</param>
-        public void SetText(String value)
+        public void SetText(string value)
         {
             SetText(value, 0);
         }
 
 
-        public void AppendText(String value)
+        public void AppendText(string value)
         {
             SetText(value, run.GetTList().Count);
         }
@@ -363,7 +363,7 @@ namespace NPOI.XWPF.UserModel
         /// </summary>
         /// <param name="value">the literal text which shall be displayed in the document</param>
         /// <param name="pos">position in the text array (NB: 0 based)</param>
-        public void SetText(String value, int pos)
+        public void SetText(string value, int pos)
         {
             int length = run.SizeOfTArray();
             if (pos > length) throw new IndexOutOfRangeException("Value too large for the parameter position");
@@ -507,7 +507,7 @@ namespace NPOI.XWPF.UserModel
                     if (o is CT_FtnEdnRef)
                     {
                         CT_FtnEdnRef ftn = (CT_FtnEdnRef)o;
-                        String footnoteRef = ftn.DomNode.LocalName.Equals("footnoteReference") ?
+                        string footnoteRef = ftn.DomNode.LocalName.Equals("footnoteReference") ?
                             "[footnoteRef:" + ftn.id + "]" : "[endnoteRef:" + ftn.id + "]";
                         text.Append(footnoteRef);
                     }
@@ -784,7 +784,7 @@ namespace NPOI.XWPF.UserModel
          *
          * @return a string representing the font family
          */
-        public String FontFamily
+        public string FontFamily
         {
             get
             {
@@ -807,7 +807,7 @@ namespace NPOI.XWPF.UserModel
          * @param fcr the font char range, defaults to "ansi"
          * @return  a string representing the font famil
          */
-        public String GetFontFamily(FontCharRange fcr)
+        public string GetFontFamily(FontCharRange fcr)
         {
             CT_RPr pr = run.rPr;
             if (pr == null || !pr.IsSetRFonts()) return null;
@@ -836,7 +836,7 @@ namespace NPOI.XWPF.UserModel
          * @param fontFamily
          * @param fcr FontCharRange or null for default handling
          */
-        public void SetFontFamily(String fontFamily, FontCharRange fcr)
+        public void SetFontFamily(string fontFamily, FontCharRange fcr)
         {
             CT_RPr pr = run.IsSetRPr() ? run.rPr : run.AddNewRPr();
             CT_Fonts fonts = pr.IsSetRFonts() ? pr.rFonts : pr.AddNewRFonts();
@@ -1051,12 +1051,12 @@ namespace NPOI.XWPF.UserModel
          * @throws NPOI.Openxml4j.exceptions.InvalidFormatException 
          * @throws IOException 
          */
-        public XWPFPicture AddPicture(Stream pictureData, int pictureType, String filename, int width, int height)
+        public XWPFPicture AddPicture(Stream pictureData, int pictureType, string filename, int width, int height)
         {
             XWPFDocument doc = parent.Document;
 
             // Add the picture + relationship
-            String relationId = doc.AddPictureData(pictureData, pictureType);
+            string relationId = doc.AddPictureData(pictureData, pictureType);
             XWPFPictureData picData = (XWPFPictureData)doc.GetRelationById(relationId);
 
             // Create the Drawing entry for it
@@ -1170,7 +1170,7 @@ namespace NPOI.XWPF.UserModel
          */
         static void preserveSpaces(CT_Text xs)
         {
-            String text = xs.Value;
+            string text = xs.Value;
             if (text != null && (text.StartsWith(" ") || text.EndsWith(" ")))
             {
                 //    XmlCursor c = xs.NewCursor();
@@ -1185,7 +1185,7 @@ namespace NPOI.XWPF.UserModel
          * Returns the string version of the text, with tabs and
          *  carriage returns in place of their xml equivalents.
          */
-        public override String ToString()
+        public override string ToString()
         {
             return Text;
         }

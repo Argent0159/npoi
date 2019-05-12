@@ -51,12 +51,12 @@ namespace NPOI.Util
         {
             if (lowerbound > upperbound)
             {
-                String message = "lowerbound must not be greater than upperbound";
+                string message = "lowerbound must not be greater than upperbound";
                 throw new ArgumentException(message);
             }
             else if (lowerbound < MIN_ID)
             {
-                String message = "lowerbound must be greater than or equal to " + MIN_ID;
+                string message = "lowerbound must be greater than or equal to " + MIN_ID;
                 throw new ArgumentException(message);
             }
             else if (upperbound > MAX_ID)
@@ -65,7 +65,7 @@ namespace NPOI.Util
                  * while MAX_ID is Long.MaxValue, this check is pointless. But if
                  * someone subclasses / tweaks the limits, this check if fine.
                  */
-                String message = "upperbound must be less thean or equal " + MAX_ID;
+                string message = "upperbound must be less thean or equal " + MAX_ID;
                 throw new ArgumentException(message);
             }
             this.lowerbound = lowerbound;
@@ -307,7 +307,7 @@ namespace NPOI.Util
              * 
              * @see java.lang.Object#ToString()
              */
-            public override String ToString()
+            public override string ToString()
             {
                 return "[" + start + "; " + end + "]";
             }

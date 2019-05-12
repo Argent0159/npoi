@@ -50,7 +50,7 @@ namespace NPOI.XSSF.UserModel
             
         }
 
-        public Object IdentityKey
+        public object IdentityKey
         {
             get
             {
@@ -113,7 +113,7 @@ namespace NPOI.XSSF.UserModel
                 return _evalSheet;
             }
         }
-        public String StringCellValue
+        public string StringCellValue
         {
             get
             {

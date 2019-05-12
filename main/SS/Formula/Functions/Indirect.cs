@@ -57,7 +57,7 @@ namespace NPOI.SS.Formula.Functions
             }
 
             bool isA1style;
-            String text;
+            string text;
             try
             {
                 ValueEval ve = OperandResolver.GetSingleValue(args[0], ec.RowIndex, ec
@@ -96,15 +96,15 @@ namespace NPOI.SS.Formula.Functions
             return (bool)OperandResolver.CoerceValueToBoolean(ve, false);
         }
 
-        private static ValueEval EvaluateIndirect(OperationEvaluationContext ec, String text,
+        private static ValueEval EvaluateIndirect(OperationEvaluationContext ec, string text,
                 bool isA1style)
         {
             // Search backwards for '!' because sheet names can contain '!'
             int plingPos = text.LastIndexOf('!');
 
-            String workbookName;
-            String sheetName;
-            String refText; // whitespace around this Gets Trimmed OK
+            string workbookName;
+            string sheetName;
+            string refText; // whitespace around this Gets Trimmed OK
             if (plingPos < 0)
             {
                 workbookName = null;
@@ -113,7 +113,7 @@ namespace NPOI.SS.Formula.Functions
             }
             else
             {
-                String[] parts = ParseWorkbookAndSheetName(text.Substring(0, plingPos));
+                string[] parts = ParseWorkbookAndSheetName(text.Substring(0, plingPos));
                 if (parts == null)
                 {
                     return ErrorEval.REF_INVALID;
@@ -123,8 +123,8 @@ namespace NPOI.SS.Formula.Functions
                 refText = text.Substring(plingPos + 1);
             }
 
-            String refStrPart1;
-            String refStrPart2;
+            string refStrPart1;
+            string refStrPart2;
 
             int colonPos = refText.IndexOf(':');
             if (colonPos < 0)
@@ -145,7 +145,7 @@ namespace NPOI.SS.Formula.Functions
          * present.  First element may be null if sheetName is unqualified.
          * Returns <code>null</code> if text cannot be parsed.
          */
-        private static String[] ParseWorkbookAndSheetName(string text)
+        private static string[] ParseWorkbookAndSheetName(string text)
         {
             int lastIx = text.Length - 1;
             if (lastIx < 0)
@@ -157,7 +157,7 @@ namespace NPOI.SS.Formula.Functions
                 return null;
             }
             char firstChar = text[0];
-            if (Char.IsWhiteSpace(firstChar))
+            if (char.IsWhiteSpace(firstChar))
             {
                 return null;
             }
@@ -170,11 +170,11 @@ namespace NPOI.SS.Formula.Functions
                     return null;
                 }
                 firstChar = text[1];
-                if (Char.IsWhiteSpace(firstChar))
+                if (char.IsWhiteSpace(firstChar))
                 {
                     return null;
                 }
-                String wbName;
+                string wbName;
                 int sheetStartPos;
                 if (firstChar == '[')
                 {
@@ -197,13 +197,13 @@ namespace NPOI.SS.Formula.Functions
                 }
 
                 // else - just sheet name
-                String sheetName = UnescapeString(text.Substring(sheetStartPos, lastIx - sheetStartPos));
+                string sheetName = UnescapeString(text.Substring(sheetStartPos, lastIx - sheetStartPos));
                 if (sheetName == null)
                 { // note - when quoted, sheetName can
                     // start/end with whitespace
                     return null;
                 }
-                return new String[] { wbName, sheetName, };
+                return new string[] { wbName, sheetName, };
             }
 
             if (firstChar == '[')
@@ -223,17 +223,17 @@ namespace NPOI.SS.Formula.Functions
                 {
                     return null;
                 }
-                return new String[] { wbName.ToString(), sheetName.ToString(), };
+                return new string[] { wbName.ToString(), sheetName.ToString(), };
             }
             // else - just sheet name
-            return new String[] { null, text.ToString(), };
+            return new string[] { null, text.ToString(), };
         }
 
         /**
          * @return <code>null</code> if there is a syntax error in any escape sequence
          * (the typical syntax error is a single quote character not followed by another).
          */
-        private static String UnescapeString(string text)
+        private static string UnescapeString(string text)
         {
             int len = text.Length;
             StringBuilder sb = new StringBuilder(len);
@@ -268,11 +268,11 @@ namespace NPOI.SS.Formula.Functions
             {
                 return false;
             }
-            if (Char.IsWhiteSpace(text[0]))
+            if (char.IsWhiteSpace(text[0]))
             {
                 return true;
             }
-            if (Char.IsWhiteSpace(text[lastIx]))
+            if (char.IsWhiteSpace(text[lastIx]))
             {
                 return true;
             }

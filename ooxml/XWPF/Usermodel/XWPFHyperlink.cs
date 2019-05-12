@@ -26,14 +26,14 @@ namespace NPOI.XWPF.UserModel
      */
     public class XWPFHyperlink
     {
-        String id, url;
-        public XWPFHyperlink(String id, String url)
+        string id, url;
+        public XWPFHyperlink(string id, string url)
         {
             this.id = id;
             this.url = url;
         }
 
-        public String Id
+        public string Id
         {
             get
             {
@@ -41,7 +41,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String URL
+        public string URL
         {
             get
             {

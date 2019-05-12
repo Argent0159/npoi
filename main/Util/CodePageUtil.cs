@@ -204,9 +204,9 @@ namespace NPOI.Util
          * @param string The string to convert
          * @param codepage The codepage number
          */
-        public static byte[] GetBytesInCodePage(String string1, int codepage)
+        public static byte[] GetBytesInCodePage(string string1, int codepage)
         {
-            String encoding = CodepageToEncoding(codepage);
+            string encoding = CodepageToEncoding(codepage);
             return Encoding.GetEncoding(encoding).GetBytes(string1);
             //return string1.GetBytes(encoding);
         }
@@ -217,7 +217,7 @@ namespace NPOI.Util
          * @param string The byte of the string to convert
          * @param codepage The codepage number
          */
-        public static String GetStringFromCodePage(byte[] string1, int codepage)
+        public static string GetStringFromCodePage(byte[] string1, int codepage)
     {
         return GetStringFromCodePage(string1, 0, string1.Length, codepage);
     }
@@ -228,10 +228,10 @@ namespace NPOI.Util
          * @param string The byte of the string to convert
          * @param codepage The codepage number
          */
-        public static String GetStringFromCodePage(byte[] string1, int offset,
+        public static string GetStringFromCodePage(byte[] string1, int offset,
                  int length, int codepage)
         {
-            String encoding = CodepageToEncoding(codepage);
+            string encoding = CodepageToEncoding(codepage);
             return Encoding.GetEncoding(encoding).GetString(string1, offset, length);
         }
 
@@ -249,7 +249,7 @@ namespace NPOI.Util
          * @exception UnsupportedEncodingException if the specified codepage is
          * less than zero.
          */
-        public static String CodepageToEncoding(int codepage)
+        public static string CodepageToEncoding(int codepage)
         {
             if (codepage <= 0)
                 throw new ArgumentException("Codepage number may not be " + codepage);

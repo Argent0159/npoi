@@ -44,7 +44,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String Text
+        public string Text
         {
             get
             {
@@ -170,12 +170,12 @@ namespace NPOI.XSSF.UserModel
          * @param typeface  the font to apply to this text Run.
          * The value of <code>null</code> unsets the Typeface attribute from the underlying xml.
          */
-        public void SetFont(String typeface)
+        public void SetFont(string typeface)
         {
             SetFontFamily(typeface, unchecked((byte)-1), unchecked((byte)-1), false);
         }
 
-        public void SetFontFamily(String typeface, byte charset, byte pictAndFamily, bool isSymbol)
+        public void SetFontFamily(string typeface, byte charset, byte pictAndFamily, bool isSymbol)
         {
             CT_TextCharacterProperties rPr = GetRPr();
 
@@ -205,7 +205,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * @return  font family or null if not Set
          */
-        public String FontFamily
+        public string FontFamily
         {
             get
             {
@@ -391,7 +391,7 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return "[" + this.GetType().ToString() + "]" + Text;
         }

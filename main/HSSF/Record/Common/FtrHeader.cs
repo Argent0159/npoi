@@ -53,7 +53,7 @@ namespace NPOI.HSSF.Record.Common
             in1.Read(reserved, 0, 8);
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append(" [FUTURE HEADER]\n");

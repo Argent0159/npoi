@@ -57,11 +57,11 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the sheets name which this named range is referenced to
         /// </summary>
         /// <value>sheet name, which this named range refered to</value>
-        public String SheetName
+        public string SheetName
         {
             get
             {
-                String result;
+                string result;
                 int indexToExternSheet = _definedNameRec.ExternSheetNumber;
 
                 result = book.Workbook.FindSheetFirstNameFromExternSheet(indexToExternSheet);
@@ -81,11 +81,11 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the name of the named range
         /// </summary>
         /// <value>named range name</value>
-        public String NameName
+        public string NameName
         {
             get
             {
-                String result = _definedNameRec.NameText;
+                string result = _definedNameRec.NameText;
 
                 return result;
             }
@@ -104,7 +104,7 @@ namespace NPOI.HSSF.UserModel
                     {
                         if (rec.NameText.Equals(NameName, StringComparison.OrdinalIgnoreCase) && sheetNumber == rec.SheetNumber)
                         {
-                            String msg = "The " + (sheetNumber == 0 ? "workbook" : "sheet") + " already contains this name: " + value;
+                            string msg = "The " + (sheetNumber == 0 ? "workbook" : "sheet") + " already contains this name: " + value;
                             _definedNameRec.NameText = (value + "(2)");
                             throw new ArgumentException(msg);
                         }
@@ -113,24 +113,24 @@ namespace NPOI.HSSF.UserModel
                 // Update our comment, if there is one
                 if (_commentRec != null)
                 {
-                    String oldName = _commentRec.NameText;
+                    string oldName = _commentRec.NameText;
                     _commentRec.NameText=value;
                     book.Workbook.UpdateNameCommentRecordCache(_commentRec);
                 }
             }
         }
-        private void ValidateName(String name)
+        private void ValidateName(string name)
         {
             if (name.Length == 0) throw new ArgumentException("Name cannot be blank");
 
             char c = name[0];
-            if (!(c == '_' || Char.IsLetter(c)) || name.IndexOf(' ') != -1)
+            if (!(c == '_' || char.IsLetter(c)) || name.IndexOf(' ') != -1)
             {
                 throw new ArgumentException("Invalid name: '" + name + "'; Names must begin with a letter or underscore and not contain spaces");
             }
         }
 
-        public String RefersToFormula
+        public string RefersToFormula
         {
             get
             {
@@ -248,7 +248,7 @@ namespace NPOI.HSSF.UserModel
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");

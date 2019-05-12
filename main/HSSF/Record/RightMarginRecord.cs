@@ -43,7 +43,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[RightMargin]\n");
@@ -79,7 +79,7 @@ namespace NPOI.HSSF.Record
             set { this.field_1_margin = value; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             RightMarginRecord rec = new RightMarginRecord();
             rec.field_1_margin = this.field_1_margin;

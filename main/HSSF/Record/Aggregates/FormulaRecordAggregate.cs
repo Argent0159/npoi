@@ -245,7 +245,7 @@ namespace NPOI.HSSF.Record.Aggregates
 
 
 
-        public int CompareTo(Object o)
+        public int CompareTo(object o)
         {
             return _formulaRecord.CompareTo(o);
         }
@@ -271,7 +271,7 @@ namespace NPOI.HSSF.Record.Aggregates
         /// <exception cref="T:System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             return _formulaRecord.Equals(obj);
         }
@@ -287,7 +287,7 @@ namespace NPOI.HSSF.Record.Aggregates
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _formulaRecord.ToString();
         }
@@ -296,7 +296,7 @@ namespace NPOI.HSSF.Record.Aggregates
         /// Gets the string value.
         /// </summary>
         /// <value>The string value.</value>
-        public String StringValue
+        public string StringValue
         {
             get
             {
@@ -314,7 +314,7 @@ namespace NPOI.HSSF.Record.Aggregates
         /// Sets the cached string result.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void SetCachedStringResult(String value)
+        public void SetCachedStringResult(string value)
         {
 
             // Save the string into a String Record, creating one if required

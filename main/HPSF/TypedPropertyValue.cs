@@ -27,7 +27,7 @@ namespace NPOI.HPSF
 
         private int _type;
 
-        private Object _value;
+        private object _value;
 
         public TypedPropertyValue()
         {
@@ -38,13 +38,13 @@ namespace NPOI.HPSF
             Read(data, startOffset);
         }
 
-        public TypedPropertyValue(int type, Object value)
+        public TypedPropertyValue(int type, object value)
         {
             _type = type;
             _value = value;
         }
 
-        public Object Value
+        public object Value
         {
             get { return _value; }
         }

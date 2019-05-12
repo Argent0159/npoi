@@ -39,7 +39,7 @@ namespace NPOI.XWPF.Model
             this.nextDecorator = nextDecorator;
         }
 
-        public virtual String Text
+        public virtual string Text
         {
             get
             {

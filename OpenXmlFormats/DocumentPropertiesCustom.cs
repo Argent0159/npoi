@@ -234,7 +234,7 @@ namespace NPOI.OpenXmlFormats
         }
         public override string ToString()
         {
-            return String.Format("[CT_Property][pid={0},name={1}]", pidField, nameField);
+            return string.Format("[CT_Property][pid={0},name={1}]", pidField, nameField);
         }
         public bool IsSetLpwstr()
         {

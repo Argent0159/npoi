@@ -317,7 +317,7 @@ namespace NPOI.XSSF.UserModel
             throw new Exception("Unexpected eval class (" + eval.GetType().Name + ")");
         }
 
-        public void SetupReferencedWorkbooks(Dictionary<String, IFormulaEvaluator> evaluators)
+        public void SetupReferencedWorkbooks(Dictionary<string, IFormulaEvaluator> evaluators)
         {
             CollaboratingWorkbooksEnvironment.SetupFormulaEvaluator(evaluators);
         }

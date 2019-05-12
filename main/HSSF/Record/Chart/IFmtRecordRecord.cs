@@ -58,7 +58,7 @@ namespace NPOI.HSSF.Record.Chart
 
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -90,7 +90,7 @@ namespace NPOI.HSSF.Record.Chart
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             IFmtRecordRecord rec = new IFmtRecordRecord();
 

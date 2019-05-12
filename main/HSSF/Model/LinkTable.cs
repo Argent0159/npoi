@@ -149,7 +149,7 @@ namespace NPOI.HSSF.Model
             /**
             * Create a new block for external references.
             */
-            public ExternalBookBlock(String url, String[] sheetNames)
+            public ExternalBookBlock(string url, string[] sheetNames)
             {
                 _externalBookRecord = SupBookRecord.CreateExternalReferences(url, sheetNames);
                 _crnBlocks = new CRNBlock[0];
@@ -189,7 +189,7 @@ namespace NPOI.HSSF.Model
                 return _externalBookRecord;
             }
 
-            public String GetNameText(int definedNameIndex)
+            public string GetNameText(int definedNameIndex)
             {
                 return _externalNameRecords[definedNameIndex].Text;
             }
@@ -197,7 +197,7 @@ namespace NPOI.HSSF.Model
              * Performs case-insensitive search
              * @return -1 if not found
              */
-            public int GetIndexOfName(String name)
+            public int GetIndexOfName(string name)
             {
                 for (int i = 0; i < _externalNameRecords.Length; i++)
                 {
@@ -222,7 +222,7 @@ namespace NPOI.HSSF.Model
         private int _recordCount;
         private WorkbookRecordList _workbookRecordList; // TODO - would be nice to Remove this
 
-        public LinkTable(List<Record> inputList, int startIndex, WorkbookRecordList workbookRecordList, Dictionary<String, NameCommentRecord> commentRecords)
+        public LinkTable(List<Record> inputList, int startIndex, WorkbookRecordList workbookRecordList, Dictionary<string, NameCommentRecord> commentRecords)
         {
 
             _workbookRecordList = workbookRecordList;
@@ -411,7 +411,7 @@ namespace NPOI.HSSF.Model
          *  (if found) as a NameXPtg.
          * @param sheetRefIndex The Extern Sheet Index to look for, or -1 if any
          */
-        public NameXPtg GetNameXPtg(String name, int sheetRefIndex)
+        public NameXPtg GetNameXPtg(string name, int sheetRefIndex)
         {
             // first find any external book block that contains the name:
             for (int i = 0; i < _externalBookBlocks.Length; i++)
@@ -458,7 +458,7 @@ namespace NPOI.HSSF.Model
      * @param name  the name to register
      * @return a NameXPtg describing this name 
      */
-        public NameXPtg AddNameXPtg(String name)
+        public NameXPtg AddNameXPtg(string name)
         {
             int extBlockIndex = -1;
             ExternalBookBlock extBlock = null;
@@ -521,7 +521,7 @@ namespace NPOI.HSSF.Model
         }
 
 
-        private static int GetSheetIndex(String[] sheetNames, String sheetName)
+        private static int GetSheetIndex(string[] sheetNames, string sheetName)
         {
             for (int i = 0; i < sheetNames.Length; i++)
             {
@@ -533,7 +533,7 @@ namespace NPOI.HSSF.Model
             }
             throw new InvalidOperationException("External workbook does not contain sheet '" + sheetName + "'");
         }
-        private int GetExternalWorkbookIndex(String workbookName)
+        private int GetExternalWorkbookIndex(string workbookName)
         {
             for (int i = 0; i < _externalBookBlocks.Length; i++)
             {
@@ -550,7 +550,7 @@ namespace NPOI.HSSF.Model
             return -1;
         }
 
-        public int LinkExternalWorkbook(String name, IWorkbook externalWorkbook)
+        public int LinkExternalWorkbook(string name, IWorkbook externalWorkbook)
         {
             int extBookIndex = GetExternalWorkbookIndex(name);
             if (extBookIndex != -1)
@@ -560,13 +560,13 @@ namespace NPOI.HSSF.Model
             }
 
             // Create a new SupBookRecord
-            String[] sheetNames = new String[externalWorkbook.NumberOfSheets];
+            string[] sheetNames = new string[externalWorkbook.NumberOfSheets];
             for (int sn = 0; sn < sheetNames.Length; sn++)
             {
                 sheetNames[sn] = externalWorkbook.GetSheetName(sn);
             }
             //\000 is octal digit in java, but c# think it is a '\0' and two zero.
-            String url = "\0" + name;
+            string url = "\0" + name;
             ExternalBookBlock block = new ExternalBookBlock(url, sheetNames);
 
             // Add it into the list + records
@@ -590,7 +590,7 @@ namespace NPOI.HSSF.Model
             return extBookIndex;
         }
 
-        public int GetExternalSheetIndex(String workbookName, String firstSheetName, String lastSheetName)
+        public int GetExternalSheetIndex(string workbookName, string firstSheetName, string lastSheetName)
         {
             int externalBookIndex = GetExternalWorkbookIndex(workbookName);
             if (externalBookIndex == -1)
@@ -610,7 +610,7 @@ namespace NPOI.HSSF.Model
             }
             return result;
         }
-        public String[] GetExternalBookAndSheetName(int extRefIndex)
+        public string[] GetExternalBookAndSheetName(int extRefIndex)
         {
             int ebIx = _externSheetRecord.GetExtbookIndexFromRefIndex(extRefIndex);
             SupBookRecord ebr = _externalBookBlocks[ebIx].GetExternalBookRecord();
@@ -621,8 +621,8 @@ namespace NPOI.HSSF.Model
             // Sheet name only applies if not a global reference
             int shIx1 = _externSheetRecord.GetFirstSheetIndexFromRefIndex(extRefIndex);
             int shIx2 = _externSheetRecord.GetLastSheetIndexFromRefIndex(extRefIndex);
-            String firstSheetName = null;
-            String lastSheetName = null;
+            string firstSheetName = null;
+            string lastSheetName = null;
             if (shIx1 >= 0)
             {
                 firstSheetName = ebr.SheetNames[shIx1];
@@ -633,14 +633,14 @@ namespace NPOI.HSSF.Model
             }
             if (shIx1 == shIx2)
             {
-                return new String[] {
+                return new string[] {
     				ebr.URL,
     				firstSheetName
     		};
             }
             else
             {
-                return new String[] {
+                return new string[] {
                     ebr.URL,
                     firstSheetName,
                     lastSheetName
@@ -699,7 +699,7 @@ namespace NPOI.HSSF.Model
             return -1;
         }
 
-        public String ResolveNameXText(int refIndex, int definedNameIndex, InternalWorkbook workbook)
+        public string ResolveNameXText(int refIndex, int definedNameIndex, InternalWorkbook workbook)
         {
             int extBookIndex = _externSheetRecord.GetExtbookIndexFromRefIndex(refIndex);
             int firstTabIndex = _externSheetRecord.GetFirstSheetIndexFromRefIndex(refIndex);
@@ -724,7 +724,7 @@ namespace NPOI.HSSF.Model
                 StringBuilder text = new StringBuilder();
                 if (sheetNumber > 0)
                 {
-                    String sheetName = workbook.GetSheetName(sheetNumber - 1);
+                    string sheetName = workbook.GetSheetName(sheetNumber - 1);
                     SheetNameFormatter.AppendFormat(text, sheetName);
                     text.Append("!");
                 }
@@ -754,7 +754,7 @@ namespace NPOI.HSSF.Model
          * @param newUrl The URL replacement
          * @return true if the oldUrl was found and replaced with newUrl. Otherwise false
          */
-        public bool ChangeExternalReference(String oldUrl, String newUrl)
+        public bool ChangeExternalReference(string oldUrl, string newUrl)
         {
             foreach (ExternalBookBlock ex in _externalBookBlocks)
             {

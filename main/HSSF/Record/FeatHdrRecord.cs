@@ -93,7 +93,7 @@ namespace NPOI.HSSF.Record
             rgbHdrData = in1.ReadRemainder();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[FEATURE HEADER]\n");
@@ -123,7 +123,7 @@ namespace NPOI.HSSF.Record
         }
 
         //HACK: do a "cheat" Clone, see Record.java for more information
-        public override Object Clone()
+        public override object Clone()
         {
             return CloneViaReserialise();
         }

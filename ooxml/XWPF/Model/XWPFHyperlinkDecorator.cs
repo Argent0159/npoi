@@ -70,7 +70,7 @@ namespace NPOI.XWPF.Model
             }
         }
 
-        public override String Text
+        public override string Text
         {
             get
             {

@@ -34,7 +34,7 @@ namespace NPOI.DDF
         public const byte TYPE_SIMPLE = (byte)4;
         public const byte TYPE_ARRAY = (byte)5;
 
-        private String description;
+        private string description;
         private byte type;
 
 
@@ -42,7 +42,7 @@ namespace NPOI.DDF
         /// Initializes a new instance of the <see cref="EscherPropertyMetaData"/> class.
         /// </summary>
         /// <param name="description">The description of the escher property.</param>
-        public EscherPropertyMetaData(String description)
+        public EscherPropertyMetaData(string description)
         {
             this.description = description;
         }
@@ -52,7 +52,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="description">The description of the escher property.</param>
         /// <param name="type">The type of the property.</param> 
-        public EscherPropertyMetaData(String description, byte type)
+        public EscherPropertyMetaData(string description, byte type)
         {
             this.description = description;
             this.type = type;
@@ -62,7 +62,7 @@ namespace NPOI.DDF
         /// Gets the description.
         /// </summary>
         /// <value>The description.</value>
-        public String Description
+        public string Description
         {
             get { return description; }
         }

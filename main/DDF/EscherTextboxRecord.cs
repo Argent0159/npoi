@@ -138,7 +138,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "ClientTextbox"; }
         }
@@ -149,11 +149,11 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String theDumpHex = "";
+            string theDumpHex = "";
             try
             {
                 if (_thedata.Length != 0)
@@ -174,9 +174,9 @@ namespace NPOI.DDF
                     "  numchildren: " + ChildRecords.Count + nl +
                     theDumpHex;
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String theDumpHex = "";
+            string theDumpHex = "";
             try
             {
                 if (_thedata.Length != 0)

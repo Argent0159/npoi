@@ -36,10 +36,10 @@ namespace NPOI.SS.Formula.Functions
             {
                 return ErrorEval.VALUE_INVALID;
             }
-            String arg = EvaluateStringArg(args[0], srcCellRow, srcCellCol);
+            string arg = EvaluateStringArg(args[0], srcCellRow, srcCellCol);
             return Evaluate(arg);
         }
-        public abstract ValueEval Evaluate(String arg);
+        public abstract ValueEval Evaluate(string arg);
     }
 
     /**
@@ -48,9 +48,9 @@ namespace NPOI.SS.Formula.Functions
     public abstract class TextFunction : Function
     {
 
-        protected static String EMPTY_STRING = "";
+        protected static string EMPTY_STRING = "";
 
-        public static String EvaluateStringArg(ValueEval eval, int srcRow, int srcCol)
+        public static string EvaluateStringArg(ValueEval eval, int srcRow, int srcCol)
         {
             ValueEval ve = OperandResolver.GetSingleValue(eval, srcRow, srcCol);
             return OperandResolver.CoerceValueToString(ve);

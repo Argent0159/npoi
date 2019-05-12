@@ -28,13 +28,13 @@ namespace NPOI
 
     public abstract class POIXMLDocument : POIXMLDocumentPart
     {
-        public static String DOCUMENT_CREATOR = "NPOI";
+        public static string DOCUMENT_CREATOR = "NPOI";
 
         // OLE embeddings relation name
-        public static String OLE_OBJECT_REL_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/oleObject";
+        public static string OLE_OBJECT_REL_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/oleObject";
 
         // Embedded OPC documents relation name
-        public static String PACK_OBJECT_REL_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/package";
+        public static string PACK_OBJECT_REL_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/package";
 
         /** The OPC Package */
         private OPCPackage pkg;
@@ -55,7 +55,7 @@ namespace NPOI
          *  in the event of a problem.
          * Works around shortcomings in java's this() constructor calls
          */
-        public static OPCPackage OpenPackage(String path)
+        public static OPCPackage OpenPackage(string path)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace NPOI
          *  relationships of the base document with the
          *  specified content type.
          */
-        protected PackagePart[] GetRelatedByType(String contentType)
+        protected PackagePart[] GetRelatedByType(string contentType)
         {
             PackageRelationshipCollection partsC =
                 GetPackagePart().GetRelationshipsByType(contentType);

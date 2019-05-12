@@ -107,7 +107,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            of the part's data stream.
          */
         public PackagePart(OPCPackage pack, PackagePartName partName,
-                String contentType)
+                string contentType)
             : this(pack, partName, new ContentType(contentType))
         {
 
@@ -128,8 +128,8 @@ namespace NPOI.OpenXml4Net.OPC
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#addExternalRelationship(java.lang.String,
          *      java.lang.String)
          */
-        public PackageRelationship AddExternalRelationship(String target,
-                String relationshipType)
+        public PackageRelationship AddExternalRelationship(string target,
+                string relationshipType)
         {
             return AddExternalRelationship(target, relationshipType, null);
         }
@@ -151,8 +151,8 @@ namespace NPOI.OpenXml4Net.OPC
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#addExternalRelationship(java.lang.String,
          *      java.lang.String)
          */
-        public PackageRelationship AddExternalRelationship(String target,
-                String relationshipType, String id)
+        public PackageRelationship AddExternalRelationship(string target,
+                string relationshipType, string id)
         {
             if (target == null)
             {
@@ -197,7 +197,7 @@ namespace NPOI.OpenXml4Net.OPC
          *      org.apache.poi.OpenXml4Net.opc.TargetMode, java.lang.String)
          */
         public PackageRelationship AddRelationship(PackagePartName targetPartName,
-                TargetMode targetMode, String relationshipType)
+                TargetMode targetMode, string relationshipType)
         {
             return AddRelationship(targetPartName, targetMode, relationshipType,
                     null);
@@ -228,7 +228,7 @@ namespace NPOI.OpenXml4Net.OPC
          *      org.apache.poi.OpenXml4Net.opc.TargetMode, java.lang.String, java.lang.String)
          */
         public PackageRelationship AddRelationship(PackagePartName targetPartName,
-                TargetMode targetMode, String relationshipType, String id)
+                TargetMode targetMode, string relationshipType, string id)
         {
             _container.ThrowExceptionIfReadOnly();
 
@@ -275,7 +275,7 @@ namespace NPOI.OpenXml4Net.OPC
          *      org.apache.poi.OpenXml4Net.opc.TargetMode, java.lang.String)
          */
         public PackageRelationship AddRelationship(Uri targetURI,
-                TargetMode targetMode, String relationshipType)
+                TargetMode targetMode, string relationshipType)
         {
             return AddRelationship(targetURI, targetMode, relationshipType, null);
         }
@@ -305,7 +305,7 @@ namespace NPOI.OpenXml4Net.OPC
          *      org.apache.poi.OpenXml4Net.opc.TargetMode, java.lang.String, java.lang.String)
          */
         public PackageRelationship AddRelationship(Uri targetURI,
-                TargetMode targetMode, String relationshipType, String id)
+                TargetMode targetMode, string relationshipType, string id)
         {
             _container.ThrowExceptionIfReadOnly();
 
@@ -358,7 +358,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            The ID identified the part to delete.
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#removeRelationship(java.lang.String)
          */
-        public void RemoveRelationship(String id)
+        public void RemoveRelationship(string id)
         {
             this._container.ThrowExceptionIfReadOnly();
             if (this._relationships != null)
@@ -388,7 +388,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @return The package relationship
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#getRelationship(java.lang.String)
          */
-        public PackageRelationship GetRelationship(String id)
+        public PackageRelationship GetRelationship(string id)
         {
             return this._relationships.GetRelationshipByID(id);
         }
@@ -407,7 +407,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#getRelationshipsByType(java.lang.String)
          */
         public PackageRelationshipCollection GetRelationshipsByType(
-                String relationshipType)
+                string relationshipType)
         {
             _container.ThrowExceptionIfWriteOnly();
 
@@ -428,7 +428,7 @@ namespace NPOI.OpenXml4Net.OPC
          *             Throws if the package is open en write only mode.
          * @see #getRelationshipsByType(String)
          */
-        private PackageRelationshipCollection GetRelationshipsCore(String filter)
+        private PackageRelationshipCollection GetRelationshipsCore(string filter)
         {
             this._container.ThrowExceptionIfWriteOnly();
             if (_relationships == null)
@@ -498,7 +498,7 @@ namespace NPOI.OpenXml4Net.OPC
             Uri target = rel.TargetUri;
             if (target.OriginalString.IndexOf('#') >=0)
             {
-                String t = target.ToString();
+                string t = target.ToString();
                 try
                 {
                     target = PackagingUriHelper.ParseUri(t.Substring(0, t.IndexOf('#')), UriKind.Absolute);
@@ -634,7 +634,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * @return the contentType
          */
-        public String ContentType
+        public string ContentType
         {
             get
             {
@@ -699,7 +699,7 @@ namespace NPOI.OpenXml4Net.OPC
                 return -1;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             return "Name: " + this._partName + " - Content Type: "
                     + this._contentType.ToString();

@@ -136,7 +136,7 @@ namespace NPOI.HSSF.Model
             maxformatid = -1;
             uses1904datewindowing = false;
             escherBSERecords = new List<EscherBSERecord>();
-            commentRecords = new Dictionary<String, NameCommentRecord>();
+            commentRecords = new Dictionary<string, NameCommentRecord>();
         }
 
         /**
@@ -419,7 +419,7 @@ namespace NPOI.HSSF.Model
 
         public ExternalName GetExternalName(int externSheetIndex, int externNameIndex)
         {
-            String nameName = linkTable.ResolveNameXText(externSheetIndex, externNameIndex, this);
+            string nameName = linkTable.ResolveNameXText(externSheetIndex, externNameIndex, this);
             if (nameName == null)
             {
                 return null;
@@ -531,7 +531,7 @@ namespace NPOI.HSSF.Model
                 EscherDgRecord dg = null;
                 for (IEnumerator it = escherContainer.ChildRecords.GetEnumerator(); it.MoveNext(); )
                 {
-                    Object er = it.Current;
+                    object er = it.Current;
                     if (er is EscherDgRecord)
                     {
                         dg = (EscherDgRecord)er;
@@ -632,7 +632,7 @@ namespace NPOI.HSSF.Model
          * @param sheetnum the sheet number (0 based)
          * @param sheetname the name for the sheet
          */
-        public void SetSheetName(int sheetnum, String sheetname)
+        public void SetSheetName(int sheetnum, string sheetname)
         {
             CheckSheets(sheetnum);
 
@@ -656,9 +656,9 @@ namespace NPOI.HSSF.Model
          * @param excludeSheetIdx the sheet to exclude from the Check or -1 to include all sheets in the Check.
          * @return true if the sheet Contains the name, false otherwise.
          */
-        public bool ContainsSheetName(String name, int excludeSheetIdx)
+        public bool ContainsSheetName(string name, int excludeSheetIdx)
         {
-            String aName = name;
+            string aName = name;
             if (aName.Length > MAX_SENSITIVE_SHEET_NAME_LEN)
             {
                 aName = aName.Substring(0, MAX_SENSITIVE_SHEET_NAME_LEN);
@@ -670,7 +670,7 @@ namespace NPOI.HSSF.Model
                 {
                     continue;
                 }
-                String bName = boundSheetRecord.Sheetname;
+                string bName = boundSheetRecord.Sheetname;
                 if (bName.Length > MAX_SENSITIVE_SHEET_NAME_LEN)
                 {
                     bName = bName.Substring(0, MAX_SENSITIVE_SHEET_NAME_LEN);
@@ -691,7 +691,7 @@ namespace NPOI.HSSF.Model
          * @param sheetnum the sheet number (0 based)
          * @param sheetname the name for the sheet
          */
-        public void SetSheetName(int sheetnum, String sheetname, short encoding)
+        public void SetSheetName(int sheetnum, string sheetname, short encoding)
         {
             CheckSheets(sheetnum);
             BoundSheetRecord sheet = boundsheets[sheetnum];
@@ -705,7 +705,7 @@ namespace NPOI.HSSF.Model
          * @param pos the position that we want to Insert the sheet into (0 based)
          */
 
-        public void SetSheetOrder(String sheetname, int pos)
+        public void SetSheetOrder(string sheetname, int pos)
         {
             int sheetNumber = GetSheetIndex(sheetname);
             //Remove the sheet that needs to be reordered and place it in the spot we want
@@ -727,7 +727,7 @@ namespace NPOI.HSSF.Model
          * @return sheetname the name for the sheet
          */
 
-        public String GetSheetName(int sheetIndex)
+        public string GetSheetName(int sheetIndex)
         {
             return GetBoundSheetRec(sheetIndex).Sheetname;
         }
@@ -806,13 +806,13 @@ namespace NPOI.HSSF.Model
          * @return sheet index or -1 if it was not found.
          */
 
-        public int GetSheetIndex(String name)
+        public int GetSheetIndex(string name)
         {
             int retval = -1;
 
             for (int k = 0; k < boundsheets.Count; k++)
             {
-                String sheet = GetSheetName(k);
+                string sheet = GetSheetName(k);
 
                 if (sheet.Equals(name,StringComparison.OrdinalIgnoreCase))
                 {
@@ -1306,10 +1306,10 @@ namespace NPOI.HSSF.Model
         private static Record CreateWriteAccess()
         {
             WriteAccessRecord retval = new WriteAccessRecord();
-            String defaultUserName = "NPOI";
+            string defaultUserName = "NPOI";
             try
             {
-                String username = (Environment.UserName);
+                string username = (Environment.UserName);
                 // Google App engine returns null for user.name, see Bug 53974
                 if (string.IsNullOrEmpty(username)) username = defaultUserName;
 
@@ -2211,7 +2211,7 @@ namespace NPOI.HSSF.Model
             return linkTable;
         }
 
-        public int LinkExternalWorkbook(String name, IWorkbook externalWorkbook)
+        public int LinkExternalWorkbook(string name, IWorkbook externalWorkbook)
         {
             return GetOrCreateLinkTable().LinkExternalWorkbook(name, externalWorkbook);
         }
@@ -2221,17 +2221,17 @@ namespace NPOI.HSSF.Model
          * @param externSheetIndex extern sheet index
          * @return first sheet name.
          */
-        public String FindSheetFirstNameFromExternSheet(int externSheetIndex)
+        public string FindSheetFirstNameFromExternSheet(int externSheetIndex)
         {
             int indexToSheet = linkTable.GetFirstInternalSheetIndexForExtIndex(externSheetIndex);
             return FindSheetNameFromIndex(indexToSheet);
         }
-        public String FindSheetLastNameFromExternSheet(int externSheetIndex)
+        public string FindSheetLastNameFromExternSheet(int externSheetIndex)
         {
             int indexToSheet = linkTable.GetLastInternalSheetIndexForExtIndex(externSheetIndex);
             return FindSheetNameFromIndex(indexToSheet);
         }
-        private String FindSheetNameFromIndex(int internalSheetIndex)
+        private string FindSheetNameFromIndex(int internalSheetIndex)
         {
             if (internalSheetIndex < 0)
             {
@@ -2249,7 +2249,7 @@ namespace NPOI.HSSF.Model
 
         public ExternalSheet GetExternalSheet(int externSheetIndex)
         {
-            String[] extNames = linkTable.GetExternalBookAndSheetName(externSheetIndex);
+            string[] extNames = linkTable.GetExternalBookAndSheetName(externSheetIndex);
             if (extNames == null)
             {
                 return null;
@@ -2308,11 +2308,11 @@ namespace NPOI.HSSF.Model
             return (short)OrCreateLinkTable.CheckExternSheet(firstSheetNumber, lastSheetNumber);
         }
 
-        public int GetExternalSheetIndex(String workbookName, String sheetName)
+        public int GetExternalSheetIndex(string workbookName, string sheetName)
         {
             return OrCreateLinkTable.GetExternalSheetIndex(workbookName, sheetName, sheetName);
         }
-        public int GetExternalSheetIndex(String workbookName, String firstSheetName, String lastSheetName)
+        public int GetExternalSheetIndex(string workbookName, string firstSheetName, string lastSheetName)
         {
             return OrCreateLinkTable.GetExternalSheetIndex(workbookName, firstSheetName, lastSheetName);
         }
@@ -2337,7 +2337,7 @@ namespace NPOI.HSSF.Model
          * @param udf  locator of user-defiend functions to resolve names of VBA and Add-In functions
          * @return the external name or null
          */
-        public NameXPtg GetNameXPtg(String name, int sheetRefIndex, UDFFinder udf)
+        public NameXPtg GetNameXPtg(string name, int sheetRefIndex, UDFFinder udf)
         {
             LinkTable lnk = OrCreateLinkTable;
             NameXPtg xptg = lnk.GetNameXPtg(name, sheetRefIndex);
@@ -2350,7 +2350,7 @@ namespace NPOI.HSSF.Model
             }
             return xptg;
         }
-        public NameXPtg GetNameXPtg(String name, UDFFinder udf)
+        public NameXPtg GetNameXPtg(string name, UDFFinder udf)
         {
             return GetNameXPtg(name, -1, udf);
         }
@@ -2413,7 +2413,7 @@ namespace NPOI.HSSF.Model
             }
 
         }
-        private Dictionary<String, NameCommentRecord> commentRecords;
+        private Dictionary<string, NameCommentRecord> commentRecords;
         /**
          * If a {@link NameCommentRecord} is added or the name it references
          *  is renamed, then this will update the lookup cache for it.
@@ -2439,7 +2439,7 @@ namespace NPOI.HSSF.Model
          * @param CreateIfNotFound Creates a new format if format not found
          * @return the format id of a format that matches or -1 if none found and CreateIfNotFound
          */
-        public short GetFormat(String format, bool CreateIfNotFound)
+        public short GetFormat(string format, bool CreateIfNotFound)
         {
             IEnumerator iterator;
             for (iterator = formats.GetEnumerator(); iterator.MoveNext(); )
@@ -2478,7 +2478,7 @@ namespace NPOI.HSSF.Model
          * @see org.apache.poi.hssf.record.FormatRecord
          * @see org.apache.poi.hssf.record.Record
          */
-        public int CreateFormat(String formatString)
+        public int CreateFormat(string formatString)
         {
             //        ++xfpos;	//These are to Ensure that positions are updated properly
             //        ++palettepos;
@@ -2977,7 +2977,7 @@ namespace NPOI.HSSF.Model
          * flags and the password.
          * @param password to Set
          */
-        public void WriteProtectWorkbook(String password, String username)
+        public void WriteProtectWorkbook(string password, string username)
         {
             FileSharingRecord frec = FileSharing;
             WriteAccessRecord waccess = WriteAccess;
@@ -3003,7 +3003,7 @@ namespace NPOI.HSSF.Model
          * @param definedNameIndex zero-based to DEFINEDNAME or EXTERNALNAME record
          * @return the string representation of the defined or external name
          */
-        public String ResolveNameXText(int reFindex, int definedNameIndex)
+        public string ResolveNameXText(int reFindex, int definedNameIndex)
         {
             return linkTable.ResolveNameXText(reFindex, definedNameIndex, this);
         }
@@ -3081,7 +3081,7 @@ namespace NPOI.HSSF.Model
          * @param newUrl The URL replacement
          * @return true if the oldUrl was found and replaced with newUrl. Otherwise false
          */
-        public bool ChangeExternalReference(String oldUrl, String newUrl)
+        public bool ChangeExternalReference(string oldUrl, string newUrl)
         {
             return linkTable.ChangeExternalReference(oldUrl, newUrl);
         }

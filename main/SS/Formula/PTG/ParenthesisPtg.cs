@@ -52,13 +52,13 @@ namespace NPOI.SS.Formula.PTG
             get { return SIZE; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return "()";
         }
 
 
-        public String ToFormulaString(String[] operands)
+        public string ToFormulaString(string[] operands)
         {
             return "(" + operands[0] + ")";
         }

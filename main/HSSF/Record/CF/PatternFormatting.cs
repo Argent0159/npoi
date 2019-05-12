@@ -111,7 +111,7 @@ namespace NPOI.HSSF.Record.CF
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("    [Pattern Formatting]\n");
@@ -122,7 +122,7 @@ namespace NPOI.HSSF.Record.CF
             return buffer.ToString();
         }
 
-        public Object Clone()
+        public object Clone()
         {
             PatternFormatting rec = new PatternFormatting();
             rec.field_15_pattern_style = field_15_pattern_style;

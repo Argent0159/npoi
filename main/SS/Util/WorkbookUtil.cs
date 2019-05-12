@@ -28,7 +28,7 @@ public class WorkbookUtil {
      *        allowed to be null
      * @return a valid string, "empty" if to short, "null" if null         
      */
-    public static String CreateSafeSheetName(String nameProposal)
+    public static string CreateSafeSheetName(string nameProposal)
     {
         return CreateSafeSheetName(nameProposal, ' ');
 	}
@@ -51,7 +51,7 @@ public class WorkbookUtil {
      * @param replaceChar the char to replace invalid characters.
      * @return a valid string, "empty" if to short, "null" if null
      */
-    public static String CreateSafeSheetName(String nameProposal, char replaceChar) {
+    public static string CreateSafeSheetName(string nameProposal, char replaceChar) {
         if (nameProposal == null) {
             return "null";
         }
@@ -59,7 +59,7 @@ public class WorkbookUtil {
             return "empty";
         }
         int length = Math.Min(31, nameProposal.Length);
-        String shortenname = nameProposal.Substring(0, length);
+            string shortenname = nameProposal.Substring(0, length);
         StringBuilder result = new StringBuilder(shortenname);
         for (int i=0; i<length; i++) {
             char ch = result[(i)];
@@ -109,7 +109,7 @@ public class WorkbookUtil {
      *
      * @param sheetName the name to validate
      */
-    public static void ValidateSheetName(String sheetName) {
+    public static void ValidateSheetName(string sheetName) {
         if (sheetName == null) {
             throw new ArgumentException("sheetName must not be null");
         }

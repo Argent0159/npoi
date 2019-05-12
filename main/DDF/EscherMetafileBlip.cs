@@ -317,11 +317,11 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -350,9 +350,9 @@ namespace NPOI.DDF
                         " Remaining Data: " + HexDump.ToHex(remainingData, 32)));
             }
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String extraData = "";
+            string extraData = "";
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))
                     .Append(tab).Append("\t").Append("<UID>0x").Append(HexDump.ToHex(field_1_UID) + '\n' +

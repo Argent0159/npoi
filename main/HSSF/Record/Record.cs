@@ -100,7 +100,7 @@ namespace NPOI.HSSF.Record
 
         public abstract short Sid{get;}
 
-        public virtual Object Clone()
+        public virtual object Clone()
         {
             throw new Exception("The class " + this.GetType().Name + " needs to define a Clone method");
         }

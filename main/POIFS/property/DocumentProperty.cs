@@ -46,7 +46,7 @@ namespace NPOI.POIFS.Properties
         /// </summary>
         /// <param name="name">POIFSDocument name</param>
         /// <param name="size">POIFSDocument size</param>
-        public DocumentProperty(String name, int size)
+        public DocumentProperty(string name, int size)
             : base()
         {
             _document = null;

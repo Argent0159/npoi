@@ -51,7 +51,7 @@ namespace NPOI.SS.Formula.PTG
             out1.WriteByte(Sid + PtgClass);
             WriteCoordinates(out1);
         }
-        public Area2DPtgBase(String arearef)
+        public Area2DPtgBase(string arearef)
             : base(arearef)
         {
         }
@@ -62,11 +62,11 @@ namespace NPOI.SS.Formula.PTG
                 return SIZE;
             }
         }
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return FormatReferenceAsString();
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name);

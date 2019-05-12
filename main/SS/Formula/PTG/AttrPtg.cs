@@ -203,7 +203,7 @@ namespace NPOI.SS.Formula.PTG
                 return _chooseFuncOffset;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
@@ -273,7 +273,7 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public String ToFormulaString(String[] operands)
+        public string ToFormulaString(string[] operands)
         {
             if (space.IsSet(field_1_options))
             {
@@ -304,7 +304,7 @@ namespace NPOI.SS.Formula.PTG
             get { return -1; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             if (semiVolatile.IsSet(field_1_options))
             {
@@ -337,7 +337,7 @@ namespace NPOI.SS.Formula.PTG
             return "UNKNOWN ATTRIBUTE";
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             int[] jt;
             if (_jumpTable == null)

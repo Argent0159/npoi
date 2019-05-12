@@ -65,7 +65,7 @@ namespace NPOI.Util
         /// byte array. it is assumed that string[ offset ] and string[ offset + 1 ] contain the first 16-bit unicode character</param>
         /// <param name="len">the Length of the string</param>
         /// <returns>the converted string</returns>                              
-        public static String GetFromUnicodeLE(
+        public static string GetFromUnicodeLE(
             byte[] str,
             int offset,
             int len)
@@ -90,7 +90,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="str">the byte array to be converted</param>
         /// <returns>the converted string</returns>  
-        public static String GetFromUnicodeLE(byte[] str)
+        public static string GetFromUnicodeLE(byte[] str)
         {
             if (str.Length == 0) { return ""; }
             return GetFromUnicodeLE(str, 0, str.Length / 2);
@@ -102,7 +102,7 @@ namespace NPOI.Util
          * @param string the string
          * @return the byte array of 16-bit unicode characters
          */
-        public static byte[] GetToUnicodeLE(String string1)
+        public static byte[] GetToUnicodeLE(string string1)
         {
             return UTF16LE.GetBytes(string1);
         }
@@ -118,7 +118,7 @@ namespace NPOI.Util
         /// byte array. it is assumed that string[ offset ] and string[ offset + 1 ] contain the first 16-bit unicode character</param>
         /// <param name="len">the Length of the string</param>
         /// <returns> the converted string</returns>
-        public static String GetFromUnicodeBE(
+        public static string GetFromUnicodeBE(
             byte[] str,
             int offset,
             int len)
@@ -149,7 +149,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="str">the byte array to be converted</param>
         /// <returns>the converted string</returns>      
-        public static String GetFromUnicodeBE(byte[] str)
+        public static string GetFromUnicodeBE(byte[] str)
         {
             if (str.Length == 0) { return ""; }
             return GetFromUnicodeBE(str, 0, str.Length / 2);
@@ -164,7 +164,7 @@ namespace NPOI.Util
         /// <param name="offset">offset to read byte array</param>
         /// <param name="len">Length to read byte array</param>
         /// <returns>generated String instance by reading byte array</returns>
-        public static String GetFromCompressedUnicode(
+        public static string GetFromCompressedUnicode(
             byte[] str,
             int offset,
             int len)
@@ -182,13 +182,13 @@ namespace NPOI.Util
         /// <param name="input">the String containing the data to be written</param>
         /// <param name="output">the byte array to which the data Is to be written</param>
         /// <param name="offset">an offset into the byte arrat at which the data Is start when written</param>
-        public static void PutCompressedUnicode(String input, byte[] output, int offset)
+        public static void PutCompressedUnicode(string input, byte[] output, int offset)
         {
             byte[] bytes = ISO_8859_1.GetBytes(input);
             Array.Copy(bytes, 0, output, offset, bytes.Length);
         }
 
-        public static void PutCompressedUnicode(String input, ILittleEndianOutput out1)
+        public static void PutCompressedUnicode(string input, ILittleEndianOutput out1)
         {
             byte[] bytes = ISO_8859_1.GetBytes(input);
             out1.Write(bytes);
@@ -203,12 +203,12 @@ namespace NPOI.Util
         /// <param name="input">the String containing the unicode data to be written</param>
         /// <param name="output">the byte array to hold the uncompressed unicode, should be twice the Length of the String</param>
         /// <param name="offset">the offset to start writing into the byte array</param>
-        public static void PutUnicodeLE(String input, byte[] output, int offset)
+        public static void PutUnicodeLE(string input, byte[] output, int offset)
         {
             byte[] bytes = UTF16LE.GetBytes(input);
             Array.Copy(bytes, 0, output, offset, bytes.Length);
         }
-        public static void PutUnicodeLE(String input, ILittleEndianOutput out1)
+        public static void PutUnicodeLE(string input, ILittleEndianOutput out1)
         {
             byte[] bytes = UTF16LE.GetBytes(input);
             out1.Write(bytes);
@@ -225,7 +225,7 @@ namespace NPOI.Util
         /// <param name="output">the byte array to hold the uncompressed unicode, should be twice the Length of the String.</param>
         /// <param name="offset">the offset to start writing into the byte array</param>
         public static void PutUnicodeBE(
-            String input,
+            string input,
             byte[] output,
             int offset)
         {
@@ -245,7 +245,7 @@ namespace NPOI.Util
         /// Gets the preferred encoding.
         /// </summary>
         /// <returns>the encoding we want to use, currently hardcoded to IsO-8859-1</returns>
-        public static String GetPreferredEncoding()
+        public static string GetPreferredEncoding()
         {
             return ISO_8859_1.WebName;
         }
@@ -257,7 +257,7 @@ namespace NPOI.Util
         /// <returns>
         /// 	<c>true</c> if Has at least one multibyte character; otherwise, <c>false</c>.
         /// </returns>
-        public static bool HasMultibyte(String value)
+        public static bool HasMultibyte(string value)
         {
             if (value == null) return false;
             for (int i = 0; i < value.Length; i++)
@@ -268,13 +268,13 @@ namespace NPOI.Util
             return false;
         }
 
-        public static String ReadCompressedUnicode(ILittleEndianInput in1, int nChars)
+        public static string ReadCompressedUnicode(ILittleEndianInput in1, int nChars)
         {
             byte[] buf = new byte[nChars];
             in1.ReadFully(buf);
             return ISO_8859_1.GetString(buf);
         }
-        public static String ReadUnicodeLE(ILittleEndianInput in1, int nChars)
+        public static string ReadUnicodeLE(ILittleEndianInput in1, int nChars)
         {
             byte[] bytes = new byte[nChars * 2];
             in1.ReadFully(bytes);
@@ -290,7 +290,7 @@ namespace NPOI.Util
          * </ol>
          * For this encoding, the is16BitFlag is always present even if nChars==0.
          */
-        public static String ReadUnicodeString(ILittleEndianInput in1)
+        public static string ReadUnicodeString(ILittleEndianInput in1)
         {
 
             int nChars = in1.ReadUShort();
@@ -313,7 +313,7 @@ namespace NPOI.Util
          * as a ushort immediately before the is16BitFlag. Otherwise, {@link 
          * #readUnicodeString(LittleEndianInput)} can be used. 
          */
-        public static String ReadUnicodeString(ILittleEndianInput in1, int nChars)
+        public static string ReadUnicodeString(ILittleEndianInput in1, int nChars)
         {
             byte is16Bit = (byte)in1.ReadByte();
             if ((is16Bit & 0x01) == 0)
@@ -331,7 +331,7 @@ namespace NPOI.Util
          * </ol>
          * For this encoding, the is16BitFlag is always present even if nChars==0.
          */
-        public static void WriteUnicodeString(ILittleEndianOutput out1, String value)
+        public static void WriteUnicodeString(ILittleEndianOutput out1, string value)
         {
 
             int nChars = value.Length;
@@ -359,7 +359,7 @@ namespace NPOI.Util
          * as a ushort immediately before the is16BitFlag. Otherwise, {@link 
          * #writeUnicodeString(LittleEndianOutput, String)} can be used. 
          */
-        public static void WriteUnicodeStringFlagAndData(ILittleEndianOutput out1, String value)
+        public static void WriteUnicodeStringFlagAndData(ILittleEndianOutput out1, string value)
         {
             bool is16Bit = HasMultibyte(value);
             out1.WriteByte(is16Bit ? 0x01 : 0x00);
@@ -377,7 +377,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        public static int GetEncodedSize(String value)
+        public static int GetEncodedSize(string value)
         {
             int result = 2 + 1;
             result += value.Length * (StringUtil.HasMultibyte(value) ? 2 : 1);
@@ -392,7 +392,7 @@ namespace NPOI.Util
         /// 	<c>true</c> if string needs Unicode to be represented.; otherwise, <c>false</c>.
         /// </returns>
         ///<remarks>Tony Qu change the logic</remarks>
-        public static bool IsUnicodeString(String value)
+        public static bool IsUnicodeString(string value)
         {
             return !value.Equals(ISO_8859_1.GetString(ISO_8859_1.GetBytes(value)));
         }
@@ -499,7 +499,7 @@ namespace NPOI.Util
         * @see <a href="http://www.alanwood.net/unicode/private_use_area.html#symbol">Private Use Area (symbol)</a>
         * @see <a href="http://www.alanwood.net/demos/symbol.html">Symbol font - Unicode alternatives for Greek and special characters in HTML</a>
         */
-        public static String mapMsCodepointString(String string1)
+        public static string mapMsCodepointString(string string1)
         {
             if (string1 == null || "".Equals(string1)) return string1;
             InitMsCodepointMap();
@@ -512,7 +512,7 @@ namespace NPOI.Util
                 
                 int msCodepoint = char.ConvertToUtf32(string1, offset);//codePointAt(stringChars, offset, string1.Length);
                 int uniCodepoint = msCodepointToUnicode[(msCodepoint)];
-                sb.Append(Char.ConvertFromUtf32(uniCodepoint == null ? msCodepoint : uniCodepoint));
+                sb.Append(char.ConvertFromUtf32(uniCodepoint == null ? msCodepoint : uniCodepoint));
                 offset += CharCount(msCodepoint);
             }
 

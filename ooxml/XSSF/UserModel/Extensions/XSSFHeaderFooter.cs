@@ -54,9 +54,9 @@ namespace NPOI.XSSF.UserModel.Extensions
             return this.headerFooter;
         }
 
-        public String GetValue()
+        public string GetValue()
         {
-            String value = Text;
+            string value = Text;
             if (value == null)
                 return "";
             return value;
@@ -82,7 +82,7 @@ namespace NPOI.XSSF.UserModel.Extensions
             this.stripFields = stripFields;
         }
 
-        public abstract String Text
+        public abstract string Text
         {
             get;
             set;
@@ -92,18 +92,18 @@ namespace NPOI.XSSF.UserModel.Extensions
  * Normally used to make some text suitable for showing to humans, and the
  * resultant text should not normally be saved back into the document!
  */
-        public static String StripFields(String text)
+        public static string StripFields(string text)
         {
             return HeaderFooter.StripFields(text);
         }
         /**
          * get the text representing the center part of this element
          */
-        public String Center
+        public string Center
         {
             get
             {
-                String text = helper.GetCenterSection(Text);
+                string text = helper.GetCenterSection(Text);
                 if (stripFields)
                     return StripFields(text);
                 return text;
@@ -117,11 +117,11 @@ namespace NPOI.XSSF.UserModel.Extensions
         /**
          * get the text representing the left part of this element
          */
-        public String Left
+        public string Left
         {
             get
             {
-                String text = helper.GetLeftSection(Text);
+                string text = helper.GetLeftSection(Text);
                 if (stripFields)
                     return StripFields(text);
                 return text;
@@ -135,11 +135,11 @@ namespace NPOI.XSSF.UserModel.Extensions
         /**
          * get the text representing the right part of this element
          */
-        public String Right
+        public string Right
         {
             get
             {
-                String text = helper.GetRightSection(Text);
+                string text = helper.GetRightSection(Text);
                 if (stripFields)
                     return StripFields(text);
                 return text;

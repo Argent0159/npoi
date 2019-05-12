@@ -115,7 +115,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        protected override String RecordName
+        protected override string RecordName
         {
             get
             {

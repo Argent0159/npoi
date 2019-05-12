@@ -79,7 +79,7 @@ namespace NPOI.HSSF.Record
             get { return field_2_bucket_sst_offset; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

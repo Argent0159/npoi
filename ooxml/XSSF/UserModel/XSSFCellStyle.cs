@@ -171,7 +171,7 @@ namespace NPOI.XSSF.UserModel
                     }
 
                     // Copy the format
-                    String fmt = src.GetDataFormatString();
+                    string fmt = src.GetDataFormatString();
                     DataFormat = (
                           (new XSSFDataFormat(_stylesSource)).GetFormat(fmt)
                     );
@@ -452,7 +452,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the number format string
          */
-        public String GetDataFormatString()
+        public string GetDataFormatString()
         {
             int idx = DataFormat;
             return new XSSFDataFormat(_stylesSource).GetFormat((short)idx);
@@ -1292,7 +1292,7 @@ namespace NPOI.XSSF.UserModel
          * @param o the style to check
          * @return true if the supplied style is equal to this style
          */
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is XSSFCellStyle)) return false;
 
@@ -1306,7 +1306,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return a copy of this style
          */
-        public Object Clone()
+        public object Clone()
         {
             CT_Xf xf = (CT_Xf)_cellXf.Copy();
 

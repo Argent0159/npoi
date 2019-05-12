@@ -31,7 +31,7 @@ namespace NPOI.SS.Format
     public abstract class CellFormatter
     {
         /** The original specified format. */
-        protected String format;
+        protected string format;
 
         /**
          * This is the locale used to Get a consistent format result from which to
@@ -44,7 +44,7 @@ namespace NPOI.SS.Format
          *
          * @param format The format.
          */
-        public CellFormatter(String format)
+        public CellFormatter(string format)
         {
             this.format = format;
         }
@@ -58,7 +58,7 @@ namespace NPOI.SS.Format
          * @param toAppendTo The buffer to append to.
          * @param value      The value to format.
          */
-        public abstract void FormatValue(StringBuilder toAppendTo, Object value);
+        public abstract void FormatValue(StringBuilder toAppendTo, object value);
 
         /**
          * Format a value according to the type, in the most basic way.
@@ -66,7 +66,7 @@ namespace NPOI.SS.Format
          * @param toAppendTo The buffer to append to.
          * @param value      The value to format.
          */
-        public abstract void SimpleValue(StringBuilder toAppendTo, Object value);
+        public abstract void SimpleValue(StringBuilder toAppendTo, object value);
 
         /**
          * Formats the value, returning the resulting string.
@@ -75,7 +75,7 @@ namespace NPOI.SS.Format
          *
          * @return The value, formatted.
          */
-        public String Format(Object value)
+        public string Format(object value)
         {
             StringBuilder sb = new StringBuilder();
             FormatValue(sb, value);
@@ -89,7 +89,7 @@ namespace NPOI.SS.Format
          *
          * @return The value, formatted.
          */
-        public String SimpleFormat(Object value)
+        public string SimpleFormat(object value)
         {
             StringBuilder sb = new StringBuilder();
             SimpleValue(sb, value);
@@ -103,7 +103,7 @@ namespace NPOI.SS.Format
          *
          * @return The input string, surrounded by quotes.
          */
-        static String Quote(String str)
+        static string Quote(string str)
         {
             return '"' + str + '"';
         }

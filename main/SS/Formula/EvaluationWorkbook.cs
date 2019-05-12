@@ -25,22 +25,22 @@ namespace NPOI.SS.Formula
 
     public class ExternalSheet
     {
-        private String _workbookName;
-        private String _sheetName;
+        private string _workbookName;
+        private string _sheetName;
 
-        public ExternalSheet(String workbookName, String sheetName)
+        public ExternalSheet(string workbookName, string sheetName)
         {
             _workbookName = workbookName;
             _sheetName = sheetName;
         }
-        public String WorkbookName
+        public string WorkbookName
         {
             get
             {
                 return _workbookName;
             }
         }
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -51,21 +51,21 @@ namespace NPOI.SS.Formula
 
     public class ExternalSheetRange : ExternalSheet
     {
-        private String _lastSheetName;
-        public ExternalSheetRange(String workbookName, String firstSheetName, String lastSheetName)
+        private string _lastSheetName;
+        public ExternalSheetRange(string workbookName, string firstSheetName, string lastSheetName)
             : base(workbookName, firstSheetName)
         {
             this._lastSheetName = lastSheetName;
         }
 
-        public String FirstSheetName
+        public string FirstSheetName
         {
             get
             {
                 return SheetName;
             }
         }
-        public String LastSheetName
+        public string LastSheetName
         {
             get
             {
@@ -83,12 +83,12 @@ namespace NPOI.SS.Formula
      */
     public interface IEvaluationWorkbook
     {
-        String GetSheetName(int sheetIndex);
+        string GetSheetName(int sheetIndex);
         /**
          * @return -1 if the specified sheet is from a different book
          */
         int GetSheetIndex(IEvaluationSheet sheet);
-        int GetSheetIndex(String sheetName);
+        int GetSheetIndex(string sheetName);
 
         IEvaluationSheet GetSheet(int sheetIndex);
 
@@ -101,7 +101,7 @@ namespace NPOI.SS.Formula
          * XSSF Only - fetch the external-style sheet details
          * <p>Return will have no workbook set if it's actually in our own workbook</p>
          */
-        ExternalSheet GetExternalSheet(String firstSheetName, string lastSheetName, int externalWorkbookNumber);
+        ExternalSheet GetExternalSheet(string firstSheetName, string lastSheetName, int externalWorkbookNumber);
         /**
          * HSSF Only - convert an external sheet index to an internal sheet index,
          *  for an external-style reference to one of this workbook's own sheets 
@@ -114,28 +114,28 @@ namespace NPOI.SS.Formula
         /**
          * XSSF Only - fetch the external-style name details
          */
-        ExternalName GetExternalName(String nameName, String sheetName, int externalWorkbookNumber);
+        ExternalName GetExternalName(string nameName, string sheetName, int externalWorkbookNumber);
     
         IEvaluationName GetName(NamePtg namePtg);
-        IEvaluationName GetName(String name, int sheetIndex);
-        String ResolveNameXText(NameXPtg ptg);
+        IEvaluationName GetName(string name, int sheetIndex);
+        string ResolveNameXText(NameXPtg ptg);
         Ptg[] GetFormulaTokens(IEvaluationCell cell);
         UDFFinder GetUDFFinder();
     }
 
     public class ExternalName
     {
-        private String _nameName;
+        private string _nameName;
         private int _nameNumber;
         private int _ix;
 
-        public ExternalName(String nameName, int nameNumber, int ix)
+        public ExternalName(string nameName, int nameNumber, int ix)
         {
             _nameName = nameName;
             _nameNumber = nameNumber;
             _ix = ix;
         }
-        public String Name
+        public string Name
         {
             get
             {

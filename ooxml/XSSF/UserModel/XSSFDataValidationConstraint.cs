@@ -28,13 +28,13 @@ namespace NPOI.XSSF.UserModel
      */
     public class XSSFDataValidationConstraint : IDataValidationConstraint
     {
-        private String formula1;
-        private String formula2;
+        private string formula1;
+        private string formula2;
         private int validationType = -1;
         private int operator1 = -1;
-        private String[] explicitListOfValues;
+        private string[] explicitListOfValues;
 
-        public XSSFDataValidationConstraint(String[] explicitListOfValues)
+        public XSSFDataValidationConstraint(string[] explicitListOfValues)
         {
             if (explicitListOfValues == null || explicitListOfValues.Length == 0)
             {
@@ -46,7 +46,7 @@ namespace NPOI.XSSF.UserModel
             Validate();
         }
 
-        public XSSFDataValidationConstraint(int validationType, String formula1)
+        public XSSFDataValidationConstraint(int validationType, string formula1)
             : base()
         {
 
@@ -57,7 +57,7 @@ namespace NPOI.XSSF.UserModel
 
 
 
-        public XSSFDataValidationConstraint(int validationType, int operator1, String formula1)
+        public XSSFDataValidationConstraint(int validationType, int operator1, string formula1)
             : base()
         {
 
@@ -67,7 +67,7 @@ namespace NPOI.XSSF.UserModel
             Validate();
         }
 
-        public XSSFDataValidationConstraint(int validationType, int operator1, String formula1, String formula2)
+        public XSSFDataValidationConstraint(int validationType, int operator1, string formula1, string formula2)
             : base()
         {
 
@@ -85,7 +85,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String[] ExplicitListValues
+        public string[] ExplicitListValues
         {
             get
             {
@@ -99,7 +99,7 @@ namespace NPOI.XSSF.UserModel
                     StringBuilder builder = new StringBuilder("\"");
                     for (int i = 0; i < value.Length; i++)
                     {
-                        String string1 = value[i];
+                        string string1 = value[i];
                         if (builder.Length > 1)
                         {
                             builder.Append(",");
@@ -115,7 +115,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationConstraint#getFormula1()
          */
-        public String Formula1
+        public string Formula1
         {
             get
             {
@@ -130,7 +130,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationConstraint#getFormula2()
          */
-        public String Formula2
+        public string Formula2
         {
             get
             {
@@ -165,7 +165,7 @@ namespace NPOI.XSSF.UserModel
             return validationType;
         }
 
-        protected String RemoveLeadingEquals(String formula1)
+        protected string RemoveLeadingEquals(string formula1)
         {
             return IsFormulaEmpty(formula1) ? formula1 : formula1[0] == '=' ? formula1.Substring(1) : formula1;
         }
@@ -205,12 +205,12 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        protected bool IsFormulaEmpty(String formula1)
+        protected bool IsFormulaEmpty(string formula1)
         {
             return formula1 == null || formula1.Trim().Length == 0;
         }
 
-        public String PrettyPrint()
+        public string PrettyPrint()
         {
             StringBuilder builder = new StringBuilder();
             ST_DataValidationType vt = XSSFDataValidation.validationTypeMappings[validationType];
@@ -223,7 +223,7 @@ namespace NPOI.XSSF.UserModel
                 {
                     builder.Append(",").Append(ot).Append(", ");
                 }
-                String QUOTE = "";
+                string QUOTE = "";
                 if (validationType == ValidationType.LIST && explicitListOfValues != null)
                 {
                     builder.Append(QUOTE).Append(Arrays.AsList(explicitListOfValues)).Append(QUOTE).Append(' ');

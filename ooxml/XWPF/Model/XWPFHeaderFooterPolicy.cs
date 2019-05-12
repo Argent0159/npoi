@@ -143,7 +143,7 @@ namespace NPOI.XWPF.Model
         public XWPFHeader CreateHeader(ST_HdrFtr type, XWPFParagraph[] pars)
         {
             XWPFRelation relation = XWPFRelation.HEADER;
-            String pStyle = "Header";
+            string pStyle = "Header";
             int i = GetRelationIndex(relation);
             HdrDocument hdrDoc = new HdrDocument();
             XWPFHeader wrapper = (XWPFHeader)doc.CreateRelationship(relation, XWPFFactory.GetInstance(), i);
@@ -169,7 +169,7 @@ namespace NPOI.XWPF.Model
         public XWPFFooter CreateFooter(ST_HdrFtr type, XWPFParagraph[] pars)
         {
             XWPFRelation relation = XWPFRelation.FOOTER;
-            String pStyle = "Footer";
+            string pStyle = "Footer";
             int i = GetRelationIndex(relation);
             FtrDocument ftrDoc = new FtrDocument();
             XWPFFooter wrapper = (XWPFFooter)doc.CreateRelationship(relation, XWPFFactory.GetInstance(), i);
@@ -202,7 +202,7 @@ namespace NPOI.XWPF.Model
             return i;
         }
 
-        private CT_HdrFtr buildFtr(ST_HdrFtr type, String pStyle, XWPFHeaderFooter wrapper, XWPFParagraph[] pars)
+        private CT_HdrFtr buildFtr(ST_HdrFtr type, string pStyle, XWPFHeaderFooter wrapper, XWPFParagraph[] pars)
         {
             //CTHdrFtr ftr = buildHdrFtr(pStyle, pars);				// MB 24 May 2010
             CT_HdrFtr ftr = buildHdrFtr(pStyle, pars, wrapper);		// MB 24 May 2010
@@ -210,7 +210,7 @@ namespace NPOI.XWPF.Model
             return ftr;
         }
 
-        private CT_HdrFtr buildHdr(ST_HdrFtr type, String pStyle, XWPFHeaderFooter wrapper, XWPFParagraph[] pars)
+        private CT_HdrFtr buildHdr(ST_HdrFtr type, string pStyle, XWPFHeaderFooter wrapper, XWPFParagraph[] pars)
         {
             //CTHdrFtr hdr = buildHdrFtr(pStyle, pars);				// MB 24 May 2010
             CT_HdrFtr hdr = buildHdrFtr(pStyle, pars, wrapper);		// MB 24 May 2010
@@ -218,7 +218,7 @@ namespace NPOI.XWPF.Model
             return hdr;
         }
 
-        private CT_HdrFtr buildHdrFtr(String pStyle, XWPFParagraph[] paragraphs)
+        private CT_HdrFtr buildHdrFtr(string pStyle, XWPFParagraph[] paragraphs)
         {
             CT_HdrFtr ftr = new CT_HdrFtr();
             if (paragraphs != null) {
@@ -252,7 +252,7 @@ namespace NPOI.XWPF.Model
          * that had previoulsy been instantiated in the CreateHeader(int, XWPFParagraph[]) or 
          * CreateFooter(int, XWPFParagraph[]) methods.
          */
-        private CT_HdrFtr buildHdrFtr(String pStyle, XWPFParagraph[] paragraphs, XWPFHeaderFooter wrapper)
+        private CT_HdrFtr buildHdrFtr(string pStyle, XWPFParagraph[] paragraphs, XWPFHeaderFooter wrapper)
         {
             CT_HdrFtr ftr = wrapper._getHdrFtr();
             if (paragraphs != null) {
@@ -381,7 +381,7 @@ namespace NPOI.XWPF.Model
             return defaultFooter;
         }
 
-        public void CreateWatermark(String text)
+        public void CreateWatermark(string text)
         {
             XWPFParagraph[] pars = new XWPFParagraph[1];
             try
@@ -404,7 +404,7 @@ namespace NPOI.XWPF.Model
          * This is the default Watermark paragraph; the only variable is the text message
          * TODO: manage all the other variables
          */
-        private XWPFParagraph GetWatermarkParagraph(String text, int idx)
+        private XWPFParagraph GetWatermarkParagraph(string text, int idx)
         {
             CT_P p = new CT_P();
             byte[] rsidr = doc.Document.body.GetPArray(0).rsidR;

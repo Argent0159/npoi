@@ -83,7 +83,7 @@ namespace NPOI.XSSF.UserModel
             //}
         }
 
-        public String Text
+        public string Text
         {
             get
             {
@@ -258,7 +258,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * @return the font to be used on bullet characters within a given paragraph
          */
-        public String BulletFont
+        public string BulletFont
         {
             get
             {
@@ -282,7 +282,7 @@ namespace NPOI.XSSF.UserModel
                 font.typeface = (value);
             }
         }
-        class ParagraphPropertyFetcherBulletFont : ParagraphPropertyFetcher<String>
+        class ParagraphPropertyFetcherBulletFont : ParagraphPropertyFetcher<string>
         {
             public ParagraphPropertyFetcherBulletFont(int level) : base(level) { }
             public override bool Fetch(CT_TextParagraphProperties props)
@@ -298,7 +298,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * @return the character to be used in place of the standard bullet point
          */
-        public String BulletCharacter
+        public string BulletCharacter
         {
             get
             {
@@ -322,7 +322,7 @@ namespace NPOI.XSSF.UserModel
                 c.@char = (value);
             }
         }
-        class ParagraphPropertyFetcherBulletCharacter : ParagraphPropertyFetcher<String>
+        class ParagraphPropertyFetcherBulletCharacter : ParagraphPropertyFetcher<string>
         {
             public ParagraphPropertyFetcherBulletCharacter(int level) : base(level) { }
             public override bool Fetch(CT_TextParagraphProperties props)
@@ -1220,7 +1220,7 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return "[" + this.GetType().ToString() + "]" + Text;
         }

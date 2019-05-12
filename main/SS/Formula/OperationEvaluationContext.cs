@@ -64,7 +64,7 @@ namespace NPOI.SS.Formula
             return CreateExternSheetRefEvaluator(ptg.ExternSheetIndex);
         }
 
-        SheetRangeEvaluator CreateExternSheetRefEvaluator(String firstSheetName, String lastSheetName, int externalWorkbookNumber)
+        SheetRangeEvaluator CreateExternSheetRefEvaluator(string firstSheetName, string lastSheetName, int externalWorkbookNumber)
         {
             ExternalSheet externalSheet = _workbook.GetExternalSheet(firstSheetName, lastSheetName, externalWorkbookNumber);
             return CreateExternSheetRefEvaluator(externalSheet);
@@ -88,14 +88,14 @@ namespace NPOI.SS.Formula
 
                 if (externalSheet is ExternalSheetRange)
                 {
-                    String lastSheetName = ((ExternalSheetRange)externalSheet).LastSheetName;
+                    string lastSheetName = ((ExternalSheetRange)externalSheet).LastSheetName;
                     otherLastSheetIndex = _workbook.GetSheetIndex(lastSheetName);
                 }
             }
             else
             {
                 // look up sheet by name from external workbook
-                String workbookName = externalSheet.WorkbookName;
+                string workbookName = externalSheet.WorkbookName;
                 try
                 {
                     targetEvaluator = _bookEvaluator.GetOtherWorkbookEvaluator(workbookName);
@@ -108,7 +108,7 @@ namespace NPOI.SS.Formula
                 otherFirstSheetIndex = targetEvaluator.GetSheetIndex(externalSheet.SheetName);
                 if (externalSheet is ExternalSheetRange)
                 {
-                    String lastSheetName = ((ExternalSheetRange)externalSheet).LastSheetName;
+                    string lastSheetName = ((ExternalSheetRange)externalSheet).LastSheetName;
                     otherLastSheetIndex = targetEvaluator.GetSheetIndex(lastSheetName);
                 }
 
@@ -138,7 +138,7 @@ namespace NPOI.SS.Formula
         /**
          * @return <code>null</code> if either workbook or sheet is not found
          */
-        private SheetRefEvaluator CreateExternSheetRefEvaluator(String workbookName, String sheetName)
+        private SheetRefEvaluator CreateExternSheetRefEvaluator(string workbookName, string sheetName)
         {
             WorkbookEvaluator targetEvaluator;
             if (workbookName == null)
@@ -193,8 +193,8 @@ namespace NPOI.SS.Formula
          * TODO - currently POI only supports 'A1' reference style
          * @return a {@link RefEval} or {@link AreaEval}
          */
-        public ValueEval GetDynamicReference(String workbookName, String sheetName, String refStrPart1,
-                String refStrPart2, bool isA1Style)
+        public ValueEval GetDynamicReference(string workbookName, string sheetName, string refStrPart1,
+                string refStrPart2, bool isA1Style)
         {
             if (!isA1Style)
             {
@@ -301,17 +301,17 @@ namespace NPOI.SS.Formula
             return new LazyAreaEval(firstRow, firstCol, lastRow, lastCol, sre);
         }
 
-        private static int ParseRowRef(String refStrPart)
+        private static int ParseRowRef(string refStrPart)
         {
             return CellReference.ConvertColStringToIndex(refStrPart);
         }
 
-        private static int ParseColRef(String refStrPart)
+        private static int ParseColRef(string refStrPart)
         {
-            return Int32.Parse(refStrPart, CultureInfo.InvariantCulture) - 1;
+            return int.Parse(refStrPart, CultureInfo.InvariantCulture) - 1;
         }
 
-        private static NameType ClassifyCellReference(String str, SpreadsheetVersion ssVersion)
+        private static NameType ClassifyCellReference(string str, SpreadsheetVersion ssVersion)
         {
             int len = str.Length;
             if (len < 1)
@@ -321,7 +321,7 @@ namespace NPOI.SS.Formula
             return CellReference.ClassifyCellReference(str, ssVersion);
         }
 
-        public FreeRefFunction FindUserDefinedFunction(String functionName)
+        public FreeRefFunction FindUserDefinedFunction(string functionName)
         {
             return _bookEvaluator.FindUserDefinedFunction(functionName);
         }
@@ -368,7 +368,7 @@ namespace NPOI.SS.Formula
                 return GetLocalNameXEval(nameXPtg);
             }
             // Look it up for the external workbook
-            String workbookName = externSheet.WorkbookName;
+            string workbookName = externSheet.WorkbookName;
             ExternalName externName = _workbook.GetExternalName(
                   nameXPtg.SheetRefIndex,
                   nameXPtg.NameIndex
@@ -385,7 +385,7 @@ namespace NPOI.SS.Formula
             }
 
             // Look it up for the external workbook
-            String workbookName = externSheet.WorkbookName;
+            string workbookName = externSheet.WorkbookName;
             ExternalName externName = _workbook.GetExternalName(
                   nameXPxg.NameName,
                   nameXPxg.SheetName,
@@ -403,7 +403,7 @@ namespace NPOI.SS.Formula
             }
 
             // Is it a name or a function?
-            String name = nameXPxg.NameName;
+            string name = nameXPxg.NameName;
             IEvaluationName evalName = _workbook.GetName(name, sIdx);
             if (evalName != null)
             {
@@ -418,7 +418,7 @@ namespace NPOI.SS.Formula
         }
         private ValueEval GetLocalNameXEval(NameXPtg nameXPtg)
         {
-            String name = _workbook.ResolveNameXText(nameXPtg);
+            string name = _workbook.ResolveNameXText(nameXPtg);
 
             // Try to parse it as a name
             int sheetNameAt = name.IndexOf('!');
@@ -426,8 +426,8 @@ namespace NPOI.SS.Formula
             if (sheetNameAt > -1)
             {
                 // Sheet based name
-                String sheetName = name.Substring(0, sheetNameAt);
-                String nameName = name.Substring(sheetNameAt + 1);
+                string sheetName = name.Substring(0, sheetNameAt);
+                string nameName = name.Substring(sheetNameAt + 1);
                 evalName = _workbook.GetName(nameName, _workbook.GetSheetIndex(sheetName));
             }
             else
@@ -449,7 +449,7 @@ namespace NPOI.SS.Formula
         }
 
         // Fetch the workbook this refers to, and the name as defined with that
-        private ValueEval GetExternalNameXEval(ExternalName externName, String workbookName)
+        private ValueEval GetExternalNameXEval(ExternalName externName, string workbookName)
         {
             try
             {

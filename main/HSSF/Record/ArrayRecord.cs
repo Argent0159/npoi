@@ -104,7 +104,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name).Append(" [ARRAY]\n");
@@ -122,7 +122,7 @@ namespace NPOI.HSSF.Record
             return sb.ToString();
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             ArrayRecord rec = new ArrayRecord(_formula.Copy(), Range);
 

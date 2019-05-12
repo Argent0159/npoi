@@ -501,7 +501,7 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="id">The property ID</param>
         /// <returns>The property value</returns>
-        public virtual Object GetProperty(int id)
+        public virtual object GetProperty(int id)
         {
             return FirstSection.GetProperty(id);
         }
@@ -606,7 +606,7 @@ namespace NPOI.HPSF
         ///  if the objects are equal, 
         /// <c>false</c>
         /// if not</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is PropertySet))
                 return false;
@@ -653,7 +653,7 @@ namespace NPOI.HPSF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder b = new StringBuilder();
             int sectionCount = SectionCount;

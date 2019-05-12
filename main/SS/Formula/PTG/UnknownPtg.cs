@@ -55,7 +55,7 @@ namespace NPOI.SS.Formula.PTG
             get { return size; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return "UNKNOWN";
         }
@@ -64,7 +64,7 @@ namespace NPOI.SS.Formula.PTG
             get { return Ptg.CLASS_VALUE; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             return new UnknownPtg();
         }

@@ -315,7 +315,7 @@ namespace NPOI.HSSF.UserModel
                     lrec.XFIndex = styleIndex;
                     if (setValue)
                     {
-                        String str = ConvertCellValueToString();
+                        string str = ConvertCellValueToString();
                         int sstIndex = book.Workbook.AddSSTString(new UnicodeString(str));
                         lrec.SSTIndex = (sstIndex);
                         UnicodeString us = book.Workbook.GetSSTString(sstIndex);
@@ -405,7 +405,7 @@ namespace NPOI.HSSF.UserModel
                 return cellType;
             }
         }
-        private String ConvertCellValueToString()
+        private string ConvertCellValueToString()
         {
 
             switch (cellType)
@@ -508,7 +508,7 @@ namespace NPOI.HSSF.UserModel
         /// string, for String cells we'll Set its value.  For other types we will
         /// Change the cell to a string cell and Set its value.
         /// If value is null then we will Change the cell to a Blank cell.</param>
-        public void SetCellValue(String value)
+        public void SetCellValue(string value)
         {
             HSSFRichTextString str = new HSSFRichTextString(value);
             SetCellValue(str);
@@ -607,7 +607,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the cell formula.
         /// </summary>
         /// <value>The cell formula.</value>
-        public String CellFormula
+        public string CellFormula
         {
             get
             {
@@ -622,7 +622,7 @@ namespace NPOI.HSSF.UserModel
             }
         }
 
-        public void SetCellFormula(String formula)
+        public void SetCellFormula(string formula)
         {
             if (IsPartOfArrayFormulaGroup)
             {
@@ -687,7 +687,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="cellTypeCode">The cell type code.</param>
         /// <returns></returns>
-        private String GetCellTypeName(CellType cellTypeCode)
+        private string GetCellTypeName(CellType cellTypeCode)
         {
             switch (cellTypeCode)
             {
@@ -711,7 +711,7 @@ namespace NPOI.HSSF.UserModel
         /// <returns></returns>
         private Exception TypeMismatch(CellType expectedTypeCode, CellType actualTypeCode, bool isFormulaCell)
         {
-            String msg = "Cannot get a "
+            string msg = "Cannot get a "
                 + GetCellTypeName(expectedTypeCode) + " value from a "
                 + GetCellTypeName(actualTypeCode) + " " + (isFormulaCell ? "formula " : "") + "cell";
             return new InvalidOperationException(msg);
@@ -778,7 +778,7 @@ namespace NPOI.HSSF.UserModel
         /// For formulaCells that are not string Formulas, we return empty String
         /// </summary>
         /// <value>The string cell value.</value>
-        public String StringCellValue
+        public string StringCellValue
         {
             get
             {
@@ -810,7 +810,7 @@ namespace NPOI.HSSF.UserModel
                 }
                 FormulaRecordAggregate fra = ((FormulaRecordAggregate)_record);
                 CheckFormulaCachedValueType(CellType.String, fra.FormulaRecord);
-                String strVal = fra.StringValue;
+                string strVal = fra.StringValue;
                 return new HSSFRichTextString(strVal == null ? "" : strVal);
             }
         }
@@ -857,7 +857,7 @@ namespace NPOI.HSSF.UserModel
                     return ((BoolErrRecord)_record).BooleanValue;
                 case CellType.String:
                     int sstIndex = ((LabelSSTRecord)_record).SSTIndex;
-                    String text = book.Workbook.GetSSTString(sstIndex).String;
+                    string text = book.Workbook.GetSSTString(sstIndex).String;
                     return Convert.ToBoolean(text, CultureInfo.CurrentCulture);
 
                 case CellType.Numeric:
@@ -1067,7 +1067,7 @@ namespace NPOI.HSSF.UserModel
         /// Dates are Displayed in dd-MMM-yyyy format
         /// Errors are Displayed as #ERR&lt;errIdx&gt;
         /// </summary>
-        public override String ToString()
+        public override string ToString()
         {
             switch (CellType)
             {
@@ -1294,7 +1294,7 @@ namespace NPOI.HSSF.UserModel
             {
                 if (cellType != CellType.Formula)
                 {
-                    String ref1 = new CellReference(this).FormatAsString();
+                    string ref1 = new CellReference(this).FormatAsString();
                     throw new InvalidOperationException("Cell " + ref1
                         + " is not part of an array formula.");
                 }
@@ -1309,7 +1309,7 @@ namespace NPOI.HSSF.UserModel
         /// The purpose of this method is to validate the cell state prior to modification
         /// </summary>
         /// <param name="msg"></param>
-        internal void NotifyArrayFormulaChanging(String msg)
+        internal void NotifyArrayFormulaChanging(string msg)
         {
             CellRangeAddress cra = this.ArrayFormulaRange;
             if (cra.NumberOfCells > 1)
@@ -1327,7 +1327,7 @@ namespace NPOI.HSSF.UserModel
         internal void NotifyArrayFormulaChanging()
         {
             CellReference ref1 = new CellReference(this);
-            String msg = "Cell " + ref1.FormatAsString() + " is part of a multi-cell array formula. " +
+            string msg = "Cell " + ref1.FormatAsString() + " is part of a multi-cell array formula. " +
                     "You cannot change part of an array.";
             NotifyArrayFormulaChanging(msg);
         }

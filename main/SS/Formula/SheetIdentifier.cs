@@ -22,15 +22,15 @@ namespace NPOI.SS.Formula
 
     public class SheetIdentifier
     {
-        public String _bookName;
+        public string _bookName;
         public NameIdentifier _sheetIdentifier;
 
-        public SheetIdentifier(String bookName, NameIdentifier sheetIdentifier)
+        public SheetIdentifier(string bookName, NameIdentifier sheetIdentifier)
         {
             _bookName = bookName;
             _sheetIdentifier = sheetIdentifier;
         }
-        public String BookName
+        public string BookName
         {
             get
             {
@@ -59,13 +59,13 @@ namespace NPOI.SS.Formula
                 sb.Append(_sheetIdentifier.Name);
             }
         }
-        public String AsFormulaString()
+        public string AsFormulaString()
         {
             StringBuilder sb = new StringBuilder(32);
             AsFormulaString(sb);
             return sb.ToString();
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(this.GetType().Name);

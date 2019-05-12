@@ -76,11 +76,11 @@ namespace NPOI.SS.Formula
             }
         }
 
-        public String GetSheetName(int sheetIndex)
+        public string GetSheetName(int sheetIndex)
         {
             return GetSheetEvaluator(sheetIndex).SheetName;
         }
-        public String SheetNameRange
+        public string SheetNameRange
         {
             get
             {

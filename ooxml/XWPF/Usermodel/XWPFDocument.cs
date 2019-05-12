@@ -126,7 +126,7 @@ namespace NPOI.XWPF.UserModel
 
                 // Create for each XML-part in the Package a PartClass
                 foreach (POIXMLDocumentPart p in GetRelations()) {
-                    String relation = p.GetPackageRelationship().RelationshipType;
+                    string relation = p.GetPackageRelationship().RelationshipType;
                     if (relation.Equals(XWPFRelation.STYLES.Relation))
                     {
                         this.styles = (XWPFStyles)p;
@@ -224,7 +224,7 @@ namespace NPOI.XWPF.UserModel
         private void InitFootnotes()
         {
             foreach(POIXMLDocumentPart p in GetRelations()){
-               String relation = p.GetPackageRelationship().RelationshipType;
+                string relation = p.GetPackageRelationship().RelationshipType;
                if (relation.Equals(XWPFRelation.FOOTNOTE.Relation)) {
                   this.footnotes = (XWPFFootnotes)p;
                   this.footnotes.OnDocumentRead();
@@ -235,7 +235,7 @@ namespace NPOI.XWPF.UserModel
                    EndnotesDocument endnotesDocument = EndnotesDocument.Parse(xmldoc, NamespaceManager);
                    foreach (CT_FtnEdn ctFtnEdn in endnotesDocument.Endnotes.endnote)
                    {
-                       endnotes.Add(Int32.Parse(ctFtnEdn.id), new XWPFFootnote(this, ctFtnEdn));
+                       endnotes.Add(int.Parse(ctFtnEdn.id), new XWPFFootnote(this, ctFtnEdn));
                    }
                }
             }
@@ -384,12 +384,12 @@ namespace NPOI.XWPF.UserModel
             return headers[(pos)];
         }
 
-        public String GetTblStyle(XWPFTable table)
+        public string GetTblStyle(XWPFTable table)
         {
             return table.StyleID;
         }
 
-        public XWPFHyperlink GetHyperlinkByID(String id)
+        public XWPFHyperlink GetHyperlinkByID(string id)
         {
             IEnumerator<XWPFHyperlink> iter = hyperlinks.GetEnumerator();
             while (iter.MoveNext())
@@ -435,7 +435,7 @@ namespace NPOI.XWPF.UserModel
             return hyperlinks.ToArray();
         }
 
-        public XWPFComment GetCommentByID(String id)
+        public XWPFComment GetCommentByID(string id)
         {
             IEnumerator<XWPFComment> iter = comments.GetEnumerator();
             while (iter.MoveNext())
@@ -457,7 +457,7 @@ namespace NPOI.XWPF.UserModel
          * Get the document part that's defined as the
          *  given relationship of the core document.
          */
-        public PackagePart GetPartById(String id)
+        public PackagePart GetPartById(string id)
         {
             try
             {
@@ -996,12 +996,12 @@ namespace NPOI.XWPF.UserModel
             TOC toc = new TOC(block);
             foreach (XWPFParagraph par in paragraphs)
             {
-                String parStyle = par.Style;
+                string parStyle = par.Style;
                 if (parStyle != null && parStyle.StartsWith("Heading"))
                 {
                     try
                     {
-                        int level = Int32.Parse(parStyle.Substring("Heading".Length));
+                        int level = int.Parse(parStyle.Substring("Heading".Length));
                         toc.AddRow(level, par.Text, 1, "112723803");
                     }
                     catch (FormatException e)
@@ -1300,7 +1300,7 @@ namespace NPOI.XWPF.UserModel
 
         }
 
-        public String AddPictureData(byte[] pictureData, int format)
+        public string AddPictureData(byte[] pictureData, int format)
         {
             XWPFPictureData xwpfPicData = FindPackagePictureData(pictureData, format);
             POIXMLRelation relDesc = XWPFPictureData.RELATIONS[format];
@@ -1351,9 +1351,9 @@ namespace NPOI.XWPF.UserModel
                 // TODO add support for TargetMode.EXTERNAL relations.
                 TargetMode targetMode = TargetMode.Internal;
                 PackagePartName partName = picDataPart.PartName;
-                String relation = relDesc.Relation;
+                string relation = relDesc.Relation;
                 PackageRelationship relShip = GetPackagePart().AddRelationship(partName, targetMode, relation);
-                String id = relShip.Id;
+                string id = relShip.Id;
                 AddRelation(id, xwpfPicData);
                 pictures.Add(xwpfPicData);
                 return id;
@@ -1365,7 +1365,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String AddPictureData(Stream is1, int format)
+        public string AddPictureData(Stream is1, int format)
         {
             try
             {
@@ -1387,7 +1387,7 @@ namespace NPOI.XWPF.UserModel
         public int GetNextPicNameNumber(int format)
         {
             int img = AllPackagePictures.Count + 1;
-            String proposal = XWPFPictureData.RELATIONS[format].GetFileName(img);
+            string proposal = XWPFPictureData.RELATIONS[format].GetFileName(img);
             PackagePartName CreatePartName = PackagingUriHelper.CreatePartName(proposal);
             while (this.Package.GetPart(CreatePartName) != null) {
                 img++;
@@ -1402,7 +1402,7 @@ namespace NPOI.XWPF.UserModel
          * @param blipID
          * @return XWPFPictureData of a specificID
          */
-        public XWPFPictureData GetPictureDataByID(String blipID)
+        public XWPFPictureData GetPictureDataByID(string blipID)
         {
             POIXMLDocumentPart relatedPart = GetRelationById(blipID);
             if (relatedPart is XWPFPictureData)

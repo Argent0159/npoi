@@ -34,7 +34,7 @@ namespace NPOI.SS.Format
         private bool ShowM;
         private bool ShowAmPm;
         private FormatBase dateFmt;
-        private String sFmt;
+        private string sFmt;
         private int millisecondPartLength = 0;
 
         private static readonly TimeSpan EXCEL_EPOCH_TIME;
@@ -61,7 +61,7 @@ namespace NPOI.SS.Format
             {
                 this._formatter = formatter;
             }
-            public String HandlePart(Match m, String part, CellFormatType type, StringBuilder desc)
+            public string HandlePart(Match m, string part, CellFormatType type, StringBuilder desc)
             {
 
                 int pos = desc.Length;
@@ -159,7 +159,7 @@ namespace NPOI.SS.Format
          *
          * @param format The format.
          */
-        public CellDateFormatter(String format)
+        public CellDateFormatter(string format)
             : base(format)
         {
             DatePartHandler partHandler = new DatePartHandler(this);
@@ -167,16 +167,16 @@ namespace NPOI.SS.Format
                     CellFormatType.DATE, partHandler);
             partHandler.Finish(descBuf);
             dateFmt = new SimpleDateFormat(descBuf.ToString());
-            
+
             // tweak the format pattern to pass tests on JDK 1.7,
             // See https://issues.apache.org/bugzilla/show_bug.cgi?id=53369
 
-            String ptrn = Regex.Replace(descBuf.ToString(), "((y)(?!y))(?<!yy)", "yy");
+            string ptrn = Regex.Replace(descBuf.ToString(), "((y)(?!y))(?<!yy)", "yy");
             dateFmt = new SimpleDateFormat(ptrn);
         }
 
         /** {@inheritDoc} */
-        public override void FormatValue(StringBuilder toAppendTo, Object value)
+        public override void FormatValue(StringBuilder toAppendTo, object value)
         {
             if (value == null)
                 value = 0.0;
@@ -264,7 +264,7 @@ namespace NPOI.SS.Format
          * <p/>
          * For a date, this is <tt>"mm/d/y"</tt>.
          */
-        public override void SimpleValue(StringBuilder toAppendTo, Object value)
+        public override void SimpleValue(StringBuilder toAppendTo, object value)
         {
             SIMPLE_DATE.FormatValue(toAppendTo, value);
         }

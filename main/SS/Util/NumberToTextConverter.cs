@@ -130,12 +130,12 @@ namespace NPOI.SS.Util
          * In some special cases Excel behaves quite differently.  This function attempts to reproduce
          * those results.
          */
-        public static String ToText(double value)
+        public static string ToText(double value)
         {
             return RawDoubleBitsToText(BitConverter.DoubleToInt64Bits(value));
         }
         /* namespace */
-        public static String RawDoubleBitsToText(long pRawBits)
+        public static string RawDoubleBitsToText(long pRawBits)
         {
 
             long rawBits = pRawBits;
@@ -182,7 +182,7 @@ namespace NPOI.SS.Util
         {
             NormalisedDecimal rnd = pnd.RoundUnits();
             int decExponent = rnd.GetDecimalExponent();
-            String decimalDigits;
+            string decimalDigits;
             if (Math.Abs(decExponent) > 98)
             {
                 decimalDigits = rnd.GetSignificantDecimalDigitsLastDigitRounded();
@@ -207,7 +207,7 @@ namespace NPOI.SS.Util
             }
         }
 
-        private static void FormatLessThanOne(StringBuilder sb, String decimalDigits, int decExponent,
+        private static void FormatLessThanOne(StringBuilder sb, string decimalDigits, int decExponent,
                 int countSigDigits)
         {
             int nLeadingZeros = -decExponent - 1;
@@ -233,7 +233,7 @@ namespace NPOI.SS.Util
             sb.Append(decimalDigits.Substring(0, countSigDigits));
         }
 
-        private static void FormatGreaterThanOne(StringBuilder sb, String decimalDigits, int decExponent, int countSigDigits)
+        private static void FormatGreaterThanOne(StringBuilder sb, string decimalDigits, int decExponent, int countSigDigits)
         {
 
             if (decExponent > 19)
@@ -269,7 +269,7 @@ namespace NPOI.SS.Util
             return nDigits > MAX_TEXT_LEN;
         }
 
-        private static int CountSignifantDigits(String sb)
+        private static int CountSignifantDigits(string sb)
         {
             int result = sb.Length - 1;
             while (sb[result] == '0')

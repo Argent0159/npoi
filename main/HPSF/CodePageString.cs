@@ -50,17 +50,17 @@ namespace NPOI.HPSF
             }
         }
 
-        public CodePageString(String aString, int codepage)
+        public CodePageString(string aString, int codepage)
         {
             SetJavaValue(aString, codepage);
         }
 
-        public String GetJavaValue(int codepage)
+        public string GetJavaValue(int codepage)
         {
 #if NETSTANDARD2_0
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 #endif 
-            String result;
+            string result;
             if (codepage == -1)
                 result = Encoding.UTF8.GetString(_value);
             else
@@ -89,7 +89,7 @@ namespace NPOI.HPSF
             get { return LittleEndian.INT_SIZE + _value.Length; }
         }
 
-        public void SetJavaValue(String aString, int codepage)
+        public void SetJavaValue(string aString, int codepage)
         {
             if (codepage == -1)
                 _value = Encoding.UTF8.GetBytes(aString + "\0");

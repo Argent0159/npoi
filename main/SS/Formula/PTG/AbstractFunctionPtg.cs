@@ -60,7 +60,7 @@ namespace NPOI.SS.Formula.PTG
             get { return false; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
@@ -85,7 +85,7 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public String Name
+        public string Name
         {
             get { return LookupName(_functionIndex); }
         }
@@ -98,12 +98,12 @@ namespace NPOI.SS.Formula.PTG
             get { return _functionIndex == FUNCTION_INDEX_EXTERNAL; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return Name;
         }
 
-        public override String ToFormulaString(String[] operands)
+        public override string ToFormulaString(string[] operands)
         {
             StringBuilder buf = new StringBuilder();
 
@@ -120,7 +120,7 @@ namespace NPOI.SS.Formula.PTG
             return buf.ToString();
         }
 
-        private static void AppendArgs(StringBuilder buf, int firstArgIx, String[] operands)
+        private static void AppendArgs(StringBuilder buf, int firstArgIx, string[] operands)
         {
             buf.Append('(');
             for (int i = firstArgIx; i < operands.Length; i++)
@@ -141,12 +141,12 @@ namespace NPOI.SS.Formula.PTG
          * @return <c>true</c> if the name specifies a standard worksheet function,
          *  <c>false</c> if the name should be assumed to be an external function.
          */
-        public static bool IsBuiltInFunctionName(String name)
+        public static bool IsBuiltInFunctionName(string name)
         {
             short ix = FunctionMetadataRegistry.LookupIndexByName(name.ToUpper());
             return ix >= 0;
         }
-        protected String LookupName(short index)
+        protected string LookupName(short index)
         {
             if (index == FunctionMetadataRegistry.FUNCTION_INDEX_EXTERNAL)
             {
@@ -166,7 +166,7 @@ namespace NPOI.SS.Formula.PTG
          * The name matching is case insensitive.
          * @return the standard worksheet function index if found, otherwise <c>FUNCTION_INDEX_EXTERNAL</c>
          */
-        protected static short LookupIndex(String name)
+        protected static short LookupIndex(string name)
         {
             short ix = FunctionMetadataRegistry.LookupIndexByName(name.ToUpper());
             if (ix < 0)

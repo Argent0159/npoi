@@ -63,7 +63,7 @@ namespace NPOI.XWPF.Extractor
         }
 
 
-        public override String Text
+        public override string Text
         {
             get
             {
@@ -135,14 +135,14 @@ namespace NPOI.XWPF.Extractor
 
                 // Add comments
                 XWPFCommentsDecorator decorator = new XWPFCommentsDecorator(paragraph, null);
-                String commentText = decorator.GetCommentText();
+                string commentText = decorator.GetCommentText();
                 if (commentText.Length > 0)
                 {
                     text.Append(commentText).Append('\n');
                 }
 
                 // Do endnotes and footnotes
-                String footnameText = paragraph.FootnoteText;
+                string footnameText = paragraph.FootnoteText;
                 if (footnameText != null && footnameText.Length > 0)
                 {
                     text.Append(footnameText + '\n');

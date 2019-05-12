@@ -66,7 +66,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder b = new StringBuilder();
             toString(b);

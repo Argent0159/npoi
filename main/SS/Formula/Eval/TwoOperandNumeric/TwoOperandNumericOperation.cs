@@ -36,7 +36,7 @@ namespace NPOI.SS.Formula.Eval
                         return NumberEval.ZERO;
                     }
                 }
-                if (Double.IsNaN(result) || Double.IsInfinity(result))
+                if (double.IsNaN(result) || double.IsInfinity(result))
                 {
                     return ErrorEval.NUM_ERROR;
                 }

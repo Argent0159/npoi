@@ -59,7 +59,7 @@ namespace NPOI.HSSF.Record
         private byte field_7_family;             // ?? defined by windows api logfont structure?
         private byte field_8_charset;            // ?? defined by windows api logfont structure?
         private byte field_9_zero = 0;           // must be 0
-        private String field_11_font_name;         // whoa...the font name
+        private string field_11_font_name;         // whoa...the font name
 
         public FontRecord()
         {
@@ -311,7 +311,7 @@ namespace NPOI.HSSF.Record
             field_9_zero == other.field_9_zero &&
             field_11_font_name.Equals(other.field_11_font_name);
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -423,7 +423,7 @@ namespace NPOI.HSSF.Record
          *  the record's position in the record stream
          *  matters.
          */
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (this == obj)
                 return true;

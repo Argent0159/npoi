@@ -79,7 +79,7 @@ namespace NPOI.SS.Formula.Eval.Forked
          * @param rowIndex zero based
          * @param columnIndex zero based
          */
-        public void UpdateCell(String sheetName, int rowIndex, int columnIndex, ValueEval value)
+        public void UpdateCell(string sheetName, int rowIndex, int columnIndex, ValueEval value)
         {
 
             ForkedEvaluationCell cell = _sewb.GetOrCreateUpdatableCell(sheetName, rowIndex, columnIndex);
@@ -109,7 +109,7 @@ namespace NPOI.SS.Formula.Eval.Forked
          * @param columnIndex zero based
          * @return <code>null</code> if the supplied cell is <code>null</code> or blank
          */
-        public ValueEval Evaluate(String sheetName, int rowIndex, int columnIndex)
+        public ValueEval Evaluate(string sheetName, int rowIndex, int columnIndex)
         {
             IEvaluationCell cell = _sewb.GetEvaluationCell(sheetName, rowIndex, columnIndex);
 
@@ -137,7 +137,7 @@ namespace NPOI.SS.Formula.Eval.Forked
          * with external links (for example "MyData.xls" as used in a formula "[MyData.xls]Sheet1!A1")
          * @param Evaluators all Evaluators for the full Set of workbooks required by the formulas.
          */
-        public static void SetupEnvironment(String[] workbookNames, ForkedEvaluator[] Evaluators)
+        public static void SetupEnvironment(string[] workbookNames, ForkedEvaluator[] Evaluators)
         {
             WorkbookEvaluator[] wbEvals = new WorkbookEvaluator[Evaluators.Length];
             for (int i = 0; i < wbEvals.Length; i++)

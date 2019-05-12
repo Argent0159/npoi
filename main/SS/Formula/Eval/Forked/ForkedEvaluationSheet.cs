@@ -127,7 +127,7 @@ namespace NPOI.SS.Formula.Eval.Forked
                 _columnIndex = columnIndex;
             }
 
-            public override bool Equals(Object obj)
+            public override bool Equals(object obj)
             {
                 //assert obj is RowColKey : "these private cache key instances are only Compared to themselves";
                 RowColKey other = (RowColKey)obj;

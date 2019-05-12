@@ -89,7 +89,7 @@ namespace NPOI.HSSF.Record
          * Cloning of drawing records must be executed through HSSFPatriarch, because all id's must be changed
          * @return cloned drawing records
          */
-        public override Object Clone()
+        public override object Clone()
         {
             DrawingRecord rec = new DrawingRecord();
 
@@ -102,7 +102,7 @@ namespace NPOI.HSSF.Record
             return rec;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return "DrawingRecord[" + recordData.Length + "]";
         }

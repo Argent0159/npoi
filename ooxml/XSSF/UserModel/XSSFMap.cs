@@ -60,7 +60,7 @@ namespace NPOI.XSSF.UserModel
 
         public CT_Schema GetCTSchema()
         {
-            String schemaId = ctMap.SchemaID;
+            string schemaId = ctMap.SchemaID;
             return mapInfo.GetCTSchemaById(schemaId);
         }
 

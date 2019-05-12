@@ -75,7 +75,7 @@ namespace NPOI.POIFS.FileSystem
          * @param name the name of the POIFSDocument
          * @param stream the InputStream we read data from
          */
-        public NPOIFSDocument(String name, NPOIFSFileSystem filesystem, Stream stream)
+        public NPOIFSDocument(string name, NPOIFSFileSystem filesystem, Stream stream)
         {
             this._filesystem = filesystem;
             // sotre it
@@ -145,7 +145,7 @@ namespace NPOI.POIFS.FileSystem
             return length;
         }
 
-        public NPOIFSDocument(String name, int size, NPOIFSFileSystem filesystem, POIFSWriterListener Writer)
+        public NPOIFSDocument(string name, int size, NPOIFSFileSystem filesystem, POIFSWriterListener Writer)
         {
             this._filesystem = filesystem;
 
@@ -163,7 +163,7 @@ namespace NPOI.POIFS.FileSystem
             Stream innerOs = _stream.GetOutputStream();
             DocumentOutputStream os = new DocumentOutputStream(innerOs, size);
             POIFSDocumentPath path = new POIFSDocumentPath(name.Split(new string[] { "\\\\" }, StringSplitOptions.RemoveEmptyEntries));
-            String docName = path.GetComponent(path.Length - 1);
+            string docName = path.GetComponent(path.Length - 1);
             POIFSWriterEvent event1 = new POIFSWriterEvent(os, path, docName, size);
             Writer.ProcessPOIFSWriterEvent(event1);
             innerOs.Close();
@@ -240,10 +240,10 @@ namespace NPOI.POIFS.FileSystem
          *
          * @return an array of Object; may not be null, but may be empty
          */
-        protected Object[] GetViewableArray()
+        protected object[] GetViewableArray()
         {
-            Object[] results = new Object[1];
-            String result;
+            object[] results = new object[1];
+            string result;
 
             try
             {
@@ -296,7 +296,7 @@ namespace NPOI.POIFS.FileSystem
     *
     * @return short description
     */
-        protected String GetShortDescription()
+        protected string GetShortDescription()
         {
             StringBuilder buffer = new StringBuilder();
 

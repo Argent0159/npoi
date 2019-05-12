@@ -70,7 +70,7 @@ namespace NPOI.HSSF.Record.Chart
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

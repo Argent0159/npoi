@@ -161,7 +161,7 @@ namespace NPOI.HSSF.UserModel
          * with external links (for example "MyData.xls" as used in a formula "[MyData.xls]Sheet1!A1")
          * @param evaluators all evaluators for the full set of workbooks required by the formulas. 
          */
-        public static void SetupEnvironment(String[] workbookNames, HSSFFormulaEvaluator[] evaluators)
+        public static void SetupEnvironment(string[] workbookNames, HSSFFormulaEvaluator[] evaluators)
         {
             WorkbookEvaluator[] wbEvals = new WorkbookEvaluator[evaluators.Length];
             for (int i = 0; i < wbEvals.Length; i++)
@@ -171,7 +171,7 @@ namespace NPOI.HSSF.UserModel
             CollaboratingWorkbooksEnvironment.Setup(workbookNames, wbEvals);
         }
 
-        public void SetupReferencedWorkbooks(Dictionary<String, IFormulaEvaluator> evaluators)
+        public void SetupReferencedWorkbooks(Dictionary<string, IFormulaEvaluator> evaluators)
         {
             CollaboratingWorkbooksEnvironment.SetupFormulaEvaluator(evaluators);
         }

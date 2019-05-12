@@ -52,12 +52,12 @@ namespace NPOI.XWPF.Model
             }
         }
 
-        public String GetCommentText()
+        public string GetCommentText()
         {
             return commentText.ToString();
         }
 
-        public override String Text
+        public override string Text
         {
             get
             {

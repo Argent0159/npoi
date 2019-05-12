@@ -395,7 +395,7 @@ namespace NPOI.XSSF.Streaming
         }
         
         //TODO: not implemented correctly in poi 3.16 beta
-        private CellType ComputeTypeFromFormula(String formula)
+        private CellType ComputeTypeFromFormula(string formula)
         {
             return CellType.Numeric;
         }
@@ -418,7 +418,7 @@ namespace NPOI.XSSF.Streaming
 
                 if (_value.GetType() == CellType.Formula)
                     if (_value is NumericFormulaValue) {
-                    ((NumericFormulaValue)_value).PreEvaluatedValue = Double.Parse(value);
+                    ((NumericFormulaValue)_value).PreEvaluatedValue = double.Parse(value);
                 } else {
                     ((StringFormulaValue)_value).Value = value;
                 }
@@ -478,13 +478,13 @@ namespace NPOI.XSSF.Streaming
 
         public void SetCellValue(double value)
         {
-            if (Double.IsInfinity(value))
+            if (double.IsInfinity(value))
             {
                 // Excel does not support positive/negative infinities,
                 // rather, it gives a #DIV/0! error in these cases.
                 SetCellErrorValue(FormulaError.DIV0.Code);
             }
-            else if (Double.IsNaN(value))
+            else if (double.IsNaN(value))
             {
                 SetCellErrorValue(FormulaError.NUM.Code);
             }
@@ -639,7 +639,7 @@ namespace NPOI.XSSF.Streaming
                         if (_value != null)
                         {
                             // if a cell is not blank then convert the old value to string
-                            String str = convertCellValueToString();
+                            string str = convertCellValueToString();
                             sval.Value = str;
                         }
                         _value = sval;
@@ -733,8 +733,8 @@ namespace NPOI.XSSF.Streaming
                     return BooleanCellValue;
                 case CellType.String:
 
-                    String text = StringCellValue;
-                    return Boolean.Parse(text);
+                    string text = StringCellValue;
+                    return bool.Parse(text);
                 case CellType.Numeric:
                     return NumericCellValue != 0;
                 case CellType.Error:
@@ -744,12 +744,12 @@ namespace NPOI.XSSF.Streaming
             }
 
         }
-        private String convertCellValueToString()
+        private string convertCellValueToString()
         {
             CellType cellType = _value.GetType();
             return convertCellValueToString(cellType);
         }
-        private String convertCellValueToString(CellType cellType)
+        private string convertCellValueToString(CellType cellType)
         {
             switch (cellType)
             {

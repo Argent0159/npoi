@@ -173,7 +173,7 @@ namespace NPOI
         /// </summary>
         /// <param name="setName">Name of the set.</param>
         /// <returns></returns>
-        protected PropertySet GetPropertySet(String setName)
+        protected PropertySet GetPropertySet(string setName)
         {
             //directory can be null when creating new documents
             if (directory == null || !directory.HasEntry(setName)) return null;
@@ -248,7 +248,7 @@ namespace NPOI
         /// <param name="name">the (POIFS Level) name of the property to Write.</param>
         /// <param name="Set">the PropertySet to Write out.</param>
         /// <param name="outFS">the POIFSFileSystem to Write the property into.</param>
-        protected void WritePropertySet(String name, PropertySet Set, POIFSFileSystem outFS)
+        protected void WritePropertySet(string name, PropertySet Set, POIFSFileSystem outFS)
         {
             try
             {
@@ -284,7 +284,7 @@ namespace NPOI
         /// <param name="excepts">a list of Strings specifying what nodes NOT to copy</param>
         [Obsolete]
         protected void CopyNodes(POIFSFileSystem source, POIFSFileSystem target,
-                                  List<String> excepts)
+                                  List<string> excepts)
         {
             EntryUtils.CopyNodes(source, target, excepts);
         }
@@ -296,7 +296,7 @@ namespace NPOI
         /// <param name="excepts">a list of Strings specifying what nodes NOT to copy</param>
         [Obsolete]
         protected void CopyNodes(DirectoryNode sourceRoot,
-                DirectoryNode targetRoot, List<String> excepts)
+                DirectoryNode targetRoot, List<string> excepts)
         {
             EntryUtils.CopyNodes(sourceRoot, targetRoot, excepts);
         }
@@ -310,7 +310,7 @@ namespace NPOI
         /// <returns>
         /// 	<c>true</c> if [is in list] [the specified entry]; otherwise, <c>false</c>.
         /// </returns>
-        private bool isInList(String entry, IList list)
+        private bool isInList(string entry, IList list)
         {
             for (int k = 0; k < list.Count; k++)
             {

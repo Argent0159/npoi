@@ -1743,7 +1743,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
             if (node.Attributes["longText"] != null)
                 ctObj.longText = XmlHelper.ReadBool(node.Attributes["longText"]);
-            ctObj.Items = new List<Object>();
+            ctObj.Items = new List<object>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "n")

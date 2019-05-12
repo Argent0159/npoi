@@ -98,7 +98,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="o">The o.</param>
         /// <returns></returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (this == o) return true;
             if (!(o is EscherSimpleProperty)) return false;
@@ -128,7 +128,7 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             return "propNum: " + PropertyNumber
                     + ", RAW: 0x" + HexDump.ToHex(Id)
@@ -137,7 +137,7 @@ namespace NPOI.DDF
                     + ", blipId: " + IsBlipId
                     + ", value: " + propertyValue + " (0x" + HexDump.ToHex(propertyValue) + ")";
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(GetType().Name).Append(" id=\"0x").Append(HexDump.ToHex(Id))

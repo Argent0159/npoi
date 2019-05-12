@@ -40,10 +40,10 @@ namespace NPOI.HSSF.Util
         {
 
             private HSSFWorkbook _workbook;
-            private String _propertyName;
+            private string _propertyName;
             private short _propertyValue;
 
-            public CellPropertySetter(HSSFWorkbook workbook, String propertyName, int value)
+            public CellPropertySetter(HSSFWorkbook workbook, string propertyName, int value)
             {
                 _workbook = workbook;
                 _propertyName = propertyName;

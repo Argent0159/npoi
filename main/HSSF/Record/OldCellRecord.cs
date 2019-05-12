@@ -110,10 +110,10 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            String recordName = this.RecordName;
+            string recordName = this.RecordName;
 
             sb.Append("[").Append(recordName).Append("]\n");
             sb.Append("    .row    = ").Append(HexDump.ShortToHex(Row)).Append("\n");
@@ -142,7 +142,7 @@ namespace NPOI.HSSF.Record
         /**
          * Gets the debug info BIFF record type name (used by {@link #ToString()}.
          */
-        protected abstract String RecordName { get; }
+        protected abstract string RecordName { get; }
     }
 
 }

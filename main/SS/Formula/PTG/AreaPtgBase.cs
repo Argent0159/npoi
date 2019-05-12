@@ -58,7 +58,7 @@ namespace NPOI.SS.Formula.PTG
         private static BitField colRelative = BitFieldFactory.GetInstance(0x4000);
         private static BitField columnMask = BitFieldFactory.GetInstance(0x3FFF);
 
-        protected AreaPtgBase(String arearef)
+        protected AreaPtgBase(string arearef)
             : this(new AreaReference(arearef)) 
         {
             //AreaReference ar = new AreaReference(arearef);
@@ -255,7 +255,7 @@ namespace NPOI.SS.Formula.PTG
             field_4_last_column = column;
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return FormatReferenceAsString();
         }
@@ -265,7 +265,7 @@ namespace NPOI.SS.Formula.PTG
             get { return Ptg.CLASS_REF; }
         }
 
-        protected String FormatReferenceAsString()
+        protected string FormatReferenceAsString()
         {
             CellReference topLeft = new CellReference(FirstRow, FirstColumn, !IsFirstRowRelative, !IsFirstColRelative);
             CellReference botRight = new CellReference(LastRow, LastColumn, !IsLastRowRelative, !IsLastColRelative);

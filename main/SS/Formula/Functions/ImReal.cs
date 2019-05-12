@@ -55,16 +55,16 @@ namespace NPOI.SS.Formula.Functions
             {
                 return e.GetErrorEval();
             }
-            String iNumber = OperandResolver.CoerceValueToString(veText1);
+            string iNumber = OperandResolver.CoerceValueToString(veText1);
 
             System.Text.RegularExpressions.Match m = Imaginary.COMPLEX_NUMBER_PATTERN.Match(iNumber);
             //bool result = m.matches();
             bool result = m.Success && !string.IsNullOrEmpty(m.Groups[0].Value);
 
-            String real = "";
+            string real = "";
             if (result == true)
             {
-                String realGroup = m.Groups[(2)].Value;
+                string realGroup = m.Groups[(2)].Value;
                 bool hasRealPart = realGroup.Length != 0;
 
                 if (realGroup.Length == 0)
@@ -74,14 +74,14 @@ namespace NPOI.SS.Formula.Functions
 
                 if (hasRealPart)
                 {
-                    String sign = "";
-                    String realSign = m.Groups[(Imaginary.GROUP1_REAL_SIGN)].Value;
+                    string sign = "";
+                    string realSign = m.Groups[(Imaginary.GROUP1_REAL_SIGN)].Value;
                     if (realSign.Length != 0 && !(realSign.Equals("+")))
                     {
                         sign = realSign;
                     }
 
-                    String groupRealNumber = m.Groups[(Imaginary.GROUP2_IMAGINARY_INTEGER_OR_DOUBLE)].Value;
+                    string groupRealNumber = m.Groups[(Imaginary.GROUP2_IMAGINARY_INTEGER_OR_DOUBLE)].Value;
                     if (groupRealNumber.Length != 0)
                     {
                         real = sign + groupRealNumber;

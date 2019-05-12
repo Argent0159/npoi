@@ -25,7 +25,7 @@ namespace NPOI.SS.Formula.Functions
      */
     public class BaseNumberUtils
     {
-        public static double ConvertToDecimal(String value, int base1, int maxNumberOfPlaces)
+        public static double ConvertToDecimal(string value, int base1, int maxNumberOfPlaces)
         {
             if (string.IsNullOrEmpty(value))
             {

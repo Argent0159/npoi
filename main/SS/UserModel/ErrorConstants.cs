@@ -52,7 +52,7 @@ namespace NPOI.SS.UserModel
          * @throws ArgumentException if the specified error code is not one of the 7 
          * standard error codes
          */
-        public static String GetText(int errorCode)
+        public static string GetText(int errorCode)
         {
             switch (errorCode)
             {

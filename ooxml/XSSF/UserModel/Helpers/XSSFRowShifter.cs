@@ -115,13 +115,13 @@ namespace NPOI.XSSF.UserModel.Helpers
             for (int i = 0; i < wb.NumberOfNames; i++)
             {
                 IName name = wb.GetNameAt(i);
-                String formula = name.RefersToFormula;
+                string formula = name.RefersToFormula;
                 int sheetIndex = name.SheetIndex;
 
                 Ptg[] ptgs = FormulaParser.Parse(formula, fpb, FormulaType.NamedRange, sheetIndex);
                 if (shifter.AdjustFormula(ptgs, sheetIndex))
                 {
-                    String shiftedFmla = FormulaRenderer.ToFormulaString(fpb, ptgs);
+                    string shiftedFmla = FormulaRenderer.ToFormulaString(fpb, ptgs);
                     name.RefersToFormula = shiftedFmla;
                 }
 
@@ -164,10 +164,10 @@ namespace NPOI.XSSF.UserModel.Helpers
                 if (ctCell.IsSetF())
                 {
                     CT_CellFormula f = ctCell.f;
-                    String formula = f.Value;
+                    string formula = f.Value;
                     if (formula.Length > 0)
                     {
-                        String ShiftedFormula = ShiftFormula(row, formula, Shifter);
+                        string ShiftedFormula = ShiftFormula(row, formula, Shifter);
                         if (ShiftedFormula != null)
                         {
                             f.Value = (ShiftedFormula);
@@ -182,8 +182,8 @@ namespace NPOI.XSSF.UserModel.Helpers
 
                     if (f.isSetRef())
                     { //Range of cells which the formula applies to.
-                        String ref1 = f.@ref;
-                        String ShiftedRef = ShiftFormula(row, ref1, Shifter);
+                        string ref1 = f.@ref;
+                        string ShiftedRef = ShiftFormula(row, ref1, Shifter);
                         if (ShiftedRef != null) f.@ref = ShiftedRef;
                     }
                 }
@@ -200,7 +200,7 @@ namespace NPOI.XSSF.UserModel.Helpers
          * @return the Shifted formula if the formula was Changed,
          *         <code>null</code> if the formula wasn't modified
          */
-        private static String ShiftFormula(XSSFRow row, String formula, FormulaShifter Shifter)
+        private static string ShiftFormula(XSSFRow row, string formula, FormulaShifter Shifter)
         {
             ISheet sheet = row.Sheet;
             IWorkbook wb = sheet.Workbook;
@@ -209,7 +209,7 @@ namespace NPOI.XSSF.UserModel.Helpers
             try
             {
                 Ptg[] ptgs = FormulaParser.Parse(formula, fpb, FormulaType.Cell, sheetIndex);
-                String ShiftedFmla = null;
+                string ShiftedFmla = null;
                 if (Shifter.AdjustFormula(ptgs, sheetIndex))
                 {
                     ShiftedFmla = FormulaRenderer.ToFormulaString(fpb, ptgs);
@@ -239,7 +239,7 @@ namespace NPOI.XSSF.UserModel.Helpers
                 CT_ConditionalFormatting cf = conditionalFormattingArray[j];
 
                 List<CellRangeAddress> cellRanges = new List<CellRangeAddress>();
-                String[] regions = cf.sqref.ToString().Split(new char[] { ' ' });
+                string[] regions = cf.sqref.ToString().Split(new char[] { ' ' });
                 for (int i = 0; i < regions.Length; i++)
                 {
                     cellRanges.Add(CellRangeAddress.ValueOf(regions[i]));
@@ -284,14 +284,14 @@ namespace NPOI.XSSF.UserModel.Helpers
 
                 foreach (CT_CfRule cfRule in cf.cfRule)
                 {
-                    List<String> formulas = cfRule.formula;
+                    List<string> formulas = cfRule.formula;
                     for (int i = 0; i < formulas.Count; i++)
                     {
-                        String formula = formulas[i];
+                        string formula = formulas[i];
                         Ptg[] ptgs = FormulaParser.Parse(formula, fpb, FormulaType.Cell, sheetIndex);
                         if (Shifter.AdjustFormula(ptgs, sheetIndex))
                         {
-                            String ShiftedFmla = FormulaRenderer.ToFormulaString(fpb, ptgs);
+                            string ShiftedFmla = FormulaRenderer.ToFormulaString(fpb, ptgs);
                             formulas[i] = ShiftedFmla;
                         }
                     }

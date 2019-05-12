@@ -47,7 +47,7 @@ namespace NPOI.XSSF.UserModel
         private List<XSSFXmlColumnPr> xmlColumnPr;
         private CellReference startCellReference;
         private CellReference endCellReference;
-        private String commonXPath;
+        private string commonXPath;
 
 
         public XSSFTable()
@@ -136,7 +136,7 @@ namespace NPOI.XSSF.UserModel
          * 
          * @return the xpath of the table's root element
          */
-        public String GetCommonXpath()
+        public string GetCommonXpath()
         {
 
             if (commonXPath == null)
@@ -148,8 +148,8 @@ namespace NPOI.XSSF.UserModel
                 {
                     if (column.xmlColumnPr != null)
                     {
-                        String xpath = column.xmlColumnPr.xpath;
-                        String[] tokens = xpath.Split(new char[] { '/' });
+                        string xpath = column.xmlColumnPr.xpath;
+                        string[] tokens = xpath.Split(new char[] { '/' });
                         if (commonTokens==null)
                         {
                             commonTokens = tokens;
@@ -208,7 +208,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * @return the name of the Table, if set
          */
-        public String Name
+        public string Name
         {
             get
             {
@@ -223,7 +223,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * @return the display name of the Table, if set
          */
-        public String DisplayName
+        public string DisplayName
         {
             get
             {
@@ -258,10 +258,10 @@ namespace NPOI.XSSF.UserModel
 
             if (startCellReference == null)
             {
-                String ref1 = ctTable.@ref;
+                string ref1 = ctTable.@ref;
                 if(ref1 != null) {
-                    String[] boundaries = ref1.Split(":".ToCharArray());
-                    String from = boundaries[0];
+                    string[] boundaries = ref1.Split(":".ToCharArray());
+                    string from = boundaries[0];
                     startCellReference = new CellReference(from);
                 }
             }
@@ -279,9 +279,9 @@ namespace NPOI.XSSF.UserModel
             if (endCellReference == null)
             {
 
-                String ref1 = ctTable.@ref;
-                String[] boundaries = ref1.Split(new char[] { ':' });
-                String from = boundaries[1];
+                string ref1 = ctTable.@ref;
+                string[] boundaries = ref1.Split(new char[] { ':' });
+                string from = boundaries[1];
                 endCellReference = new CellReference(from);
             }
             return endCellReference;

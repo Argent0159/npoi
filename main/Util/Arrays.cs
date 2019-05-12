@@ -172,7 +172,7 @@ namespace NPOI.Util
          * @param a2 the other array to be tested for equality
          * @return <c>true</c> if the two arrays are equal
          */
-        public static bool Equals(Object[] a, Object[] a2)
+        public static bool Equals(object[] a, object[] a2)
         {
             if (a == a2)
                 return true;
@@ -185,8 +185,8 @@ namespace NPOI.Util
 
             for (int i = 0; i < length; i++)
             {
-                Object o1 = a[i];
-                Object o2 = a2[i];
+                object o1 = a[i];
+                object o2 = a2[i];
                 if (!(o1 == null ? o2 == null : o1.Equals(o2)))
                     return false;
             }
@@ -200,7 +200,7 @@ namespace NPOI.Util
         /// <param name="moveFrom">The (0 based) index of the first entry to move</param>
         /// <param name="moveTo">The (0 based) index of the positition to move to</param>
         /// <param name="numToMove">The number of entries to move</param>
-        public static void ArrayMoveWithin(Object[] array, int moveFrom, int moveTo, int numToMove)
+        public static void ArrayMoveWithin(object[] array, int moveFrom, int moveTo, int numToMove)
         {
             // If we're not asked to do anything, return now
             if (numToMove <= 0) { return; }
@@ -225,17 +225,17 @@ namespace NPOI.Util
             }
 
             // Grab the bit to move 
-            Object[] toMove = new Object[numToMove];
+            object[] toMove = new object[numToMove];
             Array.Copy(array, moveFrom, toMove, 0, numToMove);
 
             // Grab the bit to be shifted
-            Object[] toShift;
+            object[] toShift;
             int shiftTo;
             if (moveFrom > moveTo)
             {
                 // Moving to an earlier point in the array
                 // Grab everything between the two points
-                toShift = new Object[(moveFrom - moveTo)];
+                toShift = new object[(moveFrom - moveTo)];
                 Array.Copy(array, moveTo, toShift, 0, toShift.Length);
                 shiftTo = moveTo + numToMove;
             }
@@ -243,7 +243,7 @@ namespace NPOI.Util
             {
                 // Moving to a later point in the array
                 // Grab everything from after the toMove block, to the new point
-                toShift = new Object[(moveTo - moveFrom)];
+                toShift = new object[(moveTo - moveFrom)];
                 Array.Copy(array, moveFrom + numToMove, toShift, 0, toShift.Length);
                 shiftTo = moveFrom;
             }
@@ -537,13 +537,13 @@ namespace NPOI.Util
          * @see #deepHashCode(Object[])
          * @since 1.5
          */
-        public static int HashCode(Object[] a) {
+        public static int HashCode(object[] a) {
             if (a == null)
                 return 0;
 
             int result = 1;
 
-            foreach (Object element in a)
+            foreach (object element in a)
                 result = 31 * result + (element == null ? 0 : element.GetHashCode());
 
             return result;
@@ -578,16 +578,16 @@ namespace NPOI.Util
          * @see #hashCode(Object[])
          * @since 1.5
          */
-        public static int DeepHashCode(Object[] a) {
+        public static int DeepHashCode(object[] a) {
             if (a == null)
                 return 0;
 
             int result = 1;
 
-            foreach (Object element in a) {
+            foreach (object element in a) {
                 int elementHash = 0;
-                if (element is Object[])
-                    elementHash = DeepHashCode((Object[]) element);
+                if (element is object[])
+                    elementHash = DeepHashCode((object[]) element);
                 else if (element is byte[])
                     elementHash = HashCode((byte[]) element);
                 else if (element is short[])
@@ -648,7 +648,7 @@ namespace NPOI.Util
          * @see Objects#deepEquals(Object, Object)
          * @since 1.5
          */
-        public static bool DeepEquals(Object[] a1, Object[] a2) {
+        public static bool DeepEquals(object[] a1, object[] a2) {
             if (a1 == a2)
                 return true;
             if (a1 == null || a2==null)
@@ -658,8 +658,8 @@ namespace NPOI.Util
                 return false;
 
             for (int i = 0; i < length; i++) {
-                Object e1 = a1[i];
-                Object e2 = a2[i];
+                object e1 = a1[i];
+                object e2 = a2[i];
 
                 if (e1 == e2)
                     continue;
@@ -675,10 +675,10 @@ namespace NPOI.Util
             return true;
         }
 
-        static bool DeepEquals0(Object e1, Object e2) {
+        static bool DeepEquals0(object e1, object e2) {
             bool eq;
-            if (e1 is Object[] && e2 is Object[])
-                eq = DeepEquals ((Object[]) e1, (Object[]) e2);
+            if (e1 is object[] && e2 is object[])
+                eq = DeepEquals ((object[]) e1, (object[]) e2);
             else if (e1 is byte[] && e2 is byte[])
                 eq = Equals((byte[]) e1, (byte[]) e2);
             else if (e1 is short[] && e2 is short[])
@@ -713,7 +713,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(long[] a) {
+        public static string ToString(long[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -743,7 +743,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(int[] a) {
+        public static string ToString(int[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -773,7 +773,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(short[] a) {
+        public static string ToString(short[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -803,7 +803,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(char[] a) {
+        public static string ToString(char[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -833,7 +833,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(byte[] a) {
+        public static string ToString(byte[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -863,7 +863,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(bool[] a) {
+        public static string ToString(bool[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -893,7 +893,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(float[] a) {
+        public static string ToString(float[] a) {
             if (a == null)
                 return "null";
 
@@ -924,7 +924,7 @@ namespace NPOI.Util
          * @return a string representation of <tt>a</tt>
          * @since 1.5
          */
-        public static String ToString(double[] a) {
+        public static string ToString(double[] a) {
             if (a == null)
                 return "null";
             int iMax = a.Length - 1;
@@ -975,20 +975,20 @@ namespace NPOI.Util
          * @see #ToString(Object[])
          * @since 1.5
          */
-        public static String DeepToString(Object[] a) {
+        public static string DeepToString(object[] a) {
             if (a == null)
                 return "null";
 
             int bufLen = 20 * a.Length;
             if (a.Length != 0 && bufLen <= 0)
-                bufLen = Int32.MaxValue;
+                bufLen = int.MaxValue;
             StringBuilder buf = new StringBuilder(bufLen);
-            DeepToString(a, buf, new NPOI.Util.Collections.HashSet<Object[]>());
+            DeepToString(a, buf, new NPOI.Util.Collections.HashSet<object[]>());
             return buf.ToString();
         }
 
-        private static void DeepToString(Object[] a, StringBuilder buf,
-                                         NPOI.Util.Collections.HashSet<Object[]> dejaVu)
+        private static void DeepToString(object[] a, StringBuilder buf,
+                                         NPOI.Util.Collections.HashSet<object[]> dejaVu)
         {
             if (a == null)
             {
@@ -1007,7 +1007,7 @@ namespace NPOI.Util
             for (int i = 0; ; i++)
             {
 
-                Object element = a[i];
+                object element = a[i];
                 if (element == null)
                 {
                     buf.Append("null");
@@ -1040,7 +1040,7 @@ namespace NPOI.Util
                             if (dejaVu.Contains((element as object[])))
                                 buf.Append("[...]");
                             else
-                                DeepToString((Object[])element, buf, dejaVu);
+                                DeepToString((object[])element, buf, dejaVu);
                         }
                     }
                     else
@@ -1072,7 +1072,7 @@ namespace NPOI.Util
          * @see #deepToString(Object[])
          * @since 1.5
          */
-        public static String ToString(Object[] a)
+        public static string ToString(object[] a)
         {
             if (a == null)
                 return "null";

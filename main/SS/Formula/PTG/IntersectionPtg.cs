@@ -54,14 +54,14 @@ namespace NPOI.SS.Formula.PTG
 
 
         /** Implementation of method from Ptg */
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return " ";
         }
 
 
         /** implementation of method from OperationsPtg*/
-        public override String ToFormulaString(String[] operands)
+        public override string ToFormulaString(string[] operands)
         {
             StringBuilder buffer = new StringBuilder();
 

@@ -77,7 +77,7 @@ namespace NPOI.HSSF.Record
             get { return _lastSheetIndex; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("extBook=").Append(_extBookIndex);
@@ -319,7 +319,7 @@ namespace NPOI.HSSF.Record
             return GetRef(extRefIndex).LastSheetIndex;
         }
     
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 

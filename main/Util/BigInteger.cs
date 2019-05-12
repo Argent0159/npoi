@@ -93,7 +93,7 @@ namespace NPOI.Util
         public const int Max_RADIX = 36;
         private static BigInteger[] posConst = new BigInteger[Max_CONSTANT + 1];
         private static BigInteger[] negConst = new BigInteger[Max_CONSTANT + 1];
-        private static readonly String[] zeros = new String[64];
+        private static readonly string[] zeros = new string[64];
         //Constructors
         static BigInteger()
         {
@@ -209,7 +209,7 @@ namespace NPOI.Util
 
         }
 
-        public BigInteger(String val, int radix)
+        public BigInteger(string val, int radix)
         {
             int cursor = 0, numDigits;
             int len = val.Length;
@@ -263,7 +263,7 @@ namespace NPOI.Util
             int firstGroupLen = numDigits % digitsPerInt[radix];
             if (firstGroupLen == 0)
                 firstGroupLen = digitsPerInt[radix];
-            String group = val.Substring(cursor, cursor += firstGroupLen);
+            string group = val.Substring(cursor, cursor += firstGroupLen);
             //magnitude[numWords - 1] = Integer.parseInt(group, radix);
             magnitude[numWords - 1] = int.Parse(group, CultureInfo.InvariantCulture);
             if (magnitude[numWords - 1] < 0)
@@ -344,7 +344,7 @@ namespace NPOI.Util
          * @see    Character#forDigit
          * @see    #BigInteger(java.lang.String, int)
          */
-        public String ToString(int radix)
+        public string ToString(int radix)
         {
             if (_signum == 0)
                 return "0";
@@ -357,7 +357,7 @@ namespace NPOI.Util
 
             // Compute upper bound on number of digit groups and allocate space
             int maxNumDigitGroups = (4 * mag.Length + 6) / 7;
-            String[] digitGroup = new String[maxNumDigitGroups];
+            string[] digitGroup = new string[maxNumDigitGroups];
 
             // Translate number to string, a digit group at a time
             BigInteger tmp = this.Abs();
@@ -2189,7 +2189,7 @@ namespace NPOI.Util
         /**
          * Returns a String representation of this MutableBigInteger in radix 10.
          */
-        public String toString()
+        public string toString()
         {
             BigInteger b = toBigInteger(1);
             return b.ToString();

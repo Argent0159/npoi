@@ -46,7 +46,7 @@ namespace NPOI.XSSF.Extractor
      * <li> no &lt;substitutionGroup&gt; in complex type/element declaration </li>
      * </ul>
      */
-    public class XSSFExportToXml : IComparer<String>
+    public class XSSFExportToXml : IComparer<string>
     {
 
         private XSSFMap map;
@@ -92,12 +92,12 @@ namespace NPOI.XSSF.Extractor
          * @throws TransformerException 
          * @throws InvalidFormatException
          */
-        public void ExportToXML(Stream os, String encoding, bool validate)
+        public void ExportToXML(Stream os, string encoding, bool validate)
         {
             List<XSSFSingleXmlCell> SingleXMLCells = map.GetRelatedSingleXMLCell();
             List<XSSFTable> tables = map.GetRelatedTables();
 
-            String rootElement = map.GetCTMap().RootElement;
+            string rootElement = map.GetCTMap().RootElement;
 
             XmlDocument doc = GetEmptyDocument();
 
@@ -115,9 +115,9 @@ namespace NPOI.XSSF.Extractor
             doc.AppendChild(root);
 
 
-            List<String> xpaths = new List<String>();
-            Dictionary<String, XSSFSingleXmlCell> SingleXmlCellsMappings = new Dictionary<String, XSSFSingleXmlCell>();
-            Dictionary<String, XSSFTable> tableMappings = new Dictionary<String, XSSFTable>();
+            List<string> xpaths = new List<string>();
+            Dictionary<string, XSSFSingleXmlCell> SingleXmlCellsMappings = new Dictionary<string, XSSFSingleXmlCell>();
+            Dictionary<string, XSSFTable> tableMappings = new Dictionary<string, XSSFTable>();
 
             foreach (XSSFSingleXmlCell simpleXmlCell in SingleXMLCells)
             {
@@ -126,7 +126,7 @@ namespace NPOI.XSSF.Extractor
             }
             foreach (XSSFTable table in tables)
             {
-                String commonXPath = table.GetCommonXpath();
+                string commonXPath = table.GetCommonXpath();
                 xpaths.Add(commonXPath);
                 tableMappings[commonXPath]=table;
             }
@@ -134,7 +134,7 @@ namespace NPOI.XSSF.Extractor
 
             xpaths.Sort();
 
-            foreach (String xpath in xpaths)
+            foreach (string xpath in xpaths)
             {
 
                 XSSFSingleXmlCell simpleXmlCell;
@@ -190,7 +190,7 @@ namespace NPOI.XSSF.Extractor
                                 if (cell != null)
                                 {
                                     XSSFXmlColumnPr pointer = tableColumns[j - startColumnIndex];
-                                    String localXPath = pointer.GetLocalXPath();
+                                    string localXPath = pointer.GetLocalXPath();
                                     XmlNode currentNode = GetNodeByXPath(localXPath, tableRootNode, doc, false);
                                     ST_XmlDataType dataType = pointer.GetXmlDataType();
 
@@ -271,7 +271,7 @@ namespace NPOI.XSSF.Extractor
         private void mapCellOnNode(XSSFCell cell, XmlNode node, ST_XmlDataType outputDataType)
         {
 
-            String value = "";
+            string value = "";
             switch (cell.CellType)
             {
 
@@ -294,16 +294,16 @@ namespace NPOI.XSSF.Extractor
             }
         }
 
-        private String RemoveNamespace(String elementName)
+        private string RemoveNamespace(string elementName)
         {
             return Regex.IsMatch(elementName,".*:.*") ? elementName.Split(new char[]{':'})[1] : elementName;
         }
 
 
 
-        private XmlNode GetNodeByXPath(String xpath, XmlNode rootNode, XmlDocument doc, bool CreateMultipleInstances)
+        private XmlNode GetNodeByXPath(string xpath, XmlNode rootNode, XmlDocument doc, bool CreateMultipleInstances)
         {
-            String[] xpathTokens = xpath.Split(new char[]{'/'});
+            string[] xpathTokens = xpath.Split(new char[]{'/'});
 
 
             XmlNode currentNode = rootNode;
@@ -311,7 +311,7 @@ namespace NPOI.XSSF.Extractor
             for (int i = 2; i < xpathTokens.Length; i++)
             {
 
-                String axisName = RemoveNamespace(xpathTokens[i]);
+                string axisName = RemoveNamespace(xpathTokens[i]);
 
 
                 if (!axisName.StartsWith("@"))
@@ -343,9 +343,9 @@ namespace NPOI.XSSF.Extractor
             return currentNode;
         }
 
-        private XmlNode CreateAttribute(XmlDocument doc, XmlNode currentNode, String axisName)
+        private XmlNode CreateAttribute(XmlDocument doc, XmlNode currentNode, string axisName)
         {
-            String attributeName = axisName.Substring(1);
+            string attributeName = axisName.Substring(1);
             XmlAttributeCollection attributesMap = currentNode.Attributes;
             XmlNode attribute = attributesMap.GetNamedItem(attributeName);
             if (attribute == null)
@@ -356,7 +356,7 @@ namespace NPOI.XSSF.Extractor
             return attribute;
         }
 
-        private XmlNode CreateElement(XmlDocument doc, XmlNode currentNode, String axisName)
+        private XmlNode CreateElement(XmlDocument doc, XmlNode currentNode, string axisName)
         {
             XmlNode selectedNode;
             if (IsNamespaceDeclared())
@@ -371,7 +371,7 @@ namespace NPOI.XSSF.Extractor
             return selectedNode;
         }
 
-        private XmlNode selectNode(String axisName, XmlNodeList list)
+        private XmlNode selectNode(string axisName, XmlNodeList list)
         {
             XmlNode selectedNode = null;
             for (int j = 0; j < list.Count; j++)
@@ -389,11 +389,11 @@ namespace NPOI.XSSF.Extractor
 
         private bool IsNamespaceDeclared()
         {
-            String schemaNamespace = GetNamespace();
+            string schemaNamespace = GetNamespace();
             return schemaNamespace != null && !schemaNamespace.Equals("");
         }
 
-        private String GetNamespace()
+        private string GetNamespace()
         {
             return map.GetCTSchema().Namespace;
         }
@@ -403,7 +403,7 @@ namespace NPOI.XSSF.Extractor
          * Compares two xpaths to define an ordering according to the XML Schema
          *
          */
-        public int Compare(String leftXpath, String rightXpath)
+        public int Compare(string leftXpath, string rightXpath)
         {
 
             int result = 0;
@@ -412,8 +412,8 @@ namespace NPOI.XSSF.Extractor
             doc.LoadXml(xmlSchema);
 
 
-            String[] leftTokens = leftXpath.Split(new char[]{'/'});
-            String[] rightTokens = rightXpath.Split(new char[] { '/' });
+            string[] leftTokens = leftXpath.Split(new char[]{'/'});
+            string[] rightTokens = rightXpath.Split(new char[] { '/' });
 
             int minLenght = leftTokens.Length < rightTokens.Length ? leftTokens.Length : rightTokens.Length;
 
@@ -423,8 +423,8 @@ namespace NPOI.XSSF.Extractor
             for (int i = 1; i < minLenght; i++)
             {
 
-                String leftElementName = leftTokens[i];
-                String rightElementName = rightTokens[i];
+                string leftElementName = leftTokens[i];
+                string rightElementName = rightTokens[i];
 
                 if (leftElementName.Equals(rightElementName))
                 {
@@ -455,7 +455,7 @@ namespace NPOI.XSSF.Extractor
             return result;
         }
 
-        private int IndexOfElementInComplexType(String elementName, XmlNode complexType)
+        private int IndexOfElementInComplexType(string elementName, XmlNode complexType)
         {
 
             XmlNodeList list = complexType.ChildNodes;
@@ -481,15 +481,15 @@ namespace NPOI.XSSF.Extractor
             return indexOf;
         }
 
-        private XmlNode GetComplexTypeForElement(String elementName, XmlNode xmlSchema, XmlNode localComplexTypeRootNode)
+        private XmlNode GetComplexTypeForElement(string elementName, XmlNode xmlSchema, XmlNode localComplexTypeRootNode)
         {
             XmlNode complexTypeNode = null;
 
-            String elementNameWithoutNamespace = RemoveNamespace(elementName);
+            string elementNameWithoutNamespace = RemoveNamespace(elementName);
 
 
             XmlNodeList list = localComplexTypeRootNode.ChildNodes;
-            String complexTypeName = "";
+            string complexTypeName = "";
 
 
 

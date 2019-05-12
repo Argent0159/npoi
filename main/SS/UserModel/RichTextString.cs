@@ -60,7 +60,7 @@ namespace NPOI.SS.UserModel
         /**
          * Returns the plain string representation.
          */
-        String String { get; }
+        string String { get; }
 
         /**
          * @return  the number of characters in the font.

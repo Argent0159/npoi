@@ -72,7 +72,7 @@ namespace NPOI.POIFS.EventFileSystem
 
         public void RegisterListener(POIFSReaderListener listener,
                               POIFSDocumentPath path,
-                              String documentName)
+                              string documentName)
         {
             if (!omnivorousListeners.Contains(listener))
             {
@@ -141,7 +141,7 @@ namespace NPOI.POIFS.EventFileSystem
          * @return an Iterator POIFSReaderListeners; may be empty
          */
 
-        public IEnumerator GetListeners(POIFSDocumentPath path, String name)
+        public IEnumerator GetListeners(POIFSDocumentPath path, string name)
         {
             ArrayList rval = new ArrayList(omnivorousListeners);
             ArrayList selectiveListeners =

@@ -27,16 +27,16 @@ namespace NPOI.SS.Formula.Udf
      */
     public class IndexedUDFFinder : AggregatingUDFFinder
     {
-        private Dictionary<int, String> _funcMap;
+        private Dictionary<int, string> _funcMap;
 
         public IndexedUDFFinder(params UDFFinder[] usedToolPacks)
             : base(usedToolPacks)
         {
 
-            _funcMap = new Dictionary<int, String>();
+            _funcMap = new Dictionary<int, string>();
         }
 
-        public override FreeRefFunction FindFunction(String name)
+        public override FreeRefFunction FindFunction(string name)
         {
             FreeRefFunction func = base.FindFunction(name);
             if (func != null)
@@ -47,12 +47,12 @@ namespace NPOI.SS.Formula.Udf
             return func;
         }
 
-        public String GetFunctionName(int idx)
+        public string GetFunctionName(int idx)
         {
             return _funcMap[idx];
         }
 
-        public int GetFunctionIndex(String name)
+        public int GetFunctionIndex(string name)
         {
             return name.GetHashCode();
         }

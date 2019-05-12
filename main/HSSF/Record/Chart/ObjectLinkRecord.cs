@@ -64,7 +64,7 @@ namespace NPOI.HSSF.Record.Chart
             field_3_link2 = in1.ReadShort();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -106,7 +106,7 @@ namespace NPOI.HSSF.Record.Chart
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             ObjectLinkRecord rec = new ObjectLinkRecord();
 

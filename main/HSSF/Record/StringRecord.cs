@@ -36,7 +36,7 @@ namespace NPOI.HSSF.Record
         private bool _is16bitUnicode;
         //int field_1_string_length;
         //private String field_3_string;
-        private String _text;
+        private string _text;
 
         public StringRecord()
         {
@@ -99,7 +99,7 @@ namespace NPOI.HSSF.Record
         /**
          * @return The string represented by this record.
          */
-        public String String
+        public string String
         {
             get { return _text; }
             set
@@ -110,7 +110,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -121,7 +121,7 @@ namespace NPOI.HSSF.Record
             return buffer.ToString();
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             StringRecord rec = new StringRecord();
             rec._is16bitUnicode = this._is16bitUnicode;

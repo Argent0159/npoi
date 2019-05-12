@@ -47,7 +47,7 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="variantType">The unsupported variant type.</param>
         /// <param name="value">The value</param>
-        public WritingNotSupportedException(long variantType,Object value)
+        public WritingNotSupportedException(long variantType, object value)
             :base(variantType, value)
         {
             

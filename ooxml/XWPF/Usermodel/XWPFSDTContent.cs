@@ -81,7 +81,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String Text
+        public string Text
         {
             get
             {
@@ -89,7 +89,7 @@ namespace NPOI.XWPF.UserModel
                 bool addNewLine = false;
                 for (int i = 0; i < bodyElements.Count; i++)
                 {
-                    Object o = bodyElements[i];
+                    object o = bodyElements[i];
                     if (o is XWPFParagraph)
                     {
                         AppendParagraph((XWPFParagraph)o, text);
@@ -154,7 +154,7 @@ namespace NPOI.XWPF.UserModel
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return this.Text;
         }

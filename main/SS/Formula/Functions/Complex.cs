@@ -38,8 +38,8 @@ namespace NPOI.SS.Formula.Functions
 
         public static FreeRefFunction Instance = new Complex();
 
-        public static String DEFAULT_SUFFIX = "i";
-        public static String SUPPORTED_SUFFIX = "j";
+        public static string DEFAULT_SUFFIX = "i";
+        public static string SUPPORTED_SUFFIX = "j";
 
         public override ValueEval Evaluate(int srcRowIndex, int srcColumnIndex, ValueEval real_num, ValueEval i_num)
         {
@@ -86,7 +86,7 @@ namespace NPOI.SS.Formula.Functions
                 return ErrorEval.VALUE_INVALID;
             }
 
-            String suffixValue = OperandResolver.CoerceValueToString(suffix);
+            string suffixValue = OperandResolver.CoerceValueToString(suffix);
             if (suffixValue.Length == 0)
             {
                 suffixValue = DEFAULT_SUFFIX;
@@ -142,7 +142,7 @@ namespace NPOI.SS.Formula.Functions
 
         private bool isDoubleAnInt(double number)
         {
-            return (number == Math.Floor(number)) && !Double.IsInfinity(number);
+            return (number == Math.Floor(number)) && !double.IsInfinity(number);
         }
 
         public ValueEval Evaluate(ValueEval[] args, OperationEvaluationContext ec)

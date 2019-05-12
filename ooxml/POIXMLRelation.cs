@@ -29,17 +29,17 @@ namespace NPOI
         /**
          * Describes the content stored in a part.
          */
-        protected String _type;
+        protected string _type;
 
         /**
          * The kind of connection between a source part and a target part in a namespace.
          */
-        protected String _relation;
+        protected string _relation;
 
         /**
          * The path component of a pack URI.
          */
-        protected String _defaultName;
+        protected string _defaultName;
 
         /**
          * Defines what object is used to construct instances of this relationship
@@ -54,7 +54,7 @@ namespace NPOI
          * @param defaultName default item name
          * @param cls defines what object is used to construct instances of this relationship
          */
-        public POIXMLRelation(String type, String rel, String defaultName, Type cls)
+        public POIXMLRelation(string type, string rel, string defaultName, Type cls)
         {
             _type = type;
             _relation = rel;
@@ -69,7 +69,7 @@ namespace NPOI
          * @param rel  relationship
          * @param defaultName default item name
          */
-        public POIXMLRelation(String type, String rel, String defaultName)
+        public POIXMLRelation(string type, string rel, string defaultName)
             : this(type, rel, defaultName, null)
         {
 
@@ -80,7 +80,7 @@ namespace NPOI
          *
          * @return the content type
          */
-        public String ContentType
+        public string ContentType
         {
             get
             {
@@ -95,7 +95,7 @@ namespace NPOI
          *
          * @return the relationship
          */
-        public String Relation
+        public string Relation
         {
             get
             {
@@ -109,7 +109,7 @@ namespace NPOI
          *
          * @return the default part name
          */
-        public String DefaultFileName
+        public string DefaultFileName
         {
             get
             {
@@ -121,7 +121,7 @@ namespace NPOI
          * Returns the filename for the nth one of these,
          *  e.g. /xl/comments4.xml
          */
-        public String GetFileName(int index)
+        public string GetFileName(int index)
         {
             if (_defaultName.IndexOf("#") == -1)
             {

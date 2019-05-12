@@ -81,7 +81,7 @@ namespace NPOI.HSSF.Record
             field_12_zero5 = in1.ReadShort();    
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -164,7 +164,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             TickRecord rec = new TickRecord();
 

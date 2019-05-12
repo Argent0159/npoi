@@ -42,7 +42,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateDateConstraint(int, java.lang.String, java.lang.String, java.lang.String)
          */
-        public IDataValidationConstraint CreateDateConstraint(int operatorType, String formula1, String formula2, String dateFormat)
+        public IDataValidationConstraint CreateDateConstraint(int operatorType, string formula1, string formula2, string dateFormat)
         {
             return new XSSFDataValidationConstraint(ValidationType.DATE, operatorType, formula1, formula2);
         }
@@ -50,7 +50,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateDecimalConstraint(int, java.lang.String, java.lang.String)
          */
-        public IDataValidationConstraint CreateDecimalConstraint(int operatorType, String formula1, String formula2)
+        public IDataValidationConstraint CreateDecimalConstraint(int operatorType, string formula1, string formula2)
         {
             return new XSSFDataValidationConstraint(ValidationType.DECIMAL, operatorType, formula1, formula2);
         }
@@ -58,7 +58,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateExplicitListConstraint(java.lang.String[])
          */
-        public IDataValidationConstraint CreateExplicitListConstraint(String[] listOfValues)
+        public IDataValidationConstraint CreateExplicitListConstraint(string[] listOfValues)
         {
             return new XSSFDataValidationConstraint(listOfValues);
         }
@@ -66,14 +66,14 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateFormulaListConstraint(java.lang.String)
          */
-        public IDataValidationConstraint CreateFormulaListConstraint(String listFormula)
+        public IDataValidationConstraint CreateFormulaListConstraint(string listFormula)
         {
             return new XSSFDataValidationConstraint(ValidationType.LIST, listFormula);
         }
 
 
 
-        public IDataValidationConstraint CreateNumericConstraint(int validationType, int operatorType, String formula1, String formula2)
+        public IDataValidationConstraint CreateNumericConstraint(int validationType, int operatorType, string formula1, string formula2)
         {
             if (validationType == ValidationType.INTEGER)
             {
@@ -93,7 +93,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateintConstraint(int, java.lang.String, java.lang.String)
          */
-        public IDataValidationConstraint CreateintConstraint(int operatorType, String formula1, String formula2)
+        public IDataValidationConstraint CreateintConstraint(int operatorType, string formula1, string formula2)
         {
             return new XSSFDataValidationConstraint(ValidationType.INTEGER, operatorType, formula1, formula2);
         }
@@ -101,7 +101,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateTextLengthConstraint(int, java.lang.String, java.lang.String)
          */
-        public IDataValidationConstraint CreateTextLengthConstraint(int operatorType, String formula1, String formula2)
+        public IDataValidationConstraint CreateTextLengthConstraint(int operatorType, string formula1, string formula2)
         {
             return new XSSFDataValidationConstraint(ValidationType.TEXT_LENGTH, operatorType, formula1, formula2);
         }
@@ -109,12 +109,12 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidationHelper#CreateTimeConstraint(int, java.lang.String, java.lang.String, java.lang.String)
          */
-        public IDataValidationConstraint CreateTimeConstraint(int operatorType, String formula1, String formula2)
+        public IDataValidationConstraint CreateTimeConstraint(int operatorType, string formula1, string formula2)
         {
             return new XSSFDataValidationConstraint(ValidationType.TIME, operatorType, formula1, formula2);
         }
 
-        public IDataValidationConstraint CreateCustomConstraint(String formula)
+        public IDataValidationConstraint CreateCustomConstraint(string formula)
         {
             return new XSSFDataValidationConstraint(ValidationType.FORMULA, formula);
         }

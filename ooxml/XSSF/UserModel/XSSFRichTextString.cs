@@ -75,7 +75,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Create a rich text string
          */
-        public XSSFRichTextString(String str)
+        public XSSFRichTextString(string str)
         {
             st = new CT_Rst();
             st.t = str;
@@ -94,7 +94,7 @@ namespace NPOI.XSSF.UserModel
                     CT_RPrElt pr = r.rPr;
                     if (pr != null && pr.SizeOfRFontArray() > 0)
                     {
-                        String fontName = pr.GetRFontArray(0).val;
+                        string fontName = pr.GetRFontArray(0).val;
                         if (fontName.StartsWith("#"))
                         {
                             int idx = int.Parse(fontName.Substring(1));
@@ -207,7 +207,7 @@ namespace NPOI.XSSF.UserModel
                 st.unsetT();
             }
 
-            String text = this.String;
+            string text = this.String;
             XSSFFont xssfFont = (XSSFFont)font;
 
             SortedDictionary<int, CT_RPrElt> formats = GetFormatMap(st);
@@ -227,7 +227,7 @@ namespace NPOI.XSSF.UserModel
             SortedDictionary<int, CT_RPrElt> formats = new SortedDictionary<int, CT_RPrElt>();
             foreach (CT_RElt r in entry.r)
             {
-                String txt = r.t;
+                string txt = r.t;
                 CT_RPrElt fmt = r.rPr;
 
                 length += txt.Length;
@@ -241,7 +241,7 @@ namespace NPOI.XSSF.UserModel
          */
         public void ApplyFont(IFont font)
         {
-            String text = this.String;
+            string text = this.String;
             ApplyFont(0, text.Length, font);
         }
 
@@ -262,7 +262,7 @@ namespace NPOI.XSSF.UserModel
             {
                 font = styles.GetFontAt(fontIndex);
             }
-            String text = this.String;
+            string text = this.String;
             ApplyFont(0, text.Length, font);
         }
 
@@ -272,7 +272,7 @@ namespace NPOI.XSSF.UserModel
          * @param text  the text to append
          * @param font  the font to apply to the Appended text or <code>null</code> if no formatting is required
          */
-        public void Append(String text, XSSFFont font)
+        public void Append(string text, XSSFFont font)
         {
             if (st.sizeOfRArray() == 0 && st.IsSetT())
             {
@@ -294,7 +294,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @param text  the text to append
          */
-        public void Append(String text)
+        public void Append(string text)
         {
             Append(text, null);
         }
@@ -356,7 +356,7 @@ namespace NPOI.XSSF.UserModel
          */
         public void ClearFormatting()
         {
-            String text = this.String;
+            string text = this.String;
             st.r = (null);
             st.t= (text);
         }
@@ -399,7 +399,7 @@ namespace NPOI.XSSF.UserModel
             return r.t.Length;
         }
 
-        public String String
+        public string String
         {
             get
             {
@@ -426,7 +426,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Returns the plain string representation.
          */
-        public override String ToString()
+        public override string ToString()
         {
             return this.String;
         }
@@ -576,12 +576,12 @@ namespace NPOI.XSSF.UserModel
         // */
         protected static void PreserveSpaces(string xs)
         {
-            String text = xs;
+            string text = xs;
             if (text != null && text.Length > 0)
             {
                 char firstChar = text[0];
                 char lastChar = text[text.Length - 1];
-                if (Char.IsWhiteSpace(firstChar) || Char.IsWhiteSpace(lastChar))
+                if (char.IsWhiteSpace(firstChar) || char.IsWhiteSpace(lastChar))
                 {
                     //XmlCursor c = xs.newCursor();
                     //c.ToNextToken();
@@ -604,7 +604,7 @@ namespace NPOI.XSSF.UserModel
          * @param   value the string to decode
          * @return  the decoded string
          */
-        static String UtfDecode(String value)
+        static string UtfDecode(string value)
         {
             if (value == null) return null;
 
@@ -619,8 +619,8 @@ namespace NPOI.XSSF.UserModel
                         buf.Append(value.Substring(idx, pos-idx));
                     }
 
-                    String code = mc[i].Groups[1].Value;
-                    int icode = Int32.Parse(code, System.Globalization.NumberStyles.AllowHexSpecifier);
+                string code = mc[i].Groups[1].Value;
+                    int icode = int.Parse(code, System.Globalization.NumberStyles.AllowHexSpecifier);
                     buf.Append((char)icode);
 
                     idx = mc[i].Index+mc[i].Length;
@@ -641,7 +641,7 @@ namespace NPOI.XSSF.UserModel
             throw new ArgumentOutOfRangeException("GetLastKey failed");
         }
 
-        CT_Rst buildCTRst(String text, SortedDictionary<int, CT_RPrElt> formats)
+        CT_Rst buildCTRst(string text, SortedDictionary<int, CT_RPrElt> formats)
         {
             if (text.Length != GetLastKey(formats.Keys))
             {
@@ -654,7 +654,7 @@ namespace NPOI.XSSF.UserModel
             {
                 int runEndIdx = it.Current;
                 CT_RElt run = st.AddNewR();
-                String fragment = text.Substring(runStartIdx, runEndIdx - runStartIdx);
+                string fragment = text.Substring(runStartIdx, runEndIdx - runStartIdx);
                 run.t = (fragment);
                 PreserveSpaces(run.t);
                 CT_RPrElt fmt = formats[runEndIdx];

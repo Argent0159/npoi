@@ -99,7 +99,7 @@ namespace NPOI.HSSF.Record
             return result;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -166,7 +166,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             // currently immutable
             return this;

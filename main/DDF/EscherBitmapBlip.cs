@@ -118,11 +118,11 @@ namespace NPOI.DDF
         /// Toes the string.
         /// </summary>
         /// <returns></returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -144,9 +144,9 @@ namespace NPOI.DDF
             }
         }
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String extraData;
+            string extraData;
             //MemoryStream b = new MemoryStream();
             try
             {

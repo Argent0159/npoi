@@ -39,10 +39,10 @@ namespace NPOI.HSSF.Record
         private long field_3_reserved;
         //private short             field_4_name_Length;
         //private short             field_5_comment_Length;
-        private String field_6_name_text;
-        private String field_7_comment_text;
+        private string field_6_name_text;
+        private string field_7_comment_text;
 
-        public NameCommentRecord(string name, String comment)
+        public NameCommentRecord(string name, string comment)
         {
             field_1_record_type = 0;
             field_2_frt_cell_ref_flag = 0;
@@ -109,7 +109,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -129,7 +129,7 @@ namespace NPOI.HSSF.Record
         /**
          * @return the name of the NameRecord to which this comment applies.
          */
-        public String NameText
+        public string NameText
         {
             get
             {
@@ -143,7 +143,7 @@ namespace NPOI.HSSF.Record
         /**
          * @return the text of the comment.
          */
-        public String CommentText
+        public string CommentText
         {
             get
             {

@@ -32,7 +32,7 @@ namespace NPOI.DDF
     public class EscherOptRecord : AbstractEscherOptRecord
     {
         public const short RECORD_ID = unchecked((short)0xF00B);
-        public const String RECORD_DESCRIPTION = "msofbtOPT";
+        public const string RECORD_DESCRIPTION = "msofbtOPT";
 
         public override short Instance
         {
@@ -64,7 +64,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "Opt"; }
         }
@@ -87,7 +87,7 @@ namespace NPOI.DDF
         }
 
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)));

@@ -134,7 +134,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="documentName">the name of the document to be opened</param>
         /// <returns>a newly opened DocumentStream</returns>
         public DocumentInputStream CreatePOIFSDocumentReader(
-                String documentName)
+                string documentName)
         {
             Entry document = GetEntry(documentName);
 
@@ -171,7 +171,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="oldName">the original name</param>
         /// <param name="newName">the new name</param>
         /// <returns>true if the operation succeeded, else false</returns>
-        public bool ChangeName(String oldName, String newName)
+        public bool ChangeName(string oldName, string newName)
         {
             bool   rval  = false;
             EntryNode child = (EntryNode)_byname[oldName];
@@ -272,7 +272,7 @@ namespace NPOI.POIFS.FileSystem
          *         getEntry(String), which may be empty (if this 
          *         DirectoryEntry is empty)
          */
-        public List<String> EntryNames
+        public List<string> EntryNames
         {
             get
             {
@@ -305,7 +305,7 @@ namespace NPOI.POIFS.FileSystem
         }
 
 
-        public bool HasEntry(String name)
+        public bool HasEntry(string name)
         {
             return name != null && _byname.ContainsKey(name);
         }
@@ -318,7 +318,7 @@ namespace NPOI.POIFS.FileSystem
         /// the specified Entry, if it is directly contained in
         /// this DirectoryEntry
         /// </returns>
-        public Entry GetEntry(String name)
+        public Entry GetEntry(string name)
         {
             Entry rval = null;
 
@@ -413,7 +413,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="name">the name of the new DirectoryEntry</param>
         /// <returns>the name of the new DirectoryEntry</returns>
-        public DirectoryEntry CreateDirectory(String name)
+        public DirectoryEntry CreateDirectory(string name)
         {
             DirectoryProperty property = new DirectoryProperty(name);
             DirectoryNode rval;
@@ -518,7 +518,7 @@ namespace NPOI.POIFS.FileSystem
         {
             get
             {
-                return new Object[0];
+                return new object[0];
             }
         }
 
@@ -557,7 +557,7 @@ namespace NPOI.POIFS.FileSystem
         /// POIFSViewable object has not provided its contents.
         /// </summary>
         /// <value>The short description.</value>
-        public String ShortDescription
+        public string ShortDescription
         {
             get { return Name; }
         }

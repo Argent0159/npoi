@@ -372,9 +372,9 @@ namespace NPOI.HSSF.Record
          * Calculates the string representation of this record.  This Is
          * simply a dump of all the records.
          */
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             StringBuilder result = new StringBuilder();
             result.Append('[').Append(RecordName).Append(']' + nl);
@@ -393,7 +393,7 @@ namespace NPOI.HSSF.Record
          * @param tab - string which must be added before each line (used by default '\t')
          * @return xml representation of the all aggregated records
          */
-        public String ToXml(String tab)
+        public string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(RecordName).Append(">\n");
@@ -1075,7 +1075,7 @@ namespace NPOI.HSSF.Record
             //        lastShapeId = 1024;
         }
 
-        protected override String RecordName
+        protected override string RecordName
         {
             get { return "ESCHERAGGREGATE"; }
         }

@@ -101,7 +101,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="o">The object to compare to.</param>
         /// <returns>True if the objects are equal.</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (this == o) return true;
             if (!(o is EscherComplexProperty)) return false;
@@ -139,9 +139,9 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String dataStr;
+            string dataStr;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -160,9 +160,9 @@ namespace NPOI.DDF
                     + ", blipId: " + IsBlipId
                     + ", data: " + Environment.NewLine + dataStr;
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String dataStr = HexDump.ToHex(_complexData, 32);
+            string dataStr = HexDump.ToHex(_complexData, 32);
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(GetType().Name).Append(" id=\"0x").Append(HexDump.ToHex(Id))
                     .Append("\" name=\"").Append(Name).Append("\" blipId=\"")

@@ -112,11 +112,11 @@ namespace NPOI.XWPF.UserModel
          * isn't always available, but if it can be found it's likely to be in the
          * CTDrawing
          */
-        public String FileName
+        public string FileName
         {
             get
             {
-                String name = GetPackagePart().PartName.Name;
+                string name = GetPackagePart().PartName.Name;
                 if (name == null)
                     return null;
                 return name.Substring(name.LastIndexOf('/') + 1);
@@ -127,7 +127,7 @@ namespace NPOI.XWPF.UserModel
          * Suggests a file extension for this image.
          * @return the file extension.
          */
-        public String SuggestFileExtension()
+        public string SuggestFileExtension()
         {
             return GetPackagePart().PartName.Extension;
         }
@@ -145,7 +145,7 @@ namespace NPOI.XWPF.UserModel
          */
         public int GetPictureType()
         {
-            String contentType = GetPackagePart().ContentType;
+            string contentType = GetPackagePart().ContentType;
             for (int i = 0; i < RELATIONS.Length; i++)
             {
                 if (RELATIONS[i] == null)
@@ -197,7 +197,7 @@ namespace NPOI.XWPF.UserModel
         }
 
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             /**
              * In case two objects ARE Equal, but its not the same instance, this

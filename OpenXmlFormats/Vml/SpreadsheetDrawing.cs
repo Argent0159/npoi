@@ -115,8 +115,8 @@ namespace NPOI.OpenXmlFormats.Vml.Spreadsheet
             CT_ClientData ctObj = new CT_ClientData();
             if (node.Attributes["ObjectType"] != null)
                 ctObj.ObjectType = (ST_ObjectType)Enum.Parse(typeof(ST_ObjectType), node.Attributes["ObjectType"].Value);
-            ctObj.column = new List<Int32>();
-            ctObj.row = new List<Int32>();
+            ctObj.column = new List<int>();
+            ctObj.row = new List<int>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "Anchor")
@@ -130,9 +130,9 @@ namespace NPOI.OpenXmlFormats.Vml.Spreadsheet
                 else if (childNode.LocalName == "SizeWithCells")
                     ctObj.sizeWithCells =NPOI.OpenXmlFormats.Util.XmlHelper.ReadTrueFalseBlank(childNode.InnerText);
                 else if (childNode.LocalName == "Column")
-                    ctObj.column.Add(Int32.Parse(childNode.InnerText));
+                    ctObj.column.Add(int.Parse(childNode.InnerText));
                 else if (childNode.LocalName == "Row")
-                    ctObj.row.Add(Int32.Parse(childNode.InnerText));
+                    ctObj.row.Add(int.Parse(childNode.InnerText));
             }
             return ctObj;
         }
@@ -156,14 +156,14 @@ namespace NPOI.OpenXmlFormats.Vml.Spreadsheet
                 sw.Write(string.Format("<x:Visible>{0}</x:Visible>", this.visible));
             if (this.row != null)
             {
-                foreach (Int32 x in this.row)
+                foreach (int x in this.row)
                 {
                     sw.Write(string.Format("<x:Row>{0}</x:Row>", x));
                 }
             }
             if (this.column != null)
             {
-                foreach (Int32 x in this.column)
+                foreach (int x in this.column)
                 {
                     sw.Write(string.Format("<x:Column>{0}</x:Column>", x));
                 }

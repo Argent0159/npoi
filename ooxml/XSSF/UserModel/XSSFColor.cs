@@ -204,7 +204,7 @@ namespace NPOI.XSSF.UserModel
          * Return the ARGB value in hex format, eg FF00FF00.
          * Works for both regular and indexed colours. 
          */
-        public String GetARGBHex()
+        public string GetARGBHex()
         {
             StringBuilder sb = new StringBuilder();
             byte[] rgb = GetARgb();
@@ -219,7 +219,7 @@ namespace NPOI.XSSF.UserModel
                 {
                     i += 256;
                 }
-                String cs = StringUtil.ToHexString(i);
+                string cs = StringUtil.ToHexString(i);
                 if (cs.Length == 1)
                 {
                     sb.Append('0');
@@ -383,7 +383,7 @@ namespace NPOI.XSSF.UserModel
             return ctColor.ToString().GetHashCode();
         }
 
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is XSSFColor)) return false;
 

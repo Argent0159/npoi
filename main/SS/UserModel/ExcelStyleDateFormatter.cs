@@ -66,7 +66,7 @@ namespace NPOI.SS.UserModel
         {
         }
 
-        public ExcelStyleDateFormatter(String pattern)
+        public ExcelStyleDateFormatter(string pattern)
             : base(ProcessFormatPattern(pattern))
         {
 
@@ -91,9 +91,9 @@ namespace NPOI.SS.UserModel
          * Takes a format String, and Replaces Excel specific bits
          * with our detection sequences
          */
-        private static String ProcessFormatPattern(String f)
+        private static string ProcessFormatPattern(string f)
         {
-            String t = f.Replace("MMMMM", MMMMM_START_SYMBOL + "MMM" + MMMMM_TRUNCATE_SYMBOL);
+            string t = f.Replace("MMMMM", MMMMM_START_SYMBOL + "MMM" + MMMMM_TRUNCATE_SYMBOL);
             t = Regex.Replace(t, "\\[H\\]", (H_BRACKET_SYMBOL).ToString(), RegexOptions.IgnoreCase);
             t = Regex.Replace(t, "\\[HH\\]", (HH_BRACKET_SYMBOL).ToString(), RegexOptions.IgnoreCase);
             t = Regex.Replace(t, "\\[m\\]", (M_BRACKET_SYMBOL).ToString(), RegexOptions.IgnoreCase);

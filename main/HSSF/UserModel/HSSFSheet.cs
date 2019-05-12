@@ -292,7 +292,7 @@ namespace NPOI.HSSF.UserModel
                 HSSFCell xcell = (HSSFCell)cell;
                 if (xcell.IsPartOfArrayFormulaGroup)
                 {
-                    String msg = "Row[rownum=" + row.RowNum + "] contains cell(s) included in a multi-cell array formula. You cannot change part of an array.";
+                    string msg = "Row[rownum=" + row.RowNum + "] contains cell(s) included in a multi-cell array formula. You cannot change part of an array.";
                     xcell.NotifyArrayFormulaChanging(msg);
                 }
             }
@@ -683,7 +683,7 @@ namespace NPOI.HSSF.UserModel
                                 (arrayRange.IsInRange(region.FirstRow, region.FirstColumn) ||
                                   arrayRange.IsInRange(region.FirstRow, region.FirstColumn)))
                         {
-                            String msg = "The range " + region.FormatAsString() + " intersects with a multi-cell array formula. " +
+                            string msg = "The range " + region.FormatAsString() + " intersects with a multi-cell array formula. " +
                                     "You cannot merge cells of an array.";
                             throw new InvalidOperationException(msg);
                         }
@@ -1148,7 +1148,7 @@ namespace NPOI.HSSF.UserModel
         /// Sets the protection enabled as well as the password
         /// </summary>
         /// <param name="password">password to set for protection, pass <code>null</code> to remove protection</param>
-        public void ProtectSheet(String password)
+        public void ProtectSheet(string password)
         {
             ProtectionBlock.ProtectSheet(password, true, true); //protect objs&scenarios(normal)
         }
@@ -1562,7 +1562,7 @@ namespace NPOI.HSSF.UserModel
             // Update any formulas on this _sheet that point to
             //  rows which have been moved
             int sheetIndex = _workbook.GetSheetIndex(this);
-            String sheetName = _workbook.GetSheetName(sheetIndex);
+            string sheetName = _workbook.GetSheetName(sheetIndex);
             int externSheetIndex = book.CheckExternSheet(sheetIndex);
             FormulaShifter shifter = FormulaShifter.CreateForRowShift(externSheetIndex,sheetName, startRow, endRow, n);
             _sheet.UpdateFormulasAfterCellShift(shifter, externSheetIndex);
@@ -1592,7 +1592,7 @@ namespace NPOI.HSSF.UserModel
         }
         private void NotifyRowShifting(HSSFRow row)
         {
-            String msg = "Row[rownum=" + row.RowNum + "] contains cell(s) included in a multi-cell array formula. " +
+            string msg = "Row[rownum=" + row.RowNum + "] contains cell(s) included in a multi-cell array formula. " +
                     "You cannot change part of an array.";
             foreach (ICell cell in row.Cells)
             {
@@ -2044,7 +2044,7 @@ namespace NPOI.HSSF.UserModel
             CellValueRecordInterface rec = ((HSSFCell)cell).CellValueRecord;
             if (!(rec is FormulaRecordAggregate))
             {
-                String ref1 = new CellReference(cell).FormatAsString();
+                string ref1 = new CellReference(cell).FormatAsString();
                 throw new ArgumentException("Cell " + ref1 + " is not part of an array formula.");
             }
             FormulaRecordAggregate fra = (FormulaRecordAggregate)rec;
@@ -2097,7 +2097,7 @@ namespace NPOI.HSSF.UserModel
         /// <param name="formula">text representation of the formula</param>
         /// <param name="range">Region of array formula for result</param>
         /// <returns>the <see cref="ICellRange{ICell}"/> of cells affected by this change</returns>
-        public ICellRange<ICell> SetArrayFormula(String formula, CellRangeAddress range)
+        public ICellRange<ICell> SetArrayFormula(string formula, CellRangeAddress range)
         {
             // make sure the formula parses OK first
             int sheetIndex = _workbook.GetSheetIndex(this);
@@ -2285,7 +2285,7 @@ namespace NPOI.HSSF.UserModel
         /// <summary>
         /// Returns the name of this _sheet
         /// </summary>
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -2361,7 +2361,7 @@ namespace NPOI.HSSF.UserModel
 
         private HSSFComment LookForComment(HSSFShapeContainer container, int row, int column)
         {
-            foreach (Object obj in container.Children)
+            foreach (object obj in container.Children)
             {
                 HSSFShape shape = (HSSFShape)obj;
                 if (shape is HSSFShapeGroup)
@@ -2597,23 +2597,23 @@ namespace NPOI.HSSF.UserModel
         {
             return CopySheet(string.Concat(SheetName, " - Copy"), true);
         }
-        public ISheet CopySheet(Boolean CopyStyle)
+        public ISheet CopySheet(bool CopyStyle)
         {
             return CopySheet(string.Concat(SheetName, " - Copy"), CopyStyle);
         }
 
-        public ISheet CopySheet(String Name)
+        public ISheet CopySheet(string Name)
         {
             return CopySheet(Name, true);
         }
 
 
-        public ISheet CopySheet(String Name, Boolean copyStyle)
+        public ISheet CopySheet(string Name, bool copyStyle)
         {
             int maxColumnNum = 0;
             HSSFSheet newSheet = (HSSFSheet)Workbook.CreateSheet(Name);
             newSheet._sheet = Sheet.CloneSheet();
-            IDictionary<Int32, HSSFCellStyle> styleMap = (copyStyle) ? new Dictionary<Int32, HSSFCellStyle>() : null;
+            IDictionary<int, HSSFCellStyle> styleMap = (copyStyle) ? new Dictionary<int, HSSFCellStyle>() : null;
             for (int i = FirstRowNum; i <= LastRowNum; i++)
             {
                 HSSFRow srcRow = (HSSFRow)GetRow(i);
@@ -2653,7 +2653,7 @@ namespace NPOI.HSSF.UserModel
             return newSheet;
         }
 
-        public void CopyTo(HSSFWorkbook dest, String name, Boolean copyStyle, Boolean keepFormulas)
+        public void CopyTo(HSSFWorkbook dest, string name, bool copyStyle, bool keepFormulas)
         {
             int maxColumnNum = 0;
             HSSFSheet newSheet = (HSSFSheet)dest.CreateSheet(name);
@@ -2669,7 +2669,7 @@ namespace NPOI.HSSF.UserModel
             {
                 paletteMap = MergePalettes(Workbook as HSSFWorkbook, dest);
             }
-            IDictionary<Int32, HSSFCellStyle> styleMap = (copyStyle) ? new Dictionary<Int32, HSSFCellStyle>() : null;
+            IDictionary<int, HSSFCellStyle> styleMap = (copyStyle) ? new Dictionary<int, HSSFCellStyle>() : null;
             for (int i = FirstRowNum; i <= LastRowNum; i++)
             {
                 HSSFRow srcRow = (HSSFRow)GetRow(i);
@@ -2837,7 +2837,7 @@ namespace NPOI.HSSF.UserModel
             return retval;
         }
 
-        private static void CopyRow(HSSFSheet srcSheet, HSSFSheet destSheet, HSSFRow srcRow, HSSFRow destRow, IDictionary<Int32, HSSFCellStyle> styleMap, Dictionary<short, short> paletteMap, bool keepFormulas)
+        private static void CopyRow(HSSFSheet srcSheet, HSSFSheet destSheet, HSSFRow srcRow, HSSFRow destRow, IDictionary<int, HSSFCellStyle> styleMap, Dictionary<short, short> paletteMap, bool keepFormulas)
         {
             List<SS.Util.CellRangeAddress> mergedRegions = destSheet.Sheet.MergedRecords.MergedRegions;
             destRow.Height = srcRow.Height;

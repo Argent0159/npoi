@@ -55,12 +55,12 @@ namespace NPOI.SS.UserModel
         private int exactDenom;
         private int maxDenom;
 
-        private String wholePartFormatString;
+        private string wholePartFormatString;
         /**
          * Single parameter ctor
          * @param denomFormatString The format string for the denominator
          */
-        public FractionFormat(String wholePartFormatString, String denomFormatString)
+        public FractionFormat(string wholePartFormatString, string denomFormatString)
         {
             this.wholePartFormatString = wholePartFormatString;
             //init exactDenom and maxDenom
@@ -73,7 +73,7 @@ namespace NPOI.SS.UserModel
                 {
                     try
                     {
-                        tmpExact = Int32.Parse(m.Groups[2].Value);
+                        tmpExact = int.Parse(m.Groups[2].Value);
                         //if the denom is 0, fall back to the default: tmpExact=100
 
                         if (tmpExact == 0)
@@ -106,7 +106,7 @@ namespace NPOI.SS.UserModel
             maxDenom = tmpMax;
         }
 
-        public String Format(string num)
+        public string Format(string num)
         {
 
             double doubleValue = 0;
@@ -198,7 +198,7 @@ namespace NPOI.SS.UserModel
             return sb1.ToString();
         }
 
-        public override StringBuilder Format(Object obj, StringBuilder toAppendTo, int pos)
+        public override StringBuilder Format(object obj, StringBuilder toAppendTo, int pos)
         {
             return toAppendTo.Append(Format(obj.ToString()));
         }
@@ -208,14 +208,14 @@ namespace NPOI.SS.UserModel
             return this.Format(obj.ToString());
         }
 
-        public override Object ParseObject(String source, int pos)
+        public override object ParseObject(string source, int pos)
         {
             throw new NotImplementedException("Reverse parsing not supported");
         }
        
         private class SimpleFractionException : Exception
         {
-            public SimpleFractionException(String message) :
+            public SimpleFractionException(string message) :
                 base(message)
             {
             }

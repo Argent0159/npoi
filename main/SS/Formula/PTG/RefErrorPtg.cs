@@ -45,7 +45,7 @@ namespace NPOI.SS.Formula.PTG
 
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder("[RefError]\n");
 
@@ -69,7 +69,7 @@ namespace NPOI.SS.Formula.PTG
             get { return SIZE; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             //TODO -- should we store a cellreference instance in this ptg?? but .. memory is an Issue, i believe!
             return "#REF!";

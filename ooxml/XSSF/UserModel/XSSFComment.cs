@@ -53,7 +53,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return Name of the original comment author. Default value is blank.
          */
-        public String Author
+        public string Author
         {
             get
             {
@@ -77,7 +77,7 @@ namespace NPOI.XSSF.UserModel
             }
             set 
             {
-                String oldRef = _comment.@ref;
+                string oldRef = _comment.@ref;
 
                 CellReference ref1 = new CellReference(Row, value);
                 _comment.@ref = (ref1.FormatAsString());
@@ -108,9 +108,9 @@ namespace NPOI.XSSF.UserModel
             }
             set 
             {
-                String oldRef = _comment.@ref;
+                string oldRef = _comment.@ref;
 
-                String newRef =
+                string newRef =
                     (new CellReference(value, Column)).FormatAsString();
                 _comment.@ref = (newRef);
                 _comments.ReferenceUpdated(oldRef, _comment);
@@ -137,7 +137,7 @@ namespace NPOI.XSSF.UserModel
                 bool visible = false;
                 if (_vmlShape != null)
                 {
-                    String style = _vmlShape.style;
+                    string style = _vmlShape.style;
                     if (style != null)
                         visible = style.IndexOf("visibility:visible") != -1;
                     else
@@ -154,7 +154,7 @@ namespace NPOI.XSSF.UserModel
             {
                 if (_vmlShape != null)
                 {
-                    String style;
+                    string style;
                     if (value)
                     {
                         style = "position:absolute;visibility:visible";
@@ -211,10 +211,10 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String position = _vmlShape.GetClientDataArray(0).GetAnchorArray(0);
+                string position = _vmlShape.GetClientDataArray(0).GetAnchorArray(0);
                 int[] pos = new int[8];
                 int i = 0;
-                foreach (String s in position.Split(",".ToCharArray()))
+                foreach (string s in position.Split(",".ToCharArray()))
                 {
                     pos[i++] = int.Parse(s.Trim());
                 }

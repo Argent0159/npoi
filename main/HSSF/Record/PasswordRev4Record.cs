@@ -64,7 +64,7 @@ namespace NPOI.HSSF.Record
             field_1_password = pw;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

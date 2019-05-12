@@ -36,7 +36,7 @@ namespace NPOI.SS.Formula.Function
 #if NETSTANDARD2_0
         private const String METADATA_FILE_NAME = "NPOI.Resources.functionMetadata.txt";
 #else
-        private const String METADATA_FILE_NAME = "functionMetadata.txt";
+        private const string METADATA_FILE_NAME = "functionMetadata.txt";
 #endif
 
         /** plain ASCII text metadata file uses three dots for ellipsis */
@@ -64,7 +64,7 @@ namespace NPOI.SS.Formula.Function
                 {
                     while (true)
                     {
-                        String line = br.ReadLine();
+                        string line = br.ReadLine();
                         if (line == null)
                         {
                             break;
@@ -73,7 +73,7 @@ namespace NPOI.SS.Formula.Function
                         {
                             continue;
                         }
-                        String TrimLine = line.Trim();
+                        string TrimLine = line.Trim();
                         if (TrimLine.Length < 1)
                         {
                             continue;
@@ -90,17 +90,17 @@ namespace NPOI.SS.Formula.Function
             }
         }
 
-        private static void ProcessLine(FunctionDataBuilder fdb, String line)
+        private static void ProcessLine(FunctionDataBuilder fdb, string line)
         {
 
             Regex regex = new Regex(TAB_DELIM_PATTERN);
-            String[] parts = regex.Split(line);
+            string[] parts = regex.Split(line);
             if (parts.Length != 8)
             {
                 throw new Exception("Bad line format '" + line + "' - expected 8 data fields");
             }
             int functionIndex = ParseInt(parts[0]);
-            String functionName = parts[1];
+            string functionName = parts[1];
             int minParams = ParseInt(parts[2]);
             int maxParams = ParseInt(parts[3]);
             byte returnClassCode = ParseReturnTypeCode(parts[4]);
@@ -115,7 +115,7 @@ namespace NPOI.SS.Formula.Function
         }
 
 
-        private static byte ParseReturnTypeCode(String code)
+        private static byte ParseReturnTypeCode(string code)
         {
             if (code.Length == 0)
             {
@@ -124,7 +124,7 @@ namespace NPOI.SS.Formula.Function
             return ParseOperandTypeCode(code);
         }
 
-        private static byte[] ParseOperandTypeCodes(String codes)
+        private static byte[] ParseOperandTypeCodes(string codes)
         {
             if (codes.Length < 1)
             {
@@ -136,7 +136,7 @@ namespace NPOI.SS.Formula.Function
                 return EMPTY_BYTE_ARRAY;
             }
             Regex regex = new Regex(SPACE_DELIM_PATTERN);
-            String[] array = regex.Split(codes);
+            string[] array = regex.Split(codes);
             int nItems = array.Length;
             if (ELLIPSIS.Equals(array[nItems - 1]))
             {
@@ -152,7 +152,7 @@ namespace NPOI.SS.Formula.Function
             return result;
         }
 
-        private static bool IsDash(String codes)
+        private static bool IsDash(string codes)
         {
             if (codes.Length == 1)
             {
@@ -165,7 +165,7 @@ namespace NPOI.SS.Formula.Function
             return false;
         }
 
-        private static byte ParseOperandTypeCode(String code)
+        private static byte ParseOperandTypeCode(string code)
         {
             if (code.Length != 1)
             {
@@ -184,17 +184,17 @@ namespace NPOI.SS.Formula.Function
          * Makes sure that footnote digits from the original OOO document have not been accidentally 
          * left behind
          */
-        private static void ValidateFunctionName(String functionName)
+        private static void ValidateFunctionName(string functionName)
         {
             int len = functionName.Length;
             int ix = len - 1;
-            if (!Char.IsDigit(functionName[ix]))
+            if (!char.IsDigit(functionName[ix]))
             {
                 return;
             }
             while (ix >= 0)
             {
-                if (!Char.IsDigit(functionName[ix]))
+                if (!char.IsDigit(functionName[ix]))
                 {
                     break;
                 }
@@ -208,7 +208,7 @@ namespace NPOI.SS.Formula.Function
                     + "' (is footnote number incorrectly Appended)");
         }
 
-        private static int ParseInt(String valStr)
+        private static int ParseInt(string valStr)
         {
             return int.Parse(valStr, CultureInfo.InvariantCulture);
         }

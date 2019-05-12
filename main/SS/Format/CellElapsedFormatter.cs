@@ -29,7 +29,7 @@ namespace NPOI.SS.Format
     {
         private List<TimeSpec> specs;
         private TimeSpec topmost;
-        private String printfFmt;
+        private string printfFmt;
 
         private static readonly Regex PERCENTS = new Regex("%");
 
@@ -79,7 +79,7 @@ namespace NPOI.SS.Format
             // only special character for this is '%', so we have to handle all the
             // quoting in this method ourselves.
             private CellElapsedFormatter _formatter;
-            public String HandlePart(Match m, String part, CellFormatType type,
+            public string HandlePart(Match m, string part, CellFormatType type,
                     StringBuilder desc)
             {
 
@@ -139,7 +139,7 @@ namespace NPOI.SS.Format
          *
          * @param pattern The pattern to Parse.
          */
-        public CellElapsedFormatter(String pattern)
+        public CellElapsedFormatter(string pattern)
             : base(pattern)
         {
             specs = new List<TimeSpec>();
@@ -209,7 +209,7 @@ namespace NPOI.SS.Format
         }
 
         /** {@inheritDoc} */
-        public override void FormatValue(StringBuilder toAppendTo, Object value)
+        public override void FormatValue(StringBuilder toAppendTo, object value)
         {
             double elapsed = ((double)value);
 
@@ -262,7 +262,7 @@ namespace NPOI.SS.Format
          * <p/>
          * For a date, this is <tt>"mm/d/y"</tt>.
          */
-        public override void SimpleValue(StringBuilder toAppendTo, Object value)
+        public override void SimpleValue(StringBuilder toAppendTo, object value)
         {
             FormatValue(toAppendTo, value);
         }

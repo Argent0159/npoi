@@ -88,7 +88,7 @@ namespace NPOI.SS.Formula.PTG
             out1.WriteByte((byte)field_1_error_code);
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return HSSFErrorConstants.GetText(field_1_error_code);
         }

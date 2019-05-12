@@ -31,7 +31,7 @@ using System.Collections.Generic;
     public class EscherDggRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF006);
-        public const String RECORD_DESCRIPTION = "MsofbtDgg";
+        public const string RECORD_DESCRIPTION = "MsofbtDgg";
 
         private int field_1_shapeIdMax;
         //    private int field_2_numIdClusters;      // for some reason the number of clusters is actually the real number + 1
@@ -149,7 +149,7 @@ using System.Collections.Generic;
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "Dgg"; }
         }
@@ -160,9 +160,9 @@ using System.Collections.Generic;
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             //        String extraData;
             //        MemoryStream b = new MemoryStream();
@@ -197,7 +197,7 @@ using System.Collections.Generic;
 
         }
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))

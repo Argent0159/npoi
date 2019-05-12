@@ -28,9 +28,9 @@ using NPOI.Util;
     public abstract class HeaderFooterBase : StandardRecord
     {
         private bool field_2_hasMultibyte;
-        private String field_3_text;
+        private string field_3_text;
 
-        protected HeaderFooterBase(String text)
+        protected HeaderFooterBase(string text)
         {
             Text=(text);
         }
@@ -73,7 +73,7 @@ using NPOI.Util;
             }
         }
 
-        public String Text
+        public string Text
         {
             get
             {

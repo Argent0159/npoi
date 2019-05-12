@@ -100,7 +100,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidation#CreateErrorBox(java.lang.String, java.lang.String)
          */
-        public void CreateErrorBox(String title, String text)
+        public void CreateErrorBox(string title, string text)
         {
             ctDdataValidation.errorTitle = (title);
             ctDdataValidation.error = (text);
@@ -109,7 +109,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidation#CreatePromptBox(java.lang.String, java.lang.String)
          */
-        public void CreatePromptBox(String title, String text)
+        public void CreatePromptBox(string title, string text)
         {
             ctDdataValidation.promptTitle = (title);
             ctDdataValidation.prompt = (text);
@@ -127,7 +127,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String ErrorBoxText
+        public string ErrorBoxText
         {
             get
             {
@@ -135,7 +135,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String ErrorBoxTitle
+        public string ErrorBoxTitle
         {
             get
             {
@@ -156,7 +156,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String PromptBoxText
+        public string PromptBoxText
         {
             get
             {
@@ -167,7 +167,7 @@ namespace NPOI.XSSF.UserModel
         /* (non-Javadoc)
          * @see NPOI.ss.usermodel.DataValidation#getPromptBoxTitle()
          */
-        public String PromptBoxTitle
+        public string PromptBoxTitle
         {
             get
             {
@@ -239,7 +239,7 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String PrettyPrint()
+        public string PrettyPrint()
         {
             StringBuilder builder = new StringBuilder();
             foreach (CellRangeAddress Address in regions.CellRangeAddresses)
@@ -254,8 +254,8 @@ namespace NPOI.XSSF.UserModel
         private static XSSFDataValidationConstraint GetConstraint(CT_DataValidation ctDataValidation)
         {
             XSSFDataValidationConstraint constraint = null;
-            String formula1 = ctDataValidation.formula1;
-            String formula2 = ctDataValidation.formula2;
+            string formula1 = ctDataValidation.formula1;
+            string formula2 = ctDataValidation.formula2;
             ST_DataValidationOperator operator1 = ctDataValidation.@operator;
             ST_DataValidationType type = ctDataValidation.type;
             int validationType = XSSFDataValidation.validationTypeReverseMappings[type];

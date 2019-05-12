@@ -33,7 +33,7 @@ namespace NPOI.DDF
     public class EscherClientAnchorRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF010);
-        public const String RECORD_DESCRIPTION = "MsofbtClientAnchor";
+        public const string RECORD_DESCRIPTION = "MsofbtClientAnchor";
         /**
          * bit[0] -  fMove (1 bit): A bit that specifies whether the shape will be kept intact when the cells are moved.
          * bit[1] - fSize (1 bit): A bit that specifies whether the shape will be kept intact when the cells are resized. If fMove is 1, the value MUST be 1.
@@ -156,7 +156,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "ClientAnchor"; }
         }
@@ -167,11 +167,11 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -200,9 +200,9 @@ namespace NPOI.DDF
                        "  Extra Data:" + nl + extraData;
             }
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try

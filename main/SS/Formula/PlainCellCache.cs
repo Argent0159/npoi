@@ -50,7 +50,7 @@ namespace NPOI.SS.Formula
             return (int)(_bookSheetColumn ^ (Operator.UnsignedRightShift(_bookSheetColumn , 32))) + 17 * _rowIndex;
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             Loc other = (Loc)obj;
             return _bookSheetColumn == other._bookSheetColumn && _rowIndex == other._rowIndex;

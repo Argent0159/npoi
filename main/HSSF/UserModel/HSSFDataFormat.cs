@@ -90,7 +90,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="format">The format string matching a built in format.</param>
         /// <returns>index of format or -1 if Undefined.</returns>
-        public static short GetBuiltinFormat(String format)
+        public static short GetBuiltinFormat(string format)
         {
             if (format.ToUpper().Equals("TEXT"))
                 format = "@";
@@ -99,7 +99,7 @@ namespace NPOI.HSSF.UserModel
 
             for (short k = 0; k <= 0x31; k++)
             {
-                String nformat = (String)builtinFormats[k];
+                string nformat = (string)builtinFormats[k];
 
                 if ((nformat != null) && nformat.Equals(format))
                 {
@@ -117,11 +117,11 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="pFormat">The format string matching a built in format.</param>
         /// <returns>index of format.</returns>
-        public short GetFormat(String pFormat)
+        public short GetFormat(string pFormat)
         {
             IEnumerator i;
             int ind;
-            String format;
+            string format;
             if (pFormat.ToUpper().Equals("TEXT"))
             {
                 format = "@";
@@ -171,15 +171,15 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="index">The index of a format.</param>
         /// <returns>string represented at index of format or null if there Is not a  format at that index</returns>
-        public String GetFormat(short index)
+        public string GetFormat(short index)
         {
             if (movedBuiltins)
-                return (String)formats[index];
+                return (string)formats[index];
 
             if (index == -1)
                 return null;
 
-            String fmt = formats.Count > index ? formats[index] : null;
+            string fmt = formats.Count > index ? formats[index] : null;
 
             if (builtinFormats.Count > index
                         && builtinFormats[index] != null)
@@ -204,9 +204,9 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="index">The index of a built in format.</param>
         /// <returns>string represented at index of format or null if there Is not a builtin format at that index</returns>
-        public static String GetBuiltinFormat(short index)
+        public static string GetBuiltinFormat(short index)
         {
-            return (String)builtinFormats[index];
+            return (string)builtinFormats[index];
         }
 
         /// <summary>

@@ -51,20 +51,20 @@ namespace NPOI
 
         }
 
-        private void AppendIfPresent(StringBuilder text, String thing, bool value)
+        private void AppendIfPresent(StringBuilder text, string thing, bool value)
         {
             AppendIfPresent(text, thing, value.ToString());
         }
-        private void AppendIfPresent(StringBuilder text, String thing, int value)
+        private void AppendIfPresent(StringBuilder text, string thing, int value)
         {
             AppendIfPresent(text, thing, value.ToString());
         }
-        private void AppendIfPresent(StringBuilder text, String thing, DateTime? value)
+        private void AppendIfPresent(StringBuilder text, string thing, DateTime? value)
         {
             if (value == null) { return; }
             AppendIfPresent(text, thing, value.ToString());
         }
-        private void AppendIfPresent(StringBuilder text, String thing, String value)
+        private void AppendIfPresent(StringBuilder text, string thing, string value)
         {
             if (value == null) { return; }
             text.Append(thing);
@@ -76,7 +76,7 @@ namespace NPOI
         /**
          * Returns the core document properties, eg author
          */
-        public String GetCorePropertiesText()
+        public string GetCorePropertiesText()
         {
             if (Document == null)
             {  // event based extractor does not have a document
@@ -113,7 +113,7 @@ namespace NPOI
          * Returns the extended document properties, eg
          *  application
          */
-        public String GetExtendedPropertiesText()
+        public string GetExtendedPropertiesText()
         {
             if (Document == null)
             {  // event based extractor does not have a document
@@ -145,7 +145,7 @@ namespace NPOI
     * Returns the custom document properties, if
     *  there are any
     */
-        public String GetCustomPropertiesText()
+        public string GetCustomPropertiesText()
         {
             if (Document == null)
             {  // event based extractor does not have a document
@@ -157,7 +157,7 @@ namespace NPOI
             List<CT_Property> properties = props.GetPropertyList();
             foreach (CT_Property property in properties)
             {
-                String val = "(not implemented!)";
+                string val = "(not implemented!)";
                 //val = property.Item.ToString();
                 //if (property.IsSetLpwstr())
                 //{
@@ -278,7 +278,7 @@ namespace NPOI
             return text.ToString();
         }
 
-        public override String Text
+        public override string Text
         {
             get
             {

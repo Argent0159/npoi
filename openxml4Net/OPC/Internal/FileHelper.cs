@@ -43,9 +43,9 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
          * Get file name from the specified File object.
          */
-        public static String GetFilename(string filepath)
+        public static string GetFilename(string filepath)
         {
-            String path = filepath;
+            string path = filepath;
             int len = path.Length;
             int num2 = len;
             while (--num2 >= 0)

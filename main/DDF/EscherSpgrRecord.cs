@@ -31,7 +31,7 @@ namespace NPOI.DDF
     public class EscherSpgrRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF009);
-        public const String RECORD_DESCRIPTION = "MsofbtSpgr";
+        public const string RECORD_DESCRIPTION = "MsofbtSpgr";
 
         private int field_1_rectX1;
         private int field_2_rectY1;
@@ -108,7 +108,7 @@ namespace NPOI.DDF
         /// The short name for this record
         /// </summary>
         /// <value></value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "Spgr"; }
         }
@@ -119,9 +119,9 @@ namespace NPOI.DDF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             //        String extraData;
             //        MemoryStream b = new MemoryStream();
@@ -145,7 +145,7 @@ namespace NPOI.DDF
 
         }
 
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))

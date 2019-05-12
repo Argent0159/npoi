@@ -48,7 +48,7 @@ namespace NPOI.HPSF
             POIFSFileSystem fs = new POIFSFileSystem();
 
             // For tracking what we've written out, so far
-            List<String> excepts = new List<String>(1);
+            List<string> excepts = new List<string>(1);
 
             // Write out our HPFS properties, with any changes
             WriteProperties(fs, excepts);

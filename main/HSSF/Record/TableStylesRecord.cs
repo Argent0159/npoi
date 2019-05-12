@@ -36,8 +36,8 @@ namespace NPOI.HSSF.Record
         private byte[] unused = new byte[8];
         private int cts;
 
-        private String rgchDefListStyle;
-        private String rgchDefPivotStyle;
+        private string rgchDefListStyle;
+        private string rgchDefPivotStyle;
 
 
         public TableStylesRecord(RecordInputStream in1)
@@ -85,7 +85,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

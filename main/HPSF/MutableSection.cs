@@ -152,7 +152,7 @@ namespace NPOI.HPSF
         /// <param name="id">The property's ID</param>
         /// <param name="value">The property's value. It will be written as a Unicode
         /// string.</param>
-        public void SetProperty(int id, String value)
+        public void SetProperty(int id, string value)
         {
             SetProperty(id, Variant.VT_LPWSTR, value);
             dirty = true;
@@ -210,7 +210,7 @@ namespace NPOI.HPSF
         /// <param name="variantType">The property's variant type.</param>
         /// <param name="value">The property's value.</param>
         public void SetProperty(int id, long variantType,
-                                Object value)
+                                object value)
         {
             MutableProperty p = new MutableProperty();
             p.ID=id;
@@ -374,7 +374,7 @@ namespace NPOI.HPSF
                     int codepage = -1;
                     if (GetProperty(PropertyIDMap.PID_DICTIONARY) != null)
                     {
-                        Object p1 = GetProperty(PropertyIDMap.PID_CODEPAGE);
+                        object p1 = GetProperty(PropertyIDMap.PID_CODEPAGE);
                         if (p1 != null)
                         {
                             if (!(p1 is int))
@@ -471,10 +471,10 @@ namespace NPOI.HPSF
             for (IEnumerator i = dictionary.Keys.GetEnumerator(); i.MoveNext(); )
             {
                 long key = Convert.ToInt64(i.Current, CultureInfo.InvariantCulture);
-                String value = (String)dictionary[key];
+                string value = (string)dictionary[key];
                 //tony qu added: some key is int32 instead of int64
                 if(value==null)
-                    value = (String)dictionary[(int)key];
+                    value = (string)dictionary[(int)key];
 
                 if (codepage == CodePageUtil.CP_UNICODE)
                 {
@@ -570,7 +570,7 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="id">The ID of the property To Get</param>
         /// <returns>The property or null  if there is no such property</returns>
-        public override Object GetProperty(long id)
+        public override object GetProperty(long id)
         {
             /* Calling Properties ensures that properties and preprops are in
              * sync. */
@@ -603,7 +603,7 @@ namespace NPOI.HPSF
                 {
                     for (IEnumerator i = value.Keys.GetEnumerator();
                          i.MoveNext(); )
-                        if (!(i.Current is Int64 || i.Current is Int32))
+                        if (!(i.Current is long || i.Current is int))
                             throw new IllegalPropertySetDataException
                                 ("Dictionary keys must be of type long. but it's " + i.Current + ","+i.Current.GetType().Name+" now");
 
@@ -642,10 +642,10 @@ namespace NPOI.HPSF
         /// <param name="id">The property ID.</param>
         /// <param name="value">The property's value. The value's class must be one of those
         /// supported by HPSF.</param>
-        public void SetProperty(int id, Object value)
+        public void SetProperty(int id, object value)
         {
-            if (value is String)
-                SetProperty(id, (String)value);
+            if (value is string)
+                SetProperty(id, (string)value);
             else if (value is long)
                 SetProperty(id, ((long)value));
             else if (value is int)

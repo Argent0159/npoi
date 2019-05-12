@@ -19,7 +19,7 @@ namespace NPOI.OpenXml4Net.OPC
          * Arraylist use to store this collection part names as string for rule
          * M1.11 optimized checking.
          */
-        private List<String> registerPartNameStr = new List<String>();
+        private List<string> registerPartNameStr = new List<string>();
 
 
         /**
@@ -33,10 +33,10 @@ namespace NPOI.OpenXml4Net.OPC
          */
         public PackagePart Put(PackagePartName partName, PackagePart part)
         {
-            String[] segments = partName.URI.OriginalString.Split(
+            string[] segments = partName.URI.OriginalString.Split(
                     PackagingUriHelper.FORWARD_SLASH_CHAR);
             StringBuilder concatSeg = new StringBuilder();
-            foreach (String seg in segments)
+            foreach (string seg in segments)
             {
                 if (!seg.Equals(""))
                     concatSeg.Append(PackagingUriHelper.FORWARD_SLASH_CHAR);

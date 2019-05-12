@@ -158,9 +158,9 @@ namespace NPOI.DDF
         /// Retrieves the string representation for this property.
         /// </summary>
         /// <returns></returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             StringBuilder results = new StringBuilder();
             results.Append("    {EscherArrayProperty:" + nl);
@@ -179,7 +179,7 @@ namespace NPOI.DDF
                     + ", blipId: " + IsBlipId
                     + ", data: " + nl + results.ToString();
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(GetType().Name).Append(" id=\"0x").Append(HexDump.ToHex(Id))

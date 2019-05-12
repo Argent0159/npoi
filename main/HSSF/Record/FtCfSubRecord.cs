@@ -69,7 +69,7 @@ namespace NPOI.HSSF.Record
          * Convert this record to string.
          * Used by BiffViewer and other utilities.
          */
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[FtCf ]\n");
@@ -110,7 +110,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             FtCfSubRecord rec = new FtCfSubRecord();
             rec.flags = this.flags;

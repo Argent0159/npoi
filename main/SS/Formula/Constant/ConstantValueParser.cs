@@ -49,7 +49,7 @@ namespace NPOI.SS.Formula.Constant
 
         public static object[] Parse(ILittleEndianInput in1, int nValues)
         {
-            object[] result = new Object[nValues];
+            object[] result = new object[nValues];
             for (int i = 0; i < result.Length; i++)
             {
                 result[i]=ReadAConstantValue(in1);
@@ -81,7 +81,7 @@ namespace NPOI.SS.Formula.Constant
             throw new Exception("Unknown grbit value (" + grbit + ")");
         }
 
-        private static Object ReadBoolean(ILittleEndianInput in1)
+        private static object ReadBoolean(ILittleEndianInput in1)
         {
             byte val = (byte)in1.ReadLong(); // 7 bytes 'not used'
             switch (val)
@@ -109,7 +109,7 @@ namespace NPOI.SS.Formula.Constant
         /**
          * @return encoded size without the 'type' code byte
          */
-        private static int GetEncodedSize(Object obj)
+        private static int GetEncodedSize(object obj)
         {
             if (obj == EMPTY_REPRESENTATION)
             {
@@ -121,7 +121,7 @@ namespace NPOI.SS.Formula.Constant
             {
                 return 8;
             }
-            String strVal = (String)obj;
+            string strVal = (string)obj;
             return StringUtil.GetEncodedSize(strVal);
         }
 
@@ -133,7 +133,7 @@ namespace NPOI.SS.Formula.Constant
             }
         }
 
-        private static void EncodeSingleValue(ILittleEndianOutput out1, Object value)
+        private static void EncodeSingleValue(ILittleEndianOutput out1, object value)
         {
             if (value == EMPTY_REPRESENTATION)
             {
@@ -156,9 +156,9 @@ namespace NPOI.SS.Formula.Constant
                 out1.WriteDouble(dVal);
                 return;
             }
-            if (value is String)
+            if (value is string)
             {
-                String val = (String)value;
+                string val = (string)value;
                 out1.WriteByte(TYPE_STRING);
                 StringUtil.WriteUnicodeString(out1, val);
                 return;

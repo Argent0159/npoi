@@ -39,7 +39,7 @@ namespace NPOI.HSSF.Record
         private short field_3_xf_index;
         private short field_4_string_len;
         private byte field_5_unicode_flag;
-        private String field_6_value;
+        private string field_6_value;
 
         /** Creates new LabelRecord */
 
@@ -135,7 +135,7 @@ namespace NPOI.HSSF.Record
          * @see #GetStringLength
          */
 
-        public String Value
+        public string Value
         {
             get { return field_6_value; }
         }
@@ -162,7 +162,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[LABEL]\n");
@@ -183,7 +183,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override Object Clone()
+        public override object Clone()
         {
             LabelRecord rec = new LabelRecord();
             rec.field_1_row = field_1_row;

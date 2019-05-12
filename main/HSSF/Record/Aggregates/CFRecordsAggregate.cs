@@ -348,7 +348,7 @@ namespace NPOI.HSSF.Record.Aggregates
         //    }
         //}
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

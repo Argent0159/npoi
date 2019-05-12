@@ -49,7 +49,7 @@ namespace NPOI.Util
          * The name of the class to use. Initialised the
          *  first time we need it
          */
-        private static String _loggerClassName = null;
+        private static string _loggerClassName = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="POILogFactory"/> class.
@@ -73,7 +73,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="cat">the String that defines the log</param>
         /// <returns>a POILogger for the specified class</returns>
-        public static POILogger GetLogger(String cat)
+        public static POILogger GetLogger(string cat)
         {
             POILogger logger = null;
             

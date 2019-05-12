@@ -34,7 +34,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * A map to lookup POIXMLRelation by its relation type
          */
-        protected static Dictionary<String, XSSFRelation> _table = new Dictionary<String, XSSFRelation>();
+        protected static Dictionary<string, XSSFRelation> _table = new Dictionary<string, XSSFRelation>();
 
 
         public static XSSFRelation WORKBOOK = new XSSFRelation(
@@ -307,7 +307,7 @@ namespace NPOI.XSSF.UserModel
                 typeof(XSSFPivotCacheRecords)
         );
 
-        private XSSFRelation(String type, String rel, String defaultName, Type cls) :
+        private XSSFRelation(string type, string rel, string defaultName, Type cls) :
             base(type, rel, defaultName, cls)
         {
             if (cls != null && !_table.ContainsKey(rel))
@@ -343,7 +343,7 @@ namespace NPOI.XSSF.UserModel
          *    <code>http://schemas.openxmlformats.org/officeDocument/2006/relationships/image</code>
          * @return registered POIXMLRelation or null if not found
          */
-        public static XSSFRelation GetInstance(String rel)
+        public static XSSFRelation GetInstance(string rel)
         {
             if (_table.ContainsKey(rel))
                 return _table[rel];

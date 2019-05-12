@@ -33,7 +33,7 @@ namespace NPOI.POIFS.EventFileSystem
     {
         private DocumentInputStream stream;
         private POIFSDocumentPath path;
-        private String documentName;
+        private string documentName;
 
         /**
          * package scoped constructor
@@ -44,7 +44,7 @@ namespace NPOI.POIFS.EventFileSystem
          */
 
         public POIFSReaderEvent(DocumentInputStream stream,
-                         POIFSDocumentPath path, String documentName)
+                         POIFSDocumentPath path, string documentName)
         {
             this.stream = stream;
             this.path = path;
@@ -73,7 +73,7 @@ namespace NPOI.POIFS.EventFileSystem
          * @return the document's name
          */
 
-        public String Name
+        public string Name
         {
             get { return documentName; }
         }

@@ -93,7 +93,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Sets the frame macro.
          */
-        public void SetMacro(String macro)
+        public void SetMacro(string macro)
         {
             graphicFrame.macro = (macro);
         }
@@ -102,7 +102,7 @@ namespace NPOI.XSSF.UserModel
          * Returns the frame name.
          * @return name of the frame
          */
-        public String Name
+        public string Name
         {
             get
             {
@@ -139,7 +139,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Assign a DrawingML chart to the graphic frame.
          */
-        internal void SetChart(XSSFChart chart, String relId)
+        internal void SetChart(XSSFChart chart, string relId)
         {
             CT_GraphicalObjectData data = graphicFrame.graphic.AddNewGraphicData();
             AppendChartElement(data, relId);
@@ -174,10 +174,10 @@ namespace NPOI.XSSF.UserModel
          ///   <attribute name="uri" type="xsd:token"/>
          /// </complexType>
         /// </example>
-        private void AppendChartElement(CT_GraphicalObjectData data, String id)
+        private void AppendChartElement(CT_GraphicalObjectData data, string id)
         {
-            String r_namespaceUri = ST_RelationshipId.NamespaceURI;
-            String c_namespaceUri = XSSFDrawing.NAMESPACE_C;
+            string r_namespaceUri = ST_RelationshipId.NamespaceURI;
+            string c_namespaceUri = XSSFDrawing.NAMESPACE_C;
 
             //AppendChartElement
             string el = string.Format("<c:chart xmlns:c=\"{1}\" xmlns:r=\"{2}\" r:id=\"{0}\"/>", id, c_namespaceUri, r_namespaceUri);

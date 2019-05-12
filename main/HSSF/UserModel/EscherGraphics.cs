@@ -281,7 +281,7 @@ namespace NPOI.HSSF.UserModel
                 Logger.Log(POILogger.WARN, "DrawRoundRect not supported");
         }
 
-        public void DrawString(String str, int x, int y)
+        public void DrawString(string str, int x, int y)
         {
             if (string.IsNullOrEmpty(str))
                 return;
@@ -395,7 +395,7 @@ namespace NPOI.HSSF.UserModel
 
         private int FindBiggest(int[] values)
         {
-            int result = Int32.MinValue;
+            int result = int.MinValue;
             for (int i = 0; i < values.Length; i++)
             {
                 if (values[i] > result)
@@ -406,7 +406,7 @@ namespace NPOI.HSSF.UserModel
 
         private int FindSmallest(int[] values)
         {
-            int result = Int32.MaxValue;
+            int result = int.MaxValue;
             for (int i = 0; i < values.Length; i++)
             {
                 if (values[i] < result)

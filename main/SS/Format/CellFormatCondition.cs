@@ -37,11 +37,11 @@ namespace NPOI.SS.Format
         private const int EQ = 4;
         private const int NE = 5;
 
-        private static Dictionary<String, int> TESTS;
+        private static Dictionary<string, int> TESTS;
 
         static CellFormatCondition()
         {
-            TESTS = new Dictionary<String, int>();
+            TESTS = new Dictionary<string, int>();
             TESTS.Add("<", LT);
             TESTS.Add("<=", LE);
             TESTS.Add(">", GT);
@@ -134,14 +134,14 @@ namespace NPOI.SS.Format
          *
          * @return A condition object for the given condition.
          */
-        public static CellFormatCondition GetInstance(String opString,
-                String constStr) {
+        public static CellFormatCondition GetInstance(string opString,
+                string constStr) {
 
             if (!TESTS.ContainsKey(opString))
                 throw new ArgumentException("Unknown test: " + opString);
             int test = TESTS[(opString)];
 
-            double c = Double.Parse(constStr, CultureInfo.InvariantCulture);
+            double c = double.Parse(constStr, CultureInfo.InvariantCulture);
 
             switch (test)
             {

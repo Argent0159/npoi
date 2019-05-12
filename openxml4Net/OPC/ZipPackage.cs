@@ -72,7 +72,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @throws InvalidFormatException
          *             If the content type part parsing encounters an error.
          */
-        public ZipPackage(String path, PackageAccess access)
+        public ZipPackage(string path, PackageAccess access)
             : base(access)
         {
             ZipFile zipFile = null;
@@ -177,8 +177,8 @@ namespace NPOI.OpenXml4Net.OPC
             PackagePartName partName = BuildPartName(entry);
             if(partName == null) continue;
 
-            // Only proceed for Relationships at this stage
-            String contentType = contentTypeManager.GetContentType(partName);
+                // Only proceed for Relationships at this stage
+                string contentType = contentTypeManager.GetContentType(partName);
             if (contentType != null && contentType.Equals(ContentTypes.RELATIONSHIPS_PART)) {
                 try {
                     partList[partName]= new ZipPackagePart(this, entry,
@@ -196,7 +196,7 @@ namespace NPOI.OpenXml4Net.OPC
             PackagePartName partName = BuildPartName(entry);
             if(partName == null) continue;
 
-            String contentType = contentTypeManager
+                string contentType = contentTypeManager
                     .GetContentType(partName);
             if (contentType != null && contentType.Equals(ContentTypes.RELATIONSHIPS_PART)) {
                 // Already handled
@@ -261,7 +261,7 @@ namespace NPOI.OpenXml4Net.OPC
          */
 
         protected override PackagePart CreatePartImpl(PackagePartName partName,
-                String contentType, bool loadRelationships)
+                string contentType, bool loadRelationships)
         {
             if (contentType == null)
                 throw new ArgumentException("contentType");
@@ -366,7 +366,7 @@ namespace NPOI.OpenXml4Net.OPC
          *
          * @return A unique identifier use to be use as a temp file name.
          */
-        private String GenerateTempFileName(string directory)
+        private string GenerateTempFileName(string directory)
         {
             FileInfo tmpFilename = null ;
             string path = null;

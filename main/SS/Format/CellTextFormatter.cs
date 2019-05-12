@@ -29,7 +29,7 @@ namespace NPOI.SS.Format
     public class CellTextFormatter : CellFormatter
     {
         private int[] textPos;
-        private String desc;
+        private string desc;
 
         internal static CellFormatter SIMPLE_TEXT = new CellTextFormatter("@");
         private class PartHandler : CellFormatPart.IPartHandler
@@ -43,7 +43,7 @@ namespace NPOI.SS.Format
             {
                 this.numplace = numPlace;
             }
-            public String HandlePart(Match m, String part,
+            public string HandlePart(Match m, string part,
                                 CellFormatType type, StringBuilder desc)
             {
                 if (part.Equals("@"))
@@ -54,7 +54,7 @@ namespace NPOI.SS.Format
                 return null;
             }
         }
-        public CellTextFormatter(String format)
+        public CellTextFormatter(string format)
             : base(format)
         {
             ;
@@ -74,11 +74,11 @@ namespace NPOI.SS.Format
         }
 
         /** {@inheritDoc} */
-        public override void FormatValue(StringBuilder toAppendTo, Object obj)
+        public override void FormatValue(StringBuilder toAppendTo, object obj)
         {
             int start = toAppendTo.Length;
-            String text = obj.ToString();
-            if (obj is Boolean)
+            string text = obj.ToString();
+            if (obj is bool)
             {
                 text = text.ToUpper();
             }
@@ -96,7 +96,7 @@ namespace NPOI.SS.Format
          * <p/>
          * For text, this is just printing the text.
          */
-        public override void SimpleValue(StringBuilder toAppendTo, Object value)
+        public override void SimpleValue(StringBuilder toAppendTo, object value)
         {
             SIMPLE_TEXT.FormatValue(toAppendTo, value);
         }

@@ -73,11 +73,11 @@ namespace NPOI.XSSF.UserModel.Helpers
             return cell;
         }
 
-        public String GetXpath()
+        public string GetXpath()
         {
             CT_XmlCellPr xmlCellPr = SingleXmlCell.xmlCellPr;
             CT_XmlPr xmlPr = xmlCellPr.xmlPr;
-            String xpath = xmlPr.xpath;
+            string xpath = xmlPr.xpath;
             return xpath;
         }
 

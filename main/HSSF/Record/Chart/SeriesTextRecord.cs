@@ -41,7 +41,7 @@ namespace NPOI.HSSF.Record.Chart
         private short field_1_id;
 
         private bool is16bit;
-        private String field_4_text;
+        private string field_4_text;
 
 
 
@@ -73,7 +73,7 @@ namespace NPOI.HSSF.Record.Chart
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -126,7 +126,7 @@ namespace NPOI.HSSF.Record.Chart
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             SeriesTextRecord rec = new SeriesTextRecord();
 
@@ -154,7 +154,7 @@ namespace NPOI.HSSF.Record.Chart
         /**
          * Get the text field for the SeriesText record.
          */
-        public String Text
+        public string Text
         {
             get
             {

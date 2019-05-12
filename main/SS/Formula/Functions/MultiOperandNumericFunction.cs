@@ -54,7 +54,7 @@ namespace NPOI.SS.Formula.Functions
                 return e.GetErrorEval();
             }
 
-            if (Double.IsNaN(d) || Double.IsInfinity(d))
+            if (double.IsNaN(d) || double.IsInfinity(d))
                 return ErrorEval.NUM_ERROR;
 
             return new NumberEval(d);
@@ -211,8 +211,8 @@ namespace NPOI.SS.Formula.Functions
                     // ignore all ref strings
                     return;
                 }
-                String s = ((StringEval)ve).StringValue;
-                Double d = OperandResolver.ParseDouble(s);
+                string s = ((StringEval)ve).StringValue;
+                double d = OperandResolver.ParseDouble(s);
                 if (double.IsNaN(d))
                 {
                     throw new EvaluationException(ErrorEval.VALUE_INVALID);

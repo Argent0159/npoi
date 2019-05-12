@@ -29,9 +29,9 @@ namespace NPOI.SS.Formula.Eval
     {
         // Based on regular expression defined in JavaDoc at {@link java.lang.Double#valueOf}
         // modified to remove support for NaN, Infinity, Hexadecimal support and floating type suffixes
-        private const String Digits = "\\d+";
-        private const String Exp = "[eE][+-]?" + Digits;
-        private const String fpRegex =
+        private const string Digits = "\\d+";
+        private const string Exp = "[eE][+-]?" + Digits;
+        private const string fpRegex =
                     ("[\\x00-\\x20]*" +
                      "[+-]?(" +
                      "(((" + Digits + "(\\.)?(" + Digits + "?)(" + Exp + ")?)|" +
@@ -268,7 +268,7 @@ namespace NPOI.SS.Formula.Eval
          * @param text
          * @return <c>null</c> if the specified text cannot be Parsed as a number
          */
-        public static double ParseDouble(String pText)
+        public static double ParseDouble(string pText)
         {
             //if (Regex.Match(fpRegex, pText).Success)
                 try
@@ -280,7 +280,7 @@ namespace NPOI.SS.Formula.Eval
                 }
                 catch (Exception)
                 {
-                    return Double.NaN;
+                    return double.NaN;
                 }
             //else
             {
@@ -321,7 +321,7 @@ namespace NPOI.SS.Formula.Eval
          * @param ve must be a <c>NumberEval</c>, <c>StringEval</c>, <c>BoolEval</c>, or <c>BlankEval</c>
          * @return the Converted string value. never <c>null</c>
          */
-        public static String CoerceValueToString(ValueEval ve)
+        public static string CoerceValueToString(ValueEval ve)
         {
             if (ve is StringValueEval)
             {
@@ -339,7 +339,7 @@ namespace NPOI.SS.Formula.Eval
  * @return <c>null</c> to represent blank values
  * @throws EvaluationException if ve is an ErrorEval, or if a string value cannot be converted
  */
-        public static Boolean? CoerceValueToBoolean(ValueEval ve, bool stringsAreBlanks)
+        public static bool? CoerceValueToBoolean(ValueEval ve, bool stringsAreBlanks)
         {
 
             if (ve == null || ve == BlankEval.instance)
@@ -358,7 +358,7 @@ namespace NPOI.SS.Formula.Eval
                 {
                     return null;
                 }
-                String str = ((StringEval)ve).StringValue;
+                string str = ((StringEval)ve).StringValue;
                 if (str.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
@@ -375,7 +375,7 @@ namespace NPOI.SS.Formula.Eval
             {
                 NumericValueEval ne = (NumericValueEval)ve;
                 double d = ne.NumberValue;
-                if (Double.IsNaN(d))
+                if (double.IsNaN(d))
                 {
                     throw new EvaluationException(ErrorEval.VALUE_INVALID);
                 }

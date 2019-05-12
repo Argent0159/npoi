@@ -33,7 +33,7 @@ namespace NPOI.XSSF.UserModel
         private HyperlinkType _type;
         private PackageRelationship _externalRel;
         private CT_Hyperlink _ctHyperlink;
-        private String _location;
+        private string _location;
 
         /**
          * Create a new XSSFHyperlink. This method is protected to be used only by XSSFCreationHelper
@@ -159,7 +159,7 @@ namespace NPOI.XSSF.UserModel
          * Get the reference of the cell this applies to,
          * es A55
          */
-        public String GetCellRef()
+        public string GetCellRef()
         {
             return _ctHyperlink.@ref;
         }
@@ -169,7 +169,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the Address of this hyperlink
          */
-        public String Address
+        public string Address
         {
             get
             {
@@ -186,7 +186,7 @@ namespace NPOI.XSSF.UserModel
                 }
             }
         }
-        private void Validate(String address)
+        private void Validate(string address)
         {
             switch (_type)
             {
@@ -204,7 +204,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return text to display
          */
-        public String Label
+        public string Label
         {
             get
             {
@@ -222,7 +222,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return location
          */
-        public String Location
+        public string Location
         {
             get
             {
@@ -239,7 +239,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * Assigns this hyperlink to the given cell reference
          */
-        internal void SetCellReference(String ref1)
+        internal void SetCellReference(string ref1)
         {
             _ctHyperlink.@ref = ref1;
         }
@@ -252,7 +252,7 @@ namespace NPOI.XSSF.UserModel
 
         private CellReference buildCellReference()
         {
-            String ref1 = _ctHyperlink.@ref;
+            string ref1 = _ctHyperlink.@ref;
             if (ref1 == null)
             {
                 ref1 = "A1";
@@ -343,7 +343,7 @@ namespace NPOI.XSSF.UserModel
         /// <summary>
         /// get or set additional text to help the user understand more about the hyperlink
         /// </summary>
-        public String Tooltip
+        public string Tooltip
         {
             get
             {

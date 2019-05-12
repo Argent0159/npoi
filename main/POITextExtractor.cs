@@ -59,7 +59,7 @@ namespace NPOI
         /// a specific project for details.
         /// </summary>
         /// <value>All the text from the document.</value>
-        public abstract String Text{get;}
+        public abstract string Text {get;}
 
         /// <summary>
         /// Returns another text extractor, which is able to

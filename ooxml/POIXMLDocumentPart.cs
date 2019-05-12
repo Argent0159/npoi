@@ -42,7 +42,7 @@ using System.Xml;
         private PackagePart packagePart;
         private PackageRelationship packageRel;
         private POIXMLDocumentPart parent;
-        private Dictionary<String, POIXMLDocumentPart> relations = new Dictionary<String, POIXMLDocumentPart>();
+        private Dictionary<string, POIXMLDocumentPart> relations = new Dictionary<string, POIXMLDocumentPart>();
 
         /**
          * Counter that provides the amount of incoming relations from other parts
@@ -239,7 +239,7 @@ using System.Xml;
          *            The relation id to look for
          * @return the target part of the relation, or null, if none exists
          */
-        public POIXMLDocumentPart GetRelationById(String id)
+        public POIXMLDocumentPart GetRelationById(string id)
         {
             if (string.IsNullOrEmpty(id))
                 return null;
@@ -258,9 +258,9 @@ using System.Xml;
          * @return The value of the {@link PackageRelationship#GetId()} or null, if
          *         parts are not related.
          */
-        public String GetRelationId(POIXMLDocumentPart part)
+        public string GetRelationId(POIXMLDocumentPart part)
         {
-            foreach (KeyValuePair<String, POIXMLDocumentPart> entry in relations)
+            foreach (KeyValuePair<string, POIXMLDocumentPart> entry in relations)
             {
                 if (entry.Value == part)
                 {
@@ -275,7 +275,7 @@ using System.Xml;
          *
          * @param part the child to add
          */
-        public void AddRelation(String id, POIXMLDocumentPart part)
+        public void AddRelation(string id, POIXMLDocumentPart part)
         {
             relations[id] = part;
             part.IncrementRelationCounter();
@@ -302,7 +302,7 @@ using System.Xml;
          */
         protected internal bool RemoveRelation(POIXMLDocumentPart part, bool RemoveUnusedParts)
         {
-            String id = GetRelationId(part);
+            string id = GetRelationId(part);
             if (id == null)
             {
                 // part is not related with this POIXMLDocumentPart
@@ -344,7 +344,7 @@ using System.Xml;
             return parent;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return packagePart == null ? string.Empty : packagePart.ToString();
         }

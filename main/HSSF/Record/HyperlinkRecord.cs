@@ -83,23 +83,23 @@ namespace NPOI.HSSF.Record
         /**
          * Test label
          */
-        private String _label=string.Empty;
-        private String _targetFrame=string.Empty;
+        private string _label =string.Empty;
+        private string _targetFrame =string.Empty;
         /**
          * Moniker. Makes sense only for URL and file links
          */
         private GUID _moniker;
         /** in 8:3 DOS format No Unicode string header,
          * always 8-bit characters, zero-terminated */
-        private String _shortFilename=string.Empty;
+        private string _shortFilename =string.Empty;
         /** Link */
-        private String _address=string.Empty;
+        private string _address =string.Empty;
         /**
          * Text describing a place in document.  In Excel UI, this is appended to the
          * address, (after a '#' delimiter).<br/>
          * This field is optional.  If present, the {@link #HLINK_PLACE} must be set.
          */
-        private String _textMark=string.Empty;
+        private string _textMark =string.Empty;
         /**
          * Remaining bytes
          */
@@ -323,7 +323,7 @@ namespace NPOI.HSSF.Record
                 return _moniker;
             }
         }
-        private static String CleanString(String s)
+        private static string CleanString(string s)
         {
             if (s == null)
             {
@@ -336,7 +336,7 @@ namespace NPOI.HSSF.Record
             }
             return s.Substring(0, idx);
         }
-        private static String AppendNullTerm(String s)
+        private static string AppendNullTerm(string s)
         {
             if (s == null)
             {
@@ -350,7 +350,7 @@ namespace NPOI.HSSF.Record
          *
          * @return  text to Display
          */
-        public String Label
+        public string Label
         {
             get
             {
@@ -367,7 +367,7 @@ namespace NPOI.HSSF.Record
          *
          * @return  the Address of this hyperlink
          */
-        public String Address
+        public string Address
         {
             get
             {
@@ -388,7 +388,7 @@ namespace NPOI.HSSF.Record
                     _address = AppendNullTerm(value);
             }
         }
-        public String TextMark
+        public string TextMark
         {
             get
             {
@@ -410,14 +410,14 @@ namespace NPOI.HSSF.Record
                 return _linkOpts;
             }
         }
-        public String TargetFrame
+        public string TargetFrame
         {
             get
             {
                 return CleanString(_targetFrame);
             }
         }
-        public String ShortFilename
+        public string ShortFilename
         {
             get
             {
@@ -586,7 +586,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -657,7 +657,7 @@ namespace NPOI.HSSF.Record
             TextMark = "";
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             HyperlinkRecord rec = new HyperlinkRecord();
             rec._range = _range.Copy();

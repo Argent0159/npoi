@@ -128,7 +128,7 @@ namespace NPOI.HSSF.Record
          * Convert this record to string.
          * Used by BiffViewer and other utilities.
          */
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[FtPioGrbit ]\n");
@@ -169,7 +169,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             FtPioGrbitSubRecord rec = new FtPioGrbitSubRecord();
             rec.flags = this.flags;

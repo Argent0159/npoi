@@ -191,7 +191,7 @@ namespace NPOI.XWPF.UserModel
         /// <param name="size">Border Width</param>
         /// <param name="space">Border Spacing Measurement</param>
         /// <param name="rgbColor">Border Color</param>
-        public void SetBorderBottom(XWPFTable.XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetBorderBottom(XWPFTable.XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TcPr ctTcPr = GetCTTc().IsSetTcPr() ? GetCTTc().tcPr : GetCTTc().AddNewTcPr();
             CT_TcBorders borders = ctTcPr.tcBorders == null ? ctTcPr.AddNewTcBorders() : ctTcPr.tcBorders;
@@ -205,7 +205,7 @@ namespace NPOI.XWPF.UserModel
         /// <param name="size">Border Width</param>
         /// <param name="space">Border Spacing Measurement</param>
         /// <param name="rgbColor">Border Color</param>
-        public void SetBorderTop(XWPFTable.XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetBorderTop(XWPFTable.XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TcPr ctTcPr = GetCTTc().IsSetTcPr() ? GetCTTc().tcPr : GetCTTc().AddNewTcPr();
             CT_TcBorders borders = ctTcPr.tcBorders == null ? ctTcPr.AddNewTcBorders() : ctTcPr.tcBorders;
@@ -219,7 +219,7 @@ namespace NPOI.XWPF.UserModel
         /// <param name="size">Border Width</param>
         /// <param name="space">Border Spacing Measurement</param>
         /// <param name="rgbColor">Border Color</param>
-        public void SetBorderLeft(XWPFTable.XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetBorderLeft(XWPFTable.XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TcPr ctTcPr = GetCTTc().IsSetTcPr() ? GetCTTc().tcPr : GetCTTc().AddNewTcPr();
             CT_TcBorders borders = ctTcPr.tcBorders == null ? ctTcPr.AddNewTcBorders() : ctTcPr.tcBorders;
@@ -233,7 +233,7 @@ namespace NPOI.XWPF.UserModel
         /// <param name="size">Border Width</param>
         /// <param name="space"></param>
         /// <param name="rgbColor">Border Color</param>
-        public void SetBorderRight(XWPFTable.XWPFBorderType type, int size, int space, String rgbColor)
+        public void SetBorderRight(XWPFTable.XWPFBorderType type, int size, int space, string rgbColor)
         {
             CT_TcPr ctTcPr = GetCTTc().IsSetTcPr() ? GetCTTc().tcPr : GetCTTc().AddNewTcPr();
             CT_TcBorders borders = ctTcPr.tcBorders == null ? ctTcPr.AddNewTcBorders() : ctTcPr.tcBorders;
@@ -258,7 +258,7 @@ namespace NPOI.XWPF.UserModel
             return border;
         }
 
-        public void SetText(String text)
+        public void SetText(string text)
         {
             CT_P ctP = (ctTc.SizeOfPArray() == 0) ? ctTc.AddNewP() : ctTc.GetPArray(0);
             XWPFParagraph par = new XWPFParagraph(ctP, this);
@@ -275,7 +275,7 @@ namespace NPOI.XWPF.UserModel
      * you may want to access these elements individually.
      * @param rgbStr - the desired cell color, in the hex form "RRGGBB".
      */
-        public void SetColor(String rgbStr)
+        public void SetColor(string rgbStr)
         {
             CT_TcPr tcpr = ctTc.IsSetTcPr() ? ctTc.tcPr : ctTc.AddNewTcPr();
             CT_Shd ctshd = tcpr.IsSetShd() ? tcpr.shd : tcpr.AddNewShd();
@@ -288,9 +288,9 @@ namespace NPOI.XWPF.UserModel
          * Get cell color. Note that this method only returns the "fill" value.
          * @return RGB string of cell color
          */
-        public String GetColor()
+        public string GetColor()
         {
-            String color = null;
+            string color = null;
             CT_TcPr tcpr = ctTc.tcPr;
             if (tcpr != null)
             {
@@ -517,7 +517,7 @@ namespace NPOI.XWPF.UserModel
             tables.Insert(i, table);
         }
 
-        public String GetText()
+        public string GetText()
         {
             StringBuilder text = new StringBuilder();
             foreach (XWPFParagraph p in paragraphs)
@@ -530,7 +530,7 @@ namespace NPOI.XWPF.UserModel
         /**
      * extracts all text recursively through embedded tables and embedded SDTs
      */
-        public String GetTextRecursively()
+        public string GetTextRecursively()
         {
 
             StringBuilder text = new StringBuilder();

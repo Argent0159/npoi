@@ -232,7 +232,7 @@ namespace NPOI.HSSF.Record
             out1.WriteShort(_options);
             out1.WriteShort(field_6_reserved);
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -254,7 +254,7 @@ namespace NPOI.HSSF.Record
             return buffer.ToString();
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             ColumnInfoRecord rec = new ColumnInfoRecord();
             rec._first_col = _first_col;

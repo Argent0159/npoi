@@ -28,7 +28,7 @@ namespace NPOI.HSSF.UserModel
     /// </summary>
     public class FontDetails
     {
-        private String fontName;
+        private string fontName;
         private int height;
         private Hashtable charWidths = new Hashtable();
 
@@ -37,7 +37,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="fontName">The font name.</param>
         /// <param name="height">The height of the font.</param>
-        public FontDetails(String fontName, int height)
+        public FontDetails(string fontName, int height)
         {
             this.fontName = fontName;
             this.height = height;
@@ -47,7 +47,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets the name of the font.
         /// </summary>
         /// <returns></returns>
-        public String GetFontName()
+        public string GetFontName()
         {
             return fontName;
         }
@@ -108,7 +108,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="fontName">Name of the font.</param>
         /// <returns></returns>
-        public static String BuildFontHeightProperty(String fontName)
+        public static string BuildFontHeightProperty(string fontName)
         {
             return "font." + fontName + ".height";
         }
@@ -117,7 +117,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="fontName">Name of the font.</param>
         /// <returns></returns>
-        public static String BuildFontWidthsProperty(String fontName)
+        public static string BuildFontWidthsProperty(string fontName)
         {
             return "font." + fontName + ".widths";
         }
@@ -126,7 +126,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="fontName">Name of the font.</param>
         /// <returns></returns>
-        public static String BuildFontCharsProperty(String fontName)
+        public static string BuildFontCharsProperty(string fontName)
         {
             return "font." + fontName + ".characters";
         }
@@ -141,11 +141,11 @@ namespace NPOI.HSSF.UserModel
         /// <param name="fontMetricsProps">the property object holding the details of this
         /// particular font.</param>
         /// <returns>a new FontDetails instance.</returns>
-        public static FontDetails Create(String fontName, Properties fontMetricsProps)
+        public static FontDetails Create(string fontName, Properties fontMetricsProps)
         {
-            String heightStr = fontMetricsProps[BuildFontHeightProperty(fontName)];
-            String widthsStr = fontMetricsProps[BuildFontWidthsProperty(fontName)];
-            String CharsStr = fontMetricsProps[BuildFontCharsProperty(fontName)];
+            string heightStr = fontMetricsProps[BuildFontHeightProperty(fontName)];
+            string widthsStr = fontMetricsProps[BuildFontWidthsProperty(fontName)];
+            string CharsStr = fontMetricsProps[BuildFontCharsProperty(fontName)];
 
             // Ensure that this Is a font we know about
             if (heightStr == null || widthsStr == null || CharsStr == null)
@@ -157,8 +157,8 @@ namespace NPOI.HSSF.UserModel
 
             int height = int.Parse(heightStr, CultureInfo.InvariantCulture);
             FontDetails d = new FontDetails(fontName, height);
-            String[] CharsStrArray = Split(CharsStr, ",", -1);
-            String[] widthsStrArray = Split(widthsStr, ",", -1);
+            string[] CharsStrArray = Split(CharsStr, ",", -1);
+            string[] widthsStrArray = Split(widthsStr, ",", -1);
             if (CharsStrArray.Length != widthsStrArray.Length)
                 throw new Exception("Number of Chars does not number of widths for font " + fontName);
             for (int i = 0; i < widthsStrArray.Length; i++)
@@ -174,7 +174,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="str">The string to measure.</param>
         /// <returns>The width of the string for a 10 point font.</returns>
-        public int GetStringWidth(String str)
+        public int GetStringWidth(string str)
         {
             int width = 0;
             for (int i = 0; i < str.Length; i++)
@@ -192,9 +192,9 @@ namespace NPOI.HSSF.UserModel
         /// <param name="separator">The separator.</param>
         /// <param name="max">The max.</param>
         /// <returns></returns>
-        private static String[] Split(String text, String separator, int max)
+        private static string[] Split(string text, string separator, int max)
         {
-            String[] list = text.Split(separator.ToCharArray());
+            string[] list = text.Split(separator.ToCharArray());
             return list;
         }
 

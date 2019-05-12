@@ -53,7 +53,7 @@ namespace NPOI.SS.Formula.PTG
         /**
          * Create a function ptg from a string tokenised by the parser
          */
-        public static FuncVarPtg Create(String pName, int numArgs)
+        public static FuncVarPtg Create(string pName, int numArgs)
         {
             return Create(numArgs, LookupIndex(pName));
         }

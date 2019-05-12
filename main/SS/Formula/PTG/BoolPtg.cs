@@ -39,7 +39,7 @@ namespace NPOI.SS.Formula.PTG
         }
 
 
-        public BoolPtg(String formulaToken)
+        public BoolPtg(string formulaToken)
         {
             field_1_value = (formulaToken.Equals("TRUE"));
         }
@@ -60,7 +60,7 @@ namespace NPOI.SS.Formula.PTG
             get { return SIZE; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return field_1_value ? "TRUE" : "FALSE";
         }

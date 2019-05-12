@@ -52,7 +52,7 @@ namespace NPOI.HSSF.EventUserModel
         /// string.
         /// </summary>
         /// <param name="msg">The MSG.</param>
-        public HSSFUserException(String msg)
+        public HSSFUserException(string msg)
             : base(msg)
         {
 
@@ -73,7 +73,7 @@ namespace NPOI.HSSF.EventUserModel
         /// </summary>
         /// <param name="msg">The MSG.</param>
         /// <param name="reason">The reason.</param>
-        public HSSFUserException(String msg, Exception reason)
+        public HSSFUserException(string msg, Exception reason)
             : base(msg, reason)
         {
 

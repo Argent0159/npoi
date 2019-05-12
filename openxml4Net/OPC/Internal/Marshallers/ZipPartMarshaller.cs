@@ -126,7 +126,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal.Marshallers
                         .RelationshipType);
 
                 // the relationship Target
-                String targetValue;
+                string targetValue;
                 Uri uri = rel.TargetUri;
                 if (rel.TargetMode == TargetMode.External)
                 {

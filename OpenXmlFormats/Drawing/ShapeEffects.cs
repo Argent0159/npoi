@@ -42,7 +42,7 @@ namespace NPOI.OpenXmlFormats.Dml
             ctObj.link = XmlHelper.ReadString(node.Attributes["r:link"]);
             if (node.Attributes["cstate"] != null)
                 ctObj.cstate = (ST_BlipCompression)Enum.Parse(typeof(ST_BlipCompression), node.Attributes["cstate"].Value);
-            ctObj.Items = new List<Object>();
+            ctObj.Items = new List<object>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "extLst")

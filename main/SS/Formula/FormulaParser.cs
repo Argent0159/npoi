@@ -41,7 +41,7 @@ namespace NPOI.SS.Formula
         ///This class was given package scope until it would become Clear that it is useful to general client code.
         /// </summary>
         /// <param name="msg"></param>
-        public FormulaParseException(String msg)
+        public FormulaParseException(string msg)
             : base(msg)
         {
 
@@ -59,7 +59,7 @@ namespace NPOI.SS.Formula
      */
     public class FormulaParser
     {
-        private String formulaString;
+        private string formulaString;
         private int formulaLength;
         private int _pointer;
         private static SpreadsheetVersion _ssVersion;
@@ -92,7 +92,7 @@ namespace NPOI.SS.Formula
          *  model.Workbook, then use the convenience method on
          *  usermodel.HSSFFormulaEvaluator
          */
-        public FormulaParser(String formula, IFormulaParsingWorkbook book, int sheetIndex)
+        public FormulaParser(string formula, IFormulaParsingWorkbook book, int sheetIndex)
         {
             formulaString = formula;
             _pointer = 0;
@@ -103,7 +103,7 @@ namespace NPOI.SS.Formula
             _sheetIndex = sheetIndex;
         }
 
-        public static Ptg[] Parse(String formula, IFormulaParsingWorkbook book)
+        public static Ptg[] Parse(string formula, IFormulaParsingWorkbook book)
         {
             return Parse(formula, book, FormulaType.Cell);
         }
@@ -122,14 +122,14 @@ namespace NPOI.SS.Formula
          * @return array of parsed tokens
          * @throws FormulaParseException if the formula is unparsable
          */
-        public static Ptg[] Parse(String formula, IFormulaParsingWorkbook workbook, FormulaType formulaType, int sheetIndex)
+        public static Ptg[] Parse(string formula, IFormulaParsingWorkbook workbook, FormulaType formulaType, int sheetIndex)
         {
             FormulaParser fp = new FormulaParser(formula, workbook, sheetIndex);
             fp.Parse();
             return fp.GetRPNPtg(formulaType);
         }
 
-        public static Ptg[] Parse(String formula, IFormulaParsingWorkbook workbook, FormulaType formulaType)
+        public static Ptg[] Parse(string formula, IFormulaParsingWorkbook workbook, FormulaType formulaType)
         {
             return Parse(formula, workbook, formulaType, -1);
         }
@@ -157,9 +157,9 @@ namespace NPOI.SS.Formula
         }
 
         /** Report What Was Expected */
-        private Exception expected(String s)
+        private Exception expected(string s)
         {
-            String msg;
+            string msg;
 
             if (look == '=' && formulaString.Substring(0, _pointer - 1).Trim().Length < 1)
             {
@@ -178,13 +178,13 @@ namespace NPOI.SS.Formula
         /** Recognize an Alpha Character */
         private static bool IsAlpha(char c)
         {
-            return Char.IsLetter(c) || c == '$' || c == '_';
+            return char.IsLetter(c) || c == '$' || c == '_';
         }
 
         /** Recognize a Decimal Digit */
         private static bool IsDigit(char c)
         {
-            return Char.IsDigit(c);
+            return char.IsDigit(c);
         }
 
         /** Recognize an Alphanumeric */
@@ -221,14 +221,14 @@ namespace NPOI.SS.Formula
             }
             GetChar();
         }
-        private String ParseUnquotedIdentifier()
+        private string ParseUnquotedIdentifier()
         {
             if (look == '\'')
             {
                 throw expected("unquoted identifier");
             }
             StringBuilder sb = new StringBuilder();
-            while (Char.IsLetterOrDigit(look) || look == '.')
+            while (char.IsLetterOrDigit(look) || look == '.')
             {
                 sb.Append(look);
                 GetChar();
@@ -241,7 +241,7 @@ namespace NPOI.SS.Formula
             return sb.ToString();
         }
         /** Get a Number */
-        private String GetNum()
+        private string GetNum()
         {
             StringBuilder value = new StringBuilder();
 
@@ -340,7 +340,7 @@ namespace NPOI.SS.Formula
         }
 
 
-        private String ParseAsName()
+        private string ParseAsName()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -365,7 +365,7 @@ namespace NPOI.SS.Formula
          */
         private static bool IsValidDefinedNameChar(char ch)
         {
-            if (Char.IsLetterOrDigit(ch))
+            if (char.IsLetterOrDigit(ch))
             {
                 return true;
             }
@@ -382,7 +382,7 @@ namespace NPOI.SS.Formula
         /**
          * @param currentParsePosition used to format a potential error message
          */
-        private void CheckValidRangeOperand(String sideName, int currentParsePosition, ParseNode pn)
+        private void CheckValidRangeOperand(string sideName, int currentParsePosition, ParseNode pn)
         {
             if (!IsValidRangeOperand(pn))
             {
@@ -495,7 +495,7 @@ namespace NPOI.SS.Formula
                     else
                     {
                         // Is it a named range?
-                        String name = ParseAsName();
+                        string name = ParseAsName();
                         if (name.Length == 0)
                         {
                             throw new FormulaParseException("Cell reference or Named Range "
@@ -543,7 +543,7 @@ namespace NPOI.SS.Formula
                     ResetPointer(colonPos);
                     if (!part1.IsCell)
                     {
-                        String prefix;
+                        string prefix;
                         if (sheetIden == null)
                         {
                             prefix = "";
@@ -572,7 +572,7 @@ namespace NPOI.SS.Formula
 
                 SkipWhite();
                 SimpleRangePart part2 = ParseSimpleRangePart();
-                String part1And2 = formulaString.Substring(savePointer - 1, _pointer - savePointer);
+                string part1And2 = formulaString.Substring(savePointer - 1, _pointer - savePointer);
                 if (part2 == null)
                 {
                     if (sheetIden != null)
@@ -641,7 +641,7 @@ namespace NPOI.SS.Formula
         {
             ResetPointer(savePointer);
 
-            if (Char.IsDigit(look))
+            if (char.IsDigit(look))
             {
                 return new ParseNode(ParseNumber());
             }
@@ -651,7 +651,7 @@ namespace NPOI.SS.Formula
             }
             // from now on we can only be dealing with non-quoted identifiers
             // which will either be named ranges or functions
-            String name = ParseAsName();
+            string name = ParseAsName();
             if (look == '(')
             {
                 return Function(name);
@@ -689,7 +689,7 @@ namespace NPOI.SS.Formula
             }
             else
             {
-                String sName = sheetIden.SheetId.Name;
+                string sName = sheetIden.SheetId.Name;
                 if (sheetIden.BookName == null)
                 {
                     extIx = _book.GetExternalSheetIndex(sName);
@@ -774,11 +774,11 @@ namespace NPOI.SS.Formula
             while (ptr < formulaLength)
             {
                 char ch = formulaString[ptr];
-                if (Char.IsDigit(ch))
+                if (char.IsDigit(ch))
                 {
                     hasDigits = true;
                 }
-                else if (Char.IsLetter(ch))
+                else if (char.IsLetter(ch))
                 {
                     hasLetters = true;
                 }
@@ -796,7 +796,7 @@ namespace NPOI.SS.Formula
             {
                 return null;
             }
-            String rep = formulaString.Substring(_pointer - 1, ptr - _pointer + 1);
+            string rep = formulaString.Substring(_pointer - 1, ptr - _pointer + 1);
 
             Regex pattern = new Regex(CELL_REF_PATTERN);
 
@@ -824,7 +824,7 @@ namespace NPOI.SS.Formula
                 int i;
                 try
                 {
-                    i = Int32.Parse(rep.Replace("$", ""), CultureInfo.InvariantCulture);
+                    i = int.Parse(rep.Replace("$", ""), CultureInfo.InvariantCulture);
                 }
                 catch (Exception)
                 {
@@ -906,9 +906,9 @@ namespace NPOI.SS.Formula
             }
 
             private PartType _type;
-            private String _rep;
+            private string _rep;
 
-            public SimpleRangePart(String rep, bool hasLetters, bool hasNumbers)
+            public SimpleRangePart(string rep, bool hasLetters, bool hasNumbers)
             {
                 _rep = rep;
                 _type = Get(hasLetters, hasNumbers);
@@ -959,7 +959,7 @@ namespace NPOI.SS.Formula
                 }
             }
 
-            public String Rep
+            public string Rep
             {
                 get
                 {
@@ -977,7 +977,7 @@ namespace NPOI.SS.Formula
                 return _type == part2._type;
             }
 
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder sb = new StringBuilder(64);
                 sb.Append(this.GetType().Name).Append(" [");
@@ -993,7 +993,7 @@ namespace NPOI.SS.Formula
         private SheetIdentifier ParseSheetName()
         {
 
-            String bookName;
+            string bookName;
             if (look == '[')
             {
                 StringBuilder sb = new StringBuilder();
@@ -1045,7 +1045,7 @@ namespace NPOI.SS.Formula
             }
 
             // unquoted sheet names must start with underscore or a letter
-            if (look == '_' || Char.IsLetter(look))
+            if (look == '_' || char.IsLetter(look))
             {
                 StringBuilder sb = new StringBuilder();
                 // can concatenate idens with dots
@@ -1082,7 +1082,7 @@ namespace NPOI.SS.Formula
          * If we have something that looks like [book]Sheet1: or 
          *  Sheet1, see if it's actually a range eg Sheet1:Sheet2!
          */
-        private SheetIdentifier ParseSheetRange(String bookname, NameIdentifier sheet1Name)
+        private SheetIdentifier ParseSheetRange(string bookname, NameIdentifier sheet1Name)
         {
             GetChar();
             SheetIdentifier sheet2 = ParseSheetName();
@@ -1097,7 +1097,7 @@ namespace NPOI.SS.Formula
           */
         private bool IsUnquotedSheetNameChar(char ch)
         {
-            if (Char.IsLetterOrDigit(ch))
+            if (char.IsLetterOrDigit(ch))
             {
                 return true;
             }
@@ -1127,7 +1127,7 @@ namespace NPOI.SS.Formula
         /**
          * @return <c>true</c> if the specified name is a valid cell reference
          */
-        private bool IsValidCellReference(String str)
+        private bool IsValidCellReference(string str)
         {
             //check range bounds against grid max
             bool result = CellReference.ClassifyCellReference(str, _ssVersion) == NameType.Cell;
@@ -1163,7 +1163,7 @@ namespace NPOI.SS.Formula
          *
          * @param name case preserved Function name (as it was entered/appeared in the formula).
          */
-        private ParseNode Function(String name)
+        private ParseNode Function(string name)
         {
             Ptg nameToken = null;
             if (!AbstractFunctionPtg.IsBuiltInFunctionName(name))
@@ -1216,7 +1216,7 @@ namespace NPOI.SS.Formula
      * @param name a {@link NamePtg} or {@link NameXPtg} or <code>null</code>
          * @return Ptg a null is returned if we're in an IF formula, it needs extreme manipulation and is handled in this Function
          */
-        private ParseNode GetFunction(String name, Ptg namePtg, ParseNode[] args)
+        private ParseNode GetFunction(string name, Ptg namePtg, ParseNode[] args)
         {
 
             FunctionMetadata fm = FunctionMetadataRegistry.GetFunctionByName(name.ToUpper());
@@ -1264,7 +1264,7 @@ namespace NPOI.SS.Formula
         {
             if (numArgs < fm.MinParams)
             {
-                String msg = "Too few arguments to function '" + fm.Name + "'. ";
+                string msg = "Too few arguments to function '" + fm.Name + "'. ";
                 if (fm.HasFixedArgsLength)
                 {
                     msg += "Expected " + fm.MinParams;
@@ -1296,7 +1296,7 @@ namespace NPOI.SS.Formula
             }
             if (numArgs > maxArgs)
             {
-                String msg = "Too many arguments to function '" + fm.Name + "'. ";
+                string msg = "Too many arguments to function '" + fm.Name + "'. ";
                 if (fm.HasFixedArgsLength)
                 {
                     msg += "Expected " + fm.MaxParams;
@@ -1422,7 +1422,7 @@ namespace NPOI.SS.Formula
                     Match('}');
                     return arrayNode;
             }
-            if (IsAlpha(look) || Char.IsDigit(look) || look == '\'' || look == '[')
+            if (IsAlpha(look) || char.IsDigit(look) || look == '\'' || look == '[')
             {
                 return ParseRangeExpression();
             }
@@ -1469,10 +1469,10 @@ namespace NPOI.SS.Formula
 
         private ParseNode ParseArray()
         {
-            List<Object[]> rowsData = new List<Object[]>();
+            List<object[]> rowsData = new List<object[]>();
             while (true)
             {
-                Object[] singleRowData = ParseArrayRow();
+                object[] singleRowData = ParseArrayRow();
                 rowsData.Add(singleRowData);
                 if (look == '}')
                 {
@@ -1485,14 +1485,14 @@ namespace NPOI.SS.Formula
                 Match(';');
             }
             int nRows = rowsData.Count;
-            Object[][] values2d = new Object[nRows][];
-            values2d = (Object[][])rowsData.ToArray();
+            object[][] values2d = new object[nRows][];
+            values2d = (object[][])rowsData.ToArray();
             int nColumns = values2d[0].Length;
             CheckRowLengths(values2d, nColumns);
 
             return new ParseNode(new ArrayPtg(values2d));
         }
-        private void CheckRowLengths(Object[][] values2d, int nColumns)
+        private void CheckRowLengths(object[][] values2d, int nColumns)
         {
             for (int i = 0; i < values2d.Length; i++)
             {
@@ -1505,7 +1505,7 @@ namespace NPOI.SS.Formula
             }
         }
 
-        private Object[] ParseArrayRow()
+        private object[] ParseArrayRow()
         {
             ArrayList temp = new ArrayList();
             while (true)
@@ -1527,12 +1527,12 @@ namespace NPOI.SS.Formula
                 break;
             }
 
-            Object[] result = new Object[temp.Count];
+            object[] result = new object[temp.Count];
             result = temp.ToArray();
             return result;
         }
 
-        private Object ParseArrayItem()
+        private object ParseArrayItem()
         {
             SkipWhite();
             switch (look)
@@ -1553,9 +1553,9 @@ namespace NPOI.SS.Formula
             return ConvertArrayNumber(ParseNumber(), true);
         }
 
-        private Boolean ParseBooleanLiteral()
+        private bool ParseBooleanLiteral()
         {
-            String iden = ParseUnquotedIdentifier();
+            string iden = ParseUnquotedIdentifier();
             if ("TRUE".Equals(iden, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
@@ -1567,7 +1567,7 @@ namespace NPOI.SS.Formula
             throw expected("'TRUE' or 'FALSE'");
         }
 
-        private static Double ConvertArrayNumber(Ptg ptg, bool isPositive)
+        private static double ConvertArrayNumber(Ptg ptg, bool isPositive)
         {
             double value;
             if (ptg is IntPtg)
@@ -1591,9 +1591,9 @@ namespace NPOI.SS.Formula
 
         private Ptg ParseNumber()
         {
-            String number2 = null;
-            String exponent = null;
-            String number1 = GetNum();
+            string number2 = null;
+            string exponent = null;
+            string number1 = GetNum();
 
             if (look == '.')
             {
@@ -1605,7 +1605,7 @@ namespace NPOI.SS.Formula
             {
                 GetChar();
 
-                String sign = "";
+                string sign = "";
                 if (look == '+')
                 {
                     GetChar();
@@ -1616,7 +1616,7 @@ namespace NPOI.SS.Formula
                     sign = "-";
                 }
 
-                String number = GetNum();
+                string number = GetNum();
                 if (number == null)
                 {
                     throw expected("int");
@@ -1636,7 +1636,7 @@ namespace NPOI.SS.Formula
         private int ParseErrorLiteral()
         {
             Match('#');
-            String part1 = ParseUnquotedIdentifier().ToUpper();
+            string part1 = ParseUnquotedIdentifier().ToUpper();
 
             switch (part1[0])
             {
@@ -1701,7 +1701,7 @@ namespace NPOI.SS.Formula
          * Get a PTG for an integer from its string representation.
          * return Int or Number Ptg based on size of input
          */
-        private static Ptg GetNumberPtgFromString(String number1, String number2, String exponent)
+        private static Ptg GetNumberPtgFromString(string number1, string number2, string exponent)
         {
             StringBuilder number = new StringBuilder();
 
@@ -1715,7 +1715,7 @@ namespace NPOI.SS.Formula
                     number.Append(exponent);
                 }
 
-                String numberStr = number.ToString();
+                string numberStr = number.ToString();
                 int intVal;
                 try
                 {
@@ -1754,7 +1754,7 @@ namespace NPOI.SS.Formula
         }
 
 
-        private String ParseStringLiteral()
+        private string ParseStringLiteral()
         {
             Match('"');
 
@@ -1922,7 +1922,7 @@ namespace NPOI.SS.Formula
 
             if (_pointer <= formulaLength)
             {
-                String msg = "Unused input [" + formulaString.Substring(_pointer - 1)
+                string msg = "Unused input [" + formulaString.Substring(_pointer - 1)
                     + "] after attempting To Parse the formula [" + formulaString + "]";
                 throw new FormulaParseException(msg);
             }

@@ -839,7 +839,7 @@ namespace NPOI.HSSF.UserModel
         /// <exception cref="T:System.ArgumentException">
         /// 	<paramref name="obj"/> is not the same type as this instance.
         /// </exception>
-        public int CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             HSSFRow loc = (HSSFRow)obj;
 
@@ -868,7 +868,7 @@ namespace NPOI.HSSF.UserModel
         /// <exception cref="T:System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is HSSFRow))
             {

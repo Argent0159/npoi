@@ -48,8 +48,8 @@ namespace NPOI.HSSF.Record
         private short field_3_flags;
         private int field_4_shapeid;
         private bool field_5_hasMultibyte;
-        private String field_6_author;
-        private const Byte DEFAULT_PADDING = (byte)0;
+        private string field_6_author;
+        private const byte DEFAULT_PADDING = (byte)0;
 
         /**
  * Saves padding byte value to reduce delta during round-trip serialization.<br/>
@@ -57,7 +57,7 @@ namespace NPOI.HSSF.Record
  * The documentation is not clear about how padding should work.  In any case
  * Excel(2007) does something different.
  */
-        private Byte? field_7_padding;
+        private byte? field_7_padding;
         /**
          * Construct a new <c>NoteRecord</c> and
          * Fill its data with the default values
@@ -151,7 +151,7 @@ namespace NPOI.HSSF.Record
          * Convert this record to string.
          * Used by BiffViewer and other utulities.
          */
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -216,7 +216,7 @@ namespace NPOI.HSSF.Record
          *
          * @return the name of the original author of the comment
          */
-        public String Author
+        public string Author
         {
             get { return field_6_author; }
             set
@@ -237,7 +237,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             NoteRecord rec = new NoteRecord();
             rec.field_1_row = field_1_row;

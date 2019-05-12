@@ -135,7 +135,7 @@ namespace NPOI.XWPF.UserModel
          * Returns the textual content of the header/footer,
          *  by flattening out the text of its paragraph(s)
          */
-        public String Text
+        public string Text
         {
             get
             {
@@ -145,7 +145,7 @@ namespace NPOI.XWPF.UserModel
                 {
                     if (!paragraphs[(i)].IsEmpty)
                     {
-                        String text = paragraphs[i].Text;
+                        string text = paragraphs[i].Text;
                         if (text != null && text.Length > 0)
                         {
                             t.Append(text);
@@ -157,7 +157,7 @@ namespace NPOI.XWPF.UserModel
                 IList<XWPFTable> tables = this.Tables;
                 for (int i = 0; i < tables.Count; i++)
                 {
-                    String text = tables[(i)].Text;
+                    string text = tables[(i)].Text;
                     if (text != null && text.Length > 0)
                     {
                         t.Append(text);
@@ -268,7 +268,7 @@ namespace NPOI.XWPF.UserModel
          * @return the index to this picture (0 based), the Added picture can be obtained from {@link #getAllPictures()} .
          * @throws InvalidFormatException 
          */
-        public String AddPictureData(byte[] pictureData, int format)
+        public string AddPictureData(byte[] pictureData, int format)
         {
             XWPFPictureData xwpfPicData = document.FindPackagePictureData(pictureData, format);
             POIXMLRelation relDesc = XWPFPictureData.RELATIONS[format];
@@ -318,9 +318,9 @@ namespace NPOI.XWPF.UserModel
                 // TODO add support for TargetMode.EXTERNAL relations.
                 TargetMode targetMode = TargetMode.Internal;
                 PackagePartName partName = picDataPart.PartName;
-                String relation = relDesc.Relation;
+                string relation = relDesc.Relation;
                 PackageRelationship relShip = GetPackagePart().AddRelationship(partName, targetMode, relation);
-                String id = relShip.Id;
+                string id = relShip.Id;
                 AddRelation(id, xwpfPicData);
                 pictures.Add(xwpfPicData);
                 return id;
@@ -342,7 +342,7 @@ namespace NPOI.XWPF.UserModel
          * @throws InvalidFormatException 
          * @ 
          */
-        public String AddPictureData(Stream is1, int format)
+        public string AddPictureData(Stream is1, int format)
         {
             byte[] data = IOUtils.ToByteArray(is1);
             return AddPictureData(data, format);
@@ -354,7 +354,7 @@ namespace NPOI.XWPF.UserModel
          * @return XWPFPictureData of a specificID
          * @throws Exception 
          */
-        public XWPFPictureData GetPictureDataByID(String blipID)
+        public XWPFPictureData GetPictureDataByID(string blipID)
         {
             POIXMLDocumentPart relatedPart = GetRelationById(blipID);
             if (relatedPart != null && relatedPart is XWPFPictureData)

@@ -28,8 +28,8 @@ namespace NPOI.XWPF.UserModel
      */
     public abstract class AbstractXWPFSDT : ISDTContents
     {
-        private String title;
-        private String tag;
+        private string title;
+        private string tag;
         private IBody part;
 
         public AbstractXWPFSDT(CT_SdtPr pr, IBody part)
@@ -60,7 +60,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * @return first SDT Title
          */
-        public String GetTitle()
+        public string GetTitle()
         {
             return title;
         }
@@ -68,7 +68,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * @return first SDT Tag
          */
-        public String GetTag()
+        public string GetTag()
         {
             return tag;
         }

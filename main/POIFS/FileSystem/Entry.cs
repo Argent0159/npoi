@@ -41,7 +41,7 @@ namespace NPOI.POIFS.FileSystem
         /// Get the name of the Entry
         /// </summary>
         /// <value>The name.</value>
-        String Name{get;}
+        string Name {get;}
 
         /// <summary>
         /// Is this a DirectoryEntry?
@@ -87,7 +87,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="newName">the new name for this Entry</param>
         /// <returns>true if the operation succeeded, else false</returns>
-        bool RenameTo(String newName);
+        bool RenameTo(string newName);
     }
 
 }

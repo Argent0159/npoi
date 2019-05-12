@@ -420,11 +420,11 @@ namespace NPOI.HSSF.Record.Aggregates
                 FindNext();
                 return nextRow <= lastRow; ;
             }
-            public Object Current
+            public object Current
             {
                 get
                 {
-                    Object o = this.records[nextRow][nextColumn];
+                    object o = this.records[nextRow][nextColumn];
 
                     return o;
                 }

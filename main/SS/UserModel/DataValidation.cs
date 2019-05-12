@@ -105,16 +105,16 @@ namespace NPOI.SS.UserModel
          * @param title The prompt box's title
          * @param text The prompt box's text
          */
-        void CreatePromptBox(String title, String text);
+        void CreatePromptBox(string title, string text);
         /**
          * @return Prompt box's title or <code>null</code>
          */
-        String PromptBoxTitle { get; }
-        
+        string PromptBoxTitle { get; }
+
         /**
          * @return Prompt box's text or <code>null</code>
          */
-        String PromptBoxText { get; }
+        string PromptBoxText { get; }
 
         /**
          * Sets the title and text for the error box . Error box is displayed when
@@ -125,18 +125,18 @@ namespace NPOI.SS.UserModel
          * @param title The error box's title
          * @param text The error box's text
          */
-        void CreateErrorBox(String title, String text);
+        void CreateErrorBox(string title, string text);
 
         /**
          * @return Error box's title or <code>null</code>
          */
 
-        String ErrorBoxTitle { get; }
+        string ErrorBoxTitle { get; }
 
         /**
          * @return Error box's text or <code>null</code>
          */
-        String ErrorBoxText { get; }
+        string ErrorBoxText { get; }
 
         CellRangeAddressList Regions { get; }
 

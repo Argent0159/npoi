@@ -47,7 +47,7 @@ namespace NPOI.HPSF
          * The document name a summary information stream usually has in a POIFS
          * filesystem.
          */
-        public const String DEFAULT_STREAM_NAME = "\x0005SummaryInformation";
+        public const string DEFAULT_STREAM_NAME = "\x0005SummaryInformation";
 
 
         public override PropertyIDMap PropertySetIDMap
@@ -77,7 +77,7 @@ namespace NPOI.HPSF
         /// Gets or sets the title.
         /// </summary>
         /// <value>The title.</value>
-        public String Title
+        public string Title
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_TITLE); }
             set
@@ -101,7 +101,7 @@ namespace NPOI.HPSF
         /// Gets or sets the subject.
         /// </summary>
         /// <value>The subject.</value>
-        public String Subject
+        public string Subject
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_SUBJECT); }
             set
@@ -125,7 +125,7 @@ namespace NPOI.HPSF
         /// Gets or sets the author.
         /// </summary>
         /// <value>The author.</value>
-        public String Author
+        public string Author
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_AUTHOR); }
             set
@@ -149,7 +149,7 @@ namespace NPOI.HPSF
         /// Gets or sets the keywords.
         /// </summary>
         /// <value>The keywords.</value>
-        public String Keywords
+        public string Keywords
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_KEYWORDS); }
             set
@@ -174,7 +174,7 @@ namespace NPOI.HPSF
         /// Gets or sets the comments.
         /// </summary>
         /// <value>The comments.</value>
-        public String Comments
+        public string Comments
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_COMMENTS); }
             set
@@ -197,7 +197,7 @@ namespace NPOI.HPSF
         /// Gets or sets the template.
         /// </summary>
         /// <value>The template.</value>
-        public String Template
+        public string Template
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_TEMPLATE); }
             set
@@ -220,7 +220,7 @@ namespace NPOI.HPSF
         /// Gets or sets the last author.
         /// </summary>
         /// <value>The last author.</value>
-        public String LastAuthor
+        public string LastAuthor
         {
             get{return GetPropertyStringValue(PropertyIDMap.PID_LASTAUTHOR);}
             set
@@ -244,7 +244,7 @@ namespace NPOI.HPSF
         /// Gets or sets the rev number.
         /// </summary>
         /// <value>The rev number.</value>
-        public String RevNumber
+        public string RevNumber
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_REVNUMBER); }
             set
@@ -494,7 +494,7 @@ namespace NPOI.HPSF
         /// Gets or sets the name of the application.
         /// </summary>
         /// <value>The name of the application.</value>
-        public String ApplicationName
+        public string ApplicationName
         {
             get { return GetPropertyStringValue(PropertyIDMap.PID_APPNAME); }
             set

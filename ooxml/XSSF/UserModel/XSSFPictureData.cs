@@ -83,7 +83,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the file extension.
          */
-        public String SuggestFileExtension()
+        public string SuggestFileExtension()
         {
             return GetPackagePart().PartName.Extension;
         }
@@ -103,7 +103,7 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String contentType = GetPackagePart().ContentType;
+                string contentType = GetPackagePart().ContentType;
                 foreach (PictureType relation in RELATIONS.Keys)
                 {
                     if (RELATIONS[(int)relation].ContentType.Equals(contentType))

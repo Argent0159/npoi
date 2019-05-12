@@ -372,7 +372,7 @@ namespace NPOI.SS.UserModel
         /// Sets the protection enabled as well as the password
         /// </summary>
         /// <param name="password">to set for protection. Pass <code>null</code> to remove protection</param>
-        void ProtectSheet(String password);
+        void ProtectSheet(string password);
 
         /// <summary>
         /// Answer whether scenario protection is enabled or disabled
@@ -689,7 +689,7 @@ namespace NPOI.SS.UserModel
         /// <summary>
         /// Gets the name of the sheet.
         /// </summary>
-        String SheetName { get; }
+        string SheetName { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this sheet is currently selected.
@@ -708,7 +708,7 @@ namespace NPOI.SS.UserModel
         /// <param name="formula">text representation of the formula</param>
         /// <param name="range">Region of array formula for result</param>
         /// <returns>the <see cref="ICellRange{ICell}"/> of cells affected by this change</returns>
-        ICellRange<ICell> SetArrayFormula(String formula, CellRangeAddress range);
+        ICellRange<ICell> SetArrayFormula(string formula, CellRangeAddress range);
 
         /// <summary>
         /// Remove a Array Formula from this sheet.  All cells contained in the Array Formula range are removed as well
@@ -799,7 +799,7 @@ namespace NPOI.SS.UserModel
         /// </summary>
         /// <param name="Name">new sheet name</param>
         /// <returns>cloned sheet</returns>
-        ISheet CopySheet(String Name);
+        ISheet CopySheet(string Name);
 
         /// <summary>
         /// Copy sheet with a new name
@@ -807,7 +807,7 @@ namespace NPOI.SS.UserModel
         /// <param name="Name">new sheet name</param>
         /// <param name="copyStyle">whether to copy styles</param>
         /// <returns>cloned sheet</returns>
-        ISheet CopySheet(String Name, Boolean copyStyle);
+        ISheet CopySheet(string Name, bool copyStyle);
 
         /// <summary>
         /// Returns the column outline level. Increased as you

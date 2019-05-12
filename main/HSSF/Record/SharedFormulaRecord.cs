@@ -80,7 +80,7 @@ namespace NPOI.HSSF.Record
          * print a sort of string representation ([SHARED FORMULA RECORD] id = x [/SHARED FORMULA RECORD])
          */
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -104,7 +104,7 @@ namespace NPOI.HSSF.Record
         {
             get { return sid; }
         }
-        public override Object Clone()
+        public override object Clone()
         {
             SharedFormulaRecord result = new SharedFormulaRecord(Range);
             result.field_5_reserved = field_5_reserved;

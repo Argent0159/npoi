@@ -22,15 +22,15 @@ namespace NPOI.SS.Formula
 
     public class NameIdentifier
     {
-        private String _name;
+        private string _name;
         private bool _isQuoted;
 
-        public NameIdentifier(String name, bool isQuoted)
+        public NameIdentifier(string name, bool isQuoted)
         {
             _name = name;
             _isQuoted = isQuoted;
         }
-        public String Name
+        public string Name
         {
             get
             {
@@ -44,7 +44,7 @@ namespace NPOI.SS.Formula
                 return _isQuoted;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(this.GetType().Name);

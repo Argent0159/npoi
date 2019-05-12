@@ -98,7 +98,7 @@ namespace NPOI.HPSF
 
 
         /** The property's value. */
-        protected Object value;
+        protected object value;
 
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace NPOI.HPSF
         /// <param name="type">the property's type, see {@link Variant}.</param>
         /// <param name="value">the property's value. Only certain types are allowed, see
         /// {@link Variant}.</param>
-        public Property(long id, long type, Object value)
+        public Property(long id, long type, object value)
         {
             this.id = id;
             this.type = type;
@@ -303,7 +303,7 @@ namespace NPOI.HPSF
                 {
                     case Variant.VT_LPSTR:
                         {
-                            int l = ((String)value).Length + 1;
+                            int l = ((string)value).Length + 1;
                             int r = l % PAddING;
                             if (r > 0)
                                 l += PAddING - r;
@@ -330,12 +330,12 @@ namespace NPOI.HPSF
         /// </summary>
         /// <param name="o">The o.</param>
         /// <returns></returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (!(o is Property))
                 return false;
             Property p = (Property)o;
-            Object pValue = p.Value;
+            object pValue = p.Value;
             long pId = p.ID;
             if (id != pId || (id != 0 && !TypesAreEqual(type, p.Type)))
                 return false;
@@ -400,7 +400,7 @@ namespace NPOI.HPSF
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder b = new StringBuilder();
             b.Append(this.GetType().Name);
@@ -409,12 +409,12 @@ namespace NPOI.HPSF
             b.Append(ID);
             b.Append(", type: ");
             b.Append(GetType());
-            Object value = Value;
+            object value = Value;
             b.Append(", value: ");
-            if (value is String)
+            if (value is string)
             {
                 b.Append(value.ToString());
-                String s = value.ToString();
+                string s = value.ToString();
                 int l = s.Length;
 
                 byte[] bytes = new byte[l*2];
@@ -429,7 +429,7 @@ namespace NPOI.HPSF
                 b.Append(" [");
                 if (bytes.Length > 0)
                 {
-                    String hex = HexDump.Dump(bytes, 0L, 0);
+                    string hex = HexDump.Dump(bytes, 0L, 0);
                     b.Append(hex);
                 }
                 b.Append("]");
@@ -439,7 +439,7 @@ namespace NPOI.HPSF
                 byte[] bytes = (byte[]) value;
                 if (bytes.Length > 0)
                 {
-                    String hex = HexDump.Dump(bytes, 0L, 0);
+                    string hex = HexDump.Dump(bytes, 0L, 0);
                     b.Append(hex);
                 }
             }

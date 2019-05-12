@@ -8,7 +8,7 @@ namespace NPOI.OpenXml4Net
         private Exceptions.InvalidFormatException ex;
 
 
-        public OpenXml4NetException(String msg)
+        public OpenXml4NetException(string msg)
             : base(msg)
         {
 

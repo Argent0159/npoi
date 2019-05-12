@@ -41,7 +41,7 @@ namespace NPOI.Util
         /// <param name="filename">The filename to read</param>
         /// <returns>The bytes read from the file.</returns>
         /// <exception cref="IOException">If there was a problem while reading the file.</exception>
-        public static byte[] ReadData( String filename )
+        public static byte[] ReadData(string filename )
         {
             FileStream stream = new FileStream(filename,FileMode.Open,FileAccess.Read);
             try
@@ -61,7 +61,7 @@ namespace NPOI.Util
         /// <param name="stream">The stream.</param>
         /// <param name="section">The section.</param>
         /// <returns></returns>
-        public static byte[] ReadData(Stream stream, String section )
+        public static byte[] ReadData(Stream stream, string section )
         {
         	
             try
@@ -108,7 +108,7 @@ namespace NPOI.Util
         /// <param name="filename">The filename.</param>
         /// <param name="section">The section.</param>
         /// <returns></returns>
-        public static byte[] ReadData( String filename, String section )
+        public static byte[] ReadData(string filename, string section )
         {
             using (FileStream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
@@ -204,7 +204,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        public static byte[] ReadFromString(String data)
+        public static byte[] ReadFromString(string data)
         {
             using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
             {

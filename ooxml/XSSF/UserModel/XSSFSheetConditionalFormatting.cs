@@ -69,8 +69,8 @@ namespace NPOI.XSSF.UserModel
          */
         public IConditionalFormattingRule CreateConditionalFormattingRule(
                 ComparisonOperator comparisonOperation,
-                String formula1,
-                String formula2)
+                string formula1,
+                string formula2)
         {
 
             XSSFConditionalFormattingRule rule = new XSSFConditionalFormattingRule(_sheet);
@@ -107,7 +107,7 @@ namespace NPOI.XSSF.UserModel
 
         public IConditionalFormattingRule CreateConditionalFormattingRule(
                 ComparisonOperator comparisonOperation,
-                String formula)
+                string formula)
         {
 
             return CreateConditionalFormattingRule(comparisonOperation, formula, null);
@@ -118,7 +118,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @param formula - formula for the valued, Compared with the cell
          */
-        public IConditionalFormattingRule CreateConditionalFormattingRule(String formula)
+        public IConditionalFormattingRule CreateConditionalFormattingRule(string formula)
         {
             XSSFConditionalFormattingRule rule = new XSSFConditionalFormattingRule(_sheet);
             CT_CfRule cfRule = rule.GetCTCfRule();

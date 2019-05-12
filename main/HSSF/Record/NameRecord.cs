@@ -131,12 +131,12 @@ namespace NPOI.HSSF.Record
         //private byte field_11_compressed_unicode_flag;   // not documented
         private bool field_11_nameIsMultibyte;
         private byte field_12_built_in_code;
-        private String field_12_name_text;
+        private string field_12_name_text;
         private SSFormula.Formula field_13_name_definition;
-        private String field_14_custom_menu_text;
-        private String field_15_description_text;
-        private String field_16_help_topic_text;
-        private String field_17_status_bar_text;
+        private string field_14_custom_menu_text;
+        private string field_15_description_text;
+        private string field_16_help_topic_text;
+        private string field_17_status_bar_text;
 
 
         /** Creates new NameRecord */
@@ -385,7 +385,7 @@ namespace NPOI.HSSF.Record
         /** Gets the name
          * @return name
          */
-        public String NameText
+        public string NameText
         {
             get
             {
@@ -418,7 +418,7 @@ namespace NPOI.HSSF.Record
         /** Get the custom menu text
          * @return custom menu text
          */
-        public String CustomMenuText
+        public string CustomMenuText
         {
             get { return field_14_custom_menu_text; }
             set { field_14_custom_menu_text = value; }
@@ -427,7 +427,7 @@ namespace NPOI.HSSF.Record
         /** Gets the description text
          * @return description text
          */
-        public String DescriptionText
+        public string DescriptionText
         {
             get { return field_15_description_text; }
             set { field_15_description_text = value; }
@@ -436,7 +436,7 @@ namespace NPOI.HSSF.Record
         /** Get the help topic text
          * @return gelp topic text
          */
-        public String HelpTopicText
+        public string HelpTopicText
         {
             get { return field_16_help_topic_text; }
             set { field_16_help_topic_text = value; }
@@ -445,7 +445,7 @@ namespace NPOI.HSSF.Record
         /** Gets the status bar text
          * @return status bar text
          */
-        public String StatusBarText
+        public string StatusBarText
         {
             get { return field_17_status_bar_text; }
             set { field_17_status_bar_text = value; }
@@ -497,7 +497,7 @@ namespace NPOI.HSSF.Record
             }
             else
             {
-                String nameText = field_12_name_text;
+                string nameText = field_12_name_text;
                 if (field_11_nameIsMultibyte)
                 {
                     StringUtil.PutUnicodeLE(nameText,out1);
@@ -610,7 +610,7 @@ namespace NPOI.HSSF.Record
         /**
          * @see Object#ToString()
          */
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -661,7 +661,7 @@ namespace NPOI.HSSF.Record
         /**Creates a human Readable name for built in types
          * @return Unknown if the built-in name cannot be translated
          */
-        protected String TranslateBuiltInName(byte name)
+        protected string TranslateBuiltInName(byte name)
         {
             switch (name)
             {

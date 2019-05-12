@@ -59,7 +59,7 @@ namespace NPOI.HSSF.Record.Chart
             field_1_chartGroupIndex = in1.ReadShort();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -94,7 +94,7 @@ namespace NPOI.HSSF.Record.Chart
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             SerToCrtRecord rec = new SerToCrtRecord();
 

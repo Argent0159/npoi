@@ -37,11 +37,11 @@ namespace NPOI.SS.UserModel
         private CellType _cellType;
         private double _numberValue;
         private bool _boolValue;
-        private String _textValue;
+        private string _textValue;
         private int _errorCode;
 
         private CellValue(CellType cellType, double numberValue, bool boolValue,
-                String textValue, int errorCode)
+                string textValue, int errorCode)
         {
             _cellType = cellType;
             _numberValue = numberValue;
@@ -60,7 +60,7 @@ namespace NPOI.SS.UserModel
         {
             return boolValue ? TRUE : FALSE;
         }
-        public CellValue(String stringValue)
+        public CellValue(string stringValue)
             : this(CellType.String, 0.0, false, stringValue, 0)
         {
 
@@ -94,7 +94,7 @@ namespace NPOI.SS.UserModel
         /**
          * @return Returns the stringValue.
          */
-        public String StringValue
+        public string StringValue
         {
             get
             {
@@ -123,7 +123,7 @@ namespace NPOI.SS.UserModel
                 return (sbyte)_errorCode;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
@@ -132,7 +132,7 @@ namespace NPOI.SS.UserModel
             return sb.ToString();
         }
 
-        public String FormatAsString()
+        public string FormatAsString()
         {
             switch (_cellType)
             {

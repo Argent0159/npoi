@@ -113,7 +113,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets Hypelink Address. Depending on the hyperlink type it can be URL, e-mail, patrh to a file, etc.
         /// </summary>
         /// <value>the Address of this hyperlink</value>
-        public String Address
+        public string Address
         {
             get
             {
@@ -126,7 +126,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the text mark.
         /// </summary>
         /// <value>The text mark.</value>
-        public String TextMark
+        public string TextMark
         {
             get { return record.TextMark; }
             set { record.TextMark = value; }
@@ -136,7 +136,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the short filename.
         /// </summary>
         /// <value>The short filename.</value>
-        public String ShortFilename
+        public string ShortFilename
         {
             get { return record.ShortFilename; }
             set { record.ShortFilename = value; }
@@ -146,7 +146,7 @@ namespace NPOI.HSSF.UserModel
         /// Gets or sets the text label for this hyperlink
         /// </summary>
         /// <value>text to Display</value>
-        public String Label
+        public string Label
         {
             get
             {

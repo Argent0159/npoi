@@ -187,7 +187,7 @@ namespace NPOI.HSSF.Record
          * Creates a new comparison operation rule
          */
         [Obsolete]
-        public static CFRuleRecord Create(HSSFWorkbook workbook, String formulaText)
+        public static CFRuleRecord Create(HSSFWorkbook workbook, string formulaText)
         {
             Ptg[] formula1 = ParseFormula(formulaText, workbook);
             return new CFRuleRecord(CONDITION_TYPE_FORMULA, ComparisonOperator.NoComparison,
@@ -198,13 +198,13 @@ namespace NPOI.HSSF.Record
          */
         [Obsolete]
         public static CFRuleRecord Create(HSSFWorkbook workbook, ComparisonOperator comparisonOperation,
-                String formulaText1, String formulaText2)
+                string formulaText1, string formulaText2)
         {
             Ptg[] formula1 = ParseFormula(formulaText1, workbook);
             Ptg[] formula2 = ParseFormula(formulaText2, workbook);
             return new CFRuleRecord(CONDITION_TYPE_CELL_VALUE_IS, comparisonOperation, formula1, formula2);
         }
-        public static CFRuleRecord Create(HSSFSheet sheet, String formulaText)
+        public static CFRuleRecord Create(HSSFSheet sheet, string formulaText)
         {
             Ptg[] formula1 = ParseFormula(formulaText, sheet);
             return new CFRuleRecord(CONDITION_TYPE_FORMULA, ComparisonOperator.NoComparison,
@@ -214,7 +214,7 @@ namespace NPOI.HSSF.Record
          * Creates a new comparison operation rule
          */
         public static CFRuleRecord Create(HSSFSheet sheet, byte comparisonOperation,
-                String formulaText1, String formulaText2)
+                string formulaText1, string formulaText2)
         {
             Ptg[] formula1 = ParseFormula(formulaText1, sheet);
             Ptg[] formula2 = ParseFormula(formulaText2, sheet);
@@ -506,7 +506,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[CFRULE]\n");
@@ -531,7 +531,7 @@ namespace NPOI.HSSF.Record
         }
  
 
-        public override Object Clone()
+        public override object Clone()
         {
             CFRuleRecord rec = new CFRuleRecord(field_1_condition_type, (ComparisonOperator)field_2_comparison_operator);
             rec.field_5_options = field_5_options;
@@ -568,7 +568,7 @@ namespace NPOI.HSSF.Record
          * 
          * @return <c>null</c> if <c>formula</c> was null.
          */
-        private static Ptg[] ParseFormula(String formula, HSSFWorkbook workbook)
+        private static Ptg[] ParseFormula(string formula, HSSFWorkbook workbook)
         {
             if (formula == null)
             {
@@ -584,7 +584,7 @@ namespace NPOI.HSSF.Record
      *
      * @return <code>null</code> if <c>formula</c> was null.
      */
-        private static Ptg[] ParseFormula(String formula, HSSFSheet sheet)
+        private static Ptg[] ParseFormula(string formula, HSSFSheet sheet)
         {
             if (formula == null)
             {

@@ -103,13 +103,13 @@ namespace NPOI.HSSF.UserModel
         }
         private static short lastDateFormat = short.MinValue;
         private static List<FormatRecord> lastFormats = null;
-        private static String getDataFormatStringCache = null;
+        private static string getDataFormatStringCache = null;
         /// <summary>
         /// Get the contents of the format string, by looking up
         /// the DataFormat against the bound workbook
         /// </summary>
         /// <returns></returns>
-        public String GetDataFormatString()
+        public string GetDataFormatString()
         {
             //HSSFDataFormat format = new HSSFDataFormat(workbook);
             //return format.GetFormat(DataFormat);
@@ -135,7 +135,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="workbook">The workbook</param>
         /// <returns>the format string or "General" if not found</returns>
-        public String GetDataFormatString(IWorkbook workbook)
+        public string GetDataFormatString(IWorkbook workbook)
         {
             HSSFDataFormat format = new HSSFDataFormat(((HSSFWorkbook)workbook).Workbook);
 
@@ -148,7 +148,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="workbook">The internal workbook.</param>
         /// <returns></returns>
-        public String GetDataFormatString(NPOI.HSSF.Model.InternalWorkbook workbook)
+        public string GetDataFormatString(NPOI.HSSF.Model.InternalWorkbook workbook)
         {
             HSSFDataFormat format = new HSSFDataFormat(workbook);
 
@@ -664,7 +664,7 @@ namespace NPOI.HSSF.UserModel
  * Returns null for built in styles, and
  *  styles where no name has been defined
  */
-        public String UserStyleName
+        public string UserStyleName
         {
             get
             {
@@ -722,7 +722,7 @@ namespace NPOI.HSSF.UserModel
         /// <exception cref="T:System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (this == obj) return true;
             if (obj == null) return false;

@@ -35,7 +35,7 @@ namespace NPOI.HSSF.Record
         private short field_1_Readonly;
         private short field_2_password;
         private byte field_3_username_unicode_options;
-        private String field_3_username_value;
+        private string field_3_username_value;
 
         public FileSharingRecord() { }
 
@@ -74,7 +74,7 @@ namespace NPOI.HSSF.Record
 
         //this Is the world's lamest "security".  thanks to Wouter van Vugt for making me
         //not have to try real hard.  -ACO
-        public static short HashPassword(String password)
+        public static short HashPassword(string password)
         {
             byte[] passwordChars = Encoding.UTF8.GetBytes(password);
             int hash = 0;
@@ -125,13 +125,13 @@ namespace NPOI.HSSF.Record
         /**
          * @returns username of the user that Created the file
          */
-        public String Username
+        public string Username
         {
             get { return field_3_username_value; }
             set { field_3_username_value = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -183,7 +183,7 @@ namespace NPOI.HSSF.Record
         /**
          * Clone this record.
          */
-        public override Object Clone()
+        public override object Clone()
         {
             FileSharingRecord Clone = new FileSharingRecord();
             Clone.ReadOnly = field_1_Readonly;

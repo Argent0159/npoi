@@ -63,7 +63,7 @@ namespace NPOI.XSSF.Model
         /**
          *  Maps strings and their indexes in the <code>strings</code> arrays
          */
-        private Dictionary<String, int> stmap = new Dictionary<String, int>();
+        private Dictionary<string, int> stmap = new Dictionary<string, int>();
 
         /**
          * An integer representing the total count of strings in the workbook. This count does not
@@ -116,7 +116,7 @@ namespace NPOI.XSSF.Model
 
         }
 
-        private String GetKey(CT_Rst st)
+        private string GetKey(CT_Rst st)
         {
             return st.XmlText;
         }
@@ -174,7 +174,7 @@ namespace NPOI.XSSF.Model
          */
         public int AddEntry(CT_Rst st)
         {
-            String s = GetKey(st);
+            string s = GetKey(st);
             count++;
             if (stmap.ContainsKey(s))
             {

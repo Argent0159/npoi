@@ -20,7 +20,7 @@ namespace NPOI.OpenXml4Net.OPC
  */
         PackageRelationship AddRelationship(
                 PackagePartName targetPartName, TargetMode targetMode,
-                String relationshipType);
+                string relationshipType);
 
         /**
          * Add a relationship to a part (except relationships part).
@@ -46,7 +46,7 @@ namespace NPOI.OpenXml4Net.OPC
          */
         PackageRelationship AddRelationship(
                 PackagePartName targetPartName, TargetMode targetMode,
-                String relationshipType, String id);
+                string relationshipType, string id);
 
         /**
          * Adds an external relationship to a part
@@ -62,7 +62,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @return The newly created and added relationship
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#addExternalRelationship(java.lang.String, java.lang.String)
          */
-        PackageRelationship AddExternalRelationship(String target, String relationshipType);
+        PackageRelationship AddExternalRelationship(string target, string relationshipType);
 
         /**
          * Adds an external relationship to a part
@@ -79,7 +79,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @return The newly created and added relationship
          * @see org.apache.poi.OpenXml4Net.opc.RelationshipSource#addExternalRelationship(java.lang.String, java.lang.String)
          */
-        PackageRelationship AddExternalRelationship(String target, String relationshipType, String id);
+        PackageRelationship AddExternalRelationship(string target, string relationshipType, string id);
 
         /**
          * Delete all the relationships attached to this.
@@ -92,7 +92,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @param id
          *            The ID identified the part to delete.
          */
-        void RemoveRelationship(String id);
+        void RemoveRelationship(string id);
 
         /**
          * Retrieve all the relationships attached to this.
@@ -109,7 +109,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            ID of the package relationship to retrieve.
          * @return The package relationship
          */
-         PackageRelationship GetRelationship(String id);
+         PackageRelationship GetRelationship(string id);
 
         /**
          * Retrieve all relationships attached to this part which have the specified
@@ -124,7 +124,7 @@ namespace NPOI.OpenXml4Net.OPC
          *             If the package is open in write only mode.
          */
          PackageRelationshipCollection GetRelationshipsByType(
-                String relationshipType);
+                string relationshipType);
 
         /**
          * Knows if the part have any relationships.

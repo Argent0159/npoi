@@ -634,14 +634,14 @@ namespace NPOI.SS.Converter
             if(excelStyleToClass.ContainsKey(cellStyleKey))
                 return excelStyleToClass[cellStyleKey];
 
-            String cssStyle = BuildStyle(workbook, cellStyle);
-            String cssClass = htmlDocumentFacade.GetOrCreateCssClass("td", "c",
+            string cssStyle = BuildStyle(workbook, cellStyle);
+            string cssClass = htmlDocumentFacade.GetOrCreateCssClass("td", "c",
                     cssStyle);
             excelStyleToClass.Add(cellStyleKey, cssClass);
             return cssClass;
         }
 
-        protected String BuildStyle(IWorkbook workbook, ICellStyle cellStyle)
+        protected string BuildStyle(IWorkbook workbook, ICellStyle cellStyle)
         {
             StringBuilder style = new StringBuilder();
 
@@ -729,7 +729,7 @@ namespace NPOI.SS.Converter
         }
 
         private void BuildStyle_Border(IWorkbook workbook, StringBuilder style,
-                String type, BorderStyle xlsBorder, short borderColor)
+                string type, BorderStyle xlsBorder, short borderColor)
         {
             if (xlsBorder == BorderStyle.None)
                 return;

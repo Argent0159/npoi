@@ -39,10 +39,10 @@ namespace NPOI.SS.Formula
         CellType CellType { get; }
 
         double NumericCellValue { get; }
-        String StringCellValue { get; }
+        string StringCellValue { get; }
         bool BooleanCellValue { get; }
         int ErrorCellValue { get; }
-        Object IdentityKey { get; }
+        object IdentityKey { get; }
         CellType CachedFormulaResultType { get; }
     }
 }

@@ -55,7 +55,7 @@ public class EOFRecord: StandardRecord
         
     }
 
-    public override String ToString()
+    public override string ToString()
     {
         StringBuilder buffer = new StringBuilder();
 
@@ -78,7 +78,7 @@ public class EOFRecord: StandardRecord
         get{return sid;}
     }
 
-    public override Object Clone() {
+    public override object Clone() {
       EOFRecord rec = new EOFRecord();
       return rec;
     }

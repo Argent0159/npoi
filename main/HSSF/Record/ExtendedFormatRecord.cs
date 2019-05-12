@@ -861,7 +861,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -1012,7 +1012,7 @@ namespace NPOI.HSSF.Record
          *  contents as Equals, as the various indexes
          *  that matter are embedded in the records
          */
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (this == obj)
                 return true;

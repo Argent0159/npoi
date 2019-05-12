@@ -66,11 +66,11 @@ namespace NPOI.HSSF.Record
          * Convert this record to string.
          * Used by BiffViewer and other utulities.
          */
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
             buffer.Append("[ftNts ]" + nl);
             buffer.Append("  size     = ").Append(DataSize).Append(nl);
             buffer.Append("  reserved = ").Append(HexDump.ToHex(reserved)).Append(nl);
@@ -109,7 +109,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             NoteStructureSubRecord rec = new NoteStructureSubRecord();
             byte[] recdata = new byte[reserved.Length];

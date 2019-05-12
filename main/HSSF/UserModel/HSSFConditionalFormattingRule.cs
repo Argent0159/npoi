@@ -182,7 +182,7 @@ namespace NPOI.HSSF.UserModel
             }
         }
 
-        public String Formula1
+        public string Formula1
         {
             get
             {
@@ -190,7 +190,7 @@ namespace NPOI.HSSF.UserModel
             }
         }
 
-        public String Formula2
+        public string Formula2
         {
             get
             {
@@ -209,7 +209,7 @@ namespace NPOI.HSSF.UserModel
             }
         }
 
-        private String ToFormulaString(Ptg[] ParsedExpression)
+        private string ToFormulaString(Ptg[] ParsedExpression)
         {
             if (ParsedExpression == null)
             {

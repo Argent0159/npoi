@@ -196,7 +196,7 @@ namespace NPOI.HSSF.Record
             set { field_2_type = (int) value; }
         }
 
-        private String TypeName
+        private string TypeName
         {
             get
             {
@@ -237,7 +237,7 @@ namespace NPOI.HSSF.Record
             set { field_4_year = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

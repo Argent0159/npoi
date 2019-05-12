@@ -20,7 +20,7 @@ namespace NPOI.SS.Format
     using System;
     internal class GeneralCellFormatType : CellFormatType
     {
-        public override CellFormatter Formatter(String pattern)
+        public override CellFormatter Formatter(string pattern)
         {
             return new CellGeneralFormatter();
         }
@@ -31,7 +31,7 @@ namespace NPOI.SS.Format
     }
     internal class NumberCellFormatType : CellFormatType
     {
-        public override CellFormatter Formatter(String pattern)
+        public override CellFormatter Formatter(string pattern)
         {
             return new CellNumberFormatter(pattern);
         }
@@ -46,7 +46,7 @@ namespace NPOI.SS.Format
         {
             return ch == '\'' || (ch <= '\u007f' && char.IsLetter(ch));
         }
-        public override CellFormatter Formatter(String pattern)
+        public override CellFormatter Formatter(string pattern)
         {
             return new CellDateFormatter(pattern);
         }
@@ -57,7 +57,7 @@ namespace NPOI.SS.Format
         {
             return false;
         }
-        public override CellFormatter Formatter(String pattern)
+        public override CellFormatter Formatter(string pattern)
         {
             return new CellElapsedFormatter(pattern);
         }
@@ -68,7 +68,7 @@ namespace NPOI.SS.Format
         {
             return false;
         }
-        public override CellFormatter Formatter(String pattern)
+        public override CellFormatter Formatter(string pattern)
         {
             return new CellTextFormatter(pattern);
         }
@@ -108,7 +108,7 @@ namespace NPOI.SS.Format
          *
          * @return A new formatter of the appropriate type, for the given pattern.
          */
-        public abstract CellFormatter Formatter(String pattern);
+        public abstract CellFormatter Formatter(string pattern);
 
     }
 

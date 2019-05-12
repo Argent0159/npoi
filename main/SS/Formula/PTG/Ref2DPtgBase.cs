@@ -35,7 +35,7 @@ namespace NPOI.SS.Formula.PTG
          * Takes in a String representation of a cell reference and fills out the
          * numeric fields.
          */
-        protected Ref2DPtgBase(String cellref)
+        protected Ref2DPtgBase(string cellref)
             : base(cellref)
         {
 
@@ -62,7 +62,7 @@ namespace NPOI.SS.Formula.PTG
             out1.WriteByte(Sid + PtgClass);
             WriteCoordinates(out1);
         }
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return FormatReferenceAsString();
         }
@@ -76,7 +76,7 @@ namespace NPOI.SS.Formula.PTG
                 return SIZE;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(GetType().Name);

@@ -55,7 +55,7 @@ namespace NPOI.SS.Formula.PTG
          * @param operands a String array of operands
          * @return String the Formula as a String
          */
-        public override String ToFormulaString(String[] operands)
+        public override string ToFormulaString(string[] operands)
         {
             StringBuilder buffer = new StringBuilder();
 

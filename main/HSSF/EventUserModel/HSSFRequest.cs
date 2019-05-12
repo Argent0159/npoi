@@ -55,7 +55,7 @@ namespace NPOI.HSSF.EventUserModel
         public void AddListener(IHSSFListener lsnr, short sid)
         {
             IList list = null;
-            Object obj = records[sid];
+            object obj = records[sid];
 
             if (obj != null)
             {
@@ -98,7 +98,7 @@ namespace NPOI.HSSF.EventUserModel
         /// <returns>numeric user-specified result code. If zero continue Processing.</returns>
         public short ProcessRecord(Record rec)
         {
-            Object obj = records[rec.Sid];
+            object obj = records[rec.Sid];
             short userCode = 0;
 
             if (obj != null)
@@ -107,7 +107,7 @@ namespace NPOI.HSSF.EventUserModel
 
                 for (int k = 0; k < listeners.Count; k++)
                 {
-                    Object listenObj = listeners[k];
+                    object listenObj = listeners[k];
                     if (listenObj is AbortableHSSFListener)
                     {
                         AbortableHSSFListener listener = (AbortableHSSFListener)listenObj;

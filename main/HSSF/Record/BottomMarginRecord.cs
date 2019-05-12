@@ -51,7 +51,7 @@ namespace NPOI.HSSF.Record
             field_1_margin = in1.ReadDouble();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[BottomMargin]\n");
@@ -88,7 +88,7 @@ namespace NPOI.HSSF.Record
             set { this.field_1_margin = value; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             BottomMarginRecord rec = new BottomMarginRecord();
             rec.field_1_margin = this.field_1_margin;

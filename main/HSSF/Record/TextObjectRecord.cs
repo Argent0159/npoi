@@ -59,7 +59,7 @@ namespace NPOI.HSSF.Record
         /**
          * Not clear if needed .  Excel seems to be OK if this byte is not present. 
          * Value is often the same as the earlier firstColumn byte. */
-        private Byte? _unknownPostFormulaByte;
+        private byte? _unknownPostFormulaByte;
 
         public TextObjectRecord()
         {
@@ -113,7 +113,7 @@ namespace NPOI.HSSF.Record
                 throw new RecordFormatException("Unused " + in1.Remaining + " bytes at end of record");
             }
 
-            String text;
+            string text;
             if (field_6_textLength > 0)
             {
                 text = ReadRawString(in1, field_6_textLength);
@@ -280,7 +280,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        private static String ReadRawString(RecordInputStream in1, int textLength)
+        private static string ReadRawString(RecordInputStream in1, int textLength)
         {
             byte compressByte = (byte)in1.ReadByte();
             bool isCompressed = (compressByte & 0x01) == 0;
@@ -358,7 +358,7 @@ namespace NPOI.HSSF.Record
                 return _linkRefPtg;
             }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -385,7 +385,7 @@ namespace NPOI.HSSF.Record
             return sb.ToString();
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
 
             TextObjectRecord rec = new TextObjectRecord();

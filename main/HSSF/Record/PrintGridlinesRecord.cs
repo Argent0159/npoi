@@ -75,7 +75,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -101,7 +101,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             PrintGridlinesRecord rec = new PrintGridlinesRecord();
             rec.field_1_print_gridlines = field_1_print_gridlines;

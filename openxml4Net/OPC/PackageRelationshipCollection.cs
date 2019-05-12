@@ -24,12 +24,12 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Package relationships ordered by ID.
          */
-        private SortedList<String, PackageRelationship> relationshipsByID;
+        private SortedList<string, PackageRelationship> relationshipsByID;
 
         /**
          * Package relationships ordered by type.
          */
-        private SortedList<String, PackageRelationship> relationshipsByType;
+        private SortedList<string, PackageRelationship> relationshipsByType;
 
         /**
          * This relationshipPart.
@@ -60,8 +60,8 @@ namespace NPOI.OpenXml4Net.OPC
          */
         public PackageRelationshipCollection()
         {
-            relationshipsByID = new SortedList<String, PackageRelationship>();
-            relationshipsByType = new SortedList<String, PackageRelationship>(new DuplicateComparer());
+            relationshipsByID = new SortedList<string, PackageRelationship>();
+            relationshipsByType = new SortedList<string, PackageRelationship>(new DuplicateComparer());
         }
         class DuplicateComparer : IComparer<string>
         {
@@ -92,7 +92,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            Relationship type filter.
          */
         public PackageRelationshipCollection(PackageRelationshipCollection coll,
-                String filter)
+                string filter)
             : this()
         {
 
@@ -214,7 +214,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @see PackageAccess
          */
         public PackageRelationship AddRelationship(Uri targetUri,
-                TargetMode targetMode, String relationshipType, String id)
+                TargetMode targetMode, string relationshipType, string id)
         {
             if (id == null)
             {
@@ -244,7 +244,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @param id
          *            The relationship ID to Remove.
          */
-        public void RemoveRelationship(String id)
+        public void RemoveRelationship(string id)
         {
             if (relationshipsByID != null && relationshipsByType != null)
             {
@@ -304,7 +304,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            ID of the package relationship to retrieve.
          * @return The package relationship identified by the specified id.
          */
-        public PackageRelationship GetRelationshipByID(String id)
+        public PackageRelationship GetRelationshipByID(string id)
         {
             if (!relationshipsByID.ContainsKey(id))
                 return null;
@@ -349,9 +349,9 @@ namespace NPOI.OpenXml4Net.OPC
                 while (iterator.MoveNext())
                 {
                     // Relationship ID
-                    String id = iterator.Current.GetAttribute(PackageRelationship.ID_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
+                    string id = iterator.Current.GetAttribute(PackageRelationship.ID_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
                     // Relationship type
-                    String type = iterator.Current.GetAttribute(
+                    string type = iterator.Current.GetAttribute(
                             PackageRelationship.TYPE_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
 
                     /* Check OPC Compliance */
@@ -377,7 +377,7 @@ namespace NPOI.OpenXml4Net.OPC
 
                     // Target converted in URI
                     Uri target = PackagingUriHelper.ToUri("http://invalid.uri"); // dummy url
-                    String value = iterator.Current.GetAttribute(
+                    string value = iterator.Current.GetAttribute(
                                 PackageRelationship.TARGET_ATTRIBUTE_NAME, xpathnav.NamespaceURI); ;
                     try
                     {
@@ -410,7 +410,7 @@ namespace NPOI.OpenXml4Net.OPC
          *            relationships are returned.
          * @return All relationships of the type specified by the filter.
          */
-        public PackageRelationshipCollection GetRelationships(String typeFilter)
+        public PackageRelationshipCollection GetRelationships(string typeFilter)
         {
             PackageRelationshipCollection coll = new PackageRelationshipCollection(
                     this, typeFilter);
@@ -434,7 +434,7 @@ namespace NPOI.OpenXml4Net.OPC
          * @return An iterator to a collection containing all relationships with the
          *         specified type contain in this collection.
          */
-        public IEnumerator<PackageRelationship> Iterator(String typeFilter)
+        public IEnumerator<PackageRelationship> Iterator(string typeFilter)
         {
             List<PackageRelationship> retArr = new List<PackageRelationship>();
             foreach (PackageRelationship rel in relationshipsByID.Values)
@@ -454,9 +454,9 @@ namespace NPOI.OpenXml4Net.OPC
             relationshipsByType.Clear();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
-            String str;
+            string str;
             if (relationshipsByID == null)
             {
                 str = "relationshipsByID=null";

@@ -28,8 +28,8 @@ namespace NPOI.XWPF.UserModel
      */
     public class XWPFComment
     {
-        protected String id;
-        protected String author;
+        protected string id;
+        protected string author;
         protected StringBuilder text;
 
         public XWPFComment(CT_Comment comment, XWPFDocument document)
@@ -45,7 +45,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String Id
+        public string Id
         {
             get
             {
@@ -53,7 +53,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String Author
+        public string Author
         {
             get
             {
@@ -61,7 +61,7 @@ namespace NPOI.XWPF.UserModel
             }
         }
 
-        public String Text
+        public string Text
         {
             get
             {

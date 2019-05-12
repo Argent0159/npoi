@@ -103,7 +103,7 @@ namespace NPOI.POIFS.FileSystem
         /// <value>The name.</value>
         /// Get the name of the Entry
         /// @return name
-        public String Name
+        public string Name
         {
             get
             {
@@ -185,7 +185,7 @@ namespace NPOI.POIFS.FileSystem
         /// <returns>
         /// true if the operation succeeded, else false
         /// </returns>
-        public bool RenameTo(String newName)
+        public bool RenameTo(string newName)
         {
             bool rval = false;
 

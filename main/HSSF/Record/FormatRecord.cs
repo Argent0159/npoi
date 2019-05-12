@@ -42,9 +42,9 @@ namespace NPOI.HSSF.Record
         //private short field_3_unicode_len;      // Unicode string Length
         //private bool field_3_unicode_flag;     // it Is not Undocumented - it Is Unicode flag
         private bool field_3_hasMultibyte;
-        private String field_4_formatstring;
+        private string field_4_formatstring;
 
-        public FormatRecord(int indexCode, String fs)
+        public FormatRecord(int indexCode, string fs)
         {
             field_1_index_code = indexCode;
             field_4_formatstring = fs;
@@ -95,7 +95,7 @@ namespace NPOI.HSSF.Record
          * @return the format string
          */
 
-        public String FormatString
+        public string FormatString
         {
             get
             {
@@ -103,7 +103,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -117,7 +117,7 @@ namespace NPOI.HSSF.Record
 
         public override void Serialize(ILittleEndianOutput out1)
         {
-            String formatString = FormatString;
+            string formatString = FormatString;
             out1.WriteShort(IndexCode);
             out1.WriteShort(formatString.Length);
             out1.WriteByte(field_3_hasMultibyte ? 0x01 : 0x00);
@@ -144,7 +144,7 @@ namespace NPOI.HSSF.Record
         {
             get { return sid; }
         }
-        public override Object Clone()
+        public override object Clone()
         {
             // immutable
             return this;

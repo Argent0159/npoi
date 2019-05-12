@@ -49,7 +49,7 @@ namespace NPOI.HSSF.Record
         private short field_1_option_flag;
         private short field_2_ixals;
         private short field_3_not_used;
-        private String field_4_name;
+        private string field_4_name;
         private Formula field_5_name_definition; 
 
         /**
@@ -57,7 +57,7 @@ namespace NPOI.HSSF.Record
          * (seems to be only applicable to DDE links)<br/>
          * Logically this is a 2-D array, which has been flattened into 1-D array here.
          */
-        private Object[] _ddeValues;
+        private object[] _ddeValues;
         /**
          * (logical) number of columns in the {@link #_ddeValues} array
          */
@@ -161,7 +161,7 @@ namespace NPOI.HSSF.Record
         /**
          * @return the standard String representation of this name
          */
-        public String Text
+        public string Text
         {
             get { return field_4_name; }
             set { field_4_name = value; }
@@ -257,9 +257,9 @@ namespace NPOI.HSSF.Record
          * Makes better error messages (while HasFormula() Is not reliable) 
          * Remove this when HasFormula() Is stable.
          */
-        private Exception ReadFail(String msg)
+        private Exception ReadFail(string msg)
         {
-            String fullMsg = msg + " fields: (option=" + field_1_option_flag + " index=" + field_2_ixals
+            string fullMsg = msg + " fields: (option=" + field_1_option_flag + " index=" + field_2_ixals
             + " not_used=" + field_3_not_used + " name='" + field_4_name + "')";
             return new Exception(fullMsg);
         }
@@ -304,7 +304,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("[EXTERNALNAME]\n");

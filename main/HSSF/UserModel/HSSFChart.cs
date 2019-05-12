@@ -286,7 +286,7 @@ namespace NPOI.HSSF.UserModel
          * Returns the chart's title, if there is one,
          *  or null if not
          */
-        public String ChartTitle
+        public string ChartTitle
         {
             get
             {
@@ -317,28 +317,28 @@ namespace NPOI.HSSF.UserModel
          * @param majorUnit major unit value; Double.NaN - automatic; null - no change
          * @param minorUnit minor unit value; Double.NaN - automatic; null - no change
          */
-        public void SetValueRange(int axisIndex, Double? minimum, Double? maximum, Double? majorUnit, Double? minorUnit)
+        public void SetValueRange(int axisIndex, double? minimum, double? maximum, double? majorUnit, double? minorUnit)
         {
             ValueRangeRecord valueRange = (ValueRangeRecord)valueRanges[axisIndex];
             if (valueRange == null) return;
             if (minimum != null)
             {
-                valueRange.IsAutomaticMinimum = Double.IsNaN((double)minimum);
+                valueRange.IsAutomaticMinimum = double.IsNaN((double)minimum);
                 valueRange.MinimumAxisValue = (double)minimum;
             }
             if (maximum != null)
             {
-                valueRange.IsAutomaticMaximum = Double.IsNaN((double)maximum);
+                valueRange.IsAutomaticMaximum = double.IsNaN((double)maximum);
                 valueRange.MaximumAxisValue = (double)maximum;
             }
             if (majorUnit != null)
             {
-                valueRange.IsAutomaticMajor = Double.IsNaN((double)majorUnit);
+                valueRange.IsAutomaticMajor = double.IsNaN((double)majorUnit);
                 valueRange.MajorIncrement = (double)majorUnit;
             }
             if (minorUnit != null)
             {
-                valueRange.IsAutomaticMinor = Double.IsNaN((double)minorUnit);
+                valueRange.IsAutomaticMinor = double.IsNaN((double)minorUnit);
                 valueRange.MinorIncrement = (double)minorUnit;
             }
         }
@@ -1049,7 +1049,7 @@ namespace NPOI.HSSF.UserModel
              * Returns the series' title, if there is one,
              *  or null if not
              */
-            public String SeriesTitle
+            public string SeriesTitle
             {
                 get
                 {

@@ -88,7 +88,7 @@ using NPOI.Util;
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -100,7 +100,7 @@ using NPOI.Util;
         }
 
         //HACK: do a "cheat" Clone, see Record.java for more information
-        public override Object Clone()
+        public override object Clone()
         {
             return CloneViaReserialise();
         }

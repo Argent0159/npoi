@@ -41,7 +41,7 @@ namespace NPOI.Util
     /// </summary>
     public class NullLogger:POILogger
     {
-        public override void Initialize(String cat)
+        public override void Initialize(string cat)
         {
            //do nothing
         }
@@ -53,7 +53,7 @@ namespace NPOI.Util
          * @param obj1 The object to Log.
          */
 
-        public override void Log(int level, Object obj1)
+        public override void Log(int level, object obj1)
         {
             //do nothing
         }
@@ -77,7 +77,7 @@ namespace NPOI.Util
          * @param obj2 second object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2)
+        public override void Log(int level, object obj1, object obj2)
         {
            //do nothing
         }
@@ -91,8 +91,8 @@ namespace NPOI.Util
          * @param obj3 third Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3)
         {
            //do nothing
         }
@@ -107,8 +107,8 @@ namespace NPOI.Util
          * @param obj4 fourth Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4)
         {
            //do nothing
         }
@@ -124,8 +124,8 @@ namespace NPOI.Util
          * @param obj5 fifth Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5)
         {
            //do nothing
         }
@@ -142,9 +142,9 @@ namespace NPOI.Util
          * @param obj6 sixth Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6)
         {
            //do nothing
         }
@@ -162,9 +162,9 @@ namespace NPOI.Util
          * @param obj7 seventh Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7)
         {
            //do nothing
         }
@@ -183,9 +183,9 @@ namespace NPOI.Util
          * @param obj8 eighth Object to place in the message
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7, Object obj8)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7, object obj8)
         {
            //do nothing
         }
@@ -198,7 +198,7 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1,
+        public override void Log(int level, object obj1,
                         Exception exception)
         {
            //do nothing
@@ -213,7 +213,7 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
+        public override void Log(int level, object obj1, object obj2,
                         Exception exception)
         {
            //do nothing
@@ -229,8 +229,8 @@ namespace NPOI.Util
          * @param exception An error message to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Exception exception)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, Exception exception)
         {
            //do nothing
         }
@@ -246,8 +246,8 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4,
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4,
                         Exception exception)
         {
            //do nothing
@@ -265,8 +265,8 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
                         Exception exception)
         {
            //do nothing
@@ -285,9 +285,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Exception exception)
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, Exception exception)
         {
            //do nothing
         }
@@ -306,9 +306,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7,
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7,
                         Exception exception)
         {
           //do nothing
@@ -329,9 +329,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public override void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7, Object obj8,
+        public override void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7, object obj8,
                         Exception exception)
         {
            //do nothing
@@ -362,8 +362,8 @@ namespace NPOI.Util
          * @param obj1 The first object to match against.
          */
 
-        public override void LogFormatted(int level, String message,
-                                 Object obj1)
+        public override void LogFormatted(int level, string message,
+                                 object obj1)
         {
            //do nothing
         }
@@ -394,8 +394,8 @@ namespace NPOI.Util
          * @param obj2 The second object to match against.
          */
 
-        public override void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2)
+        public override void LogFormatted(int level, string message,
+                                 object obj1, object obj2)
         {
            //do nothing
         }
@@ -427,9 +427,9 @@ namespace NPOI.Util
          * @param obj3 The third object to match against.
          */
 
-        public override void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2,
-                                 Object obj3)
+        public override void LogFormatted(int level, string message,
+                                 object obj1, object obj2,
+                                 object obj3)
         {
            //do nothing
         }
@@ -462,9 +462,9 @@ namespace NPOI.Util
          * @param obj4 The forth object to match against.
          */
 
-        public override void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2,
-                                 Object obj3, Object obj4)
+        public override void LogFormatted(int level, string message,
+                                 object obj1, object obj2,
+                                 object obj3, object obj4)
         {
            //do nothing
         }

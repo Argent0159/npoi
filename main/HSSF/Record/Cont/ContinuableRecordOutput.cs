@@ -111,7 +111,7 @@ namespace NPOI.HSSF.Record.Cont
          * there may be an intervening {@link ContinueRecord}</li>
          * </ul>
          */
-        public void WriteStringData(String text)
+        public void WriteStringData(string text)
         {
             bool is16bitEncoded = StringUtil.HasMultibyte(text);
             // calculate total size of the header and first encoded char
@@ -152,7 +152,7 @@ namespace NPOI.HSSF.Record.Cont
          * record as the string header).</li>
          * </ul>
          */
-        public void WriteString(String text, int numberOfRichTextRuns, int extendedDataSize)
+        public void WriteString(string text, int numberOfRichTextRuns, int extendedDataSize)
         {
             bool is16bitEncoded = StringUtil.HasMultibyte(text);
             // calculate total size of the header and first encoded char
@@ -188,7 +188,7 @@ namespace NPOI.HSSF.Record.Cont
         }
 
 
-        private void WriteCharacterData(String text, bool is16bitEncoded)
+        private void WriteCharacterData(string text, bool is16bitEncoded)
         {
             int nChars = text.Length;
             int i = 0;

@@ -170,7 +170,7 @@ namespace NPOI.SS.Formula.Functions
         private class StringLookupComparer : LookupValueComparerBase
         {
 
-            private String _value;
+            private string _value;
             private Regex _wildCardPattern;
             private bool _matchExact;
             private bool _isMatchFunction;
@@ -189,7 +189,7 @@ namespace NPOI.SS.Formula.Functions
             {
                 StringEval se = (StringEval)other;
 
-                String stringValue = se.StringValue;
+                string stringValue = se.StringValue;
                 if (_wildCardPattern != null)
                 {
                     MatchCollection matcher = _wildCardPattern.Matches(stringValue);
@@ -202,9 +202,9 @@ namespace NPOI.SS.Formula.Functions
                     }
                 }
 
-                return CompareResult.ValueOf(String.Compare(_value, stringValue, true));
+                return CompareResult.ValueOf(string.Compare(_value, stringValue, true));
             }
-            protected override String GetValueAsString()
+            protected override string GetValueAsString()
             {
                 return _value;
             }
@@ -224,7 +224,7 @@ namespace NPOI.SS.Formula.Functions
                 NumberEval ne = (NumberEval)other;
                 return CompareResult.ValueOf(_value.CompareTo(ne.NumberValue));
             }
-            protected override String GetValueAsString()
+            protected override string GetValueAsString()
             {
                 return _value.ToString(CultureInfo.InvariantCulture);
             }
@@ -270,9 +270,9 @@ namespace NPOI.SS.Formula.Functions
             int oneBasedIndex;
             if(veRowColIndexArg is StringEval) {
                 StringEval se = (StringEval) veRowColIndexArg;
-                String strVal = se.StringValue;
-                Double dVal = OperandResolver.ParseDouble(strVal);
-                if(Double.IsNaN(dVal)) {
+                string strVal = se.StringValue;
+                double dVal = OperandResolver.ParseDouble(strVal);
+                if(double.IsNaN(dVal)) {
                     // String does not resolve to a number. Raise #REF! error.
                     throw EvaluationException.InvalidRef();
                     // This includes text booleans "TRUE" and "FALSE".  They are not valid.
@@ -344,7 +344,7 @@ namespace NPOI.SS.Formula.Functions
 
             if (valEval is StringEval)
             {
-                String stringValue = ((StringEval)valEval).StringValue;
+                string stringValue = ((StringEval)valEval).StringValue;
                 if (stringValue.Length < 1)
                 {
                     // More trickiness:
@@ -620,7 +620,7 @@ namespace NPOI.SS.Formula.Functions
         {
             get { return _isGreaterThan; }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
@@ -629,7 +629,7 @@ namespace NPOI.SS.Formula.Functions
             return sb.ToString();
         }
 
-        private String FormatAsString
+        private string FormatAsString
         {
             get
             {
@@ -728,7 +728,7 @@ namespace NPOI.SS.Formula.Functions
             }
             return CompareResult.LessThan;
         }
-        protected override String GetValueAsString()
+        protected override string GetValueAsString()
         {
             return _value.ToString();
         }
@@ -778,7 +778,7 @@ namespace NPOI.SS.Formula.Functions
             }
             return CompareSameType(other);
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(GetType().Name).Append(" [");
@@ -788,7 +788,7 @@ namespace NPOI.SS.Formula.Functions
         }
         protected abstract CompareResult CompareSameType(ValueEval other);
         /** used only for debug purposes */
-        protected abstract String GetValueAsString();
+        protected abstract string GetValueAsString();
     }
 
 }

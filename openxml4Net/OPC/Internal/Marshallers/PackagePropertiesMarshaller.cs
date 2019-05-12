@@ -22,37 +22,37 @@ namespace NPOI.OpenXml4Net.OPC.Internal.Marshallers
 
         private static string namespaceXSI = PackagePropertiesPart.NAMESPACE_XSI_URI;
 
-        protected static String KEYWORD_CATEGORY = "category";
+        protected static string KEYWORD_CATEGORY = "category";
 
-        protected static String KEYWORD_CONTENT_STATUS = "contentStatus";
+        protected static string KEYWORD_CONTENT_STATUS = "contentStatus";
 
-        protected static String KEYWORD_CONTENT_TYPE = "contentType";
+        protected static string KEYWORD_CONTENT_TYPE = "contentType";
 
-        protected static String KEYWORD_CREATED = "created";
+        protected static string KEYWORD_CREATED = "created";
 
-        protected static String KEYWORD_CREATOR = "creator";
+        protected static string KEYWORD_CREATOR = "creator";
 
-        protected static String KEYWORD_DESCRIPTION = "description";
+        protected static string KEYWORD_DESCRIPTION = "description";
 
-        protected static String KEYWORD_IDENTIFIER = "identifier";
+        protected static string KEYWORD_IDENTIFIER = "identifier";
 
-        protected static String KEYWORD_KEYWORDS = "keywords";
+        protected static string KEYWORD_KEYWORDS = "keywords";
 
-        protected static String KEYWORD_LANGUAGE = "language";
+        protected static string KEYWORD_LANGUAGE = "language";
 
-        protected static String KEYWORD_LAST_MODIFIED_BY = "lastModifiedBy";
+        protected static string KEYWORD_LAST_MODIFIED_BY = "lastModifiedBy";
 
-        protected static String KEYWORD_LAST_PRINTED = "lastPrinted";
+        protected static string KEYWORD_LAST_PRINTED = "lastPrinted";
 
-        protected static String KEYWORD_MODIFIED = "modified";
+        protected static string KEYWORD_MODIFIED = "modified";
 
-        protected static String KEYWORD_REVISION = "revision";
+        protected static string KEYWORD_REVISION = "revision";
 
-        protected static String KEYWORD_SUBJECT = "subject";
+        protected static string KEYWORD_SUBJECT = "subject";
 
-        protected static String KEYWORD_TITLE = "title";
+        protected static string KEYWORD_TITLE = "title";
 
-        protected static String KEYWORD_VERSION = "version";
+        protected static string KEYWORD_VERSION = "version";
 
         PackagePropertiesPart propsPart;
 

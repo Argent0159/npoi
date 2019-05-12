@@ -21,26 +21,26 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
          * Content type part name.
          */
-        public const String CONTENT_TYPES_PART_NAME = "[Content_Types].xml";
+        public const string CONTENT_TYPES_PART_NAME = "[Content_Types].xml";
 
         /**
          * Content type namespace
          */
-        public const String TYPES_NAMESPACE_URI = "http://schemas.openxmlformats.org/package/2006/content-types";
+        public const string TYPES_NAMESPACE_URI = "http://schemas.openxmlformats.org/package/2006/content-types";
 
         /* Xml elements in content type part */
 
-        private const String TYPES_TAG_NAME = "Types";
+        private const string TYPES_TAG_NAME = "Types";
 
-        private const String DEFAULT_TAG_NAME = "Default";
+        private const string DEFAULT_TAG_NAME = "Default";
 
-        private const String EXTENSION_ATTRIBUTE_NAME = "Extension";
+        private const string EXTENSION_ATTRIBUTE_NAME = "Extension";
 
-        private const String CONTENT_TYPE_ATTRIBUTE_NAME = "ContentType";
+        private const string CONTENT_TYPE_ATTRIBUTE_NAME = "ContentType";
 
-        private const String OVERRIDE_TAG_NAME = "Override";
+        private const string OVERRIDE_TAG_NAME = "Override";
 
-        private const String PART_NAME_ATTRIBUTE_NAME = "PartName";
+        private const string PART_NAME_ATTRIBUTE_NAME = "PartName";
 
         /**
          * Reference to the package using this content type manager.
@@ -50,12 +50,12 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         /**
          * Default content type tree. <Extension, ContentType>
          */
-        private SortedList<String, String> defaultContentType;
+        private SortedList<string, string> defaultContentType;
 
         /**
          * Override content type tree.
          */
-        private SortedList<PackagePartName, String> overrideContentType;
+        private SortedList<PackagePartName, string> overrideContentType;
 
         /**
          * Constructor. Parses the content of the specified input stream.
@@ -69,7 +69,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
         public ContentTypeManager(Stream in1, OPCPackage pkg)
         {
             this.container = pkg;
-            this.defaultContentType = new SortedList<String, String>();
+            this.defaultContentType = new SortedList<string, string>();
             if (in1 != null)
             {
                 try
@@ -120,10 +120,10 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * Types stream.
          * </p>
          */
-        public void AddContentType(PackagePartName partName, String contentType)
+        public void AddContentType(PackagePartName partName, string contentType)
         {
             bool defaultCTExists = false;
-            String extension = partName.Extension.ToLower();
+            string extension = partName.Extension.ToLower();
             if ((extension.Length == 0)
                     || (this.defaultContentType.ContainsKey(extension) && !(defaultCTExists = this.defaultContentType
                             .ContainsValue(contentType))))
@@ -141,10 +141,10 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            Content type of the part.
          */
         private void AddOverrideContentType(PackagePartName partName,
-                String contentType)
+                string contentType)
         {
             if (overrideContentType == null)
-                overrideContentType = new SortedList<PackagePartName, String>();
+                overrideContentType = new SortedList<PackagePartName, string>();
 
             if(!overrideContentType.ContainsKey(partName))
                 overrideContentType.Add(partName, contentType);
@@ -160,7 +160,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * @param contentType
          *            The content type associated with the specified extension.
          */
-        private void AddDefaultContentType(String extension, String contentType)
+        private void AddDefaultContentType(string extension, string contentType)
         {
             // Remark : Originally the latest parameter was :
             // contentType.toLowerCase(). Change due to a request ID 1996748.
@@ -201,7 +201,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
             }
 
             /* Default content type */
-            String extensionToDelete = partName.Extension;
+            string extensionToDelete = partName.Extension;
             bool deleteDefaultContentTypeFlag = true;
             if (this.container != null)
             {
@@ -264,7 +264,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * @return <code>true</code> if the specified content type is already
          *         register, then <code>false</code>.
          */
-        public bool IsContentTypeRegister(String contentType)
+        public bool IsContentTypeRegister(string contentType)
         {
             if (contentType == null)
                 throw new ArgumentException("contentType");
@@ -312,7 +312,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *                Throws if the content type manager is not able to find the
          *                content from an existing part.
          */
-        public String GetContentType(PackagePartName partName)
+        public string GetContentType(PackagePartName partName)
         {
             if (partName == null)
                 throw new ArgumentException("partName");
@@ -321,7 +321,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
                     && this.overrideContentType.ContainsKey(partName))
                 return this.overrideContentType[partName];
 
-            String extension = partName.Extension.ToLower();
+            string extension = partName.Extension.ToLower();
             if (this.defaultContentType.ContainsKey(extension))
                 return this.defaultContentType[extension];
 
@@ -386,8 +386,8 @@ namespace NPOI.OpenXml4Net.OPC.Internal
                 {
                     // Default content types
                     //iterator.Current;
-                    String extension = iterator.Current.GetAttribute(EXTENSION_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
-                    String contentType = iterator.Current.GetAttribute(CONTENT_TYPE_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
+                    string extension = iterator.Current.GetAttribute(EXTENSION_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
+                    string contentType = iterator.Current.GetAttribute(CONTENT_TYPE_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
                     AddDefaultContentType(extension, contentType);
                 }
                 iterator = xpathnav.Select("//x:" + OVERRIDE_TAG_NAME, nsMgr);
@@ -400,7 +400,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
                     Uri uri = PackagingUriHelper.ParseUri(iterator.Current.GetAttribute(PART_NAME_ATTRIBUTE_NAME, xpathnav.NamespaceURI), UriKind.RelativeOrAbsolute);
                     PackagePartName partName = PackagingUriHelper
                             .CreatePartName(uri);
-                    String contentType = iterator.Current.GetAttribute(CONTENT_TYPE_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
+                    string contentType = iterator.Current.GetAttribute(CONTENT_TYPE_ATTRIBUTE_NAME, xpathnav.NamespaceURI);
                     AddOverrideContentType(partName, contentType);
                 }
             }
@@ -461,7 +461,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * @see #save(java.io.OutputStream)
          */
         private void AppendSpecificTypes(XmlDocument xmldoc, XmlElement root,
-                KeyValuePair<PackagePartName, String> entry)
+                KeyValuePair<PackagePartName, string> entry)
         {
             XmlElement elem = xmldoc.CreateElement(OVERRIDE_TAG_NAME, PackageNamespaces.CONTENT_TYPES);
             root.AppendChild(elem);
@@ -481,7 +481,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            The values to Append.
          * @see #save(java.io.OutputStream)
          */
-        private void AppendDefaultType(XmlDocument xmldoc, XmlElement root, KeyValuePair<String, String> entry)
+        private void AppendDefaultType(XmlDocument xmldoc, XmlElement root, KeyValuePair<string, string> entry)
         {
             XmlElement elem = xmldoc.CreateElement(DEFAULT_TAG_NAME,PackageNamespaces.CONTENT_TYPES);
             root.AppendChild(elem);

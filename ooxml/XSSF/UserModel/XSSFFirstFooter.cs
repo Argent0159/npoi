@@ -48,7 +48,7 @@ namespace NPOI.XSSF.UserModel
          * Get the content text representing the footer
          * @return text
          */
-        public override String Text
+        public override string Text
         {
             get
             {

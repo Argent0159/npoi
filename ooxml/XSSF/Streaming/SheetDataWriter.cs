@@ -286,7 +286,7 @@ namespace NPOI.XSSF.Streaming
                         {
                             case CellType.Numeric:
                                 double nval = cell.NumericCellValue;
-                                if (!Double.IsNaN(nval))
+                                if (!double.IsNaN(nval))
                                 {
                                     WriteAsBytes(OutputStream, "<v>" + nval + "</v>");
                                 }
@@ -382,7 +382,7 @@ namespace NPOI.XSSF.Streaming
         }
 
         //Taken from jdk1.3/src/javax/swing/text/html/HTMLWriter.java
-        protected void OutputQuotedString(String s)
+        protected void OutputQuotedString(string s)
         {
             if (s == null || s.Length == 0)
             {
@@ -459,7 +459,7 @@ namespace NPOI.XSSF.Streaming
                     default:
                         // YK: XmlBeans silently replaces all ISO control characters ( < 32) with question marks.
                         // the same rule applies to unicode surrogates and "not a character" symbols.
-                        if (c < ' ' || Char.IsLowSurrogate(c) || Char.IsHighSurrogate(c) ||
+                        if (c < ' ' || char.IsLowSurrogate(c) || char.IsHighSurrogate(c) ||
                                 ('\uFFFE' <= c && c <= '\uFFFF'))
                         {
                             if (counter > last)

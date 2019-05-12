@@ -31,7 +31,7 @@ namespace NPOI.DDF
     public class EscherSplitMenuColorsRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF11E);
-        public const String RECORD_DESCRIPTION = "MsofbtSplitMenuColors";
+        public const string RECORD_DESCRIPTION = "MsofbtSplitMenuColors";
 
         private int field_1_color1;
         private int field_2_color2;
@@ -110,7 +110,7 @@ namespace NPOI.DDF
         /// Gets the short name for this record
         /// </summary>
         /// <value>The name of the record.</value>
-        public override String RecordName
+        public override string RecordName
         {
             get { return "SplitMenuColors"; }
         }
@@ -122,9 +122,9 @@ namespace NPOI.DDF
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
         /// @return  a string representation of this record.
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
             //        String extraData;
             //        MemoryStream b = new MemoryStream();
@@ -148,7 +148,7 @@ namespace NPOI.DDF
                     "";
 
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append(FormatXmlRecordHeader(GetType().Name, HexDump.ToHex(RecordId), HexDump.ToHex(Version), HexDump.ToHex(Instance)))

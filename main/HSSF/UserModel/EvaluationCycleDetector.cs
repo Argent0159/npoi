@@ -60,7 +60,7 @@ namespace NPOI.HSSF.UserModel
                 _srcColNum = srcColNum;
             }
 
-            public override bool Equals(Object obj)
+            public override bool Equals(object obj)
             {
                 CellEvaluationFrame other = (CellEvaluationFrame)obj;
                 if (_workbook != other._workbook)
@@ -91,12 +91,12 @@ namespace NPOI.HSSF.UserModel
             /**
              * @return human Readable string for debug purposes
              */
-            public String FormatAsString()
+            public string FormatAsString()
             {
                 return "R=" + _srcRowNum + " C=" + _srcColNum + " ShIx=" + _workbook.GetSheetIndex(_sheet);
             }
 
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder sb = new StringBuilder(64);
                 sb.Append(GetType().Name).Append(" [");

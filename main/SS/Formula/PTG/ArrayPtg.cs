@@ -58,9 +58,9 @@ namespace NPOI.SS.Formula.PTG
         // data from these fields comes after the Ptg data of all tokens in current formula
         private int _nColumns;
         private int _nRows;
-        private Object[] _arrayValues;
+        private object[] _arrayValues;
 
-        ArrayPtg(int reserved0, int reserved1, int reserved2, int nColumns, int nRows, Object[] arrayValues)
+        ArrayPtg(int reserved0, int reserved1, int reserved2, int nColumns, int nRows, object[] arrayValues)
         {
             _reserved0Int = reserved0;
             _reserved1Short = reserved1;
@@ -72,7 +72,7 @@ namespace NPOI.SS.Formula.PTG
         /**
          * @param values2d array values arranged in rows
          */
-        public ArrayPtg(Object[][] values2d)
+        public ArrayPtg(object[][] values2d)
         {
             int nColumns = values2d[0].Length;
             int nRows = values2d.Length;
@@ -80,10 +80,10 @@ namespace NPOI.SS.Formula.PTG
             _nColumns = (short)nColumns;
             _nRows = (short)nRows;
 
-            Object[] vv = new Object[_nColumns * _nRows];
+            object[] vv = new object[_nColumns * _nRows];
             for (int r = 0; r < nRows; r++)
             {
-                Object[] rowData = values2d[r];
+                object[] rowData = values2d[r];
                 for (int c = 0; c < nColumns; c++)
                 {
                     vv[GetValueIndex(c, r)] = rowData[c];
@@ -95,13 +95,13 @@ namespace NPOI.SS.Formula.PTG
             _reserved1Short = 0;
             _reserved2Byte = 0;
         }
-        public Object[][] GetTokenArrayValues()
+        public object[][] GetTokenArrayValues()
         {
             if (_arrayValues == null)
             {
                 throw new InvalidOperationException("array values not read yet");
             }
-            Object[][] result = new Object[_nRows][];
+            object[][] result = new object[_nRows][];
             for (int r = 0; r < _nRows; r++)
             {
                 result[r] = new object[_nColumns];
@@ -119,7 +119,7 @@ namespace NPOI.SS.Formula.PTG
             get { return false; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder("[ArrayPtg]\n");
 
@@ -129,7 +129,7 @@ namespace NPOI.SS.Formula.PTG
             {
                 for (int y = 0; y < RowCount; y++)
                 {
-                    Object o = _arrayValues.GetValue(GetValueIndex(x, y));
+                    object o = _arrayValues.GetValue(GetValueIndex(x, y));
                     buffer.Append("[").Append(x).Append("][").Append(y).Append("] = ").Append(o).Append("\n");
                 }
             }
@@ -200,7 +200,7 @@ namespace NPOI.SS.Formula.PTG
             }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             StringBuilder b = new StringBuilder();
             b.Append("{");
@@ -216,7 +216,7 @@ namespace NPOI.SS.Formula.PTG
                     {
                         b.Append(",");
                     }
-                    Object o = _arrayValues.GetValue(GetValueIndex(x, y));
+                    object o = _arrayValues.GetValue(GetValueIndex(x, y));
                     b.Append(GetConstantText(o));
                 }
             }
@@ -224,22 +224,22 @@ namespace NPOI.SS.Formula.PTG
             return b.ToString();
         }
 
-        private static String GetConstantText(Object o)
+        private static string GetConstantText(object o)
         {
 
             if (o == null)
             {
                 return ""; // TODO - how is 'empty value' represented in formulas?
             }
-            if (o is String)
+            if (o is string)
             {
-                return "\"" + (String)o + "\"";
+                return "\"" + (string)o + "\"";
             }
-            if (o is Double || o is double)
+            if (o is double || o is double)
             {
-                return NumberToTextConverter.ToText((Double)o);
+                return NumberToTextConverter.ToText((double)o);
             }
-            if (o is bool || o is Boolean)
+            if (o is bool || o is bool)
             {
                 return ((bool)o).ToString().ToUpper();
             }
@@ -299,7 +299,7 @@ namespace NPOI.SS.Formula.PTG
                     return false;
                 }
             }
-            public override String ToFormulaString()
+            public override string ToFormulaString()
             {
                 throw Invalid();
             }
@@ -323,7 +323,7 @@ namespace NPOI.SS.Formula.PTG
                 nRows++;
 
                 int totalCount = nRows * nColumns;
-                Object[] arrayValues = ConstantValueParser.Parse(in1, totalCount);
+                object[] arrayValues = ConstantValueParser.Parse(in1, totalCount);
 
                 ArrayPtg result = new ArrayPtg(_reserved0, _reserved1, _reserved2, nColumns, nRows, arrayValues);
                 result.PtgClass = this.PtgClass;

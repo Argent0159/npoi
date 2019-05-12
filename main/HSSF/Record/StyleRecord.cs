@@ -50,7 +50,7 @@ namespace NPOI.HSSF.Record
 
         // only for user defined styles
         private bool field_3_stringHasMultibyte;
-        private String field_4_name;
+        private string field_4_name;
 
         public StyleRecord()
         {
@@ -142,7 +142,7 @@ namespace NPOI.HSSF.Record
          * @see #NameLength
          */
 
-        public String Name
+        public string Name
         {
             get { return field_4_name; }
             set { 
@@ -169,7 +169,7 @@ namespace NPOI.HSSF.Record
         }
 
         // end builtin records
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

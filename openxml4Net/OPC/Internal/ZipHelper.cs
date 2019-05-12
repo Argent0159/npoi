@@ -14,7 +14,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          * Forward slash use to convert part name between OPC and zip item naming
          * conventions.
          */
-        private static String FORWARD_SLASH = "/";
+        private static string FORWARD_SLASH = "/";
 
         /**
          * Buffer to read data from file. Use big buffer to improve performaces. the
@@ -75,7 +75,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            Zip item name to convert.
          * @return An OPC compliant name.
          */
-        public static String GetOPCNameFromZipItemName(String zipItemName)
+        public static string GetOPCNameFromZipItemName(string zipItemName)
         {
             if (zipItemName == null)
                 throw new ArgumentException("zipItemName");
@@ -93,12 +93,12 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            The OPC item name to convert.
          * @return A zip item name without any leading slashes.
          */
-        public static String GetZipItemNameFromOPCName(String opcItemName)
+        public static string GetZipItemNameFromOPCName(string opcItemName)
         {
             if (opcItemName == null)
                 throw new ArgumentException("opcItemName");
 
-            String retVal = opcItemName;
+            string retVal = opcItemName;
             while (retVal.StartsWith(FORWARD_SLASH))
                 retVal = retVal.Substring(1);
             return retVal;
@@ -112,12 +112,12 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            The OPC item name to convert.
          * @return A zip URI without any leading slashes.
          */
-        public static Uri GetZipURIFromOPCName(String opcItemName)
+        public static Uri GetZipURIFromOPCName(string opcItemName)
         {
             if (opcItemName == null)
                 throw new ArgumentException("opcItemName");
 
-            String retVal = opcItemName;
+            string retVal = opcItemName;
             while (retVal.StartsWith(FORWARD_SLASH))
                 retVal = retVal.Substring(1);
             try
@@ -152,7 +152,7 @@ namespace NPOI.OpenXml4Net.OPC.Internal
          *            The file path.
          * @return The zip archive freshly open.
          */
-        public static ZipFile OpenZipFile(String path)
+        public static ZipFile OpenZipFile(string path)
         {
             if (!File.Exists(path))
             {

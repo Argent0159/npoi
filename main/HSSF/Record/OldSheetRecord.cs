@@ -77,7 +77,7 @@ namespace NPOI.HSSF.Record
          * Get the sheetname for this sheet.  (this appears in the tabs at the bottom)
          * @return sheetname the name of the sheet
          */
-        public String Sheetname
+        public string Sheetname
         {
             get
             {
@@ -85,7 +85,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 

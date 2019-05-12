@@ -54,7 +54,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[UNCALCED]\n");

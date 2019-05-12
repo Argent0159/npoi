@@ -75,7 +75,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -106,7 +106,7 @@ namespace NPOI.HSSF.Record
                 return sid;
             }
         }
-        public override Object Clone()
+        public override object Clone()
         {
             ObjectProtectRecord rec = new ObjectProtectRecord();
             rec.field_1_protect = field_1_protect;

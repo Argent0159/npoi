@@ -47,8 +47,8 @@ namespace NPOI.SS.Formula.PTG
          *   that calls this method. 
          *  @param value : String representation of a floating point number
          */
-        public NumberPtg(String value)
-            : this(Double.Parse(value, CultureInfo.InvariantCulture))
+        public NumberPtg(string value)
+            : this(double.Parse(value, CultureInfo.InvariantCulture))
         {
             
         }
@@ -74,7 +74,7 @@ namespace NPOI.SS.Formula.PTG
             get { return SIZE; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return NumberToTextConverter.ToText(Value);
         }

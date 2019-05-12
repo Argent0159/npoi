@@ -37,7 +37,7 @@ namespace NPOI.HSSF.Record
 
         private short field_1_charCount;
         private byte field_2_optionflags;
-        private String field_3_string;
+        private string field_3_string;
         private List<FormatRun> field_4_format_Runs;
         private ExtRst field_5_ext_rst;
         private static BitField highByte = BitFieldFactory.GetInstance(0x1);
@@ -77,7 +77,7 @@ namespace NPOI.HSSF.Record
                 }
             }
 
-            public override bool Equals(Object o)
+            public override bool Equals(object o)
             {
                 if (!(o is FormatRun))
                 {
@@ -104,7 +104,7 @@ namespace NPOI.HSSF.Record
                 return _character - r._character;
             }
 
-            public override String ToString()
+            public override string ToString()
             {
                 return "character=" + _character + ",fontIndex=" + _fontIndex;
             }
@@ -127,7 +127,7 @@ namespace NPOI.HSSF.Record
 
             // This is a RPHSSub (see page 894)
             private int numberOfRuns;
-            private String phoneticText;
+            private string phoneticText;
 
             // This is an array of PhRuns (see page 881)
             private PhRun[] phRuns;
@@ -273,7 +273,7 @@ namespace NPOI.HSSF.Record
                 out1.Write(extraData);
             }
 
-            public override bool Equals(Object obj)
+            public override bool Equals(object obj)
             {
                 if (!(obj is ExtRst))
                 {
@@ -363,7 +363,7 @@ namespace NPOI.HSSF.Record
                     return numberOfRuns;
                 }
             }
-            public String PhoneticText
+            public string PhoneticText
             {
                 get
                 {
@@ -411,7 +411,7 @@ namespace NPOI.HSSF.Record
             //Used for clone method.
         }
 
-        public UnicodeString(String str)
+        public UnicodeString(string str)
         {
             String = (str);
         }
@@ -433,7 +433,7 @@ namespace NPOI.HSSF.Record
          * @param o     The object to Compare.
          * @return      true if the object is actually Equal.
          */
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (!(o is UnicodeString))
             {
@@ -601,7 +601,7 @@ namespace NPOI.HSSF.Record
         /**
              * @return the actual string this Contains as a java String object
              */
-        public String String
+        public string String
         {
             get
             {
@@ -767,7 +767,7 @@ namespace NPOI.HSSF.Record
          * @return String value of the record
          */
 
-        public override String ToString()
+        public override string ToString()
         {
             return String;
         }
@@ -779,7 +779,7 @@ namespace NPOI.HSSF.Record
          * @return String of output for biffviewer etc.
          *
          */
-        public String GetDebugInfo()
+        public string GetDebugInfo()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -919,7 +919,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public Object Clone()
+        public object Clone()
         {
             UnicodeString str = new UnicodeString();
             str.field_1_charCount = field_1_charCount;

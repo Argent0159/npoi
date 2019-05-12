@@ -39,7 +39,7 @@ namespace NPOI.SS.UserModel
         int Operator { get; set; }
 
 
-        String[] ExplicitListValues { get; set; }
+        string[] ExplicitListValues { get; set; }
 
         /// <summary>
         /// get or set the formula for expression 1. May be <code>null</code>
@@ -95,7 +95,7 @@ namespace NPOI.SS.UserModel
         public const int IGNORED = BETWEEN;
 
         /* package */
-        public static void ValidateSecondArg(int comparisonOperator, String paramValue)
+        public static void ValidateSecondArg(int comparisonOperator, string paramValue)
         {
             switch (comparisonOperator)
             {

@@ -50,7 +50,7 @@ namespace NPOI.Util
         public POILogger()
         {}
         
-        abstract public void Initialize(String cat);
+        abstract public void Initialize(string cat);
         
         /**
          * Log a message
@@ -58,7 +58,7 @@ namespace NPOI.Util
          * @param level One of DEBUG, INFO, WARN, ERROR, FATAL
          * @param obj1 The object to Log.  This is converted to a string.
          */
-        abstract public void Log(int level, Object obj1);
+        abstract public void Log(int level, object obj1);
         
         /**
          * Log a message
@@ -67,7 +67,7 @@ namespace NPOI.Util
          * @param obj1 The object to Log.  This is converted to a string.
          * @param exception An exception to be Logged
          */
-        abstract public void Log(int level, Object obj1,
+        abstract public void Log(int level, object obj1,
                         Exception exception);
 
 
@@ -94,7 +94,7 @@ namespace NPOI.Util
          * @param obj2 second object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2)
+        public virtual void Log(int level, object obj1, object obj2)
         {
             if (Check(level))
             {
@@ -111,8 +111,8 @@ namespace NPOI.Util
          * @param obj3 third Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3)
         {
             
 
@@ -134,8 +134,8 @@ namespace NPOI.Util
          * @param obj4 fourth Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4)
         {
             
 
@@ -158,8 +158,8 @@ namespace NPOI.Util
          * @param obj5 fifth Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5)
         {
             
 
@@ -183,9 +183,9 @@ namespace NPOI.Util
          * @param obj6 sixth Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6)
         {
             
 
@@ -210,9 +210,9 @@ namespace NPOI.Util
          * @param obj7 seventh Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7)
         {
             
 
@@ -239,9 +239,9 @@ namespace NPOI.Util
          * @param obj8 eighth Object to place in the message
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7, Object obj8)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7, object obj8)
         {
             
 
@@ -275,7 +275,7 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
+        public virtual void Log(int level, object obj1, object obj2,
                         Exception exception)
         {
             
@@ -297,8 +297,8 @@ namespace NPOI.Util
          * @param exception An error message to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Exception exception)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, Exception exception)
         {
             
 
@@ -320,8 +320,8 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4,
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4,
                         Exception exception)
         {
             
@@ -345,8 +345,8 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
                         Exception exception)
         {
             
@@ -371,9 +371,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Exception exception)
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, Exception exception)
         {
             
 
@@ -399,9 +399,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7,
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7,
                         Exception exception)
         {
             
@@ -429,9 +429,9 @@ namespace NPOI.Util
          * @param exception An exception to be Logged
          */
 
-        public virtual void Log(int level, Object obj1, Object obj2,
-                        Object obj3, Object obj4, Object obj5,
-                        Object obj6, Object obj7, Object obj8,
+        public virtual void Log(int level, object obj1, object obj2,
+                        object obj3, object obj4, object obj5,
+                        object obj6, object obj7, object obj8,
                         Exception exception)
         {
             
@@ -469,10 +469,10 @@ namespace NPOI.Util
          * @param obj1 The first object to match against.
          */
 
-        public virtual void LogFormatted(int level, String message,
-                                 Object obj1)
+        public virtual void LogFormatted(int level, string message,
+                                 object obj1)
         {
-            CommonLogFormatted(level, message, new Object[]
+            CommonLogFormatted(level, message, new object[]
             {
                 obj1
             });
@@ -504,10 +504,10 @@ namespace NPOI.Util
          * @param obj2 The second object to match against.
          */
 
-        public virtual void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2)
+        public virtual void LogFormatted(int level, string message,
+                                 object obj1, object obj2)
         {
-            CommonLogFormatted(level, message, new Object[]
+            CommonLogFormatted(level, message, new object[]
             {
                 obj1, obj2
             });
@@ -540,11 +540,11 @@ namespace NPOI.Util
          * @param obj3 The third object to match against.
          */
 
-        public virtual void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2,
-                                 Object obj3)
+        public virtual void LogFormatted(int level, string message,
+                                 object obj1, object obj2,
+                                 object obj3)
         {
-            CommonLogFormatted(level, message, new Object[]
+            CommonLogFormatted(level, message, new object[]
             {
                 obj1, obj2, obj3
             });
@@ -578,18 +578,18 @@ namespace NPOI.Util
          * @param obj4 The forth object to match against.
          */
 
-        public virtual void LogFormatted(int level, String message,
-                                 Object obj1, Object obj2,
-                                 Object obj3, Object obj4)
+        public virtual void LogFormatted(int level, string message,
+                                 object obj1, object obj2,
+                                 object obj3, object obj4)
         {
-            CommonLogFormatted(level, message, new Object[]
+            CommonLogFormatted(level, message, new object[]
             {
                 obj1, obj2, obj3, obj4
             });
         }
 
-        private void CommonLogFormatted(int level, String message,
-                                        Object [] unflatParams)
+        private void CommonLogFormatted(int level, string message,
+                                        object[] unflatParams)
         {
             
 
@@ -613,7 +613,7 @@ namespace NPOI.Util
          * Flattens any contained objects. Only tranverses one level deep.
          */
 
-        private Array FlattenArrays(Object [] objects)
+        private Array FlattenArrays(object[] objects)
         {
             ArrayList results = new ArrayList();
 
@@ -624,7 +624,7 @@ namespace NPOI.Util
             return results.ToArray();
         }
 
-        private ArrayList ObjectToObjectArray(Object obj)
+        private ArrayList ObjectToObjectArray(object obj)
         {
             ArrayList results = new ArrayList();
 

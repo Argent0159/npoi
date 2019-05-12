@@ -254,7 +254,7 @@ namespace NPOI.Util
         /// </summary>
         /// <param name="o">the object to be Compared for Equality with this list.</param>
         /// <returns>return true if the specified object is equal to this list.</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             bool rval = this == o;
 

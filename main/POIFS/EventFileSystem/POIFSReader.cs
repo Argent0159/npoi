@@ -141,7 +141,7 @@ namespace NPOI.POIFS.EventFileSystem
          */
 
         public void RegisterListener(POIFSReaderListener listener,
-                                     String name)
+                                     string name)
         {
             RegisterListener(listener, null, name);
         }
@@ -163,7 +163,7 @@ namespace NPOI.POIFS.EventFileSystem
 
         public void RegisterListener(POIFSReaderListener listener,
                                      POIFSDocumentPath path,
-                                     String name)
+                                     string name)
         {
             if ((listener == null) || (name == null) || (name.Length == 0))
             {
@@ -196,12 +196,12 @@ namespace NPOI.POIFS.EventFileSystem
             while (properties.MoveNext())
             {
                 Property property = (Property)properties.Current;
-                String name = property.Name;
+                string name = property.Name;
 
                 if (property.IsDirectory)
                 {
                     POIFSDocumentPath new_path = new POIFSDocumentPath(path,
-                                                     new String[]
+                                                     new string[]
                 {
                     name
                 });

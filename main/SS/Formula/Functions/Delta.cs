@@ -57,8 +57,8 @@ namespace NPOI.SS.Formula.Functions
             {
                 return e.GetErrorEval();
             }
-            String strText1 = OperandResolver.CoerceValueToString(veText1);
-            Double number1 = OperandResolver.ParseDouble(strText1);
+            string strText1 = OperandResolver.CoerceValueToString(veText1);
+            double number1 = OperandResolver.ParseDouble(strText1);
             if (double.IsNaN(number1))
             {
                 return ErrorEval.VALUE_INVALID;
@@ -74,8 +74,8 @@ namespace NPOI.SS.Formula.Functions
                 return e.GetErrorEval();
             }
 
-            String strText2 = OperandResolver.CoerceValueToString(veText2);
-            Double number2 = OperandResolver.ParseDouble(strText2);
+            string strText2 = OperandResolver.CoerceValueToString(veText2);
+            double number2 = OperandResolver.ParseDouble(strText2);
             if (double.IsNaN(number2))
             {
                 return ErrorEval.VALUE_INVALID;

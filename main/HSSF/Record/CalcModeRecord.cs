@@ -107,7 +107,7 @@ namespace NPOI.HSSF.Record
             return field_1_calcmode;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -136,7 +136,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             CalcModeRecord rec = new CalcModeRecord();
             rec.field_1_calcmode = field_1_calcmode;

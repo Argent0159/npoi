@@ -39,15 +39,15 @@ namespace NPOI.SS.UserModel
         VARP = new DataConsolidateFunction(11, "Varp");
 
         private int value;
-        private String name;
+        private string name;
 
-        public DataConsolidateFunction(int value, String name)
+        public DataConsolidateFunction(int value, string name)
         {
             this.value = value;
             this.name = name;
         }
 
-        public String Name
+        public string Name
         {
             get
             {

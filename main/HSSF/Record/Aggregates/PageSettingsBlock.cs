@@ -644,7 +644,7 @@ namespace NPOI.HSSF.Record.Aggregates
             // Take a copy to loop over, so we can update the real one
             //  without concurrency issues
             List<HeaderFooterRecord> hfRecordsToIterate = new List<HeaderFooterRecord>(_sviewHeaderFooters);
-            Dictionary<String, HeaderFooterRecord> hfGuidMap = new Dictionary<String, HeaderFooterRecord>();
+            Dictionary<string, HeaderFooterRecord> hfGuidMap = new Dictionary<string, HeaderFooterRecord>();
 
             foreach (HeaderFooterRecord hf in hfRecordsToIterate)
             {
@@ -674,9 +674,9 @@ namespace NPOI.HSSF.Record.Aggregates
             CustomViewSettingsRecordAggregate _cv;
             HeaderFooterRecord _hf;
             List<HeaderFooterRecord> _sviewHeaderFooters;
-            Dictionary<String, HeaderFooterRecord> _hfGuidMap;
+            Dictionary<string, HeaderFooterRecord> _hfGuidMap;
             public CustomRecordVisitor1(CustomViewSettingsRecordAggregate cv, HeaderFooterRecord hf, 
-                List<HeaderFooterRecord> sviewHeaderFooter, Dictionary<String, HeaderFooterRecord> hfGuidMap)
+                List<HeaderFooterRecord> sviewHeaderFooter, Dictionary<string, HeaderFooterRecord> hfGuidMap)
             {
                 this._cv = cv;
                 this._hf = hf;
@@ -690,7 +690,7 @@ namespace NPOI.HSSF.Record.Aggregates
             {
                 if (r.Sid == UserSViewBegin.sid)
                 {
-                    String guid = HexDump.ToHex(((UserSViewBegin) r).Guid);
+                    string guid = HexDump.ToHex(((UserSViewBegin) r).Guid);
                     HeaderFooterRecord hf = _hfGuidMap[guid];
 
                     if (hf != null)

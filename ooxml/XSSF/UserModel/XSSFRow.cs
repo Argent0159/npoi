@@ -547,8 +547,8 @@ namespace NPOI.XSSF.UserModel
                     CT_Cell c1 = cell.GetCTCell();
                     CT_Cell c2 = _row.GetCArray(i++);
 
-                    String r1 = c1.r;
-                    String r2 = c2.r;
+                    string r1 = c1.r;
+                    string r2 = c2.r;
                     if (!(r1 == null ? r2 == null : r1.Equals(r2)))
                     {
                         isOrdered = false;
@@ -573,7 +573,7 @@ namespace NPOI.XSSF.UserModel
          * @return formatted xml representation of this row
          */
 
-        public override String ToString()
+        public override string ToString()
         {
             return _row.ToString();
         }
@@ -588,7 +588,7 @@ namespace NPOI.XSSF.UserModel
             int rownum = RowNum + n;
             CalculationChain calcChain = ((XSSFWorkbook)_sheet.Workbook).GetCalculationChain();
             int sheetId = (int)_sheet.sheet.sheetId;
-            String msg = "Row[rownum=" + RowNum + "] contains cell(s) included in a multi-cell array formula. " +
+            string msg = "Row[rownum=" + RowNum + "] contains cell(s) included in a multi-cell array formula. " +
                     "You cannot change part of an array.";
             foreach (ICell c in this)
             {
@@ -603,7 +603,7 @@ namespace NPOI.XSSF.UserModel
                     calcChain.RemoveItem(sheetId, cell.GetReference());
 
                 CT_Cell CT_Cell = cell.GetCTCell();
-                String r = new CellReference(rownum, cell.ColumnIndex).FormatAsString();
+                string r = new CellReference(rownum, cell.ColumnIndex).FormatAsString();
                 CT_Cell.r = r;
             }
             RowNum = rownum;

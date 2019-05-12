@@ -157,7 +157,7 @@ namespace NPOI.POIFS.FileSystem
         private void CloseInputStream(Stream stream, bool success) {
             
             if(stream is MemoryStream) {
-                String msg = "POIFS is closing the supplied input stream of type (" 
+                string msg = "POIFS is closing the supplied input stream of type (" 
                         + stream.GetType().Name + ") which supports mark/reset.  "
                         + "This will be a problem for the caller if the stream will still be used.  "
                         + "If that is the case the caller should wrap the input stream to avoid this Close logic.  "
@@ -204,7 +204,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="name">the name of the new POIFSDocument</param>
         /// <returns>the new DocumentEntry</returns>
         public DocumentEntry CreateDocument(Stream stream,
-                                            String name)
+                                            string name)
         {
             return this.Root.CreateDocument(name, stream);
         }
@@ -217,7 +217,7 @@ namespace NPOI.POIFS.FileSystem
         /// <param name="size">the size of the new DocumentEntry</param>
         /// <param name="writer">the Writer of the new DocumentEntry</param>
         /// <returns>the new DocumentEntry</returns>
-        public DocumentEntry CreateDocument(String name, int size,
+        public DocumentEntry CreateDocument(string name, int size,
             /*POIFSWriterEventHandler*/ POIFSWriterListener writer) //Leon
         {
             return this.Root.CreateDocument(name, size, writer);
@@ -228,7 +228,7 @@ namespace NPOI.POIFS.FileSystem
         /// </summary>
         /// <param name="name">the name of the new DirectoryEntry</param>
         /// <returns>the new DirectoryEntry</returns>
-        public DirectoryEntry CreateDirectory(String name)
+        public DirectoryEntry CreateDirectory(string name)
         {
             return this.Root.CreateDirectory(name);
         }
@@ -244,7 +244,7 @@ namespace NPOI.POIFS.FileSystem
      */
 
         public DocumentInputStream CreateDocumentInputStream(
-                String documentName)
+                string documentName)
         {
             return Root.CreateDocumentInputStream(documentName);
         }
@@ -416,7 +416,7 @@ namespace NPOI.POIFS.FileSystem
             while (properties.MoveNext())
             {
                 Property      property = ( Property ) properties.Current;
-                String        name     = property.Name;
+                string name     = property.Name;
                 DirectoryNode parent   = (dir == null)
                                          ? (( DirectoryNode ) this.Root)
                                          : dir;
@@ -470,7 +470,7 @@ namespace NPOI.POIFS.FileSystem
             }
             else
             {
-                    return new Object[0];
+                    return new object[0];
             }
             }
         }
@@ -511,7 +511,7 @@ namespace NPOI.POIFS.FileSystem
         /// POIFSViewable object has not provided its contents.
         /// </summary>
         /// <value>The short description.</value>
-        public String ShortDescription
+        public string ShortDescription
         {
             get{return "POIFS FileSystem";}
         }

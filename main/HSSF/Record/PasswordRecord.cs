@@ -54,7 +54,7 @@ namespace NPOI.HSSF.Record
 
         //this Is the world's lamest "security".  thanks to Wouter van Vugt for making me
         //not have to try real hard.  -ACO
-        public static short HashPassword(String password)
+        public static short HashPassword(string password)
         {
             byte[] passwordChars = Encoding.UTF8.GetBytes(password);
             int hash = 0;
@@ -85,7 +85,7 @@ namespace NPOI.HSSF.Record
             set { field_1_password = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -114,7 +114,7 @@ namespace NPOI.HSSF.Record
         /**
          * Clone this record.
          */
-        public override Object Clone()
+        public override object Clone()
         {
             return new PasswordRecord(field_1_password);
         }

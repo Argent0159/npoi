@@ -54,7 +54,7 @@ namespace NPOI.XWPF.UserModel
          * Get StyleID of the style
          * @return styleID		StyleID of the style
          */
-        public String StyleId
+        public string StyleId
         {
 			get
 			{
@@ -108,7 +108,7 @@ namespace NPOI.XWPF.UserModel
             return styles;
         }
 
-        public String BasisStyleID
+        public string BasisStyleID
         {
 			get
 			{
@@ -123,7 +123,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * Get StyleID of the linked Style
          */
-        public String LinkStyleID
+        public string LinkStyleID
         {
 			get
 			{
@@ -137,7 +137,7 @@ namespace NPOI.XWPF.UserModel
         /**
          * Get StyleID of the next style
          */
-        public String NextStyleID
+        public string NextStyleID
         {
 			get
 			{
@@ -148,7 +148,7 @@ namespace NPOI.XWPF.UserModel
 			}
         }
 
-        public String Name
+        public string Name
         {
 			get
 			{
@@ -165,7 +165,7 @@ namespace NPOI.XWPF.UserModel
         public bool HasSameName(XWPFStyle compStyle)
         {
             CT_Style ctCompStyle = compStyle.GetCTStyle();
-            String name = ctCompStyle.name.val;
+            string name = ctCompStyle.name.val;
             return name.Equals(ctStyle.name.val);
         }
 

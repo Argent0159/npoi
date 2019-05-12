@@ -48,12 +48,12 @@ namespace NPOI.HSSF.Record
         // TODO: Consider making a utility class for these.  I've discovered the same field ordering
         //       in FormatRecord and StringRecord, it may be elsewhere too.
         public bool field_3_unicode_flag;                        // Flags whether the string is Unicode.
-        private String field_4_ole_classname; // Classname of the embedded OLE document (e.g. Word.Document.8)
+        private string field_4_ole_classname; // Classname of the embedded OLE document (e.g. Word.Document.8)
         /** Formulas often have a single non-zero trailing byte.
          * This is in a similar position to he pre-streamId padding
          * It is unknown if the value is important (it seems to mirror a value a few bytes earlier) 
          *  */
-        private Byte? field_4_unknownByte;
+        private byte? field_4_unknownByte;
         private int? field_5_stream_id; // ID of the OLE stream containing the actual data.
         private byte[] field_6_unknown;
 
@@ -364,7 +364,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public String OLEClassName
+        public string OLEClassName
         {
             get
             {
@@ -386,7 +386,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("[ftPictFmla]\n");
@@ -419,7 +419,7 @@ namespace NPOI.HSSF.Record
             sb.Append("[/ftPictFmla]");
             return sb.ToString();
         }
-        public override Object Clone()
+        public override object Clone()
         {
             return this; // TODO proper clone
         }

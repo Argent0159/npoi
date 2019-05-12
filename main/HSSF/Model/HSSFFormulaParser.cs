@@ -45,7 +45,7 @@ namespace NPOI.HSSF.Model
         /**
          * Convenience method for parsing cell formulas. see {@link #parse(String, HSSFWorkbook, int)}
          */
-        public static Ptg[] Parse(String formula, HSSFWorkbook workbook)
+        public static Ptg[] Parse(string formula, HSSFWorkbook workbook)
         {
             return FormulaParser.Parse(formula, CreateParsingWorkbook(workbook));
         }
@@ -54,7 +54,7 @@ namespace NPOI.HSSF.Model
          * @param formulaType a constant from {@link FormulaType}
          * @return the parsed formula tokens
          */
-        public static Ptg[] Parse(String formula, HSSFWorkbook workbook, FormulaType formulaType)
+        public static Ptg[] Parse(string formula, HSSFWorkbook workbook, FormulaType formulaType)
         {
             return FormulaParser.Parse(formula, CreateParsingWorkbook(workbook), formulaType);
         }
@@ -68,7 +68,7 @@ namespace NPOI.HSSF.Model
  *
  * @return the parsed formula tokens
  */
-        public static Ptg[] Parse(String formula, HSSFWorkbook workbook, FormulaType formulaType, int sheetIndex)
+        public static Ptg[] Parse(string formula, HSSFWorkbook workbook, FormulaType formulaType, int sheetIndex)
         {
             return FormulaParser.Parse(formula, CreateParsingWorkbook(workbook), formulaType, sheetIndex);
         }
@@ -81,7 +81,7 @@ namespace NPOI.HSSF.Model
          * @param ptgs  must not be <c>null</c>
          * @return a human readable String
          */
-        public static String ToFormulaString(HSSFWorkbook book, Ptg[] ptgs)
+        public static string ToFormulaString(HSSFWorkbook book, Ptg[] ptgs)
         {
             return FormulaRenderer.ToFormulaString(HSSFEvaluationWorkbook.Create(book), ptgs);
         }

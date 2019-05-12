@@ -634,7 +634,7 @@ namespace NPOI.DDF
         /// <param name="propName">Name of the prop.</param>
         /// <param name="type">The type.</param>
         /// <returns></returns>
-        private static EscherPropertyMetaData GetData(String propName, byte type)
+        private static EscherPropertyMetaData GetData(string propName, byte type)
         {
             return new EscherPropertyMetaData(propName, type);
         }
@@ -645,7 +645,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="propName">Name of the prop.</param>
         /// <returns></returns>
-        private static EscherPropertyMetaData GetData(String propName)
+        private static EscherPropertyMetaData GetData(string propName)
         {
             return new EscherPropertyMetaData(propName);
         }
@@ -655,7 +655,7 @@ namespace NPOI.DDF
         /// </summary>
         /// <param name="propertyId">The property id.</param>
         /// <returns></returns>
-        public static String GetPropertyName(short propertyId)
+        public static string GetPropertyName(short propertyId)
         {
             InitProps();
             EscherPropertyMetaData o = (EscherPropertyMetaData)properties[propertyId];

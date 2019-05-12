@@ -38,7 +38,7 @@ namespace NPOI.SS.Formula.Eval.Forked
         private CellType _cellType;
         private int _errorValue;
         private double _numberValue;
-        private String _stringValue;
+        private string _stringValue;
 
         public ForkedEvaluationCell(ForkedEvaluationSheet sheet, IEvaluationCell masterCell)
         {
@@ -48,7 +48,7 @@ namespace NPOI.SS.Formula.Eval.Forked
             SetValue(BlankEval.instance); // followed by a proper call to SetValue()
         }
 
-        public Object IdentityKey
+        public object IdentityKey
         {
             get
             {
@@ -142,7 +142,7 @@ namespace NPOI.SS.Formula.Eval.Forked
                 return _numberValue;
             }
         }
-        public String StringCellValue
+        public string StringCellValue
         {
             get
             {

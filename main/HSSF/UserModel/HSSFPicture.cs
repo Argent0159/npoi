@@ -78,7 +78,7 @@ namespace NPOI.HSSF.UserModel
         /// </remarks>
         public void Resize()
         {
-            Resize(Double.MaxValue);
+            Resize(double.MaxValue);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace NPOI.HSSF.UserModel
         /**
          * The color applied to the lines of this shape.
          */
-        public String FileName
+        public string FileName
         {
             get
             {
@@ -261,7 +261,7 @@ namespace NPOI.HSSF.UserModel
                 SetPropertyValue(prop);
             }
         }
-        private String Trim(string value)
+        private string Trim(string value)
         {
             int end = value.Length;
             int st = 0;

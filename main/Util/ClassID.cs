@@ -89,10 +89,10 @@ namespace NPOI.Util
          * 
          * @param externalForm representation of the Class ID represented by this object.
          */
-        public ClassID(String externalForm)
+        public ClassID(string externalForm)
         {
             bytes = new byte[LENGTH];
-            String clsStr = Regex.Replace(externalForm, "[{}-]", "");
+            string clsStr = Regex.Replace(externalForm, "[{}-]", "");
             for (int i = 0; i < clsStr.Length; i += 2)
             {
                 bytes[i / 2] = (byte)Convert.ToInt64(clsStr.Substring(i, 2), 16);
@@ -201,7 +201,7 @@ namespace NPOI.Util
         /// <param name="o">the object to compare this PropertySet with</param>
         /// <returns>true if the objects are equal, else
         /// false</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == null || !(o is ClassID))
                 return false;
@@ -236,7 +236,7 @@ namespace NPOI.Util
         /// <returns>
         /// A String representation of the Class ID represented by this object..
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sbClassId = new StringBuilder(38);
             sbClassId.Append('{');

@@ -62,7 +62,7 @@ namespace NPOI.XSSF.UserModel
          * Master shared formula is the first formula in a group of shared formulas is saved in the f element.
          */
         private Dictionary<int, CT_CellFormula> sharedFormulas;
-        private Dictionary<String, XSSFTable> tables;
+        private Dictionary<string, XSSFTable> tables;
         private List<CellRangeAddress> arrayFormulas;
         private XSSFDataValidationHelper dataValidationHelper;
 
@@ -175,7 +175,7 @@ namespace NPOI.XSSF.UserModel
         private void InitRows(CT_Worksheet worksheetParam)
         {
             _rows = new SortedList<int, XSSFRow>();
-            tables = new Dictionary<String, XSSFTable>();
+            tables = new Dictionary<string, XSSFTable>();
             sharedFormulas = new Dictionary<int, CT_CellFormula>();
             arrayFormulas = new List<CellRangeAddress>();
             if (0 < worksheetParam.sheetData.SizeOfRowArray())
@@ -273,7 +273,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the name of this sheet
          */
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -325,7 +325,7 @@ namespace NPOI.XSSF.UserModel
                                 (arrayRange.IsInRange(region.FirstRow, region.FirstColumn) ||
                                   arrayRange.IsInRange(region.FirstRow, region.FirstColumn)))
                         {
-                            String msg = "The range " + region.FormatAsString() + " intersects with a multi-cell array formula. " +
+                            string msg = "The range " + region.FormatAsString() + " intersects with a multi-cell array formula. " +
                                     "You cannot merge cells of an array.";
                             throw new InvalidOperationException(msg);
                         }
@@ -397,7 +397,7 @@ namespace NPOI.XSSF.UserModel
                     if (p is XSSFDrawing)
                     {
                         XSSFDrawing dr = (XSSFDrawing)p;
-                        String drId = dr.GetPackageRelationship().Id;
+                        string drId = dr.GetPackageRelationship().Id;
                         if (drId.Equals(ctDrawing.id))
                         {
                             return dr;
@@ -427,7 +427,7 @@ namespace NPOI.XSSF.UserModel
             //drawingNumber = #drawings.Count + 1
             int DrawingNumber = GetPackagePart().Package.GetPartsByContentType(XSSFRelation.DRAWINGS.ContentType).Count + 1;
             XSSFDrawing Drawing = (XSSFDrawing)CreateRelationship(XSSFRelation.DRAWINGS, XSSFFactory.GetInstance(), DrawingNumber);
-            String relId = Drawing.GetPackageRelationship().Id;
+            string relId = Drawing.GetPackageRelationship().Id;
 
             //add CT_Drawing element which indicates that this sheet Contains Drawing components built on the DrawingML platform.
             //The relationship Id references the part Containing the DrawingML defInitions.
@@ -457,7 +457,7 @@ namespace NPOI.XSSF.UserModel
                     //drawingNumber = #drawings.Count + 1
                     int drawingNumber = GetPackagePart().Package.GetPartsByContentType(XSSFRelation.VML_DRAWINGS.ContentType).Count + 1;
                     drawing = (XSSFVMLDrawing)CreateRelationship(XSSFRelation.VML_DRAWINGS, XSSFFactory.GetInstance(), drawingNumber);
-                    String relId = drawing.GetPackageRelationship().Id;
+                    string relId = drawing.GetPackageRelationship().Id;
 
                     //add CT_LegacyDrawing element which indicates that this sheet Contains drawing components built on the drawingML platform.
                     //The relationship Id references the part Containing the drawing defInitions.
@@ -473,7 +473,7 @@ namespace NPOI.XSSF.UserModel
                     if (p is XSSFVMLDrawing)
                     {
                         XSSFVMLDrawing dr = (XSSFVMLDrawing)p;
-                        String drId = dr.GetPackageRelationship().Id;
+                        string drId = dr.GetPackageRelationship().Id;
                         if (drId.Equals(ctDrawing.id))
                         {
                             drawing = dr;
@@ -673,7 +673,7 @@ namespace NPOI.XSSF.UserModel
                 return null;
             }
 
-            String ref1 = new CellReference(row, column).FormatAsString();
+            string ref1 = new CellReference(row, column).FormatAsString();
             CT_Comment ctComment = sheetComments.GetCTComment(ref1);
             if (ctComment == null) return null;
 
@@ -684,7 +684,7 @@ namespace NPOI.XSSF.UserModel
 
         public XSSFHyperlink GetHyperlink(int row, int column)
         {
-            String ref1 = new CellReference(row, column).FormatAsString();
+            string ref1 = new CellReference(row, column).FormatAsString();
             foreach (XSSFHyperlink hyperlink in hyperlinks)
             {
                 if (hyperlink.GetCellRef().Equals(ref1))
@@ -1180,7 +1180,7 @@ namespace NPOI.XSSF.UserModel
 
             if (ctMergeCell == null) { return null; }
 
-            String ref1 = ctMergeCell.@ref;
+            string ref1 = ctMergeCell.@ref;
             return CellRangeAddress.ValueOf(ref1);
         }
 
@@ -1295,7 +1295,7 @@ namespace NPOI.XSSF.UserModel
          * 
          * @param password to set for protection. Pass <code>null</code> to remove protection
          */
-        public void ProtectSheet(String password)
+        public void ProtectSheet(string password)
         {
 
             if (password != null)
@@ -1319,7 +1319,7 @@ namespace NPOI.XSSF.UserModel
          * @param password the password string you wish convert to an {@link STUnsignedshortHex}
          * @return {@link STUnsignedshortHex} that Contains Excel hashed password in Hex format
          */
-        private string StringToExcelPassword(String password)
+        private string StringToExcelPassword(string password)
         {
             //ST_UnsignedshortHex hexPassword = new ST_UnsignedshortHex();
             return PasswordRecord.HashPassword(password).ToString("x");
@@ -1449,7 +1449,7 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String cellRef = GetPane().topLeftCell;
+                string cellRef = GetPane().topLeftCell;
                 if (cellRef == null)
                     return 0;
                 CellReference cellReference = new CellReference(cellRef);
@@ -1467,7 +1467,7 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String cellRef = GetSheetTypeSheetView().topLeftCell;
+                string cellRef = GetSheetTypeSheetView().topLeftCell;
                 if (cellRef == null)
                     return 0;
                 CellReference cellReference = new CellReference(cellRef);
@@ -2018,7 +2018,7 @@ namespace NPOI.XSSF.UserModel
         }
 
         private void SetColumn(int targetColumnIx, short? xfIndex, int? style,
-                int? level, Boolean? hidden, Boolean? collapsed)
+                int? level, bool? hidden, bool? collapsed)
         {
             CT_Cols cols = worksheet.GetColsArray(0);
             CT_Col ci = null;
@@ -2784,7 +2784,7 @@ namespace NPOI.XSSF.UserModel
                         CT_CommentList lst = sheetComments.GetCTComments().commentList;
                         foreach (CT_Comment comment in lst.comment)
                         {
-                            String strRef = comment.@ref;
+                            string strRef = comment.@ref;
                             CellReference ref1 = new CellReference(strRef);
 
                             // is this comment part of the current row?
@@ -2830,7 +2830,7 @@ namespace NPOI.XSSF.UserModel
                         CT_CommentList lst = sheetComments.GetCTComments().commentList;
                         foreach (CT_Comment comment in lst.comment)
                         {
-                            String oldRef = comment.@ref;
+                            string oldRef = comment.@ref;
                             CellReference ref1 = new CellReference(oldRef);
 
                             // is this comment part of the current row?
@@ -2871,7 +2871,7 @@ namespace NPOI.XSSF.UserModel
             XSSFRowShifter rowShifter = new XSSFRowShifter(this);
 
             int sheetIndex = Workbook.GetSheetIndex(this);
-            String sheetName = Workbook.GetSheetName(sheetIndex);
+            string sheetName = Workbook.GetSheetName(sheetIndex);
             FormulaShifter Shifter = FormulaShifter.CreateForRowShift(
                                        sheetIndex, sheetName, startRow, endRow, n);
 
@@ -2956,7 +2956,7 @@ namespace NPOI.XSSF.UserModel
         public void ShowInPane(short toprow, short leftcol)
         {
             CellReference cellReference = new CellReference(toprow, leftcol);
-            String cellRef = cellReference.FormatAsString();
+            string cellRef = cellReference.FormatAsString();
             GetPane().topLeftCell = (cellRef);
         }
 
@@ -3067,7 +3067,7 @@ namespace NPOI.XSSF.UserModel
          * @deprecated since Nov 2009 use {@link XSSFCell#SetCellComment(NPOI.SS.usermodel.Comment)} instead
          */
 
-        public static void SetCellComment(String cellRef, XSSFComment comment)
+        public static void SetCellComment(string cellRef, XSSFComment comment)
         {
             CellReference cellReference = new CellReference(cellRef);
 
@@ -3094,7 +3094,7 @@ namespace NPOI.XSSF.UserModel
          */
         public void RemoveHyperlink(int row, int column)
         {
-            String ref1 = new CellReference(row, column).FormatAsString();
+            string ref1 = new CellReference(row, column).FormatAsString();
             for (int index = 0; index < hyperlinks.Count; index++)
             {
                 XSSFHyperlink hyperlink = hyperlinks[index];
@@ -3110,7 +3110,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the location of the active cell.
          */
-        public String ActiveCell
+        public string ActiveCell
         {
             get
             {
@@ -3269,7 +3269,7 @@ namespace NPOI.XSSF.UserModel
                 // see more details in https://issues.apache.org/bugzilla/show_bug.cgi?id=51710
                 if (cellRef.Col > sfRef.FirstColumn || cellRef.Row > sfRef.FirstRow)
                 {
-                    String effectiveRef = new CellRangeAddress(
+                    string effectiveRef = new CellRangeAddress(
                             Math.Max(cellRef.Row, sfRef.FirstRow), sfRef.LastRow,
                             Math.Max(cellRef.Col, sfRef.FirstColumn), sfRef.LastColumn).FormatAsString();
                     sf.@ref = (effectiveRef);
@@ -3339,7 +3339,7 @@ namespace NPOI.XSSF.UserModel
 
             //XmlOptions xmlOptions = new XmlOptions(DEFAULT_XML_OPTIONS);
             //xmlOptions.SetSaveSyntheticDocumentElement(new QName(CT_Worksheet.type.GetName().getNamespaceURI(), "worksheet"));
-            Dictionary<String, String> map = new Dictionary<String, String>();
+            Dictionary<string, string> map = new Dictionary<string, string>();
             map[ST_RelationshipId.NamespaceURI] = "r";
             //xmlOptions.SetSaveSuggestedPrefixes(map);
 
@@ -3948,7 +3948,7 @@ namespace NPOI.XSSF.UserModel
             return SSCellRange<ICell>.Create(firstRow, firstColumn, height, width, temp, typeof(ICell));
         }
 
-        public ICellRange<ICell> SetArrayFormula(String formula, CellRangeAddress range)
+        public ICellRange<ICell> SetArrayFormula(string formula, CellRangeAddress range)
         {
 
             ICellRange<ICell> cr = GetCellRange(range);
@@ -3978,7 +3978,7 @@ namespace NPOI.XSSF.UserModel
                     return cr;
                 }
             }
-            String ref1 = ((XSSFCell)cell).GetCTCell().r;
+            string ref1 = ((XSSFCell)cell).GetCTCell().r;
             throw new ArgumentException("Cell " + ref1 + " is not part of an array formula.");
         }
 
@@ -3999,12 +3999,12 @@ namespace NPOI.XSSF.UserModel
                 {
                     CellRangeAddressList addressList = new CellRangeAddressList();
 
-                    String[] regions = ctDataValidation.sqref.Split(new char[] { ' ' });
+                    string[] regions = ctDataValidation.sqref.Split(new char[] { ' ' });
                     for (int i = 0; i < regions.Length; i++)
                     {
                         if (regions[i].Length == 0)
                             continue;
-                        String[] parts = regions[i].Split(new char[] { ':' });
+                        string[] parts = regions[i].Split(new char[] { ':' });
                         CellReference begin = new CellReference(parts[0]);
                         CellReference end = parts.Length > 1 ? new CellReference(parts[1]) : begin;
                         CellRangeAddress cellRangeAddress = new CellRangeAddress(begin.Row, end.Row, begin.Col, end.Col);
@@ -4040,7 +4040,7 @@ namespace NPOI.XSSF.UserModel
 
             CellRangeAddress norm = new CellRangeAddress(range.FirstRow, range.LastRow,
                     range.FirstColumn, range.LastColumn);
-            String ref1 = norm.FormatAsString();
+            string ref1 = norm.FormatAsString();
             af.@ref = (ref1);
 
             XSSFWorkbook wb = (XSSFWorkbook)Workbook;
@@ -4053,7 +4053,7 @@ namespace NPOI.XSSF.UserModel
             name.GetCTName().hidden = true;
             CellReference r1 = new CellReference(SheetName, range.FirstRow, range.FirstColumn, true, true);
             CellReference r2 = new CellReference(null, range.LastRow, range.LastColumn, true, true);
-            String fmla = r1.FormatAsString() + ":" + r2.FormatAsString();
+            string fmla = r1.FormatAsString() + ":" + r2.FormatAsString();
             name.RefersToFormula = fmla;
 
             return new XSSFAutoFilter(this);
@@ -4135,7 +4135,7 @@ namespace NPOI.XSSF.UserModel
                         if (p is XSSFDrawing)
                         {
                             XSSFDrawing dr = (XSSFDrawing)p;
-                            String drId = dr.GetPackageRelationship().Id;
+                            string drId = dr.GetPackageRelationship().Id;
                             if (drId.Equals(ctDrawing.id))
                             {
                                 drawing = dr;
@@ -4281,7 +4281,7 @@ namespace NPOI.XSSF.UserModel
         public void ShowInPane(int toprow, int leftcol)
         {
             CellReference cellReference = new CellReference(toprow, leftcol);
-            String cellRef = cellReference.FormatAsString();
+            string cellRef = cellReference.FormatAsString();
             Pane.topLeftCell = cellRef;
         }
         private void SetRepeatingRowsAndColumns(
@@ -4335,7 +4335,7 @@ namespace NPOI.XSSF.UserModel
                     XSSFName.BUILTIN_PRINT_TITLE, sheetIndex);
             }
 
-            String reference = GetReferenceBuiltInRecord(
+            string reference = GetReferenceBuiltInRecord(
                 name.SheetName, col1, col2, row1, row2);
             name.RefersToFormula = (reference);
 
@@ -4353,8 +4353,8 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        private static String GetReferenceBuiltInRecord(
-            String sheetName, int startC, int endC, int startR, int endR)
+        private static string GetReferenceBuiltInRecord(
+            string sheetName, int startC, int endC, int startR, int endR)
         {
             // Excel example for built-in title: 
             //   'second sheet'!$E:$F,'second sheet'!$2:$3
@@ -4368,10 +4368,10 @@ namespace NPOI.XSSF.UserModel
             CellReference rowRef2 =
               new CellReference(sheetName, endR, 0, true, true);
 
-            String escapedName = SheetNameFormatter.Format(sheetName);
+            string escapedName = SheetNameFormatter.Format(sheetName);
 
-            String c = "";
-            String r = "";
+            string c = "";
+            string r = "";
 
             if (startC == -1 && endC == -1)
             {
@@ -4415,15 +4415,15 @@ namespace NPOI.XSSF.UserModel
             {
                 return null;
             }
-            String refStr = name.RefersToFormula;
+            string refStr = name.RefersToFormula;
             if (refStr == null)
             {
                 return null;
             }
-            String[] parts = refStr.Split(",".ToCharArray());
+            string[] parts = refStr.Split(",".ToCharArray());
             int maxRowIndex = SpreadsheetVersion.EXCEL2007.LastRowIndex;
             int maxColIndex = SpreadsheetVersion.EXCEL2007.LastColumnIndex;
-            foreach (String part in parts)
+            foreach (string part in parts)
             {
                 CellRangeAddress range = CellRangeAddress.ValueOf(part);
                 if ((range.FirstColumn == 0
@@ -4450,14 +4450,14 @@ namespace NPOI.XSSF.UserModel
             return null;
         }
 
-        public ISheet CopySheet(String Name)
+        public ISheet CopySheet(string Name)
         {
             return CopySheet(Name, true);
         }
 
-        public ISheet CopySheet(String name, Boolean copyStyle)
+        public ISheet CopySheet(string name, bool copyStyle)
         {
-            String clonedName = SheetUtil.GetUniqueSheetName(this.Workbook, name);
+            string clonedName = SheetUtil.GetUniqueSheetName(this.Workbook, name);
             XSSFSheet clonedSheet = (XSSFSheet)this.Workbook.CreateSheet(clonedName);
             try
             {
@@ -4530,7 +4530,7 @@ namespace NPOI.XSSF.UserModel
             }
             return clonedSheet;
         }
-        public void CopyTo(XSSFWorkbook dest, String name, Boolean copyStyle, Boolean keepFormulas)
+        public void CopyTo(XSSFWorkbook dest, string name, bool copyStyle, bool keepFormulas)
         {
             StylesTable styles = dest.GetStylesSource();
             if (copyStyle && dest.NumberOfSheets == 0 && dest.NumberOfFonts == 1 && Workbook.NumberOfFonts > 0)
@@ -4540,7 +4540,7 @@ namespace NPOI.XSSF.UserModel
             }
             XSSFSheet newSheet = (XSSFSheet)dest.CreateSheet(name);
             newSheet.sheet.state = sheet.state;
-            IDictionary<Int32, ICellStyle> styleMap = (copyStyle) ? new Dictionary<Int32, ICellStyle>() : null;
+            IDictionary<int, ICellStyle> styleMap = (copyStyle) ? new Dictionary<int, ICellStyle>() : null;
             for (int i = FirstRowNum; i <= LastRowNum; i++)
             {
                 XSSFRow srcRow = (XSSFRow)GetRow(i);
@@ -4660,7 +4660,7 @@ namespace NPOI.XSSF.UserModel
             }
             return null;
         }
-        private static void CopyRow(XSSFSheet srcSheet, XSSFSheet destSheet, XSSFRow srcRow, XSSFRow destRow, IDictionary<Int32, ICellStyle> styleMap, bool keepFormulas)
+        private static void CopyRow(XSSFSheet srcSheet, XSSFSheet destSheet, XSSFRow srcRow, XSSFRow destRow, IDictionary<int, ICellStyle> styleMap, bool keepFormulas)
         {
             destRow.Height = srcRow.Height;
             if (!srcRow.GetCTRow().IsSetCustomHeight())
@@ -4705,7 +4705,7 @@ namespace NPOI.XSSF.UserModel
                 }
             }
         }
-        private static void CopyCell(ICell oldCell, ICell newCell, IDictionary<Int32, ICellStyle> styleMap, Boolean keepFormulas)
+        private static void CopyCell(ICell oldCell, ICell newCell, IDictionary<int, ICellStyle> styleMap, bool keepFormulas)
         {
             if (styleMap != null)
             {
@@ -4822,7 +4822,7 @@ namespace NPOI.XSSF.UserModel
             //Create relationship between the pivot cache defintion and the workbook
             XSSFPivotCacheDefinition pivotCacheDefinition = (XSSFPivotCacheDefinition)workbook.
                     CreateRelationship(XSSFRelation.PIVOT_CACHE_DEFINITION, XSSFFactory.GetInstance(), tableId);
-            String rId = workbook.GetRelationId(pivotCacheDefinition);
+            string rId = workbook.GetRelationId(pivotCacheDefinition);
             //Create relationship between pivotTable and pivotCacheDefInition without creating a new instance
             PackagePart pivotPackagePart = pivotTable.GetPackagePart();
             pivotPackagePart.AddRelationship(pivotCacheDefinition.GetPackagePart().PartName,

@@ -172,7 +172,7 @@ namespace NPOI.HSSF.Record
             get { return _isError; }
         }
 
-        protected override String RecordName
+        protected override string RecordName
         {
             get { return "BOOLERR"; }
         }
@@ -209,7 +209,7 @@ namespace NPOI.HSSF.Record
         }
 
 
-        public override Object Clone()
+        public override object Clone()
         {
             BoolErrRecord rec = new BoolErrRecord();
             CopyBaseFields(rec);

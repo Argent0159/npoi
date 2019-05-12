@@ -47,10 +47,10 @@ namespace NPOI.HSSF.Record
         private int field_1_position_of_BOF;
         private int field_2_option_flags;
         private int field_4_isMultibyteUnicode;
-        private String field_5_sheetname;
+        private string field_5_sheetname;
 
 
-        public BoundSheetRecord(String sheetname)
+        public BoundSheetRecord(string sheetname)
         {
             field_2_option_flags = 0;
             this.Sheetname=sheetname;
@@ -112,7 +112,7 @@ namespace NPOI.HSSF.Record
          * @return sheetname the name of the sheet
          */
 
-        public String Sheetname
+        public string Sheetname
         {
             get { return field_5_sheetname; }
             set
@@ -132,7 +132,7 @@ namespace NPOI.HSSF.Record
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -158,7 +158,7 @@ namespace NPOI.HSSF.Record
             out1.WriteInt(PositionOfBof);
             out1.WriteShort(field_2_option_flags);
 
-            String name = field_5_sheetname;
+            string name = field_5_sheetname;
             out1.WriteByte(name.Length);
             out1.WriteByte(field_4_isMultibyteUnicode);
 

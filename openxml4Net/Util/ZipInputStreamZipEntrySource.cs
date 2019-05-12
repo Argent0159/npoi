@@ -113,7 +113,7 @@ public class ZipInputStreamZipEntrySource:ZipEntrySource {
 
             if (entrySize != -1)
             {
-                if (entrySize >= Int32.MaxValue)
+                if (entrySize >= int.MaxValue)
                 {
                     throw new IOException("ZIP entry size is too large");
                 }

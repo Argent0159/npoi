@@ -199,7 +199,7 @@ namespace NPOI.XSSF.UserModel.Extensions
             return border.ToString().GetHashCode();
         }
 
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (!(o is XSSFCellBorder)) return false;
 

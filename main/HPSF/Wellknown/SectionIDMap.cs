@@ -125,7 +125,7 @@ namespace NPOI.HPSF.Wellknown
         /// sectionFormatID combination is not well-known, the
         /// string "[undefined]" is returned.
         /// </returns>
-        public static String GetPIDString(byte[] sectionFormatID,
+        public static string GetPIDString(byte[] sectionFormatID,
                                           long pid)
         {
             PropertyIDMap m = GetInstance().Get(sectionFormatID);
@@ -133,7 +133,7 @@ namespace NPOI.HPSF.Wellknown
                 return UNDEFINED;
             else
             {
-                String s = (String)m.Get(pid);
+                string s = (string)m.Get(pid);
                 if (s == null)
                     return UNDEFINED;
                 return s;
@@ -162,7 +162,7 @@ namespace NPOI.HPSF.Wellknown
         /// <param name="sectionFormatID">A section format ID as a 
         /// <c>byte[]</c></param>
         /// <returns>the property ID map</returns>
-        public Object Get(Object sectionFormatID)
+        public object Get(object sectionFormatID)
         {
             return Get((byte[])sectionFormatID);
         }
@@ -176,7 +176,7 @@ namespace NPOI.HPSF.Wellknown
         /// <param name="sectionFormatID">the section format ID</param>
         /// <param name="propertyIDMap">The property ID map.</param>
         /// <returns></returns>
-        public Object Put(byte[] sectionFormatID,
+        public object Put(byte[] sectionFormatID,
                           PropertyIDMap propertyIDMap)
         {
             return this[sectionFormatID] = propertyIDMap;
@@ -193,7 +193,7 @@ namespace NPOI.HPSF.Wellknown
         /// deprecated.</param>
         /// <returns>The return value remains undocumented since the method Is
         /// deprecated.</returns>
-        public Object Put(Object key, Object value)
+        public object Put(object key, object value)
         {
             return Put((byte[])key, (PropertyIDMap)value);
         }

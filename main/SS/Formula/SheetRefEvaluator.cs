@@ -47,7 +47,7 @@ namespace NPOI.SS.Formula
             _sheetIndex = sheetIndex;
         }
 
-        public String SheetName
+        public string SheetName
         {
             get
             {

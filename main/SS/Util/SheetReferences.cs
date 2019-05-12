@@ -38,12 +38,12 @@ public class SheetReferences
         map = new Hashtable(5);
     }
  
-    public void AddSheetReference(String sheetName, int number) {
+    public void AddSheetReference(string sheetName, int number) {
        map[number]= sheetName;
     } 
 
-    public String GetSheetName(int number) {
-       return (String)map[number];
+    public string GetSheetName(int number) {
+       return (string)map[number];
     }
 
 }

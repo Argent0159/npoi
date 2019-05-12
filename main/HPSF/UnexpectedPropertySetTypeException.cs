@@ -54,7 +54,7 @@ namespace NPOI.HPSF
         /// Initializes a new instance of the <see cref="UnexpectedPropertySetTypeException"/> class.
         /// </summary>
         /// <param name="msg">The message string.</param>
-        public UnexpectedPropertySetTypeException(String msg):base(msg)
+        public UnexpectedPropertySetTypeException(string msg):base(msg)
         {
             
         }
@@ -77,7 +77,7 @@ namespace NPOI.HPSF
         /// <param name="msg">The message string.</param>
         /// <param name="reason">The reason, i.e. a throwable that indirectly
         /// caused this exception.</param>
-        public UnexpectedPropertySetTypeException(String msg,
+        public UnexpectedPropertySetTypeException(string msg,
                                                   Exception reason):base(msg, reason)
         {
             

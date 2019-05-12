@@ -40,7 +40,7 @@ namespace NPOI.XSSF.Extractor
         private bool includeCellComments = false;
         private bool includeHeadersFooters = true;
 
-        public XSSFExcelExtractor(String path)
+        public XSSFExcelExtractor(string path)
             : this(new XSSFWorkbook(path))
         {
 
@@ -153,7 +153,7 @@ namespace NPOI.XSSF.Extractor
         /**
          * Retreives the text contents of the file
          */
-        public override String Text
+        public override string Text
         {
             get
             {
@@ -192,7 +192,7 @@ namespace NPOI.XSSF.Extractor
                     }
 
                     // Rows and cells
-                    foreach (Object rawR in sheet)
+                    foreach (object rawR in sheet)
                     {
                         IRow row = (IRow)rawR;
                         IEnumerator ri =row.GetEnumerator();
@@ -244,7 +244,7 @@ namespace NPOI.XSSF.Extractor
                             {
                                 // Replace any newlines with spaces, otherwise it
                                 //  breaks the output
-                                String commentText = comment.String.String.Replace('\n', ' ');
+                                string commentText = comment.String.String.Replace('\n', ' ');
                                 text.Append(" Comment by ").Append(comment.Author).Append(": ").Append(commentText);
                             }
                             
@@ -299,7 +299,7 @@ namespace NPOI.XSSF.Extractor
             XSSFCell xcell = (XSSFCell)cell;
             text.Append(xcell.GetRawValue());
         }
-        private String ExtractHeaderFooter(IHeaderFooter hf)
+        private string ExtractHeaderFooter(IHeaderFooter hf)
         {
             return NPOI.HSSF.Extractor.ExcelExtractor.ExtractHeaderFooter(hf);
         }

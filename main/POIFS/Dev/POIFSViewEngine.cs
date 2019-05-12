@@ -47,10 +47,10 @@ namespace NPOI.POIFS.Dev
         /// <param name="indentLevel">how far in to indent each string</param>
         /// <param name="indentString">string to use for indenting</param>
         /// <returns>a List of Strings holding the content</returns>
-         public static IList InspectViewable(Object viewable,
+         public static IList InspectViewable(object viewable,
                                        bool drilldown,
                                        int indentLevel,
-                                       String indentString)
+                                       string indentString)
         {
             IList objects = new ArrayList();
             if (viewable is DictionaryEntry)
@@ -72,7 +72,7 @@ namespace NPOI.POIFS.Dev
          internal static void ProcessViewable(object viewable,
                                         bool drilldown,
                                         int indentLevel,
-                                        String indentString,
+                                        string indentString,
                                         IList objects)
          {
 
@@ -122,8 +122,8 @@ namespace NPOI.POIFS.Dev
          /// <param name="indentString">string to use for indenting</param>
          /// <param name="data">The data.</param>
          /// <returns></returns>
-        private static String Indent(int indentLevel,
-                                     String indentString, String data)
+        private static string Indent(int indentLevel,
+                                     string indentString, string data)
         {
             StringBuilder finalBuffer  = new StringBuilder();
             StringBuilder indentPrefix = new StringBuilder();

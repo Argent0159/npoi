@@ -2092,7 +2092,7 @@ namespace NPOI.OpenXmlFormats.Dml
             if (node == null)
                 return null;
             CT_CustomGeometry2D ctObj = new CT_CustomGeometry2D();
-            ctObj.ahLst = new List<Object>();
+            ctObj.ahLst = new List<object>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == "rect")

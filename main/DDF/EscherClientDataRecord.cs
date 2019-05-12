@@ -32,7 +32,7 @@ namespace NPOI.DDF
     public class EscherClientDataRecord : EscherRecord
     {
         public const short RECORD_ID = unchecked((short)0xF011);
-        public const String RECORD_DESCRIPTION = "MsofbtClientData";
+        public const string RECORD_DESCRIPTION = "MsofbtClientData";
 
         private byte[] remainingData;
 
@@ -97,7 +97,7 @@ namespace NPOI.DDF
         /**
          * The short name for this record
          */
-        public override String RecordName
+        public override string RecordName
         {
             get { return "ClientData"; }
         }
@@ -105,11 +105,11 @@ namespace NPOI.DDF
         /**
          * Returns the string representation of this record.
          */
-        public override String ToString()
+        public override string ToString()
         {
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
 
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try
@@ -129,9 +129,9 @@ namespace NPOI.DDF
                         "  Extra Data:" + nl + extraData;
             }
         }
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
-            String extraData;
+            string extraData;
             using (MemoryStream b = new MemoryStream())
             {
                 try

@@ -34,7 +34,7 @@ namespace NPOI.HSSF.Record.AutoFilter
             get { return field_1_cEntries; }
             set { field_1_cEntries = value; }
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
             buffer.Append("[AUTOFILTERINFO]\n");

@@ -52,7 +52,7 @@ namespace NPOI.SS.Formula.PTG
          * Takes in a String representation of a cell reference and Fills out the
          * numeric fields.
          */
-        protected RefPtgBase(String cellref)
+        protected RefPtgBase(string cellref)
         {
             CellReference c = new CellReference(cellref);
             Row = c.Row;
@@ -153,7 +153,7 @@ namespace NPOI.SS.Formula.PTG
                 field_2_col = column.SetValue(field_2_col, value);
             }
         }
-        public String FormatReferenceAsString()
+        public string FormatReferenceAsString()
         {
             // Only make cell references as needed. Memory is an issue
             CellReference cr = new CellReference(Row, Column, !IsRowRelative, !IsColRelative);

@@ -37,7 +37,7 @@ namespace NPOI.HSSF.Record.Aggregates
             {
                 // enforce singleton
             }
-            public int Compare(Object a, Object b)
+            public int Compare(object a, object b)
             {
                 return CompareColInfos((ColumnInfoRecord)a, (ColumnInfoRecord)b);
             }
@@ -123,7 +123,7 @@ namespace NPOI.HSSF.Record.Aggregates
         /**
          * Performs a deep Clone of the record
          */
-        public Object Clone()
+        public object Clone()
         {
             ColumnInfoRecordsAggregate rec = new ColumnInfoRecordsAggregate();
             for (int k = 0; k < records.Count; k++)
@@ -408,7 +408,7 @@ namespace NPOI.HSSF.Record.Aggregates
          * Sets all non null fields into the <c>ci</c> parameter.
          */
         private static void SetColumnInfoFields(ColumnInfoRecord ci, short? xfStyle, int? width,
-                    int? level, Boolean? hidden, Boolean? collapsed)
+                    int? level, bool? hidden, bool? collapsed)
         {
             if (xfStyle != null)
             {

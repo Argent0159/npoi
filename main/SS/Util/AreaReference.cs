@@ -41,7 +41,7 @@ namespace NPOI.SS.Util
          * delimited and escaped as per normal syntax rules for formulas.<br/> 
          * The area reference must be contiguous (i.e. represent a single rectangle, not a Union of rectangles)
          */
-        public AreaReference(String reference)
+        public AreaReference(string reference)
         {
             if (!IsContiguous(reference))
             {
@@ -50,9 +50,9 @@ namespace NPOI.SS.Util
                         "use generateContiguous(ref) if you have non-contiguous references");
             }
 
-            String[] parts = SeparateAreaRefs(reference);
+            string[] parts = SeparateAreaRefs(reference);
 
-            String part0 = parts[0];
+            string part0 = parts[0];
             if (parts.Length == 1)
             {
                 // TODO - probably shouldn't initialize area ref when text is really a cell ref
@@ -67,7 +67,7 @@ namespace NPOI.SS.Util
             {
                 throw new ArgumentException("Bad area ref '" + reference + "'");
             }
-            String part1 = parts[1];
+            string part1 = parts[1];
             if (IsPlainColumn(part0))
             {
                 if (!IsPlainColumn(part1))
@@ -97,7 +97,7 @@ namespace NPOI.SS.Util
             }
         }
 
-        private bool IsPlainColumn(String refPart)
+        private bool IsPlainColumn(string refPart)
         {
             for (int i = refPart.Length - 1; i >= 0; i--)
             {
@@ -113,12 +113,12 @@ namespace NPOI.SS.Util
             }
             return true;
         }
-        public static AreaReference GetWholeRow(String start, String end)
+        public static AreaReference GetWholeRow(string start, string end)
         {
             return new AreaReference("$A" + start + ":$IV" + end);
         }
 
-        public static AreaReference GetWholeColumn(String start, String end)
+        public static AreaReference GetWholeColumn(string start, string end)
         {
             return new AreaReference(start + "$1:" + end + "$65536");
         }
@@ -191,7 +191,7 @@ namespace NPOI.SS.Util
          * (If it Is, you will need to call
          *  ....
          */
-        public static bool IsContiguous(String reference)
+        public static bool IsContiguous(string reference)
         {
             // If there's a sheet name, strip it off
             int sheetRefEnd = reference.IndexOf('!');
@@ -233,10 +233,10 @@ namespace NPOI.SS.Util
          * Takes a non-contiguous area reference, and
          *  returns an array of contiguous area references.
          */
-        public static AreaReference[] GenerateContiguous(String reference)
+        public static AreaReference[] GenerateContiguous(string reference)
         {
             ArrayList refs = new ArrayList();
-            String st = reference;
+            string st = reference;
             string[] token = st.Split(',');
             foreach (string t in token)
             {
@@ -291,7 +291,7 @@ namespace NPOI.SS.Util
             int maxRow = Math.Max(_firstCell.Row, _lastCell.Row);
             int minCol = Math.Min(_firstCell.Col, _lastCell.Col);
             int maxCol = Math.Max(_firstCell.Col, _lastCell.Col);
-            String sheetName = _firstCell.SheetName;
+            string sheetName = _firstCell.SheetName;
 
             ArrayList refs = new ArrayList();
             for (int row = minRow; row <= maxRow; row++)
@@ -316,7 +316,7 @@ namespace NPOI.SS.Util
          *    </table>
          * @return the text representation of this area reference as it would appear in a formula.
          */
-        public String FormatAsString()
+        public string FormatAsString()
         {
                 // Special handling for whole-column references
                 if (IsWholeColumnReference())
@@ -344,7 +344,7 @@ namespace NPOI.SS.Util
                 }
                 return sb.ToString();
         }
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder(64);
             sb.Append(this.GetType().Name).Append(" [");
@@ -359,7 +359,7 @@ namespace NPOI.SS.Util
          * 
          * @return array with one or two elements. never <c>null</c>
          */
-        private static String[] SeparateAreaRefs(String reference)
+        private static string[] SeparateAreaRefs(string reference)
         {
             // TODO - refactor cell reference parsing logic to one place.
             // Current known incarnations: 
@@ -419,11 +419,11 @@ namespace NPOI.SS.Util
             }
             if (delimiterPos < 0)
             {
-                return new String[] { reference, };
+                return new string[] { reference, };
             }
 
-            String partA = reference.Substring(0, delimiterPos);
-            String partB = reference.Substring(delimiterPos + 1);
+            string partA = reference.Substring(0, delimiterPos);
+            string partB = reference.Substring(delimiterPos + 1);
             if (partB.IndexOf(SHEET_NAME_DELIMITER) >= 0)
             {
                 // TODO - are references like "Sheet1!A1:Sheet1:B2" ever valid?  
@@ -436,12 +436,12 @@ namespace NPOI.SS.Util
             int plingPos = partA.LastIndexOf(SHEET_NAME_DELIMITER);
             if (plingPos < 0)
             {
-                return new String[] { partA, partB, };
+                return new string[] { partA, partB, };
             }
 
-            String sheetName = partA.Substring(0, plingPos + 1); // +1 to include delimiter
+            string sheetName = partA.Substring(0, plingPos + 1); // +1 to include delimiter
 
-            return new String[] { partA, sheetName + partB, };
+            return new string[] { partA, sheetName + partB, };
         }
     }
 

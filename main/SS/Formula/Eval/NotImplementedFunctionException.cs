@@ -25,7 +25,7 @@ namespace NPOI.SS.Formula.Eval
      */
     public class NotImplementedFunctionException : NotImplementedException
     {
-        private String functionName;
+        private string functionName;
 
         public NotImplementedFunctionException(string functionName)
             : base(functionName)
@@ -38,7 +38,7 @@ namespace NPOI.SS.Formula.Eval
             this.functionName = functionName;
         }
 
-        public String FunctionName
+        public string FunctionName
         {
             get
             {

@@ -66,7 +66,7 @@ namespace NPOI.XWPF.UserModel
             return this.block;
         }
 
-        public void AddRow(int level, String title, int page, String bookmarkRef)
+        public void AddRow(int level, string title, int page, string bookmarkRef)
         {
             CT_SdtContentBlock contentBlock = this.block.sdtContent;
             CT_P p = contentBlock.AddNewP();

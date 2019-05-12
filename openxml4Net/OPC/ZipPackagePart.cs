@@ -34,7 +34,7 @@ public class ZipPackagePart : PackagePart {
      *             Throws if the content of this part invalid.
      */
     public ZipPackagePart(OPCPackage container, PackagePartName partName,
-            String contentType):base(container, partName, contentType)
+            string contentType):base(container, partName, contentType)
     {
         
     }
@@ -54,7 +54,7 @@ public class ZipPackagePart : PackagePart {
      *             Throws if the content of this part is invalid.
      */
     public ZipPackagePart(OPCPackage container, ZipEntry zipEntry,
-            PackagePartName partName, String contentType):	base(container, partName, contentType)
+            PackagePartName partName, string contentType):	base(container, partName, contentType)
     {
     
         this.zipEntry = zipEntry;

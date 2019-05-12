@@ -33,7 +33,7 @@ namespace NPOI.HSSF.UserModel
             dataFormat = new HSSFDataFormat(workbook.Workbook);
         }
 
-        public NPOI.SS.UserModel.IRichTextString CreateRichTextString(String text)
+        public NPOI.SS.UserModel.IRichTextString CreateRichTextString(string text)
         {
             return new HSSFRichTextString(text);
         }

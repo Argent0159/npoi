@@ -47,7 +47,7 @@ namespace NPOI.HSSF.UserModel
         {
             return _cell.GetHashCode();
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             NPOI.SS.UserModel.ICell cellb = ((HSSFEvaluationCell)obj)._cell;
             return _cell.RowIndex == cellb.RowIndex
@@ -112,7 +112,7 @@ namespace NPOI.HSSF.UserModel
                 return _evalSheet;
             }
         }
-        public String StringCellValue
+        public string StringCellValue
         {
             get
             {

@@ -56,14 +56,14 @@ namespace NPOI.SS.Formula.Functions
             public static readonly CmpOp OP_LT = op("<", LT);
             public static readonly CmpOp OP_GT = op(">", GT);
             public static readonly CmpOp OP_GE = op(">=", GE);
-            private String _representation;
+            private string _representation;
             private int _code;
 
-            private static CmpOp op(String rep, int code)
+            private static CmpOp op(string rep, int code)
             {
                 return new CmpOp(rep, code);
             }
-            private CmpOp(String representation, int code)
+            private CmpOp(string representation, int code)
             {
                 _representation = representation;
                 _code = code;
@@ -85,7 +85,7 @@ namespace NPOI.SS.Formula.Functions
                     return _code;
                 }
             }
-            public static CmpOp GetOperator(String value)
+            public static CmpOp GetOperator(string value)
             {
                 int len = value.Length;
                 if (len < 1)
@@ -153,14 +153,14 @@ namespace NPOI.SS.Formula.Functions
                 throw new Exception("Cannot call bool Evaluate on non-equality operator '"
                         + _representation + "'");
             }
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder sb = new StringBuilder(64);
                 sb.Append(this.GetType().Name);
                 sb.Append(" [").Append(_representation).Append("]");
                 return sb.ToString();
             }
-            public String Representation
+            public string Representation
             {
                 get
                 {
@@ -191,7 +191,7 @@ namespace NPOI.SS.Formula.Functions
             {
                 return _operator.Evaluate(cmpResult);
             }
-            public override String ToString()
+            public override string ToString()
             {
                 StringBuilder sb = new StringBuilder(64);
                 sb.Append(this.GetType().Name).Append(" [");
@@ -200,7 +200,7 @@ namespace NPOI.SS.Formula.Functions
                 sb.Append("]");
                 return sb.ToString();
             }
-            protected abstract String ValueText { get; }
+            protected abstract string ValueText { get; }
 
             public abstract bool Matches(ValueEval x);
         }
@@ -216,7 +216,7 @@ namespace NPOI.SS.Formula.Functions
                 ;
                 _value = errorCode;
             }
-            protected override String ValueText
+            protected override string ValueText
             {
                 get
                 {
@@ -267,7 +267,7 @@ namespace NPOI.SS.Formula.Functions
                             return false;
                     }
                     StringEval se = (StringEval)x;
-                    Double val = OperandResolver.ParseDouble(se.StringValue);
+                    double val = OperandResolver.ParseDouble(se.StringValue);
                     if (double.IsNaN(val))
                     {
                         // x is text that is not a number
@@ -385,11 +385,11 @@ namespace NPOI.SS.Formula.Functions
         internal class StringMatcher : MatcherBase
         {
 
-            private String _value;
+            private string _value;
             private CmpOp _operator;
             private Regex _pattern;
 
-            public StringMatcher(String value, CmpOp optr):base(optr)
+            public StringMatcher(string value, CmpOp optr):base(optr)
             {
                 _value = value;
                 _operator = optr;
@@ -430,7 +430,7 @@ namespace NPOI.SS.Formula.Functions
                     // e.g. '4*7', NumberEval(4567) does not match
                     return false;
                 }
-                String testedValue = ((StringEval)x).StringValue;
+                string testedValue = ((StringEval)x).StringValue;
                 if ((testedValue.Length < 1 && _value.Length < 1))
                 {
                     // odd case: criteria '=' behaves differently to criteria ''
@@ -456,7 +456,7 @@ namespace NPOI.SS.Formula.Functions
             /// </summary>
             /// <param name="value">Excel wildcard expression</param>
             /// <returns>return null if the specified value contains no special wildcard characters.</returns>
-            internal static Regex GetWildCardPattern(String value)
+            internal static Regex GetWildCardPattern(string value)
             {
                 int len = value.Length;
                 StringBuilder sb = new StringBuilder(len);
@@ -570,7 +570,7 @@ namespace NPOI.SS.Formula.Functions
      */
         private static IMatchPredicate CreateGeneralMatchPredicate(StringEval stringEval)
         {
-            String value = stringEval.StringValue;
+            string value = stringEval.StringValue;
             CmpOp operator1 = CmpOp.GetOperator(value);
             value = value.Substring(operator1.Length);
 
@@ -580,7 +580,7 @@ namespace NPOI.SS.Formula.Functions
                 return new BooleanMatcher(booleanVal.Value, operator1);
             }
 
-            Double doubleVal = OperandResolver.ParseDouble(value);
+            double doubleVal = OperandResolver.ParseDouble(value);
             if (!double.IsNaN(doubleVal))
             {
                 return new NumberMatcher(doubleVal, operator1);
@@ -627,7 +627,7 @@ namespace NPOI.SS.Formula.Functions
             throw new Exception("Unexpected type for criteria ("
                     + evaluatedCriteriaArg.GetType().Name + ")");
         }
-        private static ErrorEval ParseError(String value)
+        private static ErrorEval ParseError(string value)
         {
             if (value.Length < 4 || value[0] != '#')
             {
@@ -647,7 +647,7 @@ namespace NPOI.SS.Formula.Functions
          * bool literals ('TRUE', 'FALSE') treated similarly but NOT same as numbers.
          */
         /* package */
-        public static bool? ParseBoolean(String strRep)
+        public static bool? ParseBoolean(string strRep)
         {
             if (strRep.Length < 1)
             {

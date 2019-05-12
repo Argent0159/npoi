@@ -307,7 +307,7 @@ namespace NPOI.XSSF.Streaming
             bool needsStartTag = true;
             int c;
             int pos = 0;
-            String s = "<sheetData";
+            string s = "<sheetData";
 
             StringBuilder sb = new StringBuilder();
             int n = s.Length;

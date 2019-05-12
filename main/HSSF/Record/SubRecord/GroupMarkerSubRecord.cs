@@ -57,11 +57,11 @@ namespace NPOI.HSSF.Record
             reserved = buf;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
-            String nl = Environment.NewLine;
+            string nl = Environment.NewLine;
             buffer.Append("[ftGmo]" + nl);
             buffer.Append("  reserved = ").Append(HexDump.ToHex(reserved)).Append(nl);
             buffer.Append("[/ftGmo]" + nl);
@@ -88,7 +88,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             GroupMarkerSubRecord rec = new GroupMarkerSubRecord();
             rec.reserved = new byte[reserved.Length];

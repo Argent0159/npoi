@@ -57,19 +57,19 @@ namespace NPOI.XSSF.UserModel
         /**
          * A built-in defined name that specifies the workbook's print area
          */
-        public static String BUILTIN_PRINT_AREA = "_xlnm.Print_Area";
+        public static string BUILTIN_PRINT_AREA = "_xlnm.Print_Area";
 
         /**
          * A built-in defined name that specifies the row(s) or column(s) to repeat
          * at the top of each printed page.
          */
-        public static String BUILTIN_PRINT_TITLE = "_xlnm.Print_Titles";
+        public static string BUILTIN_PRINT_TITLE = "_xlnm.Print_Titles";
 
         /**
          * A built-in defined name that refers to a range Containing the criteria values
          * to be used in Applying an advanced filter to a range of data
          */
-        public static String BUILTIN_CRITERIA = "_xlnm.Criteria:";
+        public static string BUILTIN_CRITERIA = "_xlnm.Criteria:";
 
 
         /**
@@ -77,7 +77,7 @@ namespace NPOI.XSSF.UserModel
          * output values resulting from Applying an advanced filter criteria to a source
          * range
          */
-        public static String BUILTIN_EXTRACT = "_xlnm.Extract:";
+        public static string BUILTIN_EXTRACT = "_xlnm.Extract:";
 
         /**
          * ?an be one of the following
@@ -86,22 +86,22 @@ namespace NPOI.XSSF.UserModel
          * <li> This defined name refers to a range to which an AutoFilter has been
          * applied
          */
-        public static String BUILTIN_FILTER_DB = "_xlnm._FilterDatabase";
+        public static string BUILTIN_FILTER_DB = "_xlnm._FilterDatabase";
 
         /**
          * A built-in defined name that refers to a consolidation area
          */
-        public static String BUILTIN_CONSOLIDATE_AREA = "_xlnm.Consolidate_Area";
+        public static string BUILTIN_CONSOLIDATE_AREA = "_xlnm.Consolidate_Area";
 
         /**
          * A built-in defined name that specified that the range specified is from a database data source
          */
-        public static String BUILTIN_DATABASE = "_xlnm.Database";
+        public static string BUILTIN_DATABASE = "_xlnm.Database";
 
         /**
          * A built-in defined name that refers to a sheet title.
          */
-        public static String BUILTIN_SHEET_TITLE = "_xlnm.Sheet_Title";
+        public static string BUILTIN_SHEET_TITLE = "_xlnm.Sheet_Title";
 
         private XSSFWorkbook _workbook;
         private CT_DefinedName _ctName;
@@ -132,7 +132,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return text name of this defined name
          */
-        public String NameName
+        public string NameName
         {
             get
             {
@@ -153,7 +153,7 @@ namespace NPOI.XSSF.UserModel
                         if (value.Equals(nm.NameName, StringComparison.InvariantCultureIgnoreCase) 
                             && sheetIndex == nm.SheetIndex)
                         {
-                            String msg = "The " + (sheetIndex == -1 ? "workbook" : "sheet") + " already contains this name: " + value;
+                            string msg = "The " + (sheetIndex == -1 ? "workbook" : "sheet") + " already contains this name: " + value;
                             throw new ArgumentException(msg);
                         }
                     }
@@ -162,11 +162,11 @@ namespace NPOI.XSSF.UserModel
             }
         }
 
-        public String RefersToFormula
+        public string RefersToFormula
         {
             get
             {
-                String result = _ctName.Value;
+                string result = _ctName.Value;
                 if (result == null || result.Length < 1)
                 {
                     return null;
@@ -186,7 +186,7 @@ namespace NPOI.XSSF.UserModel
         {
             get
             {
-                String formulaText = RefersToFormula;
+                string formulaText = RefersToFormula;
                 if (formulaText == null)
                 {
                     return false;
@@ -277,7 +277,7 @@ namespace NPOI.XSSF.UserModel
          * @return sheet name, which this named range referred to.
          * Empty string if the referenced sheet name weas not found.
          */
-        public String SheetName
+        public string SheetName
         {
             get
             {
@@ -287,7 +287,7 @@ namespace NPOI.XSSF.UserModel
                     int sheetId = (int)_ctName.localSheetId;
                     return _workbook.GetSheetName(sheetId);
                 }
-                String ref1 = RefersToFormula;
+                string ref1 = RefersToFormula;
                 AreaReference areaRef = new AreaReference(ref1);
                 return areaRef.FirstCell.SheetName;
             }
@@ -311,7 +311,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return the user comment for this named range
          */
-        public String Comment
+        public string Comment
         {
             get
             {
@@ -340,7 +340,7 @@ namespace NPOI.XSSF.UserModel
          *          <code>false</code> otherwise.
          */
 
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == this) return true;
 
@@ -350,11 +350,11 @@ namespace NPOI.XSSF.UserModel
             return _ctName.name == cf.GetCTName().name && _ctName.localSheetId == cf.GetCTName().localSheetId;
         }
 
-        private static void validateName(String name)
+        private static void validateName(string name)
         {
             if (name.Length == 0) throw new ArgumentException("Name cannot be blank");
             char c = name[0];
-            if (!(c == '_' || Char.IsLetter(c)) || name.IndexOf(' ') != -1)
+            if (!(c == '_' || char.IsLetter(c)) || name.IndexOf(' ') != -1)
             {
                 throw new ArgumentException("Invalid name: '" + name + "'; Names must begin with a letter or underscore and not contain spaces");
             }

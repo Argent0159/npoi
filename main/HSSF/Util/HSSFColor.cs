@@ -169,7 +169,7 @@ namespace NPOI.HSSF.Util
             {
                 HSSFColor color = colors[i];
 
-                String hexString = color.GetHexString();
+                string hexString = color.GetHexString();
                 if (result.ContainsKey(hexString))
                 {
                     throw new InvalidDataException("Dup color hexString (" + hexString
@@ -210,7 +210,7 @@ namespace NPOI.HSSF.Util
          * @return a hex string exactly like a gnumeric triplet
          */
 
-        public virtual String GetHexString()
+        public virtual string GetHexString()
         {
             return Black.HexString;
         }
@@ -236,7 +236,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -263,7 +263,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -290,7 +290,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -317,7 +317,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -344,7 +344,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -372,7 +372,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -399,7 +399,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -426,7 +426,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -454,7 +454,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -481,7 +481,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -508,7 +508,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -535,7 +535,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -563,7 +563,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -591,7 +591,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -618,7 +618,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -645,7 +645,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -672,7 +672,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -699,7 +699,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -725,7 +725,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -752,7 +752,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -779,7 +779,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -801,7 +801,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -824,7 +824,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -851,7 +851,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -874,7 +874,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -896,7 +896,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -920,7 +920,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -933,7 +933,7 @@ namespace NPOI.HSSF.Util
             public static readonly byte[] Triplet = { 0, 255, 0 };
             public const string HexString = "0:FFFF:0";
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -971,7 +971,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -998,7 +998,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1026,7 +1026,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1053,7 +1053,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1080,7 +1080,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1107,7 +1107,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1134,7 +1134,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1161,7 +1161,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1189,7 +1189,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1216,7 +1216,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1244,7 +1244,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1271,7 +1271,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1296,7 +1296,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1323,7 +1323,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1347,7 +1347,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1372,7 +1372,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1397,7 +1397,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1422,7 +1422,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1447,7 +1447,7 @@ namespace NPOI.HSSF.Util
                 return Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return HexString;
             }
@@ -1472,7 +1472,7 @@ namespace NPOI.HSSF.Util
                 return Black.Triplet;
             }
 
-            public override String GetHexString()
+            public override string GetHexString()
             {
                 return Black.HexString;
             }

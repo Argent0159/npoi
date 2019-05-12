@@ -50,7 +50,7 @@ namespace NPOI.SS.Formula.PTG
         }
 
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return "ERR#";
         }

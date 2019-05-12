@@ -17,24 +17,24 @@ namespace NPOI.OpenXml4Net.OPC
 
         /* XML markup */
 
-        public static String ID_ATTRIBUTE_NAME = "Id";
+        public static string ID_ATTRIBUTE_NAME = "Id";
 
-        public static String RELATIONSHIPS_TAG_NAME = "Relationships";
+        public static string RELATIONSHIPS_TAG_NAME = "Relationships";
 
-        public static String RELATIONSHIP_TAG_NAME = "Relationship";
+        public static string RELATIONSHIP_TAG_NAME = "Relationship";
 
-        public static String TARGET_ATTRIBUTE_NAME = "Target";
+        public static string TARGET_ATTRIBUTE_NAME = "Target";
 
-        public static String TARGET_MODE_ATTRIBUTE_NAME = "TargetMode";
+        public static string TARGET_MODE_ATTRIBUTE_NAME = "TargetMode";
 
-        public static String TYPE_ATTRIBUTE_NAME = "Type";
+        public static string TYPE_ATTRIBUTE_NAME = "Type";
 
         /* End XML markup */
 
         /**
          * L'ID de la relation.
          */
-        private String id;
+        private string id;
 
         /**
          * Reference to the package.
@@ -44,7 +44,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * Type de relation.
          */
-        private String relationshipType;
+        private string relationshipType;
 
         /**
          * Partie source de cette relation.
@@ -72,8 +72,8 @@ namespace NPOI.OpenXml4Net.OPC
          * @param id
          */
         public PackageRelationship(OPCPackage pkg, PackagePart sourcePart,
-                Uri targetUri, TargetMode targetMode, String relationshipType,
-                String id)
+                Uri targetUri, TargetMode targetMode, string relationshipType,
+                string id)
         {
             if (pkg == null)
                 throw new ArgumentException("pkg");
@@ -93,7 +93,7 @@ namespace NPOI.OpenXml4Net.OPC
         }
 
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is PackageRelationship))
             {
@@ -139,7 +139,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * @return the id
          */
-        public String Id
+        public string Id
         {
             get
             {
@@ -150,7 +150,7 @@ namespace NPOI.OpenXml4Net.OPC
         /**
          * @return the relationshipType
          */
-        public String RelationshipType
+        public string RelationshipType
         {
             get
             {
@@ -225,7 +225,7 @@ namespace NPOI.OpenXml4Net.OPC
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(id == null ? "id=null" : "id=" + id);

@@ -47,7 +47,7 @@ namespace NPOI.SS.Formula.PTG
             get { return SIZE; }
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return " ";
         }

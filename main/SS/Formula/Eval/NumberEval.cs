@@ -36,7 +36,7 @@ namespace NPOI.SS.Formula.Eval
         public static readonly NumberEval ZERO = new NumberEval(0);
 
         private double _value;
-        private String _stringValue;
+        private string _stringValue;
 
 
         public NumberEval(Ptg ptg)
@@ -61,7 +61,7 @@ namespace NPOI.SS.Formula.Eval
             get { return _value; }
         }
 
-        public String StringValue
+        public string StringValue
         {
             get
             {// TODO: limit to 15 decimal places

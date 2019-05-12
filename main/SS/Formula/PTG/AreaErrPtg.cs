@@ -52,7 +52,7 @@ namespace NPOI.SS.Formula.PTG
 		    out1.WriteInt(unused2);
         }
 
-        public override String ToFormulaString()
+        public override string ToFormulaString()
         {
             return HSSFErrorConstants.GetText(HSSFErrorConstants.ERROR_REF);
         }

@@ -67,7 +67,7 @@ namespace NPOI.SS.Format
      */
     public class CellFormat
     {
-        private String format;
+        private string format;
         private CellFormatPart posNumFmt;
         private CellFormatPart zeroNumFmt;
         private CellFormatPart negNumFmt;
@@ -104,16 +104,16 @@ namespace NPOI.SS.Format
                 : base("General")
             {
             }
-            public override CellFormatResult Apply(Object value)
+            public override CellFormatResult Apply(object value)
             {
-                String text = (new CellGeneralFormatter()).Format(value);
+                string text = (new CellGeneralFormatter()).Format(value);
                 return new CellFormatResult(true, text, Color.Empty);
             }
         }
 
         /** Maps a format string to its Parsed version for efficiencies sake. */
-        private static Dictionary<String, CellFormat> formatCache =
-                new Dictionary<String, CellFormat>();
+        private static Dictionary<string, CellFormat> formatCache =
+                new Dictionary<string, CellFormat>();
 
         /**
          * Returns a {@link CellFormat} that applies the given format.  Two calls
@@ -123,7 +123,7 @@ namespace NPOI.SS.Format
          *
          * @return A {@link CellFormat} that applies the given format.
          */
-        public static CellFormat GetInstance(String format)
+        public static CellFormat GetInstance(string format)
         {
             CellFormat fmt = null;
             if (formatCache.ContainsKey(format))
@@ -144,7 +144,7 @@ namespace NPOI.SS.Format
          *
          * @param format The format.
          */
-        private CellFormat(String format)
+        private CellFormat(string format)
         {
             this.format = format;
             MatchCollection mc = ONE_PART.Matches(format);
@@ -155,7 +155,7 @@ namespace NPOI.SS.Format
             {
                 try
                 {
-                    String valueDesc = m.Groups[0].Value;
+                    string valueDesc = m.Groups[0].Value;
 
                     // Strip out the semicolon if it's there
                     if (valueDesc.EndsWith(";"))
@@ -210,7 +210,7 @@ namespace NPOI.SS.Format
          *
          * @return The result, in a {@link CellFormatResult}.
          */
-        public virtual CellFormatResult Apply(Object value)
+        public virtual CellFormatResult Apply(object value)
         {
             //if (value is Number) {
             if (NPOI.Util.Number.IsNumber(value))
@@ -237,7 +237,7 @@ namespace NPOI.SS.Format
             {
                 // Don't know (and can't get) the workbook date windowing (1900 or 1904)
                 // so assume 1900 date windowing
-                Double numericValue = DateUtil.GetExcelDate((DateTime)value);
+                double numericValue = DateUtil.GetExcelDate((DateTime)value);
                 if (DateUtil.IsValidExcelDate(numericValue))
                 {
                     return GetApplicableFormatPart(numericValue).Apply(value);
@@ -282,7 +282,7 @@ namespace NPOI.SS.Format
                 case CellType.Boolean:
                     return Apply(c.BooleanCellValue);
                 case CellType.Numeric:
-                    Double value = c.NumericCellValue;
+                    double value = c.NumericCellValue;
                     if (GetApplicableFormatPart(value).CellFormatType == CellFormatType.DATE)
                     {
                         if (DateUtil.IsValidExcelDate(value))
@@ -313,7 +313,7 @@ namespace NPOI.SS.Format
          * @param value The value.
          * @return The {@link CellFormatPart} that applies to the value.
          */
-        private CellFormatPart GetApplicableFormatPart(Object value)
+        private CellFormatPart GetApplicableFormatPart(object value)
         {
             //if (value is Number) {
             if (NPOI.Util.Number.IsNumber(value))
@@ -404,7 +404,7 @@ namespace NPOI.SS.Format
          * @return <tt>true</tt> if the two objects are Equal.
          */
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (this == obj)
                 return true;

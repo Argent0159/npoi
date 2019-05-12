@@ -234,7 +234,7 @@ namespace NPOI.HSSF.Record
             set { field_11_copies = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -306,7 +306,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             PrintSetupRecord rec = new PrintSetupRecord();
             rec.field_1_paper_size = field_1_paper_size;

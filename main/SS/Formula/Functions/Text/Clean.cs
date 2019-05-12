@@ -7,7 +7,7 @@ namespace NPOI.SS.Formula.Functions
     public class Clean : SingleArgTextFunc
     {
 
-        public override ValueEval Evaluate(String arg)
+        public override ValueEval Evaluate(string arg)
         {
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < arg.Length; i++)

@@ -231,7 +231,7 @@ namespace NPOI.DDF
         /// Gets the name of the record.
         /// </summary>
         /// <value>The name of the record.</value>
-        public abstract String RecordName { get; }
+        public abstract string RecordName { get; }
 
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace NPOI.DDF
             /// <returns>
             /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
             /// </returns>
-            public override String ToString()
+            public override string ToString()
             {
                 return "EscherRecordHeader{" +
                         "options=" + options +
@@ -330,7 +330,7 @@ namespace NPOI.DDF
          * @param tab - each children must be a right of his parent
          * @return xml representation of this record
          */
-        public virtual String ToXml(String tab)
+        public virtual string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(GetType().Name).Append(">\n")
@@ -340,7 +340,7 @@ namespace NPOI.DDF
             return builder.ToString();
         }
 
-        protected String FormatXmlRecordHeader(String className, String recordId, String version, String instance)
+        protected string FormatXmlRecordHeader(string className, string recordId, string version, string instance)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append("<").Append(className).Append(" recordId=\"0x").Append(recordId).Append("\" version=\"0x")
@@ -348,7 +348,7 @@ namespace NPOI.DDF
             return builder.ToString();
         }
 
-        public String ToXml()
+        public string ToXml()
         {
             return ToXml("");
         }

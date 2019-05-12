@@ -136,12 +136,12 @@ namespace NPOI.XSSF.UserModel.Helpers
          * @param cell the cell to update
          * @param frwb the formula rendering workbbok that returns new sheet name
          */
-        private void UpdateFormula(XSSFCell cell, String oldName, String newName)
+        private void UpdateFormula(XSSFCell cell, string oldName, string newName)
         {
             CT_CellFormula f = cell.GetCTCell().f;
             if (f != null)
             {
-                String formula = f.Value;
+                string formula = f.Value;
                 if (formula != null && formula.Length > 0)
                 {
                     int sheetIndex = _wb.GetSheetIndex(cell.Sheet);
@@ -150,7 +150,7 @@ namespace NPOI.XSSF.UserModel.Helpers
                     {
                         UpdatePtg(ptg, oldName, newName);
                     }
-                    String updatedFormula = FormulaRenderer.ToFormulaString(_fpwb, ptgs);
+                    string updatedFormula = FormulaRenderer.ToFormulaString(_fpwb, ptgs);
                     if (!formula.Equals(updatedFormula)) f.Value = (updatedFormula);
                 }
             }
@@ -162,9 +162,9 @@ namespace NPOI.XSSF.UserModel.Helpers
          * @param name the name to update
          * @param frwb the formula rendering workbbok that returns new sheet name
          */
-        private void UpdateName(IName name, String oldName, String newName)
+        private void UpdateName(IName name, string oldName, string newName)
         {
-            String formula = name.RefersToFormula;
+            string formula = name.RefersToFormula;
             if (formula != null)
             {
                 int sheetIndex = name.SheetIndex;
@@ -173,12 +173,12 @@ namespace NPOI.XSSF.UserModel.Helpers
                 {
                     UpdatePtg(ptg, oldName, newName);
                 }
-                String updatedFormula = FormulaRenderer.ToFormulaString(_fpwb, ptgs);
+                string updatedFormula = FormulaRenderer.ToFormulaString(_fpwb, ptgs);
                 if (!formula.Equals(updatedFormula)) name.RefersToFormula = (updatedFormula);
             }
         }
 
-        private void UpdatePtg(Ptg ptg, String oldName, String newName)
+        private void UpdatePtg(Ptg ptg, string oldName, string newName)
         {
             if (ptg is Pxg)
             {

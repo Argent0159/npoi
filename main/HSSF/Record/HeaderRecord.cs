@@ -38,7 +38,7 @@ namespace NPOI.HSSF.Record
     {
         public const short sid = 0x14;
 
-        public HeaderRecord(String text):base(text)
+        public HeaderRecord(string text):base(text)
         {
             
         }
@@ -52,7 +52,7 @@ namespace NPOI.HSSF.Record
         {
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -68,7 +68,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             return new HeaderRecord(this.Text);
         }

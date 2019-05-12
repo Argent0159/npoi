@@ -112,7 +112,7 @@ namespace NPOI.HSSF.Record
             set { field_4_col_level_max = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -150,7 +150,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             GutsRecord rec = new GutsRecord();
             rec.field_1_left_row_gutter = field_1_left_row_gutter;

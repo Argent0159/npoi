@@ -53,7 +53,7 @@ namespace NPOI.XSSF.UserModel.Charts
             }
         }
 
-        public String NumberFormat
+        public string NumberFormat
         {
             get
             {

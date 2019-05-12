@@ -30,12 +30,12 @@ namespace NPOI.SS.Formula.Functions
     public class Proper : SingleArgTextFunc
     {
         //Regex nonAlphabeticPattern = new Regex("\\P{IsL}");
-        public override ValueEval Evaluate(String text)
+        public override ValueEval Evaluate(string text)
         {
             StringBuilder sb = new StringBuilder();
             bool shouldMakeUppercase = true;
-            String lowercaseText = text.ToLower();
-            String uppercaseText = text.ToUpper();
+            string lowercaseText = text.ToLower();
+            string uppercaseText = text.ToUpper();
 
             bool prevCharIsLetter = char.IsLetter(text[0]);
             sb.Append(uppercaseText[0]);

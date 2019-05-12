@@ -66,7 +66,7 @@ namespace NPOI.DDF
         //            + ", blipId: " + IsBlipId
         //            + ", value: " + (Value != 0);
         //}
-        public override String ToXml(String tab)
+        public override string ToXml(string tab)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(tab).Append("<").Append(GetType().Name).Append(" id=\"0x").Append(HexDump.ToHex(Id))

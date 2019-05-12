@@ -54,7 +54,7 @@ namespace NPOI.HSSF.UserModel
         /// Initializes a new instance of the <see cref="HSSFRichTextString"/> class.
         /// </summary>
         /// <param name="str">The string.</param>
-        public HSSFRichTextString(String str)
+        public HSSFRichTextString(string str)
         {
             if (str == null)
             {
@@ -206,7 +206,7 @@ namespace NPOI.HSSF.UserModel
         /// Returns the plain string representation.
         /// </summary>
         /// <value>The string.</value>
-        public String String
+        public string String
         {
             get { return _string.String; }
         }
@@ -316,7 +316,7 @@ namespace NPOI.HSSF.UserModel
         /// </summary>
         /// <param name="o">The o.</param>
         /// <returns></returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o is HSSFRichTextString)
             {
@@ -336,7 +336,7 @@ namespace NPOI.HSSF.UserModel
         /// <returns>
         /// A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _string.ToString();
         }

@@ -47,10 +47,10 @@ namespace NPOI.SS.Format
         private CellFormatCondition condition;
         private CellFormatter format;
         private CellFormatType type;
-        private static Dictionary<String, Color> NAMED_COLORS;
-        public static IEqualityComparer<String> CASE_INSENSITIVE_ORDER
+        private static Dictionary<string, Color> NAMED_COLORS;
+        public static IEqualityComparer<string> CASE_INSENSITIVE_ORDER
                                              = new CaseInsensitiveComparator();
-        private class CaseInsensitiveComparator : IEqualityComparer<String>
+        private class CaseInsensitiveComparator : IEqualityComparer<string>
         {
             // use serialVersionUID from JDK 1.2.2 for interoperability
             //private const long serialVersionUID = 8575799808933029326L;
@@ -73,14 +73,14 @@ namespace NPOI.SS.Format
         }
         static CellFormatPart()
         {
-            NAMED_COLORS = new Dictionary<String, Color>(CASE_INSENSITIVE_ORDER);
+            NAMED_COLORS = new Dictionary<string, Color>(CASE_INSENSITIVE_ORDER);
 
             Hashtable colors = HSSFColor.GetIndexHash();
             foreach (object v in colors.Values)
             {
                 HSSFColor hc = (HSSFColor)v;
                 Type type = hc.GetType();
-                String name = type.Name;
+                string name = type.Name;
                 if (name.Equals(name.ToUpper()))
                 {
                     byte[] rgb = hc.RGB;
@@ -106,17 +106,17 @@ namespace NPOI.SS.Format
                 }
             }
             // A condition specification
-            String condition = "([<>=]=?|!=|<>)    # The operator\n" +
+            string condition = "([<>=]=?|!=|<>)    # The operator\n" +
                     "  \\s*([0-9]+(?:\\.[0-9]*)?)\\s*  # The constant to test against\n";
 
-            String color =
+            string color =
                     "\\[(black|blue|cyan|green|magenta|red|white|yellow|color [0-9]+)\\]";
 
             // A number specification
             // Note: careful that in something like ##, that the trailing comma is not caught up in the integer part
 
             // A part of a specification
-            String part = "\\\\.                 # Quoted single character\n" +
+            string part = "\\\\.                 # Quoted single character\n" +
                     "|\"([^\\\\\"]|\\\\.)*\"         # Quoted string of characters (handles escaped quotes like \\\") \n" +
                     "|_.                             # Space as wide as a given character\n" +
                     "|\\*.                           # Repeating fill character\n" +
@@ -134,7 +134,7 @@ namespace NPOI.SS.Format
                     "|\\[s{1,2}\\]                   # Elapsed time: second spec\n" +
                     "|[^;]                           # A character\n" + "";
 
-            String format = "(?:" + color + ")?                  # Text color\n" +
+            string format = "(?:" + color + ")?                  # Text color\n" +
                     "(?:\\[" + condition + "\\])?                # Condition\n" +
                     "((?:" + part + ")+)                        # Format spec\n";
 
@@ -184,7 +184,7 @@ namespace NPOI.SS.Format
 
         public interface IPartHandler
         {
-            String HandlePart(Match m, String part, CellFormatType type,
+            string HandlePart(Match m, string part, CellFormatType type,
                     StringBuilder desc);
         }
 
@@ -193,7 +193,7 @@ namespace NPOI.SS.Format
          *
          * @param desc The string to Parse.
          */
-        public CellFormatPart(String desc)
+        public CellFormatPart(string desc)
         {
             Match m = FORMAT_PAT.Match(desc);
             if (!m.Success)
@@ -216,7 +216,7 @@ namespace NPOI.SS.Format
          *
          * @return <tt>true</tt> if this format part applies to the given value.
          */
-        public bool Applies(Object valueObject)
+        public bool Applies(object valueObject)
         {
             if (condition == null || !(valueObject.GetType().IsPrimitive))
             {
@@ -243,7 +243,7 @@ namespace NPOI.SS.Format
          *
          * @throws ArgumentException No group matches the marker.
          */
-        private static int FindGroup(Regex pat, String str, String marker)
+        private static int FindGroup(Regex pat, string str, string marker)
         {
             Match m = pat.Match(str);
             if (!m.Success)
@@ -252,7 +252,7 @@ namespace NPOI.SS.Format
                                 "\"");
             for (int i = 1; i <= m.Groups.Count; i++)
             {
-                String grp = m.Groups[i].Value;
+                string grp = m.Groups[i].Value;
                 if (grp != null && grp.Equals(marker))
                     return i;
             }
@@ -270,7 +270,7 @@ namespace NPOI.SS.Format
          */
         private static Color GetColor(Match m)
         {
-            String cdesc = m.Groups[(COLOR_GROUP)].Value.ToUpper();
+            string cdesc = m.Groups[(COLOR_GROUP)].Value.ToUpper();
             if (cdesc == null || cdesc.Length == 0)
                 return Color.Empty;
             Color c = Color.Empty;
@@ -291,7 +291,7 @@ namespace NPOI.SS.Format
          */
         private CellFormatCondition GetCondition(Match m)
         {
-            String mdesc = m.Groups[(CONDITION_OPERATOR_GROUP)].Value;
+            string mdesc = m.Groups[(CONDITION_OPERATOR_GROUP)].Value;
             if (mdesc == null || mdesc.Length == 0)
                 return null;
             return CellFormatCondition.GetInstance(m.Groups[(
@@ -307,7 +307,7 @@ namespace NPOI.SS.Format
          */
         private CellFormatType GetCellFormatType(Match matcher)
         {
-            String fdesc = matcher.Groups[SPECIFICATION_GROUP].Value;
+            string fdesc = matcher.Groups[SPECIFICATION_GROUP].Value;
             return formatType(fdesc);
         }
         /**
@@ -320,7 +320,7 @@ namespace NPOI.SS.Format
          */
         private CellFormatter GetFormatter(Match matcher)
         {
-            String fdesc = matcher.Groups[(SPECIFICATION_GROUP)].Value;
+            string fdesc = matcher.Groups[(SPECIFICATION_GROUP)].Value;
             //CellFormatType type = formatType(fdesc);
             return type.Formatter(fdesc);
         }
@@ -332,7 +332,7 @@ namespace NPOI.SS.Format
          *
          * @return The type of format.
          */
-        private CellFormatType formatType(String fdesc)
+        private CellFormatType formatType(string fdesc)
         {
             fdesc = fdesc.Trim();
             if (fdesc.Equals("") || fdesc.Equals("General", StringComparison.InvariantCultureIgnoreCase))
@@ -344,7 +344,7 @@ namespace NPOI.SS.Format
             foreach(Match m in mc)
             //while (m.Success)
             {
-                String repl = m.Groups[(0)].Value;
+                string repl = m.Groups[(0)].Value;
                 if (repl.Length > 0)
                 {
                     switch (repl[0])
@@ -398,7 +398,7 @@ namespace NPOI.SS.Format
          *
          * @see CellFormatType#isSpecial(char)
          */
-        static String QuoteSpecial(String repl, CellFormatType type)
+        static string QuoteSpecial(string repl, CellFormatType type)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < repl.Length; i++)
@@ -429,10 +429,10 @@ namespace NPOI.SS.Format
          * @return A {@link CellFormatResult} object Containing the results of
          *         Applying the format to the value.
          */
-        public CellFormatResult Apply(Object value)
+        public CellFormatResult Apply(object value)
         {
             bool applies = Applies(value);
-            String text;
+            string text;
             Color textColor;
             if (applies)
             {
@@ -473,7 +473,7 @@ namespace NPOI.SS.Format
                 return condition != null;
             }
         }
-        public static StringBuilder ParseFormat(String fdesc, CellFormatType type,
+        public static StringBuilder ParseFormat(string fdesc, CellFormatType type,
                 IPartHandler partHandler)
         {
 
@@ -499,10 +499,10 @@ namespace NPOI.SS.Format
             //while (m.Find())
             foreach(Match m in mc)
             {
-                String part = Group(m, 0);
+                string part = Group(m, 0);
                 if (part.Length > 0)
                 {
-                    String repl = partHandler.HandlePart(m, part, type, fmt);
+                    string repl = partHandler.HandlePart(m, part, type, fmt);
                     if (repl == null)
                     {
                         switch (part[0])
@@ -562,7 +562,7 @@ namespace NPOI.SS.Format
 
             return fmt;
         }
-        public static String QuoteReplacement(String s)
+        public static string QuoteReplacement(string s)
         {
             if ((s.IndexOf('\\') == -1) && (s.IndexOf('$') == -1))
                 return s;
@@ -588,9 +588,9 @@ namespace NPOI.SS.Format
          *
          * @return The character repeated three times.
          */
-        internal static String ExpandChar(String part)
+        internal static string ExpandChar(string part)
         {
-            String repl;
+            string repl;
             char ch = part[1];
             repl = "" + ch + ch + ch;
             return repl;
@@ -605,9 +605,9 @@ namespace NPOI.SS.Format
          *
          * @return The group or <tt>""</tt>.
          */
-        public static String Group(Match m, int g)
+        public static string Group(Match m, int g)
         {
-            String str = m.Groups[(g)].Value;
+            string str = m.Groups[(g)].Value;
             return (str == null ? "" : str);
         }
         public override string ToString()

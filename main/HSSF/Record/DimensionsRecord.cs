@@ -106,7 +106,7 @@ namespace NPOI.HSSF.Record
             set { field_4_last_col = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -144,7 +144,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             DimensionsRecord rec = new DimensionsRecord();
             rec.field_1_first_row = field_1_first_row;

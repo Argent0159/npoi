@@ -36,7 +36,7 @@ namespace NPOI.XSSF.UserModel
         /**
          * By default, Microsoft Office Excel 2007 uses the Calibry font in font size 11
          */
-        public const String DEFAULT_FONT_NAME = "Calibri";
+        public const string DEFAULT_FONT_NAME = "Calibri";
         /**
          * By default, Microsoft Office Excel 2007 uses the Calibry font in font size 11
          */
@@ -276,7 +276,7 @@ namespace NPOI.XSSF.UserModel
          *
          * @return String - a string representing the name of the font to use
          */
-        public String FontName
+        public string FontName
         {
             get
             {
@@ -544,7 +544,7 @@ namespace NPOI.XSSF.UserModel
         }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return _ctFont.ToString();
         }
@@ -648,7 +648,7 @@ namespace NPOI.XSSF.UserModel
             return _ctFont.ToString().GetHashCode();
         }
 
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (!(o is XSSFFont)) return false;
 

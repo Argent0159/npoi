@@ -28,6 +28,6 @@ namespace NPOI.SS.Formula.Eval
         /**
          * @return never <code>null</code>, possibly empty string.
          */
-        String StringValue{get;}
+        string StringValue {get;}
     }
 }

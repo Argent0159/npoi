@@ -43,14 +43,14 @@ namespace NPOI.SS.Formula.Atp
          * @return a date parsed from argument.
          * @throws EvaluationException exception upon parsing.
          */
-        public static DateTime ParseDate(String strVal)
+        public static DateTime ParseDate(string strVal)
         {
-            String[] parts = strVal.Split("-/".ToCharArray());// Pattern.compile("/").split(strVal);
+            string[] parts = strVal.Split("-/".ToCharArray());// Pattern.compile("/").split(strVal);
             if (parts.Length != 3)
             {
                 throw new EvaluationException(ErrorEval.VALUE_INVALID);
             }
-            String part2 = parts[2];
+            string part2 = parts[2];
             int spacePos = part2.IndexOf(' ');
             if (spacePos > 0)
             {

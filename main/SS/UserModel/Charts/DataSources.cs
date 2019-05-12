@@ -60,7 +60,7 @@ namespace NPOI.SS.UserModel.Charts
             get { return true; }
         }
     }
-    public static IChartDataSource<String> FromStringCellRange(ISheet sheet, CellRangeAddress cellRangeAddress)
+    public static IChartDataSource<string> FromStringCellRange(ISheet sheet, CellRangeAddress cellRangeAddress)
     {
         return new StringCellRangeDataSource(sheet, cellRangeAddress);
     }
@@ -126,7 +126,7 @@ namespace NPOI.SS.UserModel.Charts
             }
         }
 
-        public String FormulaString {
+        public string FormulaString {
             get { throw new InvalidOperationException("Literal data source can not be expressed by reference."); }
         }
     }
@@ -156,7 +156,7 @@ namespace NPOI.SS.UserModel.Charts
         public abstract T GetPointAt(int index);
         public abstract bool IsNumeric { get; }
 
-        public String FormulaString {
+        public string FormulaString {
             get { return cellRangeAddress.FormatAsString(sheet.SheetName, true); }
         }
 

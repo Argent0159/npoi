@@ -5,7 +5,7 @@ namespace NPOI
     [Serializable]
     public class EncryptedDocumentException : InvalidOperationException
     {
-        public EncryptedDocumentException(String s)
+        public EncryptedDocumentException(string s)
             : base(s)
         { }
 

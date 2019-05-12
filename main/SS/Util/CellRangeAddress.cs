@@ -48,14 +48,14 @@ namespace NPOI.SS.Util
             out1.WriteShort(FirstColumn);
             out1.WriteShort(LastColumn);
         }
-        public String FormatAsString()
+        public string FormatAsString()
         {
             return FormatAsString(null, false);
         }
         /**
          * @return the text format of this range using specified sheet name.
          */
-        public String FormatAsString(String sheetName, bool useAbsoluteAddress)
+        public string FormatAsString(string sheetName, bool useAbsoluteAddress)
         {
             StringBuilder sb = new StringBuilder();
             if (sheetName != null)
@@ -100,7 +100,7 @@ namespace NPOI.SS.Util
         /// column range (e.g. "C:F")
         /// </param>
         /// <returns>a CellRangeAddress object</returns>
-        public static CellRangeAddress ValueOf(String reference)
+        public static CellRangeAddress ValueOf(string reference)
         {
             int sep = reference.IndexOf(":", StringComparison.Ordinal);
             CellReference a;

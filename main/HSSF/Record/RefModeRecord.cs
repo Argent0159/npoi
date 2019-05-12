@@ -69,7 +69,7 @@ namespace NPOI.HSSF.Record
             set { field_1_mode = value; }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -85,7 +85,7 @@ namespace NPOI.HSSF.Record
             get { return sid; }
         }
 
-        public override Object Clone()
+        public override object Clone()
         {
             RefModeRecord rec = new RefModeRecord();
             rec.field_1_mode = field_1_mode;

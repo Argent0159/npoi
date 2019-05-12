@@ -137,7 +137,7 @@ namespace NPOI.HSSF.Record
          * @return string representation
          */
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
 
@@ -157,7 +157,7 @@ namespace NPOI.HSSF.Record
         /**
          * Clone this record.
          */
-        public override Object Clone()
+        public override object Clone()
         {
             ContinueRecord Clone = new ContinueRecord();
             Clone.Data = (field_1_data);

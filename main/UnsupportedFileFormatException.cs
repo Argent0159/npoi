@@ -24,7 +24,7 @@ namespace NPOI
      */
     public abstract class UnsupportedFileFormatException : ArgumentException
     {
-        public UnsupportedFileFormatException(String s)
+        public UnsupportedFileFormatException(string s)
             : base(s)
         {
         }

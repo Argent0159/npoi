@@ -106,12 +106,12 @@ namespace NPOI.HSSF.Extractor
         {
             if (args.Length < 1)
             {
-                System.Console.WriteLine("Use:");
-                System.Console.WriteLine("   OldExcelExtractor <filename>");
+                Console.WriteLine("Use:");
+                Console.WriteLine("   OldExcelExtractor <filename>");
                 return;
             }
             OldExcelExtractor extractor = new OldExcelExtractor(new FileInfo(args[0]));
-            System.Console.WriteLine(extractor.Text);
+            Console.WriteLine(extractor.Text);
             extractor.Close();
         }
 
@@ -138,7 +138,8 @@ namespace NPOI.HSSF.Extractor
                     biffVersion = 5;
                     break;
                 default:
-                    throw new ArgumentException("File does not begin with a BOF, found sid of " + bofSid);
+                    string message = $"File does not begin with a BOF, found sid of {bofSid}";
+                    throw new ArgumentException(message);
             }
 
             // Get the type
@@ -195,24 +196,20 @@ namespace NPOI.HSSF.Extractor
                         case OldSheetRecord.sid:
                             OldSheetRecord shr = new OldSheetRecord(ris);
                             shr.SetCodePage(/*setter*/codepage);
-                            text.Append("Sheet: ");
-                            text.Append(shr.Sheetname);
-                            text.Append('\n');
+                            text.AppendLine($"Sheet: {shr.SheetName}");
                             break;
 
                         case OldLabelRecord.biff2_sid:
                         case OldLabelRecord.biff345_sid:
                             OldLabelRecord lr = new OldLabelRecord(ris);
                             lr.SetCodePage(/*setter*/codepage);
-                            text.Append(lr.Value);
-                            text.Append('\n');
+                            text.AppendLine(lr.Value);
                             break;
                         case OldStringRecord.biff2_sid:
                         case OldStringRecord.biff345_sid:
                             OldStringRecord sr = new OldStringRecord(ris);
                             sr.SetCodePage(/*setter*/codepage);
-                            text.Append(sr.GetString());
-                            text.Append('\n');
+                            text.AppendLine(sr.GetString());
                             break;
 
                         case NumberRecord.sid:
@@ -265,8 +262,7 @@ namespace NPOI.HSSF.Extractor
         protected void handleNumericCell(StringBuilder text, double value)
         {
             // TODO Need to fetch / use format strings
-            text.Append(value);
-            text.Append('\n');
+            text.AppendLine(value.ToString());
         }
 
         public void Close()

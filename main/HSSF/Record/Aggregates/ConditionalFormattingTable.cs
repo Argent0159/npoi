@@ -99,8 +99,8 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (index < 0 || index >= _cfHeaders.Count)
             {
-                throw new ArgumentException("Specified CF index " + index
-                        + " is outside the allowable range (0.." + (_cfHeaders.Count - 1) + ")");
+                string message = $"Specified CF index {index} is outside the allowable range (0..{(_cfHeaders.Count - 1)})";
+                throw new ArgumentException(message);
             }
         }
 

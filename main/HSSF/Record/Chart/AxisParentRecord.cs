@@ -70,29 +70,14 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AXISPARENT]\n");
-            buffer.Append("    .axisType             = ")
-                .Append("0x").Append(HexDump.ToHex(AxisType))
-                .Append(" (").Append(AxisType).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .x                    = ")
-                .Append("0x").Append(HexDump.ToHex(X))
-                .Append(" (").Append(X).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .y                    = ")
-                .Append("0x").Append(HexDump.ToHex(Y))
-                .Append(" (").Append(Y).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .width                = ")
-                .Append("0x").Append(HexDump.ToHex(Width))
-                .Append(" (").Append(Width).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .height               = ")
-                .Append("0x").Append(HexDump.ToHex(Height))
-                .Append(" (").Append(Height).Append(" )");
-            buffer.Append(Environment.NewLine);
-
-            buffer.Append("[/AXISPARENT]\n");
+            buffer
+                .AppendLine("[AXISPARENT]")
+                .AppendLine($"    .axisType             = 0x{HexDump.ToHex(AxisType)} ({AxisType})")
+                .AppendLine($"    .x                    = 0x{HexDump.ToHex(X)} ({X})")
+                .AppendLine($"    .y                    = 0x{HexDump.ToHex(Y)} ({Y})")
+                .AppendLine($"    .width                = 0x{HexDump.ToHex(Width)} ({Width})")
+                .AppendLine($"    .height               = 0x{HexDump.ToHex(Height)} ({Height})")
+                .AppendLine($"[/AXISPARENT]");
             return buffer.ToString();
         }
 

@@ -378,80 +378,89 @@ namespace NPOI.HSSF.Record.CF
         public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.Append("	[Font Formatting]\n");
-
-            buffer.Append("	.font height = ").Append(FontHeight).Append(" twips\n");
+            buffer
+                .AppendLine("[Font Formatting]")
+                .AppendLine($"    .font height = {FontHeight} twips");
 
             if (IsFontStyleModified)
             {
-                buffer.Append("	.font posture = ").Append(IsItalic ? "Italic" : "Normal").Append("\n");
+                string fontPosture = IsItalic ? "Italic" : "Normal";
+                buffer.AppendLine($"    .font posture = {fontPosture}");
             }
             else
             {
-                buffer.Append("	.font posture = ]not modified]").Append("\n");
+                buffer.AppendLine("    .font posture = ]not modified]");
             }
 
             if (IsFontOutlineModified)
             {
-                buffer.Append("	.font outline = ").Append(IsOutlineOn).Append("\n");
+                buffer.AppendLine($"    .font outline = {IsOutlineOn}");
             }
             else
             {
-                buffer.Append("	.font outline Is not modified\n");
+                buffer.AppendLine("    .font outline Is not modified");
             }
 
             if (IsFontShadowModified)
             {
-                buffer.Append("	.font shadow = ").Append(IsShadowOn).Append("\n");
+                buffer.AppendLine("    .font shadow = {IsShadowOn}");
             }
             else
             {
-                buffer.Append("	.font shadow Is not modified\n");
+                buffer.AppendLine("    .font shadow Is not modified");
             }
 
             if (IsFontCancellationModified)
             {
-                buffer.Append("	.font strikeout = ").Append(IsStruckout).Append("\n");
+                buffer.AppendLine("    .font strikeout = {IsStruckout}");
             }
             else
             {
-                buffer.Append("	.font strikeout Is not modified\n");
+                buffer.AppendLine("    .font strikeout Is not modified");
             }
 
             if (IsFontStyleModified)
             {
-                buffer.Append("	.font weight = ").
-                    Append(FontWeight).
-                    Append(
-                        FontWeight == FONT_WEIGHT_NORMAL ? "(Normal)"
-                                : FontWeight == FONT_WEIGHT_BOLD ? "(Bold)" : "0x" + StringUtil.ToHexString(FontWeight)).
-                    Append("\n");
+                string weight;
+                switch (FontWeight)
+                {
+                    case FONT_WEIGHT_NORMAL:
+                        weight = "(Normal)";
+                        break;
+                    case FONT_WEIGHT_BOLD:
+                        weight = "(Bold)";
+                        break;
+                    default:
+                        weight = $"0x{StringUtil.ToHexString(FontWeight)}";
+                        break;
+                }
+                buffer.AppendLine($"    .font weight = {FontWeight}{weight}");
             }
             else
             {
-                buffer.Append("	.font weight = ]not modified]").Append("\n");
+                buffer.AppendLine("    .font weight = ]not modified]");
             }
 
             if (IsEscapementTypeModified)
             {
-                buffer.Append("	.escapement type = ").Append(EscapementType).Append("\n");
+                buffer.AppendLine($"    .escapement type = {EscapementType}");
             }
             else
             {
-                buffer.Append("	.escapement type Is not modified\n");
+                buffer.AppendLine($"    .escapement type Is not modified");
             }
 
             if (IsUnderlineTypeModified)
             {
-                buffer.Append("	.underline type = ").Append(UnderlineType).Append("\n");
+                buffer.AppendLine($"    .underline type = {UnderlineType}");
             }
             else
             {
-                buffer.Append("	.underline type Is not modified\n");
+                buffer.AppendLine("    .underline type Is not modified");
             }
-            buffer.Append("	.color index = ").Append("0x" + StringUtil.ToHexString(FontColorIndex).ToUpper()).Append("\n");
+            buffer.AppendLine($"    .color index = 0x{StringUtil.ToHexString(FontColorIndex).ToUpper()}");
 
-            buffer.Append("	[/Font Formatting]\n");
+            buffer.AppendLine("[/Font Formatting]");
             return buffer.ToString();
         }
 

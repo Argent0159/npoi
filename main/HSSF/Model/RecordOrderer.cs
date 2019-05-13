@@ -75,7 +75,7 @@ namespace NPOI.HSSF.Model
             {
                 return GetWorksheetProtectionBlockInsertPos(records);
             }
-            throw new InvalidOperationException("Unexpected record class (" + recClass.Name + ")");
+            throw new InvalidOperationException($"Unexpected record class ({recClass.Name})");
         }
         /// <summary>
         /// Finds the index where the protection block should be inserted
@@ -290,16 +290,16 @@ namespace NPOI.HSSF.Model
                     Record nextRec = (Record)records[i + 1];
                     if (!IsDVTSubsequentRecord(nextRec.Sid))
                     {
-                        throw new InvalidOperationException("Unexpected (" + nextRec.GetType().Name
-                                + ") found after (" + rb.GetType().Name + ")");
+                        string message = $"Unexpected ({nextRec.GetType().Name}) found after ({rb.GetType().Name})";
+                        throw new InvalidOperationException(message);
                     }
                     return i + 1;
                 }
                 Record rec = (Record)rb;
                 if (!IsDVTSubsequentRecord(rec.Sid))
                 {
-                    throw new InvalidOperationException("Unexpected (" + rec.GetType().Name
-                            + ") while looking for DV Table insert pos");
+                    string message = $"Unexpected ({rec.GetType().Name}) while looking for DV Table insert pos";
+                    throw new InvalidOperationException(message);
                 }
             }
             return 0;

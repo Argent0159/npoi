@@ -71,29 +71,14 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AXIS]\n");
-            buffer.Append("    .axisType             = ")
-                .Append("0x").Append(HexDump.ToHex(AxisType))
-                .Append(" (").Append(AxisType).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .reserved1            = ")
-                .Append("0x").Append(HexDump.ToHex(Reserved1))
-                .Append(" (").Append(Reserved1).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .reserved2            = ")
-                .Append("0x").Append(HexDump.ToHex(Reserved2))
-                .Append(" (").Append(Reserved2).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .reserved3            = ")
-                .Append("0x").Append(HexDump.ToHex(Reserved3))
-                .Append(" (").Append(Reserved3).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .reserved4            = ")
-                .Append("0x").Append(HexDump.ToHex(Reserved4))
-                .Append(" (").Append(Reserved4).Append(" )");
-            buffer.Append(Environment.NewLine);
-
-            buffer.Append("[/AXIS]\n");
+            buffer
+                .AppendLine("[AXIS]")
+                .AppendLine($"    .axisType             = 0x{HexDump.ToHex(AxisType)} ({AxisType})")
+                .AppendLine($"    .reserved1            = 0x{HexDump.ToHex(Reserved1)} ({Reserved1})")
+                .AppendLine($"    .reserved2            = 0x{HexDump.ToHex(Reserved2)} ({Reserved2})")
+                .AppendLine($"    .reserved3            = 0x{HexDump.ToHex(Reserved3)} ({Reserved3})")
+                .AppendLine($"    .reserved4            = 0x{HexDump.ToHex(Reserved4)} ({Reserved4})")
+                .AppendLine("[/AXIS]");
             return buffer.ToString();
         }
 

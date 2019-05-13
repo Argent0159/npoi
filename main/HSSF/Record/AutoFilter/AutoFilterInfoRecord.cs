@@ -37,10 +37,10 @@ namespace NPOI.HSSF.Record.AutoFilter
         public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.Append("[AUTOFILTERINFO]\n");
-            buffer.Append("    .numEntries          = ")
-                .Append(field_1_cEntries).Append("\n");
-            buffer.Append("[/AUTOFILTERINFO]\n");
+            buffer
+                .AppendLine("[AUTOFILTERINFO]")
+                .AppendLine($"    .numEntries          = {field_1_cEntries}")
+                .AppendLine($"[/AUTOFILTERINFO]");
             return buffer.ToString();
         }
         public override void Serialize(NPOI.Util.ILittleEndianOutput out1)

@@ -216,7 +216,7 @@ namespace NPOI.HSSF.Model
             {
                 if (_ptgs[index] != null)
                 {
-                    throw new InvalidOperationException("Invalid placeholder index (" + index + ")");
+                    throw new InvalidOperationException($"Invalid placeholder index ({index})");
                 }
                 _ptgs[index] = token;
             }

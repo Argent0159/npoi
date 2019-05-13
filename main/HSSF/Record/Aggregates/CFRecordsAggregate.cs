@@ -60,10 +60,12 @@ namespace NPOI.HSSF.Record.Aggregates
             }
             if (pRules.Length > MAX_97_2003_CONDTIONAL_FORMAT_RULES)
             {
-                Console.WriteLine("Excel versions before 2007 require that "
-                    + "No more than " + MAX_97_2003_CONDTIONAL_FORMAT_RULES
-                    + " rules may be specified, " + pRules.Length + " were found,"
-                    + " this file will cause problems with old Excel versions");
+                StringBuilder text = new StringBuilder();
+                text
+                    .Append("Excel versions before 2007 require that ")
+                    .Append($"No more than {MAX_97_2003_CONDTIONAL_FORMAT_RULES} rules may be specified, ")
+                    .Append($"{pRules.Length} were found, this file will cause problems with old Excel versions");
+                Console.WriteLine(text.ToString());
             }
             header = pHeader;
             rules = new List<CFRuleRecord>(3);
@@ -89,8 +91,8 @@ namespace NPOI.HSSF.Record.Aggregates
             Record rec = rs.GetNext();
             if (rec.Sid != CFHeaderRecord.sid)
             {
-                throw new InvalidOperationException("next record sid was " + rec.Sid
-                        + " instead of " + CFHeaderRecord.sid + " as expected");
+                string message = $"next record sid was {rec.Sid} instead of {CFHeaderRecord.sid} as expected";
+                throw new InvalidOperationException(message);
             }
 
             CFHeaderRecord header = (CFHeaderRecord)rec;
@@ -114,8 +116,8 @@ namespace NPOI.HSSF.Record.Aggregates
             Record rec = (Record)recs[pOffset];
             if (rec.Sid != CFHeaderRecord.sid)
             {
-                throw new InvalidOperationException("next record sid was " + rec.Sid
-                        + " instead of " + CFHeaderRecord.sid + " as expected");
+                string message = $"next record sid was {rec.Sid} instead of {CFHeaderRecord.sid} as expected";
+                throw new InvalidOperationException(message);
             }
 
             CFHeaderRecord header = (CFHeaderRecord)rec;
@@ -219,8 +221,8 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (index < 0 || index >= rules.Count)
             {
-                throw new ArgumentException("Bad rule record index (" + index
-                        + ") nRules=" + rules.Count);
+                string message = $"Bad rule record index ({index}) nRules={rules.Count}";
+                throw new ArgumentException(message);
             }
         }
         public CFRuleRecord GetRule(int index)
@@ -307,15 +309,18 @@ namespace NPOI.HSSF.Record.Aggregates
             {
                 return null;
             }
-            throw new InvalidCastException("Unexpected shifted ptg class (" + ptg0.GetType().Name + ")");
+            throw new InvalidCastException($"Unexpected shifted ptg class ({ptg0.GetType().Name})");
         }
         public void AddRule(CFRuleRecord r)
         {
             if (rules.Count >= MAX_97_2003_CONDTIONAL_FORMAT_RULES)
             {
-                Console.WriteLine("Excel versions before 2007 cannot cope with"
-                    + " any more than " + MAX_97_2003_CONDTIONAL_FORMAT_RULES
-                    + " - this file will cause problems with old Excel versions");
+                StringBuilder text = new StringBuilder();
+                text
+                    .Append("Excel versions before 2007 cannot cope with any more ")
+                    .Append($"than {MAX_97_2003_CONDTIONAL_FORMAT_RULES} - ")
+                    .Append("this file will cause problems with old Excel versions");
+                Console.WriteLine(text.ToString());
             }
             rules.Add(r);
             header.NumberOfConditionalFormats = (rules.Count);
@@ -352,7 +357,7 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[CF]\n");
+            buffer.AppendLine("[CF]");
             if (header != null)
             {
                 buffer.Append(header.ToString());
@@ -365,7 +370,7 @@ namespace NPOI.HSSF.Record.Aggregates
                     buffer.Append(cfRule.ToString());
                 }
             }
-            buffer.Append("[/CF]\n");
+            buffer.AppendLine("[/CF]");
             return buffer.ToString();
         }
     }

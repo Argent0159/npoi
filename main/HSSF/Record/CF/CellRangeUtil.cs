@@ -175,7 +175,7 @@ namespace NPOI.HSSF.Record.CF
                     // range2 encloses range1, so replace it with the enclosing one
                     return new CellRangeAddress[] { range2 };
             }
-            throw new InvalidOperationException("unexpected intersection result (" + x + ")");
+            throw new InvalidOperationException($"unexpected intersection result ({x})");
         }
 
         //// TODO - write junit test for this

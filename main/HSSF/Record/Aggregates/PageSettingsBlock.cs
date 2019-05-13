@@ -181,8 +181,8 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (rec != null)
             {
-                throw new RecordFormatException("Duplicate PageSettingsBlock record (sid=0x"
-                        + StringUtil.ToHexString(rec.Sid) + ")");
+                string message = $"Duplicate PageSettingsBlock record (sid=0x{StringUtil.ToHexString(rec.Sid)})";
+                throw new RecordFormatException(message);
             }
         }
         private PageBreakRecord RowBreaksRecord
@@ -390,7 +390,7 @@ namespace NPOI.HSSF.Record.Aggregates
                 case MarginType.TopMargin: return _topMargin;
                 case MarginType.BottomMargin: return _bottomMargin;
                 default:
-                    throw new InvalidOperationException("Unknown margin constant:  " + (short)margin);
+                    throw new InvalidOperationException($"Unknown margin constant:  {(short)margin}");
             }
         }
 
@@ -420,7 +420,7 @@ namespace NPOI.HSSF.Record.Aggregates
                     case MarginType.BottomMargin:
                         return 1.0;
                 }
-                throw new InvalidOperationException("Unknown margin constant:  " + margin);
+                throw new InvalidOperationException($"Unknown margin constant:  {margin}");
             }
         }
 
@@ -453,7 +453,7 @@ namespace NPOI.HSSF.Record.Aggregates
                         m = _bottomMargin;
                         break;
                     default:
-                        throw new InvalidOperationException("Unknown margin constant:  " + margin);
+                        throw new InvalidOperationException($"Unknown margin constant:  {margin}");
                 }
             }
             m.Margin= size;
@@ -618,7 +618,7 @@ namespace NPOI.HSSF.Record.Aggregates
             }
             if (rec.Sid != UnknownRecord.HEADER_FOOTER_089C)
             {
-                throw new RecordFormatException("Unexpected header-footer record sid: 0x" + StringUtil.ToHexString(rec.Sid));
+                throw new RecordFormatException($"Unexpected header-footer record sid: 0x{StringUtil.ToHexString(rec.Sid)}");
             }
             _headerFooter = rec;
         }

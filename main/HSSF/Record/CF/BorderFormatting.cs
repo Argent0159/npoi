@@ -245,18 +245,19 @@ namespace NPOI.HSSF.Record.CF
         public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.Append("    [Border Formatting]\n");
-            buffer.Append("          .lftln     = ").Append(StringUtil.ToHexString((int) BorderLeft)).Append("\n");
-            buffer.Append("          .rgtln     = ").Append(StringUtil.ToHexString((int) BorderRight)).Append("\n");
-            buffer.Append("          .topln     = ").Append(StringUtil.ToHexString((int) BorderTop)).Append("\n");
-            buffer.Append("          .btmln     = ").Append(StringUtil.ToHexString((int) BorderBottom)).Append("\n");
-            buffer.Append("          .leftborder= ").Append(StringUtil.ToHexString(LeftBorderColor)).Append("\n");
-            buffer.Append("          .rghtborder= ").Append(StringUtil.ToHexString(RightBorderColor)).Append("\n");
-            buffer.Append("          .topborder= ").Append(StringUtil.ToHexString(TopBorderColor)).Append("\n");
-            buffer.Append("          .bottomborder= ").Append(StringUtil.ToHexString(BottomBorderColor)).Append("\n");
-            buffer.Append("          .fwdiag= ").Append(IsForwardDiagonalOn).Append("\n");
-            buffer.Append("          .bwdiag= ").Append(IsBackwardDiagonalOn).Append("\n");
-            buffer.Append("    [/Border Formatting]\n");
+            buffer
+                .AppendLine("    [Border Formatting]")
+                .AppendLine($"          .lftln        = {StringUtil.ToHexString((int) BorderLeft)}")
+                .AppendLine($"          .rgtln        = {StringUtil.ToHexString((int) BorderRight)}")
+                .AppendLine($"          .topln        = {StringUtil.ToHexString((int) BorderTop)}")
+                .AppendLine($"          .btmln        = {StringUtil.ToHexString((int) BorderBottom)}")
+                .AppendLine($"          .leftborder   = {StringUtil.ToHexString(LeftBorderColor)}")
+                .AppendLine($"          .rghtborder   = {StringUtil.ToHexString(RightBorderColor)}")
+                .AppendLine($"          .topborder    = {StringUtil.ToHexString(TopBorderColor)}")
+                .AppendLine($"          .bottomborder = {StringUtil.ToHexString(BottomBorderColor)}")
+                .AppendLine($"          .fwdiag       = {IsForwardDiagonalOn}")
+                .AppendLine($"          .bwdiag       = {IsBackwardDiagonalOn}")
+                .AppendLine("    [/Border Formatting]");
             return buffer.ToString();
         }
 

@@ -95,53 +95,26 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AXCEXT]\n");
-            buffer.Append("    .catMin      = ")
-                .Append("0x").Append(HexDump.ToHex(MinimumDate))
-                .Append(" (").Append(MinimumDate).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catMax      = ")
-                .Append("0x").Append(HexDump.ToHex(MaximumDate))
-                .Append(" (").Append(MaximumDate).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catMajor       = ")
-                .Append("0x").Append(HexDump.ToHex(MajorInterval))
-                .Append(" (").Append(MajorInterval).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .duMajor            = ")
-                .Append("0x").Append(HexDump.ToHex((short)MajorUnit))
-                .Append(" (").Append(MajorUnit).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catMinor       = ")
-                .Append("0x").Append(HexDump.ToHex(MinorInterval))
-                .Append(" (").Append(MinorInterval).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .duMinor            = ")
-                .Append("0x").Append(HexDump.ToHex((short)MinorUnit))
-                .Append(" (").Append(MinorUnit).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .duBase             = ")
-                .Append("0x").Append(HexDump.ToHex((short)BaseUnit))
-                .Append(" (").Append(BaseUnit).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catCrossDate        = ")
-                .Append("0x").Append(HexDump.ToHex(CrossDate))
-                .Append(" (").Append(CrossDate).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .options              = ")
-                .Append("0x").Append(HexDump.ToHex(Options))
-                .Append(" (").Append(Options).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .fAutoMin           = ").Append(IsAutoMin).Append('\n');
-            buffer.Append("         .fAutoMax           = ").Append(IsAutoMax).Append('\n');
-            buffer.Append("         .fAutoMajor         = ").Append(IsAutoMajor).Append('\n');
-            buffer.Append("         .fAutoMinor         = ").Append(IsAutoMinor).Append('\n');
-            buffer.Append("         .fDateAxis          = ").Append(IsDateAxis).Append('\n');
-            buffer.Append("         .fAutoBase          = ").Append(IsAutoBase).Append('\n');
-            buffer.Append("         .fAutoCross         = ").Append(IsAutoCross).Append('\n');
-            buffer.Append("         .fAutoDate          = ").Append(IsAutoDate).Append('\n');
-
-            buffer.Append("[/AXCEXT]\n");
+            buffer
+                .AppendLine("[AXCEXT]")
+                .AppendLine($"    .catMin              = 0x{HexDump.ToHex(MinimumDate)} ({MinimumDate})")
+                .AppendLine($"    .catMax              = 0x{HexDump.ToHex(MaximumDate)} ({MaximumDate})")
+                .AppendLine($"    .catMajor            = 0x{HexDump.ToHex(MajorInterval)} ({MajorInterval})")
+                .AppendLine($"    .duMajor             = 0x{HexDump.ToHex((short)MajorUnit)} ({MajorUnit})")
+                .AppendLine($"    .catMinor            = 0x{HexDump.ToHex(MinorInterval)} ({MinorInterval})")
+                .AppendLine($"    .duMinor             = 0x{HexDump.ToHex((short)MinorUnit)} ({MinorUnit})")
+                .AppendLine($"    .duBase              = 0x{HexDump.ToHex((short)BaseUnit)} ({BaseUnit})")
+                .AppendLine($"    .catCrossDate        = 0x{HexDump.ToHex(CrossDate)} ({CrossDate})")
+                .AppendLine($"    .options             = 0x{HexDump.ToHex(Options)} ({Options})")
+                .AppendLine($"         .fAutoMin       = {IsAutoMin}")
+                .AppendLine($"         .fAutoMax       = {IsAutoMax}")
+                .AppendLine($"         .fAutoMajor     = {IsAutoMajor}")
+                .AppendLine($"         .fAutoMinor     = {IsAutoMinor}")
+                .AppendLine($"         .fDateAxis      = {IsDateAxis}")
+                .AppendLine($"         .fAutoBase      = {IsAutoBase}")
+                .AppendLine($"         .fAutoCross     = {IsAutoCross}")
+                .AppendLine($"         .fAutoDate      = {IsAutoDate}")
+                .AppendLine("[/AXCEXT]");
             return buffer.ToString();
         }
 

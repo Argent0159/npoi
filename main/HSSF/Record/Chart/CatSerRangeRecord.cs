@@ -72,28 +72,16 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[CATSERRANGE]\n");
-            buffer.Append("    .catCross        = ")
-                .Append("0x").Append(HexDump.ToHex(CrossPoint))
-                .Append(" (").Append(CrossPoint).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catLabel       = ")
-                .Append("0x").Append(HexDump.ToHex(LabelInterval))
-                .Append(" (").Append(LabelInterval).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .catMark    = ")
-                .Append("0x").Append(HexDump.ToHex(MarkInterval))
-                .Append(" (").Append(MarkInterval).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .options              = ")
-                .Append("0x").Append(HexDump.ToHex(Options))
-                .Append(" (").Append(Options).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .fBetween        = ").Append(IsBetween).Append('\n');
-            buffer.Append("         .fMaxCross       = ").Append(IsMaxCross).Append('\n');
-            buffer.Append("         .fReverse        = ").Append(IsReverse).Append('\n');
-
-            buffer.Append("[/CATSERRANGE]\n");
+            buffer
+                .AppendLine("[CATSERRANGE]")
+                .AppendLine($"    .catCross         = 0x{HexDump.ToHex(CrossPoint)} ({CrossPoint})")
+                .AppendLine($"    .catLabel         = 0x{HexDump.ToHex(LabelInterval)} ({LabelInterval})")
+                .AppendLine($"    .catMark          = 0x{HexDump.ToHex(MarkInterval)} ({MarkInterval})")
+                .AppendLine($"    .options          = 0x{HexDump.ToHex(Options)} ({Options})")
+                .AppendLine($"        .fBetween     = {IsBetween}")
+                .AppendLine($"        .fMaxCross    = {IsMaxCross}")
+                .AppendLine($"        .fReverse     = {IsReverse}")
+                .AppendLine("[/CATSERRANGE]");
             return buffer.ToString();
         }
 

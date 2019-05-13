@@ -463,9 +463,8 @@ namespace NPOI.HSSF.Model
             }
             if (index > (numfonts - 1))
             {
-                throw new IndexOutOfRangeException(
-                "There are only " + numfonts
-                + " font records, you asked for " + index);
+                string message = $"There are only {numfonts} font records, you asked for {index}";
+                throw new IndexOutOfRangeException(message);
             }
             FontRecord retval =
             (FontRecord)records[(records.Fontpos - (numfonts - 1) + index)];
@@ -793,7 +792,8 @@ namespace NPOI.HSSF.Model
             }
             else
             {
-                throw new ArgumentException("Invalid hidden flag " + hidden + " given, must be 0, 1 or 2");
+                string message = $"Invalid hidden flag {hidden} given, must be 0, 1 or 2";
+                throw new ArgumentException(message);
             }
             bsr.IsHidden = (h);
             bsr.IsVeryHidden = (vh);
@@ -2140,7 +2140,7 @@ namespace NPOI.HSSF.Model
 
         private static Record CreateBoundSheet(int id)
         {   
-            return new BoundSheetRecord("Sheet" + (id + 1));
+            return new BoundSheetRecord($"Sheet{(id + 1)}");
         }
 
         /**
@@ -2387,8 +2387,10 @@ namespace NPOI.HSSF.Model
         public NameRecord CreateBuiltInName(byte builtInName, int index)
         {
             if (index == -1 || index + 1 > short.MaxValue)
-                throw new ArgumentException("Index is not valid [" + index + "]");
-
+            {
+                string message = $"Index is not valid [{index}]";
+                throw new ArgumentException(message);
+            }
             NameRecord name = new NameRecord(builtInName, (short)(index));
 
             AddName(name);
@@ -2515,7 +2517,7 @@ namespace NPOI.HSSF.Model
                 case 6: return new FormatRecord(0x2c, BuiltinFormats.GetBuiltinFormat(0x2c));
                 case 7: return new FormatRecord(0x2b, BuiltinFormats.GetBuiltinFormat(0x2b));
             }
-            throw new ArgumentException("Unexpected id " + id);
+            throw new ArgumentException($"Unexpected id {id}");
         }
 
         /**
@@ -2624,7 +2626,7 @@ namespace NPOI.HSSF.Model
                     {
                         palette = (PaletteRecord)rec;
                     }
-                    else throw new Exception("InternalError: Expected PaletteRecord but got a '" + rec + "'");
+                    else throw new Exception($"InternalError: Expected PaletteRecord but got a '{rec}'");
                 }
                 else
                 {

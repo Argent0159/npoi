@@ -90,13 +90,10 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AXISLINEFORMAT]\n");
-            buffer.Append("    .axisType             = ")
-                .Append("0x").Append(HexDump.ToHex(AxisType))
-                .Append(" (").Append(AxisType).Append(" )");
-            buffer.Append(Environment.NewLine);
-
-            buffer.Append("[/AXISLINEFORMAT]\n");
+            buffer
+                .AppendLine("[AXISLINEFORMAT]")
+                .AppendLine($"    .axisType             = 0x{HexDump.ToHex(AxisType)} ({AxisType})")
+                .AppendLine("[/AXISLINEFORMAT]");
             return buffer.ToString();
         }
 

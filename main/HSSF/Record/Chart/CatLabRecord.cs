@@ -91,15 +91,15 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[CATLAB]\n");
-            buffer.Append("    .rt      =").Append(HexDump.ShortToHex(rt)).Append('\n');
-            buffer.Append("    .grbitFrt=").Append(HexDump.ShortToHex(grbitFrt)).Append('\n');
-            buffer.Append("    .wOffset =").Append(HexDump.ShortToHex(wOffset)).Append('\n');
-            buffer.Append("    .at      =").Append(HexDump.ShortToHex(at)).Append('\n');
-            buffer.Append("    .grbit   =").Append(HexDump.ShortToHex(grbit)).Append('\n');
-            buffer.Append("    .unused  =").Append(HexDump.ShortToHex((short)unused)).Append('\n');
-
-            buffer.Append("[/CATLAB]\n");
+            buffer
+                .AppendLine("[CATLAB]")
+                .AppendLine($"    .rt       = {HexDump.ShortToHex(rt)}")
+                .AppendLine($"    .grbitFrt = {HexDump.ShortToHex(grbitFrt)}")
+                .AppendLine($"    .wOffset  = {HexDump.ShortToHex(wOffset)}")
+                .AppendLine($"    .at       = {HexDump.ShortToHex(at)}")
+                .AppendLine($"    .grbit    = {HexDump.ShortToHex(grbit)}")
+                .AppendLine($"    .unused   = {HexDump.ShortToHex((short)unused)}")
+                .AppendLine("[/CATLAB]");
             return buffer.ToString();
         }
     }

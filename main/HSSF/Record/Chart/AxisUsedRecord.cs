@@ -59,13 +59,10 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AXISUSED]\n");
-            buffer.Append("    .numAxis              = ")
-                .Append("0x").Append(HexDump.ToHex(this.NumAxis))
-                .Append(" (").Append(this.NumAxis).Append(" )");
-            buffer.Append(Environment.NewLine);
-
-            buffer.Append("[/AXISUSED]\n");
+            buffer
+                .AppendLine("[AXISUSED]")
+                .AppendLine($"    .numAxis              = 0x{HexDump.ToHex(this.NumAxis)} ({this.NumAxis})")
+                .AppendLine("[/AXISUSED]");
             return buffer.ToString();
         }
 

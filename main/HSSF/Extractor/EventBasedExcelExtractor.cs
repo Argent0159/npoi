@@ -130,7 +130,7 @@ namespace NPOI.HSSF.Extractor
                     text = tl.text.ToString();
                     if (!text.EndsWith("\n", StringComparison.Ordinal))
                     {
-                        text = text + "\n";
+                        text = $"{text}\n";
                     }
                 }
                 catch (IOException)

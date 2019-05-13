@@ -88,27 +88,26 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AI]\n");
-            buffer.Append("    .linkType             = ")
-                .Append(HexDump.ByteToHex(LinkType)).Append('\n');                
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .referenceType        = ").Append(HexDump.ByteToHex(ReferenceType)).Append('\n');
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .options              = ").Append(HexDump.ShortToHex(Options)).Append('\n');
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .customNumberFormat       = ").Append(IsCustomNumberFormat).Append('\n');
-            buffer.Append("    .indexNumberFmtRecord = ")
-                .Append(HexDump.ShortToHex(IndexNumberFmtRecord)).Append('\n');
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .formulaOfLink        = ");
+            buffer
+                .AppendLine("[AI]")
+                .AppendLine($"    .linkType                     = {HexDump.ByteToHex(LinkType)}")
+                .AppendLine()
+                .AppendLine($"    .referenceType                = {HexDump.ByteToHex(ReferenceType)}")
+                .AppendLine()
+                .AppendLine($"    .options                      = {HexDump.ShortToHex(Options)}")
+                .AppendLine()
+                .AppendLine($"        .customNumberFormat       = {IsCustomNumberFormat}")
+                .AppendLine($"    .indexNumberFmtRecord         = {HexDump.ShortToHex(IndexNumberFmtRecord)}")
+                .AppendLine()
+                .Append("    .formulaOfLink        = ");
             Ptg[] ptgs = field_5_formulaOfLink.Tokens;
             for (int i = 0; i < ptgs.Length; i++)
             {
                 Ptg ptg = ptgs[i];
-                buffer.Append(ptg.ToString()).Append(ptg.RVAType).Append('\n');
+                buffer.AppendLine($"{ptg.ToString()}{ptg.RVAType}");
             }
 
-            buffer.Append("[/AI]\n");
+            buffer.AppendLine("[/AI]");
             return buffer.ToString();
         }
 

@@ -73,8 +73,8 @@ namespace NPOI.HSSF.Model
             int nItems = temp.Count;
             if (nItems < 1)
             {
-                throw new Exception("Expected an EXTERNSHEET record but got ("
-                        + rs.PeekNextClass().Name + ")");
+                string message = $"Expected an EXTERNSHEET record but got ({rs.PeekNextClass().Name})";
+                throw new Exception(message);
             }
             if (nItems == 1)
             {
@@ -531,7 +531,8 @@ namespace NPOI.HSSF.Model
                 }
 
             }
-            throw new InvalidOperationException("External workbook does not contain sheet '" + sheetName + "'");
+            string message = $"External workbook does not contain sheet '{sheetName}'";
+            throw new InvalidOperationException(message);
         }
         private int GetExternalWorkbookIndex(string workbookName)
         {
@@ -566,7 +567,7 @@ namespace NPOI.HSSF.Model
                 sheetNames[sn] = externalWorkbook.GetSheetName(sn);
             }
             //\000 is octal digit in java, but c# think it is a '\0' and two zero.
-            string url = "\0" + name;
+            string url = $"\0{name}";
             ExternalBookBlock block = new ExternalBookBlock(url, sheetNames);
 
             // Add it into the list + records
@@ -595,7 +596,7 @@ namespace NPOI.HSSF.Model
             int externalBookIndex = GetExternalWorkbookIndex(workbookName);
             if (externalBookIndex == -1)
             {
-                throw new RuntimeException("No external workbook with name '" + workbookName + "'");
+                throw new RuntimeException($"No external workbook with name '{workbookName}'");
             }
             SupBookRecord ebrTarget = _externalBookBlocks[externalBookIndex].GetExternalBookRecord();
 
@@ -733,10 +734,8 @@ namespace NPOI.HSSF.Model
             }
             else
             {
-                throw new IndexOutOfRangeException(
-                        "Ext Book Index relative but beyond the supported length, was " +
-                        extBookIndex + " but maximum is " + _externalBookBlocks.Length
-                );
+                string message = $"Ext Book Index relative but beyond the supported length, was {extBookIndex} but maximum is {_externalBookBlocks.Length}";
+                throw new IndexOutOfRangeException(message);
             }
         }
         public int ResolveNameXIx(int refIndex, int definedNameIndex)

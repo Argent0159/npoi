@@ -144,19 +144,19 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[ALRUNS]\n");
-            buffer.Append("    .format_runs       = ").Append(m_recs)
-                .Append("\n");
+            buffer
+                .AppendLine("[ALRUNS]")
+                .AppendLine($"    .format_runs       = {m_recs}");
             int index;
             CTFormat ctf;
             for (index = 0; index < m_formats.Count; index++)
             {
                 ctf = (CTFormat)m_formats[index];
-                buffer.Append("       .char_offset= ").Append(ctf.Offset);
-                buffer.Append(",.fontindex= ").Append(ctf.FontIndex);
-                buffer.Append("\n");
+                buffer
+                    .Append($"       .char_offset= {ctf.Offset}")
+                    .AppendLine($",.fontindex= {ctf.FontIndex}");
             }
-            buffer.Append("[/ALRUNS]\n");
+            buffer.AppendLine("[/ALRUNS]");
             return buffer.ToString();
         }
     }

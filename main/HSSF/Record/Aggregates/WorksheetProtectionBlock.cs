@@ -98,8 +98,8 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (rec != null)
             {
-                throw new RecordFormatException("Duplicate WorksheetProtectionBlock record (sid=0x"
-                        + StringUtil.ToHexString(rec.Sid) + ")");
+                string message = $"Duplicate WorksheetProtectionBlock record (sid=0x{StringUtil.ToHexString(rec.Sid)})";
+                throw new RecordFormatException(message);
             }
         }
 

@@ -441,8 +441,8 @@ namespace NPOI.HSSF.Record.Aggregates
             int nRecords = records.Count;
             if (colInfoIx < 0 || colInfoIx >= nRecords)
             {
-                throw new ArgumentException("colInfoIx " + colInfoIx
-                        + " is out of range (0.." + (nRecords - 1) + ")");
+                string message = $"colInfoIx {colInfoIx} is out of range (0..{(nRecords - 1)})";
+                throw new ArgumentException(message);
             }
             ColumnInfoRecord currentCol = GetColInfo(colInfoIx);
             int nextIx = colInfoIx + 1;
@@ -714,11 +714,11 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (columnIx < 0)
             {
-                throw new ArgumentException("column parameter out of range: " + columnIx);
+                throw new ArgumentException($"column parameter out of range: {columnIx}");
             }
             if (fromColInfoIndex < 0)
             {
-                throw new ArgumentException("fromIndex parameter out of range: " + fromColInfoIndex);
+                throw new ArgumentException($"fromIndex parameter out of range: {fromColInfoIndex}");
             }
 
             for (int k = fromColInfoIndex; k < records.Count; k++)

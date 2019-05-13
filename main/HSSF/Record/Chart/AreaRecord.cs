@@ -64,16 +64,13 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AREA]\n");
-            buffer.Append("    .formatFlags          = ")
-                .Append("0x").Append(HexDump.ToHex(FormatFlags))
-                .Append(" (").Append(FormatFlags).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .stacked                  = ").Append(IsStacked).Append('\n');
-            buffer.Append("         .DisplayAsPercentage      = ").Append(IsDisplayAsPercentage).Append('\n');
-            buffer.Append("         .shadow                   = ").Append(IsShadow).Append('\n');
-
-            buffer.Append("[/AREA]\n");
+            buffer
+                .AppendLine("[AREA]")
+                .AppendLine($"    .formatFlags          = 0x{HexDump.ToHex(FormatFlags)} ({FormatFlags})")
+                .AppendLine($"         .stacked                  = {IsStacked}")
+                .AppendLine($"         .DisplayAsPercentage      = {IsDisplayAsPercentage}")
+                .AppendLine($"         .shadow                   = {IsShadow}")
+                .AppendLine("[/AREA]");
             return buffer.ToString();
         }
 

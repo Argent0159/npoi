@@ -141,9 +141,11 @@ namespace NPOI.HSSF.Record.AutoFilter
             int result=this.Serialize(out1);
             if (out1.WriteIndex - offset != this.RecordSize)
             {
-                throw new InvalidOperationException("Error in serialization of (" + this.GetType().Name + "): "
-                        + "Incorrect number of bytes written - expected "
-                        + this.RecordSize + " but got " + (out1.WriteIndex - offset));
+                System.Text.StringBuilder text = new System.Text.StringBuilder();
+                text
+                    .Append($"Error in serialization of ({this.GetType().Name}): ")
+                    .Append($"Incorrect number of bytes written - expected {this.RecordSize} but got {(out1.WriteIndex - offset)}");
+                throw new InvalidOperationException(text.ToString());
             }
             return result;
         }

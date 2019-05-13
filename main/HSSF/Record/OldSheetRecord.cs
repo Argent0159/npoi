@@ -77,7 +77,7 @@ namespace NPOI.HSSF.Record
          * Get the sheetname for this sheet.  (this appears in the tabs at the bottom)
          * @return sheetname the name of the sheet
          */
-        public string Sheetname
+        public string SheetName
         {
             get
             {
@@ -89,12 +89,13 @@ namespace NPOI.HSSF.Record
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[BOUNDSHEET]\n");
-            buffer.Append("    .bof        = ").Append(HexDump.IntToHex(PositionOfBof)).Append("\n");
-            buffer.Append("    .visibility = ").Append(HexDump.ShortToHex(field_2_visibility)).Append("\n");
-            buffer.Append("    .type       = ").Append(HexDump.ByteToHex(field_3_type)).Append("\n");
-            buffer.Append("    .sheetname  = ").Append(Sheetname).Append("\n");
-            buffer.Append("[/BOUNDSHEET]\n");
+            buffer
+                .AppendLine("[BOUNDSHEET]")
+                .AppendLine($"    .bof        = {HexDump.IntToHex(PositionOfBof)}")
+                .AppendLine($"    .visibility = {HexDump.ShortToHex(field_2_visibility)}")
+                .AppendLine($"    .type       = {HexDump.ByteToHex(field_3_type)}")
+                .AppendLine($"    .sheetname  = {SheetName}")
+                .AppendLine("[/BOUNDSHEET]");
             return buffer.ToString();
         }
     }

@@ -161,17 +161,14 @@ namespace NPOI.HSSF.Extractor
                         string name = wb.GetSheetName(i);
                         if (name != null)
                         {
-                            text.Append(name);
-                            text.Append("\n");
+                            text.AppendLine(name);
                         }
                     }
 
                     // Header text, if there is any
                     if (sheet.Header != null && includeHeaderFooter)
                     {
-                        text.Append(
-                                ExtractHeaderFooter(sheet.Header)
-                        );
+                        text.Append(ExtractHeaderFooter(sheet.Header));
                     }
 
                     int firstRow = sheet.FirstRowNum;
@@ -262,7 +259,8 @@ namespace NPOI.HSSF.Extractor
                                         }
                                         break;
                                     default:
-                                        throw new Exception("Unexpected cell type (" + cell.CellType + ")");
+                                        string message = $"Unexpected cell type ({cell.CellType})";
+                                        throw new Exception(message);
                                 }
 
                                 // Output the comment, if requested and exists
@@ -272,7 +270,7 @@ namespace NPOI.HSSF.Extractor
                                     // Replace any newlines with spaces, otherwise it
                                     //  breaks the output
                                     string commentText = comment.String.String.Replace('\n', ' ');
-                                    text.Append(" Comment by " + comment.Author + ": " + commentText);
+                                    text.Append($" Comment by {comment.Author}: {commentText}");
                                 }
                             }
 
@@ -290,9 +288,7 @@ namespace NPOI.HSSF.Extractor
                     // Finally Feader text, if there is any
                     if (sheet.Footer != null && includeHeaderFooter)
                     {
-                        text.Append(
-                                ExtractHeaderFooter(sheet.Footer)
-                        );
+                        text.Append(ExtractHeaderFooter(sheet.Footer));
                     }
                 }
 

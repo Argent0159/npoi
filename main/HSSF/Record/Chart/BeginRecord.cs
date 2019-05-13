@@ -58,8 +58,9 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[BEGIN]\n");
-            buffer.Append("[/BEGIN]\n");
+            buffer
+                .AppendLine("[BEGIN]")
+                .AppendLine("[/BEGIN]");
             return buffer.ToString();
         }
 

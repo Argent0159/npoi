@@ -68,25 +68,16 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[BAR]\n");
-            buffer.Append("    .barSpace             = ")
-                .Append("0x").Append(HexDump.ToHex(BarSpace))
-                .Append(" (").Append(BarSpace).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .categorySpace        = ")
-                .Append("0x").Append(HexDump.ToHex(CategorySpace))
-                .Append(" (").Append(CategorySpace).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .formatFlags          = ")
-                .Append("0x").Append(HexDump.ToHex(FormatFlags))
-                .Append(" (").Append(FormatFlags).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .horizontal               = ").Append(IsHorizontal).Append('\n');
-            buffer.Append("         .stacked                  = ").Append(IsStacked).Append('\n');
-            buffer.Append("         .DisplayAsPercentage      = ").Append(IsDisplayAsPercentage).Append('\n');
-            buffer.Append("         .shadow                   = ").Append(IsShadow).Append('\n');
-
-            buffer.Append("[/BAR]\n");
+            buffer
+                .AppendLine("[BAR]")
+                .AppendLine($"    .barSpace                 = 0x{HexDump.ToHex(BarSpace)} ({BarSpace})")
+                .AppendLine($"    .categorySpace            = 0x{HexDump.ToHex(CategorySpace)} ({CategorySpace})")
+                .AppendLine($"    .formatFlags              = 0x{HexDump.ToHex(FormatFlags)} ({FormatFlags})")
+                .AppendLine($"        .horizontal           = {IsHorizontal}")
+                .AppendLine($"        .stacked              = {IsStacked}")
+                .AppendLine($"        .DisplayAsPercentage  = {IsDisplayAsPercentage}")
+                .AppendLine($"        .shadow               = {IsShadow}")
+                .AppendLine("[/BAR]");
             return buffer.ToString();
         }
 

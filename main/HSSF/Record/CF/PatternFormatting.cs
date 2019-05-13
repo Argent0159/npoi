@@ -114,11 +114,11 @@ namespace NPOI.HSSF.Record.CF
         public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.Append("    [Pattern Formatting]\n");
-            buffer.Append("          .Fillpattern= ").Append(StringUtil.ToHexString((int) FillPattern)).Append("\n");
-            buffer.Append("          .ForegroundColorIndex= ").Append(StringUtil.ToHexString(FillForegroundColor)).Append("\n");
-            buffer.Append("          .BackgroundColorIndex= ").Append(StringUtil.ToHexString(FillBackgroundColor)).Append("\n");
-            buffer.Append("    [/Pattern Formatting]\n");
+            buffer.AppendLine("    [Pattern Formatting]");
+            buffer.AppendLine($"        .Fillpattern          = {StringUtil.ToHexString((int) FillPattern)}");
+            buffer.AppendLine($"        .ForegroundColorIndex = {StringUtil.ToHexString(FillForegroundColor)}");
+            buffer.AppendLine($"        .BackgroundColorIndex = {StringUtil.ToHexString(FillBackgroundColor)}");
+            buffer.AppendLine("    [/Pattern Formatting]");
             return buffer.ToString();
         }
 

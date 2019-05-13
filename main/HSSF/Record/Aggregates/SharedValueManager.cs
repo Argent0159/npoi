@@ -53,8 +53,8 @@ namespace NPOI.HSSF.Record.Aggregates
             {
                 if (!sfr.IsInRange(firstCell.Row, firstCell.Col))
                 {
-                    throw new ArgumentException("First formula cell " + firstCell.FormatAsString()
-                            + " is not shared formula range " + sfr.Range.ToString() + ".");
+                    string message = $"First formula cell {firstCell.FormatAsString()} is not shared formula range {sfr.Range.ToString()}.";
+                    throw new ArgumentException(message);
                 }
                 _sfr = sfr;
                 _firstCell = firstCell;
@@ -132,7 +132,8 @@ namespace NPOI.HSSF.Record.Aggregates
             int nShF = sharedFormulaRecords.Length;
             if (nShF != firstCells.Length)
             {
-                throw new ArgumentException("array sizes don't match: " + nShF + "!=" + firstCells.Length + ".");
+                string message = $"array sizes don't match: {nShF}!={firstCells.Length}.";
+                throw new ArgumentException(message);
             }
             _arrayRecords = new List<ArrayRecord>();
             _arrayRecords.AddRange(arrayRecords);
@@ -380,8 +381,7 @@ namespace NPOI.HSSF.Record.Aggregates
                 }
             }
             string ref1 = new CellReference(rowIndex, columnIndex, false, false).FormatAsString();
-            throw new ArgumentException("Specified cell " + ref1
-                    + " is not part of an array formula.");
+            throw new ArgumentException($"Specified cell {ref1} is not part of an array formula.");
         }
 
         /**

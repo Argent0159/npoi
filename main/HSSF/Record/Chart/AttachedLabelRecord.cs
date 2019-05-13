@@ -64,19 +64,16 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[ATTACHEDLABEL]\n");
-            buffer.Append("    .formatFlags          = ")
-                .Append("0x").Append(HexDump.ToHex(FormatFlags))
-                .Append(" (").Append(FormatFlags).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .showActual               = ").Append(IsShowActual).Append('\n');
-            buffer.Append("         .showPercent              = ").Append(IsShowPercent).Append('\n');
-            buffer.Append("         .labelAsPercentage        = ").Append(IsLabelAsPercentage).Append('\n');
-            buffer.Append("         .smoothedLine             = ").Append(IsSmoothedLine).Append('\n');
-            buffer.Append("         .showLabel                = ").Append(IsShowLabel).Append('\n');
-            buffer.Append("         .showBubbleSizes          = ").Append(IsShowBubbleSizes).Append('\n');
-
-            buffer.Append("[/ATTACHEDLABEL]\n");
+            buffer
+                .AppendLine("[ATTACHEDLABEL]")
+                .AppendLine($"    .formatFlags                   = 0x{HexDump.ToHex(FormatFlags)} ({FormatFlags})")
+                .AppendLine($"         .showActual               = {IsShowActual}")
+                .AppendLine($"         .showPercent              = {IsShowPercent}")
+                .AppendLine($"         .labelAsPercentage        = {IsLabelAsPercentage}")
+                .AppendLine($"         .smoothedLine             = {IsSmoothedLine}")
+                .AppendLine($"         .showLabel                = {IsShowLabel}")
+                .AppendLine($"         .showBubbleSizes          = {IsShowBubbleSizes}")
+                .AppendLine("[/ATTACHEDLABEL]");
             return buffer.ToString();
         }
 

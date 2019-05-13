@@ -92,35 +92,17 @@ namespace NPOI.HSSF.Record.Chart
         {
             StringBuilder buffer = new StringBuilder();
 
-            buffer.Append("[AREAFORMAT]\n");
-            buffer.Append("    .foregroundColor      = ")
-                .Append("0x").Append(HexDump.ToHex(ForegroundColor))
-                .Append(" (").Append(ForegroundColor).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .backgroundColor      = ")
-                .Append("0x").Append(HexDump.ToHex(BackgroundColor))
-                .Append(" (").Append(BackgroundColor).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .pattern              = ")
-                .Append("0x").Append(HexDump.ToHex(Pattern))
-                .Append(" (").Append(Pattern).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .formatFlags          = ")
-                .Append("0x").Append(HexDump.ToHex(FormatFlags))
-                .Append(" (").Append(FormatFlags).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("         .automatic                = ").Append(IsAutomatic).Append('\n');
-            buffer.Append("         .invert                   = ").Append(IsInvert).Append('\n');
-            buffer.Append("    .forecolorIndex       = ")
-                .Append("0x").Append(HexDump.ToHex(ForecolorIndex))
-                .Append(" (").Append(ForecolorIndex).Append(" )");
-            buffer.Append(Environment.NewLine);
-            buffer.Append("    .backcolorIndex       = ")
-                .Append("0x").Append(HexDump.ToHex(BackcolorIndex))
-                .Append(" (").Append(BackcolorIndex).Append(" )");
-            buffer.Append(Environment.NewLine);
-
-            buffer.Append("[/AREAFORMAT]\n");
+            buffer
+                .AppendLine("[AREAFORMAT]")
+                .AppendLine($"    .foregroundColor      = 0x{HexDump.ToHex(ForegroundColor)} ({ForegroundColor})")
+                .AppendLine($"    .backgroundColor      = 0x{HexDump.ToHex(BackgroundColor)} ({BackgroundColor})")
+                .AppendLine($"    .pattern              = 0x{HexDump.ToHex(Pattern)} ({Pattern})")
+                .AppendLine($"    .formatFlags          = 0x{HexDump.ToHex(FormatFlags)} ({FormatFlags})")
+                .AppendLine($"        .automatic        = {IsAutomatic}")
+                .AppendLine($"        .invert           = {IsInvert}")
+                .AppendLine($"    .forecolorIndex       = 0x{HexDump.ToHex(ForecolorIndex)} ({ForecolorIndex})")
+                .AppendLine($"    .backcolorIndex       = 0x{HexDump.ToHex(BackcolorIndex)} ({BackcolorIndex})")
+                .AppendLine("[/AREAFORMAT]");
             return buffer.ToString();
         }
 

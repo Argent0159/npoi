@@ -131,8 +131,8 @@ namespace NPOI.HSSF.Record.Aggregates
         {
             if (rowIndex < 0 || rowIndex > MAX_ROW_INDEX)
             {
-                throw new ArgumentException("Specified rowIndex " + rowIndex
-                        + " is outside the allowable range (0.." + MAX_ROW_INDEX + ")");
+                string message = $"Specified rowIndex {rowIndex} is outside the allowable range (0..{MAX_ROW_INDEX})";
+                throw new ArgumentException(message);
             }
             if (rowIndex >= records.Length)
             {
@@ -331,7 +331,7 @@ namespace NPOI.HSSF.Record.Aggregates
             CellValueRecordInterface[] rowCells = records[rowIndex];
             if (rowCells == null)
             {
-                throw new ArgumentException("Row [" + rowIndex + "] is empty");
+                throw new ArgumentException($"Row [{rowIndex}] is empty");
             }
             for (int i = 0; i < rowCells.Length; i++)
             {

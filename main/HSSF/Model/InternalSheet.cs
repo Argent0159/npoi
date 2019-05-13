@@ -539,13 +539,13 @@ namespace NPOI.HSSF.Model
             // Validate input
             if (rowTo < rowFrom)
             {
-                throw new ArgumentException("The 'to' row (" + rowTo
-                        + ") must not be less than the 'from' row (" + rowFrom + ")");
+                string message = $"The 'to' row ({rowTo}) must not be less than the 'from' row ({rowFrom})";
+                throw new ArgumentException(message);
             }
             if (colTo < colFrom)
             {
-                throw new ArgumentException("The 'to' col (" + colTo
-                        + ") must not be less than the 'from' col (" + colFrom + ")");
+                string message = $"The 'to' col ({colTo}) must not be less than the 'from' col ({colFrom})";
+                throw new ArgumentException(message);
             }
 
             MergedCellsTable mrt = MergedRecords;
@@ -1274,7 +1274,7 @@ namespace NPOI.HSSF.Model
         public void SetColumnWidth(int column, int width)
         {
             if (width > 255 * 256) 
-                   throw new ArgumentException("The maximum column width for an individual cell is 255 characters.");
+                throw new ArgumentException("The maximum column width for an individual cell is 255 characters.");
             SetColumn(column, null, width, null, null, null);
         }
 
@@ -2287,7 +2287,7 @@ namespace NPOI.HSSF.Model
     {
         private BOFRecordType type;
         public UnsupportedBOFType(BOFRecordType type)
-            : base("BOF not of a supported type, found " + type)
+            : base($"BOF not of a supported type, found {type}")
         {
             ;
             this.type = type;

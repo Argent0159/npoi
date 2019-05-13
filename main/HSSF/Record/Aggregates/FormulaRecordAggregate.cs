@@ -411,7 +411,7 @@ namespace NPOI.HSSF.Record.Aggregates
             ArrayRecord arec = _sharedValueManager.GetArrayRecord(expRef.Row, expRef.Col);
             if (arec == null)
             {
-                throw new InvalidOperationException("ArrayRecord was not found for the locator " + expRef.FormatAsString());
+                throw new InvalidOperationException($"ArrayRecord was not found for the locator {expRef.FormatAsString()}");
             }
             CellRangeAddress8Bit a = arec.Range;
             return new CellRangeAddress(a.FirstRow, a.LastRow, a.FirstColumn, a.LastColumn);

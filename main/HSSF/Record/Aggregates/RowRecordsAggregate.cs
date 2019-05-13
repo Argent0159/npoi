@@ -182,7 +182,7 @@ namespace NPOI.HSSF.Record.Aggregates
                         AddUnknownRecord(rec);
                         continue;
                     }
-                    throw new InvalidOperationException("Unexpected record type (" + rec.GetType().Name + ")");
+                    throw new InvalidOperationException($"Unexpected record type ({rec.GetType().Name})");
 
                 }
                 _valuesAgg.Construct((CellValueRecordInterface)rec, rs, svm);
@@ -228,7 +228,7 @@ namespace NPOI.HSSF.Record.Aggregates
             _rowRecords.Remove(key);
             if (rr == null)
             {
-                throw new Exception("Invalid row index (" + key + ")");
+                throw new Exception($"Invalid row index ({key})");
             }
             if (row != rr)
             {
@@ -343,7 +343,7 @@ namespace NPOI.HSSF.Record.Aggregates
             }
             catch (IndexOutOfRangeException)
             {
-                throw new Exception("Did not find start row for block " + block);
+                throw new Exception($"Did not find start row for block {block}");
             }
         }
 
@@ -366,7 +366,7 @@ namespace NPOI.HSSF.Record.Aggregates
             }
             catch (IndexOutOfRangeException)
             {
-                throw new Exception("Did not find end row for block " + block);
+                throw new Exception($"Did not find end row for block {block}");
             }
         }
 

@@ -110,7 +110,7 @@ namespace NPOI.HSSF.EventUserModel
             }
             else
             {
-                throw new ArgumentException("Unsupported CellValue Record passed in " + cell);
+                throw new ArgumentException($"Unsupported CellValue Record passed in {cell}");
             }
 
             // Get the built in format, if there is one
@@ -140,7 +140,8 @@ namespace NPOI.HSSF.EventUserModel
                 FormatRecord tfr = (FormatRecord)customFormatRecords[formatIndex];
                 if (tfr == null)
                 {
-                    logger.Log(POILogger.ERROR, "Requested format at index " + formatIndex + ", but it wasn't found");
+                    string log = $"Requested format at index {formatIndex}, but it wasn't found";
+                    logger.Log(POILogger.ERROR, log);
                 }
                 else
                 {
@@ -179,7 +180,8 @@ namespace NPOI.HSSF.EventUserModel
                 xfRecords[cell.XFIndex];
             if (xfr == null)
             {
-                logger.Log(POILogger.ERROR, "Cell " + cell.Row + "," + cell.Column + " uses XF with index " + cell.XFIndex + ", but we don't have that");
+                string log = $"Cell {cell.Row},{cell.Column} uses XF with index {cell.XFIndex}, but we don't have that";
+                logger.Log(POILogger.ERROR, log);
                 return -1;
             }
             return xfr.FormatIndex;

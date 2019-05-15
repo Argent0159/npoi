@@ -22,7 +22,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public static StyleSheetDocument Parse(XmlDocument xmldoc, XmlNamespaceManager namespaceManager)
         {
             var stylesheet = CT_Stylesheet.Parse(xmldoc.DocumentElement,namespaceManager);
-            return new StyleSheetDocument(obj);
+            return new StyleSheetDocument(stylesheet);
         }
 
         public void AddNewStyleSheet()

@@ -13,21 +13,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_Rst
     {
-
-        private string tField = null; // optional field -> initialize as null so that it is not serialized by default.
-
-        private List<CT_RElt> rField = null; // optional field 
-
-        private List<CT_PhoneticRun> rPhField = null; // optional field 
-
-        private CT_PhoneticPr phoneticPrField = null; // optional field 
-
         public void Set(CT_Rst o)
         {
-            this.tField = o.tField;
-            this.rField = o.rField;
-            this.rPhField = o.rPhField;
-            this.phoneticPrField = o.phoneticPrField;
+            this.t = o.t;
+            this.r = o.r;
+            this.rPh = o.rPh;
+            this.phoneticPr = o.phoneticPr;
         }
       
 
@@ -65,24 +56,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         #region t
         public bool IsSetT()
         {
-            return this.tField != null;
+            return this.t != null;
         }
         public void unsetT()
         {
-            this.tField = null;
+            this.t = null;
         }
         [XmlElement("t", DataType = "string")]
-        public string t
-        {
-            get
-            {
-                return this.tField;
-            }
-            set
-            {
-                this.tField = value;
-            }
-        }
+        public string t { get; set; } = null;
         #endregion t
 
         #region r
@@ -90,17 +71,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         /// Rich Text Run
         /// </summary>
         [XmlElement("r")]
-        public List<CT_RElt> r
-        {
-            get
-            {
-                return this.rField;
-            }
-            set
-            {
-                this.rField = value;
-            }
-        }
+        public List<CT_RElt> r { get; set; } = null;
         private string xmltext;
         [XmlIgnore]
         public string XmlText
@@ -109,10 +80,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 StringBuilder sb = new StringBuilder();
                 using (StringWriter sw = new StringWriter(sb))
                 {
-                    if (rField != null && rField.Count > 0)
+                    if (r != null && r.Count > 0)
                     {
 
-                        foreach (CT_RElt r in rField)
+                        foreach (CT_RElt r in r)
                         {
                             sw.Write("<r>");
                             if (r.rPr != null)
@@ -190,18 +161,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_RElt AddNewR()
         {
-            if (null == rField) { rField = new List<CT_RElt>(); }
+            if (null == this.r) { this.r = new List<CT_RElt>(); }
             CT_RElt r = new CT_RElt();
-            this.rField.Add(r);
+            this.r.Add(r);
             return r;
         }
         public int sizeOfRArray()
         {
-            return (null == rField) ? 0 : r.Count;
+            return (null == r) ? 0 : r.Count;
         }
         public CT_RElt GetRArray(int index)
         {
-            return (null == rField) ? null : this.rField[index];
+            return (null == r) ? null : this.r[index];
         }
         #endregion r
 
@@ -209,32 +180,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         /// Phonetic Run
         /// </summary>
         [XmlElement("rPh")]
-        public List<CT_PhoneticRun> rPh
-        {
-            get
-            {
-                return this.rPhField;
-            }
-            set
-            {
-                this.rPhField = value;
-            }
-        }
+        public List<CT_PhoneticRun> rPh { get; set; } = null;
         /// <summary>
         /// Phonetic Properties
         /// </summary>
         [XmlElement("phoneticPr")]
-        public CT_PhoneticPr phoneticPr
-        {
-            get
-            {
-                return this.phoneticPrField;
-            }
-            set
-            {
-                this.phoneticPrField = value;
-            }
-        }
+        public CT_PhoneticPr phoneticPr { get; set; } = null;
 
 
         public static CT_Rst Parse(XmlNode node, XmlNamespaceManager namespaceManager)

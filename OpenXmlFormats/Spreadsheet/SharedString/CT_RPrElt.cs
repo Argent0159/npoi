@@ -15,21 +15,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_RPrElt
     {
-        // all elements are optional
-        private CT_FontName rFontField = null; // name of the font
-        private CT_IntProperty charsetField = null;
         private CT_IntProperty familyField = null; // family of the font
-        private CT_BooleanProperty bField = null; // typeface bold
-        private CT_BooleanProperty iField = null;   // italic
-        private CT_BooleanProperty strikeField = null; //   strike through
-        private CT_BooleanProperty outlineField = null;
-        private CT_BooleanProperty shadowField = null;
-        private CT_BooleanProperty condenseField = null;
         private CT_BooleanProperty extendField = null;
-        private CT_Color colorField = null;
-        private CT_FontSize szField = null; // size of the font
-        private CT_UnderlineProperty uField = null; // underline
-        private CT_VerticalAlignFontProperty vertAlignField = null;  // vertical alignment of the text
         private CT_FontScheme schemeField = null;
 
         public static CT_RPrElt Parse(XmlNode node, XmlNamespaceManager namespaceManager)
@@ -115,58 +102,50 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region rFont
         [XmlElement]
-        public CT_FontName rFont
-        {
-            get { return this.rFontField; }
-            set { this.rFontField = value; }
-        }
+        public CT_FontName rFont { get; set; } = null;
         [XmlIgnore]
         // do not remove this field or change the name, because it is automatically used by the XmlSerializer to decide if the name attribute should be printed or not.
         public bool rFontSpecified
         {
-            get { return (null != rFontField); }
+            get { return (null != rFont); }
         }
         public int SizeOfRFontArray()
         {
-            return this.rFontField == null ? 0 : 1;
+            return this.rFont == null ? 0 : 1;
         }
         public CT_FontName AddNewRFont()
         {
-            this.rFontField = new CT_FontName();
-            return this.rFontField;
+            this.rFont = new CT_FontName();
+            return this.rFont;
         }
         public CT_FontName GetRFontArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.rFontField;
+            return this.rFont;
         }
         #endregion rFont
 
         #region charset
         [XmlElement]
-        public CT_IntProperty charset
-        {
-            get { return this.charsetField; }
-            set { this.charsetField = value; }
-        }
+        public CT_IntProperty charset { get; set; } = null;
         [XmlIgnore]
         public bool charsetSpecified
         {
-            get { return (null != charsetField); }
+            get { return (null != charset); }
         }
         public int sizeOfCharsetArray()
         {
-            return this.charsetField == null ? 0 : 1;
+            return this.charset == null ? 0 : 1;
         }
         public CT_IntProperty AddNewCharset()
         {
-            this.charsetField = new CT_IntProperty();
-            return this.charsetField;
+            this.charset = new CT_IntProperty();
+            return this.charset;
         }
         public CT_IntProperty GetCharsetArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.charsetField;
+            return this.charset;
         }
         #endregion charset
 
@@ -204,185 +183,161 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region b
         [XmlElement]
-        public CT_BooleanProperty b
-        {
-            get { return this.bField; }
-            set { this.bField = value; }
-        }
+        public CT_BooleanProperty b { get; set; } = null;
         [XmlIgnore]
         public bool bSpecified
         {
-            get { return (null != bField); }
+            get { return (null != b); }
         }
         public int SizeOfBArray()
         {
-            return this.bField == null ? 0 : 1;
+            return this.b == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewB()
         {
-            this.bField = new CT_BooleanProperty();
-            return this.bField;
+            this.b = new CT_BooleanProperty();
+            return this.b;
         }
         public void SetBArray(CT_BooleanProperty[] array)
         {
-            this.bField = array.Length > 0 ? array[0] : null;
+            this.b = array.Length > 0 ? array[0] : null;
         }
         public CT_BooleanProperty GetBArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.bField;
+            return this.b;
         }
         #endregion b
 
         #region i
         [XmlElement]
-        public CT_BooleanProperty i
-        {
-            get { return this.iField; }
-            set { this.iField = value; }
-        }
+        public CT_BooleanProperty i { get; set; } = null;
         [XmlIgnore]
         public bool iSpecified
         {
-            get { return (null != iField); }
+            get { return (null != i); }
         }
         public int SizeOfIArray()
         {
-            return this.iField == null ? 0 : 1;
+            return this.i == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewI()
         {
-            this.iField = new CT_BooleanProperty();
-            return this.iField;
+            this.i = new CT_BooleanProperty();
+            return this.i;
         }
         public void SetIArray(CT_BooleanProperty[] array)
         {
-            this.iField = array.Length > 0 ? array[0] : null;
+            this.i = array.Length > 0 ? array[0] : null;
         }
         public CT_BooleanProperty GetIArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.iField;
+            return this.i;
         }
         #endregion i
 
         #region strike
         [XmlElement]
-        public CT_BooleanProperty strike
-        {
-            get { return this.strikeField; }
-            set { this.strikeField = value; }
-        }
+        public CT_BooleanProperty strike { get; set; } = null;
         [XmlIgnore]
         public bool strikeSpecified
         {
-            get { return (null != strikeField); }
+            get { return (null != strike); }
         }
         public int sizeOfStrikeArray()
         {
-            return this.strikeField == null ? 0 : 1;
+            return this.strike == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewStrike()
         {
-            this.strikeField = new CT_BooleanProperty();
-            return this.strikeField;
+            this.strike = new CT_BooleanProperty();
+            return this.strike;
         }
         public void SetStrikeArray(CT_BooleanProperty[] array)
         {
-            this.strikeField = array.Length > 0 ? array[0] : null;
+            this.strike = array.Length > 0 ? array[0] : null;
         }
         public CT_BooleanProperty GetStrikeArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.strikeField;
+            return this.strike;
         }
         #endregion strike
 
         #region outline
         [XmlElement]
-        public CT_BooleanProperty outline
-        {
-            get { return this.outlineField; }
-            set { this.outlineField = value; }
-        }
+        public CT_BooleanProperty outline { get; set; } = null;
         [XmlIgnore]
         public bool outlineSpecified
         {
-            get { return (null != outlineField); }
+            get { return (null != outline); }
         }
         public int sizeOfOutlineArray()
         {
-            return this.outlineField == null ? 0 : 1;
+            return this.outline == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewOutline()
         {
-            this.outlineField = new CT_BooleanProperty();
-            return this.outlineField;
+            this.outline = new CT_BooleanProperty();
+            return this.outline;
         }
         public void SetOutlineArray(CT_BooleanProperty[] array)
         {
-            this.outlineField = array.Length > 0 ? array[0] : null;
+            this.outline = array.Length > 0 ? array[0] : null;
         }
         public CT_BooleanProperty GetOutlineArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.outlineField;
+            return this.outline;
         }
         #endregion outline
 
         #region shadow
         [XmlElement]
-        public CT_BooleanProperty shadow
-        {
-            get { return this.shadowField; }
-            set { this.shadowField = value; }
-        }
+        public CT_BooleanProperty shadow { get; set; } = null;
         [XmlIgnore]
         public bool shadowSpecified
         {
-            get { return (null != shadowField); }
+            get { return (null != shadow); }
         }
         public int sizeOfShadowArray()
         {
-            return this.shadowField == null ? 0 : 1;
+            return this.shadow == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewShadow()
         {
-            this.shadowField = new CT_BooleanProperty();
-            return this.shadowField;
+            this.shadow = new CT_BooleanProperty();
+            return this.shadow;
         }
         public CT_BooleanProperty GetShadowArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.shadowField;
+            return this.shadow;
         }
         #endregion shadow
 
         #region condense
         [XmlElement]
-        public CT_BooleanProperty condense
-        {
-            get { return this.condenseField; }
-            set { this.condenseField = value; }
-        }
+        public CT_BooleanProperty condense { get; set; } = null;
         [XmlIgnore]
         public bool condenseSpecified
         {
-            get { return (null != condenseField); }
+            get { return (null != condense); }
         }
         public int sizeOfCondenseArray()
         {
-            return this.condenseField == null ? 0 : 1;
+            return this.condense == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewCondense()
         {
-            this.condenseField = new CT_BooleanProperty();
-            return this.condenseField;
+            this.condense = new CT_BooleanProperty();
+            return this.condense;
         }
         public CT_BooleanProperty GetCondenseArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.condenseField;
+            return this.condense;
         }
         #endregion condense
 
@@ -416,129 +371,113 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region color
         [XmlElement]
-        public CT_Color color
-        {
-            get { return this.colorField; }
-            set { this.colorField = value; }
-        }
+        public CT_Color color { get; set; } = null;
         [XmlIgnore]
         public bool colorSpecified
         {
-            get { return (null != colorField); }
+            get { return (null != color); }
         }
         public int SizeOfColorArray()
         {
-            return this.colorField == null ? 0 : 1;
+            return this.color == null ? 0 : 1;
         }
         public CT_Color GetColorArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.colorField;
+            return this.color;
         }
         public void SetColorArray(CT_Color[] array)
         {
-            this.colorField = array.Length > 0 ? array[0] : null;
+            this.color = array.Length > 0 ? array[0] : null;
         }
         public CT_Color AddNewColor()
         {
-            this.colorField = new CT_Color();
-            return this.colorField;
+            this.color = new CT_Color();
+            return this.color;
         }
         #endregion color
 
         #region sz
         [XmlElement]
-        public CT_FontSize sz
-        {
-            get { return this.szField; }
-            set { this.szField = value; }
-        }
+        public CT_FontSize sz { get; set; } = null;
         [XmlIgnore]
         public bool szSpecified
         {
-            get { return (null != szField); }
+            get { return (null != sz); }
         }
         public int SizeOfSzArray()
         {
-            return this.szField == null ? 0 : 1;
+            return this.sz == null ? 0 : 1;
         }
         public CT_FontSize AddNewSz()
         {
-            this.szField = new CT_FontSize();
-            return this.szField;
+            this.sz = new CT_FontSize();
+            return this.sz;
         }
         public void SetSzArray(CT_FontSize[] array)
         {
-            this.szField = array.Length > 0 ? array[0] : null;
+            this.sz = array.Length > 0 ? array[0] : null;
         }
         public CT_FontSize GetSzArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.szField;
+            return this.sz;
         }
         #endregion sz
 
         #region u
         [XmlElement]
-        public CT_UnderlineProperty u
-        {
-            get { return this.uField; }
-            set { this.uField = value; }
-        }
+        public CT_UnderlineProperty u { get; set; } = null;
         [XmlIgnore]
         public bool uSpecified
         {
-            get { return (null != uField); }
+            get { return (null != u); }
         }
         public int SizeOfUArray()
         {
-            return this.uField == null ? 0 : 1;
+            return this.u == null ? 0 : 1;
         }
         public CT_UnderlineProperty AddNewU()
         {
-            this.uField = new CT_UnderlineProperty();
-            return this.uField;
+            this.u = new CT_UnderlineProperty();
+            return this.u;
         }
         public void SetUArray(CT_UnderlineProperty[] array)
         {
-            this.uField = array.Length > 0 ? array[0] : null;
+            this.u = array.Length > 0 ? array[0] : null;
         }
         public CT_UnderlineProperty GetUArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.uField;
+            return this.u;
         }
         #endregion u
 
         #region vertAlign
         [XmlElement]
-        public CT_VerticalAlignFontProperty vertAlign
-        {
-            get { return this.vertAlignField; }
-            set { this.vertAlignField = value; }
-        }
+        public CT_VerticalAlignFontProperty vertAlign { get; set; } = null;
         [XmlIgnore]
         public bool vertAlignSpecified
         {
-            get { return (null != vertAlignField); }
+            get { return (null != vertAlign); }
         }
         public int sizeOfVertAlignArray()
         {
-            return this.vertAlignField == null ? 0 : 1;
+            return this.vertAlign == null ? 0 : 1;
         }
         public CT_VerticalAlignFontProperty AddNewVertAlign()
         {
-            this.vertAlignField = new CT_VerticalAlignFontProperty();
-            return this.vertAlignField;
+            this.vertAlign = new CT_VerticalAlignFontProperty();
+            return this.vertAlign;
         }
         public void SetVertAlignArray(CT_VerticalAlignFontProperty[] array)
         {
-            this.vertAlignField = array.Length > 0 ? array[0] : null;
+            this.vertAlign = array.Length > 0 ? array[0] : null;
         }
         public CT_VerticalAlignFontProperty GetVertAlignArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.vertAlignField;
+            return this.vertAlign;
         }
         #endregion vertAlign
 

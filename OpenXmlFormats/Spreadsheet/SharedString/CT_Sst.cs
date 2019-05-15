@@ -13,49 +13,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(ElementName = "sst", Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public class CT_Sst
     {
-
-        private List<CT_Rst> siField;
-
-        private CT_ExtensionList extLstField;
-
         private int countField;
-
-        private bool countFieldSpecified;
-
         private int uniqueCountField;
-
-        private bool uniqueCountFieldSpecified;
 
         public CT_Sst()
         {
             //this.extLstField = new CT_ExtensionList();
-            this.siField = new List<CT_Rst>();
+            this.si = new List<CT_Rst>();
         }
 
         [XmlElement]
-        public List<CT_Rst> si
-        {
-            get
-            {
-                return this.siField;
-            }
-            set
-            {
-                this.siField = value;
-            }
-        }
+        public List<CT_Rst> si { get; set; }
         [XmlElement]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
         [XmlAttribute]
         public int count
         {
@@ -66,14 +36,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             set
             {
                 this.countField = value;
-                this.countFieldSpecified = true;
+                this.countSpecified = true;
             }
         }
-        public bool countSpecified
-        {
-            get { return this.countFieldSpecified; }
-            set { this.countFieldSpecified = value; }
-        }
+        public bool countSpecified { get; set; }
         [XmlAttribute]
         public int uniqueCount
         {
@@ -84,14 +50,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             set
             {
                 this.uniqueCountField = value;
-                this.uniqueCountFieldSpecified = true;
+                this.uniqueCountSpecified = true;
             }
         }
-        public bool uniqueCountSpecified
-        {
-            get { return this.uniqueCountFieldSpecified; }
-            set { this.uniqueCountFieldSpecified = value; }
-        }
+        public bool uniqueCountSpecified { get; set; }
 
     }
 }

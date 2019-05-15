@@ -16,11 +16,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_RElt
     {
-
-        private CT_RPrElt rPrField = null; // optional field 
-
-        private string tField = string.Empty; // required field 
-
         public static CT_RElt Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -52,40 +47,20 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_RPrElt AddNewRPr()
         {
-            this.rPrField = new CT_RPrElt();
-            return rPrField;
+            this.rPr = new CT_RPrElt();
+            return rPr;
         }
 
         /// <summary>
         /// Run Properties
         /// </summary>
         [XmlElement("rPr")]
-        public CT_RPrElt rPr
-        {
-            get
-            {
-                return this.rPrField;
-            }
-            set
-            {
-                this.rPrField = value;
-            }
-        }
+        public CT_RPrElt rPr { get; set; } = null;
 
         /// <summary>
         /// Text
         /// </summary>
         [XmlElement("t")]
-        public string t
-        {
-            get
-            {
-                return this.tField;
-            }
-            set
-            {
-                this.tField = value;
-            }
-        }
+        public string t { get; set; } = string.Empty;
     }
 }

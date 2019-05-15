@@ -142,568 +142,161 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 this.Write(sw);
             }
         }
-        private CT_CacheSource cacheSourceField;
-
-        private CT_CacheFields cacheFieldsField;
-
-        private CT_CacheHierarchies cacheHierarchiesField;
-
-        private CT_PCDKPIs kpisField;
-
-        private CT_TupleCache tupleCacheField;
-
-        private CT_CalculatedItems calculatedItemsField;
-
-        private CT_CalculatedMembers calculatedMembersField;
-
-        private CT_Dimensions dimensionsField;
-
-        private CT_MeasureGroups measureGroupsField;
-
-        private CT_MeasureDimensionMaps mapsField;
-
-        private CT_ExtensionList extLstField;
-
-        private string idField;
-
-        private bool invalidField;
-
-        private bool saveDataField;
-
-        private bool refreshOnLoadField;
-
-        private bool optimizeMemoryField;
-
-        private bool enableRefreshField;
-
-        private string refreshedByField;
-
-        private double refreshedDateField;
-
-        private bool refreshedDateFieldSpecified;
-
-        private System.DateTime? refreshedDateIsoField;
-
-        private bool refreshedDateIsoFieldSpecified;
-
-        private bool backgroundQueryField;
-
-        private uint missingItemsLimitField;
-
-        private bool missingItemsLimitFieldSpecified;
-
-        private byte createdVersionField;
-
-        private byte refreshedVersionField;
-
-        private byte minRefreshableVersionField;
-
-        private uint recordCountField;
-
-        private bool recordCountFieldSpecified;
-
-        private bool upgradeOnRefreshField;
-
-        private bool tupleCache1Field;
-
-        private bool supportSubqueryField;
-
-        private bool supportAdvancedDrillField;
 
         public CT_PivotCacheDefinition()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.mapsField = new CT_MeasureDimensionMaps();
-            this.measureGroupsField = new CT_MeasureGroups();
-            this.dimensionsField = new CT_Dimensions();
-            this.calculatedMembersField = new CT_CalculatedMembers();
-            this.calculatedItemsField = new CT_CalculatedItems();
-            this.tupleCacheField = new CT_TupleCache();
-            this.kpisField = new CT_PCDKPIs();
-            this.cacheHierarchiesField = new CT_CacheHierarchies();
-            this.cacheFieldsField = new CT_CacheFields();
-            this.cacheSourceField = new CT_CacheSource();
-            this.invalidField = false;
-            this.saveDataField = true;
-            this.refreshOnLoadField = false;
-            this.optimizeMemoryField = false;
-            this.enableRefreshField = true;
-            this.backgroundQueryField = false;
-            this.createdVersionField = ((byte)(0));
-            this.refreshedVersionField = ((byte)(0));
-            this.minRefreshableVersionField = ((byte)(0));
-            this.upgradeOnRefreshField = false;
-            this.tupleCache1Field = false;
-            this.supportSubqueryField = false;
-            this.supportAdvancedDrillField = false;
+            this.extLst = new CT_ExtensionList();
+            this.maps = new CT_MeasureDimensionMaps();
+            this.measureGroups = new CT_MeasureGroups();
+            this.dimensions = new CT_Dimensions();
+            this.calculatedMembers = new CT_CalculatedMembers();
+            this.calculatedItems = new CT_CalculatedItems();
+            this.tupleCache = new CT_TupleCache();
+            this.kpis = new CT_PCDKPIs();
+            this.cacheHierarchies = new CT_CacheHierarchies();
+            this.cacheFields = new CT_CacheFields();
+            this.cacheSource = new CT_CacheSource();
+            this.invalid = false;
+            this.saveData = true;
+            this.refreshOnLoad = false;
+            this.optimizeMemory = false;
+            this.enableRefresh = true;
+            this.backgroundQuery = false;
+            this.createdVersion = ((byte)(0));
+            this.refreshedVersion = ((byte)(0));
+            this.minRefreshableVersion = ((byte)(0));
+            this.upgradeOnRefresh = false;
+            this.tupleCache1 = false;
+            this.supportSubquery = false;
+            this.supportAdvancedDrill = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_CacheSource cacheSource
-        {
-            get
-            {
-                return this.cacheSourceField;
-            }
-            set
-            {
-                this.cacheSourceField = value;
-            }
-        }
+        public CT_CacheSource cacheSource { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_CacheFields cacheFields
-        {
-            get
-            {
-                return this.cacheFieldsField;
-            }
-            set
-            {
-                this.cacheFieldsField = value;
-            }
-        }
+        public CT_CacheFields cacheFields { get; set; }
 
         [XmlElement(Order = 2)]
-        public CT_CacheHierarchies cacheHierarchies
-        {
-            get
-            {
-                return this.cacheHierarchiesField;
-            }
-            set
-            {
-                this.cacheHierarchiesField = value;
-            }
-        }
+        public CT_CacheHierarchies cacheHierarchies { get; set; }
 
         [XmlElement(Order = 3)]
-        public CT_PCDKPIs kpis
-        {
-            get
-            {
-                return this.kpisField;
-            }
-            set
-            {
-                this.kpisField = value;
-            }
-        }
+        public CT_PCDKPIs kpis { get; set; }
 
         [XmlElement(Order = 4)]
-        public CT_TupleCache tupleCache
-        {
-            get
-            {
-                return this.tupleCacheField;
-            }
-            set
-            {
-                this.tupleCacheField = value;
-            }
-        }
+        public CT_TupleCache tupleCache { get; set; }
 
         [XmlElement(Order = 5)]
-        public CT_CalculatedItems calculatedItems
-        {
-            get
-            {
-                return this.calculatedItemsField;
-            }
-            set
-            {
-                this.calculatedItemsField = value;
-            }
-        }
+        public CT_CalculatedItems calculatedItems { get; set; }
 
         [XmlElement(Order = 6)]
-        public CT_CalculatedMembers calculatedMembers
-        {
-            get
-            {
-                return this.calculatedMembersField;
-            }
-            set
-            {
-                this.calculatedMembersField = value;
-            }
-        }
+        public CT_CalculatedMembers calculatedMembers { get; set; }
 
         [XmlElement(Order = 7)]
-        public CT_Dimensions dimensions
-        {
-            get
-            {
-                return this.dimensionsField;
-            }
-            set
-            {
-                this.dimensionsField = value;
-            }
-        }
+        public CT_Dimensions dimensions { get; set; }
 
         [XmlElement(Order = 8)]
-        public CT_MeasureGroups measureGroups
-        {
-            get
-            {
-                return this.measureGroupsField;
-            }
-            set
-            {
-                this.measureGroupsField = value;
-            }
-        }
+        public CT_MeasureGroups measureGroups { get; set; }
 
         [XmlElement(Order = 9)]
-        public CT_MeasureDimensionMaps maps
-        {
-            get
-            {
-                return this.mapsField;
-            }
-            set
-            {
-                this.mapsField = value;
-            }
-        }
+        public CT_MeasureDimensionMaps maps { get; set; }
 
         [XmlElement(Order = 10)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute(Form = XmlSchemaForm.Qualified, Namespace = "http://schemas.openxmlformats.org/officeDocument/2006/relationships")]
-        public string id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public string id { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool invalid
-        {
-            get
-            {
-                return this.invalidField;
-            }
-            set
-            {
-                this.invalidField = value;
-            }
-        }
+        public bool invalid { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool saveData
-        {
-            get
-            {
-                return this.saveDataField;
-            }
-            set
-            {
-                this.saveDataField = value;
-            }
-        }
+        public bool saveData { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool refreshOnLoad
-        {
-            get
-            {
-                return this.refreshOnLoadField;
-            }
-            set
-            {
-                this.refreshOnLoadField = value;
-            }
-        }
+        public bool refreshOnLoad { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool optimizeMemory
-        {
-            get
-            {
-                return this.optimizeMemoryField;
-            }
-            set
-            {
-                this.optimizeMemoryField = value;
-            }
-        }
+        public bool optimizeMemory { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool enableRefresh
-        {
-            get
-            {
-                return this.enableRefreshField;
-            }
-            set
-            {
-                this.enableRefreshField = value;
-            }
-        }
+        public bool enableRefresh { get; set; }
 
         [XmlAttribute()]
-        public string refreshedBy
-        {
-            get
-            {
-                return this.refreshedByField;
-            }
-            set
-            {
-                this.refreshedByField = value;
-            }
-        }
+        public string refreshedBy { get; set; }
 
         [XmlAttribute()]
-        public double refreshedDate
-        {
-            get
-            {
-                return this.refreshedDateField;
-            }
-            set
-            {
-                this.refreshedDateField = value;
-            }
-        }
+        public double refreshedDate { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool refreshedDateSpecified
-        {
-            get
-            {
-                return this.refreshedDateFieldSpecified;
-            }
-            set
-            {
-                this.refreshedDateFieldSpecified = value;
-            }
-        }
+        public bool refreshedDateSpecified { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? refreshedDateIso
-        {
-            get
-            {
-                return this.refreshedDateIsoField;
-            }
-            set
-            {
-                this.refreshedDateIsoField = value;
-            }
-        }
+        public System.DateTime? refreshedDateIso { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool refreshedDateIsoSpecified
-        {
-            get
-            {
-                return this.refreshedDateIsoFieldSpecified;
-            }
-            set
-            {
-                this.refreshedDateIsoFieldSpecified = value;
-            }
-        }
+        public bool refreshedDateIsoSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool backgroundQuery
-        {
-            get
-            {
-                return this.backgroundQueryField;
-            }
-            set
-            {
-                this.backgroundQueryField = value;
-            }
-        }
+        public bool backgroundQuery { get; set; }
 
         [XmlAttribute()]
-        public uint missingItemsLimit
-        {
-            get
-            {
-                return this.missingItemsLimitField;
-            }
-            set
-            {
-                this.missingItemsLimitField = value;
-            }
-        }
+        public uint missingItemsLimit { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool missingItemsLimitSpecified
-        {
-            get
-            {
-                return this.missingItemsLimitFieldSpecified;
-            }
-            set
-            {
-                this.missingItemsLimitFieldSpecified = value;
-            }
-        }
+        public bool missingItemsLimitSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(byte), "0")]
-        public byte createdVersion
-        {
-            get
-            {
-                return this.createdVersionField;
-            }
-            set
-            {
-                this.createdVersionField = value;
-            }
-        }
+        public byte createdVersion { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(byte), "0")]
-        public byte refreshedVersion
-        {
-            get
-            {
-                return this.refreshedVersionField;
-            }
-            set
-            {
-                this.refreshedVersionField = value;
-            }
-        }
+        public byte refreshedVersion { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(byte), "0")]
-        public byte minRefreshableVersion
-        {
-            get
-            {
-                return this.minRefreshableVersionField;
-            }
-            set
-            {
-                this.minRefreshableVersionField = value;
-            }
-        }
+        public byte minRefreshableVersion { get; set; }
 
         [XmlAttribute()]
-        public uint recordCount
-        {
-            get
-            {
-                return this.recordCountField;
-            }
-            set
-            {
-                this.recordCountField = value;
-            }
-        }
+        public uint recordCount { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool recordCountSpecified
-        {
-            get
-            {
-                return this.recordCountFieldSpecified;
-            }
-            set
-            {
-                this.recordCountFieldSpecified = value;
-            }
-        }
+        public bool recordCountSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool upgradeOnRefresh
-        {
-            get
-            {
-                return this.upgradeOnRefreshField;
-            }
-            set
-            {
-                this.upgradeOnRefreshField = value;
-            }
-        }
+        public bool upgradeOnRefresh { get; set; }
 
         [XmlAttribute(nameof(tupleCache))]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool tupleCache1
-        {
-            get
-            {
-                return this.tupleCache1Field;
-            }
-            set
-            {
-                this.tupleCache1Field = value;
-            }
-        }
+        public bool tupleCache1 { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool supportSubquery
-        {
-            get
-            {
-                return this.supportSubqueryField;
-            }
-            set
-            {
-                this.supportSubqueryField = value;
-            }
-        }
+        public bool supportSubquery { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool supportAdvancedDrill
-        {
-            get
-            {
-                return this.supportAdvancedDrillField;
-            }
-            set
-            {
-                this.supportAdvancedDrillField = value;
-            }
-        }
+        public bool supportAdvancedDrill { get; set; }
 
         public CT_CacheFields AddNewCacheFields()
         {
-            this.cacheFieldsField = new CT_CacheFields();
-            return this.cacheFieldsField;
+            this.cacheFields = new CT_CacheFields();
+            return this.cacheFields;
         }
 
 
         public CT_CacheSource AddNewCacheSource()
         {
-            this.cacheSourceField = new CT_CacheSource();
-            return this.cacheSourceField;
+            this.cacheSource = new CT_CacheSource();
+            return this.cacheSource;
         }
     }
 
@@ -747,55 +340,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_PCDSCPage> pageField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_Pages()
         {
-            this.pageField = new List<CT_PCDSCPage>();
+            this.page = new List<CT_PCDSCPage>();
         }
 
         [XmlElement(nameof(page), Order = 0)]
-        public List<CT_PCDSCPage> page
-        {
-            get
-            {
-                return this.pageField;
-            }
-            set
-            {
-                this.pageField = value;
-            }
-        }
+        public List<CT_PCDSCPage> page { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -838,55 +395,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_PageItem> pageItemField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_PCDSCPage()
         {
-            this.pageItemField = new List<CT_PageItem>();
+            this.pageItem = new List<CT_PageItem>();
         }
 
         [XmlElement(nameof(pageItem), Order = 0)]
-        public List<CT_PageItem> pageItem
-        {
-            get
-            {
-                return this.pageItemField;
-            }
-            set
-            {
-                this.pageItemField = value;
-            }
-        }
+        public List<CT_PageItem> pageItem { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -915,20 +436,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string nameField;
-
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
     }
 
     
@@ -971,55 +480,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_RangeSet> rangeSetField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_RangeSets()
         {
-            this.rangeSetField = new List<CT_RangeSet>();
+            this.rangeSet = new List<CT_RangeSet>();
         }
 
         [XmlElement(nameof(rangeSet), Order = 0)]
-        public List<CT_RangeSet> rangeSet
-        {
-            get
-            {
-                return this.rangeSetField;
-            }
-            set
-            {
-                this.rangeSetField = value;
-            }
-        }
+        public List<CT_RangeSet> rangeSet { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -1066,185 +539,41 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private uint i1Field;
-
-        private bool i1FieldSpecified;
-
-        private uint i2Field;
-
-        private bool i2FieldSpecified;
-
-        private uint i3Field;
-
-        private bool i3FieldSpecified;
-
-        private uint i4Field;
-
-        private bool i4FieldSpecified;
-
-        private string refField;
-
-        private string nameField;
-
-        private string sheetField;
-
-        private string idField;
-
         [XmlAttribute()]
-        public uint i1
-        {
-            get
-            {
-                return this.i1Field;
-            }
-            set
-            {
-                this.i1Field = value;
-            }
-        }
+        public uint i1 { get; set; }
 
         [XmlIgnore()]
-        public bool i1Specified
-        {
-            get
-            {
-                return this.i1FieldSpecified;
-            }
-            set
-            {
-                this.i1FieldSpecified = value;
-            }
-        }
+        public bool i1Specified { get; set; }
 
         [XmlAttribute()]
-        public uint i2
-        {
-            get
-            {
-                return this.i2Field;
-            }
-            set
-            {
-                this.i2Field = value;
-            }
-        }
+        public uint i2 { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool i2Specified
-        {
-            get
-            {
-                return this.i2FieldSpecified;
-            }
-            set
-            {
-                this.i2FieldSpecified = value;
-            }
-        }
+        public bool i2Specified { get; set; }
 
         [XmlAttribute()]
-        public uint i3
-        {
-            get
-            {
-                return this.i3Field;
-            }
-            set
-            {
-                this.i3Field = value;
-            }
-        }
+        public uint i3 { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool i3Specified
-        {
-            get
-            {
-                return this.i3FieldSpecified;
-            }
-            set
-            {
-                this.i3FieldSpecified = value;
-            }
-        }
+        public bool i3Specified { get; set; }
 
         [XmlAttribute()]
-        public uint i4
-        {
-            get
-            {
-                return this.i4Field;
-            }
-            set
-            {
-                this.i4Field = value;
-            }
-        }
+        public uint i4 { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool i4Specified
-        {
-            get
-            {
-                return this.i4FieldSpecified;
-            }
-            set
-            {
-                this.i4FieldSpecified = value;
-            }
-        }
+        public bool i4Specified { get; set; }
 
         [XmlAttribute()]
-        public string @ref
-        {
-            get
-            {
-                return this.refField;
-            }
-            set
-            {
-                this.refField = value;
-            }
-        }
+        public string @ref { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string sheet
-        {
-            get
-            {
-                return this.sheetField;
-            }
-            set
-            {
-                this.sheetField = value;
-            }
-        }
+        public string sheet { get; set; }
 
         [XmlAttribute(Form = XmlSchemaForm.Qualified, Namespace = "http://schemas.openxmlformats.org/officeDocument/2006/relationships")]
-        public string id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public string id { get; set; }
     }
     
     
@@ -1284,58 +613,22 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_Pages pagesField;
-
-        private CT_RangeSets rangeSetsField;
-
-        private bool autoPageField;
-
         public CT_Consolidation()
         {
-            this.rangeSetsField = new CT_RangeSets();
-            this.pagesField = new CT_Pages();
-            this.autoPageField = true;
+            this.rangeSets = new CT_RangeSets();
+            this.pages = new CT_Pages();
+            this.autoPage = true;
         }
 
         [XmlElement(Order = 0)]
-        public CT_Pages pages
-        {
-            get
-            {
-                return this.pagesField;
-            }
-            set
-            {
-                this.pagesField = value;
-            }
-        }
+        public CT_Pages pages { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_RangeSets rangeSets
-        {
-            get
-            {
-                return this.rangeSetsField;
-            }
-            set
-            {
-                this.rangeSetsField = value;
-            }
-        }
+        public CT_RangeSets rangeSets { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool autoPage
-        {
-            get
-            {
-                return this.autoPageField;
-            }
-            set
-            {
-                this.autoPageField = value;
-            }
-        }
+        public bool autoPage { get; set; }
     }
 
     
@@ -1370,65 +663,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string refField;
-
-        private string nameField;
-
-        private string sheetField;
-
-        private string idField;
+        [XmlAttribute()]
+        public string @ref { get; set; }
 
         [XmlAttribute()]
-        public string @ref
-        {
-            get
-            {
-                return this.refField;
-            }
-            set
-            {
-                this.refField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-
-        [XmlAttribute()]
-        public string sheet
-        {
-            get
-            {
-                return this.sheetField;
-            }
-            set
-            {
-                this.sheetField = value;
-            }
-        }
+        public string sheet { get; set; }
 
         [XmlAttribute(Form = XmlSchemaForm.Qualified, Namespace = "http://schemas.openxmlformats.org/officeDocument/2006/relationships")]
-        public string id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public string id { get; set; }
     }
 
     
@@ -1497,105 +742,32 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-
-        private object itemField;
-
-        private ST_SourceType typeField;
-
-        private uint connectionIdField;
-
-        private CT_WorksheetSource worksheetSourceField;
-
-        private CT_ExtensionList extLstField;
-
-        private CT_Consolidation consolidationField;
-
         public CT_CacheSource()
         {
-            this.connectionIdField = ((uint)(0));
+            this.connectionId = ((uint)(0));
         }
 
         [XmlElement("consolidation", typeof(CT_Consolidation), Order = 0)]
         [XmlElement("extLst", typeof(CT_ExtensionList), Order = 0)]
         [XmlElement("worksheetSource", typeof(CT_WorksheetSource), Order = 0)]
-        public object Item
-        {
-            get
-            {
-                return this.itemField;
-            }
-            set
-            {
-                this.itemField = value;
-            }
-        }
+        public object Item { get; set; }
 
         [XmlAttribute()]
-        public ST_SourceType type
-        {
-            get
-            {
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
-            }
-        }
+        public ST_SourceType type { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(uint), "0")]
-        public uint connectionId
-        {
-            get
-            {
-                return this.connectionIdField;
-            }
-            set
-            {
-                this.connectionIdField = value;
-            }
-        }
+        public uint connectionId { get; set; }
 
-        public CT_WorksheetSource worksheetSource
-        {
-            get
-            {
-                return this.worksheetSourceField;
-            }
-            set
-            {
-                this.worksheetSourceField = value;
-            }
-        }
+        public CT_WorksheetSource worksheetSource { get; set; }
 
-        public CT_Consolidation consolidation
-        {
-            get
-            {
-                return this.consolidationField;
-            }
-            set
-            {
-                this.consolidationField = value;
-            }
-        }
+        public CT_Consolidation consolidation { get; set; }
 
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
         public CT_WorksheetSource AddNewWorksheetSource()
         {
-            this.worksheetSourceField = new CT_WorksheetSource();
-            return this.worksheetSourceField;
+            this.worksheetSource = new CT_WorksheetSource();
+            return this.worksheetSource;
         }
     }
 
@@ -1639,68 +811,32 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_CacheField> cacheFieldField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_CacheFields()
         {
-            this.cacheFieldField = new List<CT_CacheField>();
+            this.cacheField = new List<CT_CacheField>();
         }
 
         [XmlElement(nameof(cacheField), Order = 0)]
-        public List<CT_CacheField> cacheField
-        {
-            get
-            {
-                return this.cacheFieldField;
-            }
-            set
-            {
-                this.cacheFieldField = value;
-            }
-        }
+        public List<CT_CacheField> cacheField { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
         public CT_CacheField AddNewCacheField()
         {
             CT_CacheField f = new CT_CacheField();
-            this.cacheFieldField.Add(f);
+            this.cacheField.Add(f);
             return f;
         }
 
         public uint SizeOfCacheFieldArray()
         {
-            if (this.cacheFieldField == null)
+            if (this.cacheField == null)
                 return 0;
-            return (uint)this.cacheFieldField.Count;
+            return (uint)this.cacheField.Count;
         }
     }
     
@@ -1820,58 +956,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<object> itemsField;
-
-        private bool containsSemiMixedTypesField;
-
-        private bool containsNonDateField;
-
-        private bool containsDateField;
-
-        private bool containsStringField;
-
-        private bool containsBlankField;
-
-        private bool containsMixedTypesField;
-
-        private bool containsNumberField;
-
-        private bool containsIntegerField;
-
-        private double minValueField;
-
-        private bool minValueFieldSpecified;
-
-        private double maxValueField;
-
-        private bool maxValueFieldSpecified;
-
-        private System.DateTime? minDateField;
-
-        private bool minDateFieldSpecified;
-
-        private System.DateTime? maxDateField;
-
-        private bool maxDateFieldSpecified;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
-        private bool longTextField;
-
         public CT_SharedItems()
         {
-            this.itemsField = new List<object>();
-            this.containsSemiMixedTypesField = true;
-            this.containsNonDateField = true;
-            this.containsDateField = false;
-            this.containsStringField = true;
-            this.containsBlankField = false;
-            this.containsMixedTypesField = false;
-            this.containsNumberField = false;
-            this.containsIntegerField = false;
-            this.longTextField = false;
+            this.Items = new List<object>();
+            this.containsSemiMixedTypes = true;
+            this.containsNonDate = true;
+            this.containsDate = false;
+            this.containsString = true;
+            this.containsBlank = false;
+            this.containsMixedTypes = false;
+            this.containsNumber = false;
+            this.containsInteger = false;
+            this.longText = false;
         }
 
         [XmlElement("b", typeof(CT_Boolean), Order = 0)]
@@ -1880,273 +976,73 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         [XmlElement("m", typeof(CT_Missing), Order = 0)]
         [XmlElement("n", typeof(CT_Number), Order = 0)]
         [XmlElement("s", typeof(CT_String), Order = 0)]
-        public List<object> Items
-        {
-            get
-            {
-                return this.itemsField;
-            }
-            set
-            {
-                this.itemsField = value;
-            }
-        }
+        public List<object> Items { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool containsSemiMixedTypes
-        {
-            get
-            {
-                return this.containsSemiMixedTypesField;
-            }
-            set
-            {
-                this.containsSemiMixedTypesField = value;
-            }
-        }
+        public bool containsSemiMixedTypes { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool containsNonDate
-        {
-            get
-            {
-                return this.containsNonDateField;
-            }
-            set
-            {
-                this.containsNonDateField = value;
-            }
-        }
+        public bool containsNonDate { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool containsDate
-        {
-            get
-            {
-                return this.containsDateField;
-            }
-            set
-            {
-                this.containsDateField = value;
-            }
-        }
+        public bool containsDate { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool containsString
-        {
-            get
-            {
-                return this.containsStringField;
-            }
-            set
-            {
-                this.containsStringField = value;
-            }
-        }
+        public bool containsString { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool containsBlank
-        {
-            get
-            {
-                return this.containsBlankField;
-            }
-            set
-            {
-                this.containsBlankField = value;
-            }
-        }
+        public bool containsBlank { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool containsMixedTypes
-        {
-            get
-            {
-                return this.containsMixedTypesField;
-            }
-            set
-            {
-                this.containsMixedTypesField = value;
-            }
-        }
+        public bool containsMixedTypes { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool containsNumber
-        {
-            get
-            {
-                return this.containsNumberField;
-            }
-            set
-            {
-                this.containsNumberField = value;
-            }
-        }
+        public bool containsNumber { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool containsInteger
-        {
-            get
-            {
-                return this.containsIntegerField;
-            }
-            set
-            {
-                this.containsIntegerField = value;
-            }
-        }
+        public bool containsInteger { get; set; }
 
         [XmlAttribute()]
-        public double minValue
-        {
-            get
-            {
-                return this.minValueField;
-            }
-            set
-            {
-                this.minValueField = value;
-            }
-        }
+        public double minValue { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool minValueSpecified
-        {
-            get
-            {
-                return this.minValueFieldSpecified;
-            }
-            set
-            {
-                this.minValueFieldSpecified = value;
-            }
-        }
+        public bool minValueSpecified { get; set; }
 
         [XmlAttribute()]
-        public double maxValue
-        {
-            get
-            {
-                return this.maxValueField;
-            }
-            set
-            {
-                this.maxValueField = value;
-            }
-        }
+        public double maxValue { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool maxValueSpecified
-        {
-            get
-            {
-                return this.maxValueFieldSpecified;
-            }
-            set
-            {
-                this.maxValueFieldSpecified = value;
-            }
-        }
+        public bool maxValueSpecified { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? minDate
-        {
-            get
-            {
-                return this.minDateField;
-            }
-            set
-            {
-                this.minDateField = value;
-            }
-        }
+        public System.DateTime? minDate { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool minDateSpecified
-        {
-            get
-            {
-                return this.minDateFieldSpecified;
-            }
-            set
-            {
-                this.minDateFieldSpecified = value;
-            }
-        }
+        public bool minDateSpecified { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? maxDate
-        {
-            get
-            {
-                return this.maxDateField;
-            }
-            set
-            {
-                this.maxDateField = value;
-            }
-        }
+        public System.DateTime? maxDate { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool maxDateSpecified
-        {
-            get
-            {
-                return this.maxDateFieldSpecified;
-            }
-            set
-            {
-                this.maxDateFieldSpecified = value;
-            }
-        }
+        public bool maxDateSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool longText
-        {
-            get
-            {
-                return this.longTextField;
-            }
-            set
-            {
-                this.longTextField = value;
-            }
-        }
+        public bool longText { get; set; }
     }
     
     
@@ -2233,317 +1129,89 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_SharedItems sharedItemsField;
-
-        private CT_FieldGroup fieldGroupField;
-
-        private List<CT_X> mpMapField;
-
-        private CT_ExtensionList extLstField;
-
-        private string nameField;
-
-        private string captionField;
-
-        private string propertyNameField;
-
-        private bool serverFieldField;
-
-        private bool uniqueListField;
-
-        private uint numFmtIdField;
-
-        private bool numFmtIdFieldSpecified;
-
-        private string formulaField;
-
-        private int sqlTypeField;
-
-        private int hierarchyField;
-
-        private uint levelField;
-
-        private bool databaseFieldField;
-
-        private uint mappingCountField;
-
-        private bool mappingCountFieldSpecified;
-
-        private bool memberPropertyFieldField;
-
         public CT_CacheField()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.mpMapField = new List<CT_X>();
-            this.fieldGroupField = new CT_FieldGroup();
-            this.sharedItemsField = new CT_SharedItems();
-            this.serverFieldField = false;
-            this.uniqueListField = true;
-            this.sqlTypeField = 0;
-            this.hierarchyField = 0;
-            this.levelField = ((uint)(0));
-            this.databaseFieldField = true;
-            this.memberPropertyFieldField = false;
+            this.extLst = new CT_ExtensionList();
+            this.mpMap = new List<CT_X>();
+            this.fieldGroup = new CT_FieldGroup();
+            this.sharedItems = new CT_SharedItems();
+            this.serverField = false;
+            this.uniqueList = true;
+            this.sqlType = 0;
+            this.hierarchy = 0;
+            this.level = ((uint)(0));
+            this.databaseField = true;
+            this.memberPropertyField = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_SharedItems sharedItems
-        {
-            get
-            {
-                return this.sharedItemsField;
-            }
-            set
-            {
-                this.sharedItemsField = value;
-            }
-        }
+        public CT_SharedItems sharedItems { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_FieldGroup fieldGroup
-        {
-            get
-            {
-                return this.fieldGroupField;
-            }
-            set
-            {
-                this.fieldGroupField = value;
-            }
-        }
+        public CT_FieldGroup fieldGroup { get; set; }
 
         [XmlElement(nameof(mpMap), Order = 2)]
-        public List<CT_X> mpMap
-        {
-            get
-            {
-                return this.mpMapField;
-            }
-            set
-            {
-                this.mpMapField = value;
-            }
-        }
+        public List<CT_X> mpMap { get; set; }
 
         [XmlElement(Order = 3)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
 
         [XmlAttribute()]
-        public string propertyName
-        {
-            get
-            {
-                return this.propertyNameField;
-            }
-            set
-            {
-                this.propertyNameField = value;
-            }
-        }
+        public string propertyName { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool serverField
-        {
-            get
-            {
-                return this.serverFieldField;
-            }
-            set
-            {
-                this.serverFieldField = value;
-            }
-        }
+        public bool serverField { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool uniqueList
-        {
-            get
-            {
-                return this.uniqueListField;
-            }
-            set
-            {
-                this.uniqueListField = value;
-            }
-        }
+        public bool uniqueList { get; set; }
 
         [XmlAttribute()]
-        public uint numFmtId
-        {
-            get
-            {
-                return this.numFmtIdField;
-            }
-            set
-            {
-                this.numFmtIdField = value;
-            }
-        }
+        public uint numFmtId { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool numFmtIdSpecified
-        {
-            get
-            {
-                return this.numFmtIdFieldSpecified;
-            }
-            set
-            {
-                this.numFmtIdFieldSpecified = value;
-            }
-        }
+        public bool numFmtIdSpecified { get; set; }
 
         [XmlAttribute()]
-        public string formula
-        {
-            get
-            {
-                return this.formulaField;
-            }
-            set
-            {
-                this.formulaField = value;
-            }
-        }
+        public string formula { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public int sqlType
-        {
-            get
-            {
-                return this.sqlTypeField;
-            }
-            set
-            {
-                this.sqlTypeField = value;
-            }
-        }
+        public int sqlType { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public int hierarchy
-        {
-            get
-            {
-                return this.hierarchyField;
-            }
-            set
-            {
-                this.hierarchyField = value;
-            }
-        }
+        public int hierarchy { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(typeof(uint), "0")]
-        public uint level
-        {
-            get
-            {
-                return this.levelField;
-            }
-            set
-            {
-                this.levelField = value;
-            }
-        }
+        public uint level { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool databaseField
-        {
-            get
-            {
-                return this.databaseFieldField;
-            }
-            set
-            {
-                this.databaseFieldField = value;
-            }
-        }
+        public bool databaseField { get; set; }
 
         [XmlAttribute()]
-        public uint mappingCount
-        {
-            get
-            {
-                return this.mappingCountField;
-            }
-            set
-            {
-                this.mappingCountField = value;
-            }
-        }
+        public uint mappingCount { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool mappingCountSpecified
-        {
-            get
-            {
-                return this.mappingCountFieldSpecified;
-            }
-            set
-            {
-                this.mappingCountFieldSpecified = value;
-            }
-        }
+        public bool mappingCountSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool memberPropertyField
-        {
-            get
-            {
-                return this.memberPropertyFieldField;
-            }
-            set
-            {
-                this.memberPropertyFieldField = value;
-            }
-        }
+        public bool memberPropertyField { get; set; }
 
         public CT_SharedItems AddNewSharedItems()
         {
-            this.sharedItemsField = new CT_SharedItems();
-            return this.sharedItemsField;
+            this.sharedItems = new CT_SharedItems();
+            return this.sharedItems;
         }
     }
 
@@ -2587,55 +1255,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_CacheHierarchy> cacheHierarchyField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_CacheHierarchies()
         {
-            this.cacheHierarchyField = new List<CT_CacheHierarchy>();
+            this.cacheHierarchy = new List<CT_CacheHierarchy>();
         }
 
         [XmlElement(nameof(cacheHierarchy), Order = 0)]
-        public List<CT_CacheHierarchy> cacheHierarchy
-        {
-            get
-            {
-                return this.cacheHierarchyField;
-            }
-            set
-            {
-                this.cacheHierarchyField = value;
-            }
-        }
+        public List<CT_CacheHierarchy> cacheHierarchy { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -2689,145 +1321,37 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_X> xField;
-
-        private bool vField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
         public CT_Boolean()
         {
-            this.xField = new List<CT_X>();
+            this.x = new List<CT_X>();
         }
 
         [XmlElement(nameof(x), Order = 0)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public bool v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public bool v { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
     }
 
     
@@ -2837,27 +1361,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_X
     {
-
-        private int vField;
-
         public CT_X()
         {
-            this.vField = 0;
+            this.v = 0;
         }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public int v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public int v { get; set; }
 
         public static CT_X Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -2932,145 +1443,37 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_X> xField;
-
-        private System.DateTime? vField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
         public CT_DateTime()
         {
-            this.xField = new List<CT_X>();
+            this.x = new List<CT_X>();
         }
 
         [XmlElement(nameof(x), Order = 0)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public System.DateTime? v { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
     }
 
     
@@ -3080,290 +1483,73 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_Error
     {
-
-        private CT_Tuples tplsField;
-
-        private List<CT_X> xField;
-
-        private string vField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
-        private uint inField;
-
-        private bool inFieldSpecified;
-
-        private byte[] bcField;
-
-        private byte[] fcField;
-
-        private bool iField;
-
-        private bool unField;
-
-        private bool stField;
-
-        private bool bField;
-
         public CT_Error()
         {
-            this.xField = new List<CT_X>();
-            this.tplsField = new CT_Tuples();
-            this.iField = false;
-            this.unField = false;
-            this.stField = false;
-            this.bField = false;
+            this.x = new List<CT_X>();
+            this.tpls = new CT_Tuples();
+            this.i = false;
+            this.un = false;
+            this.st = false;
+            this.b = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_Tuples tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        public CT_Tuples tpls { get; set; }
 
         [XmlElement(nameof(x), Order = 1)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public string v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public string v { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint @in
-        {
-            get
-            {
-                return this.inField;
-            }
-            set
-            {
-                this.inField = value;
-            }
-        }
+        public uint @in { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool inSpecified
-        {
-            get
-            {
-                return this.inFieldSpecified;
-            }
-            set
-            {
-                this.inFieldSpecified = value;
-            }
-        }
+        public bool inSpecified { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] bc
-        {
-            get
-            {
-                return this.bcField;
-            }
-            set
-            {
-                this.bcField = value;
-            }
-        }
+        public byte[] bc { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] fc
-        {
-            get
-            {
-                return this.fcField;
-            }
-            set
-            {
-                this.fcField = value;
-            }
-        }
+        public byte[] fc { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool i
-        {
-            get
-            {
-                return this.iField;
-            }
-            set
-            {
-                this.iField = value;
-            }
-        }
+        public bool i { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool un
-        {
-            get
-            {
-                return this.unField;
-            }
-            set
-            {
-                this.unField = value;
-            }
-        }
+        public bool un { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool st
-        {
-            get
-            {
-                return this.stField;
-            }
-            set
-            {
-                this.stField = value;
-            }
-        }
+        public bool st { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool b
-        {
-            get
-            {
-                return this.bField;
-            }
-            set
-            {
-                this.bField = value;
-            }
-        }
+        public bool b { get; set; }
 
         public static CT_Error Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -3440,56 +1626,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_Tuples
     {
-
-        private List<CT_Tuple> tplField;
-
-        private uint cField;
-
-        private bool cFieldSpecified;
-
         public CT_Tuples()
         {
-            this.tplField = new List<CT_Tuple>();
+            this.tpl = new List<CT_Tuple>();
         }
 
         [XmlElement(nameof(tpl), Order = 0)]
-        public List<CT_Tuple> tpl
-        {
-            get
-            {
-                return this.tplField;
-            }
-            set
-            {
-                this.tplField = value;
-            }
-        }
+        public List<CT_Tuple> tpl { get; set; }
 
         [XmlAttribute()]
-        public uint c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public uint c { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cSpecified
-        {
-            get
-            {
-                return this.cFieldSpecified;
-            }
-            set
-            {
-                this.cFieldSpecified = value;
-            }
-        }
+        public bool cSpecified { get; set; }
 
         public static CT_Tuples Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -3533,81 +1682,20 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_Tuple
     {
-
-        private uint fldField;
-
-        private bool fldFieldSpecified;
-
-        private uint hierField;
-
-        private bool hierFieldSpecified;
-
-        private uint itemField;
-
         [XmlAttribute()]
-        public uint fld
-        {
-            get
-            {
-                return this.fldField;
-            }
-            set
-            {
-                this.fldField = value;
-            }
-        }
+        public uint fld { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fldSpecified
-        {
-            get
-            {
-                return this.fldFieldSpecified;
-            }
-            set
-            {
-                this.fldFieldSpecified = value;
-            }
-        }
+        public bool fldSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint hier
-        {
-            get
-            {
-                return this.hierField;
-            }
-            set
-            {
-                this.hierField = value;
-            }
-        }
+        public uint hier { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool hierSpecified
-        {
-            get
-            {
-                return this.hierFieldSpecified;
-            }
-            set
-            {
-                this.hierFieldSpecified = value;
-            }
-        }
+        public bool hierSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint item
-        {
-            get
-            {
-                return this.itemField;
-            }
-            set
-            {
-                this.itemField = value;
-            }
-        }
+        public uint item { get; set; }
 
         public static CT_Tuple Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -3644,275 +1732,70 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_Missing
     {
-
-        private List<CT_Tuples> tplsField;
-
-        private List<CT_X> xField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
-        private uint inField;
-
-        private bool inFieldSpecified;
-
-        private byte[] bcField;
-
-        private byte[] fcField;
-
-        private bool iField;
-
-        private bool unField;
-
-        private bool stField;
-
-        private bool bField;
-
         public CT_Missing()
         {
-            this.xField = new List<CT_X>();
-            this.tplsField = new List<CT_Tuples>();
-            this.iField = false;
-            this.unField = false;
-            this.stField = false;
-            this.bField = false;
+            this.x = new List<CT_X>();
+            this.tpls = new List<CT_Tuples>();
+            this.i = false;
+            this.un = false;
+            this.st = false;
+            this.b = false;
         }
 
         [XmlElement(nameof(tpls), Order = 0)]
-        public List<CT_Tuples> tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        public List<CT_Tuples> tpls { get; set; }
 
         [XmlElement(nameof(x), Order = 1)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint @in
-        {
-            get
-            {
-                return this.inField;
-            }
-            set
-            {
-                this.inField = value;
-            }
-        }
+        public uint @in { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool inSpecified
-        {
-            get
-            {
-                return this.inFieldSpecified;
-            }
-            set
-            {
-                this.inFieldSpecified = value;
-            }
-        }
+        public bool inSpecified { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] bc
-        {
-            get
-            {
-                return this.bcField;
-            }
-            set
-            {
-                this.bcField = value;
-            }
-        }
+        public byte[] bc { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] fc
-        {
-            get
-            {
-                return this.fcField;
-            }
-            set
-            {
-                this.fcField = value;
-            }
-        }
+        public byte[] fc { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool i
-        {
-            get
-            {
-                return this.iField;
-            }
-            set
-            {
-                this.iField = value;
-            }
-        }
+        public bool i { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool un
-        {
-            get
-            {
-                return this.unField;
-            }
-            set
-            {
-                this.unField = value;
-            }
-        }
+        public bool un { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool st
-        {
-            get
-            {
-                return this.stField;
-            }
-            set
-            {
-                this.stField = value;
-            }
-        }
+        public bool st { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool b
-        {
-            get
-            {
-                return this.bField;
-            }
-            set
-            {
-                this.bField = value;
-            }
-        }
+        public bool b { get; set; }
 
         public static CT_Missing Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -3993,290 +1876,73 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_Number
     {
-
-        private List<CT_Tuples> tplsField;
-
-        private List<CT_X> xField;
-
-        private double vField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
-        private uint inField;
-
-        private bool inFieldSpecified;
-
-        private byte[] bcField;
-
-        private byte[] fcField;
-
-        private bool iField;
-
-        private bool unField;
-
-        private bool stField;
-
-        private bool bField;
-
         public CT_Number()
         {
-            this.xField = new List<CT_X>();
-            this.tplsField = new List<CT_Tuples>();
-            this.iField = false;
-            this.unField = false;
-            this.stField = false;
-            this.bField = false;
+            this.x = new List<CT_X>();
+            this.tpls = new List<CT_Tuples>();
+            this.i = false;
+            this.un = false;
+            this.st = false;
+            this.b = false;
         }
 
-        [XmlElement("tpls", Order = 0)]
-        public List<CT_Tuples> tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        [XmlElement(nameof(tpls), Order = 0)]
+        public List<CT_Tuples> tpls { get; set; }
 
         [XmlElement(nameof(x), Order = 1)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public double v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public double v { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint @in
-        {
-            get
-            {
-                return this.inField;
-            }
-            set
-            {
-                this.inField = value;
-            }
-        }
+        public uint @in { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool inSpecified
-        {
-            get
-            {
-                return this.inFieldSpecified;
-            }
-            set
-            {
-                this.inFieldSpecified = value;
-            }
-        }
+        public bool inSpecified { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] bc
-        {
-            get
-            {
-                return this.bcField;
-            }
-            set
-            {
-                this.bcField = value;
-            }
-        }
+        public byte[] bc { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] fc
-        {
-            get
-            {
-                return this.fcField;
-            }
-            set
-            {
-                this.fcField = value;
-            }
-        }
+        public byte[] fc { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool i
-        {
-            get
-            {
-                return this.iField;
-            }
-            set
-            {
-                this.iField = value;
-            }
-        }
+        public bool i { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool un
-        {
-            get
-            {
-                return this.unField;
-            }
-            set
-            {
-                this.unField = value;
-            }
-        }
+        public bool un { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool st
-        {
-            get
-            {
-                return this.stField;
-            }
-            set
-            {
-                this.stField = value;
-            }
-        }
+        public bool st { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool b
-        {
-            get
-            {
-                return this.bField;
-            }
-            set
-            {
-                this.bField = value;
-            }
-        }
+        public bool b { get; set; }
 
         public static CT_Number Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -4360,290 +2026,73 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlRoot(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main", IsNullable = true)]
     public partial class CT_String
     {
-
-        private List<CT_Tuples> tplsField;
-
-        private List<CT_X> xField;
-
-        private string vField;
-
-        private bool uField;
-
-        private bool uFieldSpecified;
-
-        private bool fField;
-
-        private bool fFieldSpecified;
-
-        private string cField;
-
-        private uint cpField;
-
-        private bool cpFieldSpecified;
-
-        private uint inField;
-
-        private bool inFieldSpecified;
-
-        private byte[] bcField;
-
-        private byte[] fcField;
-
-        private bool iField;
-
-        private bool unField;
-
-        private bool stField;
-
-        private bool bField;
-
         public CT_String()
         {
-            this.xField = new List<CT_X>();
-            this.tplsField = new List<CT_Tuples>();
-            this.iField = false;
-            this.unField = false;
-            this.stField = false;
-            this.bField = false;
+            this.x = new List<CT_X>();
+            this.tpls = new List<CT_Tuples>();
+            this.i = false;
+            this.un = false;
+            this.st = false;
+            this.b = false;
         }
 
         [XmlElement(nameof(tpls), Order = 0)]
-        public List<CT_Tuples> tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        public List<CT_Tuples> tpls { get; set; }
 
         [XmlElement(nameof(x), Order = 1)]
-        public List<CT_X> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_X> x { get; set; }
 
         [XmlAttribute()]
-        public string v
-        {
-            get
-            {
-                return this.vField;
-            }
-            set
-            {
-                this.vField = value;
-            }
-        }
+        public string v { get; set; }
 
         [XmlAttribute()]
-        public bool u
-        {
-            get
-            {
-                return this.uField;
-            }
-            set
-            {
-                this.uField = value;
-            }
-        }
+        public bool u { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool uSpecified
-        {
-            get
-            {
-                return this.uFieldSpecified;
-            }
-            set
-            {
-                this.uFieldSpecified = value;
-            }
-        }
+        public bool uSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool f
-        {
-            get
-            {
-                return this.fField;
-            }
-            set
-            {
-                this.fField = value;
-            }
-        }
+        public bool f { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fSpecified
-        {
-            get
-            {
-                return this.fFieldSpecified;
-            }
-            set
-            {
-                this.fFieldSpecified = value;
-            }
-        }
+        public bool fSpecified { get; set; }
 
         [XmlAttribute()]
-        public string c
-        {
-            get
-            {
-                return this.cField;
-            }
-            set
-            {
-                this.cField = value;
-            }
-        }
+        public string c { get; set; }
 
         [XmlAttribute()]
-        public uint cp
-        {
-            get
-            {
-                return this.cpField;
-            }
-            set
-            {
-                this.cpField = value;
-            }
-        }
+        public uint cp { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool cpSpecified
-        {
-            get
-            {
-                return this.cpFieldSpecified;
-            }
-            set
-            {
-                this.cpFieldSpecified = value;
-            }
-        }
+        public bool cpSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint @in
-        {
-            get
-            {
-                return this.inField;
-            }
-            set
-            {
-                this.inField = value;
-            }
-        }
+        public uint @in { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool inSpecified
-        {
-            get
-            {
-                return this.inFieldSpecified;
-            }
-            set
-            {
-                this.inFieldSpecified = value;
-            }
-        }
+        public bool inSpecified { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] bc
-        {
-            get
-            {
-                return this.bcField;
-            }
-            set
-            {
-                this.bcField = value;
-            }
-        }
+        public byte[] bc { get; set; }
 
         [XmlAttribute(DataType = "hexBinary")]
-        public byte[] fc
-        {
-            get
-            {
-                return this.fcField;
-            }
-            set
-            {
-                this.fcField = value;
-            }
-        }
+        public byte[] fc { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool i
-        {
-            get
-            {
-                return this.iField;
-            }
-            set
-            {
-                this.iField = value;
-            }
-        }
+        public bool i { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool un
-        {
-            get
-            {
-                return this.unField;
-            }
-            set
-            {
-                this.unField = value;
-            }
-        }
+        public bool un { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool st
-        {
-            get
-            {
-                return this.stField;
-            }
-            set
-            {
-                this.stField = value;
-            }
-        }
+        public bool st { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool b
-        {
-            get
-            {
-                return this.bField;
-            }
-            set
-            {
-                this.bField = value;
-            }
-        }
+        public bool b { get; set; }
 
         public static CT_String Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -4764,117 +2213,33 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_RangePr rangePrField;
-
-        private CT_DiscretePr discretePrField;
-
-        private CT_GroupItems groupItemsField;
-
-        private uint parField;
-
-        private bool parFieldSpecified;
-
-        private uint baseField;
-
-        private bool baseFieldSpecified;
-
         public CT_FieldGroup()
         {
-            this.groupItemsField = new CT_GroupItems();
-            this.discretePrField = new CT_DiscretePr();
-            this.rangePrField = new CT_RangePr();
+            this.groupItems = new CT_GroupItems();
+            this.discretePr = new CT_DiscretePr();
+            this.rangePr = new CT_RangePr();
         }
 
         [XmlElement(Order = 0)]
-        public CT_RangePr rangePr
-        {
-            get
-            {
-                return this.rangePrField;
-            }
-            set
-            {
-                this.rangePrField = value;
-            }
-        }
+        public CT_RangePr rangePr { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_DiscretePr discretePr
-        {
-            get
-            {
-                return this.discretePrField;
-            }
-            set
-            {
-                this.discretePrField = value;
-            }
-        }
+        public CT_DiscretePr discretePr { get; set; }
 
         [XmlElement(Order = 2)]
-        public CT_GroupItems groupItems
-        {
-            get
-            {
-                return this.groupItemsField;
-            }
-            set
-            {
-                this.groupItemsField = value;
-            }
-        }
+        public CT_GroupItems groupItems { get; set; }
 
         [XmlAttribute()]
-        public uint par
-        {
-            get
-            {
-                return this.parField;
-            }
-            set
-            {
-                this.parField = value;
-            }
-        }
+        public uint par { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool parSpecified
-        {
-            get
-            {
-                return this.parFieldSpecified;
-            }
-            set
-            {
-                this.parFieldSpecified = value;
-            }
-        }
+        public bool parSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint @base
-        {
-            get
-            {
-                return this.baseField;
-            }
-            set
-            {
-                this.baseField = value;
-            }
-        }
+        public uint @base { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool baseSpecified
-        {
-            get
-            {
-                return this.baseFieldSpecified;
-            }
-            set
-            {
-                this.baseFieldSpecified = value;
-            }
-        }
+        public bool baseSpecified { get; set; }
     }
 
     
@@ -4925,197 +2290,53 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private bool autoStartField;
-
-        private bool autoEndField;
-
-        private ST_GroupBy groupByField;
-
-        private double startNumField;
-
-        private bool startNumFieldSpecified;
-
-        private double endNumField;
-
-        private bool endNumFieldSpecified;
-
-        private System.DateTime? startDateField;
-
-        private bool startDateFieldSpecified;
-
-        private System.DateTime? endDateField;
-
-        private bool endDateFieldSpecified;
-
-        private double groupIntervalField;
-
         public CT_RangePr()
         {
-            this.autoStartField = true;
-            this.autoEndField = true;
-            this.groupByField = ST_GroupBy.range;
-            this.groupIntervalField = 1D;
+            this.autoStart = true;
+            this.autoEnd = true;
+            this.groupBy = ST_GroupBy.range;
+            this.groupInterval = 1D;
         }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool autoStart
-        {
-            get
-            {
-                return this.autoStartField;
-            }
-            set
-            {
-                this.autoStartField = value;
-            }
-        }
+        public bool autoStart { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(true)]
-        public bool autoEnd
-        {
-            get
-            {
-                return this.autoEndField;
-            }
-            set
-            {
-                this.autoEndField = value;
-            }
-        }
+        public bool autoEnd { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(ST_GroupBy.range)]
-        public ST_GroupBy groupBy
-        {
-            get
-            {
-                return this.groupByField;
-            }
-            set
-            {
-                this.groupByField = value;
-            }
-        }
+        public ST_GroupBy groupBy { get; set; }
 
         [XmlAttribute()]
-        public double startNum
-        {
-            get
-            {
-                return this.startNumField;
-            }
-            set
-            {
-                this.startNumField = value;
-            }
-        }
+        public double startNum { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool startNumSpecified
-        {
-            get
-            {
-                return this.startNumFieldSpecified;
-            }
-            set
-            {
-                this.startNumFieldSpecified = value;
-            }
-        }
+        public bool startNumSpecified { get; set; }
 
         [XmlAttribute()]
-        public double endNum
-        {
-            get
-            {
-                return this.endNumField;
-            }
-            set
-            {
-                this.endNumField = value;
-            }
-        }
+        public double endNum { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool endNumSpecified
-        {
-            get
-            {
-                return this.endNumFieldSpecified;
-            }
-            set
-            {
-                this.endNumFieldSpecified = value;
-            }
-        }
+        public bool endNumSpecified { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? startDate
-        {
-            get
-            {
-                return this.startDateField;
-            }
-            set
-            {
-                this.startDateField = value;
-            }
-        }
+        public System.DateTime? startDate { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool startDateSpecified
-        {
-            get
-            {
-                return this.startDateFieldSpecified;
-            }
-            set
-            {
-                this.startDateFieldSpecified = value;
-            }
-        }
+        public bool startDateSpecified { get; set; }
 
         [XmlAttribute()]
-        public System.DateTime? endDate
-        {
-            get
-            {
-                return this.endDateField;
-            }
-            set
-            {
-                this.endDateField = value;
-            }
-        }
+        public System.DateTime? endDate { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool endDateSpecified
-        {
-            get
-            {
-                return this.endDateFieldSpecified;
-            }
-            set
-            {
-                this.endDateFieldSpecified = value;
-            }
-        }
+        public bool endDateSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(1D)]
-        public double groupInterval
-        {
-            get
-            {
-                return this.groupIntervalField;
-            }
-            set
-            {
-                this.groupIntervalField = value;
-            }
-        }
+        public double groupInterval { get; set; }
     }
 
     
@@ -5190,55 +2411,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_Index> xField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_DiscretePr()
         {
-            this.xField = new List<CT_Index>();
+            this.x = new List<CT_Index>();
         }
 
         [XmlElement(nameof(x), Order = 0)]
-        public List<CT_Index> x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public List<CT_Index> x { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -5311,15 +2496,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<object> itemsField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_GroupItems()
         {
-            this.itemsField = new List<object>();
+            this.Items = new List<object>();
         }
 
         [XmlElement("b", typeof(CT_Boolean), Order = 0)]
@@ -5328,43 +2507,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         [XmlElement("m", typeof(CT_Missing), Order = 0)]
         [XmlElement("n", typeof(CT_Number), Order = 0)]
         [XmlElement("s", typeof(CT_String), Order = 0)]
-        public List<object> Items
-        {
-            get
-            {
-                return this.itemsField;
-            }
-            set
-            {
-                this.itemsField = value;
-            }
-        }
+        public List<object> Items { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -5407,55 +2556,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_FieldUsage> fieldUsageField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_FieldsUsage()
         {
-            this.fieldUsageField = new List<CT_FieldUsage>();
+            this.fieldUsage = new List<CT_FieldUsage>();
         }
 
         [XmlElement(nameof(fieldUsage), Order = 0)]
-        public List<CT_FieldUsage> fieldUsage
-        {
-            get
-            {
-                return this.fieldUsageField;
-            }
-            set
-            {
-                this.fieldUsageField = value;
-            }
-        }
+        public List<CT_FieldUsage> fieldUsage { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -5485,20 +2598,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private int xField;
-
         [XmlAttribute()]
-        public int x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
+        public int x { get; set; }
     }
 
     
@@ -5541,55 +2642,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_GroupLevel> groupLevelField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_GroupLevels()
         {
-            this.groupLevelField = new List<CT_GroupLevel>();
+            this.groupLevel = new List<CT_GroupLevel>();
         }
 
         [XmlElement(nameof(groupLevel), Order = 0)]
-        public List<CT_GroupLevel> groupLevel
-        {
-            get
-            {
-                return this.groupLevelField;
-            }
-            set
-            {
-                this.groupLevelField = value;
-            }
-        }
+        public List<CT_GroupLevel> groupLevel { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -5637,105 +2702,33 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_Groups groupsField;
-
-        private CT_ExtensionList extLstField;
-
-        private string uniqueNameField;
-
-        private string captionField;
-
-        private bool userField;
-
-        private bool customRollUpField;
-
         public CT_GroupLevel()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.groupsField = new CT_Groups();
-            this.userField = false;
-            this.customRollUpField = false;
+            this.extLst = new CT_ExtensionList();
+            this.groups = new CT_Groups();
+            this.user = false;
+            this.customRollUp = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_Groups groups
-        {
-            get
-            {
-                return this.groupsField;
-            }
-            set
-            {
-                this.groupsField = value;
-            }
-        }
+        public CT_Groups groups { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool user
-        {
-            get
-            {
-                return this.userField;
-            }
-            set
-            {
-                this.userField = value;
-            }
-        }
+        public bool user { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool customRollUp
-        {
-            get
-            {
-                return this.customRollUpField;
-            }
-            set
-            {
-                this.customRollUpField = value;
-            }
-        }
+        public bool customRollUp { get; set; }
     }
 
     
@@ -5778,55 +2771,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_LevelGroup> groupField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_Groups()
         {
-            this.groupField = new List<CT_LevelGroup>();
+            this.group = new List<CT_LevelGroup>();
         }
 
         [XmlElement(nameof(group), Order = 0)]
-        public List<CT_LevelGroup> group
-        {
-            get
-            {
-                return this.groupField;
-            }
-            set
-            {
-                this.groupField = value;
-            }
-        }
+        public List<CT_LevelGroup> group { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -5871,115 +2828,31 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_GroupMembers groupMembersField;
-
-        private string nameField;
-
-        private string uniqueNameField;
-
-        private string captionField;
-
-        private string uniqueParentField;
-
-        private int idField;
-
-        private bool idFieldSpecified;
-
         public CT_LevelGroup()
         {
-            this.groupMembersField = new CT_GroupMembers();
+            this.groupMembers = new CT_GroupMembers();
         }
 
         [XmlElement(Order = 0)]
-        public CT_GroupMembers groupMembers
-        {
-            get
-            {
-                return this.groupMembersField;
-            }
-            set
-            {
-                this.groupMembersField = value;
-            }
-        }
+        public CT_GroupMembers groupMembers { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
 
         [XmlAttribute()]
-        public string uniqueParent
-        {
-            get
-            {
-                return this.uniqueParentField;
-            }
-            set
-            {
-                this.uniqueParentField = value;
-            }
-        }
+        public string uniqueParent { get; set; }
 
         [XmlAttribute()]
-        public int id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public int id { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool idSpecified
-        {
-            get
-            {
-                return this.idFieldSpecified;
-            }
-            set
-            {
-                this.idFieldSpecified = value;
-            }
-        }
+        public bool idSpecified { get; set; }
     }
 
     
@@ -6022,55 +2895,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_GroupMember> groupMemberField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_GroupMembers()
         {
-            this.groupMemberField = new List<CT_GroupMember>();
+            this.groupMember = new List<CT_GroupMember>();
         }
 
         [XmlElement(nameof(groupMember), Order = 0)]
-        public List<CT_GroupMember> groupMember
-        {
-            get
-            {
-                return this.groupMemberField;
-            }
-            set
-            {
-                this.groupMemberField = value;
-            }
-        }
+        public List<CT_GroupMember> groupMember { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -6102,41 +2939,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string uniqueNameField;
-
-        private bool groupField;
-
         public CT_GroupMember()
         {
-            this.groupField = false;
+            this.group = false;
         }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool group
-        {
-            get
-            {
-                return this.groupField;
-            }
-            set
-            {
-                this.groupField = value;
-            }
-        }
+        public bool group { get; set; }
     }
     
     
@@ -6237,465 +3050,117 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_FieldsUsage fieldsUsageField;
-
-        private CT_GroupLevels groupLevelsField;
-
-        private CT_ExtensionList extLstField;
-
-        private string uniqueNameField;
-
-        private string captionField;
-
-        private bool measureField;
-
-        private bool setField;
-
-        private uint parentSetField;
-
-        private bool parentSetFieldSpecified;
-
-        private int iconSetField;
-
-        private bool attributeField;
-
-        private bool timeField;
-
-        private bool keyAttributeField;
-
-        private string defaultMemberUniqueNameField;
-
-        private string allUniqueNameField;
-
-        private string allCaptionField;
-
-        private string dimensionUniqueNameField;
-
-        private string displayFolderField;
-
-        private string measureGroupField;
-
-        private bool measuresField;
-
-        private uint countField;
-
-        private bool oneFieldField;
-
-        private ushort memberValueDatatypeField;
-
-        private bool memberValueDatatypeFieldSpecified;
-
-        private bool unbalancedField;
-
-        private bool unbalancedFieldSpecified;
-
-        private bool unbalancedGroupField;
-
-        private bool unbalancedGroupFieldSpecified;
-
-        private bool hiddenField;
-
         public CT_CacheHierarchy()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.groupLevelsField = new CT_GroupLevels();
-            this.fieldsUsageField = new CT_FieldsUsage();
-            this.measureField = false;
-            this.setField = false;
-            this.iconSetField = 0;
-            this.attributeField = false;
-            this.timeField = false;
-            this.keyAttributeField = false;
-            this.measuresField = false;
-            this.oneFieldField = false;
-            this.hiddenField = false;
+            this.extLst = new CT_ExtensionList();
+            this.groupLevels = new CT_GroupLevels();
+            this.fieldsUsage = new CT_FieldsUsage();
+            this.measure = false;
+            this.set = false;
+            this.iconSet = 0;
+            this.attribute = false;
+            this.time = false;
+            this.keyAttribute = false;
+            this.measures = false;
+            this.oneField = false;
+            this.hidden = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_FieldsUsage fieldsUsage
-        {
-            get
-            {
-                return this.fieldsUsageField;
-            }
-            set
-            {
-                this.fieldsUsageField = value;
-            }
-        }
+        public CT_FieldsUsage fieldsUsage { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_GroupLevels groupLevels
-        {
-            get
-            {
-                return this.groupLevelsField;
-            }
-            set
-            {
-                this.groupLevelsField = value;
-            }
-        }
+        public CT_GroupLevels groupLevels { get; set; }
 
         [XmlElement(Order = 2)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool measure
-        {
-            get
-            {
-                return this.measureField;
-            }
-            set
-            {
-                this.measureField = value;
-            }
-        }
+        public bool measure { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool set
-        {
-            get
-            {
-                return this.setField;
-            }
-            set
-            {
-                this.setField = value;
-            }
-        }
+        public bool set { get; set; }
 
         [XmlAttribute()]
-        public uint parentSet
-        {
-            get
-            {
-                return this.parentSetField;
-            }
-            set
-            {
-                this.parentSetField = value;
-            }
-        }
+        public uint parentSet { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool parentSetSpecified
-        {
-            get
-            {
-                return this.parentSetFieldSpecified;
-            }
-            set
-            {
-                this.parentSetFieldSpecified = value;
-            }
-        }
+        public bool parentSetSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public int iconSet
-        {
-            get
-            {
-                return this.iconSetField;
-            }
-            set
-            {
-                this.iconSetField = value;
-            }
-        }
+        public int iconSet { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool attribute
-        {
-            get
-            {
-                return this.attributeField;
-            }
-            set
-            {
-                this.attributeField = value;
-            }
-        }
+        public bool attribute { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool time
-        {
-            get
-            {
-                return this.timeField;
-            }
-            set
-            {
-                this.timeField = value;
-            }
-        }
+        public bool time { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool keyAttribute
-        {
-            get
-            {
-                return this.keyAttributeField;
-            }
-            set
-            {
-                this.keyAttributeField = value;
-            }
-        }
+        public bool keyAttribute { get; set; }
 
         [XmlAttribute()]
-        public string defaultMemberUniqueName
-        {
-            get
-            {
-                return this.defaultMemberUniqueNameField;
-            }
-            set
-            {
-                this.defaultMemberUniqueNameField = value;
-            }
-        }
+        public string defaultMemberUniqueName { get; set; }
 
         [XmlAttribute()]
-        public string allUniqueName
-        {
-            get
-            {
-                return this.allUniqueNameField;
-            }
-            set
-            {
-                this.allUniqueNameField = value;
-            }
-        }
+        public string allUniqueName { get; set; }
 
         [XmlAttribute()]
-        public string allCaption
-        {
-            get
-            {
-                return this.allCaptionField;
-            }
-            set
-            {
-                this.allCaptionField = value;
-            }
-        }
+        public string allCaption { get; set; }
 
         [XmlAttribute()]
-        public string dimensionUniqueName
-        {
-            get
-            {
-                return this.dimensionUniqueNameField;
-            }
-            set
-            {
-                this.dimensionUniqueNameField = value;
-            }
-        }
+        public string dimensionUniqueName { get; set; }
 
         [XmlAttribute()]
-        public string displayFolder
-        {
-            get
-            {
-                return this.displayFolderField;
-            }
-            set
-            {
-                this.displayFolderField = value;
-            }
-        }
+        public string displayFolder { get; set; }
 
         [XmlAttribute()]
-        public string measureGroup
-        {
-            get
-            {
-                return this.measureGroupField;
-            }
-            set
-            {
-                this.measureGroupField = value;
-            }
-        }
+        public string measureGroup { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool measures
-        {
-            get
-            {
-                return this.measuresField;
-            }
-            set
-            {
-                this.measuresField = value;
-            }
-        }
+        public bool measures { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool oneField
-        {
-            get
-            {
-                return this.oneFieldField;
-            }
-            set
-            {
-                this.oneFieldField = value;
-            }
-        }
+        public bool oneField { get; set; }
 
         [XmlAttribute()]
-        public ushort memberValueDatatype
-        {
-            get
-            {
-                return this.memberValueDatatypeField;
-            }
-            set
-            {
-                this.memberValueDatatypeField = value;
-            }
-        }
+        public ushort memberValueDatatype { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool memberValueDatatypeSpecified
-        {
-            get
-            {
-                return this.memberValueDatatypeFieldSpecified;
-            }
-            set
-            {
-                this.memberValueDatatypeFieldSpecified = value;
-            }
-        }
+        public bool memberValueDatatypeSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool unbalanced
-        {
-            get
-            {
-                return this.unbalancedField;
-            }
-            set
-            {
-                this.unbalancedField = value;
-            }
-        }
+        public bool unbalanced { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unbalancedSpecified
-        {
-            get
-            {
-                return this.unbalancedFieldSpecified;
-            }
-            set
-            {
-                this.unbalancedFieldSpecified = value;
-            }
-        }
+        public bool unbalancedSpecified { get; set; }
 
         [XmlAttribute()]
-        public bool unbalancedGroup
-        {
-            get
-            {
-                return this.unbalancedGroupField;
-            }
-            set
-            {
-                this.unbalancedGroupField = value;
-            }
-        }
+        public bool unbalancedGroup { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool unbalancedGroupSpecified
-        {
-            get
-            {
-                return this.unbalancedGroupFieldSpecified;
-            }
-            set
-            {
-                this.unbalancedGroupFieldSpecified = value;
-            }
-        }
+        public bool unbalancedGroupSpecified { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool hidden
-        {
-            get
-            {
-                return this.hiddenField;
-            }
-            set
-            {
-                this.hiddenField = value;
-            }
-        }
+        public bool hidden { get; set; }
     }
 
     
@@ -6738,55 +3203,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_PCDKPI> kpiField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_PCDKPIs()
         {
-            this.kpiField = new List<CT_PCDKPI>();
+            this.kpi = new List<CT_PCDKPI>();
         }
 
         [XmlElement(nameof(kpi), Order = 0)]
-        public List<CT_PCDKPI> kpi
-        {
-            get
-            {
-                return this.kpiField;
-            }
-            set
-            {
-                this.kpiField = value;
-            }
-        }
+        public List<CT_PCDKPI> kpi { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -6835,170 +3264,38 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string uniqueNameField;
-
-        private string captionField;
-
-        private string displayFolderField;
-
-        private string measureGroupField;
-
-        private string parentField;
-
-        private string valueField;
-
-        private string goalField;
-
-        private string statusField;
-
-        private string trendField;
-
-        private string weightField;
-
-        private string timeField;
+        [XmlAttribute()]
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string caption { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string displayFolder { get; set; }
 
         [XmlAttribute()]
-        public string displayFolder
-        {
-            get
-            {
-                return this.displayFolderField;
-            }
-            set
-            {
-                this.displayFolderField = value;
-            }
-        }
+        public string measureGroup { get; set; }
 
         [XmlAttribute()]
-        public string measureGroup
-        {
-            get
-            {
-                return this.measureGroupField;
-            }
-            set
-            {
-                this.measureGroupField = value;
-            }
-        }
+        public string parent { get; set; }
 
         [XmlAttribute()]
-        public string parent
-        {
-            get
-            {
-                return this.parentField;
-            }
-            set
-            {
-                this.parentField = value;
-            }
-        }
+        public string value { get; set; }
 
         [XmlAttribute()]
-        public string value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
+        public string goal { get; set; }
 
         [XmlAttribute()]
-        public string goal
-        {
-            get
-            {
-                return this.goalField;
-            }
-            set
-            {
-                this.goalField = value;
-            }
-        }
+        public string status { get; set; }
 
         [XmlAttribute()]
-        public string status
-        {
-            get
-            {
-                return this.statusField;
-            }
-            set
-            {
-                this.statusField = value;
-            }
-        }
+        public string trend { get; set; }
 
         [XmlAttribute()]
-        public string trend
-        {
-            get
-            {
-                return this.trendField;
-            }
-            set
-            {
-                this.trendField = value;
-            }
-        }
+        public string weight { get; set; }
 
         [XmlAttribute()]
-        public string weight
-        {
-            get
-            {
-                return this.weightField;
-            }
-            set
-            {
-                this.weightField = value;
-            }
-        }
-
-        [XmlAttribute()]
-        public string time
-        {
-            get
-            {
-                return this.timeField;
-            }
-            set
-            {
-                this.timeField = value;
-            }
-        }
+        public string time { get; set; }
     }
 
     
@@ -7048,89 +3345,29 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_PCDSDTCEntries entriesField;
-
-        private CT_Sets setsField;
-
-        private CT_QueryCache queryCacheField;
-
-        private CT_ServerFormats serverFormatsField;
-
-        private CT_ExtensionList extLstField;
-
         public CT_TupleCache()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.serverFormatsField = new CT_ServerFormats();
-            this.queryCacheField = new CT_QueryCache();
-            this.setsField = new CT_Sets();
-            this.entriesField = new CT_PCDSDTCEntries();
+            this.extLst = new CT_ExtensionList();
+            this.serverFormats = new CT_ServerFormats();
+            this.queryCache = new CT_QueryCache();
+            this.sets = new CT_Sets();
+            this.entries = new CT_PCDSDTCEntries();
         }
 
         [XmlElement(Order = 0)]
-        public CT_PCDSDTCEntries entries
-        {
-            get
-            {
-                return this.entriesField;
-            }
-            set
-            {
-                this.entriesField = value;
-            }
-        }
+        public CT_PCDSDTCEntries entries { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_Sets sets
-        {
-            get
-            {
-                return this.setsField;
-            }
-            set
-            {
-                this.setsField = value;
-            }
-        }
+        public CT_Sets sets { get; set; }
 
         [XmlElement(Order = 2)]
-        public CT_QueryCache queryCache
-        {
-            get
-            {
-                return this.queryCacheField;
-            }
-            set
-            {
-                this.queryCacheField = value;
-            }
-        }
+        public CT_QueryCache queryCache { get; set; }
 
         [XmlElement(Order = 3)]
-        public CT_ServerFormats serverFormats
-        {
-            get
-            {
-                return this.serverFormatsField;
-            }
-            set
-            {
-                this.serverFormatsField = value;
-            }
-        }
+        public CT_ServerFormats serverFormats { get; set; }
 
         [XmlElement(Order = 4)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
     }
 
     
@@ -7189,58 +3426,22 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<object> itemsField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_PCDSDTCEntries()
         {
-            this.itemsField = new List<object>();
+            this.Items = new List<object>();
         }
 
         [XmlElement("e", typeof(CT_Error), Order = 0)]
         [XmlElement("m", typeof(CT_Missing), Order = 0)]
         [XmlElement("n", typeof(CT_Number), Order = 0)]
         [XmlElement("s", typeof(CT_String), Order = 0)]
-        public List<object> Items
-        {
-            get
-            {
-                return this.itemsField;
-            }
-            set
-            {
-                this.itemsField = value;
-            }
-        }
+        public List<object> Items { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -7283,55 +3484,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_Set> setField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_Sets()
         {
-            this.setField = new List<CT_Set>();
+            this.set = new List<CT_Set>();
         }
 
         [XmlElement(nameof(set), Order = 0)]
-        public List<CT_Set> set
-        {
-            get
-            {
-                return this.setField;
-            }
-            set
-            {
-                this.setField = value;
-            }
-        }
+        public List<CT_Set> set { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -7389,135 +3554,39 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_Tuples> tplsField;
-
-        private CT_Tuples sortByTupleField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
-        private int maxRankField;
-
-        private string setDefinitionField;
-
-        private ST_SortType sortTypeField;
-
-        private bool queryFailedField;
-
         public CT_Set()
         {
-            this.sortByTupleField = new CT_Tuples();
-            this.tplsField = new List<CT_Tuples>();
-            this.sortTypeField = ST_SortType.none;
-            this.queryFailedField = false;
+            this.sortByTuple = new CT_Tuples();
+            this.tpls = new List<CT_Tuples>();
+            this.sortType = ST_SortType.none;
+            this.queryFailed = false;
         }
 
         [XmlElement(nameof(tpls), Order = 0)]
-        public List<CT_Tuples> tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        public List<CT_Tuples> tpls { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_Tuples sortByTuple
-        {
-            get
-            {
-                return this.sortByTupleField;
-            }
-            set
-            {
-                this.sortByTupleField = value;
-            }
-        }
+        public CT_Tuples sortByTuple { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
         [XmlAttribute()]
-        public int maxRank
-        {
-            get
-            {
-                return this.maxRankField;
-            }
-            set
-            {
-                this.maxRankField = value;
-            }
-        }
+        public int maxRank { get; set; }
 
         [XmlAttribute()]
-        public string setDefinition
-        {
-            get
-            {
-                return this.setDefinitionField;
-            }
-            set
-            {
-                this.setDefinitionField = value;
-            }
-        }
+        public string setDefinition { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(ST_SortType.none)]
-        public ST_SortType sortType
-        {
-            get
-            {
-                return this.sortTypeField;
-            }
-            set
-            {
-                this.sortTypeField = value;
-            }
-        }
+        public ST_SortType sortType { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool queryFailed
-        {
-            get
-            {
-                return this.queryFailedField;
-            }
-            set
-            {
-                this.queryFailedField = value;
-            }
-        }
+        public bool queryFailed { get; set; }
     }
 
     
@@ -7589,55 +3658,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_Query> queryField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_QueryCache()
         {
-            this.queryField = new List<CT_Query>();
+            this.query = new List<CT_Query>();
         }
 
         [XmlElement(nameof(query), Order = 0)]
-        public List<CT_Query> query
-        {
-            get
-            {
-                return this.queryField;
-            }
-            set
-            {
-                this.queryField = value;
-            }
-        }
+        public List<CT_Query> query { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -7673,40 +3706,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_Tuples tplsField;
-
-        private string mdxField;
-
         public CT_Query()
         {
-            this.tplsField = new CT_Tuples();
+            this.tpls = new CT_Tuples();
         }
 
         [XmlElement(Order = 0)]
-        public CT_Tuples tpls
-        {
-            get
-            {
-                return this.tplsField;
-            }
-            set
-            {
-                this.tplsField = value;
-            }
-        }
+        public CT_Tuples tpls { get; set; }
 
         [XmlAttribute()]
-        public string mdx
-        {
-            get
-            {
-                return this.mdxField;
-            }
-            set
-            {
-                this.mdxField = value;
-            }
-        }
+        public string mdx { get; set; }
     }
 
     
@@ -7749,55 +3758,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_ServerFormat> serverFormatField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_ServerFormats()
         {
-            this.serverFormatField = new List<CT_ServerFormat>();
+            this.serverFormat = new List<CT_ServerFormat>();
         }
 
         [XmlElement(nameof(serverFormat), Order = 0)]
-        public List<CT_ServerFormat> serverFormat
-        {
-            get
-            {
-                return this.serverFormatField;
-            }
-            set
-            {
-                this.serverFormatField = value;
-            }
-        }
+        public List<CT_ServerFormat> serverFormat { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -7828,35 +3801,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string cultureField;
-
-        private string formatField;
+        [XmlAttribute()]
+        public string culture { get; set; }
 
         [XmlAttribute()]
-        public string culture
-        {
-            get
-            {
-                return this.cultureField;
-            }
-            set
-            {
-                this.cultureField = value;
-            }
-        }
-
-        [XmlAttribute()]
-        public string format
-        {
-            get
-            {
-                return this.formatField;
-            }
-            set
-            {
-                this.formatField = value;
-            }
-        }
+        public string format { get; set; }
     }
 
     
@@ -7899,55 +3848,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_CalculatedItem> calculatedItemField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_CalculatedItems()
         {
-            this.calculatedItemField = new List<CT_CalculatedItem>();
+            this.calculatedItem = new List<CT_CalculatedItem>();
         }
 
         [XmlElement(nameof(calculatedItem), Order = 0)]
-        public List<CT_CalculatedItem> calculatedItem
-        {
-            get
-            {
-                return this.calculatedItemField;
-            }
-            set
-            {
-                this.calculatedItemField = value;
-            }
-        }
+        public List<CT_CalculatedItem> calculatedItem { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -7990,86 +3903,26 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_PivotArea pivotAreaField;
-
-        private CT_ExtensionList extLstField;
-
-        private uint fieldField;
-
-        private bool fieldFieldSpecified;
-
-        private string formulaField;
-
         public CT_CalculatedItem()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.pivotAreaField = new CT_PivotArea();
+            this.extLst = new CT_ExtensionList();
+            this.pivotArea = new CT_PivotArea();
         }
 
         [XmlElement(Order = 0)]
-        public CT_PivotArea pivotArea
-        {
-            get
-            {
-                return this.pivotAreaField;
-            }
-            set
-            {
-                this.pivotAreaField = value;
-            }
-        }
+        public CT_PivotArea pivotArea { get; set; }
 
         [XmlElement(Order = 1)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute()]
-        public uint field
-        {
-            get
-            {
-                return this.fieldField;
-            }
-            set
-            {
-                this.fieldField = value;
-            }
-        }
+        public uint field { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fieldSpecified
-        {
-            get
-            {
-                return this.fieldFieldSpecified;
-            }
-            set
-            {
-                this.fieldFieldSpecified = value;
-            }
-        }
+        public bool fieldSpecified { get; set; }
 
         [XmlAttribute()]
-        public string formula
-        {
-            get
-            {
-                return this.formulaField;
-            }
-            set
-            {
-                this.formulaField = value;
-            }
-        }
+        public string formula { get; set; }
     }
 
     
@@ -8112,55 +3965,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_CalculatedMember> calculatedMemberField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_CalculatedMembers()
         {
-            this.calculatedMemberField = new List<CT_CalculatedMember>();
+            this.calculatedMember = new List<CT_CalculatedMember>();
         }
 
         [XmlElement(nameof(calculatedMember), Order = 0)]
-        public List<CT_CalculatedMember> calculatedMember
-        {
-            get
-            {
-                return this.calculatedMemberField;
-            }
-            set
-            {
-                this.calculatedMemberField = value;
-            }
-        }
+        public List<CT_CalculatedMember> calculatedMember { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -8210,134 +4027,38 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private CT_ExtensionList extLstField;
-
-        private string nameField;
-
-        private string mdxField;
-
-        private string memberNameField;
-
-        private string hierarchyField;
-
-        private string parentField;
-
-        private int solveOrderField;
-
-        private bool setField;
-
         public CT_CalculatedMember()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.solveOrderField = 0;
-            this.setField = false;
+            this.extLst = new CT_ExtensionList();
+            this.solveOrder = 0;
+            this.set = false;
         }
 
         [XmlElement(Order = 0)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string mdx
-        {
-            get
-            {
-                return this.mdxField;
-            }
-            set
-            {
-                this.mdxField = value;
-            }
-        }
+        public string mdx { get; set; }
 
         [XmlAttribute()]
-        public string memberName
-        {
-            get
-            {
-                return this.memberNameField;
-            }
-            set
-            {
-                this.memberNameField = value;
-            }
-        }
+        public string memberName { get; set; }
 
         [XmlAttribute()]
-        public string hierarchy
-        {
-            get
-            {
-                return this.hierarchyField;
-            }
-            set
-            {
-                this.hierarchyField = value;
-            }
-        }
+        public string hierarchy { get; set; }
 
         [XmlAttribute()]
-        public string parent
-        {
-            get
-            {
-                return this.parentField;
-            }
-            set
-            {
-                this.parentField = value;
-            }
-        }
+        public string parent { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public int solveOrder
-        {
-            get
-            {
-                return this.solveOrderField;
-            }
-            set
-            {
-                this.solveOrderField = value;
-            }
-        }
+        public int solveOrder { get; set; }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool set
-        {
-            get
-            {
-                return this.setField;
-            }
-            set
-            {
-                this.setField = value;
-            }
-        }
+        public bool set { get; set; }
     }
 
     
@@ -8380,55 +4101,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_PivotDimension> dimensionField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_Dimensions()
         {
-            this.dimensionField = new List<CT_PivotDimension>();
+            this.dimension = new List<CT_PivotDimension>();
         }
 
         [XmlElement(nameof(dimension), Order = 0)]
-        public List<CT_PivotDimension> dimension
-        {
-            get
-            {
-                return this.dimensionField;
-            }
-            set
-            {
-                this.dimensionField = value;
-            }
-        }
+        public List<CT_PivotDimension> dimension { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -8464,71 +4149,23 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private bool measureField;
-
-        private string nameField;
-
-        private string uniqueNameField;
-
-        private string captionField;
-
         public CT_PivotDimension()
         {
-            this.measureField = false;
+            this.measure = false;
         }
 
         [XmlAttribute()]
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool measure
-        {
-            get
-            {
-                return this.measureField;
-            }
-            set
-            {
-                this.measureField = value;
-            }
-        }
+        public bool measure { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string uniqueName
-        {
-            get
-            {
-                return this.uniqueNameField;
-            }
-            set
-            {
-                this.uniqueNameField = value;
-            }
-        }
+        public string uniqueName { get; set; }
 
         [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
     }
 
     
@@ -8571,55 +4208,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_MeasureGroup> measureGroupField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_MeasureGroups()
         {
-            this.measureGroupField = new List<CT_MeasureGroup>();
+            this.measureGroup = new List<CT_MeasureGroup>();
         }
 
         [XmlElement(nameof(measureGroup), Order = 0)]
-        public List<CT_MeasureGroup> measureGroup
-        {
-            get
-            {
-                return this.measureGroupField;
-            }
-            set
-            {
-                this.measureGroupField = value;
-            }
-        }
+        public List<CT_MeasureGroup> measureGroup { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -8650,35 +4251,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private string nameField;
-
-        private string captionField;
+        [XmlAttribute()]
+        public string name { get; set; }
 
         [XmlAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-
-        [XmlAttribute()]
-        public string caption
-        {
-            get
-            {
-                return this.captionField;
-            }
-            set
-            {
-                this.captionField = value;
-            }
-        }
+        public string caption { get; set; }
     }
 
     
@@ -8721,55 +4298,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
-        private List<CT_MeasureDimensionMap> mapField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_MeasureDimensionMaps()
         {
-            this.mapField = new List<CT_MeasureDimensionMap>();
+            this.map = new List<CT_MeasureDimensionMap>();
         }
 
         [XmlElement(nameof(map), Order = 0)]
-        public List<CT_MeasureDimensionMap> map
-        {
-            get
-            {
-                return this.mapField;
-            }
-            set
-            {
-                this.mapField = value;
-            }
-        }
+        public List<CT_MeasureDimensionMap> map { get; set; }
 
         [XmlAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
     
@@ -8801,64 +4342,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write("/>");
         }
 
-        private uint measureGroupField;
-
-        private bool measureGroupFieldSpecified;
-
-        private uint dimensionField;
-
-        private bool dimensionFieldSpecified;
-
         [XmlAttribute()]
-        public uint measureGroup
-        {
-            get
-            {
-                return this.measureGroupField;
-            }
-            set
-            {
-                this.measureGroupField = value;
-            }
-        }
+        public uint measureGroup { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool measureGroupSpecified
-        {
-            get
-            {
-                return this.measureGroupFieldSpecified;
-            }
-            set
-            {
-                this.measureGroupFieldSpecified = value;
-            }
-        }
+        public bool measureGroupSpecified { get; set; }
 
         [XmlAttribute()]
-        public uint dimension
-        {
-            get
-            {
-                return this.dimensionField;
-            }
-            set
-            {
-                this.dimensionField = value;
-            }
-        }
+        public uint dimension { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dimensionSpecified
-        {
-            get
-            {
-                return this.dimensionFieldSpecified;
-            }
-            set
-            {
-                this.dimensionFieldSpecified = value;
-            }
-        }
+        public bool dimensionSpecified { get; set; }
     }
 }

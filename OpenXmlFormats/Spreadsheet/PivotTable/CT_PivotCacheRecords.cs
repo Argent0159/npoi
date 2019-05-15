@@ -96,18 +96,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 this.Write(sw);
             }
         }
-        private List<object> rField;
-
-        private CT_ExtensionList extLstField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
 
         public CT_PivotCacheRecords()
         {
-            this.extLstField = new CT_ExtensionList();
-            this.rField = new List<object>();
+            this.extLst = new CT_ExtensionList();
+            this.r = new List<object>();
         }
 
         [System.Xml.Serialization.XmlArrayAttribute(Order = 0)]
@@ -118,56 +111,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         [System.Xml.Serialization.XmlArrayItemAttribute("n", typeof(CT_Number), IsNullable = false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("s", typeof(CT_String), IsNullable = false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("x", typeof(CT_Index), IsNullable = false)]
-        public List<object> r
-        {
-            get
-            {
-                return this.rField;
-            }
-            set
-            {
-                this.rField = value;
-            }
-        }
+        public List<object> r { get; set; }
 
         [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
     
 }

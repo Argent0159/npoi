@@ -7,32 +7,25 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 {
     public class WorkbookDocument
     {
-        CT_Workbook workbook = null;
         public WorkbookDocument()
         {
-            workbook = new CT_Workbook();
+            Workbook = new CT_Workbook();
         }
         public static WorkbookDocument Parse(XmlDocument xmlDoc, XmlNamespaceManager NameSpaceManager)
         {
-            CT_Workbook obj = CT_Workbook.Parse(xmlDoc.DocumentElement, NameSpaceManager);
-            return new WorkbookDocument(obj);
+            var workbook = CT_Workbook.Parse(xmlDoc.DocumentElement, NameSpaceManager);
+            return new WorkbookDocument(workbook);
         }
         public WorkbookDocument(CT_Workbook workbook)
         {
-            this.workbook = workbook;
+            this.Workbook = workbook;
         }
-        public CT_Workbook Workbook
-        {
-            get
-            {
-                return this.workbook;
-            }
-        }
+        public CT_Workbook Workbook { get; } = null;
         public void Save(Stream stream)
         {
-            using (StreamWriter sw1 = new StreamWriter(stream))
+            using (var sw1 = new StreamWriter(stream))
             {
-                workbook.Write(sw1);
+                Workbook.Write(sw1);
             }
         }
     }

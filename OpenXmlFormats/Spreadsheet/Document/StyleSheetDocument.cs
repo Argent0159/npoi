@@ -21,7 +21,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public static StyleSheetDocument Parse(XmlDocument xmldoc, XmlNamespaceManager namespaceManager)
         {
-            CT_Stylesheet obj = CT_Stylesheet.Parse(xmldoc.DocumentElement,namespaceManager);
+            var stylesheet = CT_Stylesheet.Parse(xmldoc.DocumentElement,namespaceManager);
             return new StyleSheetDocument(obj);
         }
 
@@ -35,7 +35,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void Save(Stream stream)
         {
-            using (StreamWriter sw1 = new StreamWriter(stream))
+            using (var sw1 = new StreamWriter(stream))
             {
                 this.stylesheet.Write(sw1);
             }

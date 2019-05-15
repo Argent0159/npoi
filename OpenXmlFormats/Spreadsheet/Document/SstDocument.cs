@@ -35,18 +35,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
             try
             {
-                SstDocument sstDoc=new SstDocument();
+                var sstDoc=new SstDocument();
                 sstDoc.AddNewSst();
                 CT_Sst sst = sstDoc.GetSst();
-                sst.count = XmlHelper.ReadInt(xml.DocumentElement.Attributes["count"]);
-                sst.uniqueCount = XmlHelper.ReadInt(xml.DocumentElement.Attributes["uniqueCount"]);
+                sst.count = XmlHelper.ReadInt(xml.DocumentElement.Attributes[nameof(CT_Sst.count)]);
+                sst.uniqueCount = XmlHelper.ReadInt(xml.DocumentElement.Attributes[nameof(CT_Sst.uniqueCount)]);
 
                 XmlNodeList nl = xml.SelectNodes("//d:sst/d:si", namespaceManager);
                 if (nl != null)
                 {
                     foreach (XmlNode node in nl)
                     {
-                        CT_Rst rst = CT_Rst.Parse(node, namespaceManager);
+                        var rst = CT_Rst.Parse(node, namespaceManager);
                         sstDoc.sst.si.Add(rst);
                     }
                 }
@@ -60,14 +60,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public void Save(Stream stream)
         {
-            StreamWriter sw = new StreamWriter(stream, Encoding.UTF8);
-            sw.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?><sst xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" count=\"{0}\" uniqueCount=\"{1}\">", this.GetSst().count, this.GetSst().uniqueCount);
-            foreach (CT_Rst ssi in this.GetSst().si)
+            using (var sw = new StreamWriter(stream, Encoding.UTF8))
             {
-                ssi.Write(sw, "si");
+                sw.Write($"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?><sst xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" count=\"{this.GetSst().count}\" uniqueCount=\"{this.GetSst().uniqueCount}\">");
+                foreach (CT_Rst ssi in this.GetSst().si)
+                {
+                    ssi.Write(sw, nameof(CT_Sst.si));
+                }
+                sw.Write("</sst>");
+                sw.Flush();
             }
-            sw.Write("</sst>");
-            sw.Flush();
         }
 
     }

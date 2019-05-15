@@ -17,7 +17,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public static SingleXmlCellsDocument Parse(Stream stream)
         {
-            CT_SingleXmlCells obj = (CT_SingleXmlCells)serializer.Deserialize(stream);
+            var obj = (CT_SingleXmlCells)serializer.Deserialize(stream);
             return new SingleXmlCellsDocument(obj);
         }
         public CT_SingleXmlCells GetSingleXmlCells()

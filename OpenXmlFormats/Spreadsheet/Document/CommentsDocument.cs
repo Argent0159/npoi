@@ -17,7 +17,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public static CommentsDocument Parse(XmlDocument xmlDoc, XmlNamespaceManager namespaceManager)
         {
-            CommentsDocument commentsDoc = new CommentsDocument();
+            var commentsDoc = new CommentsDocument();
             commentsDoc.comments = CT_Comments.Parse(xmlDoc.DocumentElement, namespaceManager);
             return commentsDoc;
         }
@@ -31,7 +31,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void Save(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (var sw = new StreamWriter(stream))
             {
                 this.comments.Write(sw);
             }

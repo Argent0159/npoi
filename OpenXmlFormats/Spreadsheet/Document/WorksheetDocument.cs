@@ -18,8 +18,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public static WorksheetDocument Parse(XmlDocument xmldoc, XmlNamespaceManager namespaceMgr)
         {
-            CT_Worksheet obj = CT_Worksheet.Parse(xmldoc.DocumentElement, namespaceMgr);
-            return new WorksheetDocument(obj);
+            var worksheet = CT_Worksheet.Parse(xmldoc.DocumentElement, namespaceMgr);
+            return new WorksheetDocument(worksheet);
         }
         public CT_Worksheet GetWorksheet()
         {

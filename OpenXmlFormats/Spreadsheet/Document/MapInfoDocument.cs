@@ -10,7 +10,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         CT_MapInfo map = null;
 
         public MapInfoDocument()
-        { 
+        {
         }
         public MapInfoDocument(CT_MapInfo map)
         {
@@ -30,18 +30,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void Save(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (var sw = new StreamWriter(stream))
             {
                 sw.Write("<MapInfo xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" SelectionNamespaces=\"xmlns:ns1='http://schemas.openxmlformats.org/spreadsheetml/2006/main'\">");
                 if (this.map.Schema != null)
                 {
                     foreach (CT_Schema ctSchema in this.map.Schema)
                     {
-                        sw.Write(string.Format("<Schema ID=\"{0}\"", ctSchema.ID));
+                        sw.Write($"<Schema ID=\"{ctSchema.ID}\"");
                         if (ctSchema.Namespace != null)
-                            sw.Write(string.Format(" Namespace=\"{0}\"", ctSchema.Namespace));
+                            sw.Write($" Namespace=\"{ctSchema.Namespace}\"");
                         if (ctSchema.SchemaRef != null)
-                            sw.Write(string.Format(" SchemaRef=\"{0}\"", ctSchema.SchemaRef));
+                            sw.Write($" SchemaRef=\"{ctSchema.SchemaRef}\"");
                         sw.Write(">");
                         sw.Write(ctSchema.InnerXml);
                         sw.Write("</Schema>");
@@ -51,13 +51,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 {
                     foreach (CT_Map ctMap in this.map.Map)
                     {
-                        sw.Write(string.Format("<Map ID=\"{0}\"", ctMap.ID));
+                        sw.Write($"<Map ID=\"{ctMap.ID}\"");
                         if (ctMap.SchemaID != null)
-                            sw.Write(string.Format(" SchemaID=\"{0}\"", ctMap.SchemaID));
+                            sw.Write($" SchemaID=\"{ctMap.SchemaID}\"");
                         if (ctMap.RootElement != null)
-                            sw.Write(string.Format(" RootElement=\"{0}\"", ctMap.RootElement));
+                            sw.Write($" RootElement=\"{ctMap.RootElement}\"");
                         if (ctMap.Name != null)
-                            sw.Write(string.Format(" Name=\"{0}\"", ctMap.Name));
+                            sw.Write($" Name=\"{ctMap.Name}\"");
                         if (ctMap.PreserveFormat)
                             sw.Write(" PreserveFormat=\"true\"");
                         if (ctMap.PreserveSortAFLayout)
@@ -75,34 +75,38 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             }
         }
 
-        public static MapInfoDocument Parse(System.Xml.XmlDocument xmldoc, System.Xml.XmlNamespaceManager NameSpaceManager)
+        public static MapInfoDocument Parse(XmlDocument xmldoc, XmlNamespaceManager NameSpaceManager)
         {
-            MapInfoDocument doc = new MapInfoDocument();
-            doc.map = new CT_MapInfo();
+            var doc = new MapInfoDocument
+            {
+                map = new CT_MapInfo()
+            };
             doc.map.Map = new System.Collections.Generic.List<CT_Map>();
             foreach (XmlElement mapNode in xmldoc.SelectNodes("d:MapInfo/d:Map", NameSpaceManager))
-            { 
-                CT_Map ctMap=new CT_Map();
-                ctMap.ID = XmlHelper.ReadUInt(mapNode.GetAttributeNode("ID"));
-                ctMap.Name = XmlHelper.ReadString(mapNode.GetAttributeNode("Name"));
-                ctMap.RootElement = XmlHelper.ReadString(mapNode.GetAttributeNode("RootElement"));
-                ctMap.SchemaID = XmlHelper.ReadString(mapNode.GetAttributeNode("SchemaID"));
-                ctMap.ShowImportExportValidationErrors = XmlHelper.ReadBool(mapNode.GetAttributeNode("ShowImportExportValidationErrors"));
-                ctMap.PreserveFormat = XmlHelper.ReadBool(mapNode.GetAttributeNode("PreserveFormat"));
-                ctMap.PreserveSortAFLayout = XmlHelper.ReadBool(mapNode.GetAttributeNode("PreserveSortAFLayout"));
-                ctMap.Append = XmlHelper.ReadBool(mapNode.GetAttributeNode("Append"));
-                ctMap.AutoFit = XmlHelper.ReadBool(mapNode.GetAttributeNode("AutoFit"));
+            {
+                var ctMap = new CT_Map
+                {
+                    ID = XmlHelper.ReadUInt(mapNode.GetAttributeNode(nameof(CT_Map.ID))),
+                    Name = XmlHelper.ReadString(mapNode.GetAttributeNode(nameof(CT_Map.Name))),
+                    RootElement = XmlHelper.ReadString(mapNode.GetAttributeNode(nameof(CT_Map.RootElement))),
+                    SchemaID = XmlHelper.ReadString(mapNode.GetAttributeNode(nameof(CT_Map.SchemaID))),
+                    ShowImportExportValidationErrors = XmlHelper.ReadBool(mapNode.GetAttributeNode(nameof(CT_Map.ShowImportExportValidationErrors))),
+                    PreserveFormat = XmlHelper.ReadBool(mapNode.GetAttributeNode(nameof(CT_Map.PreserveFormat))),
+                    PreserveSortAFLayout = XmlHelper.ReadBool(mapNode.GetAttributeNode(nameof(CT_Map.PreserveSortAFLayout))),
+                    Append = XmlHelper.ReadBool(mapNode.GetAttributeNode(nameof(CT_Map.Append))),
+                    AutoFit = XmlHelper.ReadBool(mapNode.GetAttributeNode(nameof(CT_Map.AutoFit)))
+                };
                 doc.map.Map.Add(ctMap);
             }
             doc.map.Schema = new System.Collections.Generic.List<CT_Schema>();
             foreach (XmlNode schemaNode in xmldoc.SelectNodes("d:MapInfo/d:Schema", NameSpaceManager))
             {
-                CT_Schema ctSchema = new CT_Schema();
-                ctSchema.ID = schemaNode.Attributes["ID"].Value;
-                if (schemaNode.Attributes["Namespace"] != null)
-                    ctSchema.Namespace = schemaNode.Attributes["Namespace"].Value;
-                if (schemaNode.Attributes["SchemaRef"] != null)
-                    ctSchema.SchemaRef = schemaNode.Attributes["SchemaRef"].Value;
+                var ctSchema = new CT_Schema();
+                ctSchema.ID = schemaNode.Attributes[nameof(CT_Schema.ID)].Value;
+                if (schemaNode.Attributes[nameof(CT_Schema.Namespace)] != null)
+                    ctSchema.Namespace = schemaNode.Attributes[nameof(CT_Schema.Namespace)].Value;
+                if (schemaNode.Attributes[nameof(CT_Schema.SchemaRef)] != null)
+                    ctSchema.SchemaRef = schemaNode.Attributes[nameof(CT_Schema.SchemaRef)].Value;
                 ctSchema.InnerXml = schemaNode.InnerXml;
                 doc.map.Schema.Add(ctSchema);
             }

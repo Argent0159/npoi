@@ -20,8 +20,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public static TableDocument Parse(XmlDocument xmldoc, XmlNamespaceManager namespaceMgr)
         {
-            CT_Table obj = CT_Table.Parse(xmldoc.DocumentElement, namespaceMgr);
-            return new TableDocument(obj);
+            var table = CT_Table.Parse(xmldoc.DocumentElement, namespaceMgr);
+            return new TableDocument(table);
         }
 
         public CT_Table GetTable()
@@ -36,7 +36,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public void Save(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (var sw = new StreamWriter(stream))
             {
                 ctTable.Write(sw);
             }

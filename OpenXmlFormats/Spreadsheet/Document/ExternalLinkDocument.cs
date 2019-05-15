@@ -8,37 +8,25 @@ namespace NPOI.OpenXmlFormats.Spreadsheet.Document
 {
     public class ExternalLinkDocument
     {
-        CT_ExternalLink link = null;
-
         public ExternalLinkDocument()
         {
         }
         public ExternalLinkDocument(CT_ExternalLink link)
         {
-            this.link = link;
+            this.ExternalLink = link;
         }
         public static ExternalLinkDocument Parse(XmlDocument xmldoc, XmlNamespaceManager namespaceMgr)
         {
-            CT_ExternalLink obj = CT_ExternalLink.Parse(xmldoc.DocumentElement, namespaceMgr);
+            var obj = CT_ExternalLink.Parse(xmldoc.DocumentElement, namespaceMgr);
             return new ExternalLinkDocument(obj);
         }
 
-        public CT_ExternalLink ExternalLink
-        {
-            get
-            {
-                return link;
-            }
-            set
-            {
-                this.link = value;
-            }
-        }
+        public CT_ExternalLink ExternalLink { get; set; } = null;
         public void Save(Stream stream)
         {
-            using (StreamWriter sw1 = new StreamWriter(stream))
+            using (var sw1 = new StreamWriter(stream))
             {
-                this.link.Write(sw1);
+                this.ExternalLink.Write(sw1);
             }
         }
     }

@@ -23,7 +23,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public void Save(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (var sw = new StreamWriter(stream))
             {
                 this.stylesheet.Write(sw);
             }
@@ -31,8 +31,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public static ThemeDocument Parse(System.Xml.XmlDocument xmldoc, System.Xml.XmlNamespaceManager namespaceManager)
         {
-            CT_OfficeStyleSheet obj = CT_OfficeStyleSheet.Parse(xmldoc.DocumentElement, namespaceManager);
-            return new ThemeDocument(obj);
+            var officeStyleSheet = CT_OfficeStyleSheet.Parse(xmldoc.DocumentElement, namespaceManager);
+            return new ThemeDocument(officeStyleSheet);
         }
     }
 }

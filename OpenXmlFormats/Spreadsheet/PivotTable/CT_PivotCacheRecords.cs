@@ -17,12 +17,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_PivotCacheRecords ctObj = new CT_PivotCacheRecords();
-            if (node.Attributes["count"] != null)
-                ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            if (node.Attributes[nameof(count)] != null)
+                ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.r = new List<Object>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "extLst")
+                if (childNode.LocalName == nameof(extLst))
                     ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == "n")
                 {
@@ -64,10 +64,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write("<pivotCacheRecords xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" ");
             sw.Write("xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" ");
             sw.Write("xmlns:s=\"http://schemas.openxmlformats.org/officeDocument/2006/sharedTypes\" ");
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.extLst != null)
-                this.extLst.Write(sw, "extLst");
+                this.extLst.Write(sw, nameof(extLst));
             foreach (object o in this.r)
             {
                 if (o is CT_Number)

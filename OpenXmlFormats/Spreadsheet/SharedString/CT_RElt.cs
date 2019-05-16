@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using System.Text;
@@ -20,15 +21,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_RElt ctObj = new CT_RElt();
+            var ctObj = new CT_RElt();
             XmlNode tNode = node.SelectSingleNode("d:t", namespaceManager);
-            if(tNode!=null)
-                ctObj.t = tNode.InnerText.Replace("\r", ""); ;
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(rPr))
-                    ctObj.rPr = CT_RPrElt.Parse(childNode, namespaceManager);
-            }
+            if (tNode != null)
+                ctObj.t = tNode.InnerText.Replace("\r", "");
+
+            var childNode = node.ChildNodes.Cast<XmlNode>().Last(n => n.LocalName == nameof(rPr));
+            ctObj.rPr = CT_RPrElt.Parse(childNode, namespaceManager);
             return ctObj;
         }
 

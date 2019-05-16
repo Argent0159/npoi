@@ -13,10 +13,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_BorderPr
     {
-
-        private CT_Color colorField;
-
-        private ST_BorderStyle styleField;
         public static CT_BorderPr Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -55,56 +51,36 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BorderPr()
         {
             //this.colorField = new CT_Color();
-            this.styleField = ST_BorderStyle.none;
+            this.style = ST_BorderStyle.none;
         }
         public void SetColor(CT_Color color)
         {
-            this.colorField = color;
+            this.color = color;
         }
         public bool IsSetColor()
         {
-            return colorField != null;
+            return color != null;
         }
         public void UnsetColor()
         {
-            colorField = null;
+            color = null;
         }
         public bool IsSetStyle()
         {
-            return styleField != ST_BorderStyle.none;
+            return style != ST_BorderStyle.none;
         }
 
         [XmlElement]
-        public CT_Color color
-        {
-            get
-            {
-                return this.colorField;
-            }
-            set
-            {
-                this.colorField = value;
-            }
-        }
+        public CT_Color color { get; set; }
 
         [XmlAttribute]
         [DefaultValue(ST_BorderStyle.none)]
-        public ST_BorderStyle style
-        {
-            get
-            {
-                return this.styleField;
-            }
-            set
-            {
-                this.styleField = value;
-            }
-        }
+        public ST_BorderStyle style { get; set; }
 
         public CT_BorderPr Copy()
         {
             var res = new CT_BorderPr();
-            res.colorField = this.colorField == null ? null : this.colorField.Copy();
+            res.color = this.color == null ? null : this.color.Copy();
             res.style = this.style;
             return res;
         }

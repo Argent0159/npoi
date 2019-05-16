@@ -12,55 +12,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_CellStyles
     {
-
-        private List<CT_CellStyle> cellStyleField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_CellStyles()
         {
             //this.cellStyleField = new List<CT_CellStyle>();
         }
         [XmlElement]
-        public List<CT_CellStyle> cellStyle
-        {
-            get
-            {
-                return this.cellStyleField;
-            }
-            set
-            {
-                this.cellStyleField = value;
-            }
-        }
+        public List<CT_CellStyle> cellStyle { get; set; }
 
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
         public static CT_CellStyles Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {

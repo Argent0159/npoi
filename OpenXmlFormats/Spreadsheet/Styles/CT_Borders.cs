@@ -12,9 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_Borders
     {
-        private List<CT_Border> borderField;
-        private uint countField = 0;
-        private bool countFieldSpecified = false;
         public static CT_Borders Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -53,52 +50,22 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Border AddNewBorder()
         {
-            if (this.borderField == null)
-                this.borderField = new List<CT_Border>();
+            if (this.border == null)
+                this.border = new List<CT_Border>();
             CT_Border border = new CT_Border();
-            this.borderField.Add(border);
+            this.border.Add(border);
             return border;
         }
         [XmlElement]
-        public List<CT_Border> border
-        {
-            get
-            {
-                return this.borderField;
-            }
-            set
-            {
-                this.borderField = value;
-            }
-        }
+        public List<CT_Border> border { get; set; }
         public void SetBorderArray(List<CT_Border> array)
         {
-            borderField = array;
+            border = array;
         }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; } = 0;
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; } = false;
     }
 }

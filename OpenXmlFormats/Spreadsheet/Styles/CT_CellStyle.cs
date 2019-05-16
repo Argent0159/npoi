@@ -12,29 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_CellStyle
     {
-
-        private CT_ExtensionList extLstField;
-
-        private string nameField;
-
-        private uint xfIdField;
-
-        private uint builtinIdField;
-
-        private bool builtinIdFieldSpecified;
-
-        private uint iLevelField;
-
-        private bool iLevelFieldSpecified;
-
-        private bool hiddenField;
-
-        private bool hiddenFieldSpecified;
-
-        private bool customBuiltinField;
-
-        private bool customBuiltinFieldSpecified;
-
         public CT_CellStyle()
         {
            // this.extLstField = new CT_ExtensionList();
@@ -82,141 +59,31 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlElement]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
         [XmlAttribute]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
         [XmlAttribute]
-        public uint xfId
-        {
-            get
-            {
-                return this.xfIdField;
-            }
-            set
-            {
-                this.xfIdField = value;
-            }
-        }
+        public uint xfId { get; set; }
         [XmlAttribute]
-        public uint builtinId
-        {
-            get
-            {
-                return this.builtinIdField;
-            }
-            set
-            {
-                this.builtinIdField = value;
-            }
-        }
+        public uint builtinId { get; set; }
 
         [XmlIgnore]
-        public bool builtinIdSpecified
-        {
-            get
-            {
-                return this.builtinIdFieldSpecified;
-            }
-            set
-            {
-                this.builtinIdFieldSpecified = value;
-            }
-        }
+        public bool builtinIdSpecified { get; set; }
         [XmlAttribute]
-        public uint iLevel
-        {
-            get
-            {
-                return this.iLevelField;
-            }
-            set
-            {
-                this.iLevelField = value;
-            }
-        }
+        public uint iLevel { get; set; }
 
         [XmlIgnore]
-        public bool iLevelSpecified
-        {
-            get
-            {
-                return this.iLevelFieldSpecified;
-            }
-            set
-            {
-                this.iLevelFieldSpecified = value;
-            }
-        }
+        public bool iLevelSpecified { get; set; }
         [XmlAttribute]
-        public bool hidden
-        {
-            get
-            {
-                return this.hiddenField;
-            }
-            set
-            {
-                this.hiddenField = value;
-            }
-        }
+        public bool hidden { get; set; }
 
         [XmlIgnore]
-        public bool hiddenSpecified
-        {
-            get
-            {
-                return this.hiddenFieldSpecified;
-            }
-            set
-            {
-                this.hiddenFieldSpecified = value;
-            }
-        }
+        public bool hiddenSpecified { get; set; }
         [XmlAttribute]
-        public bool customBuiltin
-        {
-            get
-            {
-                return this.customBuiltinField;
-            }
-            set
-            {
-                this.customBuiltinField = value;
-            }
-        }
+        public bool customBuiltin { get; set; }
 
         [XmlIgnore]
-        public bool customBuiltinSpecified
-        {
-            get
-            {
-                return this.customBuiltinFieldSpecified;
-            }
-            set
-            {
-                this.customBuiltinFieldSpecified = value;
-            }
-        }
+        public bool customBuiltinSpecified { get; set; }
     }
 
 

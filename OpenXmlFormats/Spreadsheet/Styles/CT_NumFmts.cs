@@ -12,13 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_NumFmts
     {
-
-        private List<CT_NumFmt> numFmtField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_NumFmts()
         {
             //this.numFmtField = new List<CT_NumFmt>();
@@ -57,49 +50,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_NumFmt AddNewNumFmt()
         {
-            if (this.numFmtField == null)
-                this.numFmtField = new List<CT_NumFmt>();
+            if (this.numFmt == null)
+                this.numFmt = new List<CT_NumFmt>();
             CT_NumFmt newNumFmt = new CT_NumFmt();
-            this.numFmtField.Add(newNumFmt);
+            this.numFmt.Add(newNumFmt);
             return newNumFmt;
         }
         [XmlElement]
-        public List<CT_NumFmt> numFmt
-        {
-            get
-            {
-                return this.numFmtField;
-            }
-            set
-            {
-                this.numFmtField = value;
-            }
-        }
+        public List<CT_NumFmt> numFmt { get; set; }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 
 }

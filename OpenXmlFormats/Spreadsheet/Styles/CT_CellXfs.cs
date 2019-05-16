@@ -12,12 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_CellXfs
     {
-
-        private List<CT_Xf> xfField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
         public static CT_CellXfs Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -56,48 +50,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Xf AddNewXf()
         {
-            if (this.xfField == null)
-                this.xfField = new List<CT_Xf>();
+            if (this.xf == null)
+                this.xf = new List<CT_Xf>();
             CT_Xf xf = new CT_Xf();
-            this.xfField.Add(xf);
+            this.xf.Add(xf);
             return xf;
         }
         [XmlElement]
-        public List<CT_Xf> xf
-        {
-            get
-            {
-                return this.xfField;
-            }
-            set
-            {
-                this.xfField = value;
-            }
-        }
+        public List<CT_Xf> xf { get; set; }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
 }

@@ -12,38 +12,32 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_PatternFill
     {
-        private CT_Color fgColorField = null;
-
-        private CT_Color bgColorField = null;
-
-        private ST_PatternType patternTypeField = ST_PatternType.none;
-
         public bool IsSetPatternType()
         {
-            return this.patternTypeField != ST_PatternType.none;
+            return this.patternType != ST_PatternType.none;
         }
         public CT_Color AddNewFgColor()
         {
-            this.fgColorField = new CT_Color();
-            return fgColorField;
+            this.fgColor = new CT_Color();
+            return fgColor;
         }
 
         public CT_Color AddNewBgColor()
         {
-            this.bgColorField = new CT_Color();
-            return bgColorField;
+            this.bgColor = new CT_Color();
+            return bgColor;
         }
         public void UnsetPatternType()
         {
-            this.patternTypeField = ST_PatternType.none;
+            this.patternType = ST_PatternType.none;
         }
         public void UnsetFgColor()
         {
-            this.fgColorField = null;
+            this.fgColor = null;
         }
         public void UnsetBgColor()
         {
-            this.bgColorField = null;
+            this.bgColor = null;
         }
         public static CT_PatternFill Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -84,53 +78,23 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlElement]
-        public CT_Color fgColor
-        {
-            get
-            {
-                return this.fgColorField;
-            }
-            set
-            {
-                this.fgColorField = value;
-            }
-        }
+        public CT_Color fgColor { get; set; } = null;
 
         public bool IsSetBgColor()
         {
-            return bgColorField != null;
+            return bgColor != null;
         }
 
         public bool IsSetFgColor()
         {
-            return fgColorField != null;
+            return fgColor != null;
         }
 
         [XmlElement]
-        public CT_Color bgColor
-        {
-            get
-            {
-                return this.bgColorField;
-            }
-            set
-            {
-                this.bgColorField = value;
-            }
-        }
+        public CT_Color bgColor { get; set; } = null;
 
         [XmlAttribute]
-        public ST_PatternType patternType
-        {
-            get
-            {
-                return this.patternTypeField;
-            }
-            set
-            {
-                this.patternTypeField = value;
-            }
-        }
+        public ST_PatternType patternType { get; set; } = ST_PatternType.none;
     }
 
     [Serializable]

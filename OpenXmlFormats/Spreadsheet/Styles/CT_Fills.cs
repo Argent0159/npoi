@@ -12,10 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_Fills
     {
-        private List<CT_Fill> fillField;
-        private uint countField = 0;
-        private bool countFieldSpecified = false;
-
         public CT_Fills()
         {
             //this.fillField = new List<CT_Fill>();
@@ -53,45 +49,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlElement]
-        public List<CT_Fill> fill
-        {
-            get
-            {
-                return this.fillField;
-            }
-            set
-            {
-                this.fillField = value;
-            }
-        }
+        public List<CT_Fill> fill { get; set; }
         public void SetFillArray(List<CT_Fill> array)
         {
-            fillField = array;
+            fill = array;
         }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; } = 0;
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; } = false;
     }
 }

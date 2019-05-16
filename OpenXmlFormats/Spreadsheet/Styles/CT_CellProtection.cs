@@ -12,18 +12,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_CellProtection
     {
-
-        private bool lockedField = false;
-
-        private bool hiddenField = false;
-
         public bool IsSetHidden()
         {
-            return this.hiddenField != false;
+            return this.hidden != false;
         }
         public bool IsSetLocked()
         {
-            return this.lockedField != false;
+            return this.locked != false;
         }
         public static CT_CellProtection Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -47,28 +42,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlAttribute]
-        public bool locked
-        {
-            get
-            {
-                return this.lockedField;
-            }
-            set
-            {
-                this.lockedField = value;
-            }
-        }
+        public bool locked { get; set; } = false;
         [XmlAttribute]
-        public bool hidden
-        {
-            get
-            {
-                return this.hiddenField;
-            }
-            set
-            {
-                this.hiddenField = value;
-            }
-        }
+        public bool hidden { get; set; } = false;
     }
 }

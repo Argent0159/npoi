@@ -10,24 +10,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 {
     public class CT_TableStyle
     {
-
-        private List<CT_TableStyleElement> tableStyleElementField;
-
-        private string nameField;
-
-        private bool pivotField;
-
-        private bool tableField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
         public CT_TableStyle()
         {
             //this.tableStyleElementField = new List<CT_TableStyleElement>();
-            this.pivotField = true;
-            this.tableField = true;
+            this.pivot = true;
+            this.table = true;
         }
         public static CT_TableStyle Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -68,104 +55,25 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlElement]
-        public List<CT_TableStyleElement> tableStyleElement
-        {
-            get
-            {
-                return this.tableStyleElementField;
-            }
-            set
-            {
-                this.tableStyleElementField = value;
-            }
-        }
+        public List<CT_TableStyleElement> tableStyleElement { get; set; }
         [XmlAttribute]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
         [XmlAttribute]
         [DefaultValue(true)]
-        public bool pivot
-        {
-            get
-            {
-                return this.pivotField;
-            }
-            set
-            {
-                this.pivotField = value;
-            }
-        }
+        public bool pivot { get; set; }
         [XmlAttribute]
         [DefaultValue(true)]
-        public bool table
-        {
-            get
-            {
-                return this.tableField;
-            }
-            set
-            {
-                this.tableField = value;
-            }
-        }
+        public bool table { get; set; }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
     }
     [Serializable]
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_TableStyleInfo
     {
-
-        private string nameField;
-
-        private bool showFirstColumnField;
-
-        private bool showFirstColumnFieldSpecified;
-
-        private bool showLastColumnField;
-
-        private bool showLastColumnFieldSpecified;
-
-        private bool showRowStripesField;
-
-        private bool showRowStripesFieldSpecified;
-
-        private bool showColumnStripesField;
-
-        private bool showColumnStripesFieldSpecified;
-
         public static CT_TableStyleInfo Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -197,131 +105,30 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlAttribute]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string name { get; set; }
         [XmlAttribute]
-        public bool showFirstColumn
-        {
-            get
-            {
-                return this.showFirstColumnField;
-            }
-            set
-            {
-                this.showFirstColumnField = value;
-            }
-        }
+        public bool showFirstColumn { get; set; }
 
         [XmlIgnore]
-        public bool showFirstColumnSpecified
-        {
-            get
-            {
-                return this.showFirstColumnFieldSpecified;
-            }
-            set
-            {
-                this.showFirstColumnFieldSpecified = value;
-            }
-        }
+        public bool showFirstColumnSpecified { get; set; }
         [XmlAttribute]
-        public bool showLastColumn
-        {
-            get
-            {
-                return this.showLastColumnField;
-            }
-            set
-            {
-                this.showLastColumnField = value;
-            }
-        }
+        public bool showLastColumn { get; set; }
 
         [XmlIgnore]
-        public bool showLastColumnSpecified
-        {
-            get
-            {
-                return this.showLastColumnFieldSpecified;
-            }
-            set
-            {
-                this.showLastColumnFieldSpecified = value;
-            }
-        }
+        public bool showLastColumnSpecified { get; set; }
         [XmlAttribute]
-        public bool showRowStripes
-        {
-            get
-            {
-                return this.showRowStripesField;
-            }
-            set
-            {
-                this.showRowStripesField = value;
-            }
-        }
+        public bool showRowStripes { get; set; }
 
         [XmlIgnore]
-        public bool showRowStripesSpecified
-        {
-            get
-            {
-                return this.showRowStripesFieldSpecified;
-            }
-            set
-            {
-                this.showRowStripesFieldSpecified = value;
-            }
-        }
+        public bool showRowStripesSpecified { get; set; }
         [XmlAttribute]
-        public bool showColumnStripes
-        {
-            get
-            {
-                return this.showColumnStripesField;
-            }
-            set
-            {
-                this.showColumnStripesField = value;
-            }
-        }
+        public bool showColumnStripes { get; set; }
 
         [XmlIgnore]
-        public bool showColumnStripesSpecified
-        {
-            get
-            {
-                return this.showColumnStripesFieldSpecified;
-            }
-            set
-            {
-                this.showColumnStripesFieldSpecified = value;
-            }
-        }
+        public bool showColumnStripesSpecified { get; set; }
     }
     public class CT_TableStyles
     {
-
-        private List<CT_TableStyle> tableStyleField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
-
-        private string defaultTableStyleField;
-
-        private string defaultPivotStyleField;
-
         public static CT_TableStyles Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -363,66 +170,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             //this.tableStyleField = new List<CT_TableStyle>();
         }
         [XmlElement]
-        public List<CT_TableStyle> tableStyle
-        {
-            get
-            {
-                return this.tableStyleField;
-            }
-            set
-            {
-                this.tableStyleField = value;
-            }
-        }
+        public List<CT_TableStyle> tableStyle { get; set; }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
-        public string defaultTableStyle
-        {
-            get
-            {
-                return this.defaultTableStyleField;
-            }
-            set
-            {
-                this.defaultTableStyleField = value;
-            }
-        }
+        public string defaultTableStyle { get; set; }
 
-        public string defaultPivotStyle
-        {
-            get
-            {
-                return this.defaultPivotStyleField;
-            }
-            set
-            {
-                this.defaultPivotStyleField = value;
-            }
-        }
+        public string defaultPivotStyle { get; set; }
     }
     public enum ST_TableStyleType
     {
@@ -514,18 +271,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
     public class CT_TableStyleElement
     {
-
-        private ST_TableStyleType typeField;
-
-        private uint sizeField;
-
-        private uint dxfIdField;
-
-        private bool dxfIdFieldSpecified;
-
         public CT_TableStyleElement()
         {
-            this.sizeField = (uint)(1);
+            this.size = (uint)(1);
         }
         public static CT_TableStyleElement Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
@@ -552,54 +300,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlAttribute]
-        public ST_TableStyleType type
-        {
-            get
-            {
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
-            }
-        }
+        public ST_TableStyleType type { get; set; }
 
         [DefaultValue(typeof(uint), "1")]
-        public uint size
-        {
-            get
-            {
-                return this.sizeField;
-            }
-            set
-            {
-                this.sizeField = value;
-            }
-        }
+        public uint size { get; set; }
         [XmlAttribute]
-        public uint dxfId
-        {
-            get
-            {
-                return this.dxfIdField;
-            }
-            set
-            {
-                this.dxfIdField = value;
-            }
-        }
+        public uint dxfId { get; set; }
 
         [XmlIgnore]
-        public bool dxfIdSpecified
-        {
-            get
-            {
-                return this.dxfIdFieldSpecified;
-            }
-            set
-            {
-                this.dxfIdFieldSpecified = value;
-            }
-        }
+        public bool dxfIdSpecified { get; set; }
     }
 }

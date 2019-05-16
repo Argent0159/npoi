@@ -14,27 +14,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         ElementName = "font")]
     public class CT_Font
     {
-        //internal static XmlSerializer serializer = new XmlSerializer(typeof(CT_Font));
-        //internal static XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces(new XmlQualifiedName[] {
-        //    new XmlQualifiedName("", "http://schemas.openxmlformats.org/spreadsheetml/2006/main") });
-
-        // all elements are optional
-        private CT_FontName nameField = null; // name of the font
-        private List<CT_IntProperty> charsetField = null;
-        private List<CT_IntProperty> familyField = null; // family of the font
-        private List<CT_BooleanProperty> bField = null; // typeface bold
-        private List<CT_BooleanProperty> iField = null;   // italic
-        private List<CT_BooleanProperty> strikeField = null; //   strike through
-        private CT_BooleanProperty outlineField = null;
-        private CT_BooleanProperty shadowField = null;
-        private CT_BooleanProperty condenseField = null;
-        private CT_BooleanProperty extendField = null;
-        private List<CT_Color> colorField = null;
-        private List<CT_FontSize> szField = null; // size of the font
-        private List<CT_UnderlineProperty> uField = null; // underline
-        private List<CT_VerticalAlignFontProperty> vertAlignField = null;  // vertical alignment of the text
-        private List<CT_FontScheme> schemeField = null;
-
         public CT_Font()
         {
         }
@@ -194,462 +173,402 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         //}
         #region name
         [XmlElement]
-        public CT_FontName name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
-        }
+        public CT_FontName name { get; set; } = null;
         public int sizeOfNameArray()
         {
-            if (this.nameField == null)
+            if (this.name == null)
                 return 0;
             return 1;
         }
         public CT_FontName AddNewName()
         {
-            this.nameField = new CT_FontName();
-            return this.nameField;
+            this.name = new CT_FontName();
+            return this.name;
         }
         #endregion name
 
         #region charset
         [XmlElement]
-        public List<CT_IntProperty> charset
-        {
-            get { return this.charsetField; }
-            set { this.charsetField = value; }
-        }
+        public List<CT_IntProperty> charset { get; set; } = null;
         public int sizeOfCharsetArray()
         {
-            if (this.charsetField == null)
+            if (this.charset == null)
                 return 0;
-            return this.charsetField.Count;
+            return this.charset.Count;
         }
         public CT_IntProperty AddNewCharset()
         {
-            if (this.charsetField == null)
-                this.charsetField = new List<CT_IntProperty>();
+            if (this.charset == null)
+                this.charset = new List<CT_IntProperty>();
             CT_IntProperty prop = new CT_IntProperty();
-            this.charsetField.Add(prop);
+            this.charset.Add(prop);
             return prop;
         }
         public void SetCharsetArray(int index, CT_IntProperty value)
         {
-            this.charsetField[index] = value;
+            this.charset[index] = value;
         }
         public CT_IntProperty GetCharsetArray(int index)
         {
-            return this.charsetField[index];
+            return this.charset[index];
         }
         #endregion charset
 
         #region family
         [XmlElement]
-        public List<CT_IntProperty> family
-        {
-            get { return this.familyField; }
-            set { this.familyField = value; }
-        }
+        public List<CT_IntProperty> family { get; set; } = null;
         public int sizeOfFamilyArray()
         {
-            if (this.familyField == null)
+            if (this.family == null)
                 return 0;
-            return this.familyField.Count;
+            return this.family.Count;
         }
         public CT_IntProperty AddNewFamily()
         {
-            if (this.familyField == null)
-                this.familyField = new List<CT_IntProperty>();
+            if (this.family == null)
+                this.family = new List<CT_IntProperty>();
             CT_IntProperty newfamily = new CT_IntProperty();
-            this.familyField.Add(newfamily);
+            this.family.Add(newfamily);
             return newfamily;
         }
         public void SetFamilyArray(int index, CT_IntProperty value)
         {
-            this.familyField[index] = value;
+            this.family[index] = value;
         }
         public CT_IntProperty GetFamilyArray(int index)
         {
-            return this.familyField[index];
+            return this.family[index];
         }
         #endregion family
 
         #region b
         [XmlElement]
-        public List<CT_BooleanProperty> b
-        {
-            get { return this.bField; }
-            set { this.bField = value; }
-        }
+        public List<CT_BooleanProperty> b { get; set; } = null;
         public int SizeOfBArray()
         {
-            if (this.bField == null)
+            if (this.b == null)
                 return 0;
-            return this.bField.Count;
+            return this.b.Count;
         }
         public CT_BooleanProperty AddNewB()
         {
-            if (this.bField == null)
-                this.bField = new List<CT_BooleanProperty>();
+            if (this.b == null)
+                this.b = new List<CT_BooleanProperty>();
             CT_BooleanProperty newB = new CT_BooleanProperty();
-            this.bField.Add(newB);
+            this.b.Add(newB);
             return newB;
         }
         public void SetBArray(int index, CT_BooleanProperty value)
         {
-            this.bField[index] = value;
+            this.b[index] = value;
         }
         public void SetBArray(List<CT_BooleanProperty> array)
         {
-            this.bField = array;
+            this.b = array;
         }
         public CT_BooleanProperty GetBArray(int index)
         {
-            return this.bField[index];
+            return this.b[index];
         }
         #endregion b
 
         #region i
         [XmlElement]
-        public List<CT_BooleanProperty> i
-        {
-            get { return this.iField; }
-            set { this.iField = value; }
-        }
+        public List<CT_BooleanProperty> i { get; set; } = null;
         public int sizeOfIArray()
         {
-            if (this.iField == null)
+            if (this.i == null)
                 return 0;
-            return this.iField.Count;
+            return this.i.Count;
         }
         public CT_BooleanProperty AddNewI()
         {
-            if (this.iField == null)
-                this.iField = new List<CT_BooleanProperty>();
+            if (this.i == null)
+                this.i = new List<CT_BooleanProperty>();
             CT_BooleanProperty newI = new CT_BooleanProperty();
-            this.iField.Add(newI);
+            this.i.Add(newI);
             return newI;
         }
         public void SetIArray(int index, CT_BooleanProperty value)
         {
-            this.iField[index] = value;
+            this.i[index] = value;
         }
         public void SetIArray(List<CT_BooleanProperty> array)
         {
-            this.iField = array;
+            this.i = array;
         }
         public CT_BooleanProperty GetIArray(int index)
         {
-            return this.iField[index];
+            return this.i[index];
         }
         #endregion i
 
         #region strike
         [XmlElement]
-        public List<CT_BooleanProperty> strike
-        {
-            get { return this.strikeField; }
-            set { this.strikeField = value; }
-        }
+        public List<CT_BooleanProperty> strike { get; set; } = null;
         public int sizeOfStrikeArray()
         {
-            if (this.strikeField == null)
+            if (this.strike == null)
                 return 0;
-            return this.strikeField.Count;
+            return this.strike.Count;
         }
         public CT_BooleanProperty AddNewStrike()
         {
-            if (this.strikeField == null)
-                this.strikeField = new List<CT_BooleanProperty>();
+            if (this.strike == null)
+                this.strike = new List<CT_BooleanProperty>();
             CT_BooleanProperty prop = new CT_BooleanProperty();
-            this.strikeField.Add(prop);
+            this.strike.Add(prop);
             return prop;
         }
         public void SetStrikeArray(int index, CT_BooleanProperty value)
         {
-            this.strikeField[index] = value;
+            this.strike[index] = value;
         }
         public void SetStrikeArray(List<CT_BooleanProperty> array)
         {
-            this.strikeField = array;
+            this.strike = array;
         }
         public CT_BooleanProperty GetStrikeArray(int index)
         {
-            return this.strikeField[index];
+            return this.strike[index];
         }
         #endregion strike
 
         #region outline
         [XmlElement]
-        public CT_BooleanProperty outline
-        {
-            get { return this.outlineField; }
-            set { this.outlineField = value; }
-        }
+        public CT_BooleanProperty outline { get; set; } = null;
         public int sizeOfOutlineArray()
         {
-            return this.outlineField == null ? 0 : 1;
+            return this.outline == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewOutline()
         {
-            this.outlineField = new CT_BooleanProperty();
-            return this.outlineField;
+            this.outline = new CT_BooleanProperty();
+            return this.outline;
         }
         public void SetOutlineArray(CT_BooleanProperty[] array)
         {
-            this.outlineField = array.Length > 0 ? array[0] : null;
+            this.outline = array.Length > 0 ? array[0] : null;
         }
         public CT_BooleanProperty GetOutlineArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.outlineField;
+            return this.outline;
         }
         #endregion outline
 
         #region shadow
         [XmlElement]
-        public CT_BooleanProperty shadow
-        {
-            get { return this.shadowField; }
-            set { this.shadowField = value; }
-        }
+        public CT_BooleanProperty shadow { get; set; } = null;
         public int sizeOfShadowArray()
         {
-            if (this.shadowField == null)
+            if (this.shadow == null)
                 return 0;
-            return this.shadowField == null ? 0 : 1;
+            return this.shadow == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewShadow()
         {
-            this.shadowField = new CT_BooleanProperty();
-            return this.shadowField;
+            this.shadow = new CT_BooleanProperty();
+            return this.shadow;
         }
         public CT_BooleanProperty GetShadowArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.shadowField;
+            return this.shadow;
         }
         #endregion shadow
 
         #region condense
         [XmlElement]
-        public CT_BooleanProperty condense
-        {
-            get { return this.condenseField; }
-            set { this.condenseField = value; }
-        }
+        public CT_BooleanProperty condense { get; set; } = null;
         public int sizeOfCondenseArray()
         {
-            if (this.condenseField == null)
+            if (this.condense == null)
                 return 0;
-            return this.condenseField == null ? 0 : 1;
+            return this.condense == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewCondense()
         {
-            this.condenseField = new CT_BooleanProperty();
-            return this.condenseField;
+            this.condense = new CT_BooleanProperty();
+            return this.condense;
         }
         public CT_BooleanProperty GetCondenseArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.condenseField;
+            return this.condense;
         }
         #endregion condense
 
         #region extend
         [XmlElement]
-        public CT_BooleanProperty extend
-        {
-            get { return this.extendField; }
-            set { this.extendField = value; }
-        }
+        public CT_BooleanProperty extend { get; set; } = null;
         public int sizeOfExtendArray()
         {
-            return this.extendField == null ? 0 : 1;
+            return this.extend == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewExtend()
         {
-            this.extendField = new CT_BooleanProperty();
-            return this.extendField;
+            this.extend = new CT_BooleanProperty();
+            return this.extend;
         }
         public CT_BooleanProperty GetExtendArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.extendField;
+            return this.extend;
         }
         #endregion extend
 
         #region color
         [XmlElement]
-        public List<CT_Color> color
-        {
-            get { return this.colorField; }
-            set { this.colorField = value; }
-        }
+        public List<CT_Color> color { get; set; } = null;
         public int sizeOfColorArray()
         {
-            if (this.colorField == null)
+            if (this.color == null)
                 return 0;
-            return this.colorField.Count;
+            return this.color.Count;
         }
         public CT_Color GetColorArray(int index)
         {
-            return this.colorField[index];
+            return this.color[index];
         }
         public void SetColorArray(int index, CT_Color value)
         {
-            this.colorField[index] = value;
+            this.color[index] = value;
         }
         public void SetColorArray(List<CT_Color> array)
         {
-            this.colorField = array;
+            this.color = array;
         }
         public CT_Color AddNewColor()
         {
-            if (this.colorField == null)
-                this.colorField = new List<CT_Color>();
+            if (this.color == null)
+                this.color = new List<CT_Color>();
             CT_Color newColor = new CT_Color();
-            this.colorField.Add(newColor);
+            this.color.Add(newColor);
             return newColor;
         }
         #endregion color
 
         #region sz
         [XmlElement]
-        public List<CT_FontSize> sz
-        {
-            get { return this.szField; }
-            set { this.szField = value; }
-        }
+        public List<CT_FontSize> sz { get; set; } = null;
         public int sizeOfSzArray()
         {
-            if (this.szField == null)
+            if (this.sz == null)
                 return 0;
-            return this.szField.Count;
+            return this.sz.Count;
         }
         public CT_FontSize AddNewSz()
         {
-            if (this.szField == null)
-                this.szField = new List<CT_FontSize>();
+            if (this.sz == null)
+                this.sz = new List<CT_FontSize>();
             CT_FontSize newFs = new CT_FontSize();
-            this.szField.Add(newFs);
+            this.sz.Add(newFs);
             return newFs;
         }
         public void SetSzArray(int index, CT_FontSize value)
         {
-            this.szField[index] = value;
+            this.sz[index] = value;
         }
         public void SetSzArray(List<CT_FontSize> array)
         {
-            this.szField = array;
+            this.sz = array;
         }
         public CT_FontSize GetSzArray(int index)
         {
-            return this.szField[index];
+            return this.sz[index];
         }
         #endregion sz
 
         #region u
         [XmlElement]
-        public List<CT_UnderlineProperty> u
-        {
-            get { return this.uField; }
-            set { this.uField = value; }
-        }
+        public List<CT_UnderlineProperty> u { get; set; } = null;
         public int sizeOfUArray()
         {
-            if (this.uField == null)
+            if (this.u == null)
                 return 0;
-            return this.uField.Count;
+            return this.u.Count;
         }
         public CT_UnderlineProperty AddNewU()
         {
-            if (this.uField == null)
-                this.uField = new List<CT_UnderlineProperty>();
+            if (this.u == null)
+                this.u = new List<CT_UnderlineProperty>();
             CT_UnderlineProperty newU = new CT_UnderlineProperty();
-            this.uField.Add(newU);
+            this.u.Add(newU);
             return newU;
         }
         public void SetUArray(int index, CT_UnderlineProperty value)
         {
-            if (uField[index] != null)
-                this.uField[index] = value;
+            if (u[index] != null)
+                this.u[index] = value;
             else
-                this.uField.Insert(index, value);
+                this.u.Insert(index, value);
         }
         public void SetUArray(List<CT_UnderlineProperty> array)
         {
-            this.uField = array;
+            this.u = array;
         }
         public CT_UnderlineProperty GetUArray(int index)
         {
-            return this.uField[index];
+            return this.u[index];
         }
         #endregion u
 
         #region vertAlign
         [XmlElement]
-        public List<CT_VerticalAlignFontProperty> vertAlign
-        {
-            get { return this.vertAlignField; }
-            set { this.vertAlignField = value; }
-        }
+        public List<CT_VerticalAlignFontProperty> vertAlign { get; set; } = null;
         public int sizeOfVertAlignArray()
         {
-            if (this.vertAlignField == null)
+            if (this.vertAlign == null)
                 return 0;
-            return this.vertAlignField.Count;
+            return this.vertAlign.Count;
         }
         public CT_VerticalAlignFontProperty AddNewVertAlign()
         {
-            if (this.vertAlignField == null)
-                this.vertAlignField = new List<CT_VerticalAlignFontProperty>();
+            if (this.vertAlign == null)
+                this.vertAlign = new List<CT_VerticalAlignFontProperty>();
             CT_VerticalAlignFontProperty prop = new CT_VerticalAlignFontProperty();
-            this.vertAlignField.Add(prop);
+            this.vertAlign.Add(prop);
             return prop;
         }
         public void SetVertAlignArray(int index, CT_VerticalAlignFontProperty value)
         {
-            this.vertAlignField[index] = value;
+            this.vertAlign[index] = value;
         }
         public void SetVertAlignArray(List<CT_VerticalAlignFontProperty> array)
         {
-            this.vertAlignField =array;
+            this.vertAlign =array;
         }
         public CT_VerticalAlignFontProperty GetVertAlignArray(int index)
         {
-            return this.vertAlignField[index];
+            return this.vertAlign[index];
         }
         #endregion vertAlign
 
         #region scheme
         [XmlElement]
-        public List<CT_FontScheme> scheme
-        {
-            get { return this.schemeField; }
-            set { this.schemeField = value; }
-        }
+        public List<CT_FontScheme> scheme { get; set; } = null;
         public int sizeOfSchemeArray()
         {
-            if (this.schemeField == null)
+            if (this.scheme == null)
                 return 0;
-            return this.schemeField.Count;
+            return this.scheme.Count;
         }
         public CT_FontScheme AddNewScheme()
         {
-            if (this.schemeField == null)
-                this.schemeField = new List<CT_FontScheme>();
+            if (this.scheme == null)
+                this.scheme = new List<CT_FontScheme>();
             CT_FontScheme newScheme = new CT_FontScheme();
-            this.schemeField.Add(newScheme);
+            this.scheme.Add(newScheme);
             return newScheme;
         }
         public void SetSchemeArray(int index, CT_FontScheme value)
         {
-            this.schemeField[index] = value;
+            this.scheme[index] = value;
         }
         public CT_FontScheme GetSchemeArray(int index)
         {
-            return this.schemeField[index];
+            return this.scheme[index];
         }
         #endregion scheme
 

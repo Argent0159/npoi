@@ -30,31 +30,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_Border
     {
-
-        private CT_BorderPr leftField;
-
-        private CT_BorderPr rightField;
-
-        private CT_BorderPr topField;
-
-        private CT_BorderPr bottomField;
-
-        private CT_BorderPr diagonalField;
-
-        private CT_BorderPr verticalField;
-
-        private CT_BorderPr horizontalField;
-
-        private bool diagonalUpField;
-
-        private bool diagonalUpFieldSpecified;
-
-        private bool diagonalDownField;
-
-        private bool diagonalDownFieldSpecified;
-
-        private bool outlineField;
-
         public CT_Border()
         {
 
@@ -128,246 +103,126 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Border Copy()
         {
             CT_Border obj = new CT_Border();
-            obj.bottomField = this.bottomField == null ? null : this.bottomField.Copy();
-            obj.topField = this.topField == null ? null : this.topField.Copy();
-            obj.rightField = this.rightField == null ? null : this.rightField.Copy();
-            obj.leftField = this.leftField == null ? null : this.leftField.Copy();
+            obj.bottom = this.bottom == null ? null : this.bottom.Copy();
+            obj.top = this.top == null ? null : this.top.Copy();
+            obj.right = this.right == null ? null : this.right.Copy();
+            obj.left = this.left == null ? null : this.left.Copy();
 
-            obj.diagonalField = this.diagonalField == null ? null : this.diagonalField.Copy();
-            obj.verticalField = this.verticalField == null ? null : this.verticalField.Copy();
-            obj.horizontalField = this.horizontalField == null ? null : this.horizontalField.Copy();
+            obj.diagonal = this.diagonal == null ? null : this.diagonal.Copy();
+            obj.vertical = this.vertical == null ? null : this.vertical.Copy();
+            obj.horizontal = this.horizontal == null ? null : this.horizontal.Copy();
 
-            obj.diagonalUpField = this.diagonalUpField;
-            obj.diagonalUpFieldSpecified = this.diagonalUpFieldSpecified;
-            obj.diagonalDownField = this.diagonalDownField;
-            obj.diagonalDownFieldSpecified = this.diagonalDownFieldSpecified;
-            obj.outlineField = this.outlineField;
+            obj.diagonalUp = this.diagonalUp;
+            obj.diagonalUpSpecified = this.diagonalUpSpecified;
+            obj.diagonalDown = this.diagonalDown;
+            obj.diagonalDownSpecified = this.diagonalDownSpecified;
+            obj.outline = this.outline;
             return obj;
         }
         public CT_BorderPr AddNewDiagonal()
         {
-            if (this.diagonalField == null)
-                this.diagonalField = new CT_BorderPr();
-            return this.diagonalField;
+            if (this.diagonal == null)
+                this.diagonal = new CT_BorderPr();
+            return this.diagonal;
         }
         public bool IsSetDiagonal()
         {
-            return this.diagonalField != null;
+            return this.diagonal != null;
         }
         public void unsetDiagonal()
         {
-            this.diagonalField = null;
+            this.diagonal = null;
         }
 
         public void unsetRight()
         {
-            this.rightField = null;
+            this.right = null;
         }
         public void unsetLeft()
         {
-            this.leftField = null;
+            this.left = null;
         }
         public void unsetTop()
         {
-            this.topField = null;
+            this.top = null;
         }
         public void UnsetBottom()
         {
-            this.bottomField = null;
+            this.bottom = null;
         }
         public bool IsSetBottom()
         {
-            return this.bottomField != null;
+            return this.bottom != null;
         }
         public bool IsSetLeft()
         {
-            return this.leftField != null;
+            return this.left != null;
         }
         public bool IsSetRight()
         {
-            return this.rightField != null;
+            return this.right != null;
         }
         public bool IsSetTop()
         {
-            return this.topField != null;
+            return this.top != null;
         }
 
         public bool IsSetBorder()
         {
-            return this.leftField != null || this.rightField != null
-                || this.topField != null || this.bottomField != null;
+            return this.left != null || this.right != null
+                || this.top != null || this.bottom != null;
         }
         public CT_BorderPr AddNewTop()
         {
-            if (this.topField == null)
-                this.topField = new CT_BorderPr();
-            return this.topField;
+            if (this.top == null)
+                this.top = new CT_BorderPr();
+            return this.top;
         }
         public CT_BorderPr AddNewRight()
         {
-            if (this.rightField == null)
-                this.rightField = new CT_BorderPr();
-            return this.rightField;
+            if (this.right == null)
+                this.right = new CT_BorderPr();
+            return this.right;
         }
         public CT_BorderPr AddNewLeft()
         {
-            if (this.leftField == null)
-                this.leftField = new CT_BorderPr();
-            return this.leftField;
+            if (this.left == null)
+                this.left = new CT_BorderPr();
+            return this.left;
         }
         public CT_BorderPr AddNewBottom()
         {
-            if (this.bottomField == null)
-                this.bottomField = new CT_BorderPr();
-            return this.bottomField;
+            if (this.bottom == null)
+                this.bottom = new CT_BorderPr();
+            return this.bottom;
         }
 
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr left
-        {
-            get
-            {
-                return this.leftField;
-            }
-            set
-            {
-                this.leftField = value;
-            }
-        }
+        public CT_BorderPr left { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr right
-        {
-            get
-            {
-                return this.rightField;
-            }
-            set
-            {
-                this.rightField = value;
-            }
-        }
+        public CT_BorderPr right { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr top
-        {
-            get
-            {
-                return this.topField;
-            }
-            set
-            {
-                this.topField = value;
-            }
-        }
+        public CT_BorderPr top { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr bottom
-        {
-            get
-            {
-                return this.bottomField;
-            }
-            set
-            {
-                this.bottomField = value;
-            }
-        }
+        public CT_BorderPr bottom { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr diagonal
-        {
-            get
-            {
-                return this.diagonalField;
-            }
-            set
-            {
-                this.diagonalField = value;
-            }
-        }
+        public CT_BorderPr diagonal { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr vertical
-        {
-            get
-            {
-                return this.verticalField;
-            }
-            set
-            {
-                this.verticalField = value;
-            }
-        }
+        public CT_BorderPr vertical { get; set; }
         [XmlElement(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
-        public CT_BorderPr horizontal
-        {
-            get
-            {
-                return this.horizontalField;
-            }
-            set
-            {
-                this.horizontalField = value;
-            }
-        }
+        public CT_BorderPr horizontal { get; set; }
         [XmlAttribute]
-        public bool diagonalUp
-        {
-            get
-            {
-                return this.diagonalUpField;
-            }
-            set
-            {
-                this.diagonalUpField = value;
-            }
-        }
+        public bool diagonalUp { get; set; }
 
         [XmlIgnore]
-        public bool diagonalUpSpecified
-        {
-            get
-            {
-                return this.diagonalUpFieldSpecified;
-            }
-            set
-            {
-                this.diagonalUpFieldSpecified = value;
-            }
-        }
+        public bool diagonalUpSpecified { get; set; }
         [XmlAttribute]
-        public bool diagonalDown
-        {
-            get
-            {
-                return this.diagonalDownField;
-            }
-            set
-            {
-                this.diagonalDownField = value;
-            }
-        }
+        public bool diagonalDown { get; set; }
 
         [XmlIgnore]
-        public bool diagonalDownSpecified
-        {
-            get
-            {
-                return this.diagonalDownFieldSpecified;
-            }
-            set
-            {
-                this.diagonalDownFieldSpecified = value;
-            }
-        }
+        public bool diagonalDownSpecified { get; set; }
         [XmlAttribute]
         [DefaultValue(false)]
-        public bool outline
-        {
-            get
-            {
-                return this.outlineField;
-            }
-            set
-            {
-                this.outlineField = value;
-            }
-        }
+        public bool outline { get; set; }
     }
 }

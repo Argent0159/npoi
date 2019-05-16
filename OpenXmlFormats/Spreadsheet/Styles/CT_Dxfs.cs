@@ -12,12 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
     public class CT_Dxfs
     {
-
-        private List<CT_Dxf> dxfField;
-
-        private uint countField;
-
-        private bool countFieldSpecified;
         public static CT_Dxfs Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -55,62 +49,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             //this.dxfField = new List<CT_Dxf>();
         }
         [XmlElement]
-        public List<CT_Dxf> dxf
-        {
-            get
-            {
-                return this.dxfField;
-            }
-            set
-            {
-                this.dxfField = value;
-            }
-        }
+        public List<CT_Dxf> dxf { get; set; }
         [XmlAttribute]
-        public uint count
-        {
-            get
-            {
-                return this.countField;
-            }
-            set
-            {
-                this.countField = value;
-            }
-        }
+        public uint count { get; set; }
 
         [XmlIgnore]
-        public bool countSpecified
-        {
-            get
-            {
-                return this.countFieldSpecified;
-            }
-            set
-            {
-                this.countFieldSpecified = value;
-            }
-        }
+        public bool countSpecified { get; set; }
 
 
     }
 
     public class CT_Dxf
     {
-
-        private CT_Font fontField;
-
-        private CT_NumFmt numFmtField;
-
-        private CT_Fill fillField;
-
-        private CT_CellAlignment alignmentField;
-
-        private CT_Border borderField;
-
-        private CT_CellProtection protectionField;
-
-        private CT_ExtensionList extLstField;
         public static CT_Dxf Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -172,119 +122,49 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public bool IsSetBorder()
         {
-            return borderField != null;
+            return border != null;
         }
         public CT_Font AddNewFont()
         {
             CT_Font font = new CT_Font();
-            this.fontField = font;
+            this.font = font;
             return font;
         }
 
         public CT_Fill AddNewFill()
         {
             CT_Fill fill = new CT_Fill();
-            this.fillField = fill;
+            this.fill = fill;
             return fill;
         }
 
         public CT_Border AddNewBorder()
         {
             CT_Border border = new CT_Border();
-            this.borderField = border;
+            this.border = border;
             return border;
         }
         public bool IsSetFont()
         {
-            return fontField != null;
+            return font != null;
         }
         public bool IsSetFill()
         {
-            return fillField != null;
+            return fill != null;
         }
         [XmlElement]
-        public CT_Font font
-        {
-            get
-            {
-                return this.fontField;
-            }
-            set
-            {
-                this.fontField = value;
-            }
-        }
+        public CT_Font font { get; set; }
         [XmlElement]
-        public CT_NumFmt numFmt
-        {
-            get
-            {
-                return this.numFmtField;
-            }
-            set
-            {
-                this.numFmtField = value;
-            }
-        }
+        public CT_NumFmt numFmt { get; set; }
         [XmlElement]
-        public CT_Fill fill
-        {
-            get
-            {
-                return this.fillField;
-            }
-            set
-            {
-                this.fillField = value;
-            }
-        }
+        public CT_Fill fill { get; set; }
         [XmlElement]
-        public CT_CellAlignment alignment
-        {
-            get
-            {
-                return this.alignmentField;
-            }
-            set
-            {
-                this.alignmentField = value;
-            }
-        }
+        public CT_CellAlignment alignment { get; set; }
         [XmlElement]
-        public CT_Border border
-        {
-            get
-            {
-                return this.borderField;
-            }
-            set
-            {
-                this.borderField = value;
-            }
-        }
+        public CT_Border border { get; set; }
         [XmlElement]
-        public CT_CellProtection protection
-        {
-            get
-            {
-                return this.protectionField;
-            }
-            set
-            {
-                this.protectionField = value;
-            }
-        }
+        public CT_CellProtection protection { get; set; }
         [XmlElement]
-        public CT_ExtensionList extLst
-        {
-            get
-            {
-                return this.extLstField;
-            }
-            set
-            {
-                this.extLstField = value;
-            }
-        }
+        public CT_ExtensionList extLst { get; set; }
     }
 }

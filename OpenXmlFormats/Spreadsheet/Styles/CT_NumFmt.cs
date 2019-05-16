@@ -12,11 +12,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_NumFmt
     {
-
-        private uint numFmtIdField;
-
-        private string formatCodeField;
-
         public static CT_NumFmt Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -38,28 +33,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlAttribute]
-        public uint numFmtId
-        {
-            get
-            {
-                return this.numFmtIdField;
-            }
-            set
-            {
-                this.numFmtIdField = value;
-            }
-        }
+        public uint numFmtId { get; set; }
         [XmlAttribute]
-        public string formatCode
-        {
-            get
-            {
-                return this.formatCodeField;
-            }
-            set
-            {
-                this.formatCodeField = value;
-            }
-        }
+        public string formatCode { get; set; }
     }
 }

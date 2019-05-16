@@ -36,40 +36,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     {
 
         private ST_HorizontalAlignment horizontalField;
-
-        private bool horizontalFieldSpecified;
-
         private ST_VerticalAlignment verticalField = ST_VerticalAlignment.bottom;
-
-        private bool verticalFieldSpecified;
-
         private long textRotationField;
-
-        private bool textRotationFieldSpecified;
-
         private bool wrapTextField;
-
-        private bool wrapTextFieldSpecified;
-
         private long indentField;
-
-        private bool indentFieldSpecified;
-
         private int relativeIndentField;
-
-        private bool relativeIndentFieldSpecified;
-
         private bool justifyLastLineField;
-
-        private bool justifyLastLineFieldSpecified;
-
         private bool shrinkToFitField;
-
-        private bool shrinkToFitFieldSpecified;
-
         private long readingOrderField;
 
-        private bool readingOrderFieldSpecified;
         public static CT_CellAlignment Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -113,11 +88,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public bool IsSetHorizontal()
         {
-            return this.horizontalFieldSpecified;
+            return this.horizontalSpecified;
         }
         public bool IsSetVertical()
         {
-            return this.verticalFieldSpecified;
+            return this.verticalSpecified;
         }
 
         [XmlAttribute]
@@ -131,21 +106,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             set
             {
                 this.horizontalField = value;
-                this.horizontalFieldSpecified = true;
+                this.horizontalSpecified = true;
             }
         }
         [XmlIgnore]
-        public bool horizontalSpecified
-        {
-            get
-            {
-                return this.horizontalFieldSpecified;
-            }
-            set
-            {
-                this.horizontalFieldSpecified = value;
-            }
-        }
+        public bool horizontalSpecified { get; set; }
         [XmlAttribute]
         [DefaultValue(ST_VerticalAlignment.bottom)]
         public ST_VerticalAlignment vertical
@@ -157,22 +122,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             set
             {
                 this.verticalField = value;
-                this.verticalFieldSpecified = true;
+                this.verticalSpecified = true;
             }
         }
 
         [XmlIgnore]
-        public bool verticalSpecified
-        {
-            get
-            {
-                return this.verticalFieldSpecified;
-            }
-            set
-            {
-                this.verticalFieldSpecified = value;
-            }
-        }
+        public bool verticalSpecified { get; set; }
         [XmlAttribute]
         public long textRotation
         {
@@ -183,22 +138,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             set
             {
                 this.textRotationField = value;
-                this.textRotationFieldSpecified = true;
+                this.textRotationSpecified = true;
             }
         }
 
         [XmlIgnore]
-        public bool textRotationSpecified
-        {
-            get
-            {
-                return this.textRotationFieldSpecified;
-            }
-            set
-            {
-                this.textRotationFieldSpecified = value;
-            }
-        }
+        public bool textRotationSpecified { get; set; }
         [XmlAttribute]
         public bool wrapText
         {
@@ -214,17 +159,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool wrapTextSpecified
-        {
-            get
-            {
-                return this.wrapTextFieldSpecified;
-            }
-            set
-            {
-                this.wrapTextFieldSpecified = value;
-            }
-        }
+        public bool wrapTextSpecified { get; set; }
         [XmlAttribute]
         public long indent
         {
@@ -240,17 +175,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool indentSpecified
-        {
-            get
-            {
-                return this.indentFieldSpecified;
-            }
-            set
-            {
-                this.indentFieldSpecified = value;
-            }
-        }
+        public bool indentSpecified { get; set; }
         [XmlAttribute]
         public int relativeIndent
         {
@@ -266,17 +191,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool relativeIndentSpecified
-        {
-            get
-            {
-                return this.relativeIndentFieldSpecified;
-            }
-            set
-            {
-                this.relativeIndentFieldSpecified = value;
-            }
-        }
+        public bool relativeIndentSpecified { get; set; }
         [XmlAttribute]
         public bool justifyLastLine
         {
@@ -292,17 +207,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool justifyLastLineSpecified
-        {
-            get
-            {
-                return this.justifyLastLineFieldSpecified;
-            }
-            set
-            {
-                this.justifyLastLineFieldSpecified = value;
-            }
-        }
+        public bool justifyLastLineSpecified { get; set; }
         [XmlAttribute]
         public bool shrinkToFit
         {
@@ -318,17 +223,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool shrinkToFitSpecified
-        {
-            get
-            {
-                return this.shrinkToFitFieldSpecified;
-            }
-            set
-            {
-                this.shrinkToFitFieldSpecified = value;
-            }
-        }
+        public bool shrinkToFitSpecified { get; set; }
         [XmlAttribute]
         public long readingOrder
         {
@@ -344,17 +239,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
 
         [XmlIgnore]
-        public bool readingOrderSpecified
-        {
-            get
-            {
-                return this.readingOrderFieldSpecified;
-            }
-            set
-            {
-                this.readingOrderFieldSpecified = value;
-            }
-        }
+        public bool readingOrderSpecified { get; set; }
 
         internal CT_CellAlignment Copy()
         {

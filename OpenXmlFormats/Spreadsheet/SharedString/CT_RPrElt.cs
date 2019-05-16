@@ -15,10 +15,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_RPrElt
     {
-        private CT_IntProperty familyField = null; // family of the font
-        private CT_BooleanProperty extendField = null;
-        private CT_FontScheme schemeField = null;
-
         public static CT_RPrElt Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
@@ -151,24 +147,20 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region family
         [XmlElement]
-        public CT_IntProperty family
-        {
-            get { return this.familyField; }
-            set { this.familyField = value; }
-        }
+        public CT_IntProperty family { get; set; } = null;
         [XmlIgnore]
         public bool familySpecified
         {
-            get { return (null != familyField); }
+            get { return (null != family); }
         }
         public int SizeOfFamilyArray()
         {
-            return this.familyField == null ? 0 : 1;
+            return this.family == null ? 0 : 1;
         }
         public CT_IntProperty AddNewFamily()
         {
-            this.familyField = new CT_IntProperty();
-            return this.familyField;
+            this.family = new CT_IntProperty();
+            return this.family;
         }
         //public void SetFamilyArray()
         //{
@@ -177,7 +169,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_IntProperty GetFamilyArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.familyField;
+            return this.family;
         }
         #endregion family
 
@@ -343,29 +335,25 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region extend
         [XmlElement]
-        public CT_BooleanProperty extend
-        {
-            get { return this.extendField; }
-            set { this.extendField = value; }
-        }
+        public CT_BooleanProperty extend { get; set; } = null;
         [XmlIgnore]
         public bool extendSpecified
         {
-            get { return (null != extendField); }
+            get { return (null != extend); }
         }
         public int sizeOfExtendArray()
         {
-            return this.extendField == null ? 0 : 1;
+            return this.extend == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewExtend()
         {
-            this.extendField = new CT_BooleanProperty();
-            return this.extendField;
+            this.extend = new CT_BooleanProperty();
+            return this.extend;
         }
         public CT_BooleanProperty GetExtendArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.extendField;
+            return this.extend;
         }
         #endregion extend
 
@@ -483,29 +471,25 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         #region scheme
         [XmlElement]
-        public CT_FontScheme scheme
-        {
-            get { return this.schemeField; }
-            set { this.schemeField = value; }
-        }
+        public CT_FontScheme scheme { get; set; } = null;
         [XmlIgnore]
         public bool schemeSpecified
         {
-            get { return (null != schemeField); }
+            get { return (null != scheme); }
         }
         public int sizeOfSchemeArray()
         {
-            return this.schemeField == null ? 0 : 1;
+            return this.scheme == null ? 0 : 1;
         }
         public CT_FontScheme AddNewScheme()
         {
-            this.schemeField = new CT_FontScheme();
-            return this.schemeField;
+            this.scheme = new CT_FontScheme();
+            return this.scheme;
         }
         public CT_FontScheme GetSchemeArray(int index)
         {
             if (0 != index) { throw new IndexOutOfRangeException("Only an index of 0 is supported"); }
-            return this.schemeField;
+            return this.scheme;
         }
         #endregion scheme
 

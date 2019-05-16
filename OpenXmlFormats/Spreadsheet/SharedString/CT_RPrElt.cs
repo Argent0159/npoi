@@ -22,35 +22,35 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             CT_RPrElt ctObj = new CT_RPrElt();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "rFont")
+                if (childNode.LocalName == nameof(rFont))
                     ctObj.rFont = CT_FontName.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "charset")
+                else if (childNode.LocalName == nameof(charset))
                     ctObj.charset = CT_IntProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "family")
+                else if (childNode.LocalName == nameof(family))
                     ctObj.family = CT_IntProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "b")
+                else if (childNode.LocalName == nameof(b))
                     ctObj.b = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "i")
+                else if (childNode.LocalName == nameof(i))
                     ctObj.i = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "strike")
+                else if (childNode.LocalName == nameof(strike))
                     ctObj.strike = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "outline")
+                else if (childNode.LocalName == nameof(outline))
                     ctObj.outline = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "shadow")
+                else if (childNode.LocalName == nameof(shadow))
                     ctObj.shadow = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "condense")
+                else if (childNode.LocalName == nameof(condense))
                     ctObj.condense = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "extend")
+                else if (childNode.LocalName == nameof(extend))
                     ctObj.extend = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "color")
+                else if (childNode.LocalName == nameof(color))
                     ctObj.color = CT_Color.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "sz")
+                else if (childNode.LocalName == nameof(sz))
                     ctObj.sz = CT_FontSize.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "u")
+                else if (childNode.LocalName == nameof(u))
                     ctObj.u = CT_UnderlineProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "vertAlign")
+                else if (childNode.LocalName == nameof(vertAlign))
                     ctObj.vertAlign = CT_VerticalAlignFontProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "scheme")
+                else if (childNode.LocalName == nameof(scheme))
                     ctObj.scheme = CT_FontScheme.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -60,39 +60,39 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             sw.Write(">");
             if (this.sz != null)
-                this.sz.Write(sw, "sz");
+                this.sz.Write(sw, nameof(sz));
             if (this.color != null)
-                this.color.Write(sw, "color");
+                this.color.Write(sw, nameof(color));
             if (this.rFont != null)
-                this.rFont.Write(sw, "rFont");
+                this.rFont.Write(sw, nameof(rFont));
             if (this.family != null)
-                this.family.Write(sw, "family");
+                this.family.Write(sw, nameof(family));
             if (this.charset != null)
-                this.charset.Write(sw, "charset");
+                this.charset.Write(sw, nameof(charset));
             if (this.b != null)
-                this.b.Write(sw, "b");
+                this.b.Write(sw, nameof(b));
             if (this.i != null)
-                this.i.Write(sw, "i");
+                this.i.Write(sw, nameof(i));
             if (this.strike != null)
-                this.strike.Write(sw, "strike");
+                this.strike.Write(sw, nameof(strike));
             if (this.outline != null)
-                this.outline.Write(sw, "outline");
+                this.outline.Write(sw, nameof(outline));
             if (this.shadow != null)
-                this.shadow.Write(sw, "shadow");
+                this.shadow.Write(sw, nameof(shadow));
             if (this.condense != null)
-                this.condense.Write(sw, "condense");
+                this.condense.Write(sw, nameof(condense));
             if (this.extend != null)
-                this.extend.Write(sw, "extend");
+                this.extend.Write(sw, nameof(extend));
             if (this.u != null)
-                this.u.Write(sw, "u");
+                this.u.Write(sw, nameof(u));
             if (this.vertAlign != null)
-                this.vertAlign.Write(sw, "vertAlign");
+                this.vertAlign.Write(sw, nameof(vertAlign));
             if (this.scheme != null)
-                this.scheme.Write(sw, "scheme");
-            sw.Write(string.Format("</{0}>", nodeName));
+                this.scheme.Write(sw, nameof(scheme));
+            sw.Write($"</{nodeName}>");
         }
 
 

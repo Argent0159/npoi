@@ -37,18 +37,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 foreach (CT_RElt x in this.r)
                 {
-                    x.Write(sw, "r");
+                    x.Write(sw, nameof(r));
                 }
             }
             if (this.rPh != null)
             {
                 foreach (CT_PhoneticRun x in this.rPh)
                 {
-                    x.Write(sw, "rPh");
+                    x.Write(sw, nameof(rPh));
                 }
             }
             if (this.phoneticPr != null)
-                this.phoneticPr.Write(sw, "phoneticPr");
+                this.phoneticPr.Write(sw, nameof(phoneticPr));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -62,7 +62,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             this.t = null;
         }
-        [XmlElement("t", DataType = "string")]
+        [XmlElement(nameof(t), DataType = "string")]
         public string t { get; set; } = null;
         #endregion t
 
@@ -70,7 +70,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         /// <summary>
         /// Rich Text Run
         /// </summary>
-        [XmlElement("r")]
+        [XmlElement(nameof(r))]
         public List<CT_RElt> r { get; set; } = null;
         private string xmltext;
         [XmlIgnore]
@@ -85,73 +85,73 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
                         foreach (CT_RElt r in r)
                         {
-                            sw.Write("<r>");
+                            sw.Write($"<{nameof(r)}>");
                             if (r.rPr != null)
                             {
-                                sw.Write("<rPr>");
+                                sw.Write($"<{nameof(CT_RElt.rPr)}>");
                                 if (r.rPr.b != null && r.rPr.b.val)
                                 {
-                                    sw.Write("<b/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.b)}/>");
                                 }
                                 if (r.rPr.i != null && r.rPr.i.val)
                                 {
-                                    sw.Write("<i/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.i)}/>");
                                 }
                                 if (r.rPr.u != null)
                                 {
-                                    sw.Write("<u val=\"" + r.rPr.u.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.u)} val=\"{r.rPr.u.val}\"/>");
                                 }
                                 if (r.rPr.color != null && r.rPr.color.theme > 0)
                                 {
-                                    sw.Write("<color theme=\"" + r.rPr.color.theme + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.color)} theme=\"{r.rPr.color.theme}\"/>");
                                 }
                                 if (r.rPr.rFont != null)
                                 {
-                                    sw.Write("<rFont val=\"" + r.rPr.rFont.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.rFont)} val=\"{r.rPr.rFont.val}\"/>");
                                 }
                                 if (r.rPr.family != null)
                                 {
-                                    sw.Write("<family val=\"" + r.rPr.family.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.family)} val=\"{r.rPr.family.val}\"/>");
                                 }
                                 if (r.rPr.charset != null)
                                 {
-                                    sw.Write("<charset val=\"" + r.rPr.charset.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.charset)} val=\"{r.rPr.charset.val}\"/>");
                                 }
                                 if (r.rPr.scheme != null)
                                 {
-                                    sw.Write("<scheme val=\"" + r.rPr.scheme.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.scheme)} val=\"{r.rPr.scheme.val}\"/>");
                                 }
                                 if (r.rPr.sz != null)
                                 {
-                                    sw.Write("<sz val=\"" + r.rPr.sz.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.sz)} val=\"{r.rPr.sz.val}\"/>");
                                 }
                                 if (r.rPr.vertAlign != null)
                                 {
-                                    sw.Write("<vertAlign val=\"" + r.rPr.vertAlign.val + "\"/>");
+                                    sw.Write($"<{nameof(CT_RPrElt.vertAlign)} val=\"{r.rPr.vertAlign.val}\"/>");
                                 }
-                                sw.Write("</rPr>");
+                                sw.Write($"</{nameof(CT_RElt.rPr)}>");
                             }
                             if (r.t != null)
                             {
-                                sw.Write("<t");
+                                sw.Write($"<{nameof(CT_RElt.t)}");
                                 if(r.t.IndexOf(' ')>=0)
                                     sw.Write(" xml:space=\"preserve\"");
                                 sw.Write(">");
                                 sw.Write(XmlHelper.EncodeXml(r.t));
-                                sw.Write("</t>");
+                                sw.Write($"</{nameof(CT_RElt.t)}>");
                             }
-                            sw.Write("</r>");
+                            sw.Write($"</{nameof(r)}>");
                         }
                     }
 
                     if (this.t != null)
                     {
-                        sw.Write("<t");
+                        sw.Write($"<{nameof(t)}");
                         if (this.t.IndexOf(' ') >= 0)
                             sw.Write(" xml:space=\"preserve\"");
                         sw.Write(">");
                         sw.Write(XmlHelper.EncodeXml(this.t));
-                        sw.Write("</t>");
+                        sw.Write($"</{nameof(t)}>");
                     }
                     xmltext = sb.ToString();
                 }
@@ -179,12 +179,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         /// <summary>
         /// Phonetic Run
         /// </summary>
-        [XmlElement("rPh")]
+        [XmlElement(nameof(rPh))]
         public List<CT_PhoneticRun> rPh { get; set; } = null;
         /// <summary>
         /// Phonetic Properties
         /// </summary>
-        [XmlElement("phoneticPr")]
+        [XmlElement(nameof(phoneticPr))]
         public CT_PhoneticPr phoneticPr { get; set; } = null;
 
 
@@ -195,13 +195,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             ctObj.rPh = new List<CT_PhoneticRun>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "phoneticPr")
+                if (childNode.LocalName == nameof(phoneticPr))
                     ctObj.phoneticPr = CT_PhoneticPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "r")
+                else if (childNode.LocalName == nameof(r))
                     ctObj.r.Add(CT_RElt.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "rPh")
+                else if (childNode.LocalName == nameof(rPh))
                     ctObj.rPh.Add(CT_PhoneticRun.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "t")
+                else if (childNode.LocalName == nameof(t))
                     ctObj.t = childNode.InnerText.Replace("\r", "");
             }
             return ctObj;

@@ -26,7 +26,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 ctObj.t = tNode.InnerText.Replace("\r", ""); ;
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "rPr")
+                if (childNode.LocalName == nameof(rPr))
                     ctObj.rPr = CT_RPrElt.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -36,12 +36,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}>", nodeName));
+            sw.Write($"<{nodeName}>");
             if (this.rPr != null)
-                this.rPr.Write(sw, "rPr");
+                this.rPr.Write(sw, nameof(rPr));
             if (this.t != null)
-                sw.Write(string.Format("<t xml:space=\"preserve\">{0}</t>", XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(this.t))));
-            sw.Write(string.Format("</{0}>", nodeName));
+                sw.Write($"<{nameof(t)} xml:space=\"preserve\">{XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(this.t))}</{nameof(t)}>");
+            sw.Write($"</{nodeName}>");
         }
 
 
@@ -54,13 +54,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         /// <summary>
         /// Run Properties
         /// </summary>
-        [XmlElement("rPr")]
+        [XmlElement(nameof(rPr))]
         public CT_RPrElt rPr { get; set; } = null;
 
         /// <summary>
         /// Text
         /// </summary>
-        [XmlElement("t")]
+        [XmlElement(nameof(t))]
         public string t { get; set; } = string.Empty;
     }
 }

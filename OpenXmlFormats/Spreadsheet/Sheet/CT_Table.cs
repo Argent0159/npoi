@@ -222,15 +222,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_TableColumns ctObj = new CT_TableColumns();
+            var ctObj = new CT_TableColumns
+            {
+                tableColumn = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(tableColumn))
+                    .Select(childNode => CT_TableColumn.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
             if (node.Attributes[nameof(count)] != null)
                 ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.tableColumn = new List<CT_TableColumn>();
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(tableColumn))
-                    ctObj.tableColumn.Add(CT_TableColumn.Parse(childNode, namespaceManager));
-            }
             return ctObj;
         }
 
@@ -257,8 +257,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
     public class CT_TableColumn
     {
-        private string totalsRowCellStyleField;
-
         public CT_TableColumn()
         {
             //this.extLstField = new CT_ExtensionList();
@@ -372,17 +370,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         [XmlAttribute]
         public string dataCellStyle { get; set; }
         [XmlAttribute]
-        public string totalsRowCellStyle
-        {
-            get
-            {
-                return this.totalsRowCellStyleField;
-            }
-            set
-            {
-                this.totalsRowCellStyleField = value;
-            }
-        }
+        public string totalsRowCellStyle { get; set; }
     }
     [Serializable]
     [XmlType(Namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main")]
@@ -390,11 +378,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     {
         public CT_TableFormula()
         {
-            this.array = false;
         }
         [XmlAttribute]
         [DefaultValue(false)]
-        public bool array { get; set; }
+        public bool array { get; set; } = false;
 
         [XmlText]
         public string Value { get; set; }

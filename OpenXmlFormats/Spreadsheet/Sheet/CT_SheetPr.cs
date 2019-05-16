@@ -18,16 +18,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_SheetPr ctObj = new CT_SheetPr();
-            ctObj.syncHorizontal = XmlHelper.ReadBool(node.Attributes[nameof(syncHorizontal)]);
-            ctObj.syncVertical = XmlHelper.ReadBool(node.Attributes[nameof(syncVertical)]);
-            ctObj.syncRef = XmlHelper.ReadString(node.Attributes[nameof(syncRef)]);
-            ctObj.transitionEvaluation = XmlHelper.ReadBool(node.Attributes[nameof(transitionEvaluation)]);
-            ctObj.transitionEntry = XmlHelper.ReadBool(node.Attributes[nameof(transitionEntry)]);
-            ctObj.published = XmlHelper.ReadBool(node.Attributes[nameof(published)]);
-            ctObj.codeName = XmlHelper.ReadString(node.Attributes[nameof(codeName)]);
-            ctObj.filterMode = XmlHelper.ReadBool(node.Attributes[nameof(filterMode)]);
-            ctObj.enableFormatConditionsCalculation = XmlHelper.ReadBool(node.Attributes[nameof(enableFormatConditionsCalculation)]);
+            var ctObj = new CT_SheetPr
+            {
+                syncHorizontal = XmlHelper.ReadBool(node.Attributes[nameof(syncHorizontal)]),
+                syncVertical = XmlHelper.ReadBool(node.Attributes[nameof(syncVertical)]),
+                syncRef = XmlHelper.ReadString(node.Attributes[nameof(syncRef)]),
+                transitionEvaluation = XmlHelper.ReadBool(node.Attributes[nameof(transitionEvaluation)]),
+                transitionEntry = XmlHelper.ReadBool(node.Attributes[nameof(transitionEntry)]),
+                published = XmlHelper.ReadBool(node.Attributes[nameof(published)]),
+                codeName = XmlHelper.ReadString(node.Attributes[nameof(codeName)]),
+                filterMode = XmlHelper.ReadBool(node.Attributes[nameof(filterMode)]),
+                enableFormatConditionsCalculation = XmlHelper.ReadBool(node.Attributes[nameof(enableFormatConditionsCalculation)])
+            };
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(tabColor))
@@ -77,32 +79,21 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_SheetPr Clone()
         {
-            CT_SheetPr newPr = new CT_SheetPr
+            return new CT_SheetPr
             {
-                codeName = codeName,
-                enableFormatConditionsCalculation = enableFormatConditionsCalculation,
-                filterMode = filterMode,
-                published = published,
-                syncHorizontal = syncHorizontal,
-                syncRef = syncRef,
-                syncVertical = syncVertical,
-                transitionEntry = transitionEntry,
-                transitionEvaluation = transitionEvaluation
+                codeName = this.codeName,
+                enableFormatConditionsCalculation = this.enableFormatConditionsCalculation,
+                filterMode = this.filterMode,
+                published = this.published,
+                syncHorizontal = this.syncHorizontal,
+                syncRef = this.syncRef,
+                syncVertical = this.syncVertical,
+                transitionEntry = this.transitionEntry,
+                transitionEvaluation = this.transitionEvaluation,
+                outlinePr = this.outlinePr?.Clone(),
+                pageSetUpPr = this.pageSetUpPr?.Clone(),
+                tabColor = this.tabColor?.Copy()
             };
-
-            if (outlinePr != null)
-            {
-                newPr.outlinePr = outlinePr.Clone();
-            }
-            if (pageSetUpPr != null)
-            {
-                newPr.pageSetUpPr = pageSetUpPr.Clone();
-            }
-            if (tabColor != null)
-            {
-                newPr.tabColor = tabColor.Copy();
-            }
-            return newPr;
         }
 
         public bool IsSetOutlinePr()

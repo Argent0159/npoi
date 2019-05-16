@@ -22,13 +22,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_CommentList ctObj = new CT_CommentList();
-            ctObj.comment = new List<CT_Comment>();
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(comment))
-                    ctObj.comment.Add(CT_Comment.Parse(childNode, namespaceManager));
-            }
+            var ctObj = new CT_CommentList();
+            ctObj.comment = node.ChildNodes.Cast<XmlNode>()
+                .Where(n => n.LocalName == nameof(comment))
+                .Select(n => CT_Comment.Parse(n, namespaceManager))
+                .ToList();
+            
             return ctObj;
         }
 
@@ -41,7 +40,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write($"</{nodeName}>");
         }
 
-        private List<CT_Comment> commentField = null; // optional field [0..*]
+        //private List<CT_Comment> commentField = null; // optional field [0..*]
 
         //public CT_CommentList()
         //{
@@ -62,30 +61,20 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Comment InsertNewComment(int index)
         {
-            if (null == commentField) { commentField = new List<CT_Comment>(); }
+            this.comment = this.comment ?? new List<CT_Comment>();
             CT_Comment com = new CT_Comment();
-            commentField.Insert(index, com);
+            comment.Insert(index, com);
             return com;
         }
         public CT_Comment AddNewComment()
         {
-            if (null == commentField) { commentField = new List<CT_Comment>(); }
+            this.comment = this.comment ?? new List<CT_Comment>();
             CT_Comment com = new CT_Comment();
-            commentField.Add(com);
+            comment.Add(com);
             return com;
         }
 
         [XmlElement(nameof(comment))]
-        public List<CT_Comment> comment
-        {
-            get
-            {
-                return this.commentField;
-            }
-            set
-            {
-                this.commentField = value;
-            }
-        }
+        public List<CT_Comment> comment { get; set; }
     }
 }

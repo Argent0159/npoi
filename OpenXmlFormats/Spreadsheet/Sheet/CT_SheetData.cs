@@ -17,14 +17,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_SheetData ctObj = new CT_SheetData();
-            ctObj.row = new List<CT_Row>();
-            foreach (XmlNode childNode in node.ChildNodes)
+            return new CT_SheetData
             {
-                if (childNode.LocalName == nameof(row))
-                    ctObj.row.Add(CT_Row.Parse(childNode, namespaceManager));
-            }
-            return ctObj;
+                row = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(row))
+                    .Select(childNode => CT_Row.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
+
         }
 
 
@@ -43,17 +43,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         //}
         public CT_Row AddNewRow()
         {
-            if (null == row) { row = new List<CT_Row>(); }
-            CT_Row newrow = new CT_Row();
-            row.Add(newrow);
-            return newrow;
+            this.row = this.row ?? new List<CT_Row>();
+            var newRow = new CT_Row();
+            row.Add(newRow);
+            return newRow;
         }
         public CT_Row InsertNewRow(int index)
         {
-            if (null == row) { row = new List<CT_Row>(); }
-            CT_Row newrow = new CT_Row();
-            row.Insert(index, newrow);
-            return newrow;
+            this.row = this.row ?? new List<CT_Row>();
+            var newRow = new CT_Row();
+            row.Insert(index, newRow);
+            return newRow;
         }
         public void RemoveRows(IList<CT_Row> toRemove)
         {
@@ -65,19 +65,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void RemoveRow(int rowNum)
         {
-            if (null != row)
-            {
-                CT_Row rowToRemove=null;
-                foreach (CT_Row ctrow in row)
-                {
-                    if (ctrow.r == rowNum)
-                    {
-                        rowToRemove = ctrow;
-                        break;
-                    }
-                }
-                row.Remove(rowToRemove);
-            }
+            var rowToRemove = this.row?.FirstOrDefault(ctrow => ctrow.r == rowNum);
+            row.Remove(rowToRemove);
         }
         public int SizeOfRowArray()
         {

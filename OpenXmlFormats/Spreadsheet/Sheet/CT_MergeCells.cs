@@ -18,15 +18,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_MergeCells ctObj = new CT_MergeCells();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.mergeCell = new List<CT_MergeCell>();
-            foreach (XmlNode childNode in node.ChildNodes)
+
+            return new CT_MergeCells
             {
-                if (childNode.LocalName == nameof(mergeCell))
-                    ctObj.mergeCell.Add(CT_MergeCell.Parse(childNode, namespaceManager));
-            }
-            return ctObj;
+                count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]),
+                mergeCell = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(mergeCell))
+                    .Select(childNode => CT_MergeCell.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
         }
 
 
@@ -59,7 +59,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_MergeCell AddNewMergeCell()
         {
-            CT_MergeCell mergecell = new CT_MergeCell();
+            var mergecell = new CT_MergeCell();
             mergeCell.Add(mergecell);
             return mergecell;
         }

@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -30,12 +31,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void Insert(int index, string author)
         {
-            if (null == this.author) { this.author = new List<string>(); }
+            this.author = this.author ?? new List<string>();
             this.author.Insert(index, author);
         }
         public void AddAuthor(string name)
         {
-            if (null == author) { author = new List<string>(); }
+            this.author = this.author ?? new List<string>();
             author.Add(name);
         }
         //[XmlArray("authors", Order = 0)] // - encapsulates the following items, but the outer element already provides the container.
@@ -44,13 +45,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Authors ctObj = new CT_Authors();
-            ctObj.author = new List<String>();
-            foreach (XmlNode childNode in node.ChildNodes)
+
+            var ctObj = new CT_Authors
             {
-                if (childNode.LocalName == "author")
-                    ctObj.author.Add(childNode.InnerText);
-            }
+                author = node.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.LocalName == nameof(author))
+                    .Select(n => n.InnerText)
+                    .ToList()
+            };
             return ctObj;
         }
 
@@ -59,13 +61,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write($"<{nodeName}>");
-            if (this.author != null)
-            {
-                foreach (String x in this.author)
-                {
-                    sw.Write($"<author>{XmlHelper.EncodeXml(x)}</author>");
-                }
-            }
+            this.author?.ForEach(x => sw.Write($"<author>{XmlHelper.EncodeXml(x)}</author>"));
             sw.Write($"</{nodeName}>");
         }
 

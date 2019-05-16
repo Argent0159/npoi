@@ -111,7 +111,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(Stream stream)
         {
-            using (StreamWriter sw = new StreamWriter(stream))
+            using (var sw = new StreamWriter(stream))
             {
                 sw.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
                 sw.Write("<worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">");
@@ -220,8 +220,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_ConditionalFormatting AddNewConditionalFormatting()
         {
-            if (null == conditionalFormattingField) { conditionalFormattingField = new List<CT_ConditionalFormatting>(); }
-            CT_ConditionalFormatting cf = new CT_ConditionalFormatting();
+            this.conditionalFormattingField = this.conditionalFormattingField ?? new List<CT_ConditionalFormatting>();
+            var cf = new CT_ConditionalFormatting();
             this.conditionalFormattingField.Add(cf);
             return cf;
         }
@@ -312,8 +312,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Cols AddNewCols()
         {
-            if (null == cols) { cols = new List<CT_Cols>(); }
-            CT_Cols newCols = new CT_Cols();
+            this.cols = this.cols ?? new List<CT_Cols>();
+            var newCols = new CT_Cols();
             this.cols.Add(newCols);
             return newCols;
         }
@@ -331,11 +331,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Cols GetColsArray(int index)
         {
-            if (null == cols)
-            {
-                cols = new List<CT_Cols>();
-                cols.Add(new CT_Cols());
-            }
+            this.cols = this.cols ?? new List<CT_Cols> { new CT_Cols() };
             return this.cols[index];
         }
         public List<CT_Cols> GetColsList()
@@ -357,7 +353,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public int SizeOfConditionalFormattingArray()
         {
             return this.conditionalFormattingField?.Count ?? 0;
-            return (null == conditionalFormattingField) ? 0 : this.conditionalFormatting.Count;
         }
 
         public void UnsetSheetProtection()
@@ -434,8 +429,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             get
             {
-                if (this.conditionalFormattingField == null)
-                    this.conditionalFormattingField = new List<CT_ConditionalFormatting>();
+                this.conditionalFormattingField = this.conditionalFormattingField ?? new List<CT_ConditionalFormatting>();
                 return this.conditionalFormattingField;
             }
             set

@@ -18,30 +18,28 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Row ctObj = new CT_Row
+            var ctObj = new CT_Row
             {
                 r = XmlHelper.ReadUInt(node.Attributes[nameof(r)]),
                 spans = XmlHelper.ReadString(node.Attributes[nameof(spans)]),
                 s = XmlHelper.ReadUInt(node.Attributes[nameof(s)]),
-                customFormat = XmlHelper.ReadBool(node.Attributes[nameof(customFormat)])
+                customFormat = XmlHelper.ReadBool(node.Attributes[nameof(customFormat)]),
+                hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]),
+                outlineLevel = XmlHelper.ReadByte(node.Attributes[nameof(outlineLevel)]),
+                customHeight = XmlHelper.ReadBool(node.Attributes[nameof(customHeight)]),
+                collapsed = XmlHelper.ReadBool(node.Attributes[nameof(collapsed)]),
+                thickTop = XmlHelper.ReadBool(node.Attributes[nameof(thickTop)]),
+                thickBot = XmlHelper.ReadBool(node.Attributes[nameof(thickBot)]),
+                ph = XmlHelper.ReadBool(node.Attributes[nameof(ph)]),
+                extLst = CT_ExtensionList.Parse(node.Attributes[nameof(extLst)].Cast<XmlNode>().Last(), namespaceManager),
+                c = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(c))
+                    .Select(childNode => CT_Cell.Parse(childNode, namespaceManager))
+                    .ToList()
             };
             if (node.Attributes[nameof(ht)] != null)
                 ctObj.ht = XmlHelper.ReadDouble(node.Attributes[nameof(ht)]);
-            ctObj.hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]);
-            ctObj.outlineLevel = XmlHelper.ReadByte(node.Attributes[nameof(outlineLevel)]);
-            ctObj.customHeight = XmlHelper.ReadBool(node.Attributes[nameof(customHeight)]);
-            ctObj.collapsed = XmlHelper.ReadBool(node.Attributes[nameof(collapsed)]);
-            ctObj.thickTop = XmlHelper.ReadBool(node.Attributes[nameof(thickTop)]);
-            ctObj.thickBot = XmlHelper.ReadBool(node.Attributes[nameof(thickBot)]);
-            ctObj.ph = XmlHelper.ReadBool(node.Attributes[nameof(ph)]);
-            ctObj.c = new List<CT_Cell>();
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(extLst))
-                    ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == nameof(c))
-                    ctObj.c.Add(CT_Cell.Parse(childNode, namespaceManager));
-            }
+
             return ctObj;
         }
 
@@ -90,8 +88,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Cell AddNewC()
         {
-            if (null == c) { c = new List<CT_Cell>(); }
-            CT_Cell cell = new CT_Cell();
+            this.c = this.c ?? new List<CT_Cell>();
+            var cell = new CT_Cell();
             this.c.Add(cell);
             return cell;
         }

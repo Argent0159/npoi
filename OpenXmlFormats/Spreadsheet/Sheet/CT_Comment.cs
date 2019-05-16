@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -22,16 +23,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Comment ctObj = new CT_Comment();
-            ctObj.@ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)]);
+            var ctObj = new CT_Comment
+            {
+                @ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)]),
+                guid = XmlHelper.ReadString(node.Attributes[nameof(guid)]),
+                text = CT_Rst.Parse(node.ChildNodes.Cast<XmlNode>()
+                    .Last(n => n.LocalName == nameof(text)), namespaceManager)
+            };
             if (node.Attributes[nameof(authorId)] != null)
                 ctObj.authorId = XmlHelper.ReadUInt(node.Attributes[nameof(authorId)]);
-            ctObj.guid = XmlHelper.ReadString(node.Attributes[nameof(guid)]);
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(text))
-                    ctObj.text = CT_Rst.Parse(childNode, namespaceManager);
-            }
             return ctObj;
         }
         internal void Write(StreamWriter sw, string nodeName)
@@ -41,8 +41,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             XmlHelper.WriteAttribute(sw, nameof(authorId), this.authorId, true);
             XmlHelper.WriteAttribute(sw, nameof(guid), this.guid);
             sw.Write(">");
-            if (this.text != null)
-                this.text.Write(sw, nameof(text));
+            this.text?.Write(sw, nameof(text));
             sw.Write($"</{nodeName}>");
         }
         [XmlElement(nameof(text))]

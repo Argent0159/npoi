@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using System.Text;
@@ -24,13 +25,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Col AddNewCol()
         {
-            CT_Col newCol = new CT_Col();
+            var newCol = new CT_Col();
             this.col.Add(newCol);
             return newCol;
         }
         public CT_Col InsertNewCol(int index)
         {
-            CT_Col newCol = new CT_Col();
+            var newCol = new CT_Col();
             this.col.Insert(index, newCol);
             return newCol;
         }
@@ -60,15 +61,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Cols ctObj = new CT_Cols
+            var ctObj = new CT_Cols
             {
-                col = new List<CT_Col>()
+                col = node.ChildNodes.Cast<XmlNode>()
+                    .Where(n => n.LocalName == nameof(col))
+                    .Select(n => CT_Col.Parse(n, namespaceManager))
+                    .ToList()
             };
-            foreach (XmlNode childNode in node.ChildNodes)
-            {
-                if (childNode.LocalName == nameof(col))
-                    ctObj.col.Add(CT_Col.Parse(childNode, namespaceManager));
-            }
             return ctObj;
         }
 
@@ -78,13 +77,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write($"<{nodeName}");
             sw.Write(">");
-            if (this.col != null)
-            {
-                foreach (CT_Col x in this.col)
-                {
-                    x.Write(sw, nameof(col));
-                }
-            }
+            this.col?.ForEach(x => x.Write(sw, nameof(col)));
             sw.Write($"</{nodeName}>");
         }
 

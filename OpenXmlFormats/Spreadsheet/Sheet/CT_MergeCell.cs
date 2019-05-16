@@ -17,9 +17,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_MergeCell ctObj = new CT_MergeCell();
-            ctObj.@ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)]);
-            return ctObj;
+            return new CT_MergeCell
+            {
+                @ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)])
+            };
         }
 
 

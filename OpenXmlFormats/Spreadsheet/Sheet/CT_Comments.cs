@@ -18,7 +18,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Comments ctObj = new CT_Comments();
+            var ctObj = new CT_Comments();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(authors))

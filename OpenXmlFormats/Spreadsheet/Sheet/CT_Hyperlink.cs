@@ -31,13 +31,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Hyperlink ctObj = new CT_Hyperlink();
-            ctObj.@ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)]);
-            ctObj.id = XmlHelper.ReadString(node.Attributes[nameof(id), PackageNamespaces.SCHEMA_RELATIONSHIPS]);
-            ctObj.location = XmlHelper.ReadString(node.Attributes[nameof(location)]);
-            ctObj.tooltip = XmlHelper.ReadString(node.Attributes[nameof(tooltip)]);
-            ctObj.display = XmlHelper.ReadString(node.Attributes[nameof(display)]);
-            return ctObj;
+            return new CT_Hyperlink
+            {
+                @ref = XmlHelper.ReadString(node.Attributes[nameof(@ref)]),
+                id = XmlHelper.ReadString(node.Attributes[nameof(id), PackageNamespaces.SCHEMA_RELATIONSHIPS]),
+                location = XmlHelper.ReadString(node.Attributes[nameof(location)]),
+                tooltip = XmlHelper.ReadString(node.Attributes[nameof(tooltip)]),
+                display = XmlHelper.ReadString(node.Attributes[nameof(display)])
+            };
         }
 
 

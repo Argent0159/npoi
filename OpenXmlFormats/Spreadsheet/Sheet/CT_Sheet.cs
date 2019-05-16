@@ -20,14 +20,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Sheet ctObj = new CT_Sheet
+            var ctObj = new CT_Sheet
             {
                 name = XmlHelper.ReadString(node.Attributes[nameof(name)]),
-                sheetId = XmlHelper.ReadUInt(node.Attributes[nameof(sheetId)])
+                sheetId = XmlHelper.ReadUInt(node.Attributes[nameof(sheetId)]),
+                id = XmlHelper.ReadString(node.Attributes[nameof(id), PackageNamespaces.SCHEMA_RELATIONSHIPS])
             };
             if (node.Attributes[nameof(state)] != null)
                 ctObj.state = (ST_SheetState)Enum.Parse(typeof(ST_SheetState), node.Attributes[nameof(state)].Value);
-            ctObj.id = XmlHelper.ReadString(node.Attributes[nameof(id), PackageNamespaces.SCHEMA_RELATIONSHIPS]);
             return ctObj;
         }
 
@@ -56,12 +56,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Sheet Copy()
         {
-            CT_Sheet obj = new CT_Sheet();
-            obj.id = this.id;
-            obj.sheetId = this.sheetId;
-            obj.name = this.name;
-            obj.state = this.state;
-            return obj;
+            return new CT_Sheet
+            {
+                id = this.id,
+                sheetId = this.sheetId,
+                name = this.name,
+                state = this.state
+            };
         }
         [XmlAttribute(nameof(name))]
         public string name { get; set; }

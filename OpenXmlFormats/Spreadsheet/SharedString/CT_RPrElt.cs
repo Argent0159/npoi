@@ -60,38 +60,22 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write($"<{nodeName}");
-            sw.Write(">");
-            if (this.sz != null)
-                this.sz.Write(sw, nameof(sz));
-            if (this.color != null)
-                this.color.Write(sw, nameof(color));
-            if (this.rFont != null)
-                this.rFont.Write(sw, nameof(rFont));
-            if (this.family != null)
-                this.family.Write(sw, nameof(family));
-            if (this.charset != null)
-                this.charset.Write(sw, nameof(charset));
-            if (this.b != null)
-                this.b.Write(sw, nameof(b));
-            if (this.i != null)
-                this.i.Write(sw, nameof(i));
-            if (this.strike != null)
-                this.strike.Write(sw, nameof(strike));
-            if (this.outline != null)
-                this.outline.Write(sw, nameof(outline));
-            if (this.shadow != null)
-                this.shadow.Write(sw, nameof(shadow));
-            if (this.condense != null)
-                this.condense.Write(sw, nameof(condense));
-            if (this.extend != null)
-                this.extend.Write(sw, nameof(extend));
-            if (this.u != null)
-                this.u.Write(sw, nameof(u));
-            if (this.vertAlign != null)
-                this.vertAlign.Write(sw, nameof(vertAlign));
-            if (this.scheme != null)
-                this.scheme.Write(sw, nameof(scheme));
+            sw.Write($"<{nodeName}>");
+            this.sz?.Write(sw, nameof(sz));
+            this.color?.Write(sw, nameof(color));
+            this.rFont?.Write(sw, nameof(rFont));
+            this.family?.Write(sw, nameof(family));
+            this.charset?.Write(sw, nameof(charset));
+            this.b?.Write(sw, nameof(b));
+            this.i?.Write(sw, nameof(i));
+            this.strike?.Write(sw, nameof(strike));
+            this.outline?.Write(sw, nameof(outline));
+            this.shadow?.Write(sw, nameof(shadow));
+            this.condense?.Write(sw, nameof(condense));
+            this.extend?.Write(sw, nameof(extend));
+            this.u?.Write(sw, nameof(u));
+            this.vertAlign?.Write(sw, nameof(vertAlign));
+            this.scheme?.Write(sw, nameof(scheme));
             sw.Write($"</{nodeName}>");
         }
 

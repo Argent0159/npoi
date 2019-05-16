@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 
@@ -32,22 +33,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 //TODO: diff has-space case and no-space case
                 sw.Write($"<{nameof(t)} xml:space=\"preserve\">{XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(this.t))}</{nameof(t)}>");
             }
-            if (this.r != null)
-            {
-                foreach (CT_RElt x in this.r)
-                {
-                    x.Write(sw, nameof(r));
-                }
-            }
-            if (this.rPh != null)
-            {
-                foreach (CT_PhoneticRun x in this.rPh)
-                {
-                    x.Write(sw, nameof(rPh));
-                }
-            }
-            if (this.phoneticPr != null)
-                this.phoneticPr.Write(sw, nameof(phoneticPr));
+
+            this.r?.ForEach(x => x.Write(sw, nameof(r)));
+            this.rPh?.ForEach(x => x.Write(sw, nameof(rPh)));
+            this.phoneticPr?.Write(sw, nameof(phoneticPr));
+
             sw.Write($"</{nodeName}>");
         }
 
@@ -160,18 +150,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_RElt AddNewR()
         {
-            if (null == this.r) { this.r = new List<CT_RElt>(); }
+            this.r = this.r ?? new List<CT_RElt>();
             CT_RElt r = new CT_RElt();
             this.r.Add(r);
             return r;
         }
         public int sizeOfRArray()
         {
-            return (null == r) ? 0 : r.Count;
+            return r?.Count ?? 0;
         }
         public CT_RElt GetRArray(int index)
         {
-            return (null == r) ? null : this.r[index];
+            return r?[index];
         }
         #endregion r
 

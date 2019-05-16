@@ -37,8 +37,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write($"<{nodeName}>");
-            if (this.rPr != null)
-                this.rPr.Write(sw, nameof(rPr));
+            this.rPr?.Write(sw, nameof(rPr));
             if (this.t != null)
                 sw.Write($"<{nameof(t)} xml:space=\"preserve\">{XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(this.t))}</{nameof(t)}>");
             sw.Write($"</{nodeName}>");

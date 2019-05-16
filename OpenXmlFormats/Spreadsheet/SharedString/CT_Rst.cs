@@ -26,12 +26,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}>", nodeName));
+            sw.Write($"<{nodeName}>");
             if (this.t != null)
             {
                 //TODO: diff has-space case and no-space case
-                 sw.Write(string.Format("<t xml:space=\"preserve\">{0}</t>", 
-                      XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(t))));
+                sw.Write($"<{nameof(t)} xml:space=\"preserve\">{XmlHelper.ExcelEncodeString(XmlHelper.EncodeXml(this.t))}</{nameof(t)}>");
             }
             if (this.r != null)
             {
@@ -49,7 +48,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             }
             if (this.phoneticPr != null)
                 this.phoneticPr.Write(sw, nameof(phoneticPr));
-            sw.Write(string.Format("</{0}>", nodeName));
+            sw.Write($"</{nodeName}>");
         }
 
 

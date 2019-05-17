@@ -23,11 +23,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Xf Copy()
         {
             CT_Xf obj = new CT_Xf();
-            if (this.alignment != null)
-                obj.alignment = this.alignment.Copy();
+            obj.alignment = this.alignment?.Copy();
             obj.protection = this.protection;
-            obj.extLst = null == extLst ? null : this.extLst.Copy();
-
+            obj.extLst = this.extLst?.Copy();
             obj.applyAlignment = this.applyAlignment;
             obj.applyBorder = this.applyBorder;
             obj.applyFill = this.applyFill;

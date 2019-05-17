@@ -16,7 +16,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Borders ctObj = new CT_Borders();
+            var ctObj = new CT_Borders();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.border = new List<CT_Border>();
             foreach (XmlNode childNode in node.ChildNodes)
@@ -45,7 +45,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Border AddNewBorder()
         {
             this.border = this.border ?? new List<CT_Border>();
-            CT_Border border = new CT_Border();
+            var border = new CT_Border();
             this.border.Add(border);
             return border;
         }

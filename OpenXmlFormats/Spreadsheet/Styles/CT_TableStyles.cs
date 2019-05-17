@@ -21,7 +21,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_TableStyle ctObj = new CT_TableStyle();
+            var ctObj = new CT_TableStyle();
             ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
             ctObj.pivot = XmlHelper.ReadBool(node.Attributes[nameof(pivot)]);
             ctObj.table = XmlHelper.ReadBool(node.Attributes[nameof(table)]);
@@ -73,7 +73,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_TableStyleInfo ctObj = new CT_TableStyleInfo();
+            var ctObj = new CT_TableStyleInfo();
             ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
             if (node.Attributes[nameof(showFirstColumn)] != null)
                 ctObj.showFirstColumn = XmlHelper.ReadBool(node.Attributes[nameof(showFirstColumn)]);
@@ -128,7 +128,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_TableStyles ctObj = new CT_TableStyles();
+            var ctObj = new CT_TableStyles();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.defaultTableStyle = XmlHelper.ReadString(node.Attributes[nameof(defaultTableStyle)]);
             ctObj.defaultPivotStyle = XmlHelper.ReadString(node.Attributes[nameof(defaultPivotStyle)]);
@@ -268,7 +268,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_TableStyleElement ctObj = new CT_TableStyleElement();
+            var ctObj = new CT_TableStyleElement();
             if (node.Attributes[nameof(type)] != null)
                 ctObj.type = (ST_TableStyleType)Enum.Parse(typeof(ST_TableStyleType), node.Attributes[nameof(type)].Value);
             ctObj.size = XmlHelper.ReadUInt(node.Attributes[nameof(size)]);

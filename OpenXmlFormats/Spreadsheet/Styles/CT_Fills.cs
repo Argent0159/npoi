@@ -20,7 +20,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Fills ctObj = new CT_Fills();
+            var ctObj = new CT_Fills();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.fill = new List<CT_Fill>();
             foreach (XmlNode childNode in node.ChildNodes)

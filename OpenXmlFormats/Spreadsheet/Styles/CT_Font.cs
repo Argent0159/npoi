@@ -22,7 +22,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Font ctObj = new CT_Font();
+            var ctObj = new CT_Font();
             ctObj.charset = new List<CT_IntProperty>();
             ctObj.family = new List<CT_IntProperty>();
             ctObj.b = new List<CT_BooleanProperty>();
@@ -126,7 +126,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_IntProperty AddNewCharset()
         {
             this.charset = this.charset ?? new List<CT_IntProperty>();
-            CT_IntProperty prop = new CT_IntProperty();
+            var prop = new CT_IntProperty();
             this.charset.Add(prop);
             return prop;
         }
@@ -150,7 +150,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_IntProperty AddNewFamily()
         {
             this.family = this.family ?? new List<CT_IntProperty>();
-            CT_IntProperty newfamily = new CT_IntProperty();
+            var newfamily = new CT_IntProperty();
             this.family.Add(newfamily);
             return newfamily;
         }
@@ -174,7 +174,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BooleanProperty AddNewB()
         {
             this.b = this.b ?? new List<CT_BooleanProperty>();
-            CT_BooleanProperty newB = new CT_BooleanProperty();
+            var newB = new CT_BooleanProperty();
             this.b.Add(newB);
             return newB;
         }
@@ -202,7 +202,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BooleanProperty AddNewI()
         {
             this.i = this.i ?? new List<CT_BooleanProperty>();
-            CT_BooleanProperty newI = new CT_BooleanProperty();
+            var newI = new CT_BooleanProperty();
             this.i.Add(newI);
             return newI;
         }
@@ -230,7 +230,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BooleanProperty AddNewStrike()
         {
             this.strike = this.strike ?? new List<CT_BooleanProperty>();
-            CT_BooleanProperty prop = new CT_BooleanProperty();
+            var prop = new CT_BooleanProperty();
             this.strike.Add(prop);
             return prop;
         }
@@ -350,7 +350,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Color AddNewColor()
         {
             this.color = this.color ?? new List<CT_Color>();
-            CT_Color newColor = new CT_Color();
+            var newColor = new CT_Color();
             this.color.Add(newColor);
             return newColor;
         }
@@ -366,7 +366,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_FontSize AddNewSz()
         {
             this.sz = this.sz ?? new List<CT_FontSize>();
-            CT_FontSize newFs = new CT_FontSize();
+            var newFs = new CT_FontSize();
             this.sz.Add(newFs);
             return newFs;
         }
@@ -394,7 +394,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_UnderlineProperty AddNewU()
         {
             this.u = this.u ?? new List<CT_UnderlineProperty>();
-            CT_UnderlineProperty newU = new CT_UnderlineProperty();
+            var newU = new CT_UnderlineProperty();
             this.u.Add(newU);
             return newU;
         }
@@ -425,7 +425,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_VerticalAlignFontProperty AddNewVertAlign()
         {
             this.vertAlign = this.vertAlign ?? new List<CT_VerticalAlignFontProperty>();
-            CT_VerticalAlignFontProperty prop = new CT_VerticalAlignFontProperty();
+            var prop = new CT_VerticalAlignFontProperty();
             this.vertAlign.Add(prop);
             return prop;
         }
@@ -453,7 +453,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_FontScheme AddNewScheme()
         {
             this.scheme = this.scheme ?? new List<CT_FontScheme>();
-            CT_FontScheme newScheme = new CT_FontScheme();
+            var newScheme = new CT_FontScheme();
             this.scheme.Add(newScheme);
             return newScheme;
         }
@@ -469,13 +469,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public override string ToString()
         {
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                StreamWriter sw = new StreamWriter(ms);
+                var sw = new StreamWriter(ms);
                 this.Write(sw, "font");
                 sw.Flush();
                 ms.Position = 0;
-                StreamReader sr = new StreamReader(ms);
+                var sr = new StreamReader(ms);
                 string result = sr.ReadToEnd();
                 return result;
             }
@@ -483,7 +483,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_Font Clone()
         {
-            CT_Font ctFont = new CT_Font();
+            var ctFont = new CT_Font();
 
             if (this.name != null)
             {

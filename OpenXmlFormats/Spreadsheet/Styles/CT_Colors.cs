@@ -22,7 +22,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Colors ctObj = new CT_Colors();
+            var ctObj = new CT_Colors();
             
             foreach (XmlNode childNode in node.ChildNodes)
             {
@@ -88,7 +88,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_RgbColor ctObj = new CT_RgbColor();
+            var ctObj = new CT_RgbColor();
             ctObj.rgb = XmlHelper.ReadBytes(node.Attributes[nameof(rgb)]);
             return ctObj;
         }
@@ -282,7 +282,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Color ctObj = new CT_Color();
+            var ctObj = new CT_Color();
             ctObj.auto = XmlHelper.ReadBool(node.Attributes[nameof(auto)]);
             ctObj.autoSpecified = node.Attributes[nameof(auto)] != null;
             ctObj.indexed = XmlHelper.ReadUInt(node.Attributes[nameof(indexed)]);

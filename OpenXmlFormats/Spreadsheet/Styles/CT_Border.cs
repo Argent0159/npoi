@@ -36,12 +36,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public override string ToString()
         {
-            MemoryStream ms = new MemoryStream();
-            StreamWriter sw = new StreamWriter(ms);
+            var ms = new MemoryStream();
+            var sw = new StreamWriter(ms);
             this.Write(sw, "border");
             sw.Flush();
             ms.Position = 0;
-            using (StreamReader sr = new StreamReader(ms))
+            using (var sr = new StreamReader(ms))
             {
                 return sr.ReadToEnd();
             }
@@ -50,7 +50,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Border ctObj = new CT_Border();
+            var ctObj = new CT_Border();
             ctObj.diagonalUp = XmlHelper.ReadBool(node.Attributes[nameof(diagonalUp)]);
             ctObj.diagonalDown = XmlHelper.ReadBool(node.Attributes[nameof(diagonalDown)]);
             ctObj.outline = XmlHelper.ReadBool(node.Attributes[nameof(outline)]);
@@ -95,7 +95,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_Border Copy()
         {
-            CT_Border obj = new CT_Border();
+            var obj = new CT_Border();
             obj.bottom = this.bottom?.Copy();
             obj.top = this.top?.Copy();
             obj.right = this.right?.Copy();

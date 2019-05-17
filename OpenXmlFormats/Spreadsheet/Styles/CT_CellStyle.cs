@@ -20,7 +20,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_CellStyle ctObj = new CT_CellStyle();
+            var ctObj = new CT_CellStyle();
             ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
             ctObj.xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]);
             ctObj.builtinId = XmlHelper.ReadUInt(node.Attributes[nameof(builtinId)]);

@@ -45,7 +45,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Fill ctObj = new CT_Fill();
+            var ctObj = new CT_Fill();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(patternFill))
@@ -73,13 +73,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public override string ToString()
         {
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                StreamWriter sw = new StreamWriter(ms);
+                var sw = new StreamWriter(ms);
                 this.Write(sw, "fill");
                 sw.Flush();
                 ms.Position = 0;
-                StreamReader sr = new StreamReader(ms);
+                var sr = new StreamReader(ms);
                 string result = sr.ReadToEnd();
                 return result;
             }
@@ -87,7 +87,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public static CT_Fill Parse(string p)
         {
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.LoadXml(p);
             return Parse(doc.DocumentElement, CreateDefaultNSM());
         }
@@ -96,8 +96,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             //  Create a NamespaceManager to handle the default namespace, 
             //  and create a prefix for the default namespace:
-            NameTable nt = new NameTable();
-            XmlNamespaceManager ns = new XmlNamespaceManager(nt);
+            var nt = new NameTable();
+            var ns = new XmlNamespaceManager(nt);
             ns.AddNamespace(string.Empty, PackageNamespaces.SCHEMA_MAIN);
             ns.AddNamespace("d", PackageNamespaces.SCHEMA_MAIN);
             ns.AddNamespace("a", PackageNamespaces.SCHEMA_DRAWING);

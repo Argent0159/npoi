@@ -22,7 +22,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_Xf Copy()
         {
-            CT_Xf obj = new CT_Xf();
+            var obj = new CT_Xf();
             obj.alignment = this.alignment?.Copy();
             obj.protection = this.protection;
             obj.extLst = this.extLst?.Copy();
@@ -50,7 +50,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Xf ctObj = new CT_Xf();
+            var ctObj = new CT_Xf();
             ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]);
             ctObj.fontId = XmlHelper.ReadUInt(node.Attributes[nameof(fontId)]);
             ctObj.fillId = XmlHelper.ReadUInt(node.Attributes[nameof(fillId)]);
@@ -114,8 +114,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public override string ToString()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(CT_Xf));
-            using (StringWriter stream = new StringWriter())
+            var serializer = new XmlSerializer(typeof(CT_Xf));
+            using (var stream = new StringWriter())
             {
                 serializer.Serialize(stream, this);
                 return stream.ToString();

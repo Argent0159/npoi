@@ -20,7 +20,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_NumFmts ctObj = new CT_NumFmts();
+            var ctObj = new CT_NumFmts();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.numFmt = new List<CT_NumFmt>();
             foreach (XmlNode childNode in node.ChildNodes)
@@ -45,7 +45,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_NumFmt AddNewNumFmt()
         {
             this.numFmt = this.numFmt ?? new List<CT_NumFmt>();
-            CT_NumFmt newNumFmt = new CT_NumFmt();
+            var newNumFmt = new CT_NumFmt();
             this.numFmt.Add(newNumFmt);
             return newNumFmt;
         }

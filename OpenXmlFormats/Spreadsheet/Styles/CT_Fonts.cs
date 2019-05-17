@@ -21,7 +21,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Fonts ctObj = new CT_Fonts();
+            var ctObj = new CT_Fonts();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.font = new List<CT_Font>();
             foreach (XmlNode childNode in node.ChildNodes)

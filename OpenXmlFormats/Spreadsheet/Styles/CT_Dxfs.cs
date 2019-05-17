@@ -16,7 +16,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Dxfs ctObj = new CT_Dxfs();
+            var ctObj = new CT_Dxfs();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.dxf = new List<CT_Dxf>();
             foreach (XmlNode childNode in node.ChildNodes)
@@ -59,7 +59,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_Dxf ctObj = new CT_Dxf();
+            var ctObj = new CT_Dxf();
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(font))
@@ -113,21 +113,21 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Font AddNewFont()
         {
-            CT_Font font = new CT_Font();
+            var font = new CT_Font();
             this.font = font;
             return font;
         }
 
         public CT_Fill AddNewFill()
         {
-            CT_Fill fill = new CT_Fill();
+            var fill = new CT_Fill();
             this.fill = fill;
             return fill;
         }
 
         public CT_Border AddNewBorder()
         {
-            CT_Border border = new CT_Border();
+            var border = new CT_Border();
             this.border = border;
             return border;
         }

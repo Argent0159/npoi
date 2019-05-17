@@ -16,7 +16,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_CellStyleXfs ctObj = new CT_CellStyleXfs();
+            var ctObj = new CT_CellStyleXfs();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.xf = new List<CT_Xf>();
             foreach (XmlNode childNode in node.ChildNodes)
@@ -45,7 +45,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Xf AddNewXf()
         {
             this.xf = this.xf ?? new List<CT_Xf>();
-            CT_Xf xf = new CT_Xf();
+            var xf = new CT_Xf();
             this.xf.Add(xf);
             return xf;
         }

@@ -17,7 +17,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_BorderPr ctObj = new CT_BorderPr();
+            var ctObj = new CT_BorderPr();
             if (node.Attributes[nameof(style)] != null)
                 ctObj.style = (ST_BorderStyle)Enum.Parse(typeof(ST_BorderStyle), node.Attributes[nameof(style)].Value);
             foreach (XmlNode childNode in node.ChildNodes)

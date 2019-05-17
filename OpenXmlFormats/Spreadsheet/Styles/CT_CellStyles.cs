@@ -29,7 +29,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_CellStyles ctObj = new CT_CellStyles();
+            var ctObj = new CT_CellStyles();
             ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.cellStyle = new List<CT_CellStyle>();
             foreach (XmlNode childNode in node.ChildNodes)

@@ -49,7 +49,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            CT_CellAlignment ctObj = new CT_CellAlignment();
+            var ctObj = new CT_CellAlignment();
             if (node.Attributes[nameof(horizontal)] != null)
                 ctObj.horizontal = (ST_HorizontalAlignment)Enum.Parse(typeof(ST_HorizontalAlignment), node.Attributes[nameof(horizontal)].Value);
             if (node.Attributes[nameof(vertical)] != null)
@@ -243,7 +243,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal CT_CellAlignment Copy()
         {
-            CT_CellAlignment align = new CT_CellAlignment();
+            var align = new CT_CellAlignment();
             align.horizontal = this.horizontal;
             align.vertical = this.vertical;
             align.wrapText = this.wrapText;

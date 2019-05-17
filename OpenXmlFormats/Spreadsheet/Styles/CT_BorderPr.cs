@@ -33,7 +33,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            if(this.style!= ST_BorderStyle.none)
+            if (this.style != ST_BorderStyle.none)
                 XmlHelper.WriteAttribute(sw, nameof(style), this.style.ToString());
             if (this.color != null)
             {
@@ -80,7 +80,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BorderPr Copy()
         {
             var res = new CT_BorderPr();
-            res.color = this.color == null ? null : this.color.Copy();
+            res.color = this.color?.Copy();
             res.style = this.style;
             return res;
         }

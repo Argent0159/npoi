@@ -69,10 +69,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             else
             {
                 sw.Write(">");
-                if (this.fgColor != null)
-                    this.fgColor.Write(sw, nameof(fgColor));
-                if (this.bgColor != null)
-                    this.bgColor.Write(sw, nameof(bgColor));
+                    this.fgColor?.Write(sw, nameof(fgColor));
+                    this.bgColor?.Write(sw, nameof(bgColor));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
         }

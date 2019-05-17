@@ -47,13 +47,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
-            if (this.cellStyle != null)
-            {
-                foreach (CT_CellStyle x in this.cellStyle)
-                {
-                    x.Write(sw, nameof(cellStyle));
-                }
-            }
+            this.cellStyle?.ForEach(x => x.Write(sw, nameof(cellStyle)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

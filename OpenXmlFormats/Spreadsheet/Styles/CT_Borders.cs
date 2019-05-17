@@ -34,13 +34,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
-            if (this.border != null)
-            {
-                foreach (CT_Border x in this.border)
-                {
-                    x.Write(sw, nameof(border));
-                }
-            }
+            this.border?.ForEach(x => x.Write(sw, nameof(border)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -50,8 +44,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Border AddNewBorder()
         {
-            if (this.border == null)
-                this.border = new List<CT_Border>();
+            this.border = this.border ?? new List<CT_Border>();
             CT_Border border = new CT_Border();
             this.border.Add(border);
             return border;

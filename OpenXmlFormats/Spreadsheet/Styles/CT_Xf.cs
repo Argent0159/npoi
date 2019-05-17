@@ -23,7 +23,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_Xf Copy()
         {
             CT_Xf obj = new CT_Xf();
-            if (this.alignment!=null)
+            if (this.alignment != null)
                 obj.alignment = this.alignment.Copy();
             obj.protection = this.protection;
             obj.extLst = null == extLst ? null : this.extLst.Copy();
@@ -88,17 +88,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             XmlHelper.WriteAttribute(sw, nameof(fillId), this.fillId, true);
             XmlHelper.WriteAttribute(sw, nameof(borderId), this.borderId, true);
             XmlHelper.WriteAttribute(sw, nameof(xfId), this.xfId, true);
-            XmlHelper.WriteAttribute(sw, nameof(quotePrefix), this.quotePrefix,false);
+            XmlHelper.WriteAttribute(sw, nameof(quotePrefix), this.quotePrefix, false);
             XmlHelper.WriteAttribute(sw, nameof(pivotButton), this.pivotButton, false);
-            if(this.applyNumberFormat)
+            if (this.applyNumberFormat)
                 XmlHelper.WriteAttribute(sw, nameof(applyNumberFormat), this.applyNumberFormat);
             XmlHelper.WriteAttribute(sw, nameof(applyFont), this.applyFont, false);
             if (this.applyBorder)
                 XmlHelper.WriteAttribute(sw, nameof(applyBorder), this.applyBorder, true);
-            if(this.applyFill)
+            if (this.applyFill)
                 XmlHelper.WriteAttribute(sw, nameof(applyFill), this.applyFill);
             XmlHelper.WriteAttribute(sw, nameof(applyAlignment), this.applyAlignment, true);
-            if(this.applyProtection)
+            if (this.applyProtection)
                 XmlHelper.WriteAttribute(sw, nameof(applyProtection), this.applyProtection, true);
             if (this.alignment == null && this.protection == null && this.extLst == null)
             {
@@ -107,12 +107,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             else
             {
                 sw.Write(">");
-                if (this.alignment != null)
-                    this.alignment.Write(sw, nameof(alignment));
-                if (this.protection != null)
-                    this.protection.Write(sw, nameof(protection));
-                if (this.extLst != null)
-                    this.extLst.Write(sw, nameof(extLst));
+                this.alignment?.Write(sw, nameof(alignment));
+                this.protection?.Write(sw, nameof(protection));
+                this.extLst?.Write(sw, nameof(extLst));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
         }
@@ -160,7 +157,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public bool IsSetLocked()
         {
             // first guess:
-            return IsSetProtection() &&  (protection.locked == true);
+            return IsSetProtection() && (protection.locked == true);
         }
         public CT_CellProtection AddNewProtection()
         {

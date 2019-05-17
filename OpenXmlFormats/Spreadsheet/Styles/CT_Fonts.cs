@@ -37,13 +37,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
-            if (this.font != null)
-            {
-                foreach (CT_Font x in this.font)
-                {
-                    x.Write(sw, nameof(font));
-                }
-            }
+            this.font?.ForEach(x => x.Write(sw, nameof(font)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

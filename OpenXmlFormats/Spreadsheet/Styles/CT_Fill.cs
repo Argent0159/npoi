@@ -62,10 +62,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write(string.Format("<{0}", nodeName));
             sw.Write(">");
-            if (this.patternFill != null)
-                this.patternFill.Write(sw, nameof(patternFill));
-            if (this.gradientFill != null)
-                this.gradientFill.Write(sw, nameof(gradientFill));
+            this.patternFill?.Write(sw, nameof(patternFill));
+            this.gradientFill?.Write(sw, nameof(gradientFill));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

@@ -34,13 +34,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
-            if (this.xf != null)
-            {
-                foreach (CT_Xf x in this.xf)
-                {
-                    x.Write(sw, nameof(xf));
-                }
-            }
+            this.xf?.ForEach(x => x.Write(sw, nameof(xf)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -50,8 +44,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Xf AddNewXf()
         {
-            if (this.xf == null)
-                this.xf = new List<CT_Xf>();
+            this.xf = this.xf ?? new List<CT_Xf>();
             CT_Xf xf = new CT_Xf();
             this.xf.Add(xf);
             return xf;

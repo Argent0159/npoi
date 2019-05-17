@@ -44,7 +44,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 else if (childNode.LocalName == nameof(extend))
                     ctObj.extend = CT_BooleanProperty.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == nameof(name))
-                    ctObj.name= CT_FontName.Parse(childNode, namespaceManager);
+                    ctObj.name = CT_FontName.Parse(childNode, namespaceManager);
                 else if (childNode.LocalName == nameof(charset))
                     ctObj.charset.Add(CT_IntProperty.Parse(childNode, namespaceManager));
                 else if (childNode.LocalName == nameof(family))
@@ -75,90 +75,21 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write(string.Format("<{0}", nodeName));
             sw.Write(">");
-            if (this.b != null)
-            {
-                foreach (CT_BooleanProperty x in this.b)
-                {
-                    x.Write(sw, nameof(b));
-                }
-            }
-            if (this.i != null)
-            {
-                foreach (CT_BooleanProperty x in this.i)
-                {
-                    x.Write(sw, nameof(i));
-                }
-            }
-
-            if (this.strike != null)
-            {
-                foreach (CT_BooleanProperty x in this.strike)
-                {
-                    x.Write(sw, nameof(strike));
-                }
-            }
-            if (this.condense != null)
-                this.condense.Write(sw, nameof(condense));
-            if (this.extend != null)
-                this.extend.Write(sw, nameof(extend));
-            if (this.outline != null)
-                this.outline.Write(sw, nameof(outline));
-            if (this.shadow != null)
-                this.shadow.Write(sw, nameof(shadow));
-            if (this.u != null)
-            {
-                foreach (CT_UnderlineProperty x in this.u)
-                {
-                    x.Write(sw, nameof(u));
-                }
-            }
-            if (this.vertAlign != null)
-            {
-                foreach (CT_VerticalAlignFontProperty x in this.vertAlign)
-                {
-                    x.Write(sw, nameof(vertAlign));
-                }
-            }
-
-            if (this.sz != null)
-            {
-                foreach (CT_FontSize x in this.sz)
-                {
-                    x.Write(sw, nameof(sz));
-                }
-            }
-
-            if (this.color != null)
-            {
-                foreach (CT_Color x in this.color)
-                {
-                    x.Write(sw, nameof(color));
-                }
-            }
-            if (this.name != null)
-                this.name.Write(sw, nameof(name));
-
-            if (this.family != null)
-            {
-                foreach (CT_IntProperty x in this.family)
-                {
-                    x.Write(sw, nameof(family));
-                }
-            }
-            if (this.charset != null)
-            {
-                foreach (CT_IntProperty x in this.charset)
-                {
-                    x.Write(sw, nameof(charset));
-                }
-            }
-            if (this.scheme != null)
-            {
-                foreach (CT_FontScheme x in this.scheme)
-                {
-                    x.Write(sw, nameof(scheme));
-                }
-            }
+            this.b?.ForEach(x => x.Write(sw, nameof(b)));
+            this.i?.ForEach(x => x.Write(sw, nameof(i)));
+            this.strike?.ForEach(x => x.Write(sw, nameof(strike)));
+            this.condense?.Write(sw, nameof(condense));
+            this.extend?.Write(sw, nameof(extend));
+            this.outline?.Write(sw, nameof(outline));
+            this.shadow?.Write(sw, nameof(shadow));
+            this.u?.ForEach(x => x.Write(sw, nameof(u)));
+            this.vertAlign?.ForEach(x => x.Write(sw, nameof(vertAlign)));
+            this.sz?.ForEach(x=>x.Write(sw, nameof(sz)));
+            this.color?.ForEach(x => x.Write(sw, nameof(color)));
+            this.name?.Write(sw, nameof(name));
+            this.family?.ForEach(x => x.Write(sw, nameof(family)));
+            this.charset?.ForEach(x => x.Write(sw, nameof(charset)));
+            this.scheme?.ForEach(x => x.Write(sw, nameof(scheme)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -176,9 +107,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_FontName name { get; set; } = null;
         public int sizeOfNameArray()
         {
-            if (this.name == null)
-                return 0;
-            return 1;
+            return this.name == null ? 0 : 1;
         }
         public CT_FontName AddNewName()
         {
@@ -192,14 +121,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_IntProperty> charset { get; set; } = null;
         public int sizeOfCharsetArray()
         {
-            if (this.charset == null)
-                return 0;
-            return this.charset.Count;
+            return this.charset?.Count ?? 0;
         }
         public CT_IntProperty AddNewCharset()
         {
-            if (this.charset == null)
-                this.charset = new List<CT_IntProperty>();
+            this.charset = this.charset ?? new List<CT_IntProperty>();
             CT_IntProperty prop = new CT_IntProperty();
             this.charset.Add(prop);
             return prop;
@@ -219,14 +145,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_IntProperty> family { get; set; } = null;
         public int sizeOfFamilyArray()
         {
-            if (this.family == null)
-                return 0;
-            return this.family.Count;
+            return this.family?.Count ?? 0;
         }
         public CT_IntProperty AddNewFamily()
         {
-            if (this.family == null)
-                this.family = new List<CT_IntProperty>();
+            this.family = this.family ?? new List<CT_IntProperty>();
             CT_IntProperty newfamily = new CT_IntProperty();
             this.family.Add(newfamily);
             return newfamily;
@@ -246,14 +169,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_BooleanProperty> b { get; set; } = null;
         public int SizeOfBArray()
         {
-            if (this.b == null)
-                return 0;
-            return this.b.Count;
+            return this.b?.Count ?? 0;
         }
         public CT_BooleanProperty AddNewB()
         {
-            if (this.b == null)
-                this.b = new List<CT_BooleanProperty>();
+            this.b = this.b ?? new List<CT_BooleanProperty>();
             CT_BooleanProperty newB = new CT_BooleanProperty();
             this.b.Add(newB);
             return newB;
@@ -277,14 +197,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_BooleanProperty> i { get; set; } = null;
         public int sizeOfIArray()
         {
-            if (this.i == null)
-                return 0;
-            return this.i.Count;
+            return this.i?.Count ?? 0;
         }
         public CT_BooleanProperty AddNewI()
         {
-            if (this.i == null)
-                this.i = new List<CT_BooleanProperty>();
+            this.i = this.i ?? new List<CT_BooleanProperty>();
             CT_BooleanProperty newI = new CT_BooleanProperty();
             this.i.Add(newI);
             return newI;
@@ -308,14 +225,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_BooleanProperty> strike { get; set; } = null;
         public int sizeOfStrikeArray()
         {
-            if (this.strike == null)
-                return 0;
-            return this.strike.Count;
+            return this.strike?.Count ?? 0;
         }
         public CT_BooleanProperty AddNewStrike()
         {
-            if (this.strike == null)
-                this.strike = new List<CT_BooleanProperty>();
+            this.strike = this.strike ?? new List<CT_BooleanProperty>();
             CT_BooleanProperty prop = new CT_BooleanProperty();
             this.strike.Add(prop);
             return prop;
@@ -362,8 +276,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BooleanProperty shadow { get; set; } = null;
         public int sizeOfShadowArray()
         {
-            if (this.shadow == null)
-                return 0;
             return this.shadow == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewShadow()
@@ -383,8 +295,6 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public CT_BooleanProperty condense { get; set; } = null;
         public int sizeOfCondenseArray()
         {
-            if (this.condense == null)
-                return 0;
             return this.condense == null ? 0 : 1;
         }
         public CT_BooleanProperty AddNewCondense()
@@ -423,9 +333,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_Color> color { get; set; } = null;
         public int sizeOfColorArray()
         {
-            if (this.color == null)
-                return 0;
-            return this.color.Count;
+            return this.color?.Count ?? 0;
         }
         public CT_Color GetColorArray(int index)
         {
@@ -441,8 +349,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_Color AddNewColor()
         {
-            if (this.color == null)
-                this.color = new List<CT_Color>();
+            this.color = this.color ?? new List<CT_Color>();
             CT_Color newColor = new CT_Color();
             this.color.Add(newColor);
             return newColor;
@@ -454,14 +361,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_FontSize> sz { get; set; } = null;
         public int sizeOfSzArray()
         {
-            if (this.sz == null)
-                return 0;
-            return this.sz.Count;
+            return this.sz?.Count ?? 0;
         }
         public CT_FontSize AddNewSz()
         {
-            if (this.sz == null)
-                this.sz = new List<CT_FontSize>();
+            this.sz = this.sz ?? new List<CT_FontSize>();
             CT_FontSize newFs = new CT_FontSize();
             this.sz.Add(newFs);
             return newFs;
@@ -485,14 +389,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_UnderlineProperty> u { get; set; } = null;
         public int sizeOfUArray()
         {
-            if (this.u == null)
-                return 0;
-            return this.u.Count;
+            return this.u?.Count ?? 0;
         }
         public CT_UnderlineProperty AddNewU()
         {
-            if (this.u == null)
-                this.u = new List<CT_UnderlineProperty>();
+            this.u = this.u ?? new List<CT_UnderlineProperty>();
             CT_UnderlineProperty newU = new CT_UnderlineProperty();
             this.u.Add(newU);
             return newU;
@@ -519,14 +420,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_VerticalAlignFontProperty> vertAlign { get; set; } = null;
         public int sizeOfVertAlignArray()
         {
-            if (this.vertAlign == null)
-                return 0;
-            return this.vertAlign.Count;
+            return this.vertAlign?.Count ?? 0;
         }
         public CT_VerticalAlignFontProperty AddNewVertAlign()
         {
-            if (this.vertAlign == null)
-                this.vertAlign = new List<CT_VerticalAlignFontProperty>();
+            this.vertAlign = this.vertAlign ?? new List<CT_VerticalAlignFontProperty>();
             CT_VerticalAlignFontProperty prop = new CT_VerticalAlignFontProperty();
             this.vertAlign.Add(prop);
             return prop;
@@ -537,7 +435,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public void SetVertAlignArray(List<CT_VerticalAlignFontProperty> array)
         {
-            this.vertAlign =array;
+            this.vertAlign = array;
         }
         public CT_VerticalAlignFontProperty GetVertAlignArray(int index)
         {
@@ -550,14 +448,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         public List<CT_FontScheme> scheme { get; set; } = null;
         public int sizeOfSchemeArray()
         {
-            if (this.scheme == null)
-                return 0;
-            return this.scheme.Count;
+            return this.scheme?.Count ?? 0;
         }
         public CT_FontScheme AddNewScheme()
         {
-            if (this.scheme == null)
-                this.scheme = new List<CT_FontScheme>();
+            this.scheme = this.scheme ?? new List<CT_FontScheme>();
             CT_FontScheme newScheme = new CT_FontScheme();
             this.scheme.Add(newScheme);
             return newScheme;
@@ -590,12 +485,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             CT_Font ctFont = new CT_Font();
 
-            if (this.name!=null)
+            if (this.name != null)
             {
-                  CT_FontName newName = ctFont.AddNewName();
-                    newName.val = this.name.val;
+                CT_FontName newName = ctFont.AddNewName();
+                newName.val = this.name.val;
             }
-            if (this.charset!=null)
+            if (this.charset != null)
             {
                 foreach (CT_IntProperty ctCharset in this.charset)
                 {
@@ -603,7 +498,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                     newCharset.val = ctCharset.val;
                 }
             }
-            if (this.family!=null)
+            if (this.family != null)
             {
                 foreach (CT_IntProperty ctFamily in this.family)
                 {

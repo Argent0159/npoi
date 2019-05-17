@@ -38,20 +38,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
-            if (this.numFmt != null)
-            {
-                foreach (CT_NumFmt x in this.numFmt)
-                {
-                    x.Write(sw, nameof(numFmt));
-                }
-            }
+            this.numFmt?.ForEach(x => x.Write(sw, nameof(numFmt)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
         public CT_NumFmt AddNewNumFmt()
         {
-            if (this.numFmt == null)
-                this.numFmt = new List<CT_NumFmt>();
+            this.numFmt = this.numFmt ?? new List<CT_NumFmt>();
             CT_NumFmt newNumFmt = new CT_NumFmt();
             this.numFmt.Add(newNumFmt);
             return newNumFmt;

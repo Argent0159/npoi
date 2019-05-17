@@ -45,13 +45,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             XmlHelper.WriteAttribute(sw, nameof(table), this.table);
             XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
-            if (this.tableStyleElement != null)
-            {
-                foreach (CT_TableStyleElement x in this.tableStyleElement)
-                {
-                    x.Write(sw, nameof(tableStyleElement));
-                }
-            }
+            this.tableStyleElement?.ForEach(x => x.Write(sw, nameof(tableStyleElement)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -156,13 +150,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             XmlHelper.WriteAttribute(sw, nameof(defaultTableStyle), this.defaultTableStyle);
             XmlHelper.WriteAttribute(sw, nameof(defaultPivotStyle), this.defaultPivotStyle);
             sw.Write(">");
-            if (this.tableStyle != null)
-            {
-                foreach (CT_TableStyle x in this.tableStyle)
-                {
-                    x.Write(sw, nameof(tableStyle));
-                }
-            }
+            this.tableStyle?.ForEach(x => x.Write(sw, nameof(tableStyle)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

@@ -83,34 +83,27 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             XmlHelper.WriteAttribute(sw, nameof(diagonalDown), this.diagonalDown, false);
             XmlHelper.WriteAttribute(sw, nameof(outline), this.outline, false);
             sw.Write(">");
-            if (this.left != null)
-                this.left.Write(sw, nameof(left));
-            if (this.right != null)
-                this.right.Write(sw, nameof(right));
-            if (this.top != null)
-                this.top.Write(sw, nameof(top));
-            if (this.bottom != null)
-                this.bottom.Write(sw, nameof(bottom));
-            if (this.diagonal != null)
-                this.diagonal.Write(sw, nameof(diagonal));
-            if (this.vertical != null)
-                this.vertical.Write(sw, nameof(vertical));
-            if (this.horizontal != null)
-                this.horizontal.Write(sw, nameof(horizontal));
+            this.left?.Write(sw, nameof(left));
+            this.right?.Write(sw, nameof(right));
+            this.top?.Write(sw, nameof(top));
+            this.bottom?.Write(sw, nameof(bottom));
+            this.diagonal?.Write(sw, nameof(diagonal));
+            this.vertical?.Write(sw, nameof(vertical));
+            this.horizontal?.Write(sw, nameof(horizontal));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
         public CT_Border Copy()
         {
             CT_Border obj = new CT_Border();
-            obj.bottom = this.bottom == null ? null : this.bottom.Copy();
-            obj.top = this.top == null ? null : this.top.Copy();
-            obj.right = this.right == null ? null : this.right.Copy();
-            obj.left = this.left == null ? null : this.left.Copy();
+            obj.bottom = this.bottom?.Copy();
+            obj.top = this.top?.Copy();
+            obj.right = this.right?.Copy();
+            obj.left = this.left?.Copy();
 
-            obj.diagonal = this.diagonal == null ? null : this.diagonal.Copy();
-            obj.vertical = this.vertical == null ? null : this.vertical.Copy();
-            obj.horizontal = this.horizontal == null ? null : this.horizontal.Copy();
+            obj.diagonal = this.diagonal?.Copy();
+            obj.vertical = this.vertical?.Copy();
+            obj.horizontal = this.horizontal?.Copy();
 
             obj.diagonalUp = this.diagonalUp;
             obj.diagonalUpSpecified = this.diagonalUpSpecified;
@@ -121,8 +114,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_BorderPr AddNewDiagonal()
         {
-            if (this.diagonal == null)
-                this.diagonal = new CT_BorderPr();
+            this.diagonal = this.diagonal ?? new CT_BorderPr();
             return this.diagonal;
         }
         public bool IsSetDiagonal()
@@ -174,26 +166,22 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         }
         public CT_BorderPr AddNewTop()
         {
-            if (this.top == null)
-                this.top = new CT_BorderPr();
+            this.top = this.top ?? new CT_BorderPr();
             return this.top;
         }
         public CT_BorderPr AddNewRight()
         {
-            if (this.right == null)
-                this.right = new CT_BorderPr();
+            this.right = this.right ?? new CT_BorderPr();
             return this.right;
         }
         public CT_BorderPr AddNewLeft()
         {
-            if (this.left == null)
-                this.left = new CT_BorderPr();
+            this.left = this.left ?? new CT_BorderPr();
             return this.left;
         }
         public CT_BorderPr AddNewBottom()
         {
-            if (this.bottom == null)
-                this.bottom = new CT_BorderPr();
+            this.bottom = this.bottom ?? new CT_BorderPr();
             return this.bottom;
         }
 

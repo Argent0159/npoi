@@ -34,13 +34,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
-            if (this.dxf != null)
-            {
-                foreach (CT_Dxf x in this.dxf)
-                {
-                    x.Write(sw, nameof(dxf));
-                }
-            }
+            this.dxf?.ForEach(x => x.Write(sw, nameof(dxf)));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 
@@ -92,20 +86,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write(string.Format("<{0}", nodeName));
             sw.Write(">");
-            if (this.font != null)
-                this.font.Write(sw, nameof(font));
-            if (this.numFmt != null)
-                this.numFmt.Write(sw, nameof(numFmt));
-            if (this.fill != null)
-                this.fill.Write(sw, nameof(fill));
-            if (this.alignment != null)
-                this.alignment.Write(sw, nameof(alignment));
-            if (this.border != null)
-                this.border.Write(sw, nameof(border));
-            if (this.protection != null)
-                this.protection.Write(sw, nameof(protection));
-            if (this.extLst != null)
-                this.extLst.Write(sw, nameof(extLst));
+            this.font?.Write(sw, nameof(font));
+            this.numFmt?.Write(sw, nameof(numFmt));
+            this.fill?.Write(sw, nameof(fill));
+            this.alignment?.Write(sw, nameof(alignment));
+            this.border?.Write(sw, nameof(border));
+            this.protection?.Write(sw, nameof(protection));
+            this.extLst?.Write(sw, nameof(extLst));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

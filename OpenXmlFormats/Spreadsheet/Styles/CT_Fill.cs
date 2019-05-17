@@ -48,9 +48,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             CT_Fill ctObj = new CT_Fill();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "patternFill")
+                if (childNode.LocalName == nameof(patternFill))
                     ctObj.patternFill = CT_PatternFill.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "gradientFill")
+                else if (childNode.LocalName == nameof(gradientFill))
                     ctObj.gradientFill = CT_GradientFill.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -63,9 +63,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             sw.Write(">");
             if (this.patternFill != null)
-                this.patternFill.Write(sw, "patternFill");
+                this.patternFill.Write(sw, nameof(patternFill));
             if (this.gradientFill != null)
-                this.gradientFill.Write(sw, "gradientFill");
+                this.gradientFill.Write(sw, nameof(gradientFill));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

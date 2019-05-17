@@ -51,24 +51,24 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Border ctObj = new CT_Border();
-            ctObj.diagonalUp = XmlHelper.ReadBool(node.Attributes["diagonalUp"]);
-            ctObj.diagonalDown = XmlHelper.ReadBool(node.Attributes["diagonalDown"]);
-            ctObj.outline = XmlHelper.ReadBool(node.Attributes["outline"]);
+            ctObj.diagonalUp = XmlHelper.ReadBool(node.Attributes[nameof(diagonalUp)]);
+            ctObj.diagonalDown = XmlHelper.ReadBool(node.Attributes[nameof(diagonalDown)]);
+            ctObj.outline = XmlHelper.ReadBool(node.Attributes[nameof(outline)]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "left")
+                if (childNode.LocalName == nameof(left))
                     ctObj.left = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "right")
+                else if (childNode.LocalName == nameof(right))
                     ctObj.right = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "top")
+                else if (childNode.LocalName == nameof(top))
                     ctObj.top = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "bottom")
+                else if (childNode.LocalName == nameof(bottom))
                     ctObj.bottom = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "diagonal")
+                else if (childNode.LocalName == nameof(diagonal))
                     ctObj.diagonal = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "vertical")
+                else if (childNode.LocalName == nameof(vertical))
                     ctObj.vertical = CT_BorderPr.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "horizontal")
+                else if (childNode.LocalName == nameof(horizontal))
                     ctObj.horizontal = CT_BorderPr.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -79,24 +79,24 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "diagonalUp", this.diagonalUp, false);
-            XmlHelper.WriteAttribute(sw, "diagonalDown", this.diagonalDown, false);
-            XmlHelper.WriteAttribute(sw, "outline", this.outline, false);
+            XmlHelper.WriteAttribute(sw, nameof(diagonalUp), this.diagonalUp, false);
+            XmlHelper.WriteAttribute(sw, nameof(diagonalDown), this.diagonalDown, false);
+            XmlHelper.WriteAttribute(sw, nameof(outline), this.outline, false);
             sw.Write(">");
             if (this.left != null)
-                this.left.Write(sw, "left");
+                this.left.Write(sw, nameof(left));
             if (this.right != null)
-                this.right.Write(sw, "right");
+                this.right.Write(sw, nameof(right));
             if (this.top != null)
-                this.top.Write(sw, "top");
+                this.top.Write(sw, nameof(top));
             if (this.bottom != null)
-                this.bottom.Write(sw, "bottom");
+                this.bottom.Write(sw, nameof(bottom));
             if (this.diagonal != null)
-                this.diagonal.Write(sw, "diagonal");
+                this.diagonal.Write(sw, nameof(diagonal));
             if (this.vertical != null)
-                this.vertical.Write(sw, "vertical");
+                this.vertical.Write(sw, nameof(vertical));
             if (this.horizontal != null)
-                this.horizontal.Write(sw, "horizontal");
+                this.horizontal.Write(sw, nameof(horizontal));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

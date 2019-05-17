@@ -21,15 +21,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_CellStyle ctObj = new CT_CellStyle();
-            ctObj.name = XmlHelper.ReadString(node.Attributes["name"]);
-            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes["xfId"]);
-            ctObj.builtinId = XmlHelper.ReadUInt(node.Attributes["builtinId"]);
-            ctObj.iLevel = XmlHelper.ReadUInt(node.Attributes["iLevel"]);
-            ctObj.hidden = XmlHelper.ReadBool(node.Attributes["hidden"]);
-            ctObj.customBuiltin = XmlHelper.ReadBool(node.Attributes["customBuiltin"]);
+            ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
+            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]);
+            ctObj.builtinId = XmlHelper.ReadUInt(node.Attributes[nameof(builtinId)]);
+            ctObj.iLevel = XmlHelper.ReadUInt(node.Attributes[nameof(iLevel)]);
+            ctObj.hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]);
+            ctObj.customBuiltin = XmlHelper.ReadBool(node.Attributes[nameof(customBuiltin)]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "extLst")
+                if (childNode.LocalName == nameof(extLst))
                     ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -40,16 +40,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "name", this.name);
-            XmlHelper.WriteAttribute(sw, "xfId", this.xfId, true);
-            XmlHelper.WriteAttribute(sw, "builtinId", this.builtinId,true);
-            XmlHelper.WriteAttribute(sw, "iLevel", this.iLevel);
-            XmlHelper.WriteAttribute(sw, "hidden", this.hidden, false);
-            XmlHelper.WriteAttribute(sw, "customBuiltin", this.customBuiltin, false);
+            XmlHelper.WriteAttribute(sw, nameof(name), this.name);
+            XmlHelper.WriteAttribute(sw, nameof(xfId), this.xfId, true);
+            XmlHelper.WriteAttribute(sw, nameof(builtinId), this.builtinId,true);
+            XmlHelper.WriteAttribute(sw, nameof(iLevel), this.iLevel);
+            XmlHelper.WriteAttribute(sw, nameof(hidden), this.hidden, false);
+            XmlHelper.WriteAttribute(sw, nameof(customBuiltin), this.customBuiltin, false);
             if (this.extLst != null)
             {
                 sw.Write(">");
-                this.extLst.Write(sw, "extLst");
+                this.extLst.Write(sw, nameof(extLst));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
             else

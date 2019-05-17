@@ -17,8 +17,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_NumFmt ctObj = new CT_NumFmt();
-            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes["numFmtId"]);
-            ctObj.formatCode = XmlHelper.ReadString(node.Attributes["formatCode"]);
+            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]);
+            ctObj.formatCode = XmlHelper.ReadString(node.Attributes[nameof(formatCode)]);
             return ctObj;
         }
 
@@ -27,8 +27,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "numFmtId", this.numFmtId,true);
-            XmlHelper.WriteAttribute(sw, "formatCode", this.formatCode);
+            XmlHelper.WriteAttribute(sw, nameof(numFmtId), this.numFmtId,true);
+            XmlHelper.WriteAttribute(sw, nameof(formatCode), this.formatCode);
             sw.Write("/>");
         }
 

@@ -35,35 +35,35 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             ctObj.scheme = new List<CT_FontScheme>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "outline")
+                if (childNode.LocalName == nameof(outline))
                     ctObj.outline = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "shadow")
+                else if (childNode.LocalName == nameof(shadow))
                     ctObj.shadow = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "condense")
+                else if (childNode.LocalName == nameof(condense))
                     ctObj.condense = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "extend")
+                else if (childNode.LocalName == nameof(extend))
                     ctObj.extend = CT_BooleanProperty.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "name")
+                else if (childNode.LocalName == nameof(name))
                     ctObj.name= CT_FontName.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "charset")
+                else if (childNode.LocalName == nameof(charset))
                     ctObj.charset.Add(CT_IntProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "family")
+                else if (childNode.LocalName == nameof(family))
                     ctObj.family.Add(CT_IntProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "b")
+                else if (childNode.LocalName == nameof(b))
                     ctObj.b.Add(CT_BooleanProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "i")
+                else if (childNode.LocalName == nameof(i))
                     ctObj.i.Add(CT_BooleanProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "strike")
+                else if (childNode.LocalName == nameof(strike))
                     ctObj.strike.Add(CT_BooleanProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "color")
+                else if (childNode.LocalName == nameof(color))
                     ctObj.color.Add(CT_Color.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "sz")
+                else if (childNode.LocalName == nameof(sz))
                     ctObj.sz.Add(CT_FontSize.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "u")
+                else if (childNode.LocalName == nameof(u))
                     ctObj.u.Add(CT_UnderlineProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "vertAlign")
+                else if (childNode.LocalName == nameof(vertAlign))
                     ctObj.vertAlign.Add(CT_VerticalAlignFontProperty.Parse(childNode, namespaceManager));
-                else if (childNode.LocalName == "scheme")
+                else if (childNode.LocalName == nameof(scheme))
                     ctObj.scheme.Add(CT_FontScheme.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -79,14 +79,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 foreach (CT_BooleanProperty x in this.b)
                 {
-                    x.Write(sw, "b");
+                    x.Write(sw, nameof(b));
                 }
             }
             if (this.i != null)
             {
                 foreach (CT_BooleanProperty x in this.i)
                 {
-                    x.Write(sw, "i");
+                    x.Write(sw, nameof(i));
                 }
             }
 
@@ -94,29 +94,29 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 foreach (CT_BooleanProperty x in this.strike)
                 {
-                    x.Write(sw, "strike");
+                    x.Write(sw, nameof(strike));
                 }
             }
             if (this.condense != null)
-                this.condense.Write(sw, "condense");
+                this.condense.Write(sw, nameof(condense));
             if (this.extend != null)
-                this.extend.Write(sw, "extend");
+                this.extend.Write(sw, nameof(extend));
             if (this.outline != null)
-                this.outline.Write(sw, "outline");
+                this.outline.Write(sw, nameof(outline));
             if (this.shadow != null)
-                this.shadow.Write(sw, "shadow");
+                this.shadow.Write(sw, nameof(shadow));
             if (this.u != null)
             {
                 foreach (CT_UnderlineProperty x in this.u)
                 {
-                    x.Write(sw, "u");
+                    x.Write(sw, nameof(u));
                 }
             }
             if (this.vertAlign != null)
             {
                 foreach (CT_VerticalAlignFontProperty x in this.vertAlign)
                 {
-                    x.Write(sw, "vertAlign");
+                    x.Write(sw, nameof(vertAlign));
                 }
             }
 
@@ -124,7 +124,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 foreach (CT_FontSize x in this.sz)
                 {
-                    x.Write(sw, "sz");
+                    x.Write(sw, nameof(sz));
                 }
             }
 
@@ -132,31 +132,31 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 foreach (CT_Color x in this.color)
                 {
-                    x.Write(sw, "color");
+                    x.Write(sw, nameof(color));
                 }
             }
             if (this.name != null)
-                this.name.Write(sw, "name");
+                this.name.Write(sw, nameof(name));
 
             if (this.family != null)
             {
                 foreach (CT_IntProperty x in this.family)
                 {
-                    x.Write(sw, "family");
+                    x.Write(sw, nameof(family));
                 }
             }
             if (this.charset != null)
             {
                 foreach (CT_IntProperty x in this.charset)
                 {
-                    x.Write(sw, "charset");
+                    x.Write(sw, nameof(charset));
                 }
             }
             if (this.scheme != null)
             {
                 foreach (CT_FontScheme x in this.scheme)
                 {
-                    x.Write(sw, "scheme");
+                    x.Write(sw, nameof(scheme));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

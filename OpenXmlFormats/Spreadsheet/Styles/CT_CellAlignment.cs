@@ -50,17 +50,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_CellAlignment ctObj = new CT_CellAlignment();
-            if (node.Attributes["horizontal"] != null)
-                ctObj.horizontal = (ST_HorizontalAlignment)Enum.Parse(typeof(ST_HorizontalAlignment), node.Attributes["horizontal"].Value);
-            if (node.Attributes["vertical"] != null)
-                ctObj.vertical = (ST_VerticalAlignment)Enum.Parse(typeof(ST_VerticalAlignment), node.Attributes["vertical"].Value);
-            ctObj.textRotation = XmlHelper.ReadLong(node.Attributes["textRotation"]);
-            ctObj.wrapText = XmlHelper.ReadBool(node.Attributes["wrapText"]);
-            ctObj.indent = XmlHelper.ReadLong(node.Attributes["indent"]);
-            ctObj.relativeIndent = XmlHelper.ReadInt(node.Attributes["relativeIndent"]);
-            ctObj.justifyLastLine = XmlHelper.ReadBool(node.Attributes["justifyLastLine"]);
-            ctObj.shrinkToFit = XmlHelper.ReadBool(node.Attributes["shrinkToFit"]);
-            ctObj.readingOrder = XmlHelper.ReadLong(node.Attributes["readingOrder"]);
+            if (node.Attributes[nameof(horizontal)] != null)
+                ctObj.horizontal = (ST_HorizontalAlignment)Enum.Parse(typeof(ST_HorizontalAlignment), node.Attributes[nameof(horizontal)].Value);
+            if (node.Attributes[nameof(vertical)] != null)
+                ctObj.vertical = (ST_VerticalAlignment)Enum.Parse(typeof(ST_VerticalAlignment), node.Attributes[nameof(vertical)].Value);
+            ctObj.textRotation = XmlHelper.ReadLong(node.Attributes[nameof(textRotation)]);
+            ctObj.wrapText = XmlHelper.ReadBool(node.Attributes[nameof(wrapText)]);
+            ctObj.indent = XmlHelper.ReadLong(node.Attributes[nameof(indent)]);
+            ctObj.relativeIndent = XmlHelper.ReadInt(node.Attributes[nameof(relativeIndent)]);
+            ctObj.justifyLastLine = XmlHelper.ReadBool(node.Attributes[nameof(justifyLastLine)]);
+            ctObj.shrinkToFit = XmlHelper.ReadBool(node.Attributes[nameof(shrinkToFit)]);
+            ctObj.readingOrder = XmlHelper.ReadLong(node.Attributes[nameof(readingOrder)]);
             return ctObj;
         }
 
@@ -70,19 +70,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write(string.Format("<{0}", nodeName));
             if(this.horizontal != ST_HorizontalAlignment.general)
-                XmlHelper.WriteAttribute(sw, "horizontal", this.horizontal.ToString());
+                XmlHelper.WriteAttribute(sw, nameof(horizontal), this.horizontal.ToString());
             if (this.vertical != ST_VerticalAlignment.bottom)
-                XmlHelper.WriteAttribute(sw, "vertical", this.vertical.ToString());
-            XmlHelper.WriteAttribute(sw, "textRotation", this.textRotation);
+                XmlHelper.WriteAttribute(sw, nameof(vertical), this.vertical.ToString());
+            XmlHelper.WriteAttribute(sw, nameof(textRotation), this.textRotation);
             if(this.wrapText)
-                XmlHelper.WriteAttribute(sw, "wrapText", this.wrapText);
-            XmlHelper.WriteAttribute(sw, "indent", this.indent);
-            XmlHelper.WriteAttribute(sw, "relativeIndent", this.relativeIndent);
+                XmlHelper.WriteAttribute(sw, nameof(wrapText), this.wrapText);
+            XmlHelper.WriteAttribute(sw, nameof(indent), this.indent);
+            XmlHelper.WriteAttribute(sw, nameof(relativeIndent), this.relativeIndent);
             if (justifyLastLine)
-                XmlHelper.WriteAttribute(sw, "justifyLastLine", this.justifyLastLine);
+                XmlHelper.WriteAttribute(sw, nameof(justifyLastLine), this.justifyLastLine);
             if(shrinkToFit)
-                XmlHelper.WriteAttribute(sw, "shrinkToFit", this.shrinkToFit);
-            XmlHelper.WriteAttribute(sw, "readingOrder", this.readingOrder);
+                XmlHelper.WriteAttribute(sw, nameof(shrinkToFit), this.shrinkToFit);
+            XmlHelper.WriteAttribute(sw, nameof(readingOrder), this.readingOrder);
             sw.Write("/>");
         }
 

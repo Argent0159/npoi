@@ -30,11 +30,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_CellStyles ctObj = new CT_CellStyles();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.cellStyle = new List<CT_CellStyle>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "cellStyle")
+                if (childNode.LocalName == nameof(cellStyle))
                     ctObj.cellStyle.Add(CT_CellStyle.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -45,13 +45,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.cellStyle != null)
             {
                 foreach (CT_CellStyle x in this.cellStyle)
                 {
-                    x.Write(sw, "cellStyle");
+                    x.Write(sw, nameof(cellStyle));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

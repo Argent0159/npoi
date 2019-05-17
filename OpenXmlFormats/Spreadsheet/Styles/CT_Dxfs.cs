@@ -17,11 +17,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Dxfs ctObj = new CT_Dxfs();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.dxf = new List<CT_Dxf>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "dxf")
+                if (childNode.LocalName == nameof(dxf))
                     ctObj.dxf.Add(CT_Dxf.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -32,13 +32,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count, true);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
             if (this.dxf != null)
             {
                 foreach (CT_Dxf x in this.dxf)
                 {
-                    x.Write(sw, "dxf");
+                    x.Write(sw, nameof(dxf));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));
@@ -68,19 +68,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             CT_Dxf ctObj = new CT_Dxf();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "font")
+                if (childNode.LocalName == nameof(font))
                     ctObj.font = CT_Font.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "numFmt")
+                else if (childNode.LocalName == nameof(numFmt))
                     ctObj.numFmt = CT_NumFmt.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "fill")
+                else if (childNode.LocalName == nameof(fill))
                     ctObj.fill = CT_Fill.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "alignment")
+                else if (childNode.LocalName == nameof(alignment))
                     ctObj.alignment = CT_CellAlignment.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "border")
+                else if (childNode.LocalName == nameof(border))
                     ctObj.border = CT_Border.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "protection")
+                else if (childNode.LocalName == nameof(protection))
                     ctObj.protection = CT_CellProtection.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "extLst")
+                else if (childNode.LocalName == nameof(extLst))
                     ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -93,19 +93,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             sw.Write(">");
             if (this.font != null)
-                this.font.Write(sw, "font");
+                this.font.Write(sw, nameof(font));
             if (this.numFmt != null)
-                this.numFmt.Write(sw, "numFmt");
+                this.numFmt.Write(sw, nameof(numFmt));
             if (this.fill != null)
-                this.fill.Write(sw, "fill");
+                this.fill.Write(sw, nameof(fill));
             if (this.alignment != null)
-                this.alignment.Write(sw, "alignment");
+                this.alignment.Write(sw, nameof(alignment));
             if (this.border != null)
-                this.border.Write(sw, "border");
+                this.border.Write(sw, nameof(border));
             if (this.protection != null)
-                this.protection.Write(sw, "protection");
+                this.protection.Write(sw, nameof(protection));
             if (this.extLst != null)
-                this.extLst.Write(sw, "extLst");
+                this.extLst.Write(sw, nameof(extLst));
             sw.Write(string.Format("</{0}>", nodeName));
         }
 

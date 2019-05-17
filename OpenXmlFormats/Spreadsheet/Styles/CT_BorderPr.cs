@@ -18,11 +18,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_BorderPr ctObj = new CT_BorderPr();
-            if (node.Attributes["style"] != null)
-                ctObj.style = (ST_BorderStyle)Enum.Parse(typeof(ST_BorderStyle), node.Attributes["style"].Value);
+            if (node.Attributes[nameof(style)] != null)
+                ctObj.style = (ST_BorderStyle)Enum.Parse(typeof(ST_BorderStyle), node.Attributes[nameof(style)].Value);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "color")
+                if (childNode.LocalName == nameof(color))
                     ctObj.color = CT_Color.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -34,11 +34,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             sw.Write(string.Format("<{0}", nodeName));
             if(this.style!= ST_BorderStyle.none)
-                XmlHelper.WriteAttribute(sw, "style", this.style.ToString());
+                XmlHelper.WriteAttribute(sw, nameof(style), this.style.ToString());
             if (this.color != null)
             {
                 sw.Write(">");
-                this.color.Write(sw, "color");
+                this.color.Write(sw, nameof(color));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
             else

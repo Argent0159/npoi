@@ -44,13 +44,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_PatternFill ctObj = new CT_PatternFill();
-            if (node.Attributes["patternType"] != null)
-                ctObj.patternType = (ST_PatternType)Enum.Parse(typeof(ST_PatternType), node.Attributes["patternType"].Value);
+            if (node.Attributes[nameof(patternType)] != null)
+                ctObj.patternType = (ST_PatternType)Enum.Parse(typeof(ST_PatternType), node.Attributes[nameof(patternType)].Value);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "fgColor")
+                if (childNode.LocalName == nameof(fgColor))
                     ctObj.fgColor = CT_Color.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "bgColor")
+                else if (childNode.LocalName == nameof(bgColor))
                     ctObj.bgColor = CT_Color.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -61,7 +61,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "patternType", this.patternType.ToString());
+            XmlHelper.WriteAttribute(sw, nameof(patternType), this.patternType.ToString());
             if (this.fgColor == null && this.bgColor == null)
             {
                 sw.Write("/>");
@@ -70,9 +70,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 sw.Write(">");
                 if (this.fgColor != null)
-                    this.fgColor.Write(sw, "fgColor");
+                    this.fgColor.Write(sw, nameof(fgColor));
                 if (this.bgColor != null)
-                    this.bgColor.Write(sw, "bgColor");
+                    this.bgColor.Write(sw, nameof(bgColor));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
         }

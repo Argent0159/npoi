@@ -21,11 +21,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_NumFmts ctObj = new CT_NumFmts();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.numFmt = new List<CT_NumFmt>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "numFmt")
+                if (childNode.LocalName == nameof(numFmt))
                     ctObj.numFmt.Add(CT_NumFmt.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -36,13 +36,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count, true);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
             if (this.numFmt != null)
             {
                 foreach (CT_NumFmt x in this.numFmt)
                 {
-                    x.Write(sw, "numFmt");
+                    x.Write(sw, nameof(numFmt));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

@@ -17,11 +17,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Borders ctObj = new CT_Borders();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.border = new List<CT_Border>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "border")
+                if (childNode.LocalName == nameof(border))
                     ctObj.border.Add(CT_Border.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -32,13 +32,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count, true);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
             if (this.border != null)
             {
                 foreach (CT_Border x in this.border)
                 {
-                    x.Write(sw, "border");
+                    x.Write(sw, nameof(border));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

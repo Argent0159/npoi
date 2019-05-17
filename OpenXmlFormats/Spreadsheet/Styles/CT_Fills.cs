@@ -21,11 +21,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Fills ctObj = new CT_Fills();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.fill = new List<CT_Fill>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "fill")
+                if (childNode.LocalName == nameof(fill))
                     ctObj.fill.Add(CT_Fill.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -36,13 +36,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.fill != null)
             {
                 foreach (CT_Fill x in this.fill)
                 {
-                    x.Write(sw, "fill");
+                    x.Write(sw, nameof(fill));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

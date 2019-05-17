@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+
 namespace NPOI.OpenXmlFormats.Spreadsheet
 {
     [Serializable]
@@ -25,7 +26,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "indexedColors")
+                if (childNode.LocalName == nameof(indexedColors))
                 {
                     ctObj.indexedColors = new List<CT_RgbColor>();
                     foreach (XmlNode c2Node in childNode.ChildNodes)
@@ -33,7 +34,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                         ctObj.indexedColors.Add(CT_RgbColor.Parse(c2Node, namespaceManager));
                     }
                 }
-                else if (childNode.LocalName == "mruColors")
+                else if (childNode.LocalName == nameof(mruColors))
                 {
                     ctObj.mruColors = new List<CT_Color>();
                     foreach (XmlNode c2Node in childNode.ChildNodes)
@@ -52,21 +53,21 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}>", nodeName));
             if (this.indexedColors != null)
             {
-                sw.Write("<indexedColors>");
+                sw.Write($"<{nameof(indexedColors)}>");
                 foreach (CT_RgbColor x in this.indexedColors)
                 {
                     x.Write(sw, "rgbColor");
                 }
-                sw.Write("</indexedColors>");
+                sw.Write($"</{nameof(indexedColors)}>");
             }
             if (this.mruColors != null)
             {
-                sw.Write("<mruColors>");
+                sw.Write($"<{nameof(mruColors)}>");
                 foreach (CT_Color x in this.mruColors)
                 {
                     x.Write(sw, "color");
                 }
-                sw.Write("</mruColors>");
+                sw.Write($"</{nameof(mruColors)}>");
             }
             sw.Write(string.Format("</{0}>", nodeName));
         }
@@ -88,7 +89,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_RgbColor ctObj = new CT_RgbColor();
-            ctObj.rgb = XmlHelper.ReadBytes(node.Attributes["rgb"]);
+            ctObj.rgb = XmlHelper.ReadBytes(node.Attributes[nameof(rgb)]);
             return ctObj;
         }
 
@@ -97,7 +98,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "rgb", this.rgb);
+            XmlHelper.WriteAttribute(sw, nameof(rgb), this.rgb);
             sw.Write("/>");
         }
 
@@ -282,16 +283,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Color ctObj = new CT_Color();
-            ctObj.auto = XmlHelper.ReadBool(node.Attributes["auto"]);
-            ctObj.autoSpecified = node.Attributes["auto"] != null;
-            ctObj.indexed = XmlHelper.ReadUInt(node.Attributes["indexed"]);
-            ctObj.indexedSpecified = node.Attributes["indexed"] != null;
-            ctObj.rgb = XmlHelper.ReadBytes(node.Attributes["rgb"]);
-            ctObj.rgbSpecified = node.Attributes["rgb"] != null;
-            ctObj.theme = XmlHelper.ReadUInt(node.Attributes["theme"]);
-            ctObj.themeSpecified = node.Attributes["theme"] != null;
-            ctObj.tint = XmlHelper.ReadDouble(node.Attributes["tint"]);
-            ctObj.tintSpecified = node.Attributes["tint"] != null;
+            ctObj.auto = XmlHelper.ReadBool(node.Attributes[nameof(auto)]);
+            ctObj.autoSpecified = node.Attributes[nameof(auto)] != null;
+            ctObj.indexed = XmlHelper.ReadUInt(node.Attributes[nameof(indexed)]);
+            ctObj.indexedSpecified = node.Attributes[nameof(indexed)] != null;
+            ctObj.rgb = XmlHelper.ReadBytes(node.Attributes[nameof(rgb)]);
+            ctObj.rgbSpecified = node.Attributes[nameof(rgb)] != null;
+            ctObj.theme = XmlHelper.ReadUInt(node.Attributes[nameof(theme)]);
+            ctObj.themeSpecified = node.Attributes[nameof(theme)] != null;
+            ctObj.tint = XmlHelper.ReadDouble(node.Attributes[nameof(tint)]);
+            ctObj.tintSpecified = node.Attributes[nameof(tint)] != null;
             return ctObj;
         }
 
@@ -301,15 +302,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "auto", this.auto,false);
+            XmlHelper.WriteAttribute(sw, nameof(auto), this.auto,false);
             if (indexedSpecified)
-                XmlHelper.WriteAttribute(sw, "indexed", this.indexed, true);
+                XmlHelper.WriteAttribute(sw, nameof(indexed), this.indexed, true);
             if(rgbSpecified)
-                XmlHelper.WriteAttribute(sw, "rgb", this.rgb);
+                XmlHelper.WriteAttribute(sw, nameof(rgb), this.rgb);
             if (themeSpecified)
-                XmlHelper.WriteAttribute(sw, "theme", this.theme, true);
+                XmlHelper.WriteAttribute(sw, nameof(theme), this.theme, true);
             if(tintSpecified)
-                XmlHelper.WriteAttribute(sw, "tint", this.tint);
+                XmlHelper.WriteAttribute(sw, nameof(tint), this.tint);
             sw.Write("/>");
         }
 

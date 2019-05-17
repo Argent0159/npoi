@@ -17,11 +17,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_CellXfs ctObj = new CT_CellXfs();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.xf = new List<CT_Xf>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "xf")
+                if (childNode.LocalName == nameof(xf))
                     ctObj.xf.Add(CT_Xf.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -32,13 +32,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.xf != null)
             {
                 foreach (CT_Xf x in this.xf)
                 {
-                    x.Write(sw, "xf");
+                    x.Write(sw, nameof(xf));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

@@ -25,8 +25,8 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_CellProtection ctObj = new CT_CellProtection();
-            ctObj.locked = XmlHelper.ReadBool(node.Attributes["locked"]);
-            ctObj.hidden = XmlHelper.ReadBool(node.Attributes["hidden"]);
+            ctObj.locked = XmlHelper.ReadBool(node.Attributes[nameof(locked)]);
+            ctObj.hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]);
             return ctObj;
         }
 
@@ -35,9 +35,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "locked", this.locked);
+            XmlHelper.WriteAttribute(sw, nameof(locked), this.locked);
             if(this.hidden)
-                XmlHelper.WriteAttribute(sw, "hidden", this.hidden);
+                XmlHelper.WriteAttribute(sw, nameof(hidden), this.hidden);
             sw.Write("/>");
         }
 

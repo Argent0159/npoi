@@ -22,11 +22,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Fonts ctObj = new CT_Fonts();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.font = new List<CT_Font>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "font")
+                if (childNode.LocalName == nameof(font))
                     ctObj.font.Add(CT_Font.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -35,13 +35,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.font != null)
             {
                 foreach (CT_Font x in this.font)
                 {
-                    x.Write(sw, "font");
+                    x.Write(sw, nameof(font));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));

@@ -53,26 +53,26 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_Xf ctObj = new CT_Xf();
-            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes["numFmtId"]);
-            ctObj.fontId = XmlHelper.ReadUInt(node.Attributes["fontId"]);
-            ctObj.fillId = XmlHelper.ReadUInt(node.Attributes["fillId"]);
-            ctObj.borderId = XmlHelper.ReadUInt(node.Attributes["borderId"]);
-            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes["xfId"]);
-            ctObj.quotePrefix = XmlHelper.ReadBool(node.Attributes["quotePrefix"]);
-            ctObj.pivotButton = XmlHelper.ReadBool(node.Attributes["pivotButton"]);
-            ctObj.applyNumberFormat = XmlHelper.ReadBool(node.Attributes["applyNumberFormat"]);
-            ctObj.applyFont = XmlHelper.ReadBool(node.Attributes["applyFont"]);
-            ctObj.applyFill = XmlHelper.ReadBool(node.Attributes["applyFill"]);
-            ctObj.applyBorder = XmlHelper.ReadBool(node.Attributes["applyBorder"]);
-            ctObj.applyAlignment = XmlHelper.ReadBool(node.Attributes["applyAlignment"]);
-            ctObj.applyProtection = XmlHelper.ReadBool(node.Attributes["applyProtection"]);
+            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]);
+            ctObj.fontId = XmlHelper.ReadUInt(node.Attributes[nameof(fontId)]);
+            ctObj.fillId = XmlHelper.ReadUInt(node.Attributes[nameof(fillId)]);
+            ctObj.borderId = XmlHelper.ReadUInt(node.Attributes[nameof(borderId)]);
+            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]);
+            ctObj.quotePrefix = XmlHelper.ReadBool(node.Attributes[nameof(quotePrefix)]);
+            ctObj.pivotButton = XmlHelper.ReadBool(node.Attributes[nameof(pivotButton)]);
+            ctObj.applyNumberFormat = XmlHelper.ReadBool(node.Attributes[nameof(applyNumberFormat)]);
+            ctObj.applyFont = XmlHelper.ReadBool(node.Attributes[nameof(applyFont)]);
+            ctObj.applyFill = XmlHelper.ReadBool(node.Attributes[nameof(applyFill)]);
+            ctObj.applyBorder = XmlHelper.ReadBool(node.Attributes[nameof(applyBorder)]);
+            ctObj.applyAlignment = XmlHelper.ReadBool(node.Attributes[nameof(applyAlignment)]);
+            ctObj.applyProtection = XmlHelper.ReadBool(node.Attributes[nameof(applyProtection)]);
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "alignment")
+                if (childNode.LocalName == nameof(alignment))
                     ctObj.alignment = CT_CellAlignment.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "protection")
+                else if (childNode.LocalName == nameof(protection))
                     ctObj.protection = CT_CellProtection.Parse(childNode, namespaceManager);
-                else if (childNode.LocalName == "extLst")
+                else if (childNode.LocalName == nameof(extLst))
                     ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
             }
             return ctObj;
@@ -83,23 +83,23 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "numFmtId", this.numFmtId, true);
-            XmlHelper.WriteAttribute(sw, "fontId", this.fontId, true);
-            XmlHelper.WriteAttribute(sw, "fillId", this.fillId, true);
-            XmlHelper.WriteAttribute(sw, "borderId", this.borderId, true);
-            XmlHelper.WriteAttribute(sw, "xfId", this.xfId, true);
-            XmlHelper.WriteAttribute(sw, "quotePrefix", this.quotePrefix,false);
-            XmlHelper.WriteAttribute(sw, "pivotButton", this.pivotButton, false);
+            XmlHelper.WriteAttribute(sw, nameof(numFmtId), this.numFmtId, true);
+            XmlHelper.WriteAttribute(sw, nameof(fontId), this.fontId, true);
+            XmlHelper.WriteAttribute(sw, nameof(fillId), this.fillId, true);
+            XmlHelper.WriteAttribute(sw, nameof(borderId), this.borderId, true);
+            XmlHelper.WriteAttribute(sw, nameof(xfId), this.xfId, true);
+            XmlHelper.WriteAttribute(sw, nameof(quotePrefix), this.quotePrefix,false);
+            XmlHelper.WriteAttribute(sw, nameof(pivotButton), this.pivotButton, false);
             if(this.applyNumberFormat)
-                XmlHelper.WriteAttribute(sw, "applyNumberFormat", this.applyNumberFormat);
-            XmlHelper.WriteAttribute(sw, "applyFont", this.applyFont, false);
+                XmlHelper.WriteAttribute(sw, nameof(applyNumberFormat), this.applyNumberFormat);
+            XmlHelper.WriteAttribute(sw, nameof(applyFont), this.applyFont, false);
             if (this.applyBorder)
-                XmlHelper.WriteAttribute(sw, "applyBorder", this.applyBorder, true);
+                XmlHelper.WriteAttribute(sw, nameof(applyBorder), this.applyBorder, true);
             if(this.applyFill)
-                XmlHelper.WriteAttribute(sw, "applyFill", this.applyFill);
-            XmlHelper.WriteAttribute(sw, "applyAlignment", this.applyAlignment, true);
+                XmlHelper.WriteAttribute(sw, nameof(applyFill), this.applyFill);
+            XmlHelper.WriteAttribute(sw, nameof(applyAlignment), this.applyAlignment, true);
             if(this.applyProtection)
-                XmlHelper.WriteAttribute(sw, "applyProtection", this.applyProtection, true);
+                XmlHelper.WriteAttribute(sw, nameof(applyProtection), this.applyProtection, true);
             if (this.alignment == null && this.protection == null && this.extLst == null)
             {
                 sw.Write("/>");
@@ -108,11 +108,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 sw.Write(">");
                 if (this.alignment != null)
-                    this.alignment.Write(sw, "alignment");
+                    this.alignment.Write(sw, nameof(alignment));
                 if (this.protection != null)
-                    this.protection.Write(sw, "protection");
+                    this.protection.Write(sw, nameof(protection));
                 if (this.extLst != null)
-                    this.extLst.Write(sw, "extLst");
+                    this.extLst.Write(sw, nameof(extLst));
                 sw.Write(string.Format("</{0}>", nodeName));
             }
         }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+
 namespace NPOI.OpenXmlFormats.Spreadsheet
 {
     public class CT_TableStyle
@@ -21,14 +22,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_TableStyle ctObj = new CT_TableStyle();
-            ctObj.name = XmlHelper.ReadString(node.Attributes["name"]);
-            ctObj.pivot = XmlHelper.ReadBool(node.Attributes["pivot"]);
-            ctObj.table = XmlHelper.ReadBool(node.Attributes["table"]);
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
+            ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
+            ctObj.pivot = XmlHelper.ReadBool(node.Attributes[nameof(pivot)]);
+            ctObj.table = XmlHelper.ReadBool(node.Attributes[nameof(table)]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
             ctObj.tableStyleElement = new List<CT_TableStyleElement>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "tableStyleElement")
+                if (childNode.LocalName == nameof(tableStyleElement))
                     ctObj.tableStyleElement.Add(CT_TableStyleElement.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -39,16 +40,16 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "name", this.name);
-            XmlHelper.WriteAttribute(sw, "pivot", this.pivot);
-            XmlHelper.WriteAttribute(sw, "table", this.table);
-            XmlHelper.WriteAttribute(sw, "count", this.count);
+            XmlHelper.WriteAttribute(sw, nameof(name), this.name);
+            XmlHelper.WriteAttribute(sw, nameof(pivot), this.pivot);
+            XmlHelper.WriteAttribute(sw, nameof(table), this.table);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count);
             sw.Write(">");
             if (this.tableStyleElement != null)
             {
                 foreach (CT_TableStyleElement x in this.tableStyleElement)
                 {
-                    x.Write(sw, "tableStyleElement");
+                    x.Write(sw, nameof(tableStyleElement));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));
@@ -79,15 +80,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_TableStyleInfo ctObj = new CT_TableStyleInfo();
-            ctObj.name = XmlHelper.ReadString(node.Attributes["name"]);
-            if (node.Attributes["showFirstColumn"] != null)
-                ctObj.showFirstColumn = XmlHelper.ReadBool(node.Attributes["showFirstColumn"]);
-            if (node.Attributes["showLastColumn"] != null)
-                ctObj.showLastColumn = XmlHelper.ReadBool(node.Attributes["showLastColumn"]);
-            if (node.Attributes["showRowStripes"] != null)
-                ctObj.showRowStripes = XmlHelper.ReadBool(node.Attributes["showRowStripes"]);
-            if (node.Attributes["showColumnStripes"] != null)
-                ctObj.showColumnStripes = XmlHelper.ReadBool(node.Attributes["showColumnStripes"]);
+            ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
+            if (node.Attributes[nameof(showFirstColumn)] != null)
+                ctObj.showFirstColumn = XmlHelper.ReadBool(node.Attributes[nameof(showFirstColumn)]);
+            if (node.Attributes[nameof(showLastColumn)] != null)
+                ctObj.showLastColumn = XmlHelper.ReadBool(node.Attributes[nameof(showLastColumn)]);
+            if (node.Attributes[nameof(showRowStripes)] != null)
+                ctObj.showRowStripes = XmlHelper.ReadBool(node.Attributes[nameof(showRowStripes)]);
+            if (node.Attributes[nameof(showColumnStripes)] != null)
+                ctObj.showColumnStripes = XmlHelper.ReadBool(node.Attributes[nameof(showColumnStripes)]);
             return ctObj;
         }
 
@@ -96,11 +97,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "name", this.name);
-            XmlHelper.WriteAttribute(sw, "showFirstColumn", this.showFirstColumn);
-            XmlHelper.WriteAttribute(sw, "showLastColumn", this.showLastColumn);
-            XmlHelper.WriteAttribute(sw, "showRowStripes", this.showRowStripes);
-            XmlHelper.WriteAttribute(sw, "showColumnStripes", this.showColumnStripes);
+            XmlHelper.WriteAttribute(sw, nameof(name), this.name);
+            XmlHelper.WriteAttribute(sw, nameof(showFirstColumn), this.showFirstColumn);
+            XmlHelper.WriteAttribute(sw, nameof(showLastColumn), this.showLastColumn);
+            XmlHelper.WriteAttribute(sw, nameof(showRowStripes), this.showRowStripes);
+            XmlHelper.WriteAttribute(sw, nameof(showColumnStripes), this.showColumnStripes);
             sw.Write("/>");
         }
 
@@ -134,13 +135,13 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_TableStyles ctObj = new CT_TableStyles();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes["count"]);
-            ctObj.defaultTableStyle = XmlHelper.ReadString(node.Attributes["defaultTableStyle"]);
-            ctObj.defaultPivotStyle = XmlHelper.ReadString(node.Attributes["defaultPivotStyle"]);
+            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
+            ctObj.defaultTableStyle = XmlHelper.ReadString(node.Attributes[nameof(defaultTableStyle)]);
+            ctObj.defaultPivotStyle = XmlHelper.ReadString(node.Attributes[nameof(defaultPivotStyle)]);
             ctObj.tableStyle = new List<CT_TableStyle>();
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                if (childNode.LocalName == "tableStyle")
+                if (childNode.LocalName == nameof(tableStyle))
                     ctObj.tableStyle.Add(CT_TableStyle.Parse(childNode, namespaceManager));
             }
             return ctObj;
@@ -151,15 +152,15 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "count", this.count, true);
-            XmlHelper.WriteAttribute(sw, "defaultTableStyle", this.defaultTableStyle);
-            XmlHelper.WriteAttribute(sw, "defaultPivotStyle", this.defaultPivotStyle);
+            XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
+            XmlHelper.WriteAttribute(sw, nameof(defaultTableStyle), this.defaultTableStyle);
+            XmlHelper.WriteAttribute(sw, nameof(defaultPivotStyle), this.defaultPivotStyle);
             sw.Write(">");
             if (this.tableStyle != null)
             {
                 foreach (CT_TableStyle x in this.tableStyle)
                 {
-                    x.Write(sw, "tableStyle");
+                    x.Write(sw, nameof(tableStyle));
                 }
             }
             sw.Write(string.Format("</{0}>", nodeName));
@@ -280,10 +281,10 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             if (node == null)
                 return null;
             CT_TableStyleElement ctObj = new CT_TableStyleElement();
-            if (node.Attributes["type"] != null)
-                ctObj.type = (ST_TableStyleType)Enum.Parse(typeof(ST_TableStyleType), node.Attributes["type"].Value);
-            ctObj.size = XmlHelper.ReadUInt(node.Attributes["size"]);
-            ctObj.dxfId = XmlHelper.ReadUInt(node.Attributes["dxfId"]);
+            if (node.Attributes[nameof(type)] != null)
+                ctObj.type = (ST_TableStyleType)Enum.Parse(typeof(ST_TableStyleType), node.Attributes[nameof(type)].Value);
+            ctObj.size = XmlHelper.ReadUInt(node.Attributes[nameof(size)]);
+            ctObj.dxfId = XmlHelper.ReadUInt(node.Attributes[nameof(dxfId)]);
             return ctObj;
         }
 
@@ -292,9 +293,9 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         internal void Write(StreamWriter sw, string nodeName)
         {
             sw.Write(string.Format("<{0}", nodeName));
-            XmlHelper.WriteAttribute(sw, "type", this.type.ToString());
-            XmlHelper.WriteAttribute(sw, "size", this.size);
-            XmlHelper.WriteAttribute(sw, "dxfId", this.dxfId);
+            XmlHelper.WriteAttribute(sw, nameof(type), this.type.ToString());
+            XmlHelper.WriteAttribute(sw, nameof(size), this.size);
+            XmlHelper.WriteAttribute(sw, nameof(dxfId), this.dxfId);
             sw.Write(">");
             sw.Write(string.Format("</{0}>", nodeName));
         }

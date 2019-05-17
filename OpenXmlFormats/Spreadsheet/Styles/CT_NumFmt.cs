@@ -16,10 +16,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_NumFmt();
-            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]);
-            ctObj.formatCode = XmlHelper.ReadString(node.Attributes[nameof(formatCode)]);
-            return ctObj;
+            return new CT_NumFmt
+            {
+                numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]),
+                formatCode = XmlHelper.ReadString(node.Attributes[nameof(formatCode)])
+            };
         }
 
 

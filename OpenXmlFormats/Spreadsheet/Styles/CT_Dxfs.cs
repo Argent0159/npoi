@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -16,15 +17,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_Dxfs();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.dxf = new List<CT_Dxf>();
-            foreach (XmlNode childNode in node.ChildNodes)
+            return new CT_Dxfs
             {
-                if (childNode.LocalName == nameof(dxf))
-                    ctObj.dxf.Add(CT_Dxf.Parse(childNode, namespaceManager));
-            }
-            return ctObj;
+                count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]),
+                dxf = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode=>childNode.LocalName == nameof(dxf))
+                    .Select(childNode => CT_Dxf.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
         }
 
 

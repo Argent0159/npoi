@@ -49,18 +49,20 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_CellAlignment();
+            var ctObj = new CT_CellAlignment
+            {
+                textRotation = XmlHelper.ReadLong(node.Attributes[nameof(textRotation)]),
+                wrapText = XmlHelper.ReadBool(node.Attributes[nameof(wrapText)]),
+                indent = XmlHelper.ReadLong(node.Attributes[nameof(indent)]),
+                relativeIndent = XmlHelper.ReadInt(node.Attributes[nameof(relativeIndent)]),
+                justifyLastLine = XmlHelper.ReadBool(node.Attributes[nameof(justifyLastLine)]),
+                shrinkToFit = XmlHelper.ReadBool(node.Attributes[nameof(shrinkToFit)]),
+                readingOrder = XmlHelper.ReadLong(node.Attributes[nameof(readingOrder)])
+            };
             if (node.Attributes[nameof(horizontal)] != null)
                 ctObj.horizontal = (ST_HorizontalAlignment)Enum.Parse(typeof(ST_HorizontalAlignment), node.Attributes[nameof(horizontal)].Value);
             if (node.Attributes[nameof(vertical)] != null)
                 ctObj.vertical = (ST_VerticalAlignment)Enum.Parse(typeof(ST_VerticalAlignment), node.Attributes[nameof(vertical)].Value);
-            ctObj.textRotation = XmlHelper.ReadLong(node.Attributes[nameof(textRotation)]);
-            ctObj.wrapText = XmlHelper.ReadBool(node.Attributes[nameof(wrapText)]);
-            ctObj.indent = XmlHelper.ReadLong(node.Attributes[nameof(indent)]);
-            ctObj.relativeIndent = XmlHelper.ReadInt(node.Attributes[nameof(relativeIndent)]);
-            ctObj.justifyLastLine = XmlHelper.ReadBool(node.Attributes[nameof(justifyLastLine)]);
-            ctObj.shrinkToFit = XmlHelper.ReadBool(node.Attributes[nameof(shrinkToFit)]);
-            ctObj.readingOrder = XmlHelper.ReadLong(node.Attributes[nameof(readingOrder)]);
             return ctObj;
         }
 
@@ -243,17 +245,18 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal CT_CellAlignment Copy()
         {
-            var align = new CT_CellAlignment();
-            align.horizontal = this.horizontal;
-            align.vertical = this.vertical;
-            align.wrapText = this.wrapText;
-            align.shrinkToFit = this.shrinkToFit;
-            align.textRotation = this.textRotation;
-            align.justifyLastLine = this.justifyLastLine;
-            align.readingOrder = this.readingOrder;
-            align.relativeIndent = this.relativeIndent;
-            align.indent = this.indent;
-            return align;
+            return new CT_CellAlignment
+            {
+                horizontal = this.horizontal,
+                vertical = this.vertical,
+                wrapText = this.wrapText,
+                shrinkToFit = this.shrinkToFit,
+                textRotation = this.textRotation,
+                justifyLastLine = this.justifyLastLine,
+                readingOrder = this.readingOrder,
+                relativeIndent = this.relativeIndent,
+                indent = this.indent
+            };
         }
     }
 }

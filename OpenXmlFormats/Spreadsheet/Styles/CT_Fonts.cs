@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -21,14 +22,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_Fonts();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.font = new List<CT_Font>();
-            foreach (XmlNode childNode in node.ChildNodes)
+            var ctObj = new CT_Fonts
             {
-                if (childNode.LocalName == nameof(font))
-                    ctObj.font.Add(CT_Font.Parse(childNode, namespaceManager));
-            }
+                count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]),
+                font = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(font))
+                    .Select(childNode => CT_Font.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
             return ctObj;
         }
 

@@ -50,10 +50,12 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_Border();
-            ctObj.diagonalUp = XmlHelper.ReadBool(node.Attributes[nameof(diagonalUp)]);
-            ctObj.diagonalDown = XmlHelper.ReadBool(node.Attributes[nameof(diagonalDown)]);
-            ctObj.outline = XmlHelper.ReadBool(node.Attributes[nameof(outline)]);
+            var ctObj = new CT_Border
+            {
+                diagonalUp = XmlHelper.ReadBool(node.Attributes[nameof(diagonalUp)]),
+                diagonalDown = XmlHelper.ReadBool(node.Attributes[nameof(diagonalDown)]),
+                outline = XmlHelper.ReadBool(node.Attributes[nameof(outline)])
+            };
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(left))
@@ -95,22 +97,21 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_Border Copy()
         {
-            var obj = new CT_Border();
-            obj.bottom = this.bottom?.Copy();
-            obj.top = this.top?.Copy();
-            obj.right = this.right?.Copy();
-            obj.left = this.left?.Copy();
-
-            obj.diagonal = this.diagonal?.Copy();
-            obj.vertical = this.vertical?.Copy();
-            obj.horizontal = this.horizontal?.Copy();
-
-            obj.diagonalUp = this.diagonalUp;
-            obj.diagonalUpSpecified = this.diagonalUpSpecified;
-            obj.diagonalDown = this.diagonalDown;
-            obj.diagonalDownSpecified = this.diagonalDownSpecified;
-            obj.outline = this.outline;
-            return obj;
+            return new CT_Border
+            {
+                bottom = this.bottom?.Copy(),
+                top = this.top?.Copy(),
+                right = this.right?.Copy(),
+                left = this.left?.Copy(),
+                diagonal = this.diagonal?.Copy(),
+                vertical = this.vertical?.Copy(),
+                horizontal = this.horizontal?.Copy(),
+                diagonalUp = this.diagonalUp,
+                diagonalUpSpecified = this.diagonalUpSpecified,
+                diagonalDown = this.diagonalDown,
+                diagonalDownSpecified = this.diagonalDownSpecified,
+                outline = this.outline
+            };
         }
         public CT_BorderPr AddNewDiagonal()
         {

@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -21,18 +22,17 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_TableStyle();
-            ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
-            ctObj.pivot = XmlHelper.ReadBool(node.Attributes[nameof(pivot)]);
-            ctObj.table = XmlHelper.ReadBool(node.Attributes[nameof(table)]);
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.tableStyleElement = new List<CT_TableStyleElement>();
-            foreach (XmlNode childNode in node.ChildNodes)
+            return new CT_TableStyle
             {
-                if (childNode.LocalName == nameof(tableStyleElement))
-                    ctObj.tableStyleElement.Add(CT_TableStyleElement.Parse(childNode, namespaceManager));
-            }
-            return ctObj;
+                name = XmlHelper.ReadString(node.Attributes[nameof(name)]),
+                pivot = XmlHelper.ReadBool(node.Attributes[nameof(pivot)]),
+                table = XmlHelper.ReadBool(node.Attributes[nameof(table)]),
+                count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]),
+                tableStyleElement = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(tableStyleElement))
+                    .Select(childNode => CT_TableStyleElement.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
         }
 
 

@@ -79,10 +79,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_BorderPr Copy()
         {
-            var res = new CT_BorderPr();
-            res.color = this.color?.Copy();
-            res.style = this.style;
-            return res;
+            return new CT_BorderPr
+            {
+                color = this.color?.Copy(),
+                style = this.style
+            };
         }
     }
 }

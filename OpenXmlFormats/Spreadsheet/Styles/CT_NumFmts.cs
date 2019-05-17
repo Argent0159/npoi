@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -20,15 +21,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_NumFmts();
-            ctObj.count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]);
-            ctObj.numFmt = new List<CT_NumFmt>();
-            foreach (XmlNode childNode in node.ChildNodes)
+            return new CT_NumFmts
             {
-                if (childNode.LocalName == nameof(numFmt))
-                    ctObj.numFmt.Add(CT_NumFmt.Parse(childNode, namespaceManager));
-            }
-            return ctObj;
+                count = XmlHelper.ReadUInt(node.Attributes[nameof(count)]),
+                numFmt = node.ChildNodes.Cast<XmlNode>()
+                    .Where(childNode => childNode.LocalName == nameof(numFmt))
+                    .Select(childNode => CT_NumFmt.Parse(childNode, namespaceManager))
+                    .ToList()
+            };
         }
 
 

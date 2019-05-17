@@ -22,48 +22,51 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         public CT_Xf Copy()
         {
-            var obj = new CT_Xf();
-            obj.alignment = this.alignment?.Copy();
-            obj.protection = this.protection;
-            obj.extLst = this.extLst?.Copy();
-            obj.applyAlignment = this.applyAlignment;
-            obj.applyBorder = this.applyBorder;
-            obj.applyFill = this.applyFill;
-            obj.applyFont = this.applyFont;
-            obj.applyNumberFormat = this.applyNumberFormat;
-            obj.applyProtection = this.applyProtection;
-            obj.borderId = this.borderId;
-            obj.borderIdSpecified = this.borderIdSpecified;
-            obj.fillId = this.fillId;
-            obj.fillIdSpecified = this.fillIdSpecified;
-            obj.fontId = this.fontId;
-            obj.fontIdSpecified = this.fontIdSpecified;
-            obj.numFmtId = this.numFmtId;
-            obj.numFmtIdSpecified = this.numFmtIdSpecified;
-            obj.pivotButton = this.pivotButton;
-            obj.quotePrefix = this.quotePrefix;
-            obj.xfIdField = this.xfIdField;
-            return obj;
+            return new CT_Xf
+            {
+                alignment = this.alignment?.Copy(),
+                protection = this.protection,
+                extLst = this.extLst?.Copy(),
+                applyAlignment = this.applyAlignment,
+                applyBorder = this.applyBorder,
+                applyFill = this.applyFill,
+                applyFont = this.applyFont,
+                applyNumberFormat = this.applyNumberFormat,
+                applyProtection = this.applyProtection,
+                borderId = this.borderId,
+                borderIdSpecified = this.borderIdSpecified,
+                fillId = this.fillId,
+                fillIdSpecified = this.fillIdSpecified,
+                fontId = this.fontId,
+                fontIdSpecified = this.fontIdSpecified,
+                numFmtId = this.numFmtId,
+                numFmtIdSpecified = this.numFmtIdSpecified,
+                pivotButton = this.pivotButton,
+                quotePrefix = this.quotePrefix,
+                xfIdField = this.xfIdField
+            };
         }
 
         public static CT_Xf Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_Xf();
-            ctObj.numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]);
-            ctObj.fontId = XmlHelper.ReadUInt(node.Attributes[nameof(fontId)]);
-            ctObj.fillId = XmlHelper.ReadUInt(node.Attributes[nameof(fillId)]);
-            ctObj.borderId = XmlHelper.ReadUInt(node.Attributes[nameof(borderId)]);
-            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]);
-            ctObj.quotePrefix = XmlHelper.ReadBool(node.Attributes[nameof(quotePrefix)]);
-            ctObj.pivotButton = XmlHelper.ReadBool(node.Attributes[nameof(pivotButton)]);
-            ctObj.applyNumberFormat = XmlHelper.ReadBool(node.Attributes[nameof(applyNumberFormat)]);
-            ctObj.applyFont = XmlHelper.ReadBool(node.Attributes[nameof(applyFont)]);
-            ctObj.applyFill = XmlHelper.ReadBool(node.Attributes[nameof(applyFill)]);
-            ctObj.applyBorder = XmlHelper.ReadBool(node.Attributes[nameof(applyBorder)]);
-            ctObj.applyAlignment = XmlHelper.ReadBool(node.Attributes[nameof(applyAlignment)]);
-            ctObj.applyProtection = XmlHelper.ReadBool(node.Attributes[nameof(applyProtection)]);
+            var ctObj = new CT_Xf
+            {
+                numFmtId = XmlHelper.ReadUInt(node.Attributes[nameof(numFmtId)]),
+                fontId = XmlHelper.ReadUInt(node.Attributes[nameof(fontId)]),
+                fillId = XmlHelper.ReadUInt(node.Attributes[nameof(fillId)]),
+                borderId = XmlHelper.ReadUInt(node.Attributes[nameof(borderId)]),
+                xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]),
+                quotePrefix = XmlHelper.ReadBool(node.Attributes[nameof(quotePrefix)]),
+                pivotButton = XmlHelper.ReadBool(node.Attributes[nameof(pivotButton)]),
+                applyNumberFormat = XmlHelper.ReadBool(node.Attributes[nameof(applyNumberFormat)]),
+                applyFont = XmlHelper.ReadBool(node.Attributes[nameof(applyFont)]),
+                applyFill = XmlHelper.ReadBool(node.Attributes[nameof(applyFill)]),
+                applyBorder = XmlHelper.ReadBool(node.Attributes[nameof(applyBorder)]),
+                applyAlignment = XmlHelper.ReadBool(node.Attributes[nameof(applyAlignment)]),
+                applyProtection = XmlHelper.ReadBool(node.Attributes[nameof(applyProtection)])
+            };
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(alignment))

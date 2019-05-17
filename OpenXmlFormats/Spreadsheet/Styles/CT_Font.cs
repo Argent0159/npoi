@@ -22,17 +22,19 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_Font();
-            ctObj.charset = new List<CT_IntProperty>();
-            ctObj.family = new List<CT_IntProperty>();
-            ctObj.b = new List<CT_BooleanProperty>();
-            ctObj.i = new List<CT_BooleanProperty>();
-            ctObj.strike = new List<CT_BooleanProperty>();
-            ctObj.color = new List<CT_Color>();
-            ctObj.sz = new List<CT_FontSize>();
-            ctObj.u = new List<CT_UnderlineProperty>();
-            ctObj.vertAlign = new List<CT_VerticalAlignFontProperty>();
-            ctObj.scheme = new List<CT_FontScheme>();
+            var ctObj = new CT_Font
+            {
+                charset = new List<CT_IntProperty>(),
+                family = new List<CT_IntProperty>(),
+                b = new List<CT_BooleanProperty>(),
+                i = new List<CT_BooleanProperty>(),
+                strike = new List<CT_BooleanProperty>(),
+                color = new List<CT_Color>(),
+                sz = new List<CT_FontSize>(),
+                u = new List<CT_UnderlineProperty>(),
+                vertAlign = new List<CT_VerticalAlignFontProperty>(),
+                scheme = new List<CT_FontScheme>()
+            };
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 if (childNode.LocalName == nameof(outline))

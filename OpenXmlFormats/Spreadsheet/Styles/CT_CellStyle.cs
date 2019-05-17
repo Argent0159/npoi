@@ -1,5 +1,6 @@
 ﻿using NPOI.OpenXml4Net.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -14,25 +15,24 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
     {
         public CT_CellStyle()
         {
-           // this.extLstField = new CT_ExtensionList();
+            // this.extLstField = new CT_ExtensionList();
         }
         public static CT_CellStyle Parse(XmlNode node, XmlNamespaceManager namespaceManager)
         {
             if (node == null)
                 return null;
-            var ctObj = new CT_CellStyle();
-            ctObj.name = XmlHelper.ReadString(node.Attributes[nameof(name)]);
-            ctObj.xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]);
-            ctObj.builtinId = XmlHelper.ReadUInt(node.Attributes[nameof(builtinId)]);
-            ctObj.iLevel = XmlHelper.ReadUInt(node.Attributes[nameof(iLevel)]);
-            ctObj.hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]);
-            ctObj.customBuiltin = XmlHelper.ReadBool(node.Attributes[nameof(customBuiltin)]);
-            foreach (XmlNode childNode in node.ChildNodes)
+            return new CT_CellStyle
             {
-                if (childNode.LocalName == nameof(extLst))
-                    ctObj.extLst = CT_ExtensionList.Parse(childNode, namespaceManager);
-            }
-            return ctObj;
+                name = XmlHelper.ReadString(node.Attributes[nameof(name)]),
+                xfId = XmlHelper.ReadUInt(node.Attributes[nameof(xfId)]),
+                builtinId = XmlHelper.ReadUInt(node.Attributes[nameof(builtinId)]),
+                iLevel = XmlHelper.ReadUInt(node.Attributes[nameof(iLevel)]),
+                hidden = XmlHelper.ReadBool(node.Attributes[nameof(hidden)]),
+                customBuiltin = XmlHelper.ReadBool(node.Attributes[nameof(customBuiltin)]),
+                extLst = CT_ExtensionList.Parse(
+                    node.ChildNodes.Cast<XmlNode>().Last(
+                        childNode => childNode.LocalName == nameof(extLst)), namespaceManager)
+            };
         }
 
 
@@ -42,7 +42,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             sw.Write(string.Format("<{0}", nodeName));
             XmlHelper.WriteAttribute(sw, nameof(name), this.name);
             XmlHelper.WriteAttribute(sw, nameof(xfId), this.xfId, true);
-            XmlHelper.WriteAttribute(sw, nameof(builtinId), this.builtinId,true);
+            XmlHelper.WriteAttribute(sw, nameof(builtinId), this.builtinId, true);
             XmlHelper.WriteAttribute(sw, nameof(iLevel), this.iLevel);
             XmlHelper.WriteAttribute(sw, nameof(hidden), this.hidden, false);
             XmlHelper.WriteAttribute(sw, nameof(customBuiltin), this.customBuiltin, false);

@@ -75,8 +75,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
-            sw.Write(">");
+            sw.Write($"<{nodeName}>");
             this.b?.ForEach(x => x.Write(sw, nameof(b)));
             this.i?.ForEach(x => x.Write(sw, nameof(i)));
             this.strike?.ForEach(x => x.Write(sw, nameof(strike)));
@@ -92,7 +91,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             this.family?.ForEach(x => x.Write(sw, nameof(family)));
             this.charset?.ForEach(x => x.Write(sw, nameof(charset)));
             this.scheme?.ForEach(x => x.Write(sw, nameof(scheme)));
-            sw.Write(string.Format("</{0}>", nodeName));
+            sw.Write($"</{nodeName}>");
         }
 
 

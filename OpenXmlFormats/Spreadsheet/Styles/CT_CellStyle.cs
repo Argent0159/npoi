@@ -39,7 +39,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             XmlHelper.WriteAttribute(sw, nameof(name), this.name);
             XmlHelper.WriteAttribute(sw, nameof(xfId), this.xfId, true);
             XmlHelper.WriteAttribute(sw, nameof(builtinId), this.builtinId, true);
@@ -50,7 +50,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             {
                 sw.Write(">");
                 this.extLst.Write(sw, nameof(extLst));
-                sw.Write(string.Format("</{0}>", nodeName));
+                sw.Write($"</{nodeName}>");
             }
             else
             {

@@ -83,7 +83,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             XmlHelper.WriteAttribute(sw, nameof(numFmtId), this.numFmtId, true);
             XmlHelper.WriteAttribute(sw, nameof(fontId), this.fontId, true);
             XmlHelper.WriteAttribute(sw, nameof(fillId), this.fillId, true);
@@ -111,7 +111,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
                 this.alignment?.Write(sw, nameof(alignment));
                 this.protection?.Write(sw, nameof(protection));
                 this.extLst?.Write(sw, nameof(extLst));
-                sw.Write(string.Format("</{0}>", nodeName));
+                sw.Write($"</{nodeName}>");
             }
         }
 

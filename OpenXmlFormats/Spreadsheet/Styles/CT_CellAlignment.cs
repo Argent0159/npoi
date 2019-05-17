@@ -70,7 +70,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             if(this.horizontal != ST_HorizontalAlignment.general)
                 XmlHelper.WriteAttribute(sw, nameof(horizontal), this.horizontal.ToString());
             if (this.vertical != ST_VerticalAlignment.bottom)

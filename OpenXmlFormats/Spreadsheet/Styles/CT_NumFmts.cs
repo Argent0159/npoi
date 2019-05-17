@@ -35,11 +35,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
             this.numFmt?.ForEach(x => x.Write(sw, nameof(numFmt)));
-            sw.Write(string.Format("</{0}>", nodeName));
+            sw.Write($"</{nodeName}>");
         }
 
         public CT_NumFmt AddNewNumFmt()

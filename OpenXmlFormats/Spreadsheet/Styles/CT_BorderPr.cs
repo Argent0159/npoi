@@ -32,14 +32,14 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             if (this.style != ST_BorderStyle.none)
                 XmlHelper.WriteAttribute(sw, nameof(style), this.style.ToString());
             if (this.color != null)
             {
                 sw.Write(">");
                 this.color.Write(sw, nameof(color));
-                sw.Write(string.Format("</{0}>", nodeName));
+                sw.Write($"</{nodeName}>");
             }
             else
             {

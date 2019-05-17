@@ -31,11 +31,11 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             XmlHelper.WriteAttribute(sw, nameof(count), this.count, true);
             sw.Write(">");
             this.dxf?.ForEach(x => x.Write(sw, nameof(dxf)));
-            sw.Write(string.Format("</{0}>", nodeName));
+            sw.Write($"</{nodeName}>");
         }
 
         public CT_Dxfs()
@@ -84,7 +84,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
 
         internal void Write(StreamWriter sw, string nodeName)
         {
-            sw.Write(string.Format("<{0}", nodeName));
+            sw.Write($"<{nodeName}");
             sw.Write(">");
             this.font?.Write(sw, nameof(font));
             this.numFmt?.Write(sw, nameof(numFmt));
@@ -93,7 +93,7 @@ namespace NPOI.OpenXmlFormats.Spreadsheet
             this.border?.Write(sw, nameof(border));
             this.protection?.Write(sw, nameof(protection));
             this.extLst?.Write(sw, nameof(extLst));
-            sw.Write(string.Format("</{0}>", nodeName));
+            sw.Write($"</{nodeName}>");
         }
 
         public CT_Dxf()
